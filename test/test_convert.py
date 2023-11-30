@@ -7,7 +7,7 @@ class TestConvert(unittest.TestCase):
     
     def test_json_to_excel(self):
         # Define the input JSON and output Excel file paths for testing
-        input_json = "../schemas/single_cell.json"
+        input_json = "../schemas/single_cell_plant.json"
         output_excel = "../output/output.xlsx"
         
         # Call the json_to_excel function with the test data
