@@ -1,221 +1,321 @@
 {
-    "components": [
-        {
-            "component": "study",
-            "contact_first_name": {
-                "value": "John",
-                "required": true,
-                "error": "contact_first_name is required",
-                "regex": "^[a-zA-Z]+$"
-            },
-            "contact_last_name": {
-                "value": "Doe",
-                "required": true,
-                "error": "contact_last_name is required",
-                "regex": "^[a-zA-Z]+$"
-            },
-            "contact_email": {
-                "value": "",
-                "required": true,
-                "error": "contact_email is required",
-                "regex": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
-            },
-            "contact_institution": {
-                "value": "",
-                "required": true,
-                "error": "contact_institution is required"
-            },
-            "workflow": {
-                "value": "",
-                "required": false,
-                "error": ""
-            },
-            "modality": {
-                "value": "",
-                "required": false,
-                "error": ""
-            }
-        },
-        {
-            "component": "sample",
-            "taxon_id": {
-                "value": "",
-                "required": true,
-                "error": "taxon_id is required",
-                "regex": "^[0-9]+$"
-            },
-            "scientific_name": {
-                "value": "",
-                "required": true,
-                "error": "scientific_name is required"
-            },
-            "strain": {
-                "value": "",
-                "required": false,
-                "error": ""
-            },
-            "tissue": {
-                "value": "",
-                "required": false,
-                "error": "",
-                "allowed_values": [
-                    "WHOLE_PLANT",
-                    "SEEDLING",
-                    "SEED",
-                    "LEAF",
-                    "FLOWER",
-                    "BLADE",
-                    "STEM",
-                    "PETIOLE",
-                    "SHOOT",
-                    "BUD",
-                    "THALLUS_PLANT",
-                    "ROOT",
-                    "BRACT",
-                    "OTHER_PLANT_TISSUE",
-                    "MYCELIUM",
-                    "MYCORRHIZA",
-                    "SPORE_BEARING_STRUCTURE",
-                    "HOLDFAST_FUNGI",
-                    "STIPE",
-                    "CAP",
-                    "GILL_FUNGI",
-                    "THALLUS_FUNGI",
-                    "SPORE",
-                    "OTHER_FUNGAL_TISSUE",
-                    "NOT_COLLECTED",
-                    "NOT_APPLICABLE",
-                    "NOT_PROVIDED",
-                    "OTHER"
-                ]
-            },
-            "perservation_approach": {
-                "value": "",
-                "required": false,
-                "error": "",
-                "allowed_values": [
-                    "FRESH",
-                    "FROZEN",
-                    "FIXED",
-                    "DRIED",
-                    "NOT_COLLECTED",
-                    "NOT_APPLICABLE",
-                    "NOT_PROVIDED",
-                    "OTHER"
-                ]
-            },
-            "collection_date": {
-                "value": "",
-                "required": false,
-                "error": "",
-                "regex": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
-            },
-            "geographic_location_latitude": {
-                "value": "",
-                "required": true,
-                "error": "geographic_location_latitude is required",
-                "regex": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$"
-            },
-            "geographic_location_longitude": {
-                "value": "",
-                "required": true,
-                "error": "geographic_location_longitude is required",
-                "regex": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$"
-            },
-            "broad_scale_environmental_context": {
-                "value": "",
-                "required": false,
-                "error": "",
-                "description": "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO’s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS."
-            },
-            "local_scale_environmental_context": {
-                "value": "",
-                "required": false,
-                "error": "",
-                "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)."
-            },
-            "environmental_medium": {
-                "value": "",
-                "required": false,
-                "error": "",
-                "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)."
-            }
-        },
-        {
-            "component": "isolation",
-            "isolation_type": "microflidics",
-            "platform": "10x",
-            "instrument": "10x Chromium X",
-            "isolation_kit": "10x Nuclei Isolation Kit",
-            "kit": "3' standard throughput kit",
-            "dissociation_method": "enzymatic",
-            "dissociation_time": "10",
-            "dissociation_temperature": "37",
-            "dissociation_enzyme": "collagenase",
-            "dissociation_enzyme_concentration": "1",
-            "dissociation_enzyme_unit": "mg/ml",
-            "material_incubation_temperature": "4",
-            "material_incubation_time_unit": "hours",
-            "material_incubation_time": "3",
-            "lysis_buffer_solution": ""
-        },
-        {
-            "component": "isolation",
-            "isolation_type": "STx",
-            "platform": "vizgen",
-            "instrument": "merscope",
-            "target_probes": "https://www.vizgen.com/merfish-probes/",
-            "section_thickness": "10",
-            "section_thickness_unit": "um",
-            "section_thickness_method": "cryosectioning",
-            "section_thickness_temperature": "-20",
-            "normal_abnormal": "normal",
-            "digestion_enzyme": "trypsin",
-            "digestion_enzyme_concentration": "1",
-            "digestion_enzyme_unit": "mg/ml",
-            "digestion_time": "10",
-            "digestion_time_unit": "minutes",
-            "digestion_temperature": "37",
-            "photobleaching": "yes",
-            "photobleaching_method": "UV",
-            "photobleaching_time": "10",
-            "photobleaching_time_unit": "minutes",
-            "merscope_instrument_user_guide": "MERscope-User-Guide.pdf",
-            "merscope_instrument_user_guide_revision": "1.0",
-            "merscope_sample_preparation_guide": "MERscope-Sample-Preparation-Guide.pdf",
-            "merscope_sample_preparation_guide_revision": "1.0",
-            "deveations_from_official_protocol": [
-                "deviation1",
-                "deviation2"
-            ]
-        },
-        {
-            "component": "isolation",
-            "isolation_type": "facs",
-            "time_period": "10",
-            "time_period_unit": "minutes"
-        },
-        {
-            "component": "isolation",
-            "isolation_type": "LMD"
-        },
-        {
-            "component": "cell",
-            "suspension_type": [
-                "cell",
-                "nuclei",
-                "protoplast"
-            ],
-            "suspension_volume": "10",
-            "suspension_volume_unit": "ul",
-            "suspension_concentration": "10",
-            "suspension_concentration_unit": "cells/ul",
-            "suspension_dilution": "10",
-            "suspension_dilution_unit": "cells/ul",
-            "suspension_dilution_method": "dilution",
-            "suspension_dilution_buffer": "PBS",
-            "suspension_dilution_buffer_concentration": "1",
-            "suspension_dilution_buffer_concentration_unit": "mg/ml"
-        }
-    ]
+  "components": [
+    {
+      "component": "study",
+      "contact_first_name": {
+        "value": "",
+        "required": true,
+        "error": "contact_first_name is required",
+        "regex": "^[a-zA-Z]+$"
+      },
+      "contact_last_name": {
+        "value": "",
+        "required": true,
+        "error": "contact_last_name is required",
+        "regex": "^[a-zA-Z]+$"
+      },
+      "contact_email": {
+        "value": "",
+        "required": true,
+        "error": "contact_email is required",
+        "regex": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
+      },
+      "contact_institution": {
+        "value": "",
+        "required": true,
+        "error": "contact_institution is required"
+      },
+      "workflow": {
+        "value": "",
+        "required": false,
+        "error": ""
+      },
+      "modality": {
+        "value": "",
+        "required": false,
+        "error": ""
+      }
+    },
+    {
+      "component": "sample",
+      "taxon_id": {
+        "value": "",
+        "required": true,
+        "error": "taxon_id is required",
+        "regex": "^[0-9]+$"
+      },
+      "scientific_name": {
+        "value": "",
+        "required": true,
+        "error": "scientific_name is required"
+      },
+      "strain": {
+        "value": "",
+        "required": false,
+        "error": ""
+      },
+      "tissue": {
+        "value": "",
+        "required": false,
+        "error": "",
+        "allowed_values": [
+          "WHOLE_PLANT",
+          "SEEDLING",
+          "SEED",
+          "LEAF",
+          "FLOWER",
+          "BLADE",
+          "STEM",
+          "PETIOLE",
+          "SHOOT",
+          "BUD",
+          "THALLUS_PLANT",
+          "ROOT",
+          "BRACT",
+          "OTHER_PLANT_TISSUE",
+          "MYCELIUM",
+          "MYCORRHIZA",
+          "SPORE_BEARING_STRUCTURE",
+          "HOLDFAST_FUNGI",
+          "STIPE",
+          "CAP",
+          "GILL_FUNGI",
+          "THALLUS_FUNGI",
+          "SPORE",
+          "OTHER_FUNGAL_TISSUE",
+          "NOT_COLLECTED",
+          "NOT_APPLICABLE",
+          "NOT_PROVIDED",
+          "OTHER"
+        ]
+      },
+      "perservation_approach": {
+        "value": "",
+        "required": false,
+        "error": "",
+        "allowed_values": [
+          "FRESH",
+          "FROZEN",
+          "FIXED",
+          "DRIED",
+          "NOT_COLLECTED",
+          "NOT_APPLICABLE",
+          "NOT_PROVIDED",
+          "OTHER"
+        ]
+      },
+      "collection_date": {
+        "value": "",
+        "required": false,
+        "error": "",
+        "regex": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+      },
+      "geographic_location_latitude": {
+        "value": "",
+        "required": true,
+        "error": "geographic_location_latitude is required",
+        "regex": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$"
+      },
+      "geographic_location_longitude": {
+        "value": "",
+        "required": true,
+        "error": "geographic_location_longitude is required",
+        "regex": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$"
+      },
+      "broad_scale_environmental_context": {
+        "value": "",
+        "required": false,
+        "error": "",
+        "description": "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO’s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS."
+      },
+      "local_scale_environmental_context": {
+        "value": "",
+        "required": false,
+        "error": "",
+        "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)."
+      },
+      "environmental_medium": {
+        "value": "",
+        "required": false,
+        "error": "",
+        "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)."
+      }
+    },
+    {
+      "component": "isolation",
+      "isolation_type": {
+        "value": "microflidics",
+        "required": true,
+        "error": "isolation_type is required",
+        "description": "The type of isolation method used to isolate the cells."
+      },
+      "platform": {
+        "value": "",
+        "required": true,
+        "error": "platform is required",
+        "description": "The platform used to isolate the cells.",
+        "allowed_values": [
+          "10x",
+          "vizgen",
+          "dropseq",
+          "smartseq2",
+          "fluidigm_c1",
+          "fluidigm_c1_open_app",
+          "fluidigm_c1_open_app",
+          "fluidigm_c1_open_app"
+        ]
+      },
+      "instrument": {
+        "value": "",
+        "required": true,
+        "error": "instrument is required",
+        "description": "The instrument used to isolate the cells.",
+        "allowed_values": [
+          "10x",
+          "vizgen",
+          "dropseq",
+          "smartseq2",
+          "fluidigm_c1",
+          "fluidigm_c1_open_app",
+          "fluidigm_c1_open_app",
+          "fluidigm_c1_open_app"
+        ]
+      },
+      "isolation_kit": {
+        "value": "",
+        "required": false,
+        "error": "",
+        "description": "The kit used to isolate the cells.",
+        "allowed_values": [
+          "10x Nuclei Isolation Kit",
+          "3' standard throughput kit"
+        ]
+      },
+      "dissociation_method": {
+        "value": "",
+        "allowed_values": ["enzymatic"],
+        "required": false,
+        "error": "dissociation_method is required",
+        "description": "The method used for dissociating the cells."
+      },
+      "dissociation_time": {
+        "value": "",
+        "required": false,
+        "error": "dissociation_time is required",
+        "description": "The time duration for dissociation in minutes."
+      },
+      "dissociation_temperature": {
+        "value": "",
+        "required": false,
+        "error": "dissociation_temperature is required",
+        "description": "The temperature at which dissociation is performed."
+      },
+      "dissociation_enzyme": {
+        "value": "",
+        "allowed_values": ["collagenase"],
+        "required": false,
+        "error": "dissociation_enzyme is required",
+        "description": "The enzyme used for dissociation."
+      },
+      "dissociation_enzyme_concentration": {
+        "value": "",
+        "required": true,
+        "error": "dissociation_enzyme_concentration is required",
+        "description": "The concentration of the dissociation enzyme."
+      },
+      "dissociation_enzyme_unit": {
+        "value": "",
+        "allowed_values": ["mg/ml"],
+        "required": true,
+        "error": "dissociation_enzyme_unit is required",
+        "description": "The unit of measurement for the dissociation enzyme concentration."
+      },
+      "material_incubation_temperature": {
+        "value": "",
+        "allowed_values": ["4"],
+        "required": true,
+        "error": "material_incubation_temperature is required",
+        "description": "The temperature at which the material is incubated."
+      },
+      "material_incubation_time_unit": {
+        "value": "",
+        "allowed_values": ["hours"],
+        "required": true,
+        "error": "material_incubation_time_unit is required",
+        "description": "The unit of measurement for the material incubation time."
+      },
+      "material_incubation_time": {
+        "value": "",
+        "allowed_values": ["3"],
+        "required": true,
+        "error": "material_incubation_time is required",
+        "description": "The time duration for material incubation."
+      },
+      "lysis_buffer_solution": {
+        "value": "",
+        "allowed_values": [],
+        "required": false,
+        "error": "",
+        "description": "The solution used for lysis buffer."
+      }
+    },
+    {
+      "component": "isolation",
+      "isolation_type": "STx",
+      "platform": "vizgen",
+      "instrument": "merscope",
+      "target_probes": "https://www.vizgen.com/merfish-probes/",
+      "section_thickness": "10",
+      "section_thickness_unit": "um",
+      "section_thickness_method": "cryosectioning",
+      "section_thickness_temperature": "-20",
+      "normal_abnormal": "normal",
+      "digestion_enzyme": "trypsin",
+      "digestion_enzyme_concentration": "1",
+      "digestion_enzyme_unit": "mg/ml",
+      "digestion_time": "10",
+      "digestion_time_unit": "minutes",
+      "digestion_temperature": "37",
+      "photobleaching": "yes",
+      "photobleaching_method": "UV",
+      "photobleaching_time": "10",
+      "photobleaching_time_unit": "minutes",
+      "merscope_instrument_user_guide": "MERscope-User-Guide.pdf",
+      "merscope_instrument_user_guide_revision": "1.0",
+      "merscope_sample_preparation_guide": "MERscope-Sample-Preparation-Guide.pdf",
+      "merscope_sample_preparation_guide_revision": "1.0",
+      "deveations_from_official_protocol": [
+        "deviation1",
+        "deviation2"
+      ]
+    },
+    {
+      "component": "isolation",
+      "isolation_type": "facs",
+      "time_period": "10",
+      "time_period_unit": "minutes"
+    },
+    {
+      "component": "isolation",
+      "isolation_type": "LMD"
+    },
+    {
+      "component": "cell",
+      "suspension_type": [
+        "cell",
+        "nuclei",
+        "protoplast"
+      ],
+      "suspension_volume": "10",
+      "suspension_volume_unit": "ul",
+      "suspension_concentration": "10",
+      "suspension_concentration_unit": "cells/ul",
+      "suspension_dilution": "10",
+      "suspension_dilution_unit": "cells/ul",
+      "suspension_dilution_method": "dilution",
+      "suspension_dilution_buffer": "PBS",
+      "suspension_dilution_buffer_concentration": "1",
+      "suspension_dilution_buffer_concentration_unit": "mg/ml"
+    }
+  ]
 }
