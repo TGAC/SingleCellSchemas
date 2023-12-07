@@ -4,24 +4,28 @@
       "component": "study",
       "contact_first_name": {
         "value": "",
+        "reference":"https://schema.org/givenName",
         "required": true,
         "error": "contact_first_name is required",
         "regex": "^[a-zA-Z]+$"
       },
       "contact_last_name": {
         "value": "",
+        "reference": "https://schema.org/familyName",
         "required": true,
         "error": "contact_last_name is required",
         "regex": "^[a-zA-Z]+$"
       },
       "contact_email": {
         "value": "",
+        "reference":"https://schema.org/email",
         "required": true,
         "error": "contact_email is required",
         "regex": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
       },
       "contact_institution": {
         "value": "",
+        "reference": "https://schema.org/affiliation",
         "required": true,
         "error": "contact_institution is required"
       },
@@ -40,22 +44,26 @@
       "component": "sample",
       "taxon_id": {
         "value": "",
+        "reference": "http://purl.obolibrary.org/obo/NCIT_C179773",
         "required": true,
         "error": "taxon_id is required",
         "regex": "^[0-9]+$"
       },
       "scientific_name": {
         "value": "",
+        "reference": "http://purl.obolibrary.org/obo/NOMEN_0000036",
         "required": true,
         "error": "scientific_name is required"
       },
       "strain": {
         "value": "",
+        "reference":"http://www.ebi.ac.uk/efo/EFO_0005135",
         "required": false,
         "error": ""
       },
       "tissue": {
         "value": "",
+        "reference": "https://schema.org/tissueSample",
         "required": false,
         "error": "",
         "allowed_values": [
@@ -89,8 +97,9 @@
           "OTHER"
         ]
       },
-      "perservation_approach": {
+      "preservation_method": {
         "value": "",
+        "reference":"http://purl.obolibrary.org/obo/NCIT_C19232",
         "required": false,
         "error": "",
         "allowed_values": [
@@ -106,18 +115,25 @@
       },
       "collection_date": {
         "value": "",
+        "reference": "http://purl.obolibrary.org/obo/NCIT_C81286",
         "required": false,
         "error": "",
         "regex": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
       },
       "geographic_location_latitude": {
         "value": "",
+        "reference":"http://purl.obolibrary.org/obo/GENEPIO_0100309",
+        "unit": "degree",
+        "unit_reference": "http://purl.obolibrary.org/obo/GENEPIO_0001862",
         "required": true,
         "error": "geographic_location_latitude is required",
         "regex": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$"
       },
       "geographic_location_longitude": {
         "value": "",
+        "reference":"http://purl.obolibrary.org/obo/GENEPIO_0100310",
+        "unit": "degree",
+        "unit_reference": "http://purl.obolibrary.org/obo/GENEPIO_0001863",
         "required": true,
         "error": "geographic_location_longitude is required",
         "regex": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$"
@@ -129,6 +145,7 @@
         "description": "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO’s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS."
       },
       "local_scale_environmental_context": {
+        "reference":"http://purl.obolibrary.org/obo/GENEPIO_0000027",
         "value": "",
         "required": false,
         "error": "",
@@ -136,6 +153,7 @@
       },
       "environmental_medium": {
         "value": "",
+        "reference": "http://purl.org/dc/terms/medium",
         "required": false,
         "error": "",
         "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)."
@@ -145,12 +163,14 @@
       "component": "isolation",
       "isolation_type": {
         "value": "microflidics",
+        "reference": "http://purl.obolibrary.org/obo/OMIT_0023341",
         "required": true,
         "error": "isolation_type is required",
         "description": "The type of isolation method used to isolate the cells."
       },
       "platform": {
         "value": "",
+        "reference":"http://purl.obolibrary.org/obo/NCIT_C142729",
         "required": true,
         "error": "platform is required",
         "description": "The platform used to isolate the cells.",
@@ -167,22 +187,17 @@
       },
       "instrument": {
         "value": "",
+        "reference":"http://schema.org/instrument",
         "required": true,
         "error": "instrument is required",
         "description": "The instrument used to isolate the cells.",
         "allowed_values": [
-          "10x",
-          "vizgen",
-          "dropseq",
-          "smartseq2",
-          "fluidigm_c1",
-          "fluidigm_c1_open_app",
-          "fluidigm_c1_open_app",
-          "fluidigm_c1_open_app"
+
         ]
       },
       "isolation_kit": {
         "value": "",
+        "reference":"http://purl.obolibrary.org/obo/OBI_0003369",
         "required": false,
         "error": "",
         "description": "The kit used to isolate the cells.",
@@ -200,18 +215,25 @@
       },
       "dissociation_time": {
         "value": "",
+        "reference": "",
+        "unit": "minute",
+        "unit_reference": "http://purl.obolibrary.org/obo/UO_0000031",
         "required": false,
         "error": "dissociation_time is required",
         "description": "The time duration for dissociation in minutes."
       },
       "dissociation_temperature": {
         "value": "",
+        "reference": "",
+        "unit": "degree celsius",
+        "unit_reference": "http://purl.obolibrary.org/obo/UO_0000027",
         "required": false,
         "error": "dissociation_temperature is required",
-        "description": "The temperature at which dissociation is performed."
+        "description": "The temperature at which dissociation is performed in degrees C."
       },
       "dissociation_enzyme": {
         "value": "",
+        "reference": "",
         "allowed_values": ["collagenase"],
         "required": false,
         "error": "dissociation_enzyme is required",
@@ -219,37 +241,28 @@
       },
       "dissociation_enzyme_concentration": {
         "value": "",
-        "required": true,
+        "reference": "",
+        "unit": "mg/ml",
+        "unit_reference": "http://purl.obolibrary.org/obo/UO_0000274",
+        "required": false,
         "error": "dissociation_enzyme_concentration is required",
         "description": "The concentration of the dissociation enzyme."
       },
-      "dissociation_enzyme_unit": {
-        "value": "",
-        "allowed_values": ["mg/ml"],
-        "required": true,
-        "error": "dissociation_enzyme_unit is required",
-        "description": "The unit of measurement for the dissociation enzyme concentration."
-      },
       "material_incubation_temperature": {
         "value": "",
-        "allowed_values": ["4"],
-        "required": true,
+        "reference": "",
+        "unit": "degree celsius",
+        "unit_reference": "http://purl.obolibrary.org/obo/UO_0000027",
+        "required": false,
         "error": "material_incubation_temperature is required",
-        "description": "The temperature at which the material is incubated."
-      },
-      "material_incubation_time_unit": {
-        "value": "",
-        "allowed_values": ["hours"],
-        "required": true,
-        "error": "material_incubation_time_unit is required",
-        "description": "The unit of measurement for the material incubation time."
+        "description": "The temperature at which the material is incubated in degrees C."
       },
       "material_incubation_time": {
         "value": "",
-        "allowed_values": ["3"],
-        "required": true,
+        "reference": "http://purl.obolibrary.org/obo/XCO_0000153",
+        "required": false,
         "error": "material_incubation_time is required",
-        "description": "The time duration for material incubation."
+        "description": "The time duration for material incubation in hours."
       },
       "lysis_buffer_solution": {
         "value": "",
