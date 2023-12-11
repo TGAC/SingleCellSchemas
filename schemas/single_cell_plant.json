@@ -4,7 +4,7 @@
       "component": "study",
       "contact_first_name": {
         "value": "",
-        "reference":"https://schema.org/givenName",
+        "reference": "https://schema.org/givenName",
         "required": true,
         "error": "contact_first_name is required",
         "regex": "^[a-zA-Z]+$"
@@ -18,7 +18,7 @@
       },
       "contact_email": {
         "value": "",
-        "reference":"https://schema.org/email",
+        "reference": "https://schema.org/email",
         "required": true,
         "error": "contact_email is required",
         "regex": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
@@ -57,7 +57,7 @@
       },
       "strain": {
         "value": "",
-        "reference":"http://www.ebi.ac.uk/efo/EFO_0005135",
+        "reference": "http://www.ebi.ac.uk/efo/EFO_0005135",
         "required": false,
         "error": ""
       },
@@ -99,7 +99,7 @@
       },
       "preservation_method": {
         "value": "",
-        "reference":"http://purl.obolibrary.org/obo/NCIT_C19232",
+        "reference": "http://purl.obolibrary.org/obo/NCIT_C19232",
         "required": false,
         "error": "",
         "allowed_values": [
@@ -116,13 +116,15 @@
       "collection_date": {
         "value": "",
         "reference": "http://purl.obolibrary.org/obo/NCIT_C81286",
+        "unit": "date",
+        "unit_reference": "http://schema.org/Date",
         "required": false,
         "error": "",
         "regex": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
       },
       "geographic_location_latitude": {
         "value": "",
-        "reference":"http://purl.obolibrary.org/obo/GENEPIO_0100309",
+        "reference": "http://purl.obolibrary.org/obo/GENEPIO_0100309",
         "unit": "degree",
         "unit_reference": "http://purl.obolibrary.org/obo/GENEPIO_0001862",
         "required": true,
@@ -131,7 +133,7 @@
       },
       "geographic_location_longitude": {
         "value": "",
-        "reference":"http://purl.obolibrary.org/obo/GENEPIO_0100310",
+        "reference": "http://purl.obolibrary.org/obo/GENEPIO_0100310",
         "unit": "degree",
         "unit_reference": "http://purl.obolibrary.org/obo/GENEPIO_0001863",
         "required": true,
@@ -145,7 +147,7 @@
         "description": "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO’s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS."
       },
       "local_scale_environmental_context": {
-        "reference":"http://purl.obolibrary.org/obo/GENEPIO_0000027",
+        "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000027",
         "value": "",
         "required": false,
         "error": "",
@@ -170,7 +172,7 @@
       },
       "platform": {
         "value": "",
-        "reference":"http://purl.obolibrary.org/obo/NCIT_C142729",
+        "reference": "http://purl.obolibrary.org/obo/NCIT_C142729",
         "required": true,
         "error": "platform is required",
         "description": "The platform used to isolate the cells.",
@@ -187,17 +189,16 @@
       },
       "instrument": {
         "value": "",
-        "reference":"http://schema.org/instrument",
+        "reference": "http://schema.org/instrument",
         "required": true,
         "error": "instrument is required",
         "description": "The instrument used to isolate the cells.",
         "allowed_values": [
-
         ]
       },
       "isolation_kit": {
         "value": "",
-        "reference":"http://purl.obolibrary.org/obo/OBI_0003369",
+        "reference": "http://purl.obolibrary.org/obo/OBI_0003369",
         "required": false,
         "error": "",
         "description": "The kit used to isolate the cells.",
@@ -208,14 +209,16 @@
       },
       "dissociation_method": {
         "value": "",
-        "allowed_values": ["enzymatic"],
+        "allowed_values": [
+          "enzymatic"
+        ],
         "required": false,
         "error": "dissociation_method is required",
         "description": "The method used for dissociating the cells."
       },
       "dissociation_time": {
         "value": "",
-        "reference": "",
+        "reference": "http://purl.obolibrary.org/obo/XCO_0000153",
         "unit": "minute",
         "unit_reference": "http://purl.obolibrary.org/obo/UO_0000031",
         "required": false,
@@ -234,14 +237,16 @@
       "dissociation_enzyme": {
         "value": "",
         "reference": "",
-        "allowed_values": ["collagenase"],
+        "allowed_values": [
+          "collagenase"
+        ],
         "required": false,
         "error": "dissociation_enzyme is required",
         "description": "The enzyme used for dissociation."
       },
       "dissociation_enzyme_concentration": {
         "value": "",
-        "reference": "",
+        "reference": "http://semanticscience.org/resource/SIO_001088",
         "unit": "mg/ml",
         "unit_reference": "http://purl.obolibrary.org/obo/UO_0000274",
         "required": false,
@@ -274,61 +279,258 @@
     },
     {
       "component": "isolation",
-      "isolation_type": "STx",
-      "platform": "vizgen",
-      "instrument": "merscope",
-      "target_probes": "https://www.vizgen.com/merfish-probes/",
-      "section_thickness": "10",
-      "section_thickness_unit": "um",
-      "section_thickness_method": "cryosectioning",
-      "section_thickness_temperature": "-20",
-      "normal_abnormal": "normal",
-      "digestion_enzyme": "trypsin",
-      "digestion_enzyme_concentration": "1",
-      "digestion_enzyme_unit": "mg/ml",
-      "digestion_time": "10",
-      "digestion_time_unit": "minutes",
-      "digestion_temperature": "37",
-      "photobleaching": "yes",
-      "photobleaching_method": "UV",
-      "photobleaching_time": "10",
-      "photobleaching_time_unit": "minutes",
-      "merscope_instrument_user_guide": "MERscope-User-Guide.pdf",
-      "merscope_instrument_user_guide_revision": "1.0",
-      "merscope_sample_preparation_guide": "MERscope-Sample-Preparation-Guide.pdf",
-      "merscope_sample_preparation_guide_revision": "1.0",
+      "isolation_type": {
+        "value": "Stx",
+        "reference": "http://www.ebi.ac.uk/efo/EFO_0008994",
+        "required": true,
+        "error": "isolation_type is required",
+        "description": "The type of isolation method used to isolate the cells."
+      },
+      "platform": {
+        "value": "vizgen",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "instrument": {
+        "value": "merscope",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "target_probes": {
+        "value": "https://www.vizgen.com/merfish-probes/",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "section_thickness": {
+        "value": "10",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "section_thickness_unit": {
+        "value": "um",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "section_thickness_method": {
+        "value": "cryosectioning",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "section_thickness_temperature": {
+        "value": "-20",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "normal_abnormal": {
+        "value": "normal",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "digestion_enzyme": {
+        "value": "trypsin",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "digestion_enzyme_concentration": {
+        "value": "1",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "digestion_enzyme_unit": {
+        "value": "mg/ml",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "digestion_time": {
+        "value": "10",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "digestion_time_unit": {
+        "value": "minutes",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "digestion_temperature": {
+        "value": "37",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "photobleaching": {
+        "value": "yes",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "photobleaching_method": {
+        "value": "UV",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "photobleaching_time": {
+        "value": "10",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "photobleaching_time_unit": {
+        "value": "minutes",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "merscope_instrument_user_guide": {
+        "value": "MERscope-User-Guide.pdf",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "merscope_instrument_user_guide_revision": {
+        "value": "1.0",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "merscope_sample_preparation_guide": {
+        "value": "MERscope-Sample-Preparation-Guide.pdf",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
+      "merscope_sample_preparation_guide_revision": {
+        "value": "1.0",
+        "reference": "",
+        "required": false,
+        "error": "",
+        "description": ""
+      },
       "deveations_from_official_protocol": [
-        "deviation1",
-        "deviation2"
+        {
+          "index": "1",
+          "description": "",
+          "protocol_deviated_from": ""
+        }
       ]
     },
     {
       "component": "isolation",
-      "isolation_type": "facs",
+      "isolation_type": {
+        "value": "facs"
+      },
       "time_period": "10",
       "time_period_unit": "minutes"
     },
     {
       "component": "isolation",
-      "isolation_type": "LMD"
+      "isolation_type": {
+        "value": "LMD"
+      }
     },
     {
       "component": "cell",
       "suspension_type": [
-        "cell",
-        "nuclei",
-        "protoplast"
+        {
+          "type": "cell",
+          "reference": "http://purl.obolibrary.org/obo/DDANAT_0000401"
+        },
+        {
+          "type": "nuclei",
+          "reference": "http://purl.obolibrary.org/obo/GO_0005634"
+        },
+        {
+          "type": "protoplast",
+          "reference": "http://purl.obolibrary.org/obo/CL_0000371"
+        }
       ],
-      "suspension_volume": "10",
-      "suspension_volume_unit": "ul",
-      "suspension_concentration": "10",
-      "suspension_concentration_unit": "cells/ul",
-      "suspension_dilution": "10",
-      "suspension_dilution_unit": "cells/ul",
-      "suspension_dilution_method": "dilution",
-      "suspension_dilution_buffer": "PBS",
-      "suspension_dilution_buffer_concentration": "1",
-      "suspension_dilution_buffer_concentration_unit": "mg/ml"
+      "suspension_volume": {
+        "value": "",
+        "reference": "PATO:0000918",
+        "unit": "microliter",
+        "unit_reference": "http://purl.obolibrary.org/obo/UO_0000101",
+        "error": "",
+        "required": false
+      },
+      "suspension_concentration": {
+        "value": "0",
+        "reference": "http://purl.obolibrary.org/obo/CHMO_0002820",
+        "unit:": "cells/ul",
+        "unit_reference": "http://snomed.info/id/258878000",
+        "error": "",
+        "required": false
+      },
+      "suspension_dilution": {
+        "value": "10",
+        "reference": "http://purl.allotrope.org/ontologies/process#AFP_0000785",
+        "unit:": "cells/ul",
+        "unit_reference": "http://snomed.info/id/258878000",
+        "error": "",
+        "required": false
+      },
+      "suspension_dilution_method": {
+        "value": "dilution",
+        "reference": "http://www.bioassayontology.org/bao#BAO_0002418",
+        "unit_reference": "",
+        "error": "",
+        "required": false
+      },
+      "suspension_dilution_buffer": {
+        "value": "",
+        "reference": "",
+        "unit_reference": "",
+        "error": "",
+        "required": false
+      },
+      "suspension_dilution_buffer_concentration": {
+        "value": "1",
+        "reference": "",
+        "unit": "mg/ml",
+        "unit_reference": "http://purl.obolibrary.org/obo/UO_0000176",
+        "error": "",
+        "required": false
+      },
+      "suspension_dilution_buffer_concentration_unit": {
+        "value": "mg/ml",
+        "reference": "",
+        "unit_reference": "",
+        "error": "",
+        "required": false
+      }
     }
   ]
 }
