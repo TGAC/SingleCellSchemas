@@ -1,35 +1,32 @@
-import unittest
+import unittest, json
 import pandas as pd
 from utils.convert import extract_components_to_excel
 import re
 
 class TestConvert(unittest.TestCase):
-    
-    def test_json_to_excel(self):
+    """
+    A test case class for testing the conversion of JSON to Excel.
+    """
+
+    def setUp(self) -> None:
         # Define the input JSON and output Excel file paths for testing
-        input_json = "../schemas/single_cell_plant.json"
-        output_excel = "../output/output.xlsx"
-        
+        self.input_json = "schemas/single_cell_plant.json"
+        self.output_excel = "output/output.xlsx"
         # Call the json_to_excel function with the test data
-        extract_components_to_excel(input_json, output_excel)
-
-        
+        extract_components_to_excel(self.input_json, self.output_excel)
         # Read the generated Excel file
-        excel_data = pd.read_excel(output_excel, sheet_name=None, header=None)
-        
-        # Assert that the Excel file contains the expected sheets and data
-        self.assertIn("study", excel_data.keys())
-        self.assertIn("sample", excel_data.keys())
-        keys_set = set(excel_data.keys())
-        # Assert that at least one key starts with isolation_
-        regex_pattern = r'isolation_*'
-        self.assertTrue(any(re.match(regex_pattern, key) for key in keys_set))
+        self.excel_data = pd.read_excel(self.output_excel, sheet_name=None, header=None)
 
-        # Assert that the data in study section sheet is correct
-        #sample_data = excel_data["study"]
-        #self.assertEqual(sample_data.iloc[0, 0], "component")
-        #self.assertEqual(section1_data.iloc[1, 0], "value1")
+    def test_excel_sheet_names(self):
+        # Get the component names from the JSON
+        with open(self.input_json, 'r') as json_file:
+            json_data = json_file.read()
+        data_dict = json.loads(json_data)
+        component_names = [component['component'] for component in data_dict['components']]
 
-        
+        # Check if the Excel sheet names match the component names
+        sheet_names = list(self.excel_data.keys())
+        self.assertEqual(sheet_names, component_names, "Excel sheet names do not match component names")
+
 if __name__ == '__main__':
     unittest.main()
