@@ -39,6 +39,22 @@
           }
         },
         {
+          "title": {
+            "value": "",
+            "reference": "http://purl.obolibrary.org/obo/NCIT_C42774",
+            "required": true,
+            "error": "title is required"
+          }
+        },
+        {
+          "description": {
+            "value": "",
+            "reference": "https://schema.org/description",
+            "required": true,
+            "error": "description is required"
+          }
+        },
+        {
           "workflow": {
             "value": "",
             "required": false,
