@@ -10,3 +10,5 @@ To run the converter follow these steps:
   - pip install -r requirements/requirements.txt
 - run the converter
   - python convert.py schemas/single_cell_plant.json output/output.xlsx
+- OR run the tests (which also runs the converter whilst verifying the output)
+  - python -m unittest
