@@ -7,8 +7,10 @@
           "contact_first_name": {
             "value": "",
             "reference": "https://schema.org/givenName",
+            "standard": "SCHEMAORG",
+            "label": "First Name",
             "required": true,
-            "error": "contact_first_name is required",
+            "error": "First Name is required",
             "type": "string",
             "regex": "^[a-zA-Z]+$"
           }
@@ -17,8 +19,10 @@
           "contact_last_name": {
             "value": "",
             "reference": "https://schema.org/familyName",
+            "standard": "SCHEMAORG",
+            "label": "Last Name",
             "required": true,
-            "error": "contact_last_name is required",
+            "error": "Last Name is required",
             "type": "string",
             "regex": "^[a-zA-Z]+$"
           }
@@ -27,25 +31,31 @@
           "contact_email": {
             "value": "",
             "reference": "https://schema.org/email",
+            "standard": "SCHEMAORG",
+            "label": "Email",
             "required": true,
-            "error": "contact_email is required",
+            "error": "Email is required",
             "type": "string",
             "regex": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
           }
         },
         {
-          "contact_institution": {
+          "institutionCode": {
             "value": "",
-            "reference": "https://schema.org/affiliation",
+            "reference": "http://rs.tdwg.org/dwc/terms/institutionCode",
+            "standard": "DC",
+            "label": "Institution",
             "required": true,
             "type": "string",
-            "error": "contact_institution is required"
+            "error": "name or acronym of institution is required"
           }
         },
         {
           "title": {
             "value": "",
-            "reference": "http://purl.obolibrary.org/obo/NCIT_C42774",
+            "reference": "http://purl.org/dc/terms/title",
+            "standard": "DCTERMS",
+            "label": "Title",
             "required": true,
             "type": "string",
             "error": "title is required"
@@ -54,10 +64,30 @@
         {
           "description": {
             "value": "",
-            "reference": "https://schema.org/description",
+            "reference": "http://purl.org/dc/terms/description",
+            "standard": "DCTERMS",
+            "label": "Description",
             "required": true,
             "type": "string",
             "error": "description is required"
+          }
+        },
+        {
+          "bibliographicCitation": {
+            "value": "",
+            "reference": "http://purl.org/dc/terms/bibliographicCitation",
+            "required": false,
+            "type": "string",
+            "error": ""
+          }
+        },
+        {
+          "created": {
+            "value": "",
+            "reference": "http://purl.org/dc/terms/created",
+            "required": false,
+            "type": "string",
+            "error": ""
           }
         },
         {
@@ -446,16 +476,6 @@
           }
         },
         {
-          "is_pathological": {
-            "value": "",
-            "reference": "http://purl.obolibrary.org/obo/PATO_0001869",
-            "required": false,
-            "error": "",
-            "type": "boolean",
-            "description": "A quality inhering in a bearer by virtue of the bearer's being abnormal and having a destructive effect on living tissue."
-          }
-        },
-        {
           "digestion_workflow": {
             "value": "",
             "reference": "http://purl.obolibrary.org/obo/MSIO_0000144",
@@ -540,13 +560,10 @@
           }
         },
         {
-          "deveations_from_official_protocol": [
-            {
-              "index": "1",
-              "description": "",
-              "protocol_deviated_from": ""
-            }
-          ]
+          "deveations_from_official_protocol": {
+            "instruction": "separate individual deviations with '|'",
+            "description": ""
+          }
         }
       ]
     },
@@ -598,20 +615,20 @@
       "component": "cell",
       "fields": [
         {
-          "suspension_type": [
-            {
-              "type": "cell",
-              "reference": "http://purl.obolibrary.org/obo/DDANAT_0000401"
-            },
-            {
-              "type": "nuclei",
-              "reference": "http://purl.obolibrary.org/obo/GO_0005634"
-            },
-            {
-              "type": "protoplast",
-              "reference": "http://purl.obolibrary.org/obo/CL_0000371"
-            }
-          ]
+          "suspension_type": {
+            "value": "",
+            "reference": "PATO:0000918",
+            "unit": "",
+            "allowed_values": [
+              "cell",
+              "nuclei",
+              "protoplast"
+            ],
+            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000101",
+            "error": "",
+            "required": false,
+            "type": "number"
+          }
         },
         {
           "suspension_volume_µl": {
