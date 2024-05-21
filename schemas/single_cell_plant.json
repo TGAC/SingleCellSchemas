@@ -198,6 +198,34 @@
           }
         },
         {
+          "AgeClass": {
+            "value": "",
+            "reference": "http://digir.net/schema/conceptual/darwin/2003/1.0/version/AgeClass-2003-06-17",
+            "unit": "",
+            "unit_reference": "",
+            "required": false,
+            "error": "",
+            "type": "text",
+            "regex": "",
+            "allowed_values": [
+              "ADULT",
+              "JUVENILE",
+              "LARVA",
+              "PUPA",
+              "EGG",
+              "SEED",
+              "SPORE",
+              "NOT_COLLECTED",
+              "NOT_APPLICABLE",
+              "NOT_PROVIDED",
+              "OTHER"
+            ],
+            "description": "The age class of the organism at the time of collection.",
+            "label": "Age Class",
+            "standard": "DWC"
+          }
+        },
+        {
           "collection_date": {
             "value": "",
             "reference": "http://purl.obolibrary.org/obo/NCIT_C81286",

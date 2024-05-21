@@ -1,5 +1,19 @@
 {
   "excluded": [
-    "Type"
+    "Type",
+    "Basis of Record",
+    "Bounding Box",
+    "Catalog Number",
+    "Catalog Number Numeric",
+    "Catalog Number Text",
+    "Class",
+    "Collection Code",
+    "Collector",
+    "Collector Number",
+    "Continent Ocean",
+    "Coordinate Precision",
+    "Coordinate Uncertainty In Meters",
+    "Country",
+    "County"
   ]
 }

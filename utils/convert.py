@@ -12,7 +12,9 @@ def extract_components_to_excel(json_data, output_file):
     sample = [d for d in data_dict["components"] if d["component"] == "sample"]
     sample[0]["fields"].extend(dwc)
 
-
+    # export joint list to json file
+    with open("schemas/joint.json", "w+") as joint_json:
+        joint_json.write(json.dumps(data_dict))
 
 
     with pd.ExcelWriter(output_file, engine='xlsxwriter', mode='w+') as writer:
