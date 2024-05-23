@@ -42,7 +42,7 @@ def get_heading(key):
 def autofit_all_sheets(writer):
     for sheet in writer.sheets.values():
         sheet.autofit()
-def get_dwc_fields():
+def get_dwc_fields(termset="full"):
     """
     This function reads a CSV file and a JSON file, filters the data from the CSV file based on certain conditions,
     and returns a list of dictionaries representing the filtered data.
@@ -67,10 +67,14 @@ def get_dwc_fields():
         excluded = json.loads(excluded_json.read())["excluded"]
 
     # Filter the data from the CSV file
-    filtered = orig[(orig.status == "recommended") | (orig.status == "required")]
+    filtered = orig[(orig.status == "recommended")]
 
     # Create the output list
-    out = [create_field(line) for _, line in filtered.iterrows() if line["label"] not in excluded]
+    if termset == "full":
+        out = [create_field(line) for _, line in filtered.iterrows()]
+    else:
+        out = [create_field(line) for _, line in filtered.iterrows() if
+               line["term_localName"] not in [item['name'] for item in excluded]]
 
     return out
 
