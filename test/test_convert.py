@@ -11,7 +11,7 @@ class TestConvert(unittest.TestCase):
     def setUp(self) -> None:
         # Define the input JSON and output Excel file paths for testing
         self.input_json = "schemas/single_cell_plant.json"
-        self.output_excel = "output/output.xlsx"
+        self.output_excel = "dist/EICore.xlsx"
         # Call the json_to_excel function with the test data
         extract_components_to_excel(self.input_json, self.output_excel)
         # Read the generated Excel file

@@ -21,11 +21,11 @@ def extract_components_to_excel(json_data, output_file):
     with open(json_data, 'r') as json_file:
         data_dict = json.loads(json_file.read())
 
-    dwc = get_dwc_fields()
+    dwc = get_dwc_fields(termset="core")
     sample = next(d for d in data_dict["components"] if d["component"] == "sample")
     sample["fields"].extend(dwc)
 
-    with open("schemas/joint.json", "w") as joint_json:
+    with open("dist/EICore.json", "w") as joint_json:
         joint_json.write(json.dumps(data_dict))
 
     with pd.ExcelWriter(output_file, engine='xlsxwriter', mode='w+') as writer:
@@ -42,7 +42,7 @@ def get_heading(key):
 def autofit_all_sheets(writer):
     for sheet in writer.sheets.values():
         sheet.autofit()
-def get_dwc_fields(termset="full"):
+def get_dwc_fields(termset="extended"):
     """
     This function reads a CSV file and a JSON file, filters the data from the CSV file based on certain conditions,
     and returns a list of dictionaries representing the filtered data.
@@ -70,12 +70,12 @@ def get_dwc_fields(termset="full"):
     filtered = orig[(orig.status == "recommended")]
 
     # Create the output list
-    if termset == "full":
+
+    if termset == "extended":
         out = [create_field(line) for _, line in filtered.iterrows()]
     else:
         out = [create_field(line) for _, line in filtered.iterrows() if
-               line["term_localName"] not in [item['name'] for item in excluded]]
-
+               line["term_localName"] in [item['name'] for item in excluded if item['set'] == "core"]]
     return out
 
 def create_field(line):

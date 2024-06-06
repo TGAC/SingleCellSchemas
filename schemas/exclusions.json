@@ -1,1097 +1,828 @@
 {
-  "excluded": [
-
-    {
-      "name": "acceptedNameUsageID",
-      "set": "core"
-    },
-    {
-      "name": "accessRights",
-      "set": "core"
-    },
-    {
-      "name": "associatedMedia",
-      "set": "core"
-    },
-    {
-      "name": "associatedOccurrences",
-      "set": "core"
-    },
-    {
-      "name": "associatedOrganisms",
-      "set": "core"
-    },
-    {
-      "name": "associatedReferences",
-      "set": "core"
-    },
-    {
-      "name": "associatedSequences",
-      "set": "core"
-    },
-    {
-      "name": "associatedTaxa",
-      "set": "core"
-    },
-    {
-      "name": "basisOfRecord",
-      "set": "core"
-    },
-    {
-      "name": "bed",
-      "set": "core"
-    },
-    {
-      "name": "behavior",
-      "set": "core"
-    },
-    {
-      "name": "behavior",
-      "set": "core"
-    },
-    {
-      "name": "bibliographicCitation",
-      "set": "core"
-    },
-    {
-      "name": "caste",
-      "set": "core"
-    },
-    {
-      "name": "caste",
-      "set": "core"
-    },
-    {
-      "name": "catalogNumber",
-      "set": "core"
-    },
-    {
-      "name": "class",
-      "set": "core"
-    },
-    {
-      "name": "collectionCode",
-      "set": "core"
-    },
-    {
-      "name": "collectionID",
-      "set": "core"
-    },
-    {
-      "name": "continent",
-      "set": "core"
-    },
-    {
-      "name": "coordinatePrecision",
-      "set": "core"
-    },
-    {
-      "name": "coordinateUncertaintyInMeters",
-      "set": "core"
-    },
-    {
-      "name": "country",
-      "set": "core"
-    },
-    {
-      "name": "countryCode",
-      "set": "core"
-    },
-    {
-      "name": "cultivarEpithet",
-      "set": "core"
-    },
-    {
-      "name": "dataGeneralizations",
-      "set": "core"
-    },
-    {
-      "name": "dataGeneralizations",
-      "set": "core"
-    },
-    {
-      "name": "datasetID",
-      "set": "core"
-    },
-    {
-      "name": "datasetName",
-      "set": "core"
-    },
-    {
-      "name": "dateIdentified",
-      "set": "core"
-    },
-    {
-      "name": "modified",
-      "set": "core"
-    },
-    {
-      "name": "day",
-      "set": "core"
-    },
-    {
-      "name": "decimalLatitude",
-      "set": "core"
-    },
-    {
-      "name": "decimalLongitude",
-      "set": "core"
-    },
-    {
-      "name": "degreeOfEstablishment",
-      "set": "core"
-    },
-    {
-      "name": "degreeOfEstablishment",
-      "set": "core"
-    },
-    {
-      "name": "disposition",
-      "set": "core"
-    },
-    {
-      "name": "disposition",
-      "set": "core"
-    },
-    {
-      "name": "dynamicProperties",
-      "set": "core"
-    },
-    {
-      "name": "earliestAgeOrLowestStage",
-      "set": "core"
-    },
-    {
-      "name": "earliestEonOrLowestEonothem",
-      "set": "core"
-    },
-    {
-      "name": "earliestEpochOrLowestSeries",
-      "set": "core"
-    },
-    {
-      "name": "earliestEraOrLowestErathem",
-      "set": "core"
-    },
-    {
-      "name": "earliestGeochronologicalEra",
-      "set": "core"
-    },
-    {
-      "name": "earliestPeriodOrLowestSystem",
-      "set": "core"
-    },
-    {
-      "name": "endDayOfYear",
-      "set": "core"
-    },
-    {
-      "name": "establishmentMeans",
-      "set": "core"
-    },
-    {
-      "name": "establishmentMeans",
-      "set": "core"
-    },
-    {
-      "name": "Event",
-      "set": "core"
-    },
-    {
-      "name": "eventDate",
-      "set": "core"
-    },
-    {
-      "name": "eventID",
-      "set": "core"
-    },
-    {
-      "name": "eventRemarks",
-      "set": "core"
-    },
-    {
-      "name": "eventTime",
-      "set": "core"
-    },
-    {
-      "name": "eventType",
-      "set": "core"
-    },
-    {
-      "name": "eventType",
-      "set": "core"
-    },
-    {
-      "name": "family",
-      "set": "core"
-    },
-    {
-      "name": "fieldNotes",
-      "set": "core"
-    },
-    {
-      "name": "fieldNotes",
-      "set": "core"
-    },
-    {
-      "name": "fieldNumber",
-      "set": "core"
-    },
-    {
-      "name": "fieldNumber",
-      "set": "core"
-    },
-    {
-      "name": "stateProvince",
-      "set": "core"
-    },
-    {
-      "name": "footprintSpatialFit",
-      "set": "core"
-    },
-    {
-      "name": "footprintSRS",
-      "set": "core"
-    },
-    {
-      "name": "footprintSRS",
-      "set": "core"
-    },
-    {
-      "name": "footprintWKT",
-      "set": "core"
-    },
-    {
-      "name": "footprintWKT",
-      "set": "core"
-    },
-    {
-      "name": "formation",
-      "set": "core"
-    },
-    {
-      "name": "FossilSpecimen",
-      "set": "core"
-    },
-    {
-      "name": "fromLithostratigraphicUnit",
-      "set": "core"
-    },
-    {
-      "name": "genericName",
-      "set": "core"
-    },
-    {
-      "name": "genus",
-      "set": "core"
-    },
-    {
-      "name": "geodeticDatum",
-      "set": "core"
-    },
-    {
-      "name": "geodeticDatum",
-      "set": "core"
-    },
-    {
-      "name": "GeologicalContext",
-      "set": "core"
-    },
-    {
-      "name": "geologicalContextID",
-      "set": "core"
-    },
-    {
-      "name": "georeferenceProtocol",
-      "set": "core"
-    },
-    {
-      "name": "georeferenceProtocol",
-      "set": "core"
-    },
-    {
-      "name": "georeferenceRemarks",
-      "set": "core"
-    },
-    {
-      "name": "georeferenceSources",
-      "set": "core"
-    },
-    {
-      "name": "georeferenceSources",
-      "set": "core"
-    },
-    {
-      "name": "georeferenceVerificationStatus",
-      "set": "core"
-    },
-    {
-      "name": "georeferenceVerificationStatus",
-      "set": "core"
-    },
-    {
-      "name": "georeferencedBy",
-      "set": "core"
-    },
-    {
-      "name": "georeferencedBy",
-      "set": "core"
-    },
-    {
-      "name": "georeferencedDate",
-      "set": "core"
-    },
-    {
-      "name": "group",
-      "set": "core"
-    },
-    {
-      "name": "habitat",
-      "set": "core"
-    },
-    {
-      "name": "habitat",
-      "set": "core"
-    },
-    {
-      "name": "higherClassification",
-      "set": "core"
-    },
-    {
-      "name": "higherGeography",
-      "set": "core"
-    },
-    {
-      "name": "higherGeographyID",
-      "set": "core"
-    },
-    {
-      "name": "highestBiostratigraphicZone",
-      "set": "core"
-    },
-    {
-      "name": "HumanObservation",
-      "set": "core"
-    },
-    {
-      "name": "Identification",
-      "set": "core"
-    },
-    {
-      "name": "identificationID",
-      "set": "core"
-    },
-    {
-      "name": "identificationQualifier",
-      "set": "core"
-    },
-    {
-      "name": "identificationQualifier",
-      "set": "core"
-    },
-    {
-      "name": "identificationReferences",
-      "set": "core"
-    },
-    {
-      "name": "identificationRemarks",
-      "set": "core"
-    },
-    {
-      "name": "identificationVerificationStatus",
-      "set": "core"
-    },
-    {
-      "name": "identificationVerificationStatus",
-      "set": "core"
-    },
-    {
-      "name": "identifiedBy",
-      "set": "core"
-    },
-    {
-      "name": "identifiedBy",
-      "set": "core"
-    },
-    {
-      "name": "identifiedByID",
-      "set": "core"
-    },
-    {
-      "name": "inCollection",
-      "set": "core"
-    },
-    {
-      "name": "inDataset",
-      "set": "core"
-    },
-    {
-      "name": "inDescribedPlace",
-      "set": "core"
-    },
-    {
-      "name": "individualCount",
-      "set": "core"
-    },
-    {
-      "name": "informationWithheld",
-      "set": "core"
-    },
-    {
-      "name": "informationWithheld",
-      "set": "core"
-    },
-    {
-      "name": "infragenericEpithet",
-      "set": "core"
-    },
-    {
-      "name": "infraspecificEpithet",
-      "set": "core"
-    },
-    {
-      "name": "institutionCode",
-      "set": "core"
-    },
-    {
-      "name": "institutionID",
-      "set": "core"
-    },
-    {
-      "name": "island",
-      "set": "core"
-    },
-    {
-      "name": "islandGroup",
-      "set": "core"
-    },
-    {
-      "name": "kingdom",
-      "set": "core"
-    },
-    {
-      "name": "language",
-      "set": "core"
-    },
-    {
-      "name": "language",
-      "set": "core"
-    },
-    {
-      "name": "latestAgeOrHighestStage",
-      "set": "core"
-    },
-    {
-      "name": "latestEpochOrHighestSeries",
-      "set": "core"
-    },
-    {
-      "name": "latestEraOrHighestErathem",
-      "set": "core"
-    },
-    {
-      "name": "latestGeochronologicalEra",
-      "set": "core"
-    },
-    {
-      "name": "latestPeriodOrHighestSystem",
-      "set": "core"
-    },
-    {
-      "name": "license",
-      "set": "core"
-    },
-    {
-      "name": "lifeStage",
-      "set": "core"
-    },
-    {
-      "name": "lifeStage",
-      "set": "core"
-    },
-    {
-      "name": "lithostratigraphicTerms",
-      "set": "core"
-    },
-    {
-      "name": "LivingSpecimen",
-      "set": "core"
-    },
-    {
-      "name": "latestEonOrHighestEonothem",
-      "set": "core"
-    },
-    {
-      "name": "locality",
-      "set": "core"
-    },
-    {
-      "name": "Location",
-      "set": "core"
-    },
-    {
-      "name": "locationAccordingTo",
-      "set": "core"
-    },
-    {
-      "name": "locationAccordingTo",
-      "set": "core"
-    },
-    {
-      "name": "locationID",
-      "set": "core"
-    },
-    {
-      "name": "locationRemarks",
-      "set": "core"
-    },
-    {
-      "name": "lowestBiostratigraphicZone",
-      "set": "core"
-    },
-    {
-      "name": "MachineObservation",
-      "set": "core"
-    },
-    {
-      "name": "MaterialCitation",
-      "set": "core"
-    },
-    {
-      "name": "MaterialEntity",
-      "set": "core"
-    },
-    {
-      "name": "materialEntityID",
-      "set": "core"
-    },
-    {
-      "name": "materialEntityRemarks",
-      "set": "core"
-    },
-    {
-      "name": "MaterialSample",
-      "set": "core"
-    },
-    {
-      "name": "materialSampleID",
-      "set": "core"
-    },
-    {
-      "name": "maximumDepthInMeters",
-      "set": "core"
-    },
-    {
-      "name": "maximumDistanceAboveSurfaceInMeters",
-      "set": "core"
-    },
-    {
-      "name": "maximumElevationInMeters",
-      "set": "core"
-    },
-    {
-      "name": "measurementAccuracy",
-      "set": "core"
-    },
-    {
-      "name": "measurementDeterminedBy",
-      "set": "core"
-    },
-    {
-      "name": "measurementDeterminedBy",
-      "set": "core"
-    },
-    {
-      "name": "measurementDeterminedDate",
-      "set": "core"
-    },
-    {
-      "name": "measurementID",
-      "set": "core"
-    },
-    {
-      "name": "measurementMethod",
-      "set": "core"
-    },
-    {
-      "name": "measurementMethod",
-      "set": "core"
-    },
-    {
-      "name": "MeasurementOrFact",
-      "set": "core"
-    },
-    {
-      "name": "measurementRemarks",
-      "set": "core"
-    },
-    {
-      "name": "measurementType",
-      "set": "core"
-    },
-    {
-      "name": "measurementType",
-      "set": "core"
-    },
-    {
-      "name": "measurementUnit",
-      "set": "core"
-    },
-    {
-      "name": "measurementUnit",
-      "set": "core"
-    },
-    {
-      "name": "measurementValue",
-      "set": "core"
-    },
-    {
-      "name": "measurementValue",
-      "set": "core"
-    },
-    {
-      "name": "member",
-      "set": "core"
-    },
-    {
-      "name": "minimumDepthInMeters",
-      "set": "core"
-    },
-    {
-      "name": "minimumDistanceAboveSurfaceInMeters",
-      "set": "core"
-    },
-    {
-      "name": "minimumElevationInMeters",
-      "set": "core"
-    },
-    {
-      "name": "month",
-      "set": "core"
-    },
-    {
-      "name": "nameAccordingTo",
-      "set": "core"
-    },
-    {
-      "name": "nameAccordingToID",
-      "set": "core"
-    },
-    {
-      "name": "namePublishedIn",
-      "set": "core"
-    },
-    {
-      "name": "namePublishedInID",
-      "set": "core"
-    },
-    {
-      "name": "namePublishedInYear",
-      "set": "core"
-    },
-    {
-      "name": "nomenclaturalCode",
-      "set": "core"
-    },
-    {
-      "name": "nomenclaturalStatus",
-      "set": "core"
-    },
-    {
-      "name": "Occurrence",
-      "set": "core"
-    },
-    {
-      "name": "occurrenceID",
-      "set": "core"
-    },
-    {
-      "name": "occurrenceRemarks",
-      "set": "core"
-    },
-    {
-      "name": "occurrenceStatus",
-      "set": "core"
-    },
-    {
-      "name": "occurrenceStatus",
-      "set": "core"
-    },
-    {
-      "name": "order",
-      "set": "core"
-    },
-    {
-      "name": "Organism",
-      "set": "core"
-    },
-    {
-      "name": "organismID",
-      "set": "core"
-    },
-    {
-      "name": "organismName",
-      "set": "core"
-    },
-    {
-      "name": "organismQuantity",
-      "set": "core"
-    },
-    {
-      "name": "organismQuantityType",
-      "set": "core"
-    },
-    {
-      "name": "organismQuantityType",
-      "set": "core"
-    },
-    {
-      "name": "organismRemarks",
-      "set": "core"
-    },
-    {
-      "name": "organismScope",
-      "set": "core"
-    },
-    {
-      "name": "originalNameUsage",
-      "set": "core"
-    },
-    {
-      "name": "originalNameUsageID",
-      "set": "core"
-    },
-    {
-      "name": "otherCatalogNumbers",
-      "set": "core"
-    },
-    {
-      "name": "ownerInstitutionCode",
-      "set": "core"
-    },
-    {
-      "name": "parentEventID",
-      "set": "core"
-    },
-    {
-      "name": "parentMeasurementID",
-      "set": "core"
-    },
-    {
-      "name": "parentNameUsage",
-      "set": "core"
-    },
-    {
-      "name": "parentNameUsageID",
-      "set": "core"
-    },
-    {
-      "name": "pathway",
-      "set": "core"
-    },
-    {
-      "name": "pathway",
-      "set": "core"
-    },
-    {
-      "name": "phylum",
-      "set": "core"
-    },
-    {
-      "name": "pointRadiusSpatialFit",
-      "set": "core"
-    },
-    {
-      "name": "preparations",
-      "set": "core"
-    },
-    {
-      "name": "preparations",
-      "set": "core"
-    },
-    {
-      "name": "PreservedSpecimen",
-      "set": "core"
-    },
-    {
-      "name": "previousIdentifications",
-      "set": "core"
-    },
-    {
-      "name": "recordNumber",
-      "set": "core"
-    },
-    {
-      "name": "recordNumber",
-      "set": "core"
-    },
-    {
-      "name": "recordedBy",
-      "set": "core"
-    },
-    {
-      "name": "recordedBy",
-      "set": "core"
-    },
-    {
-      "name": "recordedByID",
-      "set": "core"
-    },
-    {
-      "name": "references",
-      "set": "core"
-    },
-    {
-      "name": "relatedResourceID",
-      "set": "core"
-    },
-    {
-      "name": "relationshipAccordingTo",
-      "set": "core"
-    },
-    {
-      "name": "relationshipEstablishedDate",
-      "set": "core"
-    },
-    {
-      "name": "relationshipOfResource",
-      "set": "core"
-    },
-    {
-      "name": "relationshipOfResourceID",
-      "set": "core"
-    },
-    {
-      "name": "relationshipRemarks",
-      "set": "core"
-    },
-    {
-      "name": "reproductiveCondition",
-      "set": "core"
-    },
-    {
-      "name": "reproductiveCondition",
-      "set": "core"
-    },
-    {
-      "name": "resourceID",
-      "set": "core"
-    },
-    {
-      "name": "ResourceRelationship",
-      "set": "core"
-    },
-    {
-      "name": "resourceRelationshipID",
-      "set": "core"
-    },
-    {
-      "name": "rightsHolder",
-      "set": "core"
-    },
-    {
-      "name": "sampleSizeUnit",
-      "set": "core"
-    },
-    {
-      "name": "sampleSizeValue",
-      "set": "core"
-    },
-    {
-      "name": "samplingEffort",
-      "set": "core"
-    },
-    {
-      "name": "samplingProtocol",
-      "set": "core"
-    },
-    {
-      "name": "samplingProtocol",
-      "set": "core"
-    },
-    {
-      "name": "sampleSizeUnit",
-      "set": "core"
-    },
-    {
-      "name": "scientificName",
-      "set": "core"
-    },
-    {
-      "name": "scientificNameAuthorship",
-      "set": "core"
-    },
-    {
-      "name": "scientificNameID",
-      "set": "core"
-    },
-    {
-      "name": "county",
-      "set": "core"
-    },
-    {
-      "name": "sex",
-      "set": "core"
-    },
-    {
-      "name": "sex",
-      "set": "core"
-    },
-    {
-      "name": "specificEpithet",
-      "set": "core"
-    },
-    {
-      "name": "startDayOfYear",
-      "set": "core"
-    },
-    {
-      "name": "subfamily",
-      "set": "core"
-    },
-    {
-      "name": "subgenus",
-      "set": "core"
-    },
-    {
-      "name": "subtribe",
-      "set": "core"
-    },
-    {
-      "name": "superfamily",
-      "set": "core"
-    },
-    {
-      "name": "Taxon",
-      "set": "core"
-    },
-    {
-      "name": "taxonConceptID",
-      "set": "core"
-    },
-    {
-      "name": "taxonID",
-      "set": "core"
-    },
-    {
-      "name": "taxonRank",
-      "set": "core"
-    },
-    {
-      "name": "taxonRemarks",
-      "set": "core"
-    },
-    {
-      "name": "taxonomicStatus",
-      "set": "core"
-    },
-    {
-      "name": "municipality",
-      "set": "core"
-    },
-    {
-      "name": "toTaxon",
-      "set": "core"
-    },
-    {
-      "name": "tribe",
-      "set": "core"
-    },
-    {
-      "name": "type",
-      "set": "core"
-    },
-    {
-      "name": "typeStatus",
-      "set": "core"
-    },
-    {
-      "name": "typeStatus",
-      "set": "core"
-    },
-    {
-      "name": "verbatimCoordinateSystem",
-      "set": "core"
-    },
-    {
-      "name": "verbatimCoordinateSystem",
-      "set": "core"
-    },
-    {
-      "name": "verbatimCoordinates",
-      "set": "core"
-    },
-    {
-      "name": "verbatimDepth",
-      "set": "core"
-    },
-    {
-      "name": "verbatimElevation",
-      "set": "core"
-    },
-    {
-      "name": "verbatimEventDate",
-      "set": "core"
-    },
-    {
-      "name": "verbatimIdentification",
-      "set": "core"
-    },
-    {
-      "name": "verbatimLabel",
-      "set": "core"
-    },
-    {
-      "name": "verbatimLatitude",
-      "set": "core"
-    },
-    {
-      "name": "verbatimLocality",
-      "set": "core"
-    },
-    {
-      "name": "verbatimLongitude",
-      "set": "core"
-    },
-    {
-      "name": "verbatimSRS",
-      "set": "core"
-    },
-    {
-      "name": "verbatimSRS",
-      "set": "core"
-    },
-    {
-      "name": "verbatimTaxonRank",
-      "set": "core"
-    },
-    {
-      "name": "vernacularName",
-      "set": "core"
-    },
-    {
-      "name": "verticalDatum",
-      "set": "core"
-    },
-    {
-      "name": "verticalDatum",
-      "set": "core"
-    },
-    {
-      "name": "vitality",
-      "set": "core"
-    },
-    {
-      "name": "vitality",
-      "set": "core"
-    },
-    {
-      "name": "waterBody",
-      "set": "core"
-    },
-    {
-      "name": "year",
-      "set": "core"
-    }
-  ]
+    "excluded": [
+        {
+            "name": "type",
+            "set": "extended"
+        },
+        {
+            "name": "modified",
+            "set": "extended"
+        },
+        {
+            "name": "language",
+            "set": "extended"
+        },
+        {
+            "name": "license",
+            "set": "extended"
+        },
+        {
+            "name": "rightsHolder",
+            "set": "extended"
+        },
+        {
+            "name": "accessRights",
+            "set": "extended"
+        },
+        {
+            "name": "bibliographicCitation",
+            "set": "extended"
+        },
+        {
+            "name": "references",
+            "set": "extended"
+        },
+        {
+            "name": "institutionID",
+            "set": "extended"
+        },
+        {
+            "name": "collectionID",
+            "set": "extended"
+        },
+        {
+            "name": "datasetID",
+            "set": "extended"
+        },
+        {
+            "name": "institutionCode",
+            "set": "core"
+        },
+        {
+            "name": "collectionCode",
+            "set": "extended"
+        },
+        {
+            "name": "datasetName",
+            "set": "extended"
+        },
+        {
+            "name": "ownerInstitutionCode",
+            "set": "extended"
+        },
+        {
+            "name": "basisOfRecord",
+            "set": "extended"
+        },
+        {
+            "name": "informationWithheld",
+            "set": "extended"
+        },
+        {
+            "name": "dataGeneralizations",
+            "set": "extended"
+        },
+        {
+            "name": "dynamicProperties",
+            "set": "extended"
+        },
+        {
+            "name": "occurrenceID",
+            "set": "extended"
+        },
+        {
+            "name": "catalogNumber",
+            "set": "extended"
+        },
+        {
+            "name": "recordNumber",
+            "set": "core"
+        },
+        {
+            "name": "recordedBy",
+            "set": "extended"
+        },
+        {
+            "name": "recordedByID",
+            "set": "extended"
+        },
+        {
+            "name": "individualCount",
+            "set": "extended"
+        },
+        {
+            "name": "organismQuantity",
+            "set": "extended"
+        },
+        {
+            "name": "organismQuantityType",
+            "set": "extended"
+        },
+        {
+            "name": "sex",
+            "set": "core"
+        },
+        {
+            "name": "lifeStage",
+            "set": "core"
+        },
+        {
+            "name": "reproductiveCondition",
+            "set": "extended"
+        },
+        {
+            "name": "caste",
+            "set": "extended"
+        },
+        {
+            "name": "behavior",
+            "set": "extended"
+        },
+        {
+            "name": "vitality",
+            "set": "extended"
+        },
+        {
+            "name": "establishmentMeans",
+            "set": "extended"
+        },
+        {
+            "name": "degreeOfEstablishment",
+            "set": "extended"
+        },
+        {
+            "name": "pathway",
+            "set": "extended"
+        },
+        {
+            "name": "georeferenceVerificationStatus",
+            "set": "extended"
+        },
+        {
+            "name": "occurrenceStatus",
+            "set": "extended"
+        },
+        {
+            "name": "associatedMedia",
+            "set": "extended"
+        },
+        {
+            "name": "associatedOccurrences",
+            "set": "extended"
+        },
+        {
+            "name": "associatedReferences",
+            "set": "extended"
+        },
+        {
+            "name": "associatedTaxa",
+            "set": "extended"
+        },
+        {
+            "name": "otherCatalogNumbers",
+            "set": "extended"
+        },
+        {
+            "name": "occurrenceRemarks",
+            "set": "extended"
+        },
+        {
+            "name": "organismID",
+            "set": "extended"
+        },
+        {
+            "name": "organismName",
+            "set": "core"
+        },
+        {
+            "name": "organismScope",
+            "set": "extended"
+        },
+        {
+            "name": "associatedOrganisms",
+            "set": "extended"
+        },
+        {
+            "name": "previousIdentifications",
+            "set": "extended"
+        },
+        {
+            "name": "organismRemarks",
+            "set": "extended"
+        },
+        {
+            "name": "materialEntityID",
+            "set": "core"
+        },
+        {
+            "name": "preparations",
+            "set": "extended"
+        },
+        {
+            "name": "disposition",
+            "set": "extended"
+        },
+        {
+            "name": "verbatimLabel",
+            "set": "extended"
+        },
+        {
+            "name": "associatedSequences",
+            "set": "extended"
+        },
+        {
+            "name": "materialEntityRemarks",
+            "set": "extended"
+        },
+        {
+            "name": "materialSampleID",
+            "set": "core"
+        },
+        {
+            "name": "eventID",
+            "set": "extended"
+        },
+        {
+            "name": "parentEventID",
+            "set": "extended"
+        },
+        {
+            "name": "eventType",
+            "set": "extended"
+        },
+        {
+            "name": "fieldNumber",
+            "set": "extended"
+        },
+        {
+            "name": "eventDate",
+            "set": "extended"
+        },
+        {
+            "name": "eventTime",
+            "set": "extended"
+        },
+        {
+            "name": "startDayOfYear",
+            "set": "extended"
+        },
+        {
+            "name": "endDayOfYear",
+            "set": "extended"
+        },
+        {
+            "name": "year",
+            "set": "core"
+        },
+        {
+            "name": "month",
+            "set": "core"
+        },
+        {
+            "name": "day",
+            "set": "core"
+        },
+        {
+            "name": "verbatimEventDate",
+            "set": "extended"
+        },
+        {
+            "name": "habitat",
+            "set": "core"
+        },
+        {
+            "name": "samplingProtocol",
+            "set": "extended"
+        },
+        {
+            "name": "sampleSizeValue",
+            "set": "extended"
+        },
+        {
+            "name": "sampleSizeUnit",
+            "set": "extended"
+        },
+        {
+            "name": "samplingEffort",
+            "set": "extended"
+        },
+        {
+            "name": "fieldNotes",
+            "set": "extended"
+        },
+        {
+            "name": "eventRemarks",
+            "set": "extended"
+        },
+        {
+            "name": "locationID",
+            "set": "extended"
+        },
+        {
+            "name": "higherGeographyID",
+            "set": "extended"
+        },
+        {
+            "name": "higherGeography",
+            "set": "extended"
+        },
+        {
+            "name": "continent",
+            "set": "extended"
+        },
+        {
+            "name": "waterBody",
+            "set": "extended"
+        },
+        {
+            "name": "islandGroup",
+            "set": "extended"
+        },
+        {
+            "name": "island",
+            "set": "extended"
+        },
+        {
+            "name": "country",
+            "set": "core"
+        },
+        {
+            "name": "countryCode",
+            "set": "extended"
+        },
+        {
+            "name": "stateProvince",
+            "set": "extended"
+        },
+        {
+            "name": "county",
+            "set": "extended"
+        },
+        {
+            "name": "municipality",
+            "set": "extended"
+        },
+        {
+            "name": "locality",
+            "set": "extended"
+        },
+        {
+            "name": "verbatimLocality",
+            "set": "extended"
+        },
+        {
+            "name": "minimumElevationInMeters",
+            "set": "extended"
+        },
+        {
+            "name": "maximumElevationInMeters",
+            "set": "extended"
+        },
+        {
+            "name": "verbatimElevation",
+            "set": "extended"
+        },
+        {
+            "name": "verticalDatum",
+            "set": "extended"
+        },
+        {
+            "name": "minimumDepthInMeters",
+            "set": "extended"
+        },
+        {
+            "name": "maximumDepthInMeters",
+            "set": "extended"
+        },
+        {
+            "name": "verbatimDepth",
+            "set": "extended"
+        },
+        {
+            "name": "minimumDistanceAboveSurfaceInMeters",
+            "set": "extended"
+        },
+        {
+            "name": "maximumDistanceAboveSurfaceInMeters",
+            "set": "extended"
+        },
+        {
+            "name": "locationAccordingTo",
+            "set": "extended"
+        },
+        {
+            "name": "locationRemarks",
+            "set": "extended"
+        },
+        {
+            "name": "decimalLatitude",
+            "set": "core"
+        },
+        {
+            "name": "decimalLongitude",
+            "set": "core"
+        },
+        {
+            "name": "geodeticDatum",
+            "set": "extended"
+        },
+        {
+            "name": "coordinateUncertaintyInMeters",
+            "set": "extended"
+        },
+        {
+            "name": "coordinatePrecision",
+            "set": "extended"
+        },
+        {
+            "name": "pointRadiusSpatialFit",
+            "set": "extended"
+        },
+        {
+            "name": "verbatimCoordinates",
+            "set": "extended"
+        },
+        {
+            "name": "verbatimLatitude",
+            "set": "extended"
+        },
+        {
+            "name": "verbatimLongitude",
+            "set": "extended"
+        },
+        {
+            "name": "verbatimCoordinateSystem",
+            "set": "extended"
+        },
+        {
+            "name": "verbatimSRS",
+            "set": "extended"
+        },
+        {
+            "name": "footprintWKT",
+            "set": "extended"
+        },
+        {
+            "name": "footprintSRS",
+            "set": "extended"
+        },
+        {
+            "name": "footprintSpatialFit",
+            "set": "extended"
+        },
+        {
+            "name": "georeferencedBy",
+            "set": "extended"
+        },
+        {
+            "name": "georeferencedDate",
+            "set": "extended"
+        },
+        {
+            "name": "georeferenceProtocol",
+            "set": "extended"
+        },
+        {
+            "name": "georeferenceSources",
+            "set": "extended"
+        },
+        {
+            "name": "georeferenceRemarks",
+            "set": "extended"
+        },
+        {
+            "name": "geologicalContextID",
+            "set": "extended"
+        },
+        {
+            "name": "earliestEonOrLowestEonothem",
+            "set": "extended"
+        },
+        {
+            "name": "latestEonOrHighestEonothem",
+            "set": "extended"
+        },
+        {
+            "name": "earliestEraOrLowestErathem",
+            "set": "extended"
+        },
+        {
+            "name": "latestEraOrHighestErathem",
+            "set": "extended"
+        },
+        {
+            "name": "earliestPeriodOrLowestSystem",
+            "set": "extended"
+        },
+        {
+            "name": "latestPeriodOrHighestSystem",
+            "set": "extended"
+        },
+        {
+            "name": "earliestEpochOrLowestSeries",
+            "set": "extended"
+        },
+        {
+            "name": "latestEpochOrHighestSeries",
+            "set": "extended"
+        },
+        {
+            "name": "earliestAgeOrLowestStage",
+            "set": "extended"
+        },
+        {
+            "name": "latestAgeOrHighestStage",
+            "set": "extended"
+        },
+        {
+            "name": "lowestBiostratigraphicZone",
+            "set": "extended"
+        },
+        {
+            "name": "highestBiostratigraphicZone",
+            "set": "extended"
+        },
+        {
+            "name": "lithostratigraphicTerms",
+            "set": "extended"
+        },
+        {
+            "name": "group",
+            "set": "extended"
+        },
+        {
+            "name": "formation",
+            "set": "extended"
+        },
+        {
+            "name": "member",
+            "set": "extended"
+        },
+        {
+            "name": "bed",
+            "set": "extended"
+        },
+        {
+            "name": "identificationID",
+            "set": "extended"
+        },
+        {
+            "name": "verbatimIdentification",
+            "set": "extended"
+        },
+        {
+            "name": "identificationQualifier",
+            "set": "extended"
+        },
+        {
+            "name": "typeStatus",
+            "set": "extended"
+        },
+        {
+            "name": "identifiedBy",
+            "set": "extended"
+        },
+        {
+            "name": "identifiedByID",
+            "set": "extended"
+        },
+        {
+            "name": "dateIdentified",
+            "set": "extended"
+        },
+        {
+            "name": "identificationReferences",
+            "set": "extended"
+        },
+        {
+            "name": "identificationVerificationStatus",
+            "set": "extended"
+        },
+        {
+            "name": "identificationRemarks",
+            "set": "extended"
+        },
+        {
+            "name": "taxonID",
+            "set": "core"
+        },
+        {
+            "name": "scientificNameID",
+            "set": "extended"
+        },
+        {
+            "name": "acceptedNameUsageID",
+            "set": "extended"
+        },
+        {
+            "name": "parentNameUsageID",
+            "set": "extended"
+        },
+        {
+            "name": "originalNameUsageID",
+            "set": "extended"
+        },
+        {
+            "name": "nameAccordingToID",
+            "set": "extended"
+        },
+        {
+            "name": "namePublishedInID",
+            "set": "extended"
+        },
+        {
+            "name": "taxonConceptID",
+            "set": "extended"
+        },
+        {
+            "name": "scientificName",
+            "set": "core"
+        },
+        {
+            "name": "acceptedNameUsage",
+            "set": "extended"
+        },
+        {
+            "name": "parentNameUsage",
+            "set": "extended"
+        },
+        {
+            "name": "originalNameUsage",
+            "set": "extended"
+        },
+        {
+            "name": "nameAccordingTo",
+            "set": "extended"
+        },
+        {
+            "name": "namePublishedIn",
+            "set": "extended"
+        },
+        {
+            "name": "namePublishedInYear",
+            "set": "extended"
+        },
+        {
+            "name": "higherClassification",
+            "set": "extended"
+        },
+        {
+            "name": "kingdom",
+            "set": "extended"
+        },
+        {
+            "name": "phylum",
+            "set": "extended"
+        },
+        {
+            "name": "class",
+            "set": "extended"
+        },
+        {
+            "name": "order",
+            "set": "core"
+        },
+        {
+            "name": "superfamily",
+            "set": "extended"
+        },
+        {
+            "name": "family",
+            "set": "core"
+        },
+        {
+            "name": "subfamily",
+            "set": "extended"
+        },
+        {
+            "name": "tribe",
+            "set": "extended"
+        },
+        {
+            "name": "subtribe",
+            "set": "extended"
+        },
+        {
+            "name": "genus",
+            "set": "core"
+        },
+        {
+            "name": "genericName",
+            "set": "extended"
+        },
+        {
+            "name": "subgenus",
+            "set": "extended"
+        },
+        {
+            "name": "infragenericEpithet",
+            "set": "extended"
+        },
+        {
+            "name": "specificEpithet",
+            "set": "extended"
+        },
+        {
+            "name": "infraspecificEpithet",
+            "set": "extended"
+        },
+        {
+            "name": "cultivarEpithet",
+            "set": "extended"
+        },
+        {
+            "name": "taxonRank",
+            "set": "core"
+        },
+        {
+            "name": "verbatimTaxonRank",
+            "set": "extended"
+        },
+        {
+            "name": "scientificNameAuthorship",
+            "set": "extended"
+        },
+        {
+            "name": "vernacularName",
+            "set": "extended"
+        },
+        {
+            "name": "nomenclaturalCode",
+            "set": "extended"
+        },
+        {
+            "name": "taxonomicStatus",
+            "set": "extended"
+        },
+        {
+            "name": "nomenclaturalStatus",
+            "set": "extended"
+        },
+        {
+            "name": "taxonRemarks",
+            "set": "extended"
+        },
+        {
+            "name": "measurementID",
+            "set": "extended"
+        },
+        {
+            "name": "parentMeasurementID",
+            "set": "extended"
+        },
+        {
+            "name": "measurementType",
+            "set": "extended"
+        },
+        {
+            "name": "measurementValue",
+            "set": "extended"
+        },
+        {
+            "name": "measurementAccuracy",
+            "set": "extended"
+        },
+        {
+            "name": "measurementUnit",
+            "set": "extended"
+        },
+        {
+            "name": "measurementDeterminedBy",
+            "set": "extended"
+        },
+        {
+            "name": "measurementDeterminedDate",
+            "set": "extended"
+        },
+        {
+            "name": "measurementMethod",
+            "set": "extended"
+        },
+        {
+            "name": "measurementRemarks",
+            "set": "extended"
+        },
+        {
+            "name": "resourceRelationshipID",
+            "set": "extended"
+        },
+        {
+            "name": "resourceID",
+            "set": "extended"
+        },
+        {
+            "name": "relationshipOfResourceID",
+            "set": "extended"
+        },
+        {
+            "name": "relatedResourceID",
+            "set": "extended"
+        },
+        {
+            "name": "relationshipOfResource",
+            "set": "extended"
+        },
+        {
+            "name": "relationshipAccordingTo",
+            "set": "extended"
+        },
+        {
+            "name": "relationshipEstablishedDate",
+            "set": "extended"
+        },
+        {
+            "name": "relationshipRemarks",
+            "set": "extended"
+        }
+    ]
 }

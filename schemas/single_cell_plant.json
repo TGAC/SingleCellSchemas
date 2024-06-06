@@ -304,6 +304,26 @@
             "description": "The type of isolation method used to isolate the cells.",
             "type": "string"
           }
+        },
+        {
+          "enrichment_markers": {
+            "value": "microflidics",
+            "reference": "",
+            "required": false,
+            "error": "",
+            "description": "Description of the specificity markers used to isolate cell populations e.g. 'CD45+'",
+            "type": "string"
+          }
+        },
+        {
+          "single_cell_quality_metric": {
+            "value": "",
+            "reference": "",
+            "required": false,
+            "error": "",
+            "description": "",
+            "type": "string"
+          }
         }
       ]
     },
@@ -730,6 +750,39 @@
             "error": "",
             "required": false
           }
+        },
+        {
+          "cell_number": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "error": "",
+            "required": false,
+            "type": "string"
+          }
+        },
+        {
+          "single_cell_identifier": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "error": "",
+            "required": false,
+            "type": "string"
+          }
+        },
+        {
+          "cell_size": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "error": "",
+            "required": false,
+            "type": "string"
+          }
         }
       ]
     },
@@ -756,6 +809,17 @@
           }
         },
         {
+          "amplification_method": {
+            "value": "",
+            "reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The method used to amplify the cDNA, e.g. \"PCR\"."
+          }
+        },
+        {
           "cDNA_amplification_cycles": {
             "value": "",
             "reference": "",
@@ -775,6 +839,83 @@
             "error": "",
             "required": false,
             "type": "number"
+          }
+        },
+        {
+          "library_construction_method": {
+            "value": "",
+            "reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The library construction method (including version) that\nwas used, e.g. \"Smart-Seq2\", \"Drop-Seq\", \"10X v3\"."
+          }
+        },
+        {
+          "input_molecule": {
+            "value": "",
+            "reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The specific fraction of biological macromolecule from\nwhich the sequencing library is derived, e.g. \"polyA\nRNA\"."
+          }
+        },
+        {
+          "primer": {
+            "value": "",
+            "reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The type of primer used for reverse transcription, e.g.\n\"oligo-dT\" or \"random\" primer. This allows users to\nidentify content of the cDNA library input, e.g. enriched\nfor mRNA."
+          }
+        },
+        {
+          "end_bias": {
+            "value": "",
+            "reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The end bias of the library, e.g. \"5'\" or \"3'\"."
+          }
+        },
+        {
+          "library_strand": {
+            "value": "",
+            "reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The strand from which the library was derived, e.g.\n\"unstranded\", \"sense\", \"antisense\"."
+          }
+        },
+        {
+          "spike_in": {
+            "value": "",
+            "reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "Spike-in RNAs are RNA molecules with known\nsequence that are added to the cell lysis mix. E.g. the\nExternal RNA Controls Consortium (ERCC) spike in set\nis commonly used in scRNA-seq experiments."
+          }
+        },
+        {
+          "spike_in_dilution_or_concentration": {
+            "value": "",
+            "reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The final concentration or dilution (for commercial sets)\nof the spike in mix, e.g. \"1:40,000\""
           }
         }
       ]
@@ -803,7 +944,7 @@
           }
         },
         {
-          "single_or_paired": {
+          "library_layout": {
             "value": "",
             "reference": "http://purl.obolibrary.org/obo/NCIT_C150423",
             "allowed_values": [
@@ -825,6 +966,368 @@
             "error": "",
             "required": false,
             "type": "number"
+          }
+        },
+        {
+          "technical_replicate_group_or_library_reference": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "A common term for all runs/files belonging to the same\ncell or library. We suggest to use a stable sample\naccession from a biosample archive like BioSamples\ndatabase6. Alternatively, the library ID can be\nreferenced from which the files were generated."
+          }
+        },
+        {
+          "sequencing_platform_name": {
+            "value": "",
+            "reference": "http://purl.obolibrary.org/obo/NCIT_C172274",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string"
+          }
+        },
+        {
+          "sequencing_instrument_model": {
+            "value": "",
+            "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string"
+          }
+        },
+        {
+          "library_layout": {
+            "value": "",
+            "reference": "http://purl.obolibrary.org/obo/NCIT_C150423",
+            "allowed_values": [
+              "single",
+              "paired"
+            ],
+            "error": "",
+            "required": true,
+            "type": "string"
+          }
+        },
+        {
+          "reads_per_sample": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "number"
+          }
+        },
+        {
+          "technical_replicate_group_or_library_reference": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "A common term for all runs/files belonging to the same\ncell or library. We suggest to use a stable sample\naccession from a biosample archive like BioSamples\ndatabase6. Alternatively, the library ID can be\nreferenced from which the files were generated."
+          }
+        },
+        {
+          "UMI_barcode_read": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The type of read that contains the UMI barcode:\nindex1/index2/read1/read2."
+          }
+        },
+        {
+          "UMI_barcode_offset": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The offset in sequence of the UMI identifying barcode.\nE.g. \"16\""
+          }
+        },
+        {
+          "UMI_barcode_size": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The size of the UMI identifying barcode. E.g. \"10\"."
+          }
+        },
+        {
+          "cell_barcode_read": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The type of read that contains the UMI barcode:\nindex1/index2/read1/read2."
+          }
+        },
+        {
+          "cell_barcode_offset": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The offset in sequence of the cell identifying barcode.\nE.g. \"0\"."
+          }
+        },
+        {
+          "cell_barcode_size": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The offset in sequence of the cell identifying barcode.\nE.g. \"0\"."
+          }
+        },
+        {
+          "cDNA_read": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The type of read that contains the cDNA read:\nindex1/index2/read1/read2."
+          }
+        },
+        {
+          "cDNA_read_offset": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The type of read that contains the cDNA read:\nindex1/index2/read1/read2."
+          }
+        },
+        {
+          "cDNA_read_offset": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The type of read that contains the cDNA read:\nindex1/index2/read1/read2."
+          }
+        },
+        {
+          "cDNA_read_size": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The size of the cDNA read. E.g. \"100\"."
+          }
+        },
+        {
+          "sample_barcode_read": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The type of read that contains the sample barcode:\nindex1/index2/read1/read2"
+          }
+        },
+        {
+          "sample_barcode_offset": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The offset in sequence of the sample identifying\nbarcode. E.g. \"0\"."
+          }
+        },
+        {
+          "sample_barcode_size": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The type of read that contains the sample barcode:\nindex1/index2/read1/read2"
+          }
+        },
+        {
+          "read_1_file": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The name of the file that contains read 1. E.g.\n\"File1_R1.fastq.gz\"."
+          }
+        },
+        {
+          "read_2_file": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The name of the file that contains read 2. E.g.\n\"File1_R2.fastq.gz\"."
+          }
+        },
+        {
+          "index_1_file": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The name of the file that contains index read 1. E.g.\n\"File1_I1.fastq.gz\"."
+          }
+        },
+        {
+          "index_2_file": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The name of the file that contains index read 1. E.g.\n\"File1_I2.fastq.gz\"."
+          }
+        },
+        {
+          "checksum": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "Result of a hash function calculated on the file content\nto assert file integrity. Commonly used algorithms are\nMD5 and SHA-1. E.g.\n\"ab21a9c0f2007890fe2fbe48df0519f9\"."
+          }
+        },
+        {
+          "white_list_barcode_file": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "A file containing the known cell barcodes in the\ndataset."
+          }
+        }
+      ]
+    },
+    {
+      "component": "analysis_derived_data",
+      "fields": [
+        {
+          "inferred_cell_type": {
+            "value": "",
+            "reference": "",
+            "standard": "",
+            "label": "inferred_cell_type",
+            "required": false,
+            "error": "",
+            "type": "string",
+            "regex": "",
+            "description": "Post analysis cell type or identity declaration based on\nexpression profile or known gene function identified by\nthe performer, e.g. if a pool of cells are sequenced with\nthe purpose of identifying new cell types or sub-\npopulations. Per cell, in addition to sample of origin\nmetadata, lineage, class, and subclass attributes that\nserve to group cells within the sample or set of\nsamples can be declared. E.g. \"type II bipolar neuron\"."
+          }
+        },
+        {
+          "post_analysis_cell_well_quality": {
+            "value": "",
+            "reference": "",
+            "standard": "",
+            "label": "post_analysis_cell_well_quality",
+            "required": false,
+            "error": "",
+            "type": "string",
+            "regex": "",
+            "description": "Performer defined measure of whether the read output\nfrom the cell was included in the sequencing analysis.\nFor example, cells might be excluded if a threshold\npercentage of reads did not map to the genome or if\npre-sequencing quality measures were not passed.\nE.g. \"pass\" or \"fail\"."
+          }
+        },
+        {
+          "other_derived_cell_attributes": {
+            "value": "",
+            "reference": "",
+            "standard": "",
+            "label": "other_derived_cell_attributes",
+            "required": false,
+            "error": "",
+            "type": "string",
+            "regex": "",
+            "description": "Any other cell level measurement or annotation as\nresult of the analysis. E.g. cluster, gene count, UMI\ncount, tSNE coordinates."
           }
         }
       ]
