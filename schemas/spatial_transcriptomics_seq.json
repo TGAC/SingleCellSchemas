@@ -4,6 +4,18 @@
       "component": "study",
       "fields": [
         {
+          "study_id": {
+            "value": "",
+            "reference": "https://schema.org/id",
+            "standard": "SCHEMAORG",
+            "label": "Study ID",
+            "required": true,
+            "error": "Study ID is required",
+            "type": "string",
+            "regex": "^[a-zA-Z0-9]+$"
+          }
+        },
+        {
           "contact_first_name": {
             "value": "",
             "reference": "https://schema.org/givenName",
@@ -113,6 +125,24 @@
     {
       "component": "sample",
       "fields": [
+        {
+          "sample_id": {
+            "value": "",
+            "reference": "http://purl.obolibrary.org/obo/NCIT_C16576",
+            "required": true,
+            "error": "sample_id is required",
+            "type": "string"
+          }
+        },
+        {
+          "study_reference": {
+            "value": "",
+            "reference": "http://purl.obolibrary.org/obo/NCIT_C16576",
+            "required": true,
+            "error": "study_reference is required",
+            "type": "string"
+          }
+        },
         {
           "taxon_id": {
             "value": "",
@@ -293,51 +323,15 @@
       ]
     },
     {
-      "component": "isolation_microflidics",
+      "component": "imaging_protocol",
       "fields": [
         {
-          "isolation_type": {
-            "value": "microflidics",
-            "reference": "http://purl.obolibrary.org/obo/OMIT_0023341",
-            "required": true,
-            "error": "isolation_type is required",
-            "description": "The type of isolation method used to isolate the cells.",
-            "type": "string"
-          }
-        },
-        {
-          "enrichment_markers": {
-            "value": "microflidics",
-            "reference": "",
-            "required": false,
-            "error": "",
-            "description": "Description of the specificity markers used to isolate cell populations e.g. 'CD45+'",
-            "type": "string"
-          }
-        },
-        {
-          "single_cell_quality_metric": {
+          "imaging_protocol_id": {
             "value": "",
-            "reference": "",
-            "required": false,
-            "error": "",
-            "description": "",
-            "type": "string"
-          }
-        }
-      ]
-    },
-    {
-      "component": "isolation_Stx",
-      "fields": [
-        {
-          "isolation_type": {
-            "value": "Stx",
-            "reference": "http://www.ebi.ac.uk/efo/EFO_0008994",
+            "reference": "http://purl.obolibrary.org/obo/NCIT_C16576",
             "required": true,
-            "type": "string",
-            "error": "isolation_type is required",
-            "description": "The type of isolation method used to isolate the cells."
+            "error": "sample_ref is required",
+            "type": "string"
           }
         },
         {
@@ -347,9 +341,6 @@
             "required": true,
             "error": "platform is required",
             "description": "The platform used to isolate the cells.",
-            "allowed_values": [
-              "vizgen"
-            ],
             "type": "string"
           }
         },
@@ -570,7 +561,7 @@
           }
         },
         {
-          "merscope_instrument_user_guide": {
+          "instrument_user_guide": {
             "value": "MERscope-User-Guide.pdf",
             "reference": "",
             "required": true,
@@ -580,7 +571,7 @@
           }
         },
         {
-          "merscope_instrument_user_guide_revision": {
+          "instrument_user_guide_revision": {
             "value": "1.0",
             "reference": "",
             "required": true,
@@ -590,8 +581,8 @@
           }
         },
         {
-          "merscope_sample_preparation_guide": {
-            "value": "MERscope-Sample-Preparation-Guide.pdf",
+          "sample_preparation_guide": {
+            "value": "",
             "reference": "",
             "required": true,
             "error": "",
@@ -599,7 +590,7 @@
           }
         },
         {
-          "merscope_sample_preparation_guide_revision": {
+          "sample_preparation_guide_revision": {
             "value": "1.0",
             "reference": "",
             "required": true,
@@ -616,179 +607,34 @@
       ]
     },
     {
-      "component": "isolation_flow_cytometry",
-      "fields": [
-        {
-          "isolation_type": {
-            "value": "facs"
-          }
-        },
-        {
-          "isolation_kit": {
-            "value": "",
-            "reference": "http://purl.obolibrary.org/obo/OBI_0003369",
-            "required": false,
-            "error": "",
-            "description": "The kit used to isolate the cells.",
-            "type": "string",
-            "allowed_values": [
-              "10x Nuclei Isolation Kit",
-              "3' standard throughput kit"
-            ]
-          }
-        },
-        {
-          "time_period": {
-            "value": ""
-          }
-        },
-        {
-          "time_period_unit": {
-            "value": "minutes"
-          }
-        }
-      ]
-    },
-    {
-      "component": "isolation_LMD",
-      "fields": [
-        {
-          "isolation_type": {
-            "value": "LMD"
-          }
-        }
-      ]
-    },
-    {
-      "component": "cell",
-      "fields": [
-        {
-          "suspension_type": {
-            "value": "",
-            "reference": "PATO:0000918",
-            "unit": "",
-            "allowed_values": [
-              "cell",
-              "nuclei",
-              "protoplast"
-            ],
-            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000101",
-            "error": "",
-            "required": false,
-            "type": "number"
-          }
-        },
-        {
-          "suspension_volume_µl": {
-            "value": "",
-            "reference": "PATO:0000918",
-            "unit": "microliter",
-            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000101",
-            "error": "",
-            "required": false,
-            "type": "number"
-          }
-        },
-        {
-          "suspension_concentration_cells_per_µl": {
-            "value": "0",
-            "reference": "http://purl.obolibrary.org/obo/CHMO_0002820",
-            "unit:": "cells/ul",
-            "unit_reference": "http://snomed.info/id/258878000",
-            "error": "",
-            "required": false,
-            "type": "number"
-          }
-        },
-        {
-          "suspension_dilution": {
-            "value": "10",
-            "reference": "http://purl.allotrope.org/ontologies/process#AFP_0000785",
-            "unit:": "cells/ul",
-            "unit_reference": "http://snomed.info/id/258878000",
-            "error": "",
-            "required": false,
-            "type": "number"
-          }
-        },
-        {
-          "suspension_dilution_method": {
-            "value": "dilution",
-            "reference": "http://www.bioassayontology.org/bao#BAO_0002418",
-            "unit_reference": "",
-            "error": "",
-            "required": false,
-            "type": "string"
-          }
-        },
-        {
-          "suspension_dilution_buffer": {
-            "value": "",
-            "reference": "",
-            "unit_reference": "",
-            "error": "",
-            "required": false,
-            "type": "string"
-          }
-        },
-        {
-          "suspension_dilution_buffer_concentration": {
-            "value": "1",
-            "reference": "",
-            "unit": "mg/ml",
-            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000176",
-            "error": "",
-            "required": false,
-            "type": "number"
-          }
-        },
-        {
-          "suspension_dilution_buffer_concentration_unit": {
-            "value": "mg/ml",
-            "reference": "",
-            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000176",
-            "error": "",
-            "required": false
-          }
-        },
-        {
-          "cell_number": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "error": "",
-            "required": false,
-            "type": "string"
-          }
-        },
-        {
-          "single_cell_identifier": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "error": "",
-            "required": false,
-            "type": "string"
-          }
-        },
-        {
-          "cell_size": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "error": "",
-            "required": false,
-            "type": "string"
-          }
-        }
-      ]
-    },
-    {
       "component": "library_preparation",
       "fields": [
+        {
+          "library_preparation_protocol_id": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The name of the file that contains the library preparation\ninformation. E.g. \"File1_LibraryPrep.json\"."
+          }
+        },
+        {
+          "sequencing_reference": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The name of the file that contains the sequencing\ninformation. E.g. \"File1_Sequencing.json\"."
+          }
+        },
         {
           "library_preparation_kit": {
             "value": "",
@@ -923,6 +769,19 @@
     {
       "component": "sequencing",
       "fields": [
+        {
+          "sequencing_protocol_id": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The name of the file that contains the sequencing\ninformation. E.g. \"File1_Sequencing.json\"."
+          }
+        },
         {
           "sequencing_platform_name": {
             "value": "",
@@ -1206,6 +1065,50 @@
             "required": false,
             "type": "string",
             "description": "The type of read that contains the sample barcode:\nindex1/index2/read1/read2"
+          }
+        }
+      ]
+    },
+    {
+      "component": "file",
+      "fields": [
+        {
+          "imaging_protocol_ref": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The name of the file that contains the imaging protocol\ninformation. E.g. \"File1_ImagingProtocol.json\"."
+          }
+        },
+        {
+          "library_preparation_protocol_ref": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The name of the file that contains the library preparation\ninformation. E.g. \"File1_LibraryPrep.json\"."
+          }
+        },
+        {
+          "sequencing_protocol_ref": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "The name of the file that contains the sequencing\ninformation. E.g. \"File1_Sequencing.json\"."
           }
         },
         {

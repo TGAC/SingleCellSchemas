@@ -2,6 +2,7 @@ import pandas as pd
 import sys
 import json
 import xlsxwriter
+import os
 
 def extract_components_to_excel(json_data, output_file):
     """
@@ -21,14 +22,15 @@ def extract_components_to_excel(json_data, output_file):
     with open(json_data, 'r') as json_file:
         data_dict = json.loads(json_file.read())
 
-    dwc = get_dwc_fields(termset="core")
+    dwc = get_dwc_fields(termset="extended")
     sample = next(d for d in data_dict["components"] if d["component"] == "sample")
     sample["fields"].extend(dwc)
-
-    with open("dist/EICore.json", "w") as joint_json:
+    output_core = output_file.replace(".json", "_core.json").replace("schemas/", "dist/")
+    output_core_xlsx = output_file.replace(".json", "_core.xlsx").replace("schemas/", "dist/")
+    with open(output_core, "w") as joint_json:
         joint_json.write(json.dumps(data_dict))
 
-    with pd.ExcelWriter(output_file, engine='xlsxwriter', mode='w+') as writer:
+    with pd.ExcelWriter(output_core_xlsx, engine='xlsxwriter', mode='w+') as writer:
         for component in data_dict['components']:
             column_names = [get_heading(key) for key in component["fields"]]
             df = pd.DataFrame(columns=column_names)
