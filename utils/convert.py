@@ -4,7 +4,7 @@ import json
 import xlsxwriter
 import os
 
-def extract_components_to_excel(json_data, output_file):
+def extract_components_to_excel(json_data, output_file, termset):
     """
     This function extracts components from a JSON file and writes them to an Excel file.
 
@@ -22,7 +22,7 @@ def extract_components_to_excel(json_data, output_file):
     with open(json_data, 'r') as json_file:
         data_dict = json.loads(json_file.read())
 
-    dwc = get_dwc_fields(termset="extended")
+    dwc = get_dwc_fields(termset=termset)
     sample = next(d for d in data_dict["components"] if d["component"] == "sample")
     sample["fields"].extend(dwc)
     output_core = output_file.replace(".json", "_core.json").replace("schemas/", "dist/")
@@ -75,9 +75,11 @@ def get_dwc_fields(termset="extended"):
 
     if termset == "extended":
         out = [create_field(line) for _, line in filtered.iterrows()]
-    else:
+    elif termset == "core":
         out = [create_field(line) for _, line in filtered.iterrows() if
                line["term_localName"] in [item['name'] for item in excluded if item['set'] == "core"]]
+    else:
+        sys.exit("Invalid termset. Please use 'core' or 'extended' as termset.")
     return out
 
 def create_field(line):
@@ -85,5 +87,5 @@ def create_field(line):
 
 if __name__ == '__main__':
     args = sys.argv
-    extract_components_to_excel(args[1], args[2])
+    extract_components_to_excel(args[1], args[2], args[3])
     #get_dwc_fields()

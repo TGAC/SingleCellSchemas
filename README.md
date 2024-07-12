@@ -9,6 +9,6 @@ To run the converter follow these steps:
 - install dependencies
   - pip install -r requirements/requirements.txt
 - run the converter
-  - python convert.py schemas/single_cell_plant.json output/output.xlsx
+  - python convert.py schemas/<datatype> dist/<output_name>.xlsx
 - OR run the tests (which also runs the converter whilst verifying the output)
   - python -m unittest

@@ -18,7 +18,7 @@ class TestConvert(unittest.TestCase):
         for filename in self.input_json:
             # Call the json_to_excel function with the test data
             self.output_excel = re.sub(r'\.json$', '.xlsx', filename)
-            extract_components_to_excel(filename, self.output_excel)
+            extract_components_to_excel(filename, self.output_excel, "extended")
             # Read the generated Excel file
             # self.excel_data = pd.read_excel(self.output_excel, sheet_name=None, header=None)
 
