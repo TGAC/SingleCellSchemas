@@ -554,14 +554,29 @@
           }
         },
         {
-          "amplification_method": {
+          "i5_sequence": {
             "value": "",
             "reference": "",
+            "unit": "",
+            "unit_reference": "",
             "allowed_values": [],
             "error": "",
             "required": false,
             "type": "string",
-            "description": "The method used to amplify the cDNA, e.g. \"PCR\"."
+            "description": ""
+          }
+        },
+        {
+          "i7_sequence": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": ""
           }
         },
         {

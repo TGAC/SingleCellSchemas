@@ -623,6 +623,32 @@
           }
         },
         {
+          "i5_sequence": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        },
+        {
+          "i7_sequence": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        },
+        {
           "sequencing_reference": {
             "value": "",
             "reference": "",
