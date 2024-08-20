@@ -1,4 +1,4 @@
-This repo contains developments regarding EI's CELLGEN ISP metadata standards. Broadly, the schemas can be used for describing a range of single cell genomic and spatial transcriptomics experiment types such as 10X, FACS and Vizgen. The schemas directory contains the JSON representation of the schema, and the utils directory contains python modules to convert from json to tabular formats such as excel.
+This repo contains developments regarding EI's CELLGEN ISP metadata standards. Broadly, the schemas can be used for describing a range of single cell genomic and spatial transcriptomics experiment types such as 10X and Vizgen. The schemas directory contains the JSON representation of the schema, and the utils directory contains python modules to convert from json to tabular formats such as excel.
 
 To run the converter follow these steps:
 - download this repository and navigate to it in a terminal
