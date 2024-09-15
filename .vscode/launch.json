@@ -1,0 +1,50 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Extract Components to sc_rnaseq Excel",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/utils/convert.py",
+            "console": "integratedTerminal",
+            "args": [
+                "${workspaceFolder}/schemas/sc_rnaseq.json",  // Path to your JSON file
+                "${workspaceFolder}/schemas/sc_rnaseq.xlsx", // Path to your output file
+                "extended" // Termset argument (either 'core' or 'extended')
+            ],
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            }
+        },
+                {
+            "name": "Python: Extract Components to spat_fish Excel",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/utils/convert.py",
+            "console": "integratedTerminal",
+            "args": [
+                "${workspaceFolder}/schemas/spat_fish.json",  // Path to your JSON file
+                "${workspaceFolder}/schemas/spat_fish.xlsx", // Path to your output file
+                "extended" // Termset argument (either 'core' or 'extended')
+            ],
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            }
+        },
+                {
+            "name": "Python: Extract Components to spat_seq Excel",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/utils/convert.py",
+            "console": "integratedTerminal",
+            "args": [
+                "${workspaceFolder}/schemas/spat_seq.json",  // Path to your JSON file
+                "${workspaceFolder}/schemas/spat_seq.xlsx", // Path to your output file
+                "extended" // Termset argument (either 'core' or 'extended')
+            ],
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            }
+        }
+    ]
+}
