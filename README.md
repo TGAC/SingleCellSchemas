@@ -32,6 +32,10 @@ Please follow the instructions below to convert the JSON schema to an excel file
 
 6. Run the converter script
 
+   Use ``launch.json`` file to run the script in VSCode
+
+   --**OR**--
+
    ``python convert.py schemas/<data-type> dist/checklists/<output-format>/<output-name>.xlsx``
 
     where `<data-type>` is the name of the schema file in the ``schemas`` directory, `<output-format>` is the format of the output file (json, xml, xlsx) and `<output-name>` is the name of the output file.
