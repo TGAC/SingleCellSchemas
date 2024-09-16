@@ -2,6 +2,10 @@ This repository contains developments regarding EI's CELLGEN ISP metadata standa
 
 Broadly, the schemas can be used for describing a range of single cell genomic and spatial transcriptomics experiment types such as 10X and Vizgen. The schemas directory contains the JSON representation of the schema, and the utils directory contains python modules to convert from json to tabular formats such as excel.
 
+**Abbreviations**:
+- SC RNASEQ: Single Cell RNA-Sequencing
+- SPAT: Spatial Transcriptomics
+
 Please follow the instructions below to convert the JSON schema to an excel file, xml and json files:
 
 1. Download or clone this repository and navigate to its directory in the terminal
