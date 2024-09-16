@@ -1,5 +1,5 @@
 from io import BytesIO
-from openpyxl.utils import cell
+from openpyxl.utils import get_column_letter
 import json
 import os
 import numpy as np
@@ -7,6 +7,15 @@ import pandas as pd
 import sys
 import xlsxwriter
 
+def extract_components_to_json(json_data, output_file, termset):
+    output_core = output_file.replace(".json", "_core.json").replace(".xlsx", "_core.json").replace("schemas/", "dist/checklists/json/")
+
+    with open(json_data, 'r') as json_file:
+        data_dict = json.loads(json_file.read())
+
+
+    with open(output_core, "w") as joint_json:
+        joint_json.write(json.dumps(data_dict))
 
 def extract_components_to_excel(json_data, output_file, termset):
     """
@@ -29,14 +38,13 @@ def extract_components_to_excel(json_data, output_file, termset):
     dwc = get_dwc_fields(termset=termset)
     sample = next(d for d in data_dict["components"] if d["component"] == "sample")
     sample["fields"].extend(dwc)
-    output_core = output_file.replace(".json", "_core.json").replace("schemas/", "dist/checklists/json")
-    output_core_xlsx = output_file.replace(".json", "_core.xlsx").replace("schemas/", "dist/checklists/xlsx")
-    with open(output_core, "w") as joint_json:
-        joint_json.write(json.dumps(data_dict))
+
+    output_core_xlsx = output_file.replace(".json", "_core.xlsx").replace(".xlsx", "_core.xlsx").replace("schemas/", "dist/checklists/xlsx/")
+
    
     bytesIO = BytesIO()
 
-    with pd.ExcelWriter(bytesIO, engine='xlsxwriter', mode='w+') as writer:
+    with pd.ExcelWriter(bytesIO, engine='xlsxwriter', mode='w') as writer:
         for component in data_dict['components']:
             column_names = [get_heading(key) for key in component["fields"]]
             df = pd.DataFrame(columns=column_names)
@@ -45,6 +53,7 @@ def extract_components_to_excel(json_data, output_file, termset):
             if not df.empty:
                 df.dropna(axis=1, how='all', inplace=True)
 
+            # Save the DataFrame to an Excel file
             df.to_excel(writer, sheet_name=component['component'], index=False, header=True)
 
             # Get the column validation
@@ -56,14 +65,9 @@ def extract_components_to_excel(json_data, output_file, termset):
         # Apply autofit to all sheets
         autofit_all_sheets(writer)
 
-    # Reset the buffer position to the beginning
-    bytesIO.seek(0)
-
-    # Load the data from the buffer into a DataFrame
-    df = pd.read_excel(bytesIO)
-
-    # Save the DataFrame to an Excel file
-    df.to_excel(output_core_xlsx, index=False)
+    # Save to output file
+    with open(output_core_xlsx, 'wb') as f:
+        f.write(bytesIO.getvalue())
      
 
 def get_heading(key):
@@ -125,14 +129,24 @@ def get_dwc_fields(termset="extended"):
 def create_field(line):
     return {line["term_localName"]: {"reference": line["iri"], "required": False, "type": "string"}}
 
+def get_excel_data_validation_from_regex(regex, column_letter):
+    # Define a mapping from regex patterns to Excel custom validation formulas
+    REGEX_TO_EXCEL_DATA_VALIDATION_MAPPING = {
+        '^[a-zA-Z0-9]+$': f'AND(ISNUMBER(FIND(LOWER({column_letter}2), "abcdefghijklmnopqrstuvwxyz0123456789")), LEN({column_letter}2) > 0)',
+        '^[a-zA-Z]+$': f'AND(ISNUMBER(FIND(LOWER({column_letter}2), "abcdefghijklmnopqrstuvwxyz")), LEN({column_letter}2) > 0)',
+        '^[0-9]{4}-[0-9]{2}-[0-9]{2}$': f'AND(ISNUMBER(FIND(LOWER({column_letter}2), "0123456789-")), LEN({column_letter}2) > 0)',
+        '^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$': f'AND(ISNUMBER(FIND(LOWER({column_letter}2), "0123456789-+.")), LEN({column_letter}2) > 0)',
+        '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$': f'AND(ISNUMBER(FIND("@", {column_letter}2)), ISNUMBER(FIND(".", {column_letter}2, FIND("@", {column_letter}2))), LEN({column_letter}2) - LEN(SUBSTITUTE({column_letter}2, "@", "")) = 1, LEN({column_letter}2) - LEN(SUBSTITUTE({column_letter}2, ".", "")) > 1, LEN({column_letter}2) - LEN(SUBSTITUTE({column_letter}2, ".", "")) <= 3)'
+    }
+
+    # Return the corresponding Excel formula or None if regex is not in the mapping
+    return REGEX_TO_EXCEL_DATA_VALIDATION_MAPPING.get(regex, None)
+
 def apply_dropdown_list(component, dataframe, column_validation, pandas_writer):
     sheet_name = component['component']
     fields = component['fields']
-    field_validation = column_validation
 
-    # cell = pandas_writer.book.add_format({'bold': True})
     print('Sheet name: ', sheet_name)
-    # print('\nFields: ', fields)
     
     print("====================================\n")
 
@@ -141,7 +155,9 @@ def apply_dropdown_list(component, dataframe, column_validation, pandas_writer):
 
     # Create a hidden sheet for long dropdown lists
     hidden_sheet_name = 'HiddenDropdowns'
-    if hidden_sheet_name not in workbook.sheetnames:
+    hidden_sheet = workbook.get_worksheet_by_name(hidden_sheet_name)
+
+    if not hidden_sheet:
         hidden_sheet = workbook.add_worksheet(hidden_sheet_name)
         hidden_sheet.hide()
     else:
@@ -154,11 +170,6 @@ def apply_dropdown_list(component, dataframe, column_validation, pandas_writer):
         dataframe = dataframe.loc[:, ~dataframe.columns.duplicated()]
     
     for column_name in dataframe.columns:
-        # Ensure column_name exists
-        if column_name not in dataframe.columns:
-            raise ValueError(f"Column '{column_name}' does not exist in the DataFrame")
-            continue
-
         if column_name in column_validation:
             is_field_required = column_validation[column_name].get('required', False)
             dropdown_list = column_validation[column_name].get('allowed_values', [])
@@ -166,24 +177,20 @@ def apply_dropdown_list(component, dataframe, column_validation, pandas_writer):
             field_type = column_validation[column_name].get('type', '')
             regex = column_validation[column_name].get('regex', '')
 
-            print('Column name: ', column_name)
-
             # Get MS Excel official column header letter
             # Indexing starts at 0 by default but in this case, it should start at 1 so increment by 1
             column_index = dataframe.columns.get_loc(column_name)
 
-            # Ensure column_index is a single integer
-            if isinstance(column_index, np.ndarray):
-                raise ValueError(f"Column '{column_name}' has duplicate entries in the DataFrame")
-
-            column_letter = cell.get_column_letter(column_index + 1)
+            column_letter = get_column_letter(column_index + 1)
 
             # Get first row to the last row in a column 
-            row_start_end = '%s2:%s1048576' % (column_letter, column_letter)
+            row_start_end = f'{column_letter}2:{column_letter}101'
             
-            # Apply data validation to the column if regex exists
+            # Apply data formula to the column if regex is provided
             if regex:
-                sheet.data_validation(row_start_end, {'validate': 'custom', 'value': regex})
+                validation_formula = get_excel_data_validation_from_regex(regex, column_letter)
+                if validation_formula:
+                    sheet.data_validation(row_start_end, {'validate': 'custom', 'value': validation_formula, 'input_message': 'Invalid input', 'error_message': error_message})
 
             # Apply the dropdown list to the column
             if dropdown_list:
@@ -195,21 +202,30 @@ def apply_dropdown_list(component, dataframe, column_validation, pandas_writer):
                 number_of_characters = sum(len(i) for i in dropdown_list)
 
                 if number_of_characters >= 255:
-                    # dataValidationColumn = '=%s!$%s$2:$%s$78'
                     print('The dropdown list is too long for Excel to handle. Please reduce the number of items in the list.')
-                    col_letter = cell.get_column_letter(column_index + 1)
 
                     for index, val in enumerate(dropdown_list, start=2):  # Start from row 2 to leave row 1 for headers if needed
-                        hidden_sheet.write(f'{col_letter}{index}', val)
+                        hidden_sheet.write(f'{column_letter}{index}', val)
 
                     # Create a range reference for the hidden sheet
-                    data_validation_range = f'={hidden_sheet_name}!${col_letter}$2:${col_letter}${index}'
-                    sheet.data_validation(row_start_end, {'validate': 'list', 'source': data_validation_range})
+                    data_validation_range = f'={hidden_sheet_name}!${column_letter}$2:${column_letter}${index}'
+                    sheet.data_validation(row_start_end, {'validate': 'list', 'source': data_validation_range, 'input_message': 'Choose from the list'})
                 else:
-                    sheet.data_validation(row_start_end, {'validate': 'list', 'source': dropdown_list})
+                    sheet.data_validation(row_start_end, {'validate': 'list', 'source': dropdown_list, 'input_message': 'Choose from the list'})
 
 
 if __name__ == '__main__':
     args = sys.argv
-    extract_components_to_excel(args[1], args[2], args[3])
+
+    if len(args) != 4:
+        print("Usage: convert.py <json_file> <output_file> <termset>")
+        ys.exit(1)  # Exit the script with an error code
+
+    json_file = args[1]
+    output_file = args[2]
+    termset = args[3]
+
+    extract_components_to_excel(json_file, output_file, termset)
+    extract_components_to_json(json_file, output_file, termset)
+    # extract_components_to_xml(json_file, output_file, termset)
     #get_dwc_fields()
