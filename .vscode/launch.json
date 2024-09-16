@@ -12,11 +12,16 @@
                 "${workspaceFolder}/schemas/sc_rnaseq.xlsx", // Path to your output file
                 "extended" // Termset argument (either 'core' or 'extended')
             ],
+            "python": "${workspaceFolder}/venv/bin/python",
             "env": {
                 "PYTHONPATH": "${workspaceFolder}"
-            }
+            },
+            "justMyCode": true,  // Skip debugging code from libraries
+            "pythonArgs": [
+                "-Xfrozen_modules=off"  // Disable frozen modules to ensure breakpoints are hit
+            ]
         },
-                {
+        {
             "name": "Python: Extract Components to spat_fish Excel",
             "type": "debugpy",
             "request": "launch",
@@ -27,9 +32,14 @@
                 "${workspaceFolder}/schemas/spat_fish.xlsx", // Path to your output file
                 "extended" // Termset argument (either 'core' or 'extended')
             ],
+            "python": "${workspaceFolder}/venv/bin/python",
             "env": {
                 "PYTHONPATH": "${workspaceFolder}"
-            }
+            },
+            "justMyCode": true,  // Skip debugging code from libraries
+            "pythonArgs": [
+                "-Xfrozen_modules=off"  // Disable frozen modules to ensure breakpoints are hit
+            ]
         },
                 {
             "name": "Python: Extract Components to spat_seq Excel",
@@ -42,9 +52,14 @@
                 "${workspaceFolder}/schemas/spat_seq.xlsx", // Path to your output file
                 "extended" // Termset argument (either 'core' or 'extended')
             ],
+            "python": "${workspaceFolder}/venv/bin/python",
             "env": {
                 "PYTHONPATH": "${workspaceFolder}"
-            }
+            },
+            "justMyCode": true,  // Skip debugging code from libraries
+            "pythonArgs": [
+                "-Xfrozen_modules=off"  // Disable frozen modules to ensure breakpoints are hit
+            ]
         }
     ]
 }
