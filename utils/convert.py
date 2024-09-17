@@ -6,16 +6,7 @@ import numpy as np
 import pandas as pd
 import sys
 import xlsxwriter
-
-def extract_components_to_json(json_data, output_file, termset):
-    output_core = output_file.replace(".json", "_core.json").replace(".xlsx", "_core.json").replace("schemas/", "dist/checklists/json/")
-
-    with open(json_data, 'r') as json_file:
-        data_dict = json.loads(json_file.read())
-
-
-    with open(output_core, "w") as joint_json:
-        joint_json.write(json.dumps(data_dict))
+import xml.etree.ElementTree as ET
 
 def extract_components_to_excel(json_data, output_file, termset):
     """
@@ -68,7 +59,157 @@ def extract_components_to_excel(json_data, output_file, termset):
     # Save to output file
     with open(output_core_xlsx, 'wb') as f:
         f.write(bytesIO.getvalue())
-     
+
+def extract_components_to_json(json_data, output_file, termset):
+    output_core = output_file.replace(".json", "_core.json").replace(".xlsx", "_core.json").replace("schemas/", "dist/checklists/json/")
+
+    with open(json_data, 'r') as json_file:
+        data_dict = json.loads(json_file.read())
+
+
+    with open(output_core, "w") as joint_json:
+        joint_json.write(json.dumps(data_dict))
+
+def extract_components_to_xml(json_data, output_file, termset):
+    """
+    This function extracts components from a JSON file and writes them to an XML file.
+
+    Parameters:
+    json_data (str): The path to the JSON file.
+    output_file (str): The path to the output XML file.
+
+    The function first opens and reads the JSON file, then gets the Darwin Core (DwC) fields.
+    It finds the 'sample' component in the JSON data and extends its fields with the DwC fields.
+    The updated JSON data is then written to a new XML file.
+    """
+
+    CHECKLIST_MAPPING = {
+        'SCRNASEQ':{
+            'accession': 'SCRNASEQ1',
+            'label': 'COPO Single Cell RNA-Sequencing Checklist',
+            'name': 'COPO Single Cell RNA-Sequencing Checklist',
+            'description': 'Minimum information to standardise metadata related to samples used in RNA seq experiments...',
+            'checklistType': 'reads'
+        },
+        'SPATFISH':{
+            'accession': 'SPATIMG1',
+            'label': 'COPO Spatial Transcriptomics Image Checklist',
+            'name': 'COPO Spatial Transcriptomics Image Checklist',
+            'description': 'Minimum information to standardise metadata related to samples used in RNA seq experiments. Useful for downstream services to select RNA-Seq read data for appropriate alignment processing and display. Also useful for external users to select RNA-Seq read files, their alignments, and structured metadata describing the source material.',
+            'checklistType': 'image'
+        },
+        'SPATSEQ':{
+            'accession': 'SPATSEQ1',
+            'label': 'COPO Spatial Transcriptomics Sequencing Checklist',
+            'name': 'COPO Spatial Transcriptomics Sequencing Checklist',
+            'description': 'Minimum information to standardise metadata related to samples used in RNA seq experiments. Useful for downstream services to select RNA-Seq read data for appropriate alignment processing and display. Also useful for external users to select RNA-Seq read files, their alignments, and structured metadata describing the source material.',
+            'checklistType': 'reads'
+        }
+    }
+
+    # Read JSON data
+    with open(json_data, 'r') as json_file:
+        data_dict = json.loads(json_file.read())
+
+    dwc = get_dwc_fields(termset=termset)
+    sample = next(d for d in data_dict["components"] if d["component"] == "sample")
+    sample["fields"].extend(dwc)
+
+    output_xml = output_file.replace(".json", "_core.xml").replace(".xlsx", "_core.xml").replace(".xlsx", "_core.xml").replace("schemas/", "dist/checklists/xml/")
+
+    checklist_type_abbreviation = output_xml.split('/')[-1].replace('_core.xml', '').replace(f'_{termset}.xml', '').replace('_','').upper()
+    accession = CHECKLIST_MAPPING.get(checklist_type_abbreviation,'').get('accession', '')
+    checklist_type = CHECKLIST_MAPPING.get(checklist_type_abbreviation,'').get('checklistType', '')
+    label = CHECKLIST_MAPPING.get(checklist_type_abbreviation,'').get('label', '')
+    description = CHECKLIST_MAPPING.get(checklist_type_abbreviation,'').get('description', '')
+
+    # Create root element
+    checklist_set = ET.Element("CHECKLIST_SET")
+
+    # Create checklist element
+    checklist = ET.SubElement(checklist_set, "CHECKLIST", accession=accession, checklistType=checklist_type)
+
+    # Create IDENTIFIERS
+    identifiers = ET.SubElement(checklist, "IDENTIFIERS")
+    primary_id = ET.SubElement(identifiers, "PRIMARY_ID")
+    primary_id.text = accession
+
+    # Create DESCRIPTOR
+    descriptor = ET.SubElement(checklist, "DESCRIPTOR")
+
+    # Add static elements to descriptor
+    label = ET.SubElement(descriptor, "LABEL")
+    label.text = label
+
+    name = ET.SubElement(descriptor, "NAME")
+    name.text = name
+
+    description = ET.SubElement(descriptor, "DESCRIPTION")
+    description.text = description
+
+    authority = ET.SubElement(descriptor, "AUTHORITY")
+    authority.text = "COPO"
+
+    # Process FIELD_GROUPs from components
+    for component in data_dict['components']:
+        field_label_mapping = get_label_from_field_mapping(component)
+
+        # Get the component validation
+        component_validation = get_validation(component)
+
+        field_group = ET.SubElement(descriptor, "FIELD_GROUP", restrictionType=component.get('restriction_type', 'Any number or none of the fields'))
+        
+        group_name = ET.SubElement(field_group, "NAME")
+        group_name.text = component.get('component', '')
+
+        group_description = ET.SubElement(field_group, "DESCRIPTION")
+        group_description.text = component.get('description', '')
+
+        for field_dict in component.get('fields', []):
+            for field, value_dict in field_dict.items():
+                if field in component_validation:
+                    field_element = ET.SubElement(field_group, "FIELD")
+
+                    label = ET.SubElement(field_element, "LABEL")
+                    label.text = field_label_mapping.get(field,'')
+
+                    name = ET.SubElement(field_element, "NAME")
+                    name.text = field
+
+                    description = ET.SubElement(field_element, "DESCRIPTION")
+                    description.text = field_dict.get(field,'').get('description', '')
+
+                    field_type = ET.SubElement(field_element, "FIELD_TYPE")
+                    
+                    regex_value = field_dict.get(field,'').get('regex', '')
+
+                    if regex_value:
+                        text_field = ET.SubElement(field_type, "TEXT_FIELD")
+                        regex = ET.SubElement(text_field, "REGEX_VALUE")
+                        regex.text = regex_value
+                    else:
+                        field_type_value = field_dict.get(field,'').get('type', 'TEXT_FIELD')
+
+                        if field_type_value == 'TEXT_FIELD':
+                            ET.SubElement(field_type, "TEXT_FIELD")
+                    
+                    if field_dict.get(field,'').get('allowed_values', []):
+                        choice_field = ET.SubElement(field_type, "TEXT_CHOICE_FIELD")
+
+                        for value in field_dict.get(field,'').get('allowed_values', []):
+                            text_value = ET.SubElement(choice_field, "TEXT_VALUE")
+                            value_element = ET.SubElement(text_value, "VALUE")
+                            value_element.text = value
+
+                    mandatory = ET.SubElement(field_element, "MANDATORY")
+                    mandatory.text = 'mandatory' if field_dict.get(field,'').get('required', False) else 'optional'
+
+                    multiplicity = ET.SubElement(field_element, "MULTIPLICITY")
+                    multiplicity.text = field_dict.get(field,'').get('multiplicity', 'single')
+
+    # Create and write XML file
+    tree = ET.ElementTree(checklist_set)
+    tree.write(output_xml, encoding='utf-8', xml_declaration=True)
 
 def get_heading(key):
     fieldset = list(key.keys())[0]
@@ -83,6 +224,15 @@ def get_validation(component):
         field_validation[label] = valueDict
 
     return field_validation
+
+def get_label_from_field_mapping(component):
+    label_mapping = {}
+
+    for element in component['fields']:
+        for field, valueDict in element.items():
+            label = valueDict.pop('label','') if 'label' in valueDict else field
+            label_mapping[field] = label
+    return label_mapping
 
 def autofit_all_sheets(writer):
     for sheet in writer.sheets.values():
@@ -145,10 +295,6 @@ def get_excel_data_validation_from_regex(regex, column_letter):
 def apply_dropdown_list(component, dataframe, column_validation, pandas_writer):
     sheet_name = component['component']
     fields = component['fields']
-
-    print('Sheet name: ', sheet_name)
-    
-    print("====================================\n")
 
     sheet = pandas_writer.sheets[sheet_name]
     workbook = pandas_writer.book
@@ -227,5 +373,4 @@ if __name__ == '__main__':
 
     extract_components_to_excel(json_file, output_file, termset)
     extract_components_to_json(json_file, output_file, termset)
-    # extract_components_to_xml(json_file, output_file, termset)
-    #get_dwc_fields()
+    extract_components_to_xml(json_file, output_file, termset)
