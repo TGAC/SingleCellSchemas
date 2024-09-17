@@ -282,11 +282,11 @@ def create_field(line):
 def get_excel_data_validation_from_regex(regex, column_letter):
     # Define a mapping from regex patterns to Excel custom validation formulas
     REGEX_TO_EXCEL_DATA_VALIDATION_MAPPING = {
-        '^[a-zA-Z0-9]+$': f'AND(ISNUMBER(FIND(LOWER({column_letter}2), "abcdefghijklmnopqrstuvwxyz0123456789")), LEN({column_letter}2) > 0)',
-        '^[a-zA-Z]+$': f'AND(ISNUMBER(FIND(LOWER({column_letter}2), "abcdefghijklmnopqrstuvwxyz")), LEN({column_letter}2) > 0)',
-        '^[0-9]{4}-[0-9]{2}-[0-9]{2}$': f'AND(ISNUMBER(FIND(LOWER({column_letter}2), "0123456789-")), LEN({column_letter}2) > 0)',
-        '^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$': f'AND(ISNUMBER(FIND(LOWER({column_letter}2), "0123456789-+.")), LEN({column_letter}2) > 0)',
-        '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$': f'AND(ISNUMBER(FIND("@", {column_letter}2)), ISNUMBER(FIND(".", {column_letter}2, FIND("@", {column_letter}2))), LEN({column_letter}2) - LEN(SUBSTITUTE({column_letter}2, "@", "")) = 1, LEN({column_letter}2) - LEN(SUBSTITUTE({column_letter}2, ".", "")) > 1, LEN({column_letter}2) - LEN(SUBSTITUTE({column_letter}2, ".", "")) <= 3)'
+        '^[a-zA-Z0-9]+$': f'AND(LEN({column_letter}2)>0, {column_letter}2=TEXTJOIN("", TRUE, IF(ISNUMBER(FIND(MID({column_letter}2, ROW(INDIRECT("1:"&LEN({column_letter}2))), 1), "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")), MID({column_letter}2, ROW(INDIRECT("1:"&LEN({column_letter}2))), 1), "")))',
+        '^[a-zA-Z]+$': f'AND(LEN({column_letter}2)>0, EXACT({column_letter}2, LOWER({column_letter}2)), {column_letter}2=SUBSTITUTE({column_letter}2, " ", ""))',
+        '^[0-9]{4}-[0-9]{2}-[0-9]{2}$': f'AND(LEN({column_letter}2)>0, {column_letter}2=SUBSTITUTE(SUBSTITUTE({column_letter}2, "-", ""), " ", ""), ISNUMBER(SUBSTITUTE({column_letter}2, "-", "") + 0))',
+        '^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$': f'AND(LEN({column_letter}2)>0, {column_letter}2=SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE({column_letter}2, "-", ""), "+", ""), ".", ""), " ", ""), ISNUMBER(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE({column_letter}2, "-", ""), "+", ""), ".", "") + 0))',
+        '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$': f'AND(ISNUMBER(FIND("@", {column_letter}2)), FIND(".", {column_letter}2, FIND("@", {column_letter}2)) > FIND("@", {column_letter}2))'
     }
 
     # Return the corresponding Excel formula or None if regex is not in the mapping
