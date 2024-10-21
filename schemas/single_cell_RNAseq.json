@@ -137,6 +137,8 @@
         {
           "sample_id": {
             "value": "",
+            "example_text": "sample_1",
+            "description_text": "The unique identifier for the sample.",
             "reference": "http://purl.obolibrary.org/obo/NCIT_C16576",
             "required": true,
             "error": "sample_id is required",

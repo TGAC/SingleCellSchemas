@@ -25,7 +25,7 @@ def extract_components_to_excel(json_data, output_file, termset):
     dwc = get_dwc_fields(termset=termset)
     sample = next(d for d in data_dict["components"] if d["component"] == "sample")
     sample["fields"].extend(dwc)
-    output_core = output_file.replace(".json", "_core.json").replace("schemas/", "dist/")
+    output_core = output_file.replace(".xlsx", "_core.json").replace("schemas/", "dist/")
     output_core_xlsx = output_file.replace(".json", "_core.xlsx").replace("schemas/", "dist/")
     with open(output_core, "w") as joint_json:
         joint_json.write(json.dumps(data_dict))
