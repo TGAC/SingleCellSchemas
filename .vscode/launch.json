@@ -2,15 +2,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Extract Components to sc_rnaseq Excel",
+            "name": "Python: Extract All Core Components in All Standards",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/utils/convert.py",
+            "program": "${workspaceFolder}/convert.py",
             "console": "integratedTerminal",
             "args": [
-                "${workspaceFolder}/schemas/sc_rnaseq.json",  // Path to your JSON file
-                "${workspaceFolder}/schemas/sc_rnaseq.xlsx", // Path to your output file
-                "extended" // Termset argument (either 'core' or 'extended')
+                "core", // Termset argument (either 'core' or 'extended')
             ],
             "python": "${workspaceFolder}/venv/bin/python",
             "env": {
@@ -22,15 +20,15 @@
             ]
         },
         {
-            "name": "Python: Extract Components to spat_fish Excel",
+            "name": "Python: Extract sc_rnaseq Core Components",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/utils/convert.py",
+            "program": "${workspaceFolder}/convert.py",
             "console": "integratedTerminal",
             "args": [
-                "${workspaceFolder}/schemas/spat_fish.json",  // Path to your JSON file
-                "${workspaceFolder}/schemas/spat_fish.xlsx", // Path to your output file
-                "extended" // Termset argument (either 'core' or 'extended')
+                "${workspaceFolder}/schemas/sc_rnaseq.json",  // Path to the input JSON schema file
+                "core", // Termset argument (either 'core' or 'extended')
+                "schemaorg" // Standard argument (either 'schemaorg', 'dwc', or 'mixs')
             ],
             "python": "${workspaceFolder}/venv/bin/python",
             "env": {
@@ -41,16 +39,16 @@
                 "-Xfrozen_modules=off"  // Disable frozen modules to ensure breakpoints are hit
             ]
         },
-                {
-            "name": "Python: Extract Components to spat_seq Excel",
+        {
+            "name": "Python: Extract spat_fish Core Components",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/utils/convert.py",
+            "program": "${workspaceFolder}/convert.py",
             "console": "integratedTerminal",
             "args": [
-                "${workspaceFolder}/schemas/spat_seq.json",  // Path to your JSON file
-                "${workspaceFolder}/schemas/spat_seq.xlsx", // Path to your output file
-                "extended" // Termset argument (either 'core' or 'extended')
+                "${workspaceFolder}/schemas/spat_fish.json",  // Path to the input JSON schema file
+                "core", // Termset argument (either 'core' or 'extended')
+                "schemaorg" // Standard argument (either 'schemaorg', 'dwc', or 'mixs')
             ],
             "python": "${workspaceFolder}/venv/bin/python",
             "env": {
@@ -60,6 +58,43 @@
             "pythonArgs": [
                 "-Xfrozen_modules=off"  // Disable frozen modules to ensure breakpoints are hit
             ]
-        }
+        },
+        {
+            "name": "Python: Extract spat_seq Core Components",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/convert.py",
+            "console": "integratedTerminal",
+            "args": [
+                "${workspaceFolder}/schemas/spat_seq.json",  // Path to the input JSON schema file
+                "core", // Termset argument (either 'core' or 'extended')
+                "schemaorg" // Standard argument (either 'schemaorg', 'dwc', or 'mixs')
+            ],
+            "python": "${workspaceFolder}/venv/bin/python",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "justMyCode": true,  // Skip debugging code from libraries
+            "pythonArgs": [
+                "-Xfrozen_modules=off"  // Disable frozen modules to ensure breakpoints are hit
+            ]
+        },
+         {
+            "name": "Python: Run script",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/utils/script.py",
+            "console": "integratedTerminal",
+            "args": [
+            ],
+            "python": "${workspaceFolder}/venv/bin/python",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "justMyCode": true,  // Skip debugging code from libraries
+            "pythonArgs": [
+                "-Xfrozen_modules=off"  // Disable frozen modules to ensure breakpoints are hit
+            ]
+        },
     ]
 }

@@ -5,109 +5,244 @@
       "fields": [
         {
           "study_id": {
-            "value": "",
-            "reference": "https://schema.org/id",
-            "standard": "SCHEMAORG",
-            "label": "Study ID",
-            "required": true,
+            "description": "A unique alphanumeric reference or identifier for the study",
             "error": "Study ID is required",
+            "example": "A7F9B3X2",
+            "reference": "https://schema.org/id",
+            "regex": "^[a-zA-Z0-9]+$",
+            "required": true,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Study ID",
+                "name": "study_id"
+              }
+            },
             "type": "string",
-            "regex": "^[a-zA-Z0-9]+$"
+            "value": ""
           }
         },
         {
           "contact_first_name": {
-            "value": "",
+            "description": "Given first name",
+            "error": "First name is required",
+            "example": "Jane",
             "reference": "https://schema.org/givenName",
-            "standard": "SCHEMAORG",
-            "label": "First Name",
+            "regex": "^[a-zA-Z]+$",
             "required": true,
-            "error": "First Name is required",
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "First Name",
+                "name": "contact_first_name"
+              }
+            },
             "type": "string",
-            "regex": "^[a-zA-Z]+$"
+            "value": ""
           }
         },
         {
           "contact_last_name": {
-            "value": "",
+            "description": "Given last name",
+            "error": "Last name is required",
+            "example": "Doe",
             "reference": "https://schema.org/familyName",
-            "standard": "SCHEMAORG",
-            "label": "Last Name",
+            "regex": "^[a-zA-Z]+$",
             "required": true,
-            "error": "Last Name is required",
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Last Name",
+                "name": "contact_last_name"
+              }
+            },
             "type": "string",
-            "regex": "^[a-zA-Z]+$"
+            "value": ""
           }
         },
         {
           "contact_email": {
-            "value": "",
+            "description": "Valid email address",
+            "error": "Email address is required",
+            "example": "janedoe@example.com",
             "reference": "https://schema.org/email",
-            "standard": "SCHEMAORG",
-            "label": "Email",
+            "regex": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
             "required": true,
-            "error": "Email is required",
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Email",
+                "name": "contact_email"
+              }
+            },
             "type": "string",
-            "regex": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
+            "value": ""
           }
         },
         {
           "institutionCode": {
-            "value": "",
+            "description": "The code or abbreviation representing the lead institution responsible for the study.",
+            "error": "Name or acronym of institution is required",
+            "example": "Example Institute",
             "reference": "http://rs.tdwg.org/dwc/terms/institutionCode",
-            "standard": "DC",
-            "label": "Institution",
             "required": true,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Institution",
+                "name": "institutionCode"
+              }
+            },
             "type": "string",
-            "error": "name or acronym of institution is required"
+            "value": ""
           }
         },
         {
           "title": {
-            "value": "",
+            "description": "An official title for the study or project. Project title should be fewer than 30 words, such as a title of a grant proposal or a publication.",
+            "error": "Title is required",
+            "example": "Study of Spatial Transcriptomics Sequencing",
             "reference": "http://purl.org/dc/terms/title",
-            "standard": "DCTERMS",
-            "label": "Title",
             "required": true,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Title",
+                "name": "title"
+              }
+            },
             "type": "string",
-            "error": "title is required"
+            "value": ""
           }
         },
         {
           "description": {
-            "value": "",
+            "description": "A detailed description of the project which includes research goals and experimental approach. Project description should be fewer than 300 words, such as an abstract from a grant application or publication",
+            "error": "Description is required",
+            "example": "This project explores the intricate details of spatial transcriptomics sequencing.",
             "reference": "http://purl.org/dc/terms/description",
-            "standard": "DCTERMS",
-            "label": "Description",
             "required": true,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Description",
+                "name": "description"
+              }
+            },
             "type": "string",
-            "error": "description is required"
+            "value": ""
           }
         },
         {
           "bibliographicCitation": {
-            "value": "",
+            "description": "A citation for the study resource, following a standard format",
+            "error": "Bibliographic citation is required",
+            "example": "Doe J., et al. (2024). Spatial Transcriptomic Analysis. Journal of Biology.",
             "reference": "http://purl.org/dc/terms/bibliographicCitation",
-            "required": false,
+            "required": true,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Bibliographic Citation",
+                "name": "bibliographicCitation"
+              }
+            },
             "type": "string",
-            "error": ""
+            "value": ""
           }
         },
         {
           "created": {
-            "value": "",
+            "description": "The date when the study was created or registered.",
+            "error": "Date study was created is required",
+            "example": "2024-10-14",
             "reference": "http://purl.org/dc/terms/created",
-            "required": false,
+            "required": true,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Created",
+                "name": "created"
+              }
+            },
             "type": "string",
-            "error": ""
+            "value": ""
           }
         },
         {
           "workflow": {
-            "value": "",
-            "required": false,
-            "error": "",
-            "type": "string",
             "allowed_values": [
               "microfluidics, facs, sequencing",
               "microfluidics, facs, culturing",
@@ -117,7 +252,28 @@
               "lasermicrodissection, culturing",
               "lasermicrodissection, culturing, sequencing",
               "laser_microdissection, sequencing"
-            ]
+            ],
+            "description": "The workflow or protocol followed during the study.",
+            "error": "Workflow is required",
+            "example": "spatial_transcriptomics",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Workflow",
+                "name": "workflow"
+              }
+            },
+            "type": "string",
+            "value": ""
           }
         }
       ]
@@ -127,197 +283,378 @@
       "fields": [
         {
           "sample_id": {
-            "value": "",
+            "description": "A unique alphanumeric reference or identifier assigned to the sample in the study.",
+            "error": "Sample ID is required",
+            "example": "sample123",
             "reference": "http://purl.obolibrary.org/obo/NCIT_C16576",
             "required": true,
-            "error": "sample_id is required",
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Sample ID",
+                "name": "sample_id"
+              }
+            },
             "type": "string"
           }
         },
         {
           "study_reference": {
-            "value": "",
+            "description": "A reference to the study, usually a unique identifier or citation.",
+            "error": "Study reference is required",
+            "example": "study123",
             "reference": "http://purl.obolibrary.org/obo/NCIT_C16576",
             "required": true,
-            "error": "study_reference is required",
-            "type": "string"
-          }
-        },
-        {
-          "taxon_id": {
-            "value": "",
-            "reference": "http://purl.obolibrary.org/obo/NCIT_C179773",
-            "required": true,
-            "error": "taxon_id is required",
-            "type": "number"
-          }
-        },
-        {
-          "scientific_name": {
-            "value": "",
-            "reference": "http://purl.obolibrary.org/obo/NOMEN_0000036",
-            "required": true,
-            "error": "scientific_name is required",
-            "type": "string"
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Study Reference",
+                "name": "study_reference"
+              }
+            },
+            "type": "string",
+            "value": ""
           }
         },
         {
           "strain": {
-            "value": "",
+            "description": "The strain of the organism, if applicable.",
+            "error": "Strain is required",
+            "example": "NA",
             "reference": "http://www.ebi.ac.uk/efo/EFO_0005135",
             "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Strain",
+                "name": "strain"
+              }
+            },
             "type": "string",
-            "error": ""
+            "value": ""
           }
         },
         {
           "tissue": {
-            "value": "",
+            "allowed_values": [
+              "Blade",
+              "Bract",
+              "Bud",
+              "Cap",
+              "Flower",
+              "Gill fungi",
+              "Holdfast fungi",
+              "Leaf",
+              "Mycelium",
+              "Mycorrhiza",
+              "Petiole",
+              "Root",
+              "Seed",
+              "Seedling",
+              "Shoot",
+              "Spore",
+              "Spore bearing structure",
+              "Stem",
+              "Stipe",
+              "Thallus fungi",
+              "Thallus plant",
+              "Whole plant",
+              "Other",
+              "Other fungal tissue",
+              "Other plant tissue",
+              "Not applicable",
+              "Not collected",
+              "Not provided"
+            ],
+            "description": "The type of tissue sampled for the study.",
+            "error": "Tissue is required",
+            "example": "Leaf",
             "reference": "https://schema.org/tissueSample",
             "required": false,
-            "error": "",
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Tissue",
+                "name": "tissue"
+              }
+            },
             "type": "string",
-            "allowed_values": [
-              "WHOLE_PLANT",
-              "SEEDLING",
-              "SEED",
-              "LEAF",
-              "FLOWER",
-              "BLADE",
-              "STEM",
-              "PETIOLE",
-              "SHOOT",
-              "BUD",
-              "THALLUS_PLANT",
-              "ROOT",
-              "BRACT",
-              "OTHER_PLANT_TISSUE",
-              "MYCELIUM",
-              "MYCORRHIZA",
-              "SPORE_BEARING_STRUCTURE",
-              "HOLDFAST_FUNGI",
-              "STIPE",
-              "CAP",
-              "GILL_FUNGI",
-              "THALLUS_FUNGI",
-              "SPORE",
-              "OTHER_FUNGAL_TISSUE",
-              "NOT_COLLECTED",
-              "NOT_APPLICABLE",
-              "NOT_PROVIDED",
-              "OTHER"
-            ]
+            "value": ""
           }
         },
         {
           "preservation_method": {
-            "value": "",
+            "allowed_values": [
+              "Air dried",
+              "Dry ice",
+              "Ethanol/Dry ice slurry",
+              "Lyophilised",
+              "RNALater",
+              "Snap frozen",
+              "Other",
+              "Not applicable",
+              "Not collected",
+              "Not provided"
+            ],
+            "description": "A brief description of how the sample was preserved.",
+            "error": "Preservation method is required",
+            "example": "Fresh",
             "reference": "http://purl.obolibrary.org/obo/NCIT_C19232",
             "required": false,
-            "error": "",
-            "allowed_values": [
-              "FRESH",
-              "FROZEN",
-              "FIXED",
-              "DRIED",
-              "NOT_COLLECTED",
-              "NOT_APPLICABLE",
-              "NOT_PROVIDED",
-              "OTHER"
-            ]
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Preservation Method",
+                "name": "preservation_method"
+              }
+            },
+            "value": ""
           }
         },
         {
           "AgeClass": {
-            "value": "",
-            "reference": "http://digir.net/schema/conceptual/darwin/2003/1.0/version/AgeClass-2003-06-17",
-            "unit": "",
-            "unit_reference": "",
-            "required": false,
-            "error": "",
-            "type": "text",
-            "regex": "",
             "allowed_values": [
-              "ADULT",
-              "JUVENILE",
-              "LARVA",
-              "PUPA",
-              "EGG",
-              "SEED",
-              "SPORE",
-              "NOT_COLLECTED",
-              "NOT_APPLICABLE",
-              "NOT_PROVIDED",
-              "OTHER"
+              "Adult",
+              "Egg",
+              "Juvenile",
+              "Larva",
+              "Pupa",
+              "Seed",
+              "Spore",
+              "Other",
+              "Not applicable",
+              "Not collected",
+              "Not provided"
             ],
             "description": "The age class of the organism at the time of collection.",
-            "label": "Age Class",
-            "standard": "DWC"
+            "error": "Age class is required",
+            "example": "ADULT",
+            "reference": "http://digir.net/schema/conceptual/darwin/2003/1.0/version/AgeClass-2003-06-17",
+            "regex": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Age Class",
+                "name": "AgeClass"
+              }
+            },
+            "type": "text",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
           }
         },
         {
           "collection_date": {
-            "value": "",
+            "description": "The date when the sample was collected.",
+            "error": "Collection date is required",
+            "example": "2024-09-20",
             "reference": "http://purl.obolibrary.org/obo/NCIT_C81286",
+            "regex": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "Event Date",
+                "name": "eventDate"
+              },
+              "mixs": {
+                "label": "Collection Date",
+                "name": "collection_date"
+              },
+              "schemaorg": {
+                "label": "Collection Date",
+                "name": "collection_date"
+              }
+            },
+            "type": "date",
             "unit": "date",
             "unit_reference": "http://schema.org/Date",
-            "required": false,
-            "error": "",
-            "type": "date",
-            "regex": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            "value": ""
           }
         },
         {
           "geographic_location_latitude": {
-            "value": "",
+            "description": "The geographic latitude where the specimen or sample was taken in decimal degrees, between -90 and 90. We advise that locations are specified to a minimum of 3 decimal places and a maximum of 8 decimal places (https: //en.wikipedia.org/wiki/Decimal_degrees).",
+            "error": "Geographic location latitude is required",
+            "example": "52.62",
             "reference": "http://purl.obolibrary.org/obo/GENEPIO_0100309",
-            "unit": "degree",
-            "unit_reference": "http://purl.obolibrary.org/obo/GENEPIO_0001862",
+            "regex": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$",
             "required": true,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Geographic Location Latitude",
+                "name": "geographic_location_latitude"
+              }
+            },
             "type": "number",
-            "error": "geographic_location_latitude is required",
-            "regex": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$"
+            "unit": "DD",
+            "unit_reference": "http://purl.obolibrary.org/obo/GENEPIO_0001862",
+            "value": ""
           }
         },
         {
           "geographic_location_longitude": {
-            "value": "",
+            "description": "The geographic longitude where the specimen or sample was taken in decimal degrees, between -180 and 180. We advise that locations are specified to a minimum of 3 decimal places and maximum of 8 decimal places (https: //en.wikipedia.org/wiki/Decimal_degrees).",
+            "error": "Geographic location longitude is required",
+            "example": "1.297",
             "reference": "http://purl.obolibrary.org/obo/GENEPIO_0100310",
-            "unit": "degree",
-            "unit_reference": "http://purl.obolibrary.org/obo/GENEPIO_0001863",
+            "regex": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$",
             "required": true,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Geographic Location Longitude",
+                "name": "geographic_location_longitude"
+              }
+            },
             "type": "number",
-            "error": "geographic_location_longitude is required",
-            "regex": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$"
+            "unit": "DD",
+            "unit_reference": "http://purl.obolibrary.org/obo/GENEPIO_0001863",
+            "value": ""
           }
         },
         {
           "broad_scale_environmental_context": {
-            "value": "",
+            "description": "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO\u2019s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.",
+            "error": "Broad scale environmental context is required",
+            "example": "Urban",
             "required": false,
-            "error": "",
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Broad Scale Environmental Context",
+                "name": "broad_scale_environmental_context"
+              }
+            },
             "type": "string",
-            "description": "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO’s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS."
+            "value": ""
           }
         },
         {
           "local_scale_environmental_context": {
+            "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).",
+            "error": "Local scale environmental context is required",
+            "example": "Laboratory",
             "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000027",
-            "value": "",
             "required": false,
-            "error": "",
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Local Scale Environmental Context",
+                "name": "local_scale_environmental_context"
+              }
+            },
             "type": "string",
-            "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)."
+            "value": ""
           }
         },
         {
           "environmental_medium": {
-            "value": "",
+            "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).",
+            "error": "Environmental medium is required",
+            "example": "Tissue culture medium",
             "reference": "http://purl.org/dc/terms/medium",
             "required": false,
-            "error": "",
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Environmental Medium",
+                "name": "environmental_medium"
+              }
+            },
             "type": "string",
-            "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)."
+            "value": ""
           }
         }
       ]
@@ -327,281 +664,674 @@
       "fields": [
         {
           "imaging_protocol_id": {
-            "value": "",
+            "description": "A unique identifier for the sample used in the study.",
+            "error": "Sample reference is required",
+            "example": "SAMPLE123",
             "reference": "http://purl.obolibrary.org/obo/NCIT_C16576",
             "required": true,
-            "error": "sample_ref is required",
-            "type": "string"
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Imaging Protocol ID",
+                "name": "imaging_protocol_id"
+              }
+            },
+            "type": "string",
+            "value": ""
           }
         },
         {
           "platform": {
-            "value": "",
+            "description": "The platform used to isolate the cells.",
+            "error": "Platform is required",
+            "example": "Illumina NovaSeq",
             "reference": "http://purl.obolibrary.org/obo/NCIT_C142729",
             "required": true,
-            "error": "platform is required",
-            "description": "The platform used to isolate the cells.",
-            "type": "string"
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Platform",
+                "name": "platform"
+              }
+            },
+            "type": "string",
+            "value": ""
           }
         },
         {
           "instrument": {
-            "value": "",
+            "allowed_values": [],
+            "description": "The instrument used to isolate the cells.",
+            "error": "Instrument is required",
+            "example": "Illumina NovaSeq 6000",
             "reference": "http://schema.org/instrument",
             "required": true,
-            "error": "instrument is required",
-            "description": "The instrument used to isolate the cells.",
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Instrument",
+                "name": "instrument"
+              }
+            },
             "type": "string",
-            "allowed_values": []
+            "value": ""
           }
         },
         {
           "dissociation_method": {
-            "value": "",
             "allowed_values": [
               "enzymatic"
             ],
+            "description": "The method used for dissociating the cells.",
+            "error": "Dissociation method is required",
+            "example": "enzymatic",
             "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Dissociation Method",
+                "name": "dissociation_method"
+              }
+            },
             "type": "string",
-            "error": "",
-            "description": "The method used for dissociating the cells."
+            "value": ""
           }
         },
         {
           "dissociation_time": {
-            "value": "",
+            "description": "The time duration for dissociation in minutes.",
+            "error": "Dissociation time is required",
+            "example": "30",
             "reference": "http://purl.obolibrary.org/obo/XCO_0000153",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Dissociation Time",
+                "name": "dissociation_time"
+              }
+            },
+            "type": "string",
             "unit": "minute",
             "unit_reference": "http://purl.obolibrary.org/obo/UO_0000031",
-            "required": false,
-            "error": "",
-            "type": "string",
-            "description": "The time duration for dissociation in minutes."
+            "value": ""
           }
         },
         {
           "dissociation_temperature": {
-            "value": "",
+            "description": "The temperature at which dissociation is performed in degrees celsius.",
+            "error": "Dissociation temperature is required",
+            "example": "37",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Dissociation Temperature",
+                "name": "dissociation_temperature"
+              }
+            },
+            "type": "number",
             "unit": "degree celsius",
             "unit_reference": "http://purl.obolibrary.org/obo/UO_0000027",
-            "required": false,
-            "error": "",
-            "type": "number",
-            "description": "The temperature at which dissociation is performed in degrees C."
+            "value": ""
           }
         },
         {
           "dissociation_enzyme": {
-            "value": "",
-            "reference": "",
             "allowed_values": [
               "collagenase"
             ],
+            "description": "The enzyme used for dissociation.",
+            "error": "Dissociation enzyme is required",
+            "example": "collagenase",
+            "reference": "",
             "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Dissociation Enzyme",
+                "name": "dissociation_enzyme"
+              }
+            },
             "type": "string",
-            "error": "",
-            "description": "The enzyme used for dissociation."
+            "value": ""
           }
         },
         {
           "dissociation_enzyme_concentration": {
-            "value": "",
+            "description": "The concentration of the dissociation enzyme.",
+            "error": "Dissociation enzyme concentration is required",
+            "example": "0.25",
             "reference": "http://semanticscience.org/resource/SIO_001088",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Dissociation Enzyme Concentration",
+                "name": "dissociation_enzyme_concentration"
+              }
+            },
+            "type": "number",
             "unit": "mg/ml",
             "unit_reference": "http://purl.obolibrary.org/obo/UO_0000274",
-            "required": false,
-            "type": "number",
-            "error": "",
-            "description": "The concentration of the dissociation enzyme."
+            "value": ""
           }
         },
         {
           "material_incubation_temperature": {
-            "value": "",
+            "description": "The temperature at which the material is incubated in degrees C.",
+            "error": "Material incubation temperature is required",
+            "example": "37",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Material Incubation Temperature",
+                "name": "material_incubation_temperature"
+              }
+            },
+            "type": "number",
             "unit": "degree celsius",
             "unit_reference": "http://purl.obolibrary.org/obo/UO_0000027",
-            "required": false,
-            "type": "number",
-            "error": "",
-            "description": "The temperature at which the material is incubated in degrees C."
+            "value": ""
           }
         },
         {
           "material_incubation_time": {
-            "value": "",
+            "description": "The time duration for material incubation in hours.",
+            "error": "Material incubation time is required",
+            "example": "30",
             "reference": "http://purl.obolibrary.org/obo/XCO_0000153",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Material Incubation Time",
+                "name": "material_incubation_time"
+              }
+            },
+            "type": "number",
             "unit": "hour",
             "unit_reference": "http://purl.obolibrary.org/obo/UO_0000032",
-            "required": false,
-            "error": "",
-            "type": "number",
-            "description": "The time duration for material incubation in hours."
+            "value": ""
           }
         },
         {
           "lysis_buffer_solution": {
-            "value": "",
             "allowed_values": [],
+            "description": "The solution used for lysis buffer.",
+            "error": "Lysis buffer solution is required",
+            "example": "RIPA buffe",
             "required": false,
-            "error": "",
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Lysis Buffer Solution",
+                "name": "lysis_buffer_solution"
+              }
+            },
             "type": "string",
-            "description": "The solution used for lysis buffer."
+            "value": ""
           }
         },
         {
           "target_probes": {
-            "value": "",
+            "description": "The type of probes used to detect and quantify specific RNA molecules in their native spatial context within a tissue or cell.",
+            "error": "Target probes is required",
+            "example": "Oligo-dT",
             "reference": "",
             "required": true,
-            "error": "",
-            "description": "",
-            "type": "path_or_url"
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Target Probes",
+                "name": "target_probes"
+              }
+            },
+            "type": "path_or_url",
+            "value": ""
           }
         },
         {
-          "section_thickness_µm": {
-            "value": "",
+          "section_thickness_\u00b5m": {
+            "description": "The thickness of the tissue section in micrometres.",
+            "error": "Section thickness \u039cm is required",
+            "example": "10",
             "reference": "http://purl.obolibrary.org/obo/NCIT_C176286",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Section Thickness \u039cm",
+                "name": "section_thickness_\u00b5m"
+              }
+            },
+            "type": "number",
             "unit": "micrometer",
             "unit_reference": "http://purl.obolibrary.org/obo/UO_0000017",
-            "required": false,
-            "error": "",
-            "type": "number",
-            "description": ""
+            "value": ""
           }
         },
         {
           "section_thickness_method": {
-            "value": "cryosectioning",
+            "description": "The method used to measure tissue section thickness.",
+            "error": "Section thickness method is required",
+            "example": "Microtome",
             "reference": "",
             "required": false,
-            "error": "",
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Section Thickness Method",
+                "name": "section_thickness_method"
+              }
+            },
             "type": "string",
-            "description": ""
+            "value": "cryosectioning"
           }
         },
         {
           "section_thickness_temperature": {
-            "value": "",
+            "description": "The temperature at which the section was made.",
+            "error": "Section thickness temperature is required",
+            "example": "Room temperature",
             "reference": "",
             "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Section Thickness Temperature",
+                "name": "section_thickness_temperature"
+              }
+            },
+            "type": "number",
             "unit": "degree celsius",
             "unit_reference": "http://purl.obolibrary.org/obo/UO_0000027",
-            "error": "",
-            "description": "",
-            "type": "number"
+            "value": ""
           }
         },
         {
           "is_pathological": {
-            "value": "",
+            "description": "A quality inhering in a bearer by virtue of the bearer's being abnormal and having a destructive effect on living tissue.",
+            "error": "Pathological boolean is required",
+            "example": "No",
             "reference": "http://purl.obolibrary.org/obo/PATO_0001869",
             "required": false,
-            "error": "",
-            "type": "boo",
-            "description": "A quality inhering in a bearer by virtue of the bearer's being abnormal and having a destructive effect on living tissue."
-          }
-        },
-        {
-          "section_thickness_method": {
-            "value": "cryosectioning",
-            "reference": "",
-            "required": false,
-            "error": "",
-            "type": "string",
-            "description": ""
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Is Pathological",
+                "name": "is_pathological"
+              }
+            },
+            "type": "boolean",
+            "value": ""
           }
         },
         {
           "digestion_workflow": {
-            "value": "",
+            "description": "A link to a workflow describing the digestion protocol in Protocols.io",
+            "error": "Digestion workflow is required",
+            "example": "Spatial transcriptomics dissociation",
             "reference": "http://purl.obolibrary.org/obo/MSIO_0000144",
             "required": false,
-            "error": "",
-            "description": "A link to a workflow describing the digestion protocol in Protocols.io",
-            "type": "path_or_url"
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Digestion Workflow",
+                "name": "digestion_workflow"
+              }
+            },
+            "type": "path_or_url",
+            "value": ""
           }
         },
         {
           "digestion_time_in_minutes": {
-            "value": "",
+            "description": "The duration of digestion in minutes.",
+            "error": "Digestion time in minutes is required",
+            "example": "45",
+            "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Digestion Time In Minutes",
+                "name": "digestion_time_in_minutes"
+              }
+            },
             "type": "number",
             "unit": "minute",
             "unit_reference": "http://purl.obolibrary.org/obo/UO_0000031",
-            "reference": "",
-            "required": false,
-            "error": "",
-            "description": ""
+            "value": ""
           }
         },
         {
           "digestion_temperature": {
-            "value": "",
+            "description": "The temperature at which digestion was carried out.",
+            "error": "Digestion temperature is required",
+            "example": "37",
             "reference": "",
             "required": false,
-            "error": "",
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Digestion Temperature",
+                "name": "digestion_temperature"
+              }
+            },
             "type": "number",
             "unit": "degree celsius",
             "unit_reference": "http://purl.obolibrary.org/obo/UO_0000027",
-            "description": ""
+            "value": ""
           }
         },
         {
           "photobleaching_duration_in_hours": {
-            "value": "yes",
+            "description": "The duration of photobleaching in hours",
+            "error": "Photobleaching duration in hours is required",
+            "example": "2",
             "reference": "http://purl.obolibrary.org/obo/OMIT_0022867",
             "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Photobleaching Duration in Hours",
+                "name": "photobleaching_duration_in_hours"
+              }
+            },
             "type": "number",
             "unit": "hour",
             "unit_reference": "http://purl.obolibrary.org/obo/UO_0000032",
-            "error": "",
-            "description": ""
+            "value": "yes"
           }
         },
         {
           "instrument_user_guide": {
-            "value": "MERscope-User-Guide.pdf",
+            "description": "The user guide for the instrument used.",
+            "error": "Instrument user guide is required",
+            "example": "User Guide v1.2",
             "reference": "",
             "required": true,
-            "error": "",
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Instrument User Guide",
+                "name": "instrument_user_guide"
+              }
+            },
             "type": "path_or_url",
-            "description": ""
+            "value": "MERscope-User-Guide.pdf"
           }
         },
         {
           "instrument_user_guide_revision": {
-            "value": "1.0",
+            "description": "The revision of the instrument user guide.",
+            "error": "Instrument user guide revision is required",
+            "example": "1.2",
             "reference": "",
             "required": true,
-            "error": "",
-            "description": "",
-            "type": "string"
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Instrument User Guide Revision",
+                "name": "instrument_user_guide_revision"
+              }
+            },
+            "type": "string",
+            "value": "1.0"
           }
         },
         {
           "sample_preparation_guide": {
-            "value": "",
+            "description": "The guide used for sample preparation.",
+            "error": "Sample preparation guide is required",
+            "example": "preparation_guide_v1.0.pdf",
             "reference": "",
             "required": true,
-            "error": "",
-            "description": ""
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Sample Preparation Guide",
+                "name": "sample_preparation_guide"
+              }
+            },
+            "value": ""
           }
         },
         {
           "sample_preparation_guide_revision": {
-            "value": "1.0",
+            "description": "The revision of the sample preparation guide.",
+            "error": "Sample preparation guide revision is required",
+            "example": "1.0",
             "reference": "",
             "required": true,
-            "error": "",
-            "description": ""
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Sample Preparation Guide Revision",
+                "name": "sample_preparation_guide_revision"
+              }
+            },
+            "value": "1.0"
           }
         },
         {
-          "deveations_from_official_protocol": {
+          "deviations_from_official_protocol": {
+            "description": "Any deviations from the official protocol. Separate individual deviations with '|'.",
+            "error": "Deviations from official protocol is required",
+            "example": "None",
             "instruction": "separate individual deviations with '|'",
-            "description": ""
+            "required": true,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Deviations from Official Protocol",
+                "name": "deviations_from_official_protocol"
+              }
+            }
           }
         }
       ]
@@ -610,184 +1340,442 @@
       "component": "library_preparation",
       "fields": [
         {
-          "library_preparation_protocol_id": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The name of the file that contains the library preparation\ninformation. E.g. \"File1_LibraryPrep.json\"."
-          }
-        },
-        {
-          "i5_sequence": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": ""
-          }
-        },
-        {
-          "i7_sequence": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": ""
-          }
-        },
-        {
-          "sequencing_reference": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The name of the file that contains the sequencing\ninformation. E.g. \"File1_Sequencing.json\"."
-          }
-        },
-        {
-          "library_preparation_kit": {
-            "value": "",
-            "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000085",
-            "allowed_values": [],
-            "error": "",
+          "library_preparation_id": {
+            "description": "A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.",
+            "error": "Library preparation reference is required",
+            "example": "libPrep123",
             "required": true,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Library Preparation ID",
+                "name": "library_preparation_id"
+              }
+            },
             "type": "string"
           }
         },
         {
-          "library_preparation_kit_version": {
-            "value": "",
-            "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149",
+          "i5_sequence": {
             "allowed_values": [],
-            "error": "",
-            "required": true
+            "description": "The nucleotide sequence of the i5 index used in multiplexing during sequencing.",
+            "error": "I5 sequence is required",
+            "example": "ATCGTAGC",
+            "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "I5 Sequence",
+                "name": "i5_sequence"
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "i7_sequence": {
+            "allowed_values": [],
+            "description": "The nucleotide sequence of the i7 index used in multiplexing during sequencing.",
+            "error": "I7 sequence is required",
+            "example": "CGTACGTA",
+            "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "I7 Sequence",
+                "name": "i7_sequence"
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "sequencing_reference": {
+            "description": "A unique alphanumeric reference or identifier for the sequencing protocol.",
+            "error": "Sequencing reference is required",
+            "example": "seq123",
+            "reference": "http://purl.obolibrary.org/obo/OBI_0000316",
+            "required": true,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Sequencing Reference",
+                "name": "sequencing_reference"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "library_preparation_kit": {
+            "allowed_values": [],
+            "description": "The kit used for library preparation.",
+            "error": "Library preparation kit is required",
+            "example": "10X Genomics Single Cell 3' v3",
+            "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000085",
+            "required": true,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Library Preparation Kit",
+                "name": "library_preparation_kit"
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "library_preparation_kit_version": {
+            "allowed_values": [],
+            "description": "The version number of the library preparation kit used for sequencing.",
+            "error": "Library preparation kit version is required",
+            "example": "Illumina TruSeq v2",
+            "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149",
+            "required": true,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Library Preparation Kit Version",
+                "name": "library_preparation_kit_version"
+              }
+            },
+            "value": ""
           }
         },
         {
           "amplification_method": {
-            "value": "",
-            "reference": "",
             "allowed_values": [],
-            "error": "",
+            "description": "The method used to amplify the cDNA, e.g. \"PCR\".",
+            "error": "Amplification Method is required",
+            "example": "PCR",
+            "reference": "",
             "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Amplification Method",
+                "name": "amplification_method"
+              }
+            },
             "type": "string",
-            "description": "The method used to amplify the cDNA, e.g. \"PCR\"."
+            "value": ""
           }
         },
         {
           "cDNA_amplification_cycles": {
-            "value": "",
-            "reference": "",
             "allowed_values": [],
-            "error": "",
+            "description": "The number of cycles used during the cDNA amplification process.",
+            "error": "cDNA amplification cycles is required",
+            "example": "12",
+            "reference": "",
             "required": false,
-            "type": "number"
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Cdna Amplification Cycles",
+                "name": "cDNA_amplification_cycles"
+              }
+            },
+            "type": "number",
+            "value": ""
           }
         },
         {
           "average_size_distribution": {
-            "value": "",
+            "allowed_values": [],
+            "description": "The average size of the DNA fragments generated during library preparation.",
+            "error": "Average Size Distribution is required",
+            "example": "200-300",
             "reference": "http://purl.obolibrary.org/obo/GENEPIO_0002138",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Average Size Distribution",
+                "name": "average_size_distribution"
+              }
+            },
+            "type": "number",
             "unit": "base_pair",
             "unit_reference": "http://purl.obolibrary.org/obo/UO_0000244",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "number"
+            "value": ""
           }
         },
         {
           "library_construction_method": {
-            "value": "",
-            "reference": "",
             "allowed_values": [],
-            "error": "",
+            "description": "The library construction method (including version) that\nwas used, e.g. \"Smart-Seq2\", \"Drop-Seq\", \"10X v3\".",
+            "error": "Library Construction Method is required",
+            "example": "Spatial Transcriptomics 3' V2 Library Prep",
+            "reference": "",
             "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Library Construction Method",
+                "name": "library_construction_method"
+              }
+            },
             "type": "string",
-            "description": "The library construction method (including version) that\nwas used, e.g. \"Smart-Seq2\", \"Drop-Seq\", \"10X v3\"."
+            "value": ""
           }
         },
         {
           "input_molecule": {
-            "value": "",
-            "reference": "",
             "allowed_values": [],
-            "error": "",
+            "description": "The specific fraction of biological macromolecule from\nwhich the sequencing library is derived, e.g. \"polyA\nRNA\".",
+            "error": "Input Molecule is required",
+            "example": "RNA",
+            "reference": "",
             "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Input Molecule",
+                "name": "input_molecule"
+              }
+            },
             "type": "string",
-            "description": "The specific fraction of biological macromolecule from\nwhich the sequencing library is derived, e.g. \"polyA\nRNA\"."
+            "value": ""
           }
         },
         {
           "primer": {
-            "value": "",
-            "reference": "",
             "allowed_values": [],
-            "error": "",
+            "description": "The type of primer used for reverse transcription, e.g.\n\"oligo-dT\" or \"random\" primer. This allows users to\nidentify content of the cDNA library input, e.g. enriched\nfor mRNA.",
+            "error": "Primer is required",
+            "example": "Poly(A) oligo(dT)",
+            "reference": "",
             "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Primer",
+                "name": "primer"
+              }
+            },
             "type": "string",
-            "description": "The type of primer used for reverse transcription, e.g.\n\"oligo-dT\" or \"random\" primer. This allows users to\nidentify content of the cDNA library input, e.g. enriched\nfor mRNA."
+            "value": ""
           }
         },
         {
           "end_bias": {
-            "value": "",
+            "allowed_values": [
+              "3",
+              "5"
+            ],
+            "description": "The end bias of the library.",
+            "error": "End bias is required",
+            "example": "3",
             "reference": "",
-            "allowed_values": [],
-            "error": "",
             "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "End Bias",
+                "name": "end_bias"
+              }
+            },
             "type": "string",
-            "description": "The end bias of the library, e.g. \"5'\" or \"3'\"."
+            "value": ""
           }
         },
         {
           "library_strand": {
-            "value": "",
+            "allowed_values": [
+              "unstranded",
+              "sense",
+              "antisense"
+            ],
+            "description": "The strand from which the library was derived",
+            "error": "Library strand is required",
+            "example": "Single-stranded",
             "reference": "",
-            "allowed_values": [],
-            "error": "",
             "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Library Strand",
+                "name": "library_strand"
+              }
+            },
             "type": "string",
-            "description": "The strand from which the library was derived, e.g.\n\"unstranded\", \"sense\", \"antisense\"."
+            "value": ""
           }
         },
         {
           "spike_in": {
-            "value": "",
-            "reference": "",
             "allowed_values": [],
-            "error": "",
+            "description": "Spike-in RNAs are RNA molecules with known sequence that are added to the cell lysis mix. For instance, the External RNA Controls Consortium (ERCC) spike in set is commonly used in scRNA-seq experiments.",
+            "error": "Spike-in is required",
+            "example": "ERCC control RNA",
+            "reference": "",
             "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Spike-in",
+                "name": "spike_in"
+              }
+            },
             "type": "string",
-            "description": "Spike-in RNAs are RNA molecules with known\nsequence that are added to the cell lysis mix. E.g. the\nExternal RNA Controls Consortium (ERCC) spike in set\nis commonly used in scRNA-seq experiments."
+            "value": ""
           }
         },
         {
           "spike_in_dilution_or_concentration": {
-            "value": "",
-            "reference": "",
             "allowed_values": [],
-            "error": "",
+            "description": "The final concentration or dilution (for commercial sets)\nof the spike in mix",
+            "error": "Spike in dilution or concentration is required",
+            "example": "1:1000",
+            "reference": "",
             "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Spike In Dilution Or Concentration",
+                "name": "spike_in_dilution_or_concentration"
+              }
+            },
             "type": "string",
-            "description": "The final concentration or dilution (for commercial sets)\nof the spike in mix, e.g. \"1:40,000\""
+            "value": ""
           }
         }
       ]
@@ -796,301 +1784,543 @@
       "component": "sequencing",
       "fields": [
         {
-          "sequencing_protocol_id": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The name of the file that contains the sequencing\ninformation. E.g. \"File1_Sequencing.json\"."
-          }
-        },
-        {
-          "sequencing_platform_name": {
-            "value": "",
-            "reference": "http://purl.obolibrary.org/obo/NCIT_C172274",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string"
-          }
-        },
-        {
-          "sequencing_instrument_model": {
-            "value": "",
-            "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string"
-          }
-        },
-        {
-          "library_layout": {
-            "value": "",
-            "reference": "http://purl.obolibrary.org/obo/NCIT_C150423",
-            "allowed_values": [
-              "single",
-              "paired"
-            ],
-            "error": "",
+          "sequencing_reference": {
+            "description": "A unique alphanumeric reference or identifier for the sequencing protocol.",
+            "error": "Sequencing reference is required",
+            "example": "seq123",
+            "reference": "http://purl.obolibrary.org/obo/OBI_0000316",
             "required": true,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Sequencing Reference",
+                "name": "sequencing_reference"
+              }
+            },
             "type": "string"
-          }
-        },
-        {
-          "reads_per_sample": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "number"
           }
         },
         {
           "technical_replicate_group_or_library_reference": {
-            "value": "",
+            "allowed_values": [],
+            "description": "A common term for all runs or files belonging to the same cell or library. It is recommended to use a stable sample accession from a biosample archive like BioSample. Alternatively, the library ID can be referenced from which the files were generated.",
+            "error": "Technical replicate group or library reference is required",
+            "example": "lib1",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Technical Replicate Group or Library Reference",
+                "name": "technical_replicate_group_or_library_reference"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "A common term for all runs/files belonging to the same\ncell or library. We suggest to use a stable sample\naccession from a biosample archive like BioSamples\ndatabase6. Alternatively, the library ID can be\nreferenced from which the files were generated."
+            "value": ""
           }
         },
         {
           "sequencing_platform_name": {
-            "value": "",
-            "reference": "http://purl.obolibrary.org/obo/NCIT_C172274",
             "allowed_values": [],
-            "error": "",
+            "description": "The name of the sequencing platform used for the experiment.",
+            "error": "Sequence platform name is required",
+            "example": "Paired-end",
+            "reference": "http://purl.obolibrary.org/obo/NCIT_C172274",
             "required": false,
-            "type": "string"
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Sequencing Platform Name",
+                "name": "sequencing_platform_name"
+              }
+            },
+            "type": "string",
+            "value": ""
           }
         },
         {
           "sequencing_instrument_model": {
-            "value": "",
-            "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149",
             "allowed_values": [],
-            "error": "",
+            "description": "This refers to the specific machine or platform used to carry out the sequencing process. Different models can have varying throughput, read lengths, error rates, and application suitability.",
+            "error": "Sequence instrument model is required",
+            "example": "Illumina NovaSeq 6000",
+            "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149",
             "required": false,
-            "type": "string"
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Sequencing Instrument Model",
+                "name": "sequencing_instrument_model"
+              }
+            },
+            "type": "string",
+            "value": ""
           }
         },
         {
           "library_layout": {
-            "value": "",
-            "reference": "http://purl.obolibrary.org/obo/NCIT_C150423",
             "allowed_values": [
               "single",
               "paired"
             ],
-            "error": "",
+            "description": "The type of library layout used for sequencing.",
+            "error": "Library layout is required",
+            "example": "single",
+            "reference": "http://purl.obolibrary.org/obo/NCIT_C150423",
             "required": true,
-            "type": "string"
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Library Layout",
+                "name": "library_layout"
+              }
+            },
+            "type": "string",
+            "value": ""
           }
         },
         {
           "reads_per_sample": {
-            "value": "",
+            "allowed_values": [],
+            "description": "The number of sequencing reads generated per sample.",
+            "error": "Reads per sample is required",
+            "example": "1000000",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Reads Per Sample",
+                "name": "reads_per_sample"
+              }
+            },
+            "type": "number",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "number"
-          }
-        },
-        {
-          "technical_replicate_group_or_library_reference": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "A common term for all runs/files belonging to the same\ncell or library. We suggest to use a stable sample\naccession from a biosample archive like BioSamples\ndatabase6. Alternatively, the library ID can be\nreferenced from which the files were generated."
+            "value": ""
           }
         },
         {
           "UMI_barcode_read": {
-            "value": "",
+            "allowed_values": [
+              "index1",
+              "index2",
+              "read1",
+              "read2"
+            ],
+            "description": "The type of read that contains the UMI barcode:",
+            "error": "Umi Barcode Read is required",
+            "example": "index2",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Umi Barcode Read",
+                "name": "UMI_barcode_read"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The type of read that contains the UMI barcode:\nindex1/index2/read1/read2."
+            "value": ""
           }
         },
         {
           "UMI_barcode_offset": {
-            "value": "",
+            "allowed_values": [],
+            "description": "The offset in sequence of the UUnique Molecular Identifier (UMI)MI identifying barcode.",
+            "error": "Umi barcode offset is required",
+            "example": "16",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Umi Barcode Offset",
+                "name": "UMI_barcode_offset"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The offset in sequence of the UMI identifying barcode.\nE.g. \"16\""
+            "value": ""
           }
         },
         {
           "UMI_barcode_size": {
-            "value": "",
+            "allowed_values": [],
+            "description": "The size of the Unique Molecular Identifier (UMI) identifying barcode.",
+            "error": "Umi barcode size is required",
+            "example": "10",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Umi Barcode Size",
+                "name": "UMI_barcode_size"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The size of the UMI identifying barcode. E.g. \"10\"."
+            "value": ""
           }
         },
         {
           "cell_barcode_read": {
-            "value": "",
+            "allowed_values": [
+              "index1",
+              "index2",
+              "read1",
+              "read2"
+            ],
+            "description": "The type of read that contains the UMI barcode.",
+            "error": "Cell barcode read is required",
+            "example": "index1",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Cell Barcode Read",
+                "name": "cell_barcode_read"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The type of read that contains the UMI barcode:\nindex1/index2/read1/read2."
+            "value": ""
           }
         },
         {
           "cell_barcode_offset": {
-            "value": "",
+            "allowed_values": [],
+            "description": "The offset in sequence of the cell identifying barcode.\nE.g. \"0\".",
+            "error": "Cell barcode offset is required",
+            "example": "10",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Cell Barcode Offset",
+                "name": "cell_barcode_offset"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The offset in sequence of the cell identifying barcode.\nE.g. \"0\"."
+            "value": ""
           }
         },
         {
           "cell_barcode_size": {
-            "value": "",
+            "allowed_values": [],
+            "description": "The offset in sequence of the cell identifying barcode.\nE.g. \"0\".",
+            "error": "Cell barcode size is required",
+            "example": "0",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Cell Barcode Size",
+                "name": "cell_barcode_size"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The offset in sequence of the cell identifying barcode.\nE.g. \"0\"."
+            "value": ""
           }
         },
         {
           "cDNA_read": {
-            "value": "",
+            "allowed_values": [
+              "index1",
+              "index2",
+              "read1",
+              "read2"
+            ],
+            "description": "The type of read that contains the Complementary DNA (cDNA) read.",
+            "error": "cDNA read is required",
+            "example": "read1",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Cdna Read",
+                "name": "cDNA_read"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The type of read that contains the cDNA read:\nindex1/index2/read1/read2."
+            "value": ""
           }
         },
         {
           "cDNA_read_offset": {
-            "value": "",
+            "allowed_values": [
+              "index1",
+              "index2",
+              "read1",
+              "read2"
+            ],
+            "description": "The type of read that contains the Complementary DNA (cDNA) read.",
+            "error": "cDNA read offset is required",
+            "example": "5",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Cdna Read Offset",
+                "name": "cDNA_read_offset"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The type of read that contains the cDNA read:\nindex1/index2/read1/read2."
-          }
-        },
-        {
-          "cDNA_read_offset": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The type of read that contains the cDNA read:\nindex1/index2/read1/read2."
+            "value": ""
           }
         },
         {
           "cDNA_read_size": {
-            "value": "",
+            "allowed_values": [],
+            "description": "The size of the cDNA read. E.g. \"100\".",
+            "error": "cDNA read size is required",
+            "example": "75",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Cdna Read Size",
+                "name": "cDNA_read_size"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The size of the cDNA read. E.g. \"100\"."
+            "value": ""
           }
         },
         {
           "sample_barcode_read": {
-            "value": "",
+            "allowed_values": [
+              "index1",
+              "index2",
+              "read1",
+              "read2"
+            ],
+            "description": "The type of read that contains the sample barcode.",
+            "error": "Sample barcode read is required",
+            "example": "read2",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Sample Barcode Read",
+                "name": "sample_barcode_read"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The type of read that contains the sample barcode:\nindex1/index2/read1/read2"
+            "value": ""
           }
         },
         {
           "sample_barcode_offset": {
-            "value": "",
+            "allowed_values": [],
+            "description": "The offset in sequence of the sample identifying barcode.",
+            "error": "Sample barcode offset is required",
+            "example": "30",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Sample Barcode Offset",
+                "name": "sample_barcode_offset"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The offset in sequence of the sample identifying\nbarcode. E.g. \"0\"."
+            "value": ""
           }
         },
         {
           "sample_barcode_size": {
-            "value": "",
+            "allowed_values": [],
+            "description": "The size of the read that contains the sample barcode.",
+            "error": "Sample barcode size is required",
+            "example": "8",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Sample Barcode Size",
+                "name": "sample_barcode_size"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The type of read that contains the sample barcode:\nindex1/index2/read1/read2"
+            "value": ""
           }
         }
       ]
@@ -1100,119 +2330,254 @@
       "fields": [
         {
           "imaging_protocol_ref": {
-            "value": "",
+            "allowed_values": [],
+            "description": "The name of the file that contains the imaging protocol information.",
+            "error": "Imaging protocol reference is required",
+            "example": "file1_imaging_protocol.json",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Imaging Protocol Reference",
+                "name": "imaging_protocol_ref"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The name of the file that contains the imaging protocol\ninformation. E.g. \"File1_ImagingProtocol.json\"."
+            "value": ""
           }
         },
         {
-          "library_preparation_protocol_ref": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The name of the file that contains the library preparation\ninformation. E.g. \"File1_LibraryPrep.json\"."
+          "library_preparation_id": {
+            "description": "A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.",
+            "error": "Library preparation reference is required",
+            "example": "libPrep123",
+            "required": true,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Library Preparation ID",
+                "name": "library_preparation_id"
+              }
+            },
+            "type": "string"
           }
         },
         {
-          "sequencing_protocol_ref": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The name of the file that contains the sequencing\ninformation. E.g. \"File1_Sequencing.json\"."
+          "sequencing_reference": {
+            "description": "A unique alphanumeric reference or identifier for the sequencing protocol.",
+            "error": "Sequencing reference is required",
+            "example": "seq123",
+            "reference": "http://purl.obolibrary.org/obo/OBI_0000316",
+            "required": true,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Sequencing Reference",
+                "name": "sequencing_reference"
+              }
+            },
+            "type": "string"
           }
         },
         {
           "read_1_file": {
-            "value": "",
+            "allowed_values": [],
+            "description": "The name of the file that contains read 1.",
+            "error": "Read 1 file name is required",
+            "example": "file1_r1.fastq.gz",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Read 1 File",
+                "name": "read_1_file"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The name of the file that contains read 1. E.g.\n\"File1_R1.fastq.gz\"."
+            "value": ""
           }
         },
         {
           "read_2_file": {
-            "value": "",
+            "allowed_values": [],
+            "description": "The name of the file that contains read 2.",
+            "error": "Read 2 file name is required",
+            "example": "file2_r2.fastq.gz",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Read 2 File",
+                "name": "read_2_file"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The name of the file that contains read 2. E.g.\n\"File1_R2.fastq.gz\"."
+            "value": ""
           }
         },
         {
           "index_1_file": {
-            "value": "",
+            "allowed_values": [],
+            "description": "The name of the file that contains index read 1.",
+            "error": "Index 1 file name is required",
+            "example": "file1_i1.fastq.gz",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Index 1 File",
+                "name": "index_1_file"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The name of the file that contains index read 1. E.g.\n\"File1_I1.fastq.gz\"."
+            "value": ""
           }
         },
         {
           "index_2_file": {
-            "value": "",
+            "allowed_values": [],
+            "description": "The name of the file that contains index read 2.",
+            "error": "Index 2 file name is required",
+            "example": "file2_i2.fastq.gz",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Index 2 File",
+                "name": "index_2_file"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The name of the file that contains index read 1. E.g.\n\"File1_I2.fastq.gz\"."
+            "value": ""
           }
         },
         {
           "checksum": {
-            "value": "",
+            "allowed_values": [],
+            "description": "Result of a hash function calculated on the file content to assert file integrity. Commonly used algorithms are MD5 and SHA-1.",
+            "error": "Checksum is required",
+            "example": "d41d8cd98f00b204e9800998ecf8427e",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Checksum",
+                "name": "checksum"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "Result of a hash function calculated on the file content\nto assert file integrity. Commonly used algorithms are\nMD5 and SHA-1. E.g.\n\"ab21a9c0f2007890fe2fbe48df0519f9\"."
+            "value": ""
           }
         },
         {
           "white_list_barcode_file": {
-            "value": "",
+            "allowed_values": [],
+            "description": "A file containing the known cell barcodes in the dataset.",
+            "error": "White list barcode file is required",
+            "example": "test_file.txt",
             "reference": "",
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "White List Barcode File",
+                "name": "white_list_barcode_file"
+              }
+            },
+            "type": "string",
             "unit": "",
             "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "A file containing the known cell barcodes in the\ndataset."
+            "value": ""
           }
         }
       ]
@@ -1222,41 +2587,83 @@
       "fields": [
         {
           "inferred_cell_type": {
-            "value": "",
+            "description": "Post analysis cell type or identity declaration based on expression profile or known gene function identified by the performer.",
+            "error": "Inferred cell type is required",
+            "example": "type II bipolar neuron",
             "reference": "",
-            "standard": "",
-            "label": "inferred_cell_type",
-            "required": false,
-            "error": "",
-            "type": "string",
             "regex": "",
-            "description": "Post analysis cell type or identity declaration based on\nexpression profile or known gene function identified by\nthe performer, e.g. if a pool of cells are sequenced with\nthe purpose of identifying new cell types or sub-\npopulations. Per cell, in addition to sample of origin\nmetadata, lineage, class, and subclass attributes that\nserve to group cells within the sample or set of\nsamples can be declared. E.g. \"type II bipolar neuron\"."
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Inferred Cell Type",
+                "name": "inferred_cell_type"
+              }
+            },
+            "type": "string",
+            "value": ""
           }
         },
         {
           "post_analysis_cell_well_quality": {
-            "value": "",
+            "description": "Performer defined measure of whether the read output\nfrom the cell was included in the sequencing analysis.\nFor example, cells might be excluded if a threshold\npercentage of reads did not map to the genome or if\npre-sequencing quality measures were not passed.\nE.g. \"pass\" or \"fail\".",
+            "error": "Post analysis cell well quality is required",
+            "example": "High quality",
             "reference": "",
-            "standard": "",
-            "label": "post_analysis_cell_well_quality",
-            "required": false,
-            "error": "",
-            "type": "string",
             "regex": "",
-            "description": "Performer defined measure of whether the read output\nfrom the cell was included in the sequencing analysis.\nFor example, cells might be excluded if a threshold\npercentage of reads did not map to the genome or if\npre-sequencing quality measures were not passed.\nE.g. \"pass\" or \"fail\"."
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Post Analysis Cell Well Quality",
+                "name": "post_analysis_cell_well_quality"
+              }
+            },
+            "type": "string",
+            "value": ""
           }
         },
         {
           "other_derived_cell_attributes": {
-            "value": "",
+            "description": "Any other cell level measurement or annotation as result of the analysis. E.g. cluster, gene count, UMI count, tSNE coordinates.",
+            "error": "Other derived cell attributes are required",
+            "example": "cluster",
             "reference": "",
-            "standard": "",
-            "label": "other_derived_cell_attributes",
-            "required": false,
-            "error": "",
-            "type": "string",
             "regex": "",
-            "description": "Any other cell level measurement or annotation as\nresult of the analysis. E.g. cluster, gene count, UMI\ncount, tSNE coordinates."
+            "required": false,
+            "show_in_output": true,
+            "standards": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Other Derived Cell Attributes",
+                "name": "other_derived_cell_attributes"
+              }
+            },
+            "type": "string",
+            "value": ""
           }
         }
       ]
