@@ -90,7 +90,8 @@
             "reference": "http://purl.org/dc/terms/bibliographicCitation",
             "required": false,
             "type": "string",
-            "error": ""
+            "error": "",
+            "label:": "Bibliographic Citation"
           }
         },
         {
@@ -99,25 +100,18 @@
             "reference": "http://purl.org/dc/terms/created",
             "required": false,
             "type": "string",
-            "error": ""
+            "error": "",
+            "label": "Created"
           }
         },
         {
-          "workflow": {
+          "single_cell_library_construction_technology": {
             "value": "",
+            "reference": "http://purl.org/dc/terms/created",
             "required": false,
-            "error": "",
             "type": "string",
-            "allowed_values": [
-              "microfluidics, facs, sequencing",
-              "microfluidics, facs, culturing",
-              "microfluidics, facs, culturing, sequencing",
-              "spatial_transcriptomics",
-              "laser_microdissection",
-              "lasermicrodissection, culturing",
-              "lasermicrodissection, culturing, sequencing",
-              "laser_microdissection, sequencing"
-            ]
+            "error": "",
+            "label": "Single Cell Library Construction Technology"
           }
         }
       ]
@@ -251,7 +245,7 @@
               "OTHER"
             ],
             "description": "The age class of the organism at the time of collection.",
-            "label": "Age Class",
+            "label": "Lifestage",
             "standard": "DWC"
           }
         },
@@ -335,7 +329,16 @@
           }
         },
         {
-          "dissociation_protocol_method": {
+          "dissociation_protocol_name": {
+            "value": "",
+            "reference": "http://purl.obolibrary.org/obo/OBI_0000316",
+            "required": false,
+            "error": "",
+            "type": "string"
+          }
+        },
+        {
+          "dissociation_description": {
             "value": "",
             "reference": "http://purl.obolibrary.org/obo/OBI_0000316",
             "required": false,
@@ -345,21 +348,11 @@
         },
         {
           "enrichment_markers": {
-            "value": "microflidics",
-            "reference": "",
-            "required": false,
-            "error": "",
-            "description": "Description of the specificity markers used to isolate cell populations e.g. 'CD45+'",
-            "type": "string"
-          }
-        },
-        {
-          "single_cell_quality_metric": {
             "value": "",
             "reference": "",
             "required": false,
             "error": "",
-            "description": "",
+            "description": "Description of the specificity markers used to isolate cell populations e.g. 'CD45+'",
             "type": "string"
           }
         },
@@ -373,8 +366,39 @@
             "type": "string",
             "allowed_values": [
               "10x Nuclei Isolation Kit",
-              "3' standard throughput kit"
+              "3' standard throughput kit",
+              "custom"
             ]
+          }
+        },
+        {
+          "literature_source_reference": {
+            "value": "",
+            "reference": "",
+            "required": false,
+            "error": "",
+            "description": "",
+            "type": "string"
+          }
+        },
+        {
+          "protocols_io_reference": {
+            "value": "",
+            "reference": "",
+            "required": false,
+            "error": "",
+            "description": "",
+            "type": "string"
+          }
+        },
+        {
+          "workflowhub_sop_reference": {
+            "value": "",
+            "reference": "",
+            "required": false,
+            "error": "",
+            "description": "",
+            "type": "string"
           }
         }
       ]
@@ -388,7 +412,8 @@
             "reference": "http://purl.obolibrary.org/obo/NCIT_C16576",
             "required": true,
             "error": "sample_ref is required",
-            "type": "string"
+            "type": "string",
+            "label": "Sample Reference"
           }
         },
         {
@@ -397,7 +422,18 @@
             "reference": "http://purl.obolibrary.org/obo/OBI_0000316",
             "required": true,
             "error": "protocol_id is required",
-            "type": "string"
+            "type": "string",
+            "label": "Dissociation Reference"
+          }
+        },
+        {
+          "cell_suspension_id": {
+            "value": "",
+            "reference": "",
+            "required": true,
+            "error": "",
+            "type": "string",
+            "label": "Cell Suspension ID"
           }
         },
         {
@@ -412,8 +448,47 @@
             ],
             "unit_reference": "http://purl.obolibrary.org/obo/UO_0000101",
             "error": "",
+            "required": true
+          }
+        },
+        {
+          "cell_count": {
+            "value": "",
+            "reference": "",
             "required": false,
-            "type": "number"
+            "error": "",
+            "type": "number",
+            "label": "Cell Count"
+          }
+        },
+        {
+          "cell_viability": {
+            "value": "",
+            "reference": "",
+            "required": false,
+            "error": "",
+            "type": "string",
+            "label": "Cell Viability"
+          }
+        },
+        {
+          "cell_viability_assessment_method": {
+            "value": "",
+            "reference": "",
+            "required": false,
+            "error": "",
+            "type": "string",
+            "label": "Cell Viability Assessment Method"
+          }
+        },
+        {
+          "cell_size": {
+            "value": "",
+            "reference": "",
+            "required": false,
+            "error": "",
+            "type": "string",
+            "label": "Cell Size"
           }
         },
         {
@@ -450,76 +525,14 @@
           }
         },
         {
-          "suspension_dilution_method": {
-            "value": "dilution",
-            "reference": "http://www.bioassayontology.org/bao#BAO_0002418",
-            "unit_reference": "",
-            "error": "",
-            "required": false,
-            "type": "string"
-          }
-        },
-        {
-          "suspension_dilution_buffer": {
-            "value": "",
+          "loading_volume_ul": {
+            "value": "10",
             "reference": "",
-            "unit_reference": "",
-            "error": "",
-            "required": false,
-            "type": "string"
-          }
-        },
-        {
-          "suspension_dilution_buffer_concentration": {
-            "value": "1",
-            "reference": "",
-            "unit": "mg/ml",
-            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000176",
+            "unit:": "cells/ul",
+            "unit_reference": "http://snomed.info/id/258878000",
             "error": "",
             "required": false,
             "type": "number"
-          }
-        },
-        {
-          "suspension_dilution_buffer_concentration_unit": {
-            "value": "mg/ml",
-            "reference": "",
-            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000176",
-            "error": "",
-            "required": false
-          }
-        },
-        {
-          "cell_number": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "error": "",
-            "required": false,
-            "type": "string"
-          }
-        },
-        {
-          "single_cell_identifier": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "error": "",
-            "required": false,
-            "type": "string"
-          }
-        },
-        {
-          "cell_size": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "error": "",
-            "required": false,
-            "type": "string"
           }
         }
       ]
@@ -528,7 +541,18 @@
       "component": "library_preparation",
       "fields": [
         {
-          "library_preparation_protocol_id": {
+          "library_preparation_id": {
+            "value": "",
+            "reference": "http://purl.obolibrary.org/obo/OBI_0000316",
+            "required": true,
+            "error": "protocol_id is required",
+            "type": "string",
+            "label": "Library Preparation ID"
+          }
+        },
+        {
+          "cell_suspension_reference": {
+            "label": "Cell Suspension Reference",
             "value": "",
             "reference": "http://purl.obolibrary.org/obo/OBI_0000316",
             "required": true,
@@ -543,7 +567,8 @@
             "allowed_values": [],
             "error": "",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "label": "Library Preparation Kit"
           }
         },
         {
@@ -556,84 +581,14 @@
           }
         },
         {
-          "i5_sequence": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": ""
-          }
-        },
-        {
-          "i7_sequence": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": ""
-          }
-        },
-        {
-          "cDNA_amplification_cycles": {
-            "value": "",
-            "reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "number"
-          }
-        },
-        {
-          "average_size_distribution": {
-            "value": "",
-            "reference": "http://purl.obolibrary.org/obo/GENEPIO_0002138",
-            "unit": "base_pair",
-            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000244",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "number"
-          }
-        },
-        {
-          "library_construction_method": {
-            "value": "",
-            "reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The library construction method (including version) that\nwas used, e.g. \"Smart-Seq2\", \"Drop-Seq\", \"10X v3\"."
-          }
-        },
-        {
-          "input_molecule": {
-            "value": "",
-            "reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The specific fraction of biological macromolecule from\nwhich the sequencing library is derived, e.g. \"polyA\nRNA\"."
-          }
-        },
-        {
           "amplification_method": {
             "value": "",
             "reference": "",
             "allowed_values": [],
             "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The method used to amplify the cDNA, e.g. \"PCR\"."
+            "required": true,
+            "type": "number",
+            "example": "PCR"
           }
         },
         {
@@ -643,7 +598,30 @@
             "allowed_values": [],
             "error": "",
             "required": false,
-            "type": "number"
+            "type": "number",
+            "label": "cDNA Amplification Cycles"
+          }
+        },
+        {
+          "library_construction_method": {
+            "value": "",
+            "reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": true,
+            "type": "string",
+            "description": "The library construction method (including version) that\nwas used, e.g. \"Smart-Seq2\", \"Drop-Seq\", \"10X v3\"."
+          }
+        },
+        {
+          "input_molecule": {
+            "value": "",
+            "reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": true,
+            "type": "string",
+            "description": ""
           }
         },
         {
@@ -656,28 +634,6 @@
             "error": "",
             "required": false,
             "type": "number"
-          }
-        },
-        {
-          "library_construction_method": {
-            "value": "",
-            "reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The library construction method (including version) that\nwas used, e.g. \"Smart-Seq2\", \"Drop-Seq\", \"10X v3\"."
-          }
-        },
-        {
-          "input_molecule": {
-            "value": "",
-            "reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The specific fraction of biological macromolecule from\nwhich the sequencing library is derived, e.g. \"polyA\nRNA\"."
           }
         },
         {
@@ -686,18 +642,19 @@
             "reference": "",
             "allowed_values": [],
             "error": "",
-            "required": false,
+            "required": true,
             "type": "string",
             "description": "The type of primer used for reverse transcription, e.g.\n\"oligo-dT\" or \"random\" primer. This allows users to\nidentify content of the cDNA library input, e.g. enriched\nfor mRNA."
           }
         },
         {
           "end_bias": {
+            "alt": "primeness",
             "value": "",
             "reference": "",
             "allowed_values": [],
             "error": "",
-            "required": false,
+            "required": true,
             "type": "string",
             "description": "The end bias of the library, e.g. \"5'\" or \"3'\"."
           }
@@ -717,9 +674,23 @@
           "spike_in": {
             "value": "",
             "reference": "",
+            "allowed_values": [
+              "yes",
+              "no"
+            ],
+            "error": "",
+            "required": true,
+            "type": "string",
+            "description": "Spike-in RNAs are RNA molecules with known\nsequence that are added to the cell lysis mix. E.g. the\nExternal RNA Controls Consortium (ERCC) spike in set\nis commonly used in scRNA-seq experiments."
+          }
+        },
+        {
+          "spike_type": {
+            "value": "",
+            "reference": "",
             "allowed_values": [],
             "error": "",
-            "required": false,
+            "required": true,
             "type": "string",
             "description": "Spike-in RNAs are RNA molecules with known\nsequence that are added to the cell lysis mix. E.g. the\nExternal RNA Controls Consortium (ERCC) spike in set\nis commonly used in scRNA-seq experiments."
           }
@@ -733,6 +704,114 @@
             "required": false,
             "type": "string",
             "description": "The final concentration or dilution (for commercial sets)\nof the spike in mix, e.g. \"1:40,000\""
+          }
+        },
+        {
+          "dual_single_index": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [
+              "dual",
+              "single"
+            ],
+            "error": "",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        },
+        {
+          "i5_index": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        },
+        {
+          "i7_index": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        },
+        {
+          "index_length": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        },
+        {
+          "plate_id": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        },
+        {
+          "well_row": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        },
+        {
+          "well_col": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        },
+        {
+          "cell_marker": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "example": "CD41- or CD41+",
+            "description": "Cell Marker Used for FACS sorting"
           }
         }
       ]
@@ -755,7 +834,7 @@
             "reference": "http://purl.obolibrary.org/obo/NCIT_C172274",
             "allowed_values": [],
             "error": "",
-            "required": false,
+            "required": true,
             "type": "string"
           }
         },
@@ -765,7 +844,7 @@
             "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149",
             "allowed_values": [],
             "error": "",
-            "required": false,
+            "required": true,
             "type": "string"
           }
         },
@@ -783,86 +862,16 @@
           }
         },
         {
-          "reads_per_sample": {
+          "desired_reads_per_cell": {
             "value": "",
             "reference": "",
             "unit": "",
             "unit_reference": "",
             "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "number"
-          }
-        },
-        {
-          "technical_replicate_group_or_library_reference": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "A common term for all runs/files belonging to the same\ncell or library. We suggest to use a stable sample\naccession from a biosample archive like BioSamples\ndatabase6. Alternatively, the library ID can be\nreferenced from which the files were generated."
-          }
-        },
-        {
-          "sequencing_platform_name": {
-            "value": "",
-            "reference": "http://purl.obolibrary.org/obo/NCIT_C172274",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string"
-          }
-        },
-        {
-          "sequencing_instrument_model": {
-            "value": "",
-            "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string"
-          }
-        },
-        {
-          "library_layout": {
-            "value": "",
-            "reference": "http://purl.obolibrary.org/obo/NCIT_C150423",
-            "allowed_values": [
-              "single",
-              "paired"
-            ],
             "error": "",
             "required": true,
-            "type": "string"
-          }
-        },
-        {
-          "reads_per_sample": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "number"
-          }
-        },
-        {
-          "technical_replicate_group_or_library_reference": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "A common term for all runs/files belonging to the same\ncell or library. We suggest to use a stable sample\naccession from a biosample archive like BioSamples\ndatabase6. Alternatively, the library ID can be\nreferenced from which the files were generated."
+            "type": "number",
+            "description": "The ideal number of sequencing reads to be generated per cell."
           }
         },
         {
@@ -906,19 +915,21 @@
         },
         {
           "cell_barcode_read": {
+            "example": "read1",
             "value": "",
             "reference": "",
             "unit": "",
             "unit_reference": "",
             "allowed_values": [],
             "error": "",
-            "required": false,
+            "required": true,
             "type": "string",
-            "description": "The type of read that contains the UMI barcode:\nindex1/index2/read1/read2."
+            "description": "The actual nucleotide sequence obtained from Complementary DNA (cDNA) during sequencing."
           }
         },
         {
           "cell_barcode_offset": {
+            "example": 0,
             "value": "",
             "reference": "",
             "unit": "",
@@ -926,8 +937,8 @@
             "allowed_values": [],
             "error": "",
             "required": false,
-            "type": "string",
-            "description": "The offset in sequence of the cell identifying barcode.\nE.g. \"0\"."
+            "type": "number",
+            "description": "The starting position of the Complementary DNA (cDNA) read within the entire sequence, indicating where the read begins after any barcodes or technical sequences."
           }
         },
         {
@@ -940,37 +951,27 @@
             "error": "",
             "required": false,
             "type": "string",
-            "description": "The offset in sequence of the cell identifying barcode.\nE.g. \"0\"."
+            "example": "150",
+            "description": "The size of the Complementary DNA (cDNA) read."
           }
         },
         {
-          "cDNA_read": {
+          "cDNA_Read": {
+            "example": "read1",
             "value": "",
             "reference": "",
             "unit": "",
             "unit_reference": "",
             "allowed_values": [],
             "error": "",
-            "required": false,
+            "required": true,
             "type": "string",
-            "description": "The type of read that contains the cDNA read:\nindex1/index2/read1/read2."
-          }
-        },
-        {
-          "cDNA_read_offset": {
-            "value": "",
-            "reference": "",
-            "unit": "",
-            "unit_reference": "",
-            "allowed_values": [],
-            "error": "",
-            "required": false,
-            "type": "string",
-            "description": "The type of read that contains the cDNA read:\nindex1/index2/read1/read2."
+            "description": "The actual nucleotide sequence obtained from Complementary DNA (cDNA) during sequencing."
           }
         },
         {
           "cDNA_read_offset": {
+            "example": 0,
             "value": "",
             "reference": "",
             "unit": "",
@@ -978,8 +979,8 @@
             "allowed_values": [],
             "error": "",
             "required": false,
-            "type": "string",
-            "description": "The type of read that contains the cDNA read:\nindex1/index2/read1/read2."
+            "type": "number",
+            "description": "The starting position of the Complementary DNA (cDNA) read within the entire sequence, indicating where the read begins after any barcodes or technical sequences."
           }
         },
         {
@@ -992,7 +993,8 @@
             "error": "",
             "required": false,
             "type": "string",
-            "description": "The size of the cDNA read. E.g. \"100\"."
+            "example": "150",
+            "description": "The size of the Complementary DNA (cDNA) read."
           }
         },
         {
@@ -1118,7 +1120,20 @@
           }
         },
         {
-          "checksum": {
+          "read_checksum": {
+            "value": "",
+            "reference": "",
+            "unit": "",
+            "unit_reference": "",
+            "allowed_values": [],
+            "error": "",
+            "required": false,
+            "type": "string",
+            "description": "Result of a hash function calculated on the file content\nto assert file integrity. Commonly used algorithms are\nMD5 and SHA-1. E.g.\n\"ab21a9c0f2007890fe2fbe48df0519f9\"."
+          }
+        },
+        {
+          "index_checksum": {
             "value": "",
             "reference": "",
             "unit": "",
