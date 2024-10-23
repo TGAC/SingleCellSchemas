@@ -11,7 +11,7 @@ class TestConvert(unittest.TestCase):
 
     def setUp(self) -> None:
         # Define the input JSON and output Excel file paths for testing
-        self.input_json = ["schemas/sc_rnaseq.json", "schemas/spat_fish.json",
+        self.input_json = ["schemas/sc_rnaseq_dwc.json", "schemas/spat_fish.json",
                            "schemas/spat_seq.json"]
         self.output_excel = ""
 
