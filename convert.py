@@ -58,8 +58,8 @@ def extract_components_to_excel(data_dict, output_file_path, termset, standard):
             column_length = len(column_names)
             df = pd.DataFrame(columns=column_names)
 
-            required_columns = helpers.get_required_columns(component, standard) #[helpers.get_heading(key, standard) for key in component['fields'] if key[list(key.keys())[0]].get('required', False) and key[list(key.keys())[0]].get('show_in_output', False)]
-            col_desc_eg = helpers.get_col_desc_eg(component, standard) #{helpers.get_heading(key, standard): {'description': key[list(key.keys())[0]].get('description', ''), 'example': key[list(key.keys())[0]].get('example', '')} for key in component['fields'] if key[list(key.keys())[0]].get('show_in_output', False)}
+            required_columns = helpers.get_required_columns(component, standard)
+            col_desc_eg = helpers.get_col_desc_eg(component, standard)
 
             # Remove NaNs columns (if any rows are present)
             if not df.empty:
@@ -92,8 +92,8 @@ def extract_components_to_excel(data_dict, output_file_path, termset, standard):
         # Apply autofit to all sheets
         helpers.autofit_all_sheets(writer)
 
-    # Save to output file
-    output_file_path = output_file_path.replace('schemas/', f'dist/checklists/xlsx/{standard}/')
+    # Save to output filex
+    output_file_path = output_file_path.replace('schemas/', f'dist/checklists/{termset}/xlsx/{standard}/')
     directory_path = os.path.dirname(output_file_path) # Get the directory path
     os.makedirs(directory_path, exist_ok=True) # Create output directory if it does not exist
     file_name = output_file_path.split('/')[-1]
@@ -109,20 +109,10 @@ def extract_components_to_excel(data_dict, output_file_path, termset, standard):
     print(f'{file_name} created!')
 
 def extract_components_to_json(data_dict, output_file_path, termset, standard):
-    output_file_path = output_file_path.replace('schemas/', f'dist/checklists/json/{standard}/')
-    directory_path = os.path.dirname(output_file_path) # Get the directory path
-    os.makedirs(directory_path, exist_ok=True) # Create output directory if it does not exist
-    file_name = output_file_path.split('/')[-1]
-    
-    # Check if there's a conflicting directory with the same name as the file
-    if os.path.isdir(output_file_path):
-        print(f"Warning: A directory exists with the name '{output_file_path}'. Overwriting it.")
-        shutil.rmtree(output_file_path)  # Remove the directory and its contents
+    output_file_path = output_file_path.replace('schemas/', f'dist/checklists/{termset}/json/{standard}/')
 
-    with open(output_file_path, 'w') as f:
-        f.write(json.dumps(data_dict))
-
-    print(f'{file_name} created!')
+    # Write JSON data to a file
+    helpers.generate_json_file(data_dict, output_file_path)
 
 def extract_components_to_xml(data_dict, output_file_path, termset, standard):
     '''
@@ -134,7 +124,7 @@ def extract_components_to_xml(data_dict, output_file_path, termset, standard):
     '''
 
     # Create output directory if it does not exist
-    output_file_path = output_file_path.replace('.json', f'_{termset}.xml').replace('.xlsx', f'_{termset}.xml').replace('schemas/', f'dist/checklists/xml/{standard}/')
+    output_file_path = output_file_path.replace('.json', f'_{termset}.xml').replace('.xlsx', f'_{termset}.xml').replace('schemas/', f'dist/checklists/{termset}/xml/{standard}/')
     directory_path = os.path.dirname(output_file_path) # Get the directory path
     os.makedirs(directory_path, exist_ok=True) # Create output directory if it does not exist
     file_name = output_file_path.split('/')[-1]
@@ -198,19 +188,19 @@ def extract_components_to_xml(data_dict, output_file_path, termset, standard):
 
         for field_dict in component.get('fields', []):
             for field, value_dict in field_dict.items():
-                label = value_dict.get('standards', {}).get(standard, {}).get('label', str())
+                label = value_dict.get('mapping', {}).get(standard, {}).get('label', str())
                 data_dict = component_validation.get(label, str())
 
                 if data_dict:
-                    standards_dict = data_dict.get('standards', dict())
+                    mapping_dict = data_dict.get('mapping', dict())
 
                     field_element = ET.SubElement(field_group, 'FIELD')
 
                     label_element = ET.SubElement(field_element, 'LABEL')
-                    label_element.text = standards_dict.get(standard, {}).get('label', str())
+                    label_element.text = mapping_dict.get(standard, {}).get('label', str())
 
                     name = ET.SubElement(field_element, 'NAME')
-                    name.text = standards_dict.get(standard, {}).get('name', str())
+                    name.text = mapping_dict.get(standard, {}).get('name', str())
 
                     description = ET.SubElement(field_element, 'DESCRIPTION')
                     description.text = data_dict.get('description', '')
@@ -253,17 +243,21 @@ def extract_components_to_xml(data_dict, output_file_path, termset, standard):
     print(f'{file_name} created!')
 
 def extract_and_convert_schema(json_schema_file_path, termset, standard):
+    # Get fields based on the termset
+    termset_fields = helpers.retrieve_data_by_termset(termset)
+
+    # Update schema data with termset fields
+    helpers.update_schema_with_termset_fields(json_schema_file_path, termset_fields, termset)
+
     # Read JSON schema data
     with open(json_schema_file_path, 'r') as schema_data:
         data_dict = json.loads(schema_data.read())
 
-    # Get Darwin Core (DwC) fields and extend the 'sample' component fields with them
-    dwc_fields = helpers.get_dwc_fields(termset=termset)
-    dwc_fields = helpers.set_field_properties(dwc_fields) # Set field properties to the additional fields
+    # Add the termset fields to the schema for the 'sample' component
     sample = next(d for d in data_dict['components'] if d['component'] == 'sample')
-    # sample['fields'].extend(dwc_fields)  # Extend the 'sample' component fields with DwC fields but duplicates are not removed
+
     # Extend the 'sample' component fields with DwC fields and remove duplicates
-    sample['fields'] = helpers.remove_duplicates(sample['fields'], dwc_fields)
+    sample['fields'] = helpers.remove_duplicates(sample['fields'], termset_fields)
 
     # Extract components to formats
     extract_components_to_excel(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.xlsx'), termset, standard)
@@ -274,15 +268,26 @@ if __name__ == '__main__':
     args = sys.argv
 
     # Check for correct number of arguments
-    if len(args) not in [2, 4]:
+    if len(args) not in [1, 4]:
         print('Usage:')
-        print('  1. python convert.py <termset> : Extract components using a specific termset')
-        print('  2. python convert.py <json_schema_file_path> <termset> : Extract components from a provided JSON schema file with a specific termset')
-        print('  3. python convert.py <json_schema_file_path> <termset> <standard>: Extract components from a provided JSON schema file with a specific termset and standard')
+        print('  1. python convert.py : Extract components using all termsets and standards')
+        print('  2. python convert.py <termset> : Extract components using a specific termset')
+        print('  3. python convert.py <json_schema_file_path> <termset> : Extract components from a provided JSON schema file with a specific termset')
+        print('  4. python convert.py <json_schema_file_path> <termset> <standard>: Extract components from a provided JSON schema file with a specific termset and standard')
         sys.exit(1)
 
-    # If only termset is provided
-    if len(args) == 2:
+    # If no arguments are provided
+    if len(args) == 1:
+        # Get the JSON schema file paths
+        for json_schema_file_path in helpers.SCHEMA_FILE_PATHS:
+            # Extract schema data and converts it into multiple formats for all mapping
+            for termset in helpers.TERMSETS:
+                print(f'\n_________\n\n--Extracting "{json_schema_file_path}" with "{termset}" termset--\n')
+                for standard in helpers.mapping:
+                    print(f'\n*-With "{standard}" standard-*\n')
+                    extract_and_convert_schema(json_schema_file_path, termset, standard)
+    elif len(args) == 2:
+        # If only termset is provided
         termset = args[1]
 
         # Check if the termset provided is valid
@@ -294,9 +299,9 @@ if __name__ == '__main__':
         
         # Get the JSON schema file paths
         for json_schema_file_path in helpers.SCHEMA_FILE_PATHS:
-            # Extract schema data and converts it into multiple formats for all standards
+            # Extract schema data and converts it into multiple formats for all mapping
             print(f'\n_________\n\n--Extracting "{json_schema_file_path}" with "{termset}" termset--\n')
-            for standard in helpers.STANDARDS:
+            for standard in helpers.mapping:
                 print(f'\n*-With "{standard}" standard-*\n')
                 extract_and_convert_schema(json_schema_file_path, termset, standard)
     elif len(args) == 3:
@@ -318,8 +323,8 @@ if __name__ == '__main__':
             error='Invalid termset. Please use "core" or "extended" as termset.'
         )
 
-        # Extract schema data and converts it into multiple formats for all standards
-        for standard in helpers.STANDARDS:
+        # Extract schema data and converts it into multiple formats for all mapping
+        for standard in helpers.mapping:
             extract_and_convert_schema(json_schema_file_path, termset, standard)
     elif len(args) == 4:
         json_schema_file_path = args[1]
@@ -343,7 +348,7 @@ if __name__ == '__main__':
         # Check if the standard provided is valid
         helpers.validate_argument(
             argument=standard,
-            valid_arguments=helpers.STANDARDS,
+            valid_arguments=helpers.mapping,
             error='Invalid standard. Please use "schemaorg", "dwc" or "mixs" as termset'
         )
         

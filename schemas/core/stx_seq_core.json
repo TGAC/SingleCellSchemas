@@ -1,0 +1,5315 @@
+{
+  "components": [
+    {
+      "component": "study",
+      "fields": [
+        {
+          "study_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Study ID",
+              "name": "study_id",
+              "required": true,
+              "reference": "https://schema.org/id"
+            },
+            "description": "A unique alphanumeric reference or identifier for the study",
+            "error": "Input is required",
+            "example": "A7F9B3X2",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Study ID",
+                "name": "study_id",
+                "reference": "https://schema.org/id"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[a-zA-Z0-9]+$",
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "contact_first_name": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "First Name",
+              "name": "contact_first_name",
+              "required": true,
+              "reference": "https://schema.org/givenName"
+            },
+            "description": "Given first name",
+            "error": "Input is required",
+            "example": "Jane",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "First Name",
+                "name": "contact_first_name",
+                "reference": "https://schema.org/givenName"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[a-zA-Z]+$",
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "contact_last_name": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Last Name",
+              "name": "contact_last_name",
+              "required": true,
+              "reference": "https://schema.org/familyName"
+            },
+            "description": "Given last name",
+            "error": "Input is required",
+            "example": "Doe",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Last Name",
+                "name": "contact_last_name",
+                "reference": "https://schema.org/familyName"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[a-zA-Z]+$",
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "contact_email": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Email",
+              "name": "contact_email",
+              "required": true,
+              "reference": "https://schema.org/email"
+            },
+            "description": "Valid email address",
+            "error": "Email address is required",
+            "example": "janedoe@example.com",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Email",
+                "name": "contact_email",
+                "reference": "https://schema.org/email"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "institutionCode": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Institution",
+              "name": "institutionCode",
+              "required": true,
+              "reference": "http://rs.tdwg.org/dwc/terms/institutionCode"
+            },
+            "description": "The code or abbreviation representing the lead institution responsible for the study.",
+            "error": "Name or acronym of institution is required",
+            "example": "Example Institute",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://rs.tdwg.org/dwc/terms/institutionCode"
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Institution",
+                "name": "institutionCode"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "title": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Title",
+              "name": "title",
+              "required": true,
+              "reference": "http://purl.org/dc/terms/title"
+            },
+            "description": "An official title for the study or project. Project title should be fewer than 30 words, such as a title of a grant proposal or a publication.",
+            "error": "Title is required",
+            "example": "Study of Spatial Transcriptomics Sequencing",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.org/dc/terms/title"
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Title",
+                "name": "title"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "description": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Description",
+              "name": "description",
+              "required": true,
+              "reference": "http://purl.org/dc/terms/description"
+            },
+            "description": "A detailed description of the project which includes research goals and experimental approach. Project description should be fewer than 300 words, such as an abstract from a grant application or publication",
+            "error": "Description is required",
+            "example": "This project explores the intricate details of spatial transcriptomics sequencing.",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.org/dc/terms/description"
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Description",
+                "name": "description"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "bibliographicCitation": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Bibliographic Citation",
+              "name": "bibliographicCitation",
+              "required": true,
+              "reference": "http://purl.org/dc/terms/bibliographicCitation"
+            },
+            "description": "A citation for the study resource, following a standard format",
+            "error": "Bibliographic citation is required",
+            "example": "Doe J., et al. (2024). Spatial Transcriptomic Analysis. Journal of Biology.",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.org/dc/terms/bibliographicCitation"
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Bibliographic Citation",
+                "name": "bibliographicCitation"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "created": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Created",
+              "name": "created",
+              "required": true,
+              "reference": "http://purl.org/dc/terms/created"
+            },
+            "description": "The date when the study was created or registered.",
+            "error": "Date study was created is required",
+            "example": "2024-10-14",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.org/dc/terms/created"
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Created",
+                "name": "created"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "workflow": {
+            "default_map": {
+              "allowed_values": [
+                "microfluidics, facs, sequencing",
+                "microfluidics, facs, culturing",
+                "microfluidics, facs, culturing, sequencing",
+                "spatial_transcriptomics",
+                "laser_microdissection",
+                "lasermicrodissection, culturing",
+                "lasermicrodissection, culturing, sequencing",
+                "laser_microdissection, sequencing"
+              ],
+              "label": "Workflow",
+              "name": "workflow",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The workflow or protocol followed during the study.",
+            "error": "Workflow is required",
+            "example": "spatial_transcriptomics",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Workflow",
+                "name": "workflow",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        }
+      ]
+    },
+    {
+      "component": "sample",
+      "fields": [
+        {
+          "sample_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sample ID",
+              "name": "sample_id",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
+            },
+            "description": "A unique alphanumeric reference or identifier assigned to the sample in the study.",
+            "error": "Sample ID is required",
+            "example": "sample123",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
+              },
+              "schemaorg": {
+                "label": "Sample ID",
+                "name": "sample_id",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "study_reference": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Study Reference",
+              "name": "study_reference",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
+            },
+            "description": "A reference to the study, usually a unique identifier or citation.",
+            "error": "Study reference is required",
+            "example": "study123",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
+              },
+              "schemaorg": {
+                "label": "Study Reference",
+                "name": "study_reference",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "strain": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Strain",
+              "name": "strain",
+              "required": false,
+              "reference": "http://www.ebi.ac.uk/efo/EFO_0005135"
+            },
+            "description": "The strain of the organism, if applicable.",
+            "error": "Strain is required",
+            "example": "NA",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://www.ebi.ac.uk/efo/EFO_0005135"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://www.ebi.ac.uk/efo/EFO_0005135"
+              },
+              "schemaorg": {
+                "label": "Strain",
+                "name": "strain",
+                "reference": "http://www.ebi.ac.uk/efo/EFO_0005135"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "tissue": {
+            "default_map": {
+              "allowed_values": [
+                "Blade",
+                "Bract",
+                "Bud",
+                "Cap",
+                "Flower",
+                "Gill fungi",
+                "Holdfast fungi",
+                "Leaf",
+                "Mycelium",
+                "Mycorrhiza",
+                "Petiole",
+                "Root",
+                "Seed",
+                "Seedling",
+                "Shoot",
+                "Spore",
+                "Spore bearing structure",
+                "Stem",
+                "Stipe",
+                "Thallus fungi",
+                "Thallus plant",
+                "Whole plant",
+                "Other",
+                "Other fungal tissue",
+                "Other plant tissue",
+                "Not applicable",
+                "Not collected",
+                "Not provided"
+              ],
+              "label": "Tissue",
+              "name": "tissue",
+              "required": false,
+              "reference": "https://schema.org/tissueSample"
+            },
+            "description": "The type of tissue sampled for the study.",
+            "error": "Tissue is required",
+            "example": "Leaf",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Tissue",
+                "name": "tissue",
+                "reference": "https://schema.org/tissueSample"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "preservation_method": {
+            "default_map": {
+              "allowed_values": [
+                "Air dried",
+                "Dry ice",
+                "Ethanol/Dry ice slurry",
+                "Lyophilised",
+                "RNALater",
+                "Snap frozen",
+                "Other",
+                "Not applicable",
+                "Not collected",
+                "Not provided"
+              ],
+              "label": "Preservation Method",
+              "name": "preservation_method",
+              "required": false,
+              "reference": "http://purl.obolibrary.org/obo/NCIT_C19232"
+            },
+            "description": "A brief description of how the sample was preserved.",
+            "error": "Preservation method is required",
+            "example": "Fresh",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C19232"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C19232"
+              },
+              "schemaorg": {
+                "label": "Preservation Method",
+                "name": "preservation_method",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C19232"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "value": ""
+          }
+        },
+        {
+          "AgeClass": {
+            "default_map": {
+              "allowed_values": [
+                "Adult",
+                "Egg",
+                "Juvenile",
+                "Larva",
+                "Pupa",
+                "Seed",
+                "Spore",
+                "Other",
+                "Not applicable",
+                "Not collected",
+                "Not provided"
+              ],
+              "label": "Age Class",
+              "name": "AgeClass",
+              "required": false,
+              "reference": "http://digir.net/schema/conceptual/darwin/2003/1.0/version/AgeClass-2003-06-17"
+            },
+            "description": "The age class of the organism at the time of collection.",
+            "error": "Age class is required",
+            "example": "ADULT",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://digir.net/schema/conceptual/darwin/2003/1.0/version/AgeClass-2003-06-17"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://digir.net/schema/conceptual/darwin/2003/1.0/version/AgeClass-2003-06-17"
+              },
+              "schemaorg": {
+                "label": "Age Class",
+                "name": "AgeClass",
+                "reference": "http://digir.net/schema/conceptual/darwin/2003/1.0/version/AgeClass-2003-06-17"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "",
+            "type": "text",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "collection_date": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Collection Date",
+              "name": "collection_date",
+              "required": false,
+              "reference": "http://purl.obolibrary.org/obo/NCIT_C81286"
+            },
+            "description": "The date when the sample was collected.",
+            "error": "Collection date is required",
+            "example": "2024-09-20",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "Event Date",
+                "name": "eventDate",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C81286"
+              },
+              "mixs": {
+                "label": "Collection Date",
+                "name": "collection_date",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C81286"
+              },
+              "schemaorg": {
+                "label": "Collection Date",
+                "name": "collection_date",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C81286"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+            "type": "date",
+            "unit": "date",
+            "unit_reference": "http://schema.org/Date",
+            "value": ""
+          }
+        },
+        {
+          "geographic_location_latitude": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Geographic Location Latitude",
+              "name": "geographic_location_latitude",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/GENEPIO_0100309"
+            },
+            "description": "The geographic latitude where the specimen or sample was taken in decimal degrees, between -90 and 90. We advise that locations are specified to a minimum of 3 decimal places and a maximum of 8 decimal places (https: //en.wikipedia.org/wiki/Decimal_degrees).",
+            "error": "Geographic location latitude is required",
+            "example": "52.62",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0100309"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0100309"
+              },
+              "schemaorg": {
+                "label": "Geographic Location Latitude",
+                "name": "geographic_location_latitude",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0100309"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$",
+            "type": "number",
+            "unit": "DD",
+            "unit_reference": "http://purl.obolibrary.org/obo/GENEPIO_0001862",
+            "value": ""
+          }
+        },
+        {
+          "geographic_location_longitude": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Geographic Location Longitude",
+              "name": "geographic_location_longitude",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/GENEPIO_0100310"
+            },
+            "description": "The geographic longitude where the specimen or sample was taken in decimal degrees, between -180 and 180. We advise that locations are specified to a minimum of 3 decimal places and maximum of 8 decimal places (https: //en.wikipedia.org/wiki/Decimal_degrees).",
+            "error": "Geographic location longitude is required",
+            "example": "1.297",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0100310"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0100310"
+              },
+              "schemaorg": {
+                "label": "Geographic Location Longitude",
+                "name": "geographic_location_longitude",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0100310"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$",
+            "type": "number",
+            "unit": "DD",
+            "unit_reference": "http://purl.obolibrary.org/obo/GENEPIO_0001863",
+            "value": ""
+          }
+        },
+        {
+          "broad_scale_environmental_context": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Broad Scale Environmental Context",
+              "name": "broad_scale_environmental_context",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO\u2019s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.",
+            "error": "Broad scale environmental context is required",
+            "example": "Urban",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Broad Scale Environmental Context",
+                "name": "broad_scale_environmental_context",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "local_scale_environmental_context": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Local Scale Environmental Context",
+              "name": "local_scale_environmental_context",
+              "required": false,
+              "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000027"
+            },
+            "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).",
+            "error": "Local scale environmental context is required",
+            "example": "Laboratory",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000027"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000027"
+              },
+              "schemaorg": {
+                "label": "Local Scale Environmental Context",
+                "name": "local_scale_environmental_context",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000027"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "environmental_medium": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Environmental Medium",
+              "name": "environmental_medium",
+              "required": false,
+              "reference": "http://purl.org/dc/terms/medium"
+            },
+            "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).",
+            "error": "Environmental medium is required",
+            "example": "Tissue culture medium",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.org/dc/terms/medium"
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Environmental Medium",
+                "name": "environmental_medium"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "country": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Country",
+              "name": "country",
+              "required": false
+            },
+            "description": "The country where the sample was collected.",
+            "error": "Invalid country. Please enter a valid country.",
+            "example": "United Kingdom",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[A-Za-z ]+$"
+          },
+          "day": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Day",
+              "name": "day",
+              "required": false
+            },
+            "description": "The day of the month when the sample was collected.",
+            "error": "Invalid day. Please enter a valid day (01-31).",
+            "example": "15",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^(0[1-9]|[12][0-9]|3[01])$"
+          },
+          "decimalLatitude": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Decimal Latitude",
+              "name": "decimalLatitude",
+              "required": false
+            },
+            "description": "The latitude of the sample collection site, in decimal degrees.",
+            "error": "Invalid decimal latitude. Please enter a valid decimal latitude.",
+            "example": "52.2053",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^-?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$",
+            "unit": "DD"
+          },
+          "decimalLongitude": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Decimal Longitude",
+              "name": "decimalLongitude",
+              "required": false
+            },
+            "description": "The longitude of the sample collection site, in decimal degrees.",
+            "error": "Invalid decimal longitude. Please enter a valid decimal longitude.",
+            "example": "0.1218",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^-?(180(\\.0+)?|((1[0-7]\\d)|(\\d{1,2}))(\\.\\d+)?)$",
+            "unit": "DD"
+          },
+          "family": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Family",
+              "name": "family",
+              "required": false
+            },
+            "description": "The taxonomic family of the organism.",
+            "error": "Invalid family. Please enter a valid family",
+            "example": "Arenicolidae",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[A-Za-z]+$"
+          },
+          "genus": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Genus",
+              "name": "genus",
+              "required": false
+            },
+            "description": "The taxonomic genus of the organism.",
+            "error": "Invalid genus. Please enter a valid genus",
+            "example": "Arenicola",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[A-Za-z]+$"
+          },
+          "habitat": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Habitat",
+              "name": "habitat",
+              "required": false
+            },
+            "description": "The type of habitat where the sample was collected.",
+            "error": "",
+            "example": "Forest",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[A-Za-z ]+$"
+          },
+          "institutionCode": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Institution",
+              "name": "institutionCode",
+              "required": false
+            },
+            "description": "The code or abbreviation representing the lead institution where the sample is held.",
+            "error": "Name or acronym of institution is required",
+            "example": "EI",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[A-Z]{2,10}$",
+            "type": "string"
+          },
+          "lifeStage": {
+            "default_map": {
+              "allowed_values": [
+                "Adult",
+                "Egg",
+                "Embryo",
+                "Gametophyte",
+                "Juvenile",
+                "Larva",
+                "Pupa",
+                "Spore bearing structure",
+                "Sporophyte",
+                "Vegetative cell",
+                "Vegetative structure",
+                "Zygote",
+                "Not applicable",
+                "Not collected",
+                "Not provided"
+              ],
+              "label": "Life Stage",
+              "name": "lifeStage",
+              "required": false
+            },
+            "description": "The life stage of the organism when sampled.",
+            "error": "Invalid life stage. Please enter a valid life stage (e.g., Adult).",
+            "example": "Adult",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[A-Za-z]+$"
+          },
+          "materialEntityID": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Material Entity ID",
+              "name": "materialEntityID",
+              "required": false
+            },
+            "description": "A unique unique alphanumeric identifier for the material entity (sample).",
+            "error": "Invalid material entity ID. Please enter a valid material entity ID (e.g., MAT-12345).",
+            "example": "matEnt12345",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[A-Z]{3}-\\d+$"
+          },
+          "materialSampleID": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Material Sample ID",
+              "name": "materialSampleID",
+              "required": false
+            },
+            "description": "A unique unique alphanumeric identifier for the material sample.",
+            "error": "Invalid material sample ID. Please enter a valid material sample ID (e.g., MAT-12345).",
+            "example": "matSample67890",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[A-Z]{4}-\\d+$"
+          },
+          "month": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Month",
+              "name": "month",
+              "required": false
+            },
+            "description": "The month when the sample was collected.",
+            "error": "Invalid month. Please enter a valid month (01-12).",
+            "example": "07",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^(0[1-9]|1[0-2])$"
+          },
+          "order": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Order",
+              "name": "order",
+              "required": false
+            },
+            "description": "The taxonomic order of the organism.",
+            "example": "Capitellida",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[A-Za-z]+$"
+          },
+          "organismName": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Organism Name",
+              "name": "organismName",
+              "required": false
+            },
+            "description": "The name of the organism.",
+            "example": "Arenicola marina",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[A-Za-z ]+$"
+          },
+          "recordNumber": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Record Number",
+              "name": "recordNumber",
+              "required": false
+            },
+            "description": "A unique number assigned to this record.",
+            "example": "rec123",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            }
+          },
+          "scientificName": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Scientific Name",
+              "name": "scientificName",
+              "required": false
+            },
+            "description": "The scientific name of the organism.",
+            "example": "Arenicola marina",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[A-Za-z]+ [a-z]+$"
+          },
+          "sex": {
+            "default_map": {
+              "allowed_values": [
+                "Asexual morph",
+                "Female",
+                "Hermaphrodite monoecious",
+                "Male",
+                "Sexual morph",
+                "Not applicable",
+                "Not collected",
+                "Not provided"
+              ],
+              "label": "Sex",
+              "name": "sex",
+              "required": false
+            },
+            "description": "The sex of the organism (if applicable).",
+            "error": "Invalid value",
+            "example": "Male",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^(Asexual morph|Female|Hermaphrodite monoecious|Male|Sexual morph|Not applicable|Not collected|Not provided)$"
+          },
+          "taxonID": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Taxon ID",
+              "name": "taxonID",
+              "required": true
+            },
+            "description": "A unique identifier for species or organism studied.",
+            "error": "Taxon ID is required",
+            "example": "6344",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^\\d+$"
+          },
+          "taxonRank": {
+            "default_map": {
+              "allowed_values": [
+                "Species",
+                "Subspecies"
+              ],
+              "label": "Taxon Rank",
+              "name": "taxonRank",
+              "required": false
+            },
+            "description": "The rank of the taxon for this organism.",
+            "error": "Invalid taxon rank. Please select a valid taxon rank.",
+            "example": "Species",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^[A-Za-z]+$"
+          },
+          "year": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Year",
+              "name": "year",
+              "required": false
+            },
+            "description": "The year the sample was collected.",
+            "example": "2024",
+            "included_in_mapping": {
+              "tol": false
+            },
+            "mapped_manifests": {
+              "tol": true,
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true
+            },
+            "mapping": {
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "^\\d{4}$"
+          }
+        }
+      ]
+    },
+    {
+      "component": "imaging_protocol",
+      "fields": [
+        {
+          "imaging_protocol_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Imaging Protocol ID",
+              "name": "imaging_protocol_id",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
+            },
+            "description": "A unique identifier for the sample used in the study.",
+            "error": "Sample reference is required",
+            "example": "SAMPLE123",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
+              },
+              "schemaorg": {
+                "label": "Imaging Protocol ID",
+                "name": "imaging_protocol_id",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "platform": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Platform",
+              "name": "platform",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/NCIT_C142729"
+            },
+            "description": "The platform used to isolate the cells.",
+            "error": "Platform is required",
+            "example": "Illumina NovaSeq",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C142729"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C142729"
+              },
+              "schemaorg": {
+                "label": "Platform",
+                "name": "platform",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C142729"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "instrument": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Instrument",
+              "name": "instrument",
+              "required": true,
+              "reference": "http://schema.org/instrument"
+            },
+            "description": "The instrument used to isolate the cells.",
+            "error": "Instrument is required",
+            "example": "Illumina NovaSeq 6000",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": ""
+              },
+              "schemaorg": {
+                "label": "Instrument",
+                "name": "instrument",
+                "reference": "http://schema.org/instrument"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "dissociation_method": {
+            "default_map": {
+              "allowed_values": [
+                "enzymatic"
+              ],
+              "label": "Dissociation Method",
+              "name": "dissociation_method",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The method used for dissociating the cells.",
+            "error": "Dissociation method is required",
+            "example": "enzymatic",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Dissociation Method",
+                "name": "dissociation_method",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "dissociation_time": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Dissociation Time",
+              "name": "dissociation_time",
+              "required": false,
+              "reference": "http://purl.obolibrary.org/obo/XCO_0000153"
+            },
+            "description": "The time duration for dissociation in minutes.",
+            "error": "Dissociation time is required",
+            "example": "30",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/XCO_0000153"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/XCO_0000153"
+              },
+              "schemaorg": {
+                "label": "Dissociation Time",
+                "name": "dissociation_time",
+                "reference": "http://purl.obolibrary.org/obo/XCO_0000153"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "minute",
+            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000031",
+            "value": ""
+          }
+        },
+        {
+          "dissociation_temperature": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Dissociation Temperature",
+              "name": "dissociation_temperature",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The temperature at which dissociation is performed in degrees celsius.",
+            "error": "Dissociation temperature is required",
+            "example": "37",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Dissociation Temperature",
+                "name": "dissociation_temperature",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "number",
+            "unit": "degree celsius",
+            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000027",
+            "value": ""
+          }
+        },
+        {
+          "dissociation_enzyme": {
+            "default_map": {
+              "allowed_values": [
+                "collagenase"
+              ],
+              "label": "Dissociation Enzyme",
+              "name": "dissociation_enzyme",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The enzyme used for dissociation.",
+            "error": "Dissociation enzyme is required",
+            "example": "collagenase",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Dissociation Enzyme",
+                "name": "dissociation_enzyme",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "dissociation_enzyme_concentration": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Dissociation Enzyme Concentration",
+              "name": "dissociation_enzyme_concentration",
+              "required": false,
+              "reference": "http://semanticscience.org/resource/SIO_001088"
+            },
+            "description": "The concentration of the dissociation enzyme.",
+            "error": "Dissociation enzyme concentration is required",
+            "example": "0.25",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://semanticscience.org/resource/SIO_001088"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://semanticscience.org/resource/SIO_001088"
+              },
+              "schemaorg": {
+                "label": "Dissociation Enzyme Concentration",
+                "name": "dissociation_enzyme_concentration",
+                "reference": "http://semanticscience.org/resource/SIO_001088"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "number",
+            "unit": "mg/ml",
+            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000274",
+            "value": ""
+          }
+        },
+        {
+          "material_incubation_temperature": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Material Incubation Temperature",
+              "name": "material_incubation_temperature",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The temperature at which the material is incubated in degrees C.",
+            "error": "Material incubation temperature is required",
+            "example": "37",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Material Incubation Temperature",
+                "name": "material_incubation_temperature",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "number",
+            "unit": "degree celsius",
+            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000027",
+            "value": ""
+          }
+        },
+        {
+          "material_incubation_time": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Material Incubation Time",
+              "name": "material_incubation_time",
+              "required": false,
+              "reference": "http://purl.obolibrary.org/obo/XCO_0000153"
+            },
+            "description": "The time duration for material incubation in hours.",
+            "error": "Material incubation time is required",
+            "example": "30",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/XCO_0000153"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/XCO_0000153"
+              },
+              "schemaorg": {
+                "label": "Material Incubation Time",
+                "name": "material_incubation_time",
+                "reference": "http://purl.obolibrary.org/obo/XCO_0000153"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "number",
+            "unit": "hour",
+            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000032",
+            "value": ""
+          }
+        },
+        {
+          "lysis_buffer_solution": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Lysis Buffer Solution",
+              "name": "lysis_buffer_solution",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The solution used for lysis buffer.",
+            "error": "Lysis buffer solution is required",
+            "example": "RIPA buffe",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Lysis Buffer Solution",
+                "name": "lysis_buffer_solution",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "target_probes": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Target Probes",
+              "name": "target_probes",
+              "required": true,
+              "reference": ""
+            },
+            "description": "The type of probes used to detect and quantify specific RNA molecules in their native spatial context within a tissue or cell.",
+            "error": "Target probes is required",
+            "example": "Oligo-dT",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Target Probes",
+                "name": "target_probes",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "path_or_url",
+            "value": ""
+          }
+        },
+        {
+          "section_thickness_\u00b5m": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Section Thickness \u039cm",
+              "name": "section_thickness_\u00b5m",
+              "required": false,
+              "reference": "http://purl.obolibrary.org/obo/NCIT_C176286"
+            },
+            "description": "The thickness of the tissue section in micrometres.",
+            "error": "Section thickness \u039cm is required",
+            "example": "10",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C176286"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C176286"
+              },
+              "schemaorg": {
+                "label": "Section Thickness \u039cm",
+                "name": "section_thickness_\u00b5m",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C176286"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "number",
+            "unit": "micrometer",
+            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000017",
+            "value": ""
+          }
+        },
+        {
+          "section_thickness_method": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Section Thickness Method",
+              "name": "section_thickness_method",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The method used to measure tissue section thickness.",
+            "error": "Section thickness method is required",
+            "example": "Microtome",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Section Thickness Method",
+                "name": "section_thickness_method",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": "cryosectioning"
+          }
+        },
+        {
+          "section_thickness_temperature": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Section Thickness Temperature",
+              "name": "section_thickness_temperature",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The temperature at which the section was made.",
+            "error": "Section thickness temperature is required",
+            "example": "Room temperature",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Section Thickness Temperature",
+                "name": "section_thickness_temperature",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "number",
+            "unit": "degree celsius",
+            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000027",
+            "value": ""
+          }
+        },
+        {
+          "is_pathological": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Is Pathological",
+              "name": "is_pathological",
+              "required": false,
+              "reference": "http://purl.obolibrary.org/obo/PATO_0001869"
+            },
+            "description": "A quality inhering in a bearer by virtue of the bearer's being abnormal and having a destructive effect on living tissue.",
+            "error": "Pathological boolean is required",
+            "example": "No",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/PATO_0001869"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/PATO_0001869"
+              },
+              "schemaorg": {
+                "label": "Is Pathological",
+                "name": "is_pathological",
+                "reference": "http://purl.obolibrary.org/obo/PATO_0001869"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "boolean",
+            "value": ""
+          }
+        },
+        {
+          "digestion_workflow": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Digestion Workflow",
+              "name": "digestion_workflow",
+              "required": false,
+              "reference": "http://purl.obolibrary.org/obo/MSIO_0000144"
+            },
+            "description": "A link to a workflow describing the digestion protocol in Protocols.io",
+            "error": "Digestion workflow is required",
+            "example": "Spatial transcriptomics dissociation",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/MSIO_0000144"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/MSIO_0000144"
+              },
+              "schemaorg": {
+                "label": "Digestion Workflow",
+                "name": "digestion_workflow",
+                "reference": "http://purl.obolibrary.org/obo/MSIO_0000144"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "path_or_url",
+            "value": ""
+          }
+        },
+        {
+          "digestion_time_in_minutes": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Digestion Time In Minutes",
+              "name": "digestion_time_in_minutes",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The duration of digestion in minutes.",
+            "error": "Digestion time in minutes is required",
+            "example": "45",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Digestion Time In Minutes",
+                "name": "digestion_time_in_minutes",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "number",
+            "unit": "minute",
+            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000031",
+            "value": ""
+          }
+        },
+        {
+          "digestion_temperature": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Digestion Temperature",
+              "name": "digestion_temperature",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The temperature at which digestion was carried out.",
+            "error": "Digestion temperature is required",
+            "example": "37",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Digestion Temperature",
+                "name": "digestion_temperature",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "number",
+            "unit": "degree celsius",
+            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000027",
+            "value": ""
+          }
+        },
+        {
+          "photobleaching_duration_in_hours": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Photobleaching Duration in Hours",
+              "name": "photobleaching_duration_in_hours",
+              "required": false,
+              "reference": "http://purl.obolibrary.org/obo/OMIT_0022867"
+            },
+            "description": "The duration of photobleaching in hours",
+            "error": "Photobleaching duration in hours is required",
+            "example": "2",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/OMIT_0022867"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/OMIT_0022867"
+              },
+              "schemaorg": {
+                "label": "Photobleaching Duration In Hours",
+                "name": "photobleaching_duration_in_hours",
+                "reference": "http://purl.obolibrary.org/obo/OMIT_0022867"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "number",
+            "unit": "hour",
+            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000032",
+            "value": "yes"
+          }
+        },
+        {
+          "instrument_user_guide": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Instrument User Guide",
+              "name": "instrument_user_guide",
+              "required": true,
+              "reference": ""
+            },
+            "description": "The user guide for the instrument used.",
+            "error": "Instrument user guide is required",
+            "example": "User Guide v1.2",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Instrument User Guide",
+                "name": "instrument_user_guide",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "path_or_url",
+            "value": "MERscope-User-Guide.pdf"
+          }
+        },
+        {
+          "instrument_user_guide_revision": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Instrument User Guide Revision",
+              "name": "instrument_user_guide_revision",
+              "required": true,
+              "reference": ""
+            },
+            "description": "The revision of the instrument user guide.",
+            "error": "Instrument user guide revision is required",
+            "example": "1.2",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Instrument User Guide Revision",
+                "name": "instrument_user_guide_revision",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": "1.0"
+          }
+        },
+        {
+          "sample_preparation_guide": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sample Preparation Guide",
+              "name": "sample_preparation_guide",
+              "required": true,
+              "reference": ""
+            },
+            "description": "The guide used for sample preparation.",
+            "error": "Sample preparation guide is required",
+            "example": "preparation_guide_v1.0.pdf",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Sample Preparation Guide",
+                "name": "sample_preparation_guide",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "value": ""
+          }
+        },
+        {
+          "sample_preparation_guide_revision": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sample Preparation Guide Revision",
+              "name": "sample_preparation_guide_revision",
+              "required": true,
+              "reference": ""
+            },
+            "description": "The revision of the sample preparation guide.",
+            "error": "Sample preparation guide revision is required",
+            "example": "1.0",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Sample Preparation Guide Revision",
+                "name": "sample_preparation_guide_revision",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "value": "1.0"
+          }
+        },
+        {
+          "deviations_from_official_protocol": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Deviations from Official Protocol",
+              "name": "deviations_from_official_protocol",
+              "required": true,
+              "reference": ""
+            },
+            "description": "Any deviations from the official protocol. Separate individual deviations with '|'.",
+            "error": "Deviations from official protocol is required",
+            "example": "None",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "instruction": "separate individual deviations with '|'",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Deviations From Official Protocol",
+                "name": "deviations_from_official_protocol",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "component": "library_preparation",
+      "fields": [
+        {
+          "library_preparation_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Library Preparation ID",
+              "name": "library_preparation_id",
+              "required": true,
+              "reference": ""
+            },
+            "description": "A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.",
+            "error": "Library preparation reference is required",
+            "example": "libPrep123",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Library Preparation ID",
+                "name": "library_preparation_id",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "i5_sequence": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "I5 Sequence",
+              "name": "i5_sequence",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The nucleotide sequence of the i5 index used in multiplexing during sequencing.",
+            "error": "I5 sequence is required",
+            "example": "ATCGTAGC",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "I5 Sequence",
+                "name": "i5_sequence",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "i7_sequence": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "I7 Sequence",
+              "name": "i7_sequence",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The nucleotide sequence of the i7 index used in multiplexing during sequencing.",
+            "error": "I7 sequence is required",
+            "example": "CGTACGTA",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "I7 Sequence",
+                "name": "i7_sequence",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "sequencing_reference": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sequencing Reference",
+              "name": "sequencing_reference",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+            },
+            "description": "A unique alphanumeric reference or identifier for the sequencing protocol.",
+            "error": "Sequencing reference is required",
+            "example": "seq123",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+              },
+              "schemaorg": {
+                "label": "Sequencing Reference",
+                "name": "sequencing_reference",
+                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "library_preparation_kit": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Library Preparation Kit",
+              "name": "library_preparation_kit",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000085"
+            },
+            "description": "The kit used for library preparation.",
+            "error": "Library preparation kit is required",
+            "example": "10X Genomics Single Cell 3' v3",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000085"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000085"
+              },
+              "schemaorg": {
+                "label": "Library Preparation Kit",
+                "name": "library_preparation_kit",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000085"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "library_preparation_kit_version": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Library Preparation Kit Version",
+              "name": "library_preparation_kit_version",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149"
+            },
+            "description": "The version number of the library preparation kit used for sequencing.",
+            "error": "Library preparation kit version is required",
+            "example": "Illumina TruSeq v2",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149"
+              },
+              "schemaorg": {
+                "label": "Library Preparation Kit Version",
+                "name": "library_preparation_kit_version",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "value": ""
+          }
+        },
+        {
+          "amplification_method": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Amplification Method",
+              "name": "amplification_method",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The method used to amplify the cDNA, e.g. \"PCR\".",
+            "error": "Amplification Method is required",
+            "example": "PCR",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Amplification Method",
+                "name": "amplification_method",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "cDNA_amplification_cycles": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cdna Amplification Cycles",
+              "name": "cDNA_amplification_cycles",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The number of cycles used during the cDNA amplification process.",
+            "error": "cDNA amplification cycles is required",
+            "example": "12",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Cdna Amplification Cycles",
+                "name": "cDNA_amplification_cycles",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "number",
+            "value": ""
+          }
+        },
+        {
+          "average_size_distribution": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Average Size Distribution",
+              "name": "average_size_distribution",
+              "required": false,
+              "reference": "http://purl.obolibrary.org/obo/GENEPIO_0002138"
+            },
+            "description": "The average size of the DNA fragments generated during library preparation.",
+            "error": "Average Size Distribution is required",
+            "example": "200-300",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0002138"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0002138"
+              },
+              "schemaorg": {
+                "label": "Average Size Distribution",
+                "name": "average_size_distribution",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0002138"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "number",
+            "unit": "base_pair",
+            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000244",
+            "value": ""
+          }
+        },
+        {
+          "library_construction_method": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Library Construction Method",
+              "name": "library_construction_method",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The library construction method (including version) that\nwas used, e.g. \"Smart-Seq2\", \"Drop-Seq\", \"10X v3\".",
+            "error": "Library Construction Method is required",
+            "example": "Spatial Transcriptomics 3' V2 Library Prep",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Library Construction Method",
+                "name": "library_construction_method",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "input_molecule": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Input Molecule",
+              "name": "input_molecule",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The specific fraction of biological macromolecule from\nwhich the sequencing library is derived, e.g. \"polyA\nRNA\".",
+            "error": "Input Molecule is required",
+            "example": "RNA",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Input Molecule",
+                "name": "input_molecule",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "primer": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Primer",
+              "name": "primer",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The type of primer used for reverse transcription, e.g.\n\"oligo-dT\" or \"random\" primer. This allows users to\nidentify content of the cDNA library input, e.g. enriched\nfor mRNA.",
+            "error": "Primer is required",
+            "example": "Poly(A) oligo(dT)",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Primer",
+                "name": "primer",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "end_bias": {
+            "default_map": {
+              "allowed_values": [
+                "3",
+                "5"
+              ],
+              "label": "End Bias",
+              "name": "end_bias",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The end bias of the library.",
+            "error": "End bias is required",
+            "example": "3",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "End Bias",
+                "name": "end_bias",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "library_strand": {
+            "default_map": {
+              "allowed_values": [
+                "unstranded",
+                "sense",
+                "antisense"
+              ],
+              "label": "Library Strand",
+              "name": "library_strand",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The strand from which the library was derived",
+            "error": "Library strand is required",
+            "example": "Single-stranded",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Library Strand",
+                "name": "library_strand",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "spike_in": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Spike-in",
+              "name": "spike_in",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Spike-in RNAs are RNA molecules with known sequence that are added to the cell lysis mix. For instance, the External RNA Controls Consortium (ERCC) spike in set is commonly used in scRNA-seq experiments.",
+            "error": "Spike-in is required",
+            "example": "ERCC control RNA",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Spike-In",
+                "name": "spike_in",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "spike_in_dilution_or_concentration": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Spike In Dilution Or Concentration",
+              "name": "spike_in_dilution_or_concentration",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The final concentration or dilution (for commercial sets)\nof the spike in mix",
+            "error": "Spike in dilution or concentration is required",
+            "example": "1:1000",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Spike In Dilution Or Concentration",
+                "name": "spike_in_dilution_or_concentration",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        }
+      ]
+    },
+    {
+      "component": "sequencing",
+      "fields": [
+        {
+          "sequencing_reference": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sequencing Reference",
+              "name": "sequencing_reference",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+            },
+            "description": "A unique alphanumeric reference or identifier for the sequencing protocol.",
+            "error": "Sequencing reference is required",
+            "example": "seq123",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+              },
+              "schemaorg": {
+                "label": "Sequencing Reference",
+                "name": "sequencing_reference",
+                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "technical_replicate_group_or_library_reference": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Technical Replicate Group or Library Reference",
+              "name": "technical_replicate_group_or_library_reference",
+              "required": false,
+              "reference": ""
+            },
+            "description": "A common term for all runs or files belonging to the same cell or library. It is recommended to use a stable sample accession from a biosample archive like BioSample. Alternatively, the library ID can be referenced from which the files were generated.",
+            "error": "Technical replicate group or library reference is required",
+            "example": "lib1",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Technical Replicate Group Or Library Reference",
+                "name": "technical_replicate_group_or_library_reference",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "sequencing_platform_name": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sequencing Platform Name",
+              "name": "sequencing_platform_name",
+              "required": false,
+              "reference": "http://purl.obolibrary.org/obo/NCIT_C172274"
+            },
+            "description": "The name of the sequencing platform used for the experiment.",
+            "error": "Sequence platform name is required",
+            "example": "Paired-end",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C172274"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C172274"
+              },
+              "schemaorg": {
+                "label": "Sequencing Platform Name",
+                "name": "sequencing_platform_name",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C172274"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "sequencing_instrument_model": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sequencing Instrument Model",
+              "name": "sequencing_instrument_model",
+              "required": false,
+              "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149"
+            },
+            "description": "This refers to the specific machine or platform used to carry out the sequencing process. Different models can have varying throughput, read lengths, error rates, and application suitability.",
+            "error": "Sequence instrument model is required",
+            "example": "Illumina NovaSeq 6000",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149"
+              },
+              "schemaorg": {
+                "label": "Sequencing Instrument Model",
+                "name": "sequencing_instrument_model",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "library_layout": {
+            "default_map": {
+              "allowed_values": [
+                "single",
+                "paired"
+              ],
+              "label": "Library Layout",
+              "name": "library_layout",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/NCIT_C150423"
+            },
+            "description": "The type of library layout used for sequencing.",
+            "error": "Library layout is required",
+            "example": "single",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C150423"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C150423"
+              },
+              "schemaorg": {
+                "label": "Library Layout",
+                "name": "library_layout",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C150423"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "reads_per_sample": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Reads Per Sample",
+              "name": "reads_per_sample",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The number of sequencing reads generated per sample.",
+            "error": "Reads per sample is required",
+            "example": "1000000",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Reads Per Sample",
+                "name": "reads_per_sample",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "number",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "UMI_barcode_read": {
+            "default_map": {
+              "allowed_values": [
+                "index1",
+                "index2",
+                "read1",
+                "read2"
+              ],
+              "label": "Umi Barcode Read",
+              "name": "UMI_barcode_read",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The type of read that contains the UMI barcode:",
+            "error": "Umi Barcode Read is required",
+            "example": "index2",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Umi Barcode Read",
+                "name": "UMI_barcode_read",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "UMI_barcode_offset": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Umi Barcode Offset",
+              "name": "UMI_barcode_offset",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The offset in sequence of the UUnique Molecular Identifier (UMI)MI identifying barcode.",
+            "error": "Umi barcode offset is required",
+            "example": "16",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Umi Barcode Offset",
+                "name": "UMI_barcode_offset",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "UMI_barcode_size": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Umi Barcode Size",
+              "name": "UMI_barcode_size",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The size of the Unique Molecular Identifier (UMI) identifying barcode.",
+            "error": "Umi barcode size is required",
+            "example": "10",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Umi Barcode Size",
+                "name": "UMI_barcode_size",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "cell_barcode_read": {
+            "default_map": {
+              "allowed_values": [
+                "index1",
+                "index2",
+                "read1",
+                "read2"
+              ],
+              "label": "Cell Barcode Read",
+              "name": "cell_barcode_read",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The type of read that contains the UMI barcode.",
+            "error": "Cell barcode read is required",
+            "example": "index1",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Cell Barcode Read",
+                "name": "cell_barcode_read",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "cell_barcode_offset": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cell Barcode Offset",
+              "name": "cell_barcode_offset",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The offset in sequence of the cell identifying barcode.\nE.g. \"0\".",
+            "error": "Cell barcode offset is required",
+            "example": "10",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Cell Barcode Offset",
+                "name": "cell_barcode_offset",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "cell_barcode_size": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cell Barcode Size",
+              "name": "cell_barcode_size",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The offset in sequence of the cell identifying barcode.\nE.g. \"0\".",
+            "error": "Cell barcode size is required",
+            "example": "0",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Cell Barcode Size",
+                "name": "cell_barcode_size",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "cDNA_read": {
+            "default_map": {
+              "allowed_values": [
+                "index1",
+                "index2",
+                "read1",
+                "read2"
+              ],
+              "label": "Cdna Read",
+              "name": "cDNA_read",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The type of read that contains the Complementary DNA (cDNA) read.",
+            "error": "cDNA read is required",
+            "example": "read1",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Cdna Read",
+                "name": "cDNA_read",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "cDNA_read_offset": {
+            "default_map": {
+              "allowed_values": [
+                "index1",
+                "index2",
+                "read1",
+                "read2"
+              ],
+              "label": "Cdna Read Offset",
+              "name": "cDNA_read_offset",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The type of read that contains the Complementary DNA (cDNA) read.",
+            "error": "cDNA read offset is required",
+            "example": "5",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Cdna Read Offset",
+                "name": "cDNA_read_offset",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "cDNA_read_size": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cdna Read Size",
+              "name": "cDNA_read_size",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The size of the cDNA read. E.g. \"100\".",
+            "error": "cDNA read size is required",
+            "example": "75",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Cdna Read Size",
+                "name": "cDNA_read_size",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "sample_barcode_read": {
+            "default_map": {
+              "allowed_values": [
+                "index1",
+                "index2",
+                "read1",
+                "read2"
+              ],
+              "label": "Sample Barcode Read",
+              "name": "sample_barcode_read",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The type of read that contains the sample barcode.",
+            "error": "Sample barcode read is required",
+            "example": "read2",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Sample Barcode Read",
+                "name": "sample_barcode_read",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "sample_barcode_offset": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sample Barcode Offset",
+              "name": "sample_barcode_offset",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The offset in sequence of the sample identifying barcode.",
+            "error": "Sample barcode offset is required",
+            "example": "30",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Sample Barcode Offset",
+                "name": "sample_barcode_offset",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "sample_barcode_size": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sample Barcode Size",
+              "name": "sample_barcode_size",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The size of the read that contains the sample barcode.",
+            "error": "Sample barcode size is required",
+            "example": "8",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Sample Barcode Size",
+                "name": "sample_barcode_size",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        }
+      ]
+    },
+    {
+      "component": "file",
+      "fields": [
+        {
+          "imaging_protocol_ref": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Imaging Protocol Reference",
+              "name": "imaging_protocol_ref",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The name of the file that contains the imaging protocol information.",
+            "error": "Imaging protocol reference is required",
+            "example": "file1_imaging_protocol.json",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Imaging Protocol Reference",
+                "name": "imaging_protocol_ref",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "library_preparation_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Library Preparation ID",
+              "name": "library_preparation_id",
+              "required": true,
+              "reference": ""
+            },
+            "description": "A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.",
+            "error": "Library preparation reference is required",
+            "example": "libPrep123",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Library Preparation ID",
+                "name": "library_preparation_id",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "sequencing_reference": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sequencing Reference",
+              "name": "sequencing_reference",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+            },
+            "description": "A unique alphanumeric reference or identifier for the sequencing protocol.",
+            "error": "Sequencing reference is required",
+            "example": "seq123",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+              },
+              "schemaorg": {
+                "label": "Sequencing Reference",
+                "name": "sequencing_reference",
+                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "read_1_file": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Read 1 File",
+              "name": "read_1_file",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The name of the file that contains read 1.",
+            "error": "Read 1 file name is required",
+            "example": "file1_r1.fastq.gz",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Read 1 File",
+                "name": "read_1_file",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "read_2_file": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Read 2 File",
+              "name": "read_2_file",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The name of the file that contains read 2.",
+            "error": "Read 2 file name is required",
+            "example": "file2_r2.fastq.gz",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Read 2 File",
+                "name": "read_2_file",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "index_1_file": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Index 1 File",
+              "name": "index_1_file",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The name of the file that contains index read 1.",
+            "error": "Index 1 file name is required",
+            "example": "file1_i1.fastq.gz",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Index 1 File",
+                "name": "index_1_file",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "index_2_file": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Index 2 File",
+              "name": "index_2_file",
+              "required": false,
+              "reference": ""
+            },
+            "description": "The name of the file that contains index read 2.",
+            "error": "Index 2 file name is required",
+            "example": "file2_i2.fastq.gz",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Index 2 File",
+                "name": "index_2_file",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "checksum": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Checksum",
+              "name": "checksum",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Result of a hash function calculated on the file content to assert file integrity. Commonly used algorithms are MD5 and SHA-1.",
+            "error": "Checksum is required",
+            "example": "d41d8cd98f00b204e9800998ecf8427e",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Checksum",
+                "name": "checksum",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "white_list_barcode_file": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "White List Barcode File",
+              "name": "white_list_barcode_file",
+              "required": false,
+              "reference": ""
+            },
+            "description": "A file containing the known cell barcodes in the dataset.",
+            "error": "White list barcode file is required",
+            "example": "test_file.txt",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "White List Barcode File",
+                "name": "white_list_barcode_file",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        }
+      ]
+    },
+    {
+      "component": "analysis_derived_data",
+      "fields": [
+        {
+          "inferred_cell_type": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Inferred Cell Type",
+              "name": "inferred_cell_type",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Post analysis cell type or identity declaration based on expression profile or known gene function identified by the performer.",
+            "error": "Inferred cell type is required",
+            "example": "type II bipolar neuron",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Inferred Cell Type",
+                "name": "inferred_cell_type",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "",
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "post_analysis_cell_well_quality": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Post Analysis Cell Well Quality",
+              "name": "post_analysis_cell_well_quality",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Performer defined measure of whether the read output\nfrom the cell was included in the sequencing analysis.\nFor example, cells might be excluded if a threshold\npercentage of reads did not map to the genome or if\npre-sequencing quality measures were not passed.\nE.g. \"pass\" or \"fail\".",
+            "error": "Post analysis cell well quality is required",
+            "example": "High quality",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Post Analysis Cell Well Quality",
+                "name": "post_analysis_cell_well_quality",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "",
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "other_derived_cell_attributes": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Other Derived Cell Attributes",
+              "name": "other_derived_cell_attributes",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Any other cell level measurement or annotation as result of the analysis. E.g. cluster, gene count, UMI count, tSNE coordinates.",
+            "error": "Other derived cell attributes are required",
+            "example": "cluster",
+            "included_in_mapping": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": false
+            },
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "Other Derived Cell Attributes",
+                "name": "other_derived_cell_attributes",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "regex": "",
+            "type": "string",
+            "value": ""
+          }
+        }
+      ]
+    }
+  ]
+}

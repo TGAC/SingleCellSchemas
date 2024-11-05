@@ -6,387 +6,6 @@ import pandas as pd
 import sys
 
 # Helpers: General
-ADDTL_FIELD_PROPERTIES = {
-    'country': {
-        'allowed_values':[],
-        'description': 'The country where the sample was collected.',
-        'error': 'Invalid country. Please enter a valid country.',
-        'example': 'United Kingdom', 
-        'regex': '^[A-Za-z ]+$',
-        'required': False, 
-        'show_in_output': True,
-        'standards': {
-            'dwc': {'label': '', 'name': ''},
-            'mixs': {'label': '', 'name': ''},
-            'schemaorg': { 'label': 'Country',  'name': 'country'}
-        }
-    },
-    'day': {
-        'description': 'The day of the month when the sample was collected.',
-        'error': 'Invalid day. Please enter a valid day (01-31).',
-        'example': '15', 
-        'regex': '^(0[1-9]|[12][0-9]|3[01])$',
-        'required': False, 
-        'show_in_output': True,
-        'standards': {
-            'dwc': {'label': '', 'name': ''},
-            'mixs': {'label': 'Weekday', 'name': 'weekday'},
-            'schemaorg': { 'label': 'Day',  'name': 'day'},
-        }
-    },
-    'decimalLatitude': {
-        'description': 'The latitude of the sample collection site, in decimal degrees.',
-        'error': 'Invalid decimal latitude. Please enter a valid decimal latitude.',
-        'example': '52.2053', 
-        'regex': '^-?([1-8]?\d(\.\d+)?|90(\.0+)?)$',
-        'required': False, 
-        'show_in_output': True,
-        'standards': {
-            'dwc': {'label': 'Decimal Latitude', 'name': 'decimalLatitude'},
-            'mixs': {'label': 'Decimal Latitude', 'name': 'lat_lon'},
-            'schemaorg': { 'label': 'Decimal Latitude',  'name': 'decimalLatitude'},
-        },
-        'unit': 'DD'
-    },
-    'decimalLongitude': {
-        'description': 'The longitude of the sample collection site, in decimal degrees.',
-        'error': 'Invalid decimal longitude. Please enter a valid decimal longitude.',
-        'example': '0.1218', 
-        'regex': '^-?(180(\.0+)?|((1[0-7]\d)|(\d{1,2}))(\.\d+)?)$',
-        'required': False, 
-        'show_in_output': True,
-        'standards': {
-            'dwc': {'label': 'Decimal Longitude', 'name': 'decimalLongitude'},
-            'mixs': {'label': 'Decimal Longitude', 'name': 'lat_lon'},
-            'schemaorg': {'label': 'Decimal Longitude', 'name': 'decimalLongitude'},
-        },
-        'unit': 'DD'
-    },
-    'family': {
-        'description': 'The taxonomic family of the organism.',
-        'error': 'Invalid family. Please enter a valid family',
-        'example': 'Arenicolidae', 
-        'regex': '^[A-Za-z]+$', 
-        'required': False, 
-        'show_in_output': True,
-        'standards': {
-            'dwc': {'label': 'Family', 'name': 'family'},
-            'mixs': {'label': '', 'name': ''},
-            'schemaorg': {'label': 'Family', 'name': 'family'},
-        }
-    },
-    "genus": {
-        "description": "The taxonomic genus of the organism.",
-        "error": "Invalid genus. Please enter a valid genus",
-        "example": "Arenicola",
-        "regex": "^[A-Za-z]+$",
-        "required": False,
-        "show_in_output": True,
-        "standards": {
-        "dwc": {
-            "label": "Genus",
-            "name": "genus"
-        },
-        "mixs": {
-            "label": "",
-            "name": ""
-        },
-        "schemaorg": {
-            "label": "Genus",
-            "name": "genus"
-        }
-        }
-    },
-    "habitat": {
-        "description": "The type of habitat where the sample was collected.",
-        "error": "",
-        "example": "Forest",
-        "regex": "^[A-Za-z ]+$",
-        "required": False,
-        "show_in_output": True,
-        "standards": {
-        "dwc": {
-            "label": "Location Remarks",
-            "name": "locationRemarks"
-        },
-        "mixs": {
-            "label": "Host Body Habitat",
-            "name": "host_body_habitat"
-        },
-        "schemaorg": {
-            "label": "Habitat",
-            "name": "habitat"
-        }
-        }
-    },
-    "institutionCode": {
-        "description": "The code or abbreviation representing the lead institution where the sample is held.",
-        "error": "Name or acronym of institution is required",
-        "example": "EI",
-        "reference": "http://rs.tdwg.org/dwc/terms/institutionCode",
-        "regex": "^[A-Z]{2,10}$",
-        "required": False,
-        "show_in_output": True,
-        "standards": {
-        "dwc": {
-            "label": "",
-            "name": ""
-        },
-        "mixs": {
-            "label": "",
-            "name": ""
-        },
-        "schemaorg": {
-            "label": "Institution",
-            "name": "institutionCode"
-        }
-        },
-        "type": "string"
-    },
-    "lifeStage": {
-        "allowed_values": [
-        "Adult",
-        "Egg",
-        "Embryo",
-        "Gametophyte",
-        "Juvenile",
-        "Larva",
-        "Pupa",
-        "Spore bearing structure",
-        "Sporophyte",
-        "Vegetative cell",
-        "Vegetative structure",
-        "Zygote",
-        "Not applicable",
-        "Not collected",
-        "Not provided"
-        ],
-        "description": "The life stage of the organism when sampled.",
-        "error": "Invalid life stage. Please enter a valid life stage (e.g., Adult).",
-        "example": "Adult",
-        "regex": "^[A-Za-z]+$",
-        "required": False,
-        "show_in_output": True,
-        "standards": {
-        "dwc": {
-            "label": "Life Stage",
-            "name": "lifeStage"
-        },
-        "mixs": {
-            "label": "",
-            "name": ""
-        },
-        "schemaorg": {
-            "label": "Life Stage",
-            "name": "lifeStage"
-        }
-        }
-    },
-    "materialEntityID": {
-        "description": "A unique unique alphanumeric identifier for the material entity (sample).",
-        "error": "Invalid material entity ID. Please enter a valid material entity ID (e.g., MAT-12345).",
-        "example": "matEnt12345",
-        "regex": "^[A-Z]{3}-\\d+$",
-        "required": False,
-        "show_in_output": True,
-        "standards": {
-        "dwc": {
-            "label": "",
-            "name": ""
-        },
-        "mixs": {
-            "label": "",
-            "name": ""
-        },
-        "schemaorg": {
-            "label": "Material Entity ID",
-            "name": "materialEntityID"
-        }
-        }
-    },
-    "materialSampleID": {
-        "description": "A unique unique alphanumeric identifier for the material sample.",
-        "error": "Invalid material sample ID. Please enter a valid material sample ID (e.g., MAT-12345).",
-        "example": "matSample67890",
-        "required": False,
-        "regex": "^[A-Z]{4}-\\d+$",
-        "show_in_output": True,
-        "standards": {
-        "dwc": {
-            "label": "Material Sample ID",
-            "name": "materialSampleID"
-        },
-        "mixs": {
-            "label": "Source Material ID",
-            "name": "source_mat_id"
-        },
-        "schemaorg": {
-            "label": "Material Sample ID",
-            "name": "materialSampleID"
-        }
-        }
-    },
-    "month": {
-        "description": "The month when the sample was collected.",
-        "error": "Invalid month. Please enter a valid month (01-12).",
-        "example": "07",
-        "regex": "^(0[1-9]|1[0-2])$",
-        "required": False,
-        "show_in_output": True,
-        "standards": {
-        "dwc": {
-            "label": "",
-            "name": ""
-        },
-        "mixs": {
-            "label": "",
-            "name": ""
-        },
-        "schemaorg": {
-            "label": "Month",
-            "name": "month"
-        }
-        }
-    },
-    "order": {
-        "description": "The taxonomic order of the organism.",
-        "example": "Capitellida",
-        "regex": "^[A-Za-z]+$",
-        "required": False,
-        "show_in_output": True,
-        "standards": {
-        "dwc": {
-            "label": "Order",
-            "name": "order"
-        },
-        "mixs": {
-            "label": "",
-            "name": ""
-        },
-        "schemaorg": {
-            "label": "Order",
-            "name": "order"
-        }
-        }
-    },
-    "organismName": {
-        "description": "The name of the organism.",
-        "example": "Arenicola marina",
-        "regex": "^[A-Za-z ]+$",
-        "required": False,
-        "show_in_output": True,
-        "standards": {
-        "dwc": {
-            "label": "",
-            "name": ""
-        },
-        "mixs": {
-            "label": "",
-            "name": ""
-        },
-        "schemaorg": {
-            "label": "Organism Name",
-            "name": "organismName"
-        }
-        }
-    },
-    "recordNumber": {
-        "description": "A unique number assigned to this record.",
-        "example": "rec123",
-        "required": False,
-        "show_in_output": True,
-        "standards": {
-        "dwc": {
-            "label": "Record Number",
-            "name": "recordNumber"
-        },
-        "mixs": {
-            "label": "",
-            "name": ""
-        },
-        "schemaorg": {
-            "label": "Record Number",
-            "name": "recordNumber"
-        }
-        }
-    },
-    'scientificName': {
-        'description': 'The scientific name of the organism.', 
-        'example': 'Arenicola marina', 
-        'regex': '^[A-Za-z]+ [a-z]+$',
-        'required': False, 
-        'show_in_output': True,
-        'standards': {
-            'dwc': {'label': 'Scientific Name',  'name': 'scientificName'},
-            'mixs': {'label': 'Specific Host Name',  'name': 'specific_host'},
-            'schemaorg': {'label': 'Scientific Name',  'name': 'scientificName'},
-        }
-    },
-    'sex': {
-        'allowed_values': [
-            'Asexual morph',
-            'Female',
-            'Hermaphrodite monoecious',
-            'Male',
-            'Sexual morph',
-            'Not applicable',
-            'Not collected',
-            'Not provided'
-        ],
-        'error': 'Invalid value',
-        'description': 'The sex of the organism (if applicable).', 
-        'example': 'Male', 
-        'regex': r'^(Asexual morph|Female|Hermaphrodite monoecious|Male|Sexual morph|Not applicable|Not collected|Not provided)$',
-        'required': False, 
-        'show_in_output': True,
-        'standards': {
-            'dwc': {'label':'Sex', 'name':'sex'},
-            'mixs': {'label':'Urobiom Sex', 'name':'urobiom_sex'},
-            'schemaorg': {'label':'Sex', 'name':'sex'}
-        }
-    },
-    'taxonID': {
-        'description': 'A unique identifier for species or organism studied.', 
-        'error': 'Taxon ID is required',
-        'example': '6344', 
-        'reference': 'http://purl.obolibrary.org/obo/NCIT_C179773',
-        'regex': '^\d+$',
-        'required': True, 
-        'show_in_output': True,
-        'standards': {
-            'dwc': {'label': 'Taxon ID', 'name': 'taxonID'},
-            'mixs': {'label': 'Sample Taxon ID', 'name': 'samp_taxon_id'},
-            'schemaorg': {'label': 'Taxon ID', 'name': 'taxonID'},
-        }
-    },
-    'taxonRank': {
-        'allowed_values':['Species', 'Subspecies'],
-        'error': 'Invalid taxon rank. Please select a valid taxon rank.',
-        'description': 'The rank of the taxon for this organism.', 
-        'example': 'Species', 
-        'regex': '^[A-Za-z]+$',
-        'required': False, 
-        'show_in_output': True,
-        'standards': {
-            'dwc': {'label': '', 'name': ''},
-            'mixs': {'label': '', 'name': ''},
-            'schemaorg': {'label': 'Taxon Rank',  'name': 'taxonRank'}
-        },
-    },
-    'year': {
-        'description': 'The year the sample was collected.', 
-        'example': '2024', 
-        'regex': '^\d{4}$',
-        'required': False, 
-        'show_in_output': True,
-        'standards': {
-            'dwc': {'label': '', 'name': ''},
-            'mixs': {'label': '', 'name': ''},
-            'schemaorg': {'label': 'Year',  'name': 'year'}
-        }
-    }
-}
-
 CHECKLIST_MAPPING = {
     'SCRNASEQ':{
         'accession': 'SCRNASEQ1',
@@ -395,15 +14,15 @@ CHECKLIST_MAPPING = {
         'description': 'Minimum information to standardise metadata related to samples used in RNA seq experiments...',
         'checklistType': 'reads'
     },
-    'SPATFISH':{
-        'accession': 'SPATIMG1',
+    'STXFISH':{
+        'accession': 'STXIMG1',
         'label': 'COPO Spatial Transcriptomics Image Checklist',
         'name': 'COPO Spatial Transcriptomics Image Checklist',
         'description': 'Minimum information to standardise metadata related to samples used in RNA seq experiments. Useful for downstream services to select RNA-Seq read data for appropriate alignment processing and display. Also useful for external users to select RNA-Seq read files, their alignments, and structured metadata describing the source material.',
         'checklistType': 'image'
     },
-    'SPATSEQ':{
-        'accession': 'SPATSEQ1',
+    'STXSEQ':{
+        'accession': 'STXSEQ1',
         'label': 'COPO Spatial Transcriptomics Sequencing Checklist',
         'name': 'COPO Spatial Transcriptomics Sequencing Checklist',
         'description': 'Minimum information to standardise metadata related to samples used in RNA seq experiments. Useful for downstream services to select RNA-Seq read data for appropriate alignment processing and display. Also useful for external users to select RNA-Seq read files, their alignments, and structured metadata describing the source material.',
@@ -411,13 +30,13 @@ CHECKLIST_MAPPING = {
     }
 }
 
-EXCLUDED_FILES = ['exclusions.json']
+EXCLUDED_FILES = ['core_schema_fields.json', 'extended_schema_fields.json', 'exclusions.json']
 
-SCHEMA_FILE_PATHS = [f'schemas/{filename}' for root, dirs, files in os.walk('schemas/') 
+SCHEMA_FILE_PATHS = [f'schemas/general/{filename}' for root, dirs, files in os.walk('schemas/general') 
                         for filename in files if filename.endswith('.json') and 
                         filename not in EXCLUDED_FILES
                     ]
-STANDARDS = ['schemaorg', 'dwc', 'mixs']
+mapping = ['dwc', 'mixs', 'schemaorg', 'tol']
 TERMSETS = ['core', 'extended']
 
 def convertStringToTitleCase(text):
@@ -431,78 +50,108 @@ def get_col_desc_eg(component, standard):
     field_validation = get_validation(component, standard)
     return {field: {'description': field_info.get('description', ''), 'example': field_info.get('example', '')} for field, field_info in field_validation.items()}
 
-def get_dwc_fields(termset):
+# def get_dwc_fields(termset):
+#     '''
+#     This function reads a CSV file and a JSON file, filters the data from the CSV file based on certain conditions,
+#     and returns a list of dictionaries representing the filtered data.
+
+#     The CSV file 'schemas/dwc.csv' contains data with various fields. The JSON file 'schemas/exclusions.json' contains
+#     a list of labels that should be excluded from the final output.
+
+#     The function first reads the CSV file using pandas and loads the JSON file. It then filters the data from the CSV file
+#     to include only those rows where the 'status' field is either 'recommended' or 'required'. It also excludes any rows
+#     where the 'label' field is in the list of excluded labels from the JSON file.
+
+#     For each of the remaining rows, it creates a dictionary using the 'create_field' function and adds it to the output list.
+
+#     Returns:
+#         out (list): A list of dictionaries representing the filtered data from the CSV file.
+#     '''
+#     # Read the CSV file
+#     orig = pd.read_csv('schemas/dwc.csv')
+
+#     # Load the JSON file
+#     with open('schemas/exclusions.json') as excluded_json:
+#         excluded = json.loads(excluded_json.read())['excluded']
+
+#     # Filter the data from the CSV file
+#     filtered = orig[(orig.status == 'recommended')]
+
+#     # Create the output list
+
+#     if termset == 'extended':
+#         out = [create_field(line) for _, line in filtered.iterrows()]
+#     elif termset == 'core':
+#         out = [create_field(line) for _, line in filtered.iterrows() if
+#                line['term_localName'] in [item['name'] for item in excluded if item['set'] == 'core']]
+#     else:
+#         sys.exit("Invalid termset. Please use 'core' or 'extended' as termset.")
+#     return out
+
+def generate_json_file(data, output_file_path):
     '''
-    This function reads a CSV file and a JSON file, filters the data from the CSV file based on certain conditions,
-    and returns a list of dictionaries representing the filtered data.
+    This function writes data to a JSON file.
 
-    The CSV file 'schemas/dwc.csv' contains data with various fields. The JSON file 'schemas/exclusions.json' contains
-    a list of labels that should be excluded from the final output.
-
-    The function first reads the CSV file using pandas and loads the JSON file. It then filters the data from the CSV file
-    to include only those rows where the 'status' field is either 'recommended' or 'required'. It also excludes any rows
-    where the 'label' field is in the list of excluded labels from the JSON file.
-
-    For each of the remaining rows, it creates a dictionary using the 'create_field' function and adds it to the output list.
-
-    Returns:
-        out (list): A list of dictionaries representing the filtered data from the CSV file.
+    Parameters:
+    data (dict): The data to write to the JSON file.
+    output_file_path (str): The path to the JSON file.
     '''
-    # Read the CSV file
-    orig = pd.read_csv('schemas/dwc.csv')
+    directory_path = os.path.dirname(output_file_path) # Get the directory path
+    os.makedirs(directory_path, exist_ok=True) # Create output directory if it does not exist
+    file_name = output_file_path.split('/')[-1]
+    
+    # Check if there's a conflicting directory with the same name as the file
+    if os.path.isdir(output_file_path):
+        print(f"Warning: A directory exists with the name '{output_file_path}'. Overwriting it.")
+        shutil.rmtree(output_file_path)  # Remove the directory and its contents
 
-    # Load the JSON file
-    with open('schemas/exclusions.json') as excluded_json:
-        excluded = json.loads(excluded_json.read())['excluded']
+    file_name = output_file_path.split('/')[-1]
 
-    # Filter the data from the CSV file
-    filtered = orig[(orig.status == 'recommended')]
+    with open(output_file_path, 'w') as f:
+        f.write(json.dumps(data, indent=2))
 
-    # Create the output list
-
-    if termset == 'extended':
-        out = [create_field(line) for _, line in filtered.iterrows()]
-    elif termset == 'core':
-        out = [create_field(line) for _, line in filtered.iterrows() if
-               line['term_localName'] in [item['name'] for item in excluded if item['set'] == 'core']]
-    else:
-        sys.exit("Invalid termset. Please use 'core' or 'extended' as termset.")
-    return out
+    print(f'{file_name} created!')
 
 def get_validation(component, standard):
     field_validation = {}
 
     for element in component['fields']:
         for field, field_info in element.items():
-            if field_info.get('show_in_output', False):
+            if field_info.get('mapped_manifests',{}).get(standard, False):
                 # Get the default label and name from the 'schemaorg' 
                 # standard if no label or name is provided for the standard
-                default_label = field_info.get('standards', {}).get('schemaorg', {}).get('label')
-                default_name = field_info.get('standards', {}).get('schemaorg', {}).get('name')
+                default_label = field_info.get('default_map', {}).get('label', '')
+                default_name = field_info.get('default_map', {}).get('name','')
                 
                 label = (
-                    field_info.get('standards', {}).get(standard, {}).get('label') or 
+                    field_info.get('mapping', {}).get(standard, {}).get('label') or 
                     default_label or  convertStringToTitleCase(field)
                 )
 
                 name = (
-                    field_info.get('standards', {}).get(standard, {}).get('name') or
+                    field_info.get('mapping', {}).get(standard, {}).get('name') or
                     default_name or field
                 )
 
-                field_info.get('standards', dict())[standard]['label'] = label
-                field_info['standards'][standard]['name'] = name
+                # Ensure the 'mapping' dictionary and the specific standard sub-dictionary exist
+                field_info.setdefault('mapping', {}).setdefault(standard, {})
+
+                # Assign the label and name values
+                field_info['mapping'][standard]['label'] = label
+                field_info['mapping'][standard]['name'] = name
+
+                # Update field_validation with the label as the key
                 field_validation[label] = field_info
     return field_validation
 
 def get_field_label_mapping(component, standard):
     field_validation = get_validation(component, standard)
-    label_mapping = {field: field_info.get('standards',dict()).get(standard,str()).get('name', field) for field, field_info in field_validation.items()}
+    label_mapping = {field: field_info.get('mapping',dict()).get(standard,str()).get('name', field) for field, field_info in field_validation.items()}
     return label_mapping
 
 def get_required_columns(component, standard):
     field_validation = get_validation(component, standard)
-    return [field for field, field_info in field_validation.items() if field_info.get('required', False)]
+    return [field for field, field_info in field_validation.items() if field_info.get('default_map', {}).get('required', False)]
 
 def merge_row(worksheet, row, last_column_letter, merge_format):
     """
@@ -541,6 +190,39 @@ def merge_row(worksheet, row, last_column_letter, merge_format):
     except Exception as e:
         print(f'Error: {e}')
 
+def retrieve_data_by_termset(termset):
+    '''
+    Retrieve dictionary data from a JSON file based on the specified termset.
+
+    Parameters:
+    termset (str): The termset to filter by, either 'extended' or 'core'.
+
+    Returns:
+    dict: A dictionary containing the fields that match the specified termset.
+    '''
+    if termset not in TERMSETS:
+        sys.exit("Invalid termset. Please use 'core' or 'extended' as termset.")
+
+    # Define the file path based on the termset
+    file_path = f'schemas/{termset}/{termset}_schema_fields.json'
+    
+    # Read the JSON file
+    try:
+        with open(file_path, 'r') as file:
+            data = json.load(file)
+    except FileNotFoundError:
+        print(f'File not found: {file_path}')
+        return {}
+
+    # Filter data based on the termset value
+    filtered_data = {
+        key: value
+        for key, value in data.items()
+        if value.get('termset') == termset
+    }
+
+    return filtered_data
+
 def remove_duplicates(fields, new_fields):
    # Create a dictionary to hold unique fields by their key (e.g., 'sample_id')
     unique_fields = {}
@@ -551,36 +233,41 @@ def remove_duplicates(fields, new_fields):
         field_key = list(field.keys())[0]
         unique_fields[field_key] = field[field_key]
 
-    # Add new fields (from new_fields), updating or adding as necessary
-    for new_field in new_fields:
-        new_field_key = list(new_field.keys())[0]
-        unique_fields[new_field_key] = new_field[new_field_key]
+    # Add or update new fields from new_fields
+    for new_field_key, new_field_value in new_fields.items():
+        unique_fields[new_field_key] = new_field_value
 
     # Convert back to the original list of dictionaries format
     return [{key: value} for key, value in unique_fields.items()]
 
-def set_field_properties(fields):
-    required_fields = ['taxonID']
-   
-    for field in fields:
-        for key, value in field.items():
-            # Get field properties with default as an empty dictionary
-            field_properties = ADDTL_FIELD_PROPERTIES.get(key, {})
-            standards = field_properties.get('standards', dict())
+def update_schema_with_termset_fields(json_schema_file_path, termset_fields, termset):
+    file_name = json_schema_file_path.split('/')[-1]
 
-            # Define default values and update with field properties if available
-            value.update({
-                'allowed_values': field_properties.get('allowed_values', []),
-                'description': field_properties.get('description', ''),
-                'error': field_properties.get('error', ''),
-                'example': field_properties.get('example', ''),
-                'regex': field_properties.get('regex', ''),
-                'required': field_properties.get('required', key in required_fields),
-                'show_in_output': field_properties.get('show_in_output', True if key in required_fields else False),
-                'standards': {k: {'label': v.get('label', convertStringToTitleCase(k)), 'name': v.get('name', k)} for k, v in standards.items()}
-            })
-            
-    return fields
+    with open(json_schema_file_path, 'r') as f:
+        data = json.load(f)
+
+    components = data.get('components', [])
+
+    for component in components:
+        for field in component.get('fields', []):
+            for key, attributes in field.items():
+                # Update the fields for the component if the key is found in the termset_fields
+                schema_types = attributes.get('schema_types', [])
+
+                if key in termset_fields and file_name in schema_types:
+                    # Remove schema_types from the termset_fields
+                    termset_fields[key].pop('schema_types', None)
+
+                    # Update the attributes with the termset fields
+                    component[key] = termset_fields[key]
+
+    updated_data = {'components': components}
+
+    file_name = file_name.replace('.json', f'_{termset}.json')
+    output_file_path = f'schemas/{termset}/{file_name}'
+    
+    # Write the updated data to a new JSON file
+    generate_json_file(updated_data, output_file_path)
 
 def validate_argument(argument, valid_arguments, error):
     '''
@@ -698,7 +385,7 @@ def apply_dropdown_list(component, dataframe, column_validation, pandas_writer, 
         if column_name in column_validation:
             is_field_required = column_validation[column_name].get('required', False)
             dropdown_list = column_validation[column_name].get('allowed_values', [])
-            error_message = column_validation[column_name].get('error', f'{column_validation[column_name]["standards"][standard]["label"]} is required')
+            error_message = column_validation[column_name].get('error', f'{column_validation[column_name]["mapping"][standard]["label"]} required')
             field_type = column_validation[column_name].get('type', '')
             regex = column_validation[column_name].get('regex', '')
 

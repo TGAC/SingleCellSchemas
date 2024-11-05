@@ -2,6 +2,22 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: Extract All Components in All Standards and Termsets",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/convert.py",
+            "console": "integratedTerminal",
+            "args": [],
+            "python": "${workspaceFolder}/venv/bin/python",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "justMyCode": true,  // Skip debugging code from libraries
+            "pythonArgs": [
+                "-Xfrozen_modules=off"  // Disable frozen modules to ensure breakpoints are hit
+            ]
+        },
+        {
             "name": "Python: Extract All Core Components in All Standards",
             "type": "debugpy",
             "request": "launch",
@@ -26,7 +42,7 @@
             "program": "${workspaceFolder}/convert.py",
             "console": "integratedTerminal",
             "args": [
-                "${workspaceFolder}/schemas/sc_rnaseq.json",  // Path to the input JSON schema file
+                "${workspaceFolder}/schemas/general/sc_rnaseq.json",  // Path to the input JSON schema file
                 "core", // Termset argument (either 'core' or 'extended')
                 "schemaorg" // Standard argument (either 'schemaorg', 'dwc', or 'mixs')
             ],
@@ -40,13 +56,13 @@
             ]
         },
         {
-            "name": "Python: Extract spat_fish Core Components",
+            "name": "Python: Extract stx_fish Core Components",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/convert.py",
             "console": "integratedTerminal",
             "args": [
-                "${workspaceFolder}/schemas/spat_fish.json",  // Path to the input JSON schema file
+                "${workspaceFolder}/schemas/general/stx_fish.json",  // Path to the input JSON schema file
                 "core", // Termset argument (either 'core' or 'extended')
                 "schemaorg" // Standard argument (either 'schemaorg', 'dwc', or 'mixs')
             ],
@@ -60,13 +76,13 @@
             ]
         },
         {
-            "name": "Python: Extract spat_seq Core Components",
+            "name": "Python: Extract stx_seq Core Components",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/convert.py",
             "console": "integratedTerminal",
             "args": [
-                "${workspaceFolder}/schemas/spat_seq.json",  // Path to the input JSON schema file
+                "${workspaceFolder}/schemas/general/stx_seq.json",  // Path to the input JSON schema file
                 "core", // Termset argument (either 'core' or 'extended')
                 "schemaorg" // Standard argument (either 'schemaorg', 'dwc', or 'mixs')
             ],
@@ -79,14 +95,13 @@
                 "-Xfrozen_modules=off"  // Disable frozen modules to ensure breakpoints are hit
             ]
         },
-         {
-            "name": "Python: Run script",
+        {
+            "name": "Python: Test convert script",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/utils/script.py",
+            "program": "${workspaceFolder}/test/test_cases.py",
             "console": "integratedTerminal",
-            "args": [
-            ],
+            "args": [],
             "python": "${workspaceFolder}/venv/bin/python",
             "env": {
                 "PYTHONPATH": "${workspaceFolder}"

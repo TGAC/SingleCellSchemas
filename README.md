@@ -1,11 +1,20 @@
-This repository contains developments regarding EI's CELLGEN ISP metadata standards.
+# SingleCellSchema
+The **SingleCellSchema** repository houses developments related to Earlham Institute's (EI’s) CELLGEN ISP metadata mapping and schemas, designed to describe a variety of Single Cell Genomics and Spatial Transcriptomics experiment types, such as those from 10X Genomics and Vizgen.
 
-Broadly, the schemas can be used for describing a range of single cell genomic and spatial transcriptomics experiment types such as 10X and Vizgen. The schemas directory contains the JSON representation of the schema, and the utils directory contains python modules to convert from json to tabular formats such as excel.
+It contains the following directories:
+
+- ``dist``: contains the output files generated from the conversion process.
+
+- ``schemas``: contains the core, extended and general versions of the schema in JSON format.
+
+- ``utils``: contains Python helper scripts to convert JSON files into tabular formats such as Excel.
+
+The main script, ``convert.py``, is used to convert the JSON schema into Excel, XML, and additional JSON files. It is found in the project root directory.
 
 **Abbreviations**:
 
 - SC RNASEQ: Single Cell RNA-Sequencing
-- SPAT: Spatial Transcriptomics
+- STX: Spatial Transcriptomics
 
 <br />
 
@@ -30,36 +39,52 @@ Please follow the instructions below to convert the JSON schema to an excel file
    `pip3 install -r requirements/requirements.txt`
 
 5. Make the following directories if they do not exist
+   ### Core directories
+   `mkdir dist/checklists/core/json`
 
-   `mkdir dist/checklists/json`
+   `mkdir dist/checklists/core/xml`
 
-   `mkdir dist/checklists/xml`
+   `mkdir dist/checklists/core/xlsx`
+   ### Extended directories
+   `mkdir dist/checklists/extended/json`
 
-   `mkdir dist/checklists/xlsx`
+   `mkdir dist/checklists/extended/xml`
 
-6. Different ways to run the `convert.py` script:
+   `mkdir dist/checklists/extended/xlsx`
+
+6. Different ways to run the `convert.py` script which is found in the project root directory
 
    - Use `launch.json` file to run the script in VSCode by selecting the appropriate configuration
 
-      --**OR**--
+     --**OR**--
+
+   - `python3 convert.py`
+
+      This will convert the schema into an excel file, xml and json files using
+      all termsets, standards and schemas in the `schemas/general` directory
+
+     --**OR**--
 
    - `python3 convert.py <termset>`
 
-      where `<termset>` is the type of terms to be used (extended, core)
+     where `<termset>` is the type of terms to be used (extended, core)
+     e.g. `python3 convert.py core`
 
-      --**OR**--
+     --**OR**--
 
-   - `python3 convert.py schemas/<schema-name> <termset>`
+   - `python3 convert.py schemas/general/<schema-name> <termset>`
 
-      where `<schema-name>` is the name of the schema file in the `schemas` directory, `<termset>` is the type of terms to be used (extended, core)
-      --**OR**--
+     where `<schema-name>` is the name of the schema file in the `schemas` directory, `<termset>` is the type of terms to be used (extended, core) e.g. `python3 convert.py schemas/general/sc_rnaseq.json core`
 
-   - `python3 convert.py schemas/<schema-name> <termset> <standard>`
+     --**OR**--
 
-      where `<schema-name>` is the name of the schema file in the `schemas` directory, `<termset>` is the type of terms to be used (extended, core) and `<standard>` is the standard to be used (e.g. dwc, mixs, schemaorg)
+   - `python3 convert.py schemas/general/<schema-name> <termset> <standard>`
 
-      --**OR**--
+     where `<schema-name>` is the name of the schema file in the `schemas` directory, `<termset>` is the type of terms to be used (extended, core) and `<standard>` is the standard to be used (e.g. dwc, mixs, schemaorg)
+     e.g. `python3 convert.py schemas/general/sc_rnaseq.json core dwc`
+
+     --**OR**--
 
    - Run the tests (which also runs the converter whilst verifying the output)
 
-      `python -m unittest`
+     `python -m unittest`
