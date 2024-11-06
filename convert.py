@@ -10,7 +10,8 @@ import shutil
 import sys
 import xlsxwriter
 import xml.etree.ElementTree as ET
-
+import jinja2 as j2
+from jinja2 import Environment, FileSystemLoader
 def extract_components_to_excel(data_dict, output_file_path, termset, standard):
     '''
     This function extracts components from a JSON file and writes them to an Excel file.
@@ -242,6 +243,149 @@ def extract_components_to_xml(data_dict, output_file_path, termset, standard):
 
     print(f'{file_name} created!')
 
+def extract_components_to_html(data_dict, output_file_path, termset, standard):
+    '''
+        This function extracts components from a JSON file and writes them to an XML file.
+
+        Parameters:
+        data_dict (str): Data from the JSON file.
+        output_file_path (str): The path to the output XML file.
+        '''
+
+    # Create output directory if it does not exist
+    output_file_path = output_file_path.replace('.json', f'_{termset}.html').replace('.xlsx', f'_{termset}.html').replace(
+        'schemas/', f'dist/checklists/{termset}/html/{standard}/').replace('.xml', '.html').replace('/general', '')
+    directory_path = os.path.dirname(output_file_path)  # Get the directory path
+    os.makedirs(directory_path, exist_ok=True)  # Create output directory if it does not exist
+    file_name = output_file_path.split('/')[-1]
+
+    # Check if there's a conflicting directory with the same name as the file
+    if os.path.isdir(output_file_path):
+        print(f"Warning: A directory exists with the name '{output_file_path}'. Overwriting it.")
+        shutil.rmtree(output_file_path)  # Remove the directory and its contents
+
+    # Prepare checklist type details
+    checklist_type_abbreviation = file_name.replace(f'_{standard}_{termset}.html', '').replace('_', '').upper()
+    accession = helpers.CHECKLIST_MAPPING.get(checklist_type_abbreviation, '').get('accession', '')
+    checklist_type = helpers.CHECKLIST_MAPPING.get(checklist_type_abbreviation, '').get('checklistType', '')
+    label = helpers.CHECKLIST_MAPPING.get(checklist_type_abbreviation, '').get('label', '')
+    description = helpers.CHECKLIST_MAPPING.get(checklist_type_abbreviation, '').get('description', '')
+
+
+
+
+
+
+
+    # Create root element
+    #checklist_set = ET.Element('CHECKLIST_SET')
+
+    # Create checklist element
+    #checklist = ET.SubElement(checklist_set, 'CHECKLIST', accession=accession, checklistType=checklist_type)
+
+    # Create IDENTIFIERS
+    #identifiers = ET.SubElement(checklist, 'IDENTIFIERS')
+    #primary_id = ET.SubElement(identifiers, 'PRIMARY_ID')
+    #primary_id.text = accession
+
+    # Create DESCRIPTOR
+    #descriptor = ET.SubElement(checklist, 'DESCRIPTOR')
+
+    # Add static elements to descriptor
+    #label = ET.SubElement(descriptor, 'LABEL')
+    #label.text = label
+
+    #name = ET.SubElement(descriptor, 'NAME')
+    #name.text = name
+
+    #description = ET.SubElement(descriptor, 'DESCRIPTION')
+    #description.text = description
+
+    #standard_element = ET.SubElement(descriptor, 'STANDARD')
+    #standard_element.text = standard
+
+    #authority = ET.SubElement(descriptor, 'AUTHORITY')
+    #authority.text = 'COPO'
+
+    # Process FIELD_GROUPs from components
+    components = []
+    for component in data_dict['components']:
+        component_dict = {}
+        field_label_mapping = helpers.get_field_label_mapping(component, standard)
+
+        # Get the component validation
+        component_validation = helpers.get_validation(component, standard)
+
+        #field_group = ET.SubElement(descriptor, 'FIELD_GROUP', restrictionType=component.get('restriction_type',
+                                                                                             #'Any number or none of the fields'))
+
+        #group_name = ET.SubElement(field_group, 'NAME')
+        component_dict["group_name"] = component.get('component', '')
+
+        component_dict["group_description"] = component.get('description', '')
+        component_dict["fields"] = []
+        for field_dict in component.get('fields', []):
+            current_field = dict()
+            for field, value_dict in field_dict.items():
+                label = value_dict.get('mapping', {}).get(standard, {}).get('label', str())
+                data_dict = component_validation.get(label, str())
+
+                if data_dict:
+                    mapping_dict = data_dict.get('mapping', dict())
+
+                    #field_element = ET.SubElement(field_group, 'FIELD')
+
+                    #label_element = ET.SubElement(field_element, 'LABEL')
+                    current_field["label_element"] = mapping_dict.get(standard, {}).get('label', str())
+
+                    #name = ET.SubElement(field_element, 'NAME')
+                    current_field["name"] = mapping_dict.get(standard, {}).get('name', str())
+
+                    #description = ET.SubElement(field_element, 'DESCRIPTION')
+                    current_field["description"] = data_dict.get('description', '')
+
+                    #example = ET.SubElement(field_element, 'EXAMPLE')
+                    current_field["example"] = data_dict.get('example', '')
+
+                    #field_type = ET.SubElement(field_element, 'FIELD_TYPE')
+
+                    regex_value = data_dict.get('regex', '')
+
+                    if regex_value:
+                        #text_field = ET.SubElement(field_type, 'TEXT_FIELD')
+                        #regex = ET.SubElement(text_field, 'REGEX_VALUE')
+                        current_field["regex"] = regex_value
+                    else:
+                        field_type_value = data_dict.get('type', 'TEXT_FIELD')
+
+                        if field_type_value == 'TEXT_FIELD':
+                            pass
+                            #ET.SubElement(field_type, 'TEXT_FIELD')
+
+                    if field_dict.get(field, '').get('allowed_values', []):
+                        #choice_field = ET.SubElement(field_type, 'TEXT_CHOICE_FIELD')
+                        choice_field = []
+                        for value in field_dict.get(field, '').get('allowed_values', []):
+                            choice_field.append(value)
+                        current_field["allowed_values"] = choice_field
+
+                    #mandatory = ET.SubElement(field_element, 'MANDATORY')
+                    current_field["mandatory"] = 'mandatory' if field_dict.get(field, '').get('required', False) else 'optional'
+
+                    #multiplicity = ET.SubElement(field_element, 'MULTIPLICITY')
+                    current_field["multiplicity"] = field_dict.get(field, '').get('multiplicity', 'single')
+
+                component_dict["fields"].append(current_field)
+        components.append(component_dict)
+
+
+
+    environment = Environment(loader=FileSystemLoader("templates/"))
+    fields_template = environment.get_template("fields_template.html")
+    context = {"components": components}
+    with open(output_file_path, mode="w", encoding="utf-8") as fields:
+        fields.write(fields_template.render(context))
+
 def extract_and_convert_schema(json_schema_file_path, termset, standard):
     # Get fields based on the termset
     termset_fields = helpers.retrieve_data_by_termset(termset)
@@ -263,6 +407,7 @@ def extract_and_convert_schema(json_schema_file_path, termset, standard):
     extract_components_to_excel(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.xlsx'), termset, standard)
     extract_components_to_json(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.json'), termset, standard)
     extract_components_to_xml(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.xml'), termset, standard)
+    extract_components_to_html(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.xml'), termset, standard)
 
 if __name__ == '__main__':
     args = sys.argv
