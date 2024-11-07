@@ -5,7 +5,21 @@ import os
 import pandas as pd
 import sys
 
-# Helpers: General
+# Helpers: Variables
+EXCLUDED_FILES = ['exclusions.json', 'sample_fields_core.json', 'sample_fields_extended.json']
+
+MAPPING = ['dwc', 'mixs', 'schemaorg', 'tol']
+
+SCHEMA_BASE_DIR_PATH = 'schemas/base'
+
+SCHEMA_FILE_PATHS = [f'{SCHEMA_BASE_DIR_PATH}/{filename}' for root, dirs, files in os.walk(SCHEMA_BASE_DIR_PATH) 
+                        for filename in files if filename.endswith('.json') and 
+                        filename not in EXCLUDED_FILES
+                    ]
+
+TERMSETS = ['core', 'extended']
+
+# Helpers: Mappings
 CHECKLIST_MAPPING = {
     'SCRNASEQ':{
         'accession': 'SCRNASEQ1',
@@ -30,63 +44,20 @@ CHECKLIST_MAPPING = {
     }
 }
 
-EXCLUDED_FILES = ['core_schema_fields.json', 'extended_schema_fields.json', 'exclusions.json']
+MESSAGES = {
+    'error_msg_invalid_file_path': f'Invalid .json schema file path. Please check the "{SCHEMA_BASE_DIR_PATH}" directory for available files',
+    'error_msg_invalid_standard': f"""Invalid standard. Please use {' or '.join([f'"{term}"' for term in MAPPING])} as standard.""",
+    'error_msg_invalid_termset': f"""Invalid termset. Please use {' or '.join([f'"{term}"' for term in TERMSETS])} as termset."""
+}
 
-SCHEMA_FILE_PATHS = [f'schemas/general/{filename}' for root, dirs, files in os.walk('schemas/general') 
-                        for filename in files if filename.endswith('.json') and 
-                        filename not in EXCLUDED_FILES
-                    ]
-mapping = ['dwc', 'mixs', 'schemaorg', 'tol']
-TERMSETS = ['core', 'extended']
-
+# Helpers: Functions
 def convertStringToTitleCase(text):
     # Convert given a string to title case/sentence case
     return text.title().replace('_', ' ')
 
-def create_field(line):
-    return {line['term_localName']: {'reference': line['iri'], 'required': False, 'type': 'string'}}
-
 def get_col_desc_eg(component, standard):
     field_validation = get_validation(component, standard)
     return {field: {'description': field_info.get('description', ''), 'example': field_info.get('example', '')} for field, field_info in field_validation.items()}
-
-# def get_dwc_fields(termset):
-#     '''
-#     This function reads a CSV file and a JSON file, filters the data from the CSV file based on certain conditions,
-#     and returns a list of dictionaries representing the filtered data.
-
-#     The CSV file 'schemas/dwc.csv' contains data with various fields. The JSON file 'schemas/exclusions.json' contains
-#     a list of labels that should be excluded from the final output.
-
-#     The function first reads the CSV file using pandas and loads the JSON file. It then filters the data from the CSV file
-#     to include only those rows where the 'status' field is either 'recommended' or 'required'. It also excludes any rows
-#     where the 'label' field is in the list of excluded labels from the JSON file.
-
-#     For each of the remaining rows, it creates a dictionary using the 'create_field' function and adds it to the output list.
-
-#     Returns:
-#         out (list): A list of dictionaries representing the filtered data from the CSV file.
-#     '''
-#     # Read the CSV file
-#     orig = pd.read_csv('schemas/dwc.csv')
-
-#     # Load the JSON file
-#     with open('schemas/exclusions.json') as excluded_json:
-#         excluded = json.loads(excluded_json.read())['excluded']
-
-#     # Filter the data from the CSV file
-#     filtered = orig[(orig.status == 'recommended')]
-
-#     # Create the output list
-
-#     if termset == 'extended':
-#         out = [create_field(line) for _, line in filtered.iterrows()]
-#     elif termset == 'core':
-#         out = [create_field(line) for _, line in filtered.iterrows() if
-#                line['term_localName'] in [item['name'] for item in excluded if item['set'] == 'core']]
-#     else:
-#         sys.exit("Invalid termset. Please use 'core' or 'extended' as termset.")
-#     return out
 
 def generate_json_file(data, output_file_path):
     '''
@@ -204,7 +175,7 @@ def retrieve_data_by_termset(termset):
         sys.exit("Invalid termset. Please use 'core' or 'extended' as termset.")
 
     # Define the file path based on the termset
-    file_path = f'schemas/{termset}/{termset}_schema_fields.json'
+    file_path = f'schemas/{termset}/sample_fields_{termset}.json'
     
     # Read the JSON file
     try:
@@ -241,33 +212,47 @@ def remove_duplicates(fields, new_fields):
     return [{key: value} for key, value in unique_fields.items()]
 
 def update_schema_with_termset_fields(json_schema_file_path, termset_fields, termset):
-    file_name = json_schema_file_path.split('/')[-1]
+    file_name = os.path.basename(json_schema_file_path).replace('.json', '')
+    
+    if not termset_fields:
+        print(f'No termset fields found for {termset}')
+        return
 
+    # Load the current schema data
     with open(json_schema_file_path, 'r') as f:
         data = json.load(f)
 
+    # Retrieve components from the JSON schema data
     components = data.get('components', [])
 
+    # Update each component with matching termset fields
     for component in components:
         for field in component.get('fields', []):
             for key, attributes in field.items():
-                # Update the fields for the component if the key is found in the termset_fields
-                schema_types = attributes.get('schema_types', [])
+                # Check if the key exists in termset_fields
+                if key in termset_fields:
+                    termset_info = termset_fields[key]
+                    schema_types = termset_info.get('schema_types', [])
 
-                if key in termset_fields and file_name in schema_types:
-                    # Remove schema_types from the termset_fields
-                    termset_fields[key].pop('schema_types', None)
+                    # Update the field if the schema file name is in schema_types
+                    if file_name in schema_types:
+                        # Remove schema_types and termset to avoid including it in the updated schema
+                        termset_info.pop('schema_types', None)
+                        termset_info.pop('termset', None)
 
-                    # Update the attributes with the termset fields
-                    component[key] = termset_fields[key]
+                        # Update the field attributes with termset_info data
+                        field[key] = termset_info
 
+    # Save the updated data to a new JSON file
     updated_data = {'components': components}
 
-    file_name = file_name.replace('.json', f'_{termset}.json')
-    output_file_path = f'schemas/{termset}/{file_name}'
+    output_file_name = f'{file_name}_{termset}.json'
+    output_file_path = os.path.join('schemas', termset, output_file_name)
     
     # Write the updated data to a new JSON file
     generate_json_file(updated_data, output_file_path)
+
+    print(f"\n{output_file_name} schema updated with '{termset}' termset fields!\n")
 
 def validate_argument(argument, valid_arguments, error):
     '''

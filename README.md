@@ -1,15 +1,16 @@
 # SingleCellSchema
+
 The **SingleCellSchema** repository houses developments related to Earlham Institute's (EI’s) CELLGEN ISP metadata mapping and schemas, designed to describe a variety of Single Cell Genomics and Spatial Transcriptomics experiment types, such as those from 10X Genomics and Vizgen.
 
 It contains the following directories:
 
-- ``dist``: contains the output files generated from the conversion process.
+- `dist`: contains the output files generated from the conversion process.
 
-- ``schemas``: contains the core, extended and general versions of the schema in JSON format.
+- `schemas`: contains the core, extended and general versions of the schema in JSON format.
 
-- ``utils``: contains Python helper scripts to convert JSON files into tabular formats such as Excel.
+- `utils`: contains Python helper scripts to convert JSON files into tabular formats such as Excel.
 
-The main script, ``convert.py``, is used to convert the JSON schema into Excel, XML, and additional JSON files. It is found in the project root directory.
+The main script, `convert.py`, is used to convert the JSON schema into Excel, XML, and additional JSON files. It is found in the project root directory.
 
 **Abbreviations**:
 
@@ -39,13 +40,17 @@ Please follow the instructions below to convert the JSON schema to an excel file
    `pip3 install -r requirements/requirements.txt`
 
 5. Make the following directories if they do not exist
+
    ### Core directories
+
    `mkdir dist/checklists/core/json`
 
    `mkdir dist/checklists/core/xml`
 
    `mkdir dist/checklists/core/xlsx`
+
    ### Extended directories
+
    `mkdir dist/checklists/extended/json`
 
    `mkdir dist/checklists/extended/xml`
@@ -60,8 +65,8 @@ Please follow the instructions below to convert the JSON schema to an excel file
 
    - `python3 convert.py`
 
-      This will convert the schema into an excel file, xml and json files using
-      all termsets, standards and schemas in the `schemas/general` directory
+     This will convert the schema into an excel file, xml and json files using
+     all termsets, standards and schemas in the `schemas/base` directory
 
      --**OR**--
 
@@ -72,16 +77,16 @@ Please follow the instructions below to convert the JSON schema to an excel file
 
      --**OR**--
 
-   - `python3 convert.py schemas/general/<schema-name> <termset>`
+   - `python3 convert.py schemas/base/<schema-name> <termset>`
 
-     where `<schema-name>` is the name of the schema file in the `schemas` directory, `<termset>` is the type of terms to be used (extended, core) e.g. `python3 convert.py schemas/general/sc_rnaseq.json core`
+     where `<schema-name>` is the name of the schema file in the `schemas` directory, `<termset>` is the type of terms to be used (extended, core) e.g. `python3 convert.py schemas/base/sc_rnaseq.json core`
 
      --**OR**--
 
-   - `python3 convert.py schemas/general/<schema-name> <termset> <standard>`
+   - `python3 convert.py schemas/base/<schema-name> <termset> <standard>`
 
      where `<schema-name>` is the name of the schema file in the `schemas` directory, `<termset>` is the type of terms to be used (extended, core) and `<standard>` is the standard to be used (e.g. dwc, mixs, schemaorg)
-     e.g. `python3 convert.py schemas/general/sc_rnaseq.json core dwc`
+     e.g. `python3 convert.py schemas/base/sc_rnaseq.json core dwc`
 
      --**OR**--
 

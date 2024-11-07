@@ -1,17 +1,19 @@
 from io import BytesIO
+from jinja2 import Environment, FileSystemLoader
 from openpyxl.utils import get_column_letter
-import utils.helpers as helpers
+from utils.helpers import MESSAGES as msg
 
+import jinja2 as j2
 import json
 import numpy as np
 import os
 import pandas as pd
 import shutil
 import sys
+import utils.helpers as helpers
 import xlsxwriter
 import xml.etree.ElementTree as ET
-import jinja2 as j2
-from jinja2 import Environment, FileSystemLoader
+
 def extract_components_to_excel(data_dict, output_file_path, termset, standard):
     '''
     This function extracts components from a JSON file and writes them to an Excel file.
@@ -94,7 +96,7 @@ def extract_components_to_excel(data_dict, output_file_path, termset, standard):
         helpers.autofit_all_sheets(writer)
 
     # Save to output filex
-    output_file_path = output_file_path.replace('schemas/', f'dist/checklists/{termset}/xlsx/{standard}/')
+    output_file_path = output_file_path.replace(f'{helpers.SCHEMA_BASE_DIR_PATH}/', f'dist/checklists/{termset}/xlsx/{standard}/')
     directory_path = os.path.dirname(output_file_path) # Get the directory path
     os.makedirs(directory_path, exist_ok=True) # Create output directory if it does not exist
     file_name = output_file_path.split('/')[-1]
@@ -110,7 +112,7 @@ def extract_components_to_excel(data_dict, output_file_path, termset, standard):
     print(f'{file_name} created!')
 
 def extract_components_to_json(data_dict, output_file_path, termset, standard):
-    output_file_path = output_file_path.replace('schemas/', f'dist/checklists/{termset}/json/{standard}/')
+    output_file_path = output_file_path.replace(f'{helpers.SCHEMA_BASE_DIR_PATH}/', f'dist/checklists/{termset}/json/{standard}/')
 
     # Write JSON data to a file
     helpers.generate_json_file(data_dict, output_file_path)
@@ -125,7 +127,7 @@ def extract_components_to_xml(data_dict, output_file_path, termset, standard):
     '''
 
     # Create output directory if it does not exist
-    output_file_path = output_file_path.replace('.json', f'_{termset}.xml').replace('.xlsx', f'_{termset}.xml').replace('schemas/', f'dist/checklists/{termset}/xml/{standard}/')
+    output_file_path = output_file_path.replace('.json', f'_{termset}.xml').replace('.xlsx', f'_{termset}.xml').replace(f'{helpers.SCHEMA_BASE_DIR_PATH}/', f'dist/checklists/{termset}/xml/{standard}/')
     directory_path = os.path.dirname(output_file_path) # Get the directory path
     os.makedirs(directory_path, exist_ok=True) # Create output directory if it does not exist
     file_name = output_file_path.split('/')[-1]
@@ -256,7 +258,7 @@ def extract_components_to_html(data_dict, output_file_path, termset, standard):
     output_file_path = (
         output_file_path.replace('.json', f'_{termset}.html')
         .replace('.xlsx', f'_{termset}.html')
-        .replace('schemas/', f'dist/checklists/{termset}/html/{standard}/')
+        .replace(f'{helpers.SCHEMA_BASE_DIR_PATH}/', f'dist/checklists/{termset}/html/{standard}/')
         .replace('.xml', '.html')
         .replace('/general', '')
     )
@@ -314,6 +316,7 @@ def extract_components_to_html(data_dict, output_file_path, termset, standard):
     context = {"components": components}
     with open(output_file_path, mode="w", encoding="utf-8") as fields:
         fields.write(fields_template.render(context))
+
 def extract_and_convert_schema(json_schema_file_path, termset, standard):
     # Get fields based on the termset
     termset_fields = helpers.retrieve_data_by_termset(termset)
@@ -335,7 +338,7 @@ def extract_and_convert_schema(json_schema_file_path, termset, standard):
     extract_components_to_excel(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.xlsx'), termset, standard)
     extract_components_to_json(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.json'), termset, standard)
     extract_components_to_xml(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.xml'), termset, standard)
-    extract_components_to_html(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.xml'), termset, standard)
+    extract_components_to_html(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.html'), termset, standard)
 
 if __name__ == '__main__':
     args = sys.argv
@@ -356,7 +359,7 @@ if __name__ == '__main__':
             # Extract schema data and converts it into multiple formats for all mapping
             for termset in helpers.TERMSETS:
                 print(f'\n_________\n\n--Extracting "{json_schema_file_path}" with "{termset}" termset--\n')
-                for standard in helpers.mapping:
+                for standard in helpers.MAPPING:
                     print(f'\n*-With "{standard}" standard-*\n')
                     extract_and_convert_schema(json_schema_file_path, termset, standard)
     elif len(args) == 2:
@@ -367,14 +370,14 @@ if __name__ == '__main__':
         helpers.validate_argument(
             argument=termset,
             valid_arguments=helpers.TERMSETS,
-            error='Invalid termset. Please use "core" or "extended" as termset.'
+            error=msg['error_msg_invalid_termset']
         )
         
         # Get the JSON schema file paths
         for json_schema_file_path in helpers.SCHEMA_FILE_PATHS:
             # Extract schema data and converts it into multiple formats for all mapping
             print(f'\n_________\n\n--Extracting "{json_schema_file_path}" with "{termset}" termset--\n')
-            for standard in helpers.mapping:
+            for standard in helpers.MAPPING:
                 print(f'\n*-With "{standard}" standard-*\n')
                 extract_and_convert_schema(json_schema_file_path, termset, standard)
     elif len(args) == 3:
@@ -386,18 +389,18 @@ if __name__ == '__main__':
         helpers.validate_argument(
             argument=json_schema_file_path,
             valid_arguments=helpers.SCHEMA_FILE_PATHS,
-            error='Invalid .json schema file path. Please check the "schemas/" directory for available files'
+            error=msg['error_msg_invalid_file_path']
         )
 
         # Check if the termset provided is valid
         helpers.validate_argument(
             argument=termset,
             valid_arguments=helpers.TERMSETS,
-            error='Invalid termset. Please use "core" or "extended" as termset.'
+            error=msg['error_msg_invalid_termset']
         )
 
         # Extract schema data and converts it into multiple formats for all mapping
-        for standard in helpers.mapping:
+        for standard in helpers.MAPPING:
             extract_and_convert_schema(json_schema_file_path, termset, standard)
     elif len(args) == 4:
         json_schema_file_path = args[1]
@@ -408,21 +411,21 @@ if __name__ == '__main__':
         helpers.validate_argument(
             argument=json_schema_file_path,
             valid_arguments=helpers.SCHEMA_FILE_PATHS,
-            error='Invalid .json schema file path. Please check the "schemas/" directory for available files'
+            error=msg['error_msg_invalid_file_path']
         )
 
         # Check if the termset provided is valid
         helpers.validate_argument(
             argument=termset,
             valid_arguments=helpers.TERMSETS,
-            error='Invalid termset. Please use "core" or "extended" as termset.'
+            error=msg['error_msg_invalid_termset']
         )
         
         # Check if the standard provided is valid
         helpers.validate_argument(
             argument=standard,
-            valid_arguments=helpers.mapping,
-            error='Invalid standard. Please use "schemaorg", "dwc" or "mixs" as termset'
+            valid_arguments=helpers.MAPPING,
+            error=msg['error_msg_invalid_standard']
         )
         
         # Extract schema data and converts it into multiple formats with a specific standard

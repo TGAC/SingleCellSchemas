@@ -286,7 +286,7 @@
       "reference": "http://rs.tdwg.org/dwc/terms/country",
       "required": false
     },
-    "description": "The country where the sample was collected.",
+    "description": "General name of the location where the specimen or sample was sampled.",
     "example": "United Kingdom",
     "mapped_manifests": {
       "dwc": true,
@@ -303,7 +303,7 @@
       "mixs": {
         "label": "Geographic Location Name",
         "name": "geo_loc_name",
-        "reference": ""
+        "reference": "https://genomicsstandardsconsortium.github.io/mixs/0000010/"
       },
       "schemaorg": {
         "label": "",
@@ -596,51 +596,6 @@
       }
     },
     "regex": "^[A-Za-z]+$",
-    "schema_types": [
-      "sc_rnaseq",
-      "stx_fish",
-      "stx_seq"
-    ],
-    "termset": "core",
-    "type": "string"
-  },
-  "institutionCode": {
-    "default_map": {
-      "label": "Institution",
-      "name": "institutionCode",
-      "reference": "http://rs.tdwg.org/dwc/terms/institutionCode",
-      "required": true
-    },
-    "description": "The name (or acronym) representing the lead institution responsible for the study.",
-    "example": "EI",
-    "mapped_manifests": {
-      "dwc": true,
-      "mixs": true,
-      "schemaorg": true,
-      "tol": true
-    },
-    "mapping": {
-      "dwc": {
-        "label": "Institution",
-        "name": "institutionCode",
-        "reference": "http://rs.tdwg.org/dwc/terms/institutionCode"
-      },
-      "mixs": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "schemaorg": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "tol": {
-        "label": "Collector Affiliation",
-        "name": "COLLECTOR_AFFILIATION"
-      }
-    },
-    "regex": "^[A-Z]{2,10}$",
     "schema_types": [
       "sc_rnaseq",
       "stx_fish",
