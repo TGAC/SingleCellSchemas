@@ -301,7 +301,7 @@ def extract_components_to_html(data_dict, output_file_path, termset, standard):
                         "description": data_dict.get('description', ''),
                         "example": data_dict.get('example', ''),
                         "regex": data_dict.get('regex', ''),
-                        "allowed_values": field_dict.get(field, {}).get('allowed_values', []),
+                        "allowed_values": ["value1", "value2", "value3"],
                         "mandatory": 'mandatory' if field_dict.get(field, {}).get('required', False) else 'optional',
                         "multiplicity": field_dict.get(field, {}).get('multiplicity', 'single')
                     }

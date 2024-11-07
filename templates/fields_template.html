@@ -22,6 +22,18 @@
             padding-top: 100px;
             padding-bottom: 100px;
         }
+
+        .card {
+            margin-top: 20px;
+        }
+
+        .topMargin {
+            margin-top: 20px;
+        }
+
+        .bottomMargin {
+            margin-bottom: 50px;
+        }
     </style>
 </head>
 <body>
@@ -31,17 +43,47 @@
 </div>
 
 {% for component in components %}
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">{{ component['name'] }}</h5>
-            </div>
-            <div class="card-body">
-                <p class="card-text">{{ component['description'] }}</p>
-                <a href="{{ component['url'] }}" class="btn btn-primary">View</a>
-            </div>
+<div class="container bottomMargin">
+    <h1 class="topMargin">{{component.group_name}}</h1>
+
+    {% for field in component.fields %}
+    <div class="card">
+        {% if field.mandatory %}
+        <h5 class="card-header">
+            {{field.label_element}} <span class="badge bg-dark">Required</span>
+        </h5>
+        {% else %}
+        <h5 class="card-header">
+            {{field.label_element}}
+        </h5>
+        {% endif %}
+
+        <div class="card-body">
+            <table class="table">
+                <tr>
+                    <td>Description</td>
+                    <td>{{ field.description }}</td>
+                </tr>
+                <tr>
+                    <td>Example</td>
+                    <td>{{ field.example }}</td>
+                </tr>
+                <tr>
+                    <td>Multiplicity</td>
+                    <td>{{ field.multiplicity }}</td>
+                <tr>
+                <td>Allowed Values</td>
+                <td>
+                    {% for value in field.allowed_values %}
+                    <span class="badge bg-dark">{{ value }}</span>
+                    {% endfor %}</td>
+            </tr>
+            </table>
+
         </div>
     </div>
+    {% endfor %}
+</div>
 {% endfor %}
 
 
