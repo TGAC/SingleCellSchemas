@@ -42,7 +42,7 @@
             "program": "${workspaceFolder}/convert.py",
             "console": "integratedTerminal",
             "args": [
-                "${workspaceFolder}/schemas/general/sc_rnaseq.json",  // Path to the input JSON schema file
+                "${workspaceFolder}/schemas/base/sc_rnaseq.json",  // Path to the input JSON schema file
                 "core", // Termset argument (either 'core' or 'extended')
                 "schemaorg" // Standard argument (either 'schemaorg', 'dwc', or 'mixs')
             ],
@@ -62,7 +62,7 @@
             "program": "${workspaceFolder}/convert.py",
             "console": "integratedTerminal",
             "args": [
-                "${workspaceFolder}/schemas/general/stx_fish.json",  // Path to the input JSON schema file
+                "${workspaceFolder}/schemas/base/stx_fish.json",  // Path to the input JSON schema file
                 "core", // Termset argument (either 'core' or 'extended')
                 "schemaorg" // Standard argument (either 'schemaorg', 'dwc', or 'mixs')
             ],
@@ -82,7 +82,7 @@
             "program": "${workspaceFolder}/convert.py",
             "console": "integratedTerminal",
             "args": [
-                "${workspaceFolder}/schemas/general/stx_seq.json",  // Path to the input JSON schema file
+                "${workspaceFolder}/schemas/base/stx_seq.json",  // Path to the input JSON schema file
                 "core", // Termset argument (either 'core' or 'extended')
                 "schemaorg" // Standard argument (either 'schemaorg', 'dwc', or 'mixs')
             ],
@@ -110,6 +110,6 @@
             "pythonArgs": [
                 "-Xfrozen_modules=off"  // Disable frozen modules to ensure breakpoints are hit
             ]
-        },
+        }
     ]
 }
