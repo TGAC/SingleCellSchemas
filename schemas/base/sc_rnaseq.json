@@ -985,872 +985,16 @@
           }
         },
         {
-          "country": {
-            "default_map": {
-              "allowed_values": [
-                "Afghanistan",
-                "Albania",
-                "Algeria",
-                "American Samoa",
-                "Andorra",
-                "Angola",
-                "Anguilla",
-                "Antarctica",
-                "Antigua And Barbuda",
-                "Arctic Ocean",
-                "Argentina",
-                "Armenia",
-                "Aruba",
-                "Ashmore And Cartier Islands",
-                "Atlantic Ocean",
-                "Australia",
-                "Austria",
-                "Azerbaijan",
-                "Bahamas",
-                "Bahrain",
-                "Baker Island",
-                "Baltic Sea",
-                "Bangladesh",
-                "Barbados",
-                "Bassas Da India",
-                "Belarus",
-                "Belgium",
-                "Belize",
-                "Benin",
-                "Bermuda",
-                "Bhutan",
-                "Bolivia",
-                "Borneo",
-                "Bosnia And Herzegovina",
-                "Botswana",
-                "Bouvet Island",
-                "Brazil",
-                "British Virgin Islands",
-                "Brunei",
-                "Bulgaria",
-                "Burkina Faso",
-                "Burundi",
-                "Cambodia",
-                "Cameroon",
-                "Canada",
-                "Cape Verde",
-                "Cayman Islands",
-                "Central African Republic",
-                "Chad",
-                "Chile",
-                "China",
-                "Christmas Island",
-                "Clipperton Island",
-                "Cocos Islands",
-                "Colombia",
-                "Comoros",
-                "Cook Islands",
-                "Coral Sea Islands",
-                "Costa Rica",
-                "Cote D'Ivoire",
-                "Croatia",
-                "Cuba",
-                "Curacao",
-                "Cyprus",
-                "Czech Republic",
-                "Democratic Republic Of The Congo",
-                "Denmark",
-                "Djibouti",
-                "Dominica",
-                "Dominican Republic",
-                "East Timor",
-                "Ecuador",
-                "Egypt",
-                "El Salvador",
-                "Equatorial Guinea",
-                "Eritrea",
-                "Estonia",
-                "Ethiopia",
-                "Europa Island",
-                "Falkland Islands (Islas Malvinas)",
-                "Faroe Islands",
-                "Fiji",
-                "Finland",
-                "France",
-                "French Guiana",
-                "French Polynesia",
-                "French Southern And Antarctic Lands",
-                "Gabon",
-                "Gambia",
-                "Gaza Strip",
-                "Georgia",
-                "Germany",
-                "Ghana",
-                "Gibraltar",
-                "Glorioso Islands",
-                "Greece",
-                "Greenland",
-                "Grenada",
-                "Guadeloupe",
-                "Guam",
-                "Guatemala",
-                "Guernsey",
-                "Guinea",
-                "Guinea-Bissau",
-                "Guyana",
-                "Haiti",
-                "Heard Island And Mcdonald Islands",
-                "Honduras",
-                "Hong Kong",
-                "Howland Island",
-                "Hungary",
-                "Iceland",
-                "India",
-                "Indian Ocean",
-                "Indonesia",
-                "Iran",
-                "Iraq",
-                "Ireland",
-                "Isle Of Man",
-                "Israel",
-                "Italy",
-                "Jamaica",
-                "Jan Mayen",
-                "Japan",
-                "Jarvis Island",
-                "Jersey",
-                "Johnston Atoll",
-                "Jordan",
-                "Juan De Nova Island",
-                "Kazakhstan",
-                "Kenya",
-                "Kerguelen Archipelago",
-                "Kingman Reef",
-                "Kiribati",
-                "Kosovo",
-                "Kuwait",
-                "Kyrgyzstan",
-                "Laos",
-                "Latvia",
-                "Lebanon",
-                "Lesotho",
-                "Liberia",
-                "Libya",
-                "Liechtenstein",
-                "Lithuania",
-                "Luxembourg",
-                "Macau",
-                "Macedonia",
-                "Madagascar",
-                "Malawi",
-                "Malaysia",
-                "Maldives",
-                "Mali",
-                "Malta",
-                "Marshall Islands",
-                "Martinique",
-                "Mauritania",
-                "Mauritius",
-                "Mayotte",
-                "Mediterranean Sea",
-                "Mexico",
-                "Micronesia",
-                "Midway Islands",
-                "Moldova",
-                "Monaco",
-                "Mongolia",
-                "Montenegro",
-                "Montserrat",
-                "Morocco",
-                "Mozambique",
-                "Myanmar",
-                "Namibia",
-                "Nauru",
-                "Navassa Island",
-                "Nepal",
-                "Netherlands",
-                "New Caledonia",
-                "New Zealand",
-                "Nicaragua",
-                "Niger",
-                "Nigeria",
-                "Niue",
-                "Norfolk Island",
-                "North Korea",
-                "North Sea",
-                "Northern Mariana Islands",
-                "Norway",
-                "Oman",
-                "Pacific Ocean",
-                "Pakistan",
-                "Palau",
-                "Palmyra Atoll",
-                "Panama",
-                "Papua New Guinea",
-                "Paracel Islands",
-                "Paraguay",
-                "Peru",
-                "Philippines",
-                "Pitcairn Islands",
-                "Poland",
-                "Portugal",
-                "Puerto Rico",
-                "Qatar",
-                "Republic Of The Congo",
-                "Reunion",
-                "Romania",
-                "Ross Sea",
-                "Russia",
-                "Rwanda",
-                "Saint Helena",
-                "Saint Kitts And Nevis",
-                "Saint Lucia",
-                "Saint Pierre And Miquelon",
-                "Saint Vincent And The Grenadines",
-                "Samoa",
-                "San Marino",
-                "Sao Tome And Principe",
-                "Saudi Arabia",
-                "Senegal",
-                "Serbia",
-                "Seychelles",
-                "Sierra Leone",
-                "Singapore",
-                "Sint Maarten",
-                "Slovakia",
-                "Slovenia",
-                "Solomon Islands",
-                "Somalia",
-                "South Africa",
-                "South Georgia And The South Sandwich Islands",
-                "South Korea",
-                "Southern Ocean",
-                "Spain",
-                "Spratly Islands",
-                "Sri Lanka",
-                "Sudan",
-                "Suriname",
-                "Svalbard",
-                "Swaziland",
-                "Sweden",
-                "Switzerland",
-                "Syria",
-                "Taiwan",
-                "Tajikistan",
-                "Tanzania",
-                "Tasman Sea",
-                "Thailand",
-                "Togo",
-                "Tokelau",
-                "Tonga",
-                "Trinidad And Tobago",
-                "Tromelin Island",
-                "Tunisia",
-                "Turkey",
-                "Turkmenistan",
-                "Turks And Caicos Islands",
-                "Tuvalu",
-                "Uganda",
-                "Ukraine",
-                "United Arab Emirates",
-                "United Kingdom",
-                "Uruguay",
-                "Usa",
-                "Uzbekistan",
-                "Vanuatu",
-                "Venezuela",
-                "Vietnam",
-                "Virgin Islands",
-                "Wake Island",
-                "Wallis And Futuna",
-                "West Bank",
-                "Western Sahara",
-                "Yemen",
-                "Zambia",
-                "Zimbabwe",
-                "Not Applicable",
-                "Not Collected",
-                "Not Provided"
-              ],
-              "label": "Country",
-              "name": "country",
-              "required": false
-            },
-            "description": "General name of the location where the specimen or sample was sampled.",
-            "error": "Input required",
-            "example": "United Kingdom",
-            "mapped_manifests": {
-              "dwc": true,
-              "mixs": true,
-              "tol": true,
-              "schemaorg": true
-            },
-            "mapping": {
-              "dwc": {
-                "label": "Country",
-                "name": "country",
-                "reference": "http://rs.tdwg.org/dwc/terms/country"
-              },
-              "mixs": {
-                "label": "Geographic Location Name",
-                "name": "geo_loc_name"
-              },
-              "tol": {
-                "label": "Collection Location",
-                "name": "COLLECTION_LOCATION"
-              }
-            },
-            "regex": "^[A-Za-z ]+$"
-          },
-          "day": {
+          "accession_number": {
             "default_map": {
               "allowed_values": [],
-              "label": "Day",
-              "name": "day",
-              "required": false
+              "label": "Accession Number",
+              "name": "accession_number",
+              "required": false,
+              "reference": ""
             },
-            "description": "The day of the month when the sample was collected.",
-            "error": "Invalid day. Please enter a valid day (01-31).",
-            "example": "15",
-            "mapped_manifests": {
-              "tol": true,
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true
-            },
-            "mapping": {
-              "tol": {
-                "label": "",
-                "name": ""
-              }
-            },
-            "regex": "^(0[1-9]|[12][0-9]|3[01])$"
-          },
-          "decimalLatitude": {
-            "default_map": {
-              "label": "Decimal Latitude",
-              "name": "decimalLatitude",
-              "reference": "http://rs.tdwg.org/dwc/terms/decimalLatitude",
-              "required": false
-            },
-            "description": "The geographic latitude of the sample collection site, in decimal degrees.",
-            "error": "Invalid decimal latitude. Please enter a valid decimal latitude.",
-            "example": "52.2053",
-            "mapped_manifests": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": true
-            },
-            "mapping": {
-              "dwc": {
-                "label": "Decimal Latitude",
-                "name": "decimalLatitude",
-                "reference": "http://rs.tdwg.org/dwc/terms/decimalLatitude"
-              },
-              "mixs": {
-                "description": "The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system",
-                "label": "Latitude Longitude",
-                "name": "lat_lon",
-                "reference": "https://genomicsstandardsconsortium.github.io/mixs/0000009"
-              },
-              "schemaorg": {
-                "label": "",
-                "name": ""
-              },
-              "tol": {
-                "label": "Decimal Latitude",
-                "name": "DECIMAL_LATITUDE"
-              }
-            },
-            "regex": "^-?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$",
-            "unit": "DD"
-          },
-          "decimalLongitude": {
-            "default_map": {
-              "allowed_values": [],
-              "label": "Decimal Longitude",
-              "name": "decimalLongitude",
-              "required": false
-            },
-            "description": "The longitude of the sample collection site, in decimal degrees.",
-            "error": "Invalid decimal longitude. Please enter a valid decimal longitude.",
-            "example": "0.1218",
-            "mapped_manifests": {
-              "tol": true,
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true
-            },
-            "mapping": {
-              "tol": {
-                "label": "",
-                "name": ""
-              }
-            },
-            "regex": "^-?(180(\\.0+)?|((1[0-7]\\d)|(\\d{1,2}))(\\.\\d+)?)$",
-            "unit": "DD"
-          },
-          "family": {
-            "default_map": {
-              "label": "Family",
-              "name": "family",
-              "reference": "http://rs.tdwg.org/dwc/terms/family",
-              "required": false
-            },
-            "description": "The taxonomic family of the organism.",
-            "example": "Arenicolidae",
-            "mapped_manifests": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": true
-            },
-            "mapping": {
-              "dwc": {
-                "label": "Family",
-                "name": "family",
-                "reference": "http://rs.tdwg.org/dwc/terms/family"
-              },
-              "mixs": {
-                "label": "",
-                "name": ""
-              },
-              "schemaorg": {
-                "label": "",
-                "name": ""
-              },
-              "tol": {
-                "label": "Family",
-                "name": "FAMILY"
-              }
-            },
-            "regex": "^[A-Za-z]+$"
-          },
-          "genus": {
-            "default_map": {
-              "label": "Genus",
-              "name": "genus",
-              "reference": "http://rs.tdwg.org/dwc/terms/genus",
-              "required": false
-            },
-            "description": "The taxonomic genus of the organism.",
-            "example": "Arenicola",
-            "mapped_manifests": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": true
-            },
-            "mapping": {
-              "dwc": {
-                "label": "Genus",
-                "name": "genus",
-                "reference": "http://rs.tdwg.org/dwc/terms/genus"
-              },
-              "mixs": {
-                "label": "",
-                "name": ""
-              },
-              "schemaorg": {
-                "label": "",
-                "name": ""
-              },
-              "tol": {
-                "label": "Genus",
-                "name": "GENUS"
-              }
-            },
-            "regex": "^[A-Za-z]+$"
-          },
-          "habitat": {
-            "default_map": {
-              "allowed_values": [],
-              "label": "Habitat",
-              "name": "habitat",
-              "required": false
-            },
-            "description": "The type of habitat where the sample was collected.",
-            "error": "",
-            "example": "Forest",
-            "mapped_manifests": {
-              "tol": true,
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true
-            },
-            "mapping": {
-              "tol": {
-                "label": "",
-                "name": ""
-              }
-            },
-            "regex": "^[A-Za-z ]+$"
-          },
-          "institutionCode": {
-            "default_map": {
-              "allowed_values": [],
-              "label": "Institution",
-              "name": "institutionCode",
-              "required": false
-            },
-            "description": "The code or abbreviation representing the lead institution where the sample is held.",
-            "error": "Name or acronym of institution is required",
-            "example": "EI",
-            "mapped_manifests": {
-              "tol": true,
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true
-            },
-            "mapping": {
-              "tol": {
-                "label": "",
-                "name": ""
-              }
-            },
-            "regex": "^[A-Z]{2,10}$",
-            "type": "string"
-          },
-          "lifeStage": {
-            "default_map": {
-              "allowed_values": [
-                "Adult",
-                "Egg",
-                "Embryo",
-                "Gametophyte",
-                "Juvenile",
-                "Larva",
-                "Pupa",
-                "Spore bearing structure",
-                "Sporophyte",
-                "Vegetative cell",
-                "Vegetative structure",
-                "Zygote",
-                "Not applicable",
-                "Not collected",
-                "Not provided"
-              ],
-              "label": "Life Stage",
-              "name": "lifeStage",
-              "required": false
-            },
-            "description": "The life stage or age class of the organism when sampled.",
-            "example": "Adult",
-            "mapped_manifests": {
-              "tol": true,
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true
-            },
-            "mapping": {
-              "tol": {
-                "label": "",
-                "name": ""
-              }
-            },
-            "regex": "^[A-Za-z]+$"
-          },
-          "materialEntityID": {
-            "default_map": {
-              "allowed_values": [],
-              "label": "Material Entity ID",
-              "name": "materialEntityID",
-              "required": false
-            },
-            "description": "A unique unique alphanumeric identifier for the material entity (sample).",
-            "error": "Invalid material entity ID. Please enter a valid material entity ID (e.g., MAT-12345).",
-            "example": "matEnt12345",
-            "mapped_manifests": {
-              "tol": true,
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true
-            },
-            "mapping": {
-              "tol": {
-                "label": "",
-                "name": ""
-              }
-            },
-            "regex": "^[A-Z]{3}-\\d+$"
-          },
-          "materialSampleID": {
-            "default_map": {
-              "label": "Material Sample ID",
-              "name": "materialSampleID",
-              "reference": "http://rs.tdwg.org/dwc/terms/materialSampleID",
-              "required": false
-            },
-            "description": "A unique alphanumeric identifier for the sample.",
-            "example": "matSample67890",
-            "mapped_manifests": {
-              "dwc": true,
-              "mixs": true,
-              "tol": true,
-              "schemaorg": true
-            },
-            "mapping": {
-              "dwc": {
-                "label": "Material Sample ID",
-                "name": "materialSampleID",
-                "reference": "http://rs.tdwg.org/dwc/terms/materialSampleID"
-              },
-              "mixs": {
-                "label": "Sample Name",
-                "name": "samp_name",
-                "reference": "https://genomicsstandardsconsortium.github.io/mixs/0001107"
-              },
-              "tol": {
-                "label": "Collector Sample ID",
-                "name": "COLLECTOR_SAMPLE_ID"
-              }
-            },
-            "regex": "^[A-Z]{4}-\\d+$"
-          },
-          "month": {
-            "default_map": {
-              "allowed_values": [],
-              "label": "Month",
-              "name": "month",
-              "required": false
-            },
-            "description": "The month when the sample was collected.",
-            "error": "Invalid month. Please enter a valid month (01-12).",
-            "example": "07",
-            "mapped_manifests": {
-              "tol": true,
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true
-            },
-            "mapping": {
-              "tol": {
-                "label": "",
-                "name": ""
-              }
-            },
-            "regex": "^(0[1-9]|1[0-2])$"
-          },
-          "order": {
-            "default_map": {
-              "label": "Order",
-              "name": "order",
-              "reference": "http://rs.tdwg.org/dwc/terms/order",
-              "required": false
-            },
-            "description": "The taxonomic order of the organism.",
-            "example": "Capitellida",
-            "mapped_manifests": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": true
-            },
-            "mapping": {
-              "dwc": {
-                "label": "Order",
-                "name": "order",
-                "reference": "http://rs.tdwg.org/dwc/terms/order"
-              },
-              "mixs": {
-                "label": "",
-                "name": ""
-              },
-              "schemaorg": {
-                "label": "",
-                "name": ""
-              },
-              "tol": {
-                "label": "Order or Group",
-                "name": "ORDER_OR_GROUP"
-              }
-            },
-            "regex": "^[A-Za-z]+$"
-          },
-          "organismName": {
-            "default_map": {
-              "allowed_values": [
-                "Abdomen",
-                "Anterior Body",
-                "Blade",
-                "Blood",
-                "Bodywall",
-                "Bract",
-                "Brain",
-                "Bud",
-                "Cap",
-                "Cephalothorax",
-                "Egg",
-                "Eggshell",
-                "Endocrine Tissue",
-                "Eye",
-                "Fat Body",
-                "Fin",
-                "Flower",
-                "Gill Animal",
-                "Gill Fungi",
-                "Gonad",
-                "Hair",
-                "Head",
-                "Heart",
-                "Hepatopancreas",
-                "Holdfast Fungi",
-                "Intestine",
-                "Kidney",
-                "Leaf",
-                "Leg",
-                "Liver",
-                "Lung",
-                "Mid Body",
-                "Modular Colony",
-                "Mollusc Foot",
-                "Multicellular Organisms In Culture",
-                "Muscle",
-                "Mycelium",
-                "Mycorrhiza",
-                "Ovary Animal",
-                "Oviduct",
-                "Pancreas",
-                "Petiole",
-                "Posterior Body",
-                "Root",
-                "Scales",
-                "Scat",
-                "Seed",
-                "Seedling",
-                "Shoot",
-                "Skin",
-                "Sperm Seminal Fluid",
-                "Spleen",
-                "Spore Bearing Structure",
-                "Spore",
-                "Stem",
-                "Stipe",
-                "Stomach",
-                "Tentacle",
-                "Terminal Body",
-                "Testis",
-                "Thallus Fungi",
-                "Thallus Plant",
-                "Thorax",
-                "Unicellular Organisms In Culture",
-                "Whole Organism",
-                "Whole Plant",
-                "Other Fungal Tissue",
-                "Other Plant Tissue",
-                "Other Reproductive Animal Tissue",
-                "Other Somatic Animal Tissue",
-                "Not Applicable",
-                "Not Collected",
-                "Not Provided"
-              ],
-              "label": "Organism Name",
-              "name": "organismName",
-              "required": false
-            },
-            "description": "The name of the organism.",
-            "example": "Arenicola marina",
-            "mapped_manifests": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": true
-            },
-            "mapping": {
-              "dwc": {
-                "label": "Organism Name",
-                "name": "organismName",
-                "reference": "http://rs.tdwg.org/dwc/terms/organismName"
-              },
-              "mixs": {
-                "label": "",
-                "name": ""
-              },
-              "schemaorg": {
-                "label": "",
-                "name": ""
-              },
-              "tol": {
-                "label": "Organism Part",
-                "name": "ORGANISM_PART"
-              }
-            },
-            "regex": "^[A-Za-z ]+$"
-          },
-          "recordNumber": {
-            "default_map": {
-              "allowed_values": [],
-              "label": "Record Number",
-              "name": "recordNumber",
-              "required": false
-            },
-            "description": "A unique number assigned to this record.",
-            "example": "rec123",
-            "mapped_manifests": {
-              "tol": true,
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true
-            },
-            "mapping": {
-              "tol": {
-                "label": "",
-                "name": ""
-              }
-            }
-          },
-          "scientificName": {
-            "default_map": {
-              "label": "Scientific Name",
-              "name": "scientificName",
-              "reference": "http://rs.tdwg.org/dwc/terms/scientificName",
-              "required": false
-            },
-            "description": "The scientific name of the organism.",
-            "example": "Arenicola marina",
-            "mapped_manifests": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": true
-            },
-            "mapping": {
-              "dwc": {
-                "label": "Scientific Name",
-                "name": "scientificName",
-                "reference": "http://rs.tdwg.org/dwc/terms/scientificName"
-              },
-              "mixs": {
-                "label": "Specific Host",
-                "name": "specific_host",
-                "reference": "https://genomicsstandardsconsortium.github.io/mixs/0000029"
-              },
-              "schemaorg": {
-                "label": "",
-                "name": ""
-              },
-              "tol": {
-                "label": "Scientific Name",
-                "name": "SCIENTIFIC_NAME"
-              }
-            },
-            "regex": "^[A-Za-z]+ [a-z]+$",
-            "type": "string"
-          },
-          "sex": {
-            "default_map": {
-              "allowed_values": [
-                "Asexual morph",
-                "Female",
-                "Hermaphrodite monoecious",
-                "Male",
-                "Sexual morph",
-                "Not applicable",
-                "Not collected",
-                "Not provided"
-              ],
-              "label": "Sex",
-              "name": "sex",
-              "required": false
-            },
-            "description": "The sex of the organism (if applicable).",
-            "example": "Male",
+            "description": "A unique alphanumeric reference or identifier assigned to the sample in the study related to NCBI Taxonomy.",
+            "example": "accession123",
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -1861,96 +1005,24 @@
               "dwc": {
                 "label": "",
                 "name": "",
-                "reference": "http://rs.tdwg.org/dwc/terms/sex"
+                "reference": ""
               },
               "mixs": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
               },
               "schemaorg": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
               },
               "tol": {
                 "label": "",
                 "name": ""
               }
             },
-            "regex": "^(Asexual morph|Female|Hermaphrodite monoecious|Male|Sexual morph|Not applicable|Not collected|Not provided)$"
-          },
-          "taxonID": {
-            "default_map": {
-              "allowed_values": [],
-              "label": "Taxon ID",
-              "name": "taxonID",
-              "required": true
-            },
-            "description": "A unique identifier for species or organism studied.",
-            "error": "Taxon ID is required",
-            "example": "6344",
-            "mapped_manifests": {
-              "tol": true,
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true
-            },
-            "mapping": {
-              "tol": {
-                "label": "",
-                "name": ""
-              }
-            },
-            "regex": "^\\d+$"
-          },
-          "taxonRank": {
-            "default_map": {
-              "allowed_values": [
-                "Species",
-                "Subspecies"
-              ],
-              "label": "Taxon Rank",
-              "name": "taxonRank",
-              "required": false
-            },
-            "description": "The rank of the taxon for this organism.",
-            "error": "Invalid taxon rank. Please select a valid taxon rank.",
-            "example": "Species",
-            "mapped_manifests": {
-              "tol": true,
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true
-            },
-            "mapping": {
-              "tol": {
-                "label": "",
-                "name": ""
-              }
-            },
-            "regex": "^[A-Za-z]+$"
-          },
-          "year": {
-            "default_map": {
-              "allowed_values": [],
-              "label": "Year",
-              "name": "year",
-              "required": false
-            },
-            "description": "The year the sample was collected.",
-            "example": "2024",
-            "mapped_manifests": {
-              "tol": true,
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true
-            },
-            "mapping": {
-              "tol": {
-                "label": "",
-                "name": ""
-              }
-            },
-            "regex": "^\\d{4}$"
+            "type": "string"
           }
         }
       ]
@@ -5046,6 +4118,1046 @@
               }
             },
             "regex": "",
+            "type": "string"
+          }
+        }
+      ]
+    },
+    {
+      "component": "raw_data_processing",
+      "fields": [
+        {
+          "reference_genome": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Reference Genome",
+              "name": "reference_genome",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Indicate version and include stable link to genome data (or attach genome fasta file).",
+            "example": "GRCh38, https://example.org/grch38.fa",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "genome_annotation": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Genome Annotation",
+              "name": "genome_annotation",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Indicate version and include stable link. Also indicate if any modification to the original annotation has been applied (e.g. 3' UTR extension) and include modified annotation file employed in the analysis.",
+            "example": "Ensembl v101, https://example.org/ensembl_v101.gtf",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "annotation_filtering": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Annotation Filtering",
+              "name": "annotation_filtering",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Indicate which features were filtered (i.e. protein coding, pseudo-genes, TCRs, etc.)",
+            "example": "Filtered to include only protein-coding genes",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "genes_vs_exons": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Genes vs Exons",
+              "name": "genes_vs_exons",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Quantification using whole gene intervals or exons.",
+            "example": "Exon quantification",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "library_structure": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Library Structure",
+              "name": "library_structure",
+              "required": false,
+              "reference": ""
+            },
+            "description": "seqspec format",
+            "example": "Single-cell 3' library",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "mapping_and_demultiplexing_software": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Mapping and Demultiplexing Software",
+              "name": "mapping_and_demultiplexing_software",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Reads/UMI",
+            "example": "Cell Ranger 6.0.0",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "read_mapping_statistics": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Read Mapping Statistics",
+              "name": "read_mapping_statistics",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Reads/UMI",
+            "example": "80% reads mapped to reference",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "sequencing_saturation": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sequencing Saturation",
+              "name": "sequencing_saturation",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Depending on number of cells recovered (not targeted) and technology",
+            "example": "95% sequencing saturation",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "umis_barcode_distribution_qc": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "UMIs/Barcode Distribution QC",
+              "name": "umis_barcode_distribution_qc",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Show UMIs per barcode distribution and threshold applied",
+            "example": "Threshold: 10 UMIs per barcode",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "cell_non_cell_filtering_strategy": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cell/Non-Cell Filtering Strategy",
+              "name": "cell_non_cell_filtering_strategy",
+              "required": false,
+              "reference": ""
+            },
+            "description": "UMI threshold used to discriminate cells from non-cells. Description of algorithm (if any) and parameters used to determine cells/non-cells.",
+            "example": "Threshold: 5 UMIs for cell detection",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "other_quality_filters_applied": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Other Quality Filters Applied",
+              "name": "other_quality_filters_applied",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Cells/nuclei discarded based on % mitochondrial reads, % rRNA reads, etc.",
+            "example": "Cells with >20% mitochondrial reads discarded",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "ambient_rna_qc": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Ambient RNA QC",
+              "name": "ambient_rna_qc",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Report % UMIs in background cell barcodes, and algorithm (if any) used to remove ambient RNA",
+            "example": "Ambient RNA removed if >5% UMIs in background barcodes",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "predicted_doublet_rate_qc": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Predicted Doublet Rate QC",
+              "name": "predicted_doublet_rate_qc",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Depending on number of cells recovered (not targeted) and technology",
+            "example": "Predicted doublet rate: 1.5%",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "individual_organism_snp_demultiplexing": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Individual Organism SNP Demultiplexing",
+              "name": "individual_organism_snp_demultiplexing",
+              "required": false,
+              "reference": ""
+            },
+            "description": "If carried out, show SNP partitioning quality (e.g. SNP UMAP embedding or covariance matrix), algorithm used",
+            "example": "SNP UMAP embedding using CellSNP",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        }
+      ]
+    },
+    {
+      "component": "downstream_processing",
+      "fields": [
+        {
+          "clustering_algorithm_and_version": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Clustering Algorithm and Version",
+              "name": "clustering_algorithm_and_version",
+              "required": false,
+              "reference": ""
+            },
+            "description": "If compared/integrated with existing datasets",
+            "example": "Louvain 0.8.0",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "clustering_parameters": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Clustering Parameters",
+              "name": "clustering_parameters",
+              "required": false,
+              "reference": ""
+            },
+            "description": "If compared/integrated with existing datasets",
+            "example": "Resolution: 0.6, K-nearest neighbors: 10",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "integration_batch_correction": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Integration/Batch Correction",
+              "name": "integration_batch_correction",
+              "required": false,
+              "reference": ""
+            },
+            "description": "If compared/integrated with existing datasets",
+            "example": "Harmony v1.0",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        }
+      ]
+    },
+    {
+      "component": "data_availability_checklist",
+      "fields": [
+        {
+          "source_code": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Source Code",
+              "name": "source_code",
+              "required": false,
+              "reference": ""
+            },
+            "description": "If any newly developed code/software has been used in the processing and downstream analysis of the dataset.",
+            "example": "Source code is hosted on GitHub and includes custom algorithms for UMI count normalization. The repository can be found at: https://github.com/user/umi-normalization.",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "umi_count_matrix": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "UMI Count Matrix",
+              "name": "umi_count_matrix",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Gene x cell matrix with UMI counts for each gene in each cell.",
+            "example": "The UMI count matrix is stored in a CSV file with gene IDs as rows (e.g., ENSG00000139618) and cell barcodes as columns (e.g., Cell_001, Cell_002). The matrix file is available at: https://example.com/umi_count_matrix.csv.",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "ensembl_ids": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Ensembl IDs",
+              "name": "ensembl_ids",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Gene or transcript names should be listed as Ensembl (or other standardized ID), with gene short names in metadata.",
+            "example": "The UMI count matrix includes genes identified by their Ensembl IDs, such as 'ENSG00000139618' for the BRCA1 gene. See the full list of Ensembl IDs in the metadata file.",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "functional_gene_annotations": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Functional Gene Annotations",
+              "name": "functional_gene_annotations",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Any functional annotation generated/used (gene names, GOs, structural domains, etc.).",
+            "example": "Functional gene annotations, including Gene Ontology (GO) terms, are provided in the metadata. For example, the gene 'ENSG00000139618' (BRCA1) is annotated with the GO term 'GO:0003674' (DNA binding).",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "protein_models": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Protein Models",
+              "name": "protein_models",
+              "required": false,
+              "reference": ""
+            },
+            "description": "FASTA file with (or stable link to) the predicted proteins associated to genes in the UMI count matrix and matching IDs.",
+            "example": "The protein sequences for genes are provided in a FASTA file available at: https://example.com/protein_models.fasta, where each protein sequence is linked to the corresponding gene ID.",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "cell_metadata": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cell Metadata",
+              "name": "cell_metadata",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Table mapping cell IDs to cluster/cell type/broad cell type annotations.",
+            "example": "Cell metadata includes information such as cell type annotations ('Tumor', 'Normal') and experimental conditions ('Control', 'Treatment'). This data is available in a table at: https://example.com/cell_metadata.csv.",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "cluster_level_normalized_expression_tables": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cluster-Level Normalized Expression Tables",
+              "name": "cluster_level_normalized_expression_tables",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Expression tables that show normalized gene expression at the cluster or cell-type level.",
+            "example": "Normalized gene expression data at the cluster level is provided in a tab-delimited text file. For example, gene 'ENSG00000139618' (BRCA1) has expression values for clusters: Cluster_1: 1200, Cluster_2: 900. The full expression table is available at: https://example.com/cluster_level_expression.csv.",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "other_resource_files": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Other Resource Files",
+              "name": "other_resource_files",
+              "required": false,
+              "reference": ""
+            },
+            "description": "Necessary to re-use and interpret the data. E.g. barcode information in complex, serial multiplexing protocols (clicktags).",
+            "example": "Barcode information used in multiplexing protocols is provided in a separate file, which can be accessed at: https://example.com/barcode_data.csv.",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "schemaorg": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
             "type": "string"
           }
         }

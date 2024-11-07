@@ -1427,7 +1427,7 @@
               "reference": "http://rs.tdwg.org/dwc/terms/country",
               "required": false
             },
-            "description": "The country where the sample was collected.",
+            "description": "General name of the location where the specimen or sample was sampled.",
             "example": "United Kingdom",
             "mapped_manifests": {
               "dwc": true,
@@ -1444,7 +1444,7 @@
               "mixs": {
                 "label": "Geographic Location Name",
                 "name": "geo_loc_name",
-                "reference": ""
+                "reference": "https://genomicsstandardsconsortium.github.io/mixs/0000010/"
               },
               "schemaorg": {
                 "label": "",
