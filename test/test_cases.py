@@ -20,7 +20,7 @@ class TestConvert(unittest.TestCase):
         self.input_json_files = helpers.SCHEMA_FILE_PATHS
         self.termset = 'core'
         self.standard = 'dwc'
-        self.schemas_directory = 'schemas/general'
+        self.schemas_directory = 'schemas/base'
         self.output_directory = 'test/outputs'
 
         # Check if the output directory exists; if not, create it

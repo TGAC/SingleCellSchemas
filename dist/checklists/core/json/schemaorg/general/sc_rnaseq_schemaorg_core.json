@@ -210,6 +210,7 @@
                 "name": "COLLECTOR_AFFILIATION"
               }
             },
+            "regex": "^[A-Z]{2,10}$",
             "type": "string"
           }
         },
@@ -1301,12 +1302,6 @@
               }
             },
             "regex": "^[A-Za-z]+$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         },
@@ -1351,12 +1346,6 @@
               }
             },
             "regex": "^(0[1-9]|[12][0-9]|3[01])$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         },
@@ -1399,12 +1388,6 @@
               }
             },
             "regex": "^-?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "integer",
             "unit": "DD"
           }
@@ -1448,12 +1431,6 @@
               }
             },
             "regex": "^-?(180(\\.0+)?|((1[0-7]\\d)|(\\d{1,2}))(\\.\\d+)?)$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "integer",
             "unit": "DD"
           }
@@ -1498,12 +1475,6 @@
               }
             },
             "regex": "^[A-Za-z]+$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         },
@@ -1545,12 +1516,6 @@
               }
             },
             "regex": "^[A-Za-z]+$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         },
@@ -1593,59 +1558,6 @@
               }
             },
             "regex": "^[A-Za-z]+$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
-            "type": "string"
-          }
-        },
-        {
-          "institutionCode": {
-            "default_map": {
-              "label": "Institution",
-              "name": "institutionCode",
-              "reference": "http://rs.tdwg.org/dwc/terms/institutionCode",
-              "required": true
-            },
-            "description": "The name (or acronym) representing the lead institution responsible for the study.",
-            "example": "EI",
-            "mapped_manifests": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": true
-            },
-            "mapping": {
-              "dwc": {
-                "label": "Institution",
-                "name": "institutionCode",
-                "reference": "http://rs.tdwg.org/dwc/terms/institutionCode"
-              },
-              "mixs": {
-                "label": "",
-                "name": "",
-                "reference": ""
-              },
-              "schemaorg": {
-                "label": "Institution",
-                "name": "institutionCode",
-                "reference": ""
-              },
-              "tol": {
-                "label": "Collector Affiliation",
-                "name": "COLLECTOR_AFFILIATION"
-              }
-            },
-            "regex": "^[A-Z]{2,10}$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         },
@@ -1704,12 +1616,6 @@
               }
             },
             "regex": "^(Adult|Egg|Embryo|Gametophyte|Juvenile|Larva|Pupa|Spore bearing structure|Sporophyte|Vegetative cell|Vegetative structure|Zygote|Not applicable|Not collected|Not provided)$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         },
@@ -1753,12 +1659,6 @@
               }
             },
             "regex": "^[A-Z]{3}-\\d+$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         },
@@ -1800,12 +1700,6 @@
               }
             },
             "regex": "^[A-Z]{4}-\\d+$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         },
@@ -1850,12 +1744,6 @@
               }
             },
             "regex": "^(0[1-9]|1[0-2])$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         },
@@ -1897,12 +1785,6 @@
               }
             },
             "regex": "^[A-Za-z]+$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         },
@@ -2019,12 +1901,6 @@
               }
             },
             "regex": "^[A-Za-z ]+$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         },
@@ -2067,12 +1943,6 @@
               }
             },
             "regex": "",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         },
@@ -2113,12 +1983,6 @@
               }
             },
             "regex": "^[A-Za-z]+[a-z]+$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         },
@@ -2171,12 +2035,6 @@
               }
             },
             "regex": "^(Asexual morph|Female|Hermaphrodite monoecious|Male|Sexual morph|Not applicable|Not collected|Not provided)$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         },
@@ -2218,12 +2076,6 @@
               }
             },
             "regex": "^\\d+$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         },
@@ -2270,12 +2122,6 @@
               }
             },
             "regex": "^[A-Za-z]+$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         },
@@ -2317,12 +2163,6 @@
               }
             },
             "regex": "^\\d{4}$",
-            "schema_types": [
-              "sc_rnaseq",
-              "stx_fish",
-              "stx_seq"
-            ],
-            "termset": "core",
             "type": "string"
           }
         }

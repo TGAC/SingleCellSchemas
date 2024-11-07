@@ -210,6 +210,7 @@
                 "name": "COLLECTOR_AFFILIATION"
               }
             },
+            "regex": "^[A-Z]{2,10}$",
             "type": "string"
           }
         },
@@ -1268,16 +1269,16 @@
               ],
               "label": "Country",
               "name": "country",
+              "reference": "http://rs.tdwg.org/dwc/terms/country",
               "required": false
             },
-            "description": "General name of the location where the specimen or sample was sampled.",
-            "error": "Input required",
+            "description": "The country where the sample was collected.",
             "example": "United Kingdom",
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
-              "tol": true,
-              "schemaorg": true
+              "schemaorg": true,
+              "tol": true
             },
             "mapping": {
               "dwc": {
@@ -1287,38 +1288,63 @@
               },
               "mixs": {
                 "label": "Geographic Location Name",
-                "name": "geo_loc_name"
+                "name": "geo_loc_name",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
               },
               "tol": {
                 "label": "Collection Location",
                 "name": "COLLECTION_LOCATION"
               }
             },
-            "regex": "^[A-Za-z ]+$"
+            "regex": "^[A-Za-z]+$",
+            "type": "string"
           },
           "day": {
             "default_map": {
               "allowed_values": [],
               "label": "Day",
               "name": "day",
+              "reference": "",
               "required": false
             },
-            "description": "The day of the month when the sample was collected.",
+            "description": "The integer day of the month on which the sample was collected.",
             "error": "Invalid day. Please enter a valid day (01-31).",
             "example": "15",
             "mapped_manifests": {
-              "tol": true,
               "dwc": true,
-              "mixs": true,
-              "schemaorg": true
+              "mixs": false,
+              "schemaorg": true,
+              "tol": true
             },
             "mapping": {
+              "dwc": {
+                "label": "Day",
+                "name": "day",
+                "reference": ""
+              },
+              "mixs": {
+                "label": "Weekday",
+                "name": "weekday",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
               "tol": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
               }
             },
-            "regex": "^(0[1-9]|[12][0-9]|3[01])$"
+            "regex": "^(0[1-9]|[12][0-9]|3[01])$",
+            "type": "string"
           },
           "decimalLatitude": {
             "default_map": {
@@ -1358,35 +1384,53 @@
               }
             },
             "regex": "^-?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$",
+            "type": "integer",
             "unit": "DD"
           },
           "decimalLongitude": {
             "default_map": {
-              "allowed_values": [],
               "label": "Decimal Longitude",
               "name": "decimalLongitude",
+              "reference": "http://rs.tdwg.org/dwc/terms/decimalLongitude",
               "required": false
             },
             "description": "The longitude of the sample collection site, in decimal degrees.",
             "error": "Invalid decimal longitude. Please enter a valid decimal longitude.",
             "example": "0.1218",
             "mapped_manifests": {
-              "tol": true,
               "dwc": true,
               "mixs": true,
-              "schemaorg": true
+              "schemaorg": true,
+              "tol": true
             },
             "mapping": {
-              "tol": {
+              "dwc": {
+                "label": "Decimal Longitude",
+                "name": "decimalLongitude",
+                "reference": "http://rs.tdwg.org/dwc/terms/decimalLongitude"
+              },
+              "mixs": {
+                "description": "The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system",
+                "label": "Latitude Longitude",
+                "name": "lat_lon",
+                "reference": "https://genomicsstandardsconsortium.github.io/mixs/0000009"
+              },
+              "schemaorg": {
                 "label": "",
                 "name": ""
+              },
+              "tol": {
+                "label": "Decimal Longitude",
+                "name": "DECIMAL_LONGITUDE"
               }
             },
             "regex": "^-?(180(\\.0+)?|((1[0-7]\\d)|(\\d{1,2}))(\\.\\d+)?)$",
+            "type": "integer",
             "unit": "DD"
           },
           "family": {
             "default_map": {
+              "allowed_values": [],
               "label": "Family",
               "name": "family",
               "reference": "http://rs.tdwg.org/dwc/terms/family",
@@ -1396,7 +1440,7 @@
             "example": "Arenicolidae",
             "mapped_manifests": {
               "dwc": true,
-              "mixs": true,
+              "mixs": false,
               "schemaorg": true,
               "tol": true
             },
@@ -1408,18 +1452,22 @@
               },
               "mixs": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
               },
               "schemaorg": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
               },
               "tol": {
                 "label": "Family",
-                "name": "FAMILY"
+                "name": "FAMILY",
+                "reference": ""
               }
             },
-            "regex": "^[A-Za-z]+$"
+            "regex": "^[A-Za-z]+$",
+            "type": "string"
           },
           "genus": {
             "default_map": {
@@ -1432,7 +1480,7 @@
             "example": "Arenicola",
             "mapped_manifests": {
               "dwc": true,
-              "mixs": true,
+              "mixs": false,
               "schemaorg": true,
               "tol": true
             },
@@ -1444,42 +1492,61 @@
               },
               "mixs": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
               },
               "schemaorg": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
               },
               "tol": {
                 "label": "Genus",
                 "name": "GENUS"
               }
             },
-            "regex": "^[A-Za-z]+$"
+            "regex": "^[A-Za-z]+$",
+            "type": "string"
           },
           "habitat": {
             "default_map": {
               "allowed_values": [],
               "label": "Habitat",
               "name": "habitat",
+              "reference": "http://rs.tdwg.org/dwc/terms/habitat",
               "required": false
             },
             "description": "The type of habitat where the sample was collected.",
-            "error": "",
             "example": "Forest",
             "mapped_manifests": {
-              "tol": true,
               "dwc": true,
-              "mixs": true,
-              "schemaorg": true
+              "mixs": false,
+              "schemaorg": true,
+              "tol": true
             },
             "mapping": {
-              "tol": {
+              "dwc": {
+                "label": "Habitat",
+                "name": "habitat",
+                "reference": "http://rs.tdwg.org/dwc/terms/habitat"
+              },
+              "mixs": {
+                "label": "Host Body Habitat",
+                "name": "host_body_habitat",
+                "reference": ""
+              },
+              "schemaorg": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "Habitat",
+                "name": "HABITAT"
               }
             },
-            "regex": "^[A-Za-z ]+$"
+            "regex": "^[A-Za-z]+$",
+            "type": "string"
           },
           "institutionCode": {
             "default_map": {
@@ -1527,47 +1594,81 @@
               ],
               "label": "Life Stage",
               "name": "lifeStage",
+              "reference": "http://rs.tdwg.org/dwc/terms/lifeStage",
               "required": false
             },
             "description": "The life stage or age class of the organism when sampled.",
             "example": "Adult",
             "mapped_manifests": {
-              "tol": true,
               "dwc": true,
-              "mixs": true,
-              "schemaorg": true
+              "mixs": false,
+              "schemaorg": true,
+              "tol": true
             },
             "mapping": {
+              "dwc": {
+                "label": "Life Stage",
+                "name": "lifeStage",
+                "reference": "http://rs.tdwg.org/dwc/terms/lifeStage"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
               "tol": {
                 "label": "",
                 "name": ""
               }
             },
-            "regex": "^[A-Za-z]+$"
+            "regex": "^(Adult|Egg|Embryo|Gametophyte|Juvenile|Larva|Pupa|Spore bearing structure|Sporophyte|Vegetative cell|Vegetative structure|Zygote|Not applicable|Not collected|Not provided)$",
+            "type": "string"
           },
           "materialEntityID": {
             "default_map": {
               "allowed_values": [],
               "label": "Material Entity ID",
               "name": "materialEntityID",
+              "reference": "http://rs.tdwg.org/dwc/terms/materialEntityID",
               "required": false
             },
             "description": "A unique unique alphanumeric identifier for the material entity (sample).",
-            "error": "Invalid material entity ID. Please enter a valid material entity ID (e.g., MAT-12345).",
             "example": "matEnt12345",
             "mapped_manifests": {
-              "tol": true,
               "dwc": true,
-              "mixs": true,
-              "schemaorg": true
+              "mixs": false,
+              "schemaorg": true,
+              "tol": true
             },
             "mapping": {
+              "dwc": {
+                "label": "Material Entity ID",
+                "name": "materialEntityID",
+                "reference": "http://rs.tdwg.org/dwc/terms/materialEntityID"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
               "tol": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
               }
             },
-            "regex": "^[A-Z]{3}-\\d+$"
+            "regex": "^[A-Z]{3}-\\d+$",
+            "type": "string"
           },
           "materialSampleID": {
             "default_map": {
@@ -1580,9 +1681,9 @@
             "example": "matSample67890",
             "mapped_manifests": {
               "dwc": true,
-              "mixs": true,
-              "tol": true,
-              "schemaorg": true
+              "mixs": false,
+              "schemaorg": true,
+              "tol": true
             },
             "mapping": {
               "dwc": {
@@ -1595,36 +1696,60 @@
                 "name": "samp_name",
                 "reference": "https://genomicsstandardsconsortium.github.io/mixs/0001107"
               },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
               "tol": {
                 "label": "Collector Sample ID",
                 "name": "COLLECTOR_SAMPLE_ID"
               }
             },
-            "regex": "^[A-Z]{4}-\\d+$"
+            "regex": "^[A-Z]{4}-\\d+$",
+            "type": "string"
           },
           "month": {
             "default_map": {
               "allowed_values": [],
               "label": "Month",
               "name": "month",
+              "reference": "http://rs.tdwg.org/dwc/terms/month",
               "required": false
             },
             "description": "The month when the sample was collected.",
             "error": "Invalid month. Please enter a valid month (01-12).",
             "example": "07",
             "mapped_manifests": {
-              "tol": true,
               "dwc": true,
-              "mixs": true,
-              "schemaorg": true
+              "mixs": false,
+              "schemaorg": true,
+              "tol": true
             },
             "mapping": {
+              "dwc": {
+                "label": "Month",
+                "name": "month",
+                "reference": "http://rs.tdwg.org/dwc/terms/month"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
               "tol": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
               }
             },
-            "regex": "^(0[1-9]|1[0-2])$"
+            "regex": "^(0[1-9]|1[0-2])$",
+            "type": "string"
           },
           "order": {
             "default_map": {
@@ -1637,7 +1762,7 @@
             "example": "Capitellida",
             "mapped_manifests": {
               "dwc": true,
-              "mixs": true,
+              "mixs": false,
               "schemaorg": true,
               "tol": true
             },
@@ -1649,18 +1774,21 @@
               },
               "mixs": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
               },
               "schemaorg": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
               },
               "tol": {
                 "label": "Order or Group",
                 "name": "ORDER_OR_GROUP"
               }
             },
-            "regex": "^[A-Za-z]+$"
+            "regex": "^[A-Za-z]+$",
+            "type": "string"
           },
           "organismName": {
             "default_map": {
@@ -1741,13 +1869,14 @@
               ],
               "label": "Organism Name",
               "name": "organismName",
+              "reference": "http://rs.tdwg.org/dwc/terms/organismName",
               "required": false
             },
             "description": "The name of the organism.",
             "example": "Arenicola marina",
             "mapped_manifests": {
               "dwc": true,
-              "mixs": true,
+              "mixs": false,
               "schemaorg": true,
               "tol": true
             },
@@ -1759,40 +1888,61 @@
               },
               "mixs": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
               },
               "schemaorg": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
               },
               "tol": {
                 "label": "Organism Part",
                 "name": "ORGANISM_PART"
               }
             },
-            "regex": "^[A-Za-z ]+$"
+            "regex": "^[A-Za-z ]+$",
+            "type": "string"
           },
           "recordNumber": {
             "default_map": {
               "allowed_values": [],
               "label": "Record Number",
               "name": "recordNumber",
+              "reference": "http://rs.tdwg.org/dwc/terms/recordNumber",
               "required": false
             },
             "description": "A unique number assigned to this record.",
             "example": "rec123",
             "mapped_manifests": {
-              "tol": true,
               "dwc": true,
-              "mixs": true,
-              "schemaorg": true
+              "mixs": false,
+              "schemaorg": true,
+              "tol": true
             },
             "mapping": {
+              "dwc": {
+                "label": "Record Number",
+                "name": "recordNumber",
+                "reference": "http://rs.tdwg.org/dwc/terms/recordNumber"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
               "tol": {
                 "label": "",
                 "name": ""
               }
-            }
+            },
+            "regex": "",
+            "type": "string"
           },
           "scientificName": {
             "default_map": {
@@ -1805,7 +1955,7 @@
             "example": "Arenicola marina",
             "mapped_manifests": {
               "dwc": true,
-              "mixs": true,
+              "mixs": false,
               "schemaorg": true,
               "tol": true
             },
@@ -1829,7 +1979,7 @@
                 "name": "SCIENTIFIC_NAME"
               }
             },
-            "regex": "^[A-Za-z]+ [a-z]+$",
+            "regex": "^[A-Za-z]+[a-z]+$",
             "type": "string"
           },
           "sex": {
@@ -1846,60 +1996,80 @@
               ],
               "label": "Sex",
               "name": "sex",
+              "reference": "",
               "required": false
             },
             "description": "The sex of the organism (if applicable).",
             "example": "Male",
             "mapped_manifests": {
               "dwc": true,
-              "mixs": true,
+              "mixs": false,
               "schemaorg": true,
               "tol": true
             },
             "mapping": {
               "dwc": {
-                "label": "",
-                "name": "",
-                "reference": "http://rs.tdwg.org/dwc/terms/sex"
+                "label": "Sex",
+                "name": "sex",
+                "reference": ""
               },
               "mixs": {
-                "label": "",
-                "name": ""
+                "label": "Urobiom Sex",
+                "name": "urobiom_sex",
+                "reference": ""
               },
               "schemaorg": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
               },
               "tol": {
-                "label": "",
-                "name": ""
+                "label": "Sex",
+                "name": "SEX",
+                "reference": ""
               }
             },
-            "regex": "^(Asexual morph|Female|Hermaphrodite monoecious|Male|Sexual morph|Not applicable|Not collected|Not provided)$"
+            "regex": "^(Asexual morph|Female|Hermaphrodite monoecious|Male|Sexual morph|Not applicable|Not collected|Not provided)$",
+            "type": "string"
           },
           "taxonID": {
             "default_map": {
-              "allowed_values": [],
               "label": "Taxon ID",
               "name": "taxonID",
+              "reference": "http://rs.tdwg.org/dwc/terms/taxonID",
               "required": true
             },
             "description": "A unique identifier for species or organism studied.",
-            "error": "Taxon ID is required",
             "example": "6344",
             "mapped_manifests": {
-              "tol": true,
               "dwc": true,
-              "mixs": true,
-              "schemaorg": true
+              "mixs": false,
+              "schemaorg": true,
+              "tol": true
             },
             "mapping": {
-              "tol": {
+              "dwc": {
+                "label": "Taxon ID",
+                "name": "taxonID",
+                "reference": "http://rs.tdwg.org/dwc/terms/taxonID"
+              },
+              "mixs": {
+                "label": "Sample Taxon ID",
+                "name": "samp_taxon_id",
+                "reference": ""
+              },
+              "schemaorg": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
+              },
+              "tol": {
+                "label": "Taxon ID",
+                "name": "TAXON_ID"
               }
             },
-            "regex": "^\\d+$"
+            "regex": "^\\d+$",
+            "type": "string"
           },
           "taxonRank": {
             "default_map": {
@@ -1909,47 +2079,80 @@
               ],
               "label": "Taxon Rank",
               "name": "taxonRank",
+              "reference": "http://rs.tdwg.org/dwc/terms/taxonRank",
               "required": false
             },
             "description": "The rank of the taxon for this organism.",
-            "error": "Invalid taxon rank. Please select a valid taxon rank.",
             "example": "Species",
             "mapped_manifests": {
-              "tol": true,
               "dwc": true,
-              "mixs": true,
-              "schemaorg": true
+              "mixs": false,
+              "schemaorg": true,
+              "tol": true
             },
             "mapping": {
+              "dwc": {
+                "label": "Taxon Rank",
+                "name": "taxonRank",
+                "reference": "http://rs.tdwg.org/dwc/terms/taxonRank"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
               "tol": {
                 "label": "",
-                "name": ""
+                "name": "",
+                "reference": ""
               }
             },
-            "regex": "^[A-Za-z]+$"
+            "regex": "^[A-Za-z]+$",
+            "type": "string"
           },
           "year": {
             "default_map": {
-              "allowed_values": [],
               "label": "Year",
               "name": "year",
+              "reference": "http://rs.tdwg.org/dwc/terms/year",
               "required": false
             },
-            "description": "The year the sample was collected.",
+            "description": "The four-digit year in which the sample was collected.",
             "example": "2024",
             "mapped_manifests": {
-              "tol": true,
               "dwc": true,
-              "mixs": true,
-              "schemaorg": true
+              "mixs": false,
+              "schemaorg": true,
+              "tol": true
             },
             "mapping": {
+              "dwc": {
+                "label": "Year",
+                "name": "year",
+                "reference": "http://rs.tdwg.org/dwc/terms/year"
+              },
+              "mixs": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
+              "schemaorg": {
+                "label": "",
+                "name": "",
+                "reference": ""
+              },
               "tol": {
                 "label": "",
                 "name": ""
               }
             },
-            "regex": "^\\d{4}$"
+            "regex": "^\\d{4}$",
+            "type": "string"
           }
         }
       ]

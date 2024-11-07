@@ -210,6 +210,7 @@
                 "name": "COLLECTOR_AFFILIATION"
               }
             },
+            "regex": "^[A-Z]{2,10}$",
             "type": "string"
           }
         },
