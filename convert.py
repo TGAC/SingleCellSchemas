@@ -10,7 +10,8 @@ import shutil
 import sys
 import xlsxwriter
 import xml.etree.ElementTree as ET
-
+import jinja2 as j2
+from jinja2 import Environment, FileSystemLoader
 def extract_components_to_excel(data_dict, output_file_path, termset, standard):
     '''
     This function extracts components from a JSON file and writes them to an Excel file.
@@ -242,6 +243,77 @@ def extract_components_to_xml(data_dict, output_file_path, termset, standard):
 
     print(f'{file_name} created!')
 
+def extract_components_to_html(data_dict, output_file_path, termset, standard):
+    '''
+    This function extracts components from a JSON file and writes them to an HTML file.
+
+    Parameters:
+    data_dict (dict): Data from the JSON file.
+    output_file_path (str): The path to the output HTML file.
+    '''
+
+    # Create output directory if it does not exist
+    output_file_path = (
+        output_file_path.replace('.json', f'_{termset}.html')
+        .replace('.xlsx', f'_{termset}.html')
+        .replace('schemas/', f'dist/checklists/{termset}/html/{standard}/')
+        .replace('.xml', '.html')
+        .replace('/general', '')
+    )
+    directory_path = os.path.dirname(output_file_path)
+    os.makedirs(directory_path, exist_ok=True)
+
+    # Check if there's a conflicting directory with the same name as the file
+    if os.path.isdir(output_file_path):
+        print(f"Warning: A directory exists with the name '{output_file_path}'. Overwriting it.")
+        shutil.rmtree(output_file_path)
+
+    # Prepare checklist type details
+    file_name = os.path.basename(output_file_path)
+    checklist_type_abbreviation = file_name.replace(f'_{standard}_{termset}.html', '').replace('_', '').upper()
+    checklist_info = helpers.CHECKLIST_MAPPING.get(checklist_type_abbreviation, {})
+    accession = checklist_info.get('accession', '')
+    checklist_type = checklist_info.get('checklistType', '')
+    label = checklist_info.get('label', '')
+    description = checklist_info.get('description', '')
+
+    # Process FIELD_GROUPs from components
+    components = []
+    for component in data_dict['components']:
+        component_dict = {
+            "group_name": component.get('component', ''),
+            "group_description": component.get('description', ''),
+            "fields": []
+        }
+        field_label_mapping = helpers.get_field_label_mapping(component, standard)
+        component_validation = helpers.get_validation(component, standard)
+
+        for field_dict in component.get('fields', []):
+            for field, value_dict in field_dict.items():
+                label = value_dict.get('mapping', {}).get(standard, {}).get('label', '')
+                data_dict = component_validation.get(label, {})
+
+                if data_dict:
+                    mapping_dict = data_dict.get('mapping', {})
+                    current_field = {
+                        "label_element": mapping_dict.get(standard, {}).get('label', ''),
+                        "name": mapping_dict.get(standard, {}).get('name', ''),
+                        "description": data_dict.get('description', ''),
+                        "example": data_dict.get('example', ''),
+                        "regex": data_dict.get('regex', ''),
+                        "allowed_values": field_dict.get(field, {}).get('allowed_values', []),
+                        "mandatory": 'mandatory' if field_dict.get(field, {}).get('required', False) else 'optional',
+                        "multiplicity": field_dict.get(field, {}).get('multiplicity', 'single')
+                    }
+                    component_dict["fields"].append(current_field)
+        components.append(component_dict)
+
+    # Render HTML using Jinja2 template
+    environment = Environment(loader=FileSystemLoader("templates/"))
+    fields_template = environment.get_template("fields_template.html")
+    context = {"components": components}
+    with open(output_file_path, mode="w", encoding="utf-8") as fields:
+        fields.write(fields_template.render(context))
 def extract_and_convert_schema(json_schema_file_path, termset, standard):
     # Get fields based on the termset
     termset_fields = helpers.retrieve_data_by_termset(termset)
@@ -263,6 +335,7 @@ def extract_and_convert_schema(json_schema_file_path, termset, standard):
     extract_components_to_excel(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.xlsx'), termset, standard)
     extract_components_to_json(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.json'), termset, standard)
     extract_components_to_xml(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.xml'), termset, standard)
+    extract_components_to_html(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.xml'), termset, standard)
 
 if __name__ == '__main__':
     args = sys.argv
