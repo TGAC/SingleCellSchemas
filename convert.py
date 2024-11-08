@@ -191,7 +191,7 @@ def extract_components_to_xml(data_dict, output_file_path, termset, standard):
 
         for field_dict in component.get('fields', []):
             for field, value_dict in field_dict.items():
-                label = value_dict.get('mapping', {}).get(standard, {}).get('label', str())
+                label = next((k for k, v in field_label_mapping.items() if v == field), '')
                 data_dict = component_validation.get(label, str())
 
                 if data_dict:
@@ -215,6 +215,10 @@ def extract_components_to_xml(data_dict, output_file_path, termset, standard):
                     
                     regex_value = data_dict.get('regex', '')
 
+                    allowed_values = data_dict.get('default_map', {}).get('allowed_values', [])
+
+                    is_field_required = data_dict.get('default_map', {}).get('required', False)
+
                     if regex_value:
                         text_field = ET.SubElement(field_type, 'TEXT_FIELD')
                         regex = ET.SubElement(text_field, 'REGEX_VALUE')
@@ -224,20 +228,20 @@ def extract_components_to_xml(data_dict, output_file_path, termset, standard):
 
                         if field_type_value == 'TEXT_FIELD':
                             ET.SubElement(field_type, 'TEXT_FIELD')
-                    
-                    if field_dict.get(field,'').get('allowed_values', []):
+
+                    if allowed_values:
                         choice_field = ET.SubElement(field_type, 'TEXT_CHOICE_FIELD')
 
-                        for value in field_dict.get(field,'').get('allowed_values', []):
+                        for value in allowed_values:
                             text_value = ET.SubElement(choice_field, 'TEXT_VALUE')
                             value_element = ET.SubElement(text_value, 'VALUE')
                             value_element.text = value
 
                     mandatory = ET.SubElement(field_element, 'MANDATORY')
-                    mandatory.text = 'mandatory' if field_dict.get(field,'').get('required', False) else 'optional'
+                    mandatory.text = 'mandatory' if is_field_required else 'optional'
 
                     multiplicity = ET.SubElement(field_element, 'MULTIPLICITY')
-                    multiplicity.text = field_dict.get(field,'').get('multiplicity', 'single')
+                    multiplicity.text = data_dict.get('multiplicity', 'single')
 
     # Create and write XML file
     tree = ET.ElementTree(checklist_set)
@@ -260,7 +264,7 @@ def extract_components_to_html(data_dict, output_file_path, termset, standard):
         .replace('.xlsx', f'_{termset}.html')
         .replace(f'{helpers.SCHEMA_BASE_DIR_PATH}/', f'dist/checklists/{termset}/html/{standard}/')
         .replace('.xml', '.html')
-        .replace('/general', '')
+        .replace('/base', '')
     )
     directory_path = os.path.dirname(output_file_path)
     os.makedirs(directory_path, exist_ok=True)
@@ -292,20 +296,23 @@ def extract_components_to_html(data_dict, output_file_path, termset, standard):
 
         for field_dict in component.get('fields', []):
             for field, value_dict in field_dict.items():
-                label = value_dict.get('mapping', {}).get(standard, {}).get('label', '')
+                label = next((k for k, v in field_label_mapping.items() if v == field), '')
                 data_dict = component_validation.get(label, {})
 
                 if data_dict:
                     mapping_dict = data_dict.get('mapping', {})
+                    allowed_values = data_dict.get('default_map', {}).get('allowed_values', [])
+                    is_field_required = data_dict.get('default_map', {}).get('required', False)
+
                     current_field = {
                         "label_element": mapping_dict.get(standard, {}).get('label', ''),
                         "name": mapping_dict.get(standard, {}).get('name', ''),
                         "description": data_dict.get('description', ''),
                         "example": data_dict.get('example', ''),
                         "regex": data_dict.get('regex', ''),
-                        "allowed_values": field_dict.get(field, {}).get('allowed_values', []),
-                        "mandatory": 'mandatory' if field_dict.get(field, {}).get('required', False) else 'optional',
-                        "multiplicity": field_dict.get(field, {}).get('multiplicity', 'single')
+                        "allowed_values": allowed_values,
+                        "mandatory": 'mandatory' if is_field_required else 'optional',
+                        "multiplicity": data_dict.get('multiplicity', 'single')
                     }
                     component_dict["fields"].append(current_field)
         components.append(component_dict)
