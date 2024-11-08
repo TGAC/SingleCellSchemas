@@ -368,8 +368,8 @@ def apply_dropdown_list(component, dataframe, column_validation, pandas_writer, 
     
     for column_name in dataframe.columns:
         if column_name in column_validation:
-            is_field_required = column_validation[column_name].get('required', False)
-            dropdown_list = column_validation[column_name].get('allowed_values', [])
+            is_field_required = column_validation[column_name].get('default_map',{}).get('required', False)
+            dropdown_list = column_validation[column_name].get('default_map',{}).get('allowed_values', [])
             error_message = column_validation[column_name].get('error', f'{column_validation[column_name]["mapping"][standard]["label"]} required')
             field_type = column_validation[column_name].get('type', '')
             regex = column_validation[column_name].get('regex', '')

@@ -15,12 +15,6 @@
             "description": "A unique alphanumeric code for this study",
             "error": "Input is required",
             "example": "A7F9B3X2",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -63,12 +57,6 @@
             "description": "Given first name",
             "error": "Input is required",
             "example": "Jane",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -111,12 +99,6 @@
             "description": "Given last name",
             "error": "Input is required",
             "example": "Doe",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -159,12 +141,6 @@
             "description": "Valid email address",
             "error": "Email address is require",
             "example": "janedoe@example.com",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -207,12 +183,6 @@
             "description": "The code or abbreviation representing the lead institution responsible for the study.",
             "error": "Name or acronym of institution is required",
             "example": "Example Institute",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -254,12 +224,6 @@
             "description": "An official title for the study or project. Project title should be fewer than 30 words, such as a title of a grant proposal or a publication.",
             "error": "Title is required",
             "example": "Study of Spatial Transcriptomics related to Fish",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -301,12 +265,6 @@
             "description": "A detailed description of the project which includes research goals and experimental approach. Project description should be fewer than 300 words, such as an abstract from a grant application or publication",
             "error": "Description is required",
             "example": "This project explores the intricate details of spatial transcriptomics in fish.",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -348,12 +306,6 @@
             "description": "A citation for the study resource, following a standard format.",
             "error": "Bibliographic citation is required",
             "example": "Doe J., et al. (2024). Spatial Transcriptomic Analysis of Fish. Journal of Biology.",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -395,12 +347,6 @@
             "description": "The date when the study was created or registered.",
             "error": "Date study was created is required",
             "example": "2024-10-14",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -451,12 +397,6 @@
             "description": "The workflow or protocol followed during the study.",
             "error": "Workflow is required",
             "example": "spatial_transcriptomics",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -505,12 +445,6 @@
             "description": "A unique alphanumeric reference or identifier assigned to the sample in the study.",
             "error": "Sample ID is required",
             "example": "sample123",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -553,12 +487,6 @@
             "description": "A reference to the study, usually a unique identifier or citation.",
             "error": "Study reference is required",
             "example": "study123",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -602,12 +530,6 @@
             "description": "The strain of the organism, if applicable.",
             "error": "Strain is required",
             "example": "NA",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -680,12 +602,6 @@
             "description": "The type of tissue sampled for the study.",
             "error": "Tissue is required",
             "example": "Leaf",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -738,12 +654,6 @@
             "description": "A brief description of how the sample was preserved.",
             "error": "Preservation method is required",
             "example": "Fresh",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -798,12 +708,6 @@
             "description": "The age class of the organism at the time of collection.",
             "error": "Age class is required",
             "example": "ADULT",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -850,12 +754,6 @@
             "description": "The date when the sample was collected.",
             "error": "Collection date is required",
             "example": "2024-09-20",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -902,12 +800,6 @@
             "description": "The geographic latitude where the specimen or sample was taken in decimal degrees, between -90 and 90. We advise that locations are specified to a minimum of 3 decimal places and a maximum of 8 decimal places (https: //en.wikipedia.org/wiki/Decimal_degrees).",
             "error": "Geographic location latitude is required",
             "example": "52.62",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -954,12 +846,6 @@
             "description": "The geographic longitude where the specimen or sample was taken in decimal degrees, between -180 and 180. We advise that locations are specified to a minimum of 3 decimal places and maximum of 8 decimal places (https: //en.wikipedia.org/wiki/Decimal_degrees).",
             "error": "Geographic location longitude is required",
             "example": "1.297",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -1006,12 +892,6 @@
             "description": "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO\u2019s biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.",
             "error": "Broad scale environmental context is required",
             "example": "Urban",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -1055,12 +935,6 @@
             "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).",
             "error": "Local scale environmental context is required",
             "example": "Laboratory",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -1104,12 +978,6 @@
             "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).",
             "error": "Environmental medium is required",
             "example": "ocean water",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -1713,9 +1581,6 @@
             "description": "The code or abbreviation representing the lead institution where the sample is held.",
             "error": "Name or acronym of institution is required",
             "example": "EI",
-            "included_in_mapping": {
-              "tol": false
-            },
             "mapped_manifests": {
               "tol": true,
               "dwc": true,
@@ -2330,12 +2195,6 @@
             "description": "A unique identifier for the sample used in the study.",
             "error": "Sample reference is required",
             "example": "SAMPLE123",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -2379,12 +2238,6 @@
             "description": "The platform used to isolate the cells.",
             "error": "Platform is required",
             "example": "Illumina NovaSeq",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -2428,12 +2281,6 @@
             "description": "The instrument used to isolate the cells.",
             "error": "Instrument is required",
             "example": "Illumina NovaSeq 6000",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -2477,12 +2324,6 @@
             "description": "The method used for dissociating the cells.",
             "error": "Dissociation method is required",
             "example": "enzymatic",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -2526,12 +2367,6 @@
             "description": "The time duration for dissociation in minutes.",
             "error": "Dissociation time is required",
             "example": "30",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -2577,12 +2412,6 @@
             "description": "The temperature at which dissociation is performed in degrees celsius.",
             "error": "Dissociation temperature is required",
             "example": "37",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -2630,12 +2459,6 @@
             "description": "The enzyme used for dissociation.",
             "error": "Dissociation enzyme is required",
             "example": "collagenase",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -2679,12 +2502,6 @@
             "description": "The concentration of the dissociation enzyme.",
             "error": "Dissociation enzyme concentration is required",
             "example": "0.25",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -2727,12 +2544,6 @@
             "description": "The temperature at which the material is incubated in degrees C.",
             "error": "Material incubation temperature is required",
             "example": "37",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -2778,12 +2589,6 @@
             "description": "The time duration for material incubation in hours.",
             "error": "Material incubation time is required",
             "example": "30",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -2829,12 +2634,6 @@
             "description": "The solution used for lysis buffer.",
             "error": "Lysis buffer solution is required",
             "example": "RIPA buffer",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -2878,12 +2677,6 @@
             "description": "The type of probes used to detect and quantify specific RNA molecules in their native spatial context within a tissue or cell.",
             "error": "Target probes is required",
             "example": "Mouse nociceptors",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -2927,12 +2720,6 @@
             "description": "The thickness of the tissue section in micrometres.",
             "error": "Section thickness \u039cm is required",
             "example": "10",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -2978,12 +2765,6 @@
             "description": "The method used to measure tissue section thickness.",
             "error": "Section thickness method is required",
             "example": "Microtome",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -3027,12 +2808,6 @@
             "description": "The temperature at which the section was made.",
             "error": "Section thickness temperature is required",
             "example": "Room temperature",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -3078,12 +2853,6 @@
             "description": "A quality inhering in a bearer by virtue of the bearer's being abnormal and having a destructive effect on living tissue.",
             "error": "Pathological booolean is required",
             "example": "No",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -3127,12 +2896,6 @@
             "description": "A link to a workflow describing the digestion protocol in Protocols.io",
             "error": "Digestion Workflow is required",
             "example": "Spatial transcriptomics dissociation",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -3176,12 +2939,6 @@
             "description": "The duration of digestion in minutes.",
             "error": "Digestion time in minutes is required",
             "example": "45",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -3227,12 +2984,6 @@
             "description": "The temperature at which digestion was carried out.",
             "error": "Digestion temperature is required",
             "example": "37",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -3278,12 +3029,6 @@
             "description": "The duration of photobleaching in hours",
             "error": "Photobleaching duration in hours is required",
             "example": "2",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -3329,12 +3074,6 @@
             "description": "The user guide for the instrument used.",
             "error": "Instrument user guide is required",
             "example": "User Guide v1.2",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -3378,12 +3117,6 @@
             "description": "The revision of the instrument user guide.",
             "error": "Instrument user guide revision is required",
             "example": "1.2",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -3427,12 +3160,6 @@
             "description": "The guide used for sample preparation.",
             "error": "Sample preparation guide is required",
             "example": "preparation_guide_v1.0.pdf",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -3475,12 +3202,6 @@
             "description": "The revision of the sample preparation guide.",
             "error": "Sample preparation guide revision is required",
             "example": "1.0",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -3523,19 +3244,13 @@
             "description": "Any deviations from the official protocol. Separate individual deviations with '|'",
             "error": "Deviations from official protocol is required",
             "example": "None",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
-            "instruction": "Separate individual deviations with '|'",
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
               "schemaorg": true,
               "tol": true
             },
+            "instruction": "Separate individual deviations with '|'",
             "mapping": {
               "dwc": {
                 "label": "",
@@ -3576,12 +3291,6 @@
             "description": "The name of the file that contains the imaging protocol information.",
             "error": "Imaging protocol reference is required",
             "example": "file1_imaging_protocol.json",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -3625,12 +3334,6 @@
             "description": "A filename or file name is a name used to uniquely identify a data file related to the study.",
             "error": "File name is required",
             "example": "file001",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -3674,12 +3377,6 @@
             "description": "A file type is a name given to a specific kind of file. Commong file types are fastq, gtf, fasta, bam, etc.",
             "error": "File type is required",
             "example": "fastq",
-            "included_in_mapping": {
-              "dwc": true,
-              "mixs": true,
-              "schemaorg": true,
-              "tol": false
-            },
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
