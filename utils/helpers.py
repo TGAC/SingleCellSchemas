@@ -3,6 +3,7 @@ from openpyxl.utils import get_column_letter
 import json
 import os
 import pandas as pd
+import re
 import sys
 
 # Helpers: Variables
@@ -51,9 +52,39 @@ MESSAGES = {
 }
 
 # Helpers: Functions
+def is_camel_case(text):
+    # Regular expression to check if text follows camelCase
+    return bool(re.match(r'^[a-z]+(?:[A-Z][a-z]+)*$', text))
+
+def is_title_case_with_spaces(text):
+    # Regular expression to check if text follows Title Case
+    return bool(re.match(r'^[A-Z][a-z]+(?: [A-Z][a-z]+)*$', text))
+
 def convertStringToTitleCase(text):
-    # Convert given a string to title case/sentence case
-    return text.title().replace('_', ' ')
+    '''
+    Convert a given string to title case, handling camel case by adding spaces 
+    where necessary and replacing certain abbreviations and terms.
+    '''
+    # Convert camelCase to space-separated words if applicable
+    if is_camel_case(text):
+      text = re.sub(r'([A-Z])', r' \1', text).strip()
+
+    # Ensure title case format with spaces if not already properly formatted
+    if not is_title_case_with_spaces(text):
+      text = re.sub(r'(?<!^)(?=[A-Z])', ' ', text)
+
+    # Apply title casing and replace certain terms
+    return text.title() \
+        .replace('_', ' ') \
+        .replace('  ', ' ') \
+        .replace('I D', 'ID') \
+        .replace('Geo', 'Geographic') \
+        .replace('Loc', 'Location') \
+        .replace('Lat', 'Latitude') \
+        .replace('Lon', 'Longitude') \
+        .replace('Longitudegitude', 'Longitude') \
+        .replace('Latitudeitude', 'Latitude') \
+        .replace('Locationation', 'Location') \
 
 def get_col_desc_eg(component, standard):
     field_validation = get_validation(component, standard)
@@ -91,17 +122,25 @@ def get_validation(component, standard):
             if field_info.get('mapped_manifests',{}).get(standard, False):
                 # Get the default label and name from the 'schemaorg' 
                 # standard if no label or name is provided for the standard
+                mapping_dict = field_info.get('mapping', {})
+
                 default_label = field_info.get('default_map', {}).get('label', '')
                 default_name = field_info.get('default_map', {}).get('name','')
+                default_reference = field_info.get('default_map', {}).get('reference','')
                 
                 label = (
-                    field_info.get('mapping', {}).get(standard, {}).get('label') or 
+                    mapping_dict.get(standard, {}).get('label') or 
                     default_label or  convertStringToTitleCase(field)
                 )
 
                 name = (
-                    field_info.get('mapping', {}).get(standard, {}).get('name') or
+                    mapping_dict.get(standard, {}).get('name') or
                     default_name or field
+                )
+
+                reference = (
+                    mapping_dict.get(standard, {}).get('reference') or
+                    default_reference or ''
                 )
 
                 # Ensure the 'mapping' dictionary and the specific standard sub-dictionary exist
@@ -110,6 +149,7 @@ def get_validation(component, standard):
                 # Assign the label and name values
                 field_info['mapping'][standard]['label'] = label
                 field_info['mapping'][standard]['name'] = name
+                field_info['mapping'][standard]['reference'] = reference
 
                 # Update field_validation with the label as the key
                 field_validation[label] = field_info

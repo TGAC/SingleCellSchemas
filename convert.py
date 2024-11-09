@@ -177,14 +177,18 @@ def extract_components_to_xml(data_dict, output_file_path, termset, standard):
     # Process FIELD_GROUPs from components
     for component in data_dict['components']:
         field_label_mapping = helpers.get_field_label_mapping(component, standard)
+        group_label = helpers.convertStringToTitleCase(component.get('component', ''))
 
         # Get the component validation
         component_validation = helpers.get_validation(component, standard)
 
         field_group = ET.SubElement(descriptor, 'FIELD_GROUP', restrictionType=component.get('restriction_type', 'Any number or none of the fields'))
         
-        group_name = ET.SubElement(field_group, 'NAME')
-        group_name.text = component.get('component', '')
+        group_label_element = ET.SubElement(field_group, 'LABEL')
+        group_label_element.text = group_label
+
+        group_name_element = ET.SubElement(field_group, 'NAME')
+        group_name_element.text = component.get('component', '')
 
         group_description = ET.SubElement(field_group, 'DESCRIPTION')
         group_description.text = component.get('description', '')
@@ -286,7 +290,9 @@ def extract_components_to_html(data_dict, output_file_path, termset, standard):
     # Process FIELD_GROUPs from components
     components = []
     for component in data_dict['components']:
+        group_label = helpers.convertStringToTitleCase(component.get('component', ''))
         component_dict = {
+            "group_label": group_label,
             "group_name": component.get('component', ''),
             "group_description": component.get('description', ''),
             "fields": []
@@ -301,24 +307,24 @@ def extract_components_to_html(data_dict, output_file_path, termset, standard):
 
                 if data_dict:
                     mapping_dict = data_dict.get('mapping', {})
-                    allowed_values = data_dict.get('default_map', {}).get('allowed_values', [])
-                    is_field_required = data_dict.get('default_map', {}).get('required', False)
+                    default_map = data_dict.get('default_map', {})
 
                     current_field = {
-                        "label_element": mapping_dict.get(standard, {}).get('label', ''),
+                        "label": mapping_dict.get(standard, {}).get('label', ''),
                         "name": mapping_dict.get(standard, {}).get('name', ''),
                         "description": data_dict.get('description', ''),
                         "example": data_dict.get('example', ''),
                         "regex": data_dict.get('regex', ''),
-                        "allowed_values": allowed_values,
-                        "mandatory": 'mandatory' if is_field_required else 'optional',
-                        "multiplicity": data_dict.get('multiplicity', 'single')
+                        "allowed_values": default_map.get('allowed_values', []),
+                        "mandatory": 'mandatory' if  default_map.get('required', False) else 'optional',
+                        "multiplicity": data_dict.get('multiplicity', 'single'),
+                        "reference": default_map.get('reference', '')
                     }
                     component_dict["fields"].append(current_field)
         components.append(component_dict)
 
     # Render HTML using Jinja2 template
-    environment = Environment(loader=FileSystemLoader("templates/"))
+    environment = Environment(loader=FileSystemLoader("templates"))
     fields_template = environment.get_template("fields_template.html")
     context = {"components": components}
     with open(output_file_path, mode="w", encoding="utf-8") as fields:
