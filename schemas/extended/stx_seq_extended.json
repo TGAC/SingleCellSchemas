@@ -975,7 +975,7 @@
               "required": false,
               "reference": "http://purl.org/dc/terms/medium"
             },
-            "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).",
+            "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling.",
             "error": "Environmental medium is required",
             "example": "Tissue culture medium",
             "mapped_manifests": {
@@ -1528,9 +1528,9 @@
               "required": true,
               "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
             },
-            "description": "A unique identifier for the sample used in the study.",
-            "error": "Sample reference is required",
-            "example": "SAMPLE123",
+            "description": "A unique alphanumeric identifier for the imaging protocol.",
+            "error": "Imaging Protocol ID is required",
+            "example": "img123",
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -1539,19 +1539,19 @@
             },
             "mapping": {
               "dwc": {
-                "label": "",
-                "name": "",
+                "label": "Imaging Protocol ID",
+                "name": "imaging_protocol_id",
                 "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
               },
               "mixs": {
                 "label": "",
                 "name": "",
-                "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
+                "reference": ""
               },
               "schemaorg": {
-                "label": "Imaging Protocol ID",
-                "name": "imaging_protocol_id",
-                "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
+                "label": "",
+                "name": "",
+                "reference": ""
               },
               "tol": {
                 "label": "",
@@ -2583,13 +2583,13 @@
             "description": "Any deviations from the official protocol. Separate individual deviations with '|'.",
             "error": "Deviations from official protocol is required",
             "example": "None",
+            "instruction": "separate individual deviations with '|'",
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
               "schemaorg": true,
               "tol": true
             },
-            "instruction": "separate individual deviations with '|'",
             "mapping": {
               "dwc": {
                 "label": "",
@@ -2751,16 +2751,16 @@
           }
         },
         {
-          "sequencing_reference": {
+          "sequencing_id": {
             "default_map": {
               "allowed_values": [],
-              "label": "Sequencing Reference",
-              "name": "sequencing_reference",
+              "label": "Sequencing ID",
+              "name": "sequencing_id",
               "required": true,
-              "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+              "reference": ""
             },
             "description": "A unique alphanumeric reference or identifier for the sequencing protocol.",
-            "error": "Sequencing reference is required",
+            "error": "Sequencing ID is required",
             "example": "seq123",
             "mapped_manifests": {
               "dwc": true,
@@ -2772,17 +2772,17 @@
               "dwc": {
                 "label": "",
                 "name": "",
-                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+                "reference": ""
               },
               "mixs": {
                 "label": "",
                 "name": "",
-                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+                "reference": ""
               },
               "schemaorg": {
-                "label": "Sequencing Reference",
-                "name": "sequencing_reference",
-                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+                "label": "",
+                "name": "",
+                "reference": ""
               },
               "tol": {
                 "label": "",
@@ -3322,16 +3322,16 @@
       "component": "sequencing",
       "fields": [
         {
-          "sequencing_reference": {
+          "sequencing_id": {
             "default_map": {
               "allowed_values": [],
-              "label": "Sequencing Reference",
-              "name": "sequencing_reference",
+              "label": "Sequencing ID",
+              "name": "sequencing_id",
               "required": true,
-              "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+              "reference": ""
             },
             "description": "A unique alphanumeric reference or identifier for the sequencing protocol.",
-            "error": "Sequencing reference is required",
+            "error": "Sequencing ID is required",
             "example": "seq123",
             "mapped_manifests": {
               "dwc": true,
@@ -3343,17 +3343,17 @@
               "dwc": {
                 "label": "",
                 "name": "",
-                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+                "reference": ""
               },
               "mixs": {
                 "label": "",
                 "name": "",
-                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+                "reference": ""
               },
               "schemaorg": {
-                "label": "Sequencing Reference",
-                "name": "sequencing_reference",
-                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+                "label": "",
+                "name": "",
+                "reference": ""
               },
               "tol": {
                 "label": "",
@@ -4156,17 +4156,17 @@
       "component": "file",
       "fields": [
         {
-          "imaging_protocol_ref": {
+          "imaging_protocol_id": {
             "default_map": {
               "allowed_values": [],
-              "label": "Imaging Protocol Reference",
-              "name": "imaging_protocol_ref",
-              "required": false,
-              "reference": ""
+              "label": "Imaging Protocol ID",
+              "name": "imaging_protocol_id",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
             },
-            "description": "The name of the file that contains the imaging protocol information.",
-            "error": "Imaging protocol reference is required",
-            "example": "file1_imaging_protocol.json",
+            "description": "A unique alphanumeric identifier for the imaging protocol.",
+            "error": "Imaging Protocol ID is required",
+            "example": "img123",
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -4175,9 +4175,9 @@
             },
             "mapping": {
               "dwc": {
-                "label": "",
-                "name": "",
-                "reference": ""
+                "label": "Imaging Protocol ID",
+                "name": "imaging_protocol_id",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
               },
               "mixs": {
                 "label": "",
@@ -4185,8 +4185,8 @@
                 "reference": ""
               },
               "schemaorg": {
-                "label": "Imaging Protocol Reference",
-                "name": "imaging_protocol_ref",
+                "label": "",
+                "name": "",
                 "reference": ""
               },
               "tol": {
@@ -4195,8 +4195,6 @@
               }
             },
             "type": "string",
-            "unit": "",
-            "unit_reference": "",
             "value": ""
           }
         },
@@ -4243,16 +4241,16 @@
           }
         },
         {
-          "sequencing_reference": {
+          "sequencing_id": {
             "default_map": {
               "allowed_values": [],
-              "label": "Sequencing Reference",
-              "name": "sequencing_reference",
+              "label": "Sequencing ID",
+              "name": "sequencing_id",
               "required": true,
-              "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+              "reference": ""
             },
             "description": "A unique alphanumeric reference or identifier for the sequencing protocol.",
-            "error": "Sequencing reference is required",
+            "error": "Sequencing ID is required",
             "example": "seq123",
             "mapped_manifests": {
               "dwc": true,
@@ -4264,17 +4262,17 @@
               "dwc": {
                 "label": "",
                 "name": "",
-                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+                "reference": ""
               },
               "mixs": {
                 "label": "",
                 "name": "",
-                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+                "reference": ""
               },
               "schemaorg": {
-                "label": "Sequencing Reference",
-                "name": "sequencing_reference",
-                "reference": "http://purl.obolibrary.org/obo/OBI_0000316"
+                "label": "",
+                "name": "",
+                "reference": ""
               },
               "tol": {
                 "label": "",

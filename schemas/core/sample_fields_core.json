@@ -1,4 +1,695 @@
-{
+{   
+  "institutionCode": {
+    "default_map": {
+      "label": "Institution",
+      "name": "institutionCode",
+      "required": true,
+      "reference": "http://rs.tdwg.org/dwc/terms/institutionCode"
+    },
+    "description": "The name (or acronym) representing the lead institution responsible for the study.",
+    "example": "EI",
+    "mapped_manifests": {
+      "dwc": true,
+      "mixs": true,
+      "schemaorg": true,
+      "tol": true
+    },
+    "mapping": {
+      "dwc": {
+        "label": "Institution",
+        "name": "institutionCode",
+        "reference": "http://rs.tdwg.org/dwc/terms/institutionCode"
+      },
+      "mixs": {
+        "label": "",
+        "name": ""
+      },
+      "schemaorg": {
+        "label": "",
+        "name": ""
+      },
+      "tol": {
+        "label": "Collector Affiliation",
+        "name": "COLLECTOR_AFFILIATION"
+      }
+    },
+    "regex": "^[A-Z]{2,10}$",
+    "type": "string"
+  },
+  "recordNumber": {
+    "default_map": {
+      "allowed_values": [],
+      "label": "Record Number",
+      "name": "recordNumber",
+      "reference": "http://rs.tdwg.org/dwc/terms/recordNumber",
+      "required": false
+    },
+    "description": "A unique number assigned to this record.",
+    "example": "rec123",
+    "mapped_manifests": {
+      "dwc": true,
+      "mixs": false,
+      "schemaorg": true,
+      "tol": true
+    },
+    "mapping": {
+      "dwc": {
+        "label": "Record Number",
+        "name": "recordNumber",
+        "reference": "http://rs.tdwg.org/dwc/terms/recordNumber"
+      },
+      "mixs": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "schemaorg": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "tol": {
+        "label": "",
+        "name": ""
+      }
+    },
+    "regex": "",
+    "schema_types": [
+      "sc_rnaseq",
+      "stx_fish",
+      "stx_seq"
+    ],
+    "termset": "core",
+    "type": "string"
+  },
+  "materialEntityID": {
+    "default_map": {
+      "allowed_values": [],
+      "label": "Material Entity ID",
+      "name": "materialEntityID",
+      "reference": "http://rs.tdwg.org/dwc/terms/materialEntityID",
+      "required": false
+    },
+    "description": "A unique unique alphanumeric identifier for the material entity (sample).",
+    "example": "matEnt12345",
+    "mapped_manifests": {
+      "dwc": true,
+      "mixs": false,
+      "schemaorg": true,
+      "tol": true
+    },
+    "mapping": {
+      "dwc": {
+        "label": "Material Entity ID",
+        "name": "materialEntityID",
+        "reference": "http://rs.tdwg.org/dwc/terms/materialEntityID"
+      },
+      "mixs": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "schemaorg": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "tol": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      }
+    },
+    "regex": "^[A-Z]{3}-\\d+$",
+    "schema_types": [
+      "sc_rnaseq",
+      "stx_fish",
+      "stx_seq"
+    ],
+    "termset": "core",
+    "type": "string"
+  },
+  "materialSampleID": {
+    "default_map": {
+      "label": "Material Sample ID",
+      "name": "materialSampleID",
+      "reference": "http://rs.tdwg.org/dwc/terms/materialSampleID",
+      "required": false
+    },
+    "description": "A unique alphanumeric identifier for the sample.",
+    "example": "matSample67890",
+    "mapped_manifests": {
+      "dwc": true,
+      "mixs": false,
+      "schemaorg": true,
+      "tol": true
+    },
+    "mapping": {
+      "dwc": {
+        "label": "Material Sample ID",
+        "name": "materialSampleID",
+        "reference": "http://rs.tdwg.org/dwc/terms/materialSampleID"
+      },
+      "mixs": {
+        "label": "Sample Name",
+        "name": "samp_name",
+        "reference": "https://genomicsstandardsconsortium.github.io/mixs/0001107"
+      },
+      "schemaorg": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "tol": {
+        "label": "Collector Sample ID",
+        "name": "COLLECTOR_SAMPLE_ID"
+      }
+    },
+    "regex": "^[A-Z]{4}-\\d+$",
+    "schema_types": [
+      "sc_rnaseq",
+      "stx_fish",
+      "stx_seq"
+    ],
+    "termset": "core",
+    "type": "string"
+  },
+  "taxonID": {
+    "default_map": {
+      "label": "Taxon ID",
+      "name": "taxonID",
+      "reference": "http://rs.tdwg.org/dwc/terms/taxonID",
+      "required": true
+    },
+    "description": "A unique identifier for species or organism studied.",
+    "example": "6344",
+    "mapped_manifests": {
+      "dwc": true,
+      "mixs": false,
+      "schemaorg": true,
+      "tol": true
+    },
+    "mapping": {
+      "dwc": {
+        "label": "Taxon ID",
+        "name": "taxonID",
+        "reference": "http://rs.tdwg.org/dwc/terms/taxonID"
+      },
+      "mixs": {
+        "label": "Sample Taxon ID",
+        "name": "samp_taxon_id",
+        "reference": ""
+      },
+      "schemaorg": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "tol": {
+        "label": "Taxon ID",
+        "name": "TAXON_ID"
+      }
+    },
+    "regex": "^\\d+$",
+    "schema_types": [
+      "sc_rnaseq",
+      "stx_fish",
+      "stx_seq"
+    ],
+    "termset": "core",
+    "type": "string"
+  },
+  "sex": {
+    "default_map": {
+      "allowed_values": [
+        "Asexual morph",
+        "Female",
+        "Hermaphrodite monoecious",
+        "Male",
+        "Sexual morph",
+        "Not applicable",
+        "Not collected",
+        "Not provided"
+      ],
+      "label": "Sex",
+      "name": "sex",
+      "reference": "",
+      "required": false
+    },
+    "description": "The sex of the organism (if applicable).",
+    "example": "Male",
+    "mapped_manifests": {
+      "dwc": true,
+      "mixs": false,
+      "schemaorg": true,
+      "tol": true
+    },
+    "mapping": {
+      "dwc": {
+        "label": "Sex",
+        "name": "sex",
+        "reference": ""
+      },
+      "mixs": {
+        "label": "Urobiom Sex",
+        "name": "urobiom_sex",
+        "reference": ""
+      },
+      "schemaorg": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "tol": {
+        "label": "Sex",
+        "name": "SEX",
+        "reference": ""
+      }
+    },
+    "regex": "^(Asexual morph|Female|Hermaphrodite monoecious|Male|Sexual morph|Not applicable|Not collected|Not provided)$",
+    "schema_types": [
+      "sc_rnaseq",
+      "stx_fish",
+      "stx_seq"
+    ],
+    "termset": "core",
+    "type": "string"
+  },
+  "lifeStage": {
+    "default_map": {
+      "allowed_values": [
+        "Adult",
+        "Egg",
+        "Embryo",
+        "Gametophyte",
+        "Juvenile",
+        "Larva",
+        "Pupa",
+        "Spore bearing structure",
+        "Sporophyte",
+        "Vegetative cell",
+        "Vegetative structure",
+        "Zygote",
+        "Not applicable",
+        "Not collected",
+        "Not provided"
+      ],
+      "label": "Life Stage",
+      "name": "lifeStage",
+      "reference": "http://rs.tdwg.org/dwc/terms/lifeStage",
+      "required": false
+    },
+    "description": "The life stage or age class of the organism when sampled.",
+    "example": "Adult",
+    "mapped_manifests": {
+      "dwc": true,
+      "mixs": false,
+      "schemaorg": true,
+      "tol": true
+    },
+    "mapping": {
+      "dwc": {
+        "label": "Life Stage",
+        "name": "lifeStage",
+        "reference": "http://rs.tdwg.org/dwc/terms/lifeStage"
+      },
+      "mixs": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "schemaorg": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "tol": {
+        "label": "",
+        "name": ""
+      }
+    },
+    "regex": "^(Adult|Egg|Embryo|Gametophyte|Juvenile|Larva|Pupa|Spore bearing structure|Sporophyte|Vegetative cell|Vegetative structure|Zygote|Not applicable|Not collected|Not provided)$",
+    "schema_types": [
+      "sc_rnaseq",
+      "stx_fish",
+      "stx_seq"
+    ],
+    "termset": "core",
+    "type": "string"
+  },
+  "organismName": {
+    "default_map": {
+      "allowed_values": [
+        "Abdomen",
+        "Anterior Body",
+        "Blade",
+        "Blood",
+        "Bodywall",
+        "Bract",
+        "Brain",
+        "Bud",
+        "Cap",
+        "Cephalothorax",
+        "Egg",
+        "Eggshell",
+        "Endocrine Tissue",
+        "Eye",
+        "Fat Body",
+        "Fin",
+        "Flower",
+        "Gill Animal",
+        "Gill Fungi",
+        "Gonad",
+        "Hair",
+        "Head",
+        "Heart",
+        "Hepatopancreas",
+        "Holdfast Fungi",
+        "Intestine",
+        "Kidney",
+        "Leaf",
+        "Leg",
+        "Liver",
+        "Lung",
+        "Mid Body",
+        "Modular Colony",
+        "Mollusc Foot",
+        "Multicellular Organisms In Culture",
+        "Muscle",
+        "Mycelium",
+        "Mycorrhiza",
+        "Ovary Animal",
+        "Oviduct",
+        "Pancreas",
+        "Petiole",
+        "Posterior Body",
+        "Root",
+        "Scales",
+        "Scat",
+        "Seed",
+        "Seedling",
+        "Shoot",
+        "Skin",
+        "Sperm Seminal Fluid",
+        "Spleen",
+        "Spore Bearing Structure",
+        "Spore",
+        "Stem",
+        "Stipe",
+        "Stomach",
+        "Tentacle",
+        "Terminal Body",
+        "Testis",
+        "Thallus Fungi",
+        "Thallus Plant",
+        "Thorax",
+        "Unicellular Organisms In Culture",
+        "Whole Organism",
+        "Whole Plant",
+        "Other Fungal Tissue",
+        "Other Plant Tissue",
+        "Other Reproductive Animal Tissue",
+        "Other Somatic Animal Tissue",
+        "Not Applicable",
+        "Not Collected",
+        "Not Provided"
+      ],
+      "label": "Organism Name",
+      "name": "organismName",
+      "reference": "http://rs.tdwg.org/dwc/terms/organismName",
+      "required": false
+    },
+    "description": "The name of the organism.",
+    "example": "Arenicola marina",
+    "mapped_manifests": {
+      "dwc": true,
+      "mixs": false,
+      "schemaorg": true,
+      "tol": true
+    },
+    "mapping": {
+      "dwc": {
+        "label": "Organism Name",
+        "name": "organismName",
+        "reference": "http://rs.tdwg.org/dwc/terms/organismName"
+      },
+      "mixs": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "schemaorg": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "tol": {
+        "label": "Organism Part",
+        "name": "ORGANISM_PART"
+      }
+    },
+    "regex": "^[A-Za-z ]+$",
+    "schema_types": [
+      "sc_rnaseq",
+      "stx_fish",
+      "stx_seq"
+    ],
+    "termset": "core",
+    "type": "string"
+  },
+  "order": {
+    "default_map": {
+      "label": "Order",
+      "name": "order",
+      "reference": "http://rs.tdwg.org/dwc/terms/order",
+      "required": false
+    },
+    "description": "The taxonomic order of the organism.",
+    "example": "Capitellida",
+    "mapped_manifests": {
+      "dwc": true,
+      "mixs": false,
+      "schemaorg": true,
+      "tol": true
+    },
+    "mapping": {
+      "dwc": {
+        "label": "Order",
+        "name": "order",
+        "reference": "http://rs.tdwg.org/dwc/terms/order"
+      },
+      "mixs": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "schemaorg": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "tol": {
+        "label": "Order or Group",
+        "name": "ORDER_OR_GROUP"
+      }
+    },
+    "regex": "^[A-Za-z]+$",
+    "schema_types": [
+      "sc_rnaseq",
+      "stx_fish",
+      "stx_seq"
+    ],
+    "termset": "core",
+    "type": "string"
+  },
+  "family": {
+    "default_map": {
+      "allowed_values": [],
+      "label": "Family",
+      "name": "family",
+      "reference": "http://rs.tdwg.org/dwc/terms/family",
+      "required": false
+    },
+    "description": "The taxonomic family of the organism.",
+    "example": "Arenicolidae",
+    "mapped_manifests": {
+      "dwc": true,
+      "mixs": false,
+      "schemaorg": true,
+      "tol": true
+    },
+    "mapping": {
+      "dwc": {
+        "label": "Family",
+        "name": "family",
+        "reference": "http://rs.tdwg.org/dwc/terms/family"
+      },
+      "mixs": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "schemaorg": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "tol": {
+        "label": "Family",
+        "name": "FAMILY",
+        "reference": ""
+      }
+    },
+    "regex": "^[A-Za-z]+$",
+    "schema_types": [
+      "sc_rnaseq",
+      "stx_fish",
+      "stx_seq"
+    ],
+    "termset": "core",
+    "type": "string"
+  },
+  "genus": {
+    "default_map": {
+      "label": "Genus",
+      "name": "genus",
+      "reference": "http://rs.tdwg.org/dwc/terms/genus",
+      "required": false
+    },
+    "description": "The taxonomic genus of the organism.",
+    "example": "Arenicola",
+    "mapped_manifests": {
+      "dwc": true,
+      "mixs": false,
+      "schemaorg": true,
+      "tol": true
+    },
+    "mapping": {
+      "dwc": {
+        "label": "Genus",
+        "name": "genus",
+        "reference": "http://rs.tdwg.org/dwc/terms/genus"
+      },
+      "mixs": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "schemaorg": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "tol": {
+        "label": "Genus",
+        "name": "GENUS"
+      }
+    },
+    "regex": "^[A-Za-z]+$",
+    "schema_types": [
+      "sc_rnaseq",
+      "stx_fish",
+      "stx_seq"
+    ],
+    "termset": "core",
+    "type": "string"
+  },
+  "taxonRank": {
+    "default_map": {
+      "allowed_values": [
+        "Species",
+        "Subspecies"
+      ],
+      "label": "Taxon Rank",
+      "name": "taxonRank",
+      "reference": "http://rs.tdwg.org/dwc/terms/taxonRank",
+      "required": false
+    },
+    "description": "The rank of the taxon for this organism.",
+    "example": "Species",
+    "mapped_manifests": {
+      "dwc": true,
+      "mixs": false,
+      "schemaorg": true,
+      "tol": true
+    },
+    "mapping": {
+      "dwc": {
+        "label": "Taxon Rank",
+        "name": "taxonRank",
+        "reference": "http://rs.tdwg.org/dwc/terms/taxonRank"
+      },
+      "mixs": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "schemaorg": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "tol": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      }
+    },
+    "regex": "^[A-Za-z]+$",
+    "schema_types": [
+      "sc_rnaseq",
+      "stx_fish",
+      "stx_seq"
+    ],
+    "termset": "core",
+    "type": "string"
+  },
+  "habitat": {
+    "default_map": {
+      "allowed_values": [],
+      "label": "Habitat",
+      "name": "habitat",
+      "reference": "http://rs.tdwg.org/dwc/terms/habitat",
+      "required": false
+    },
+    "description": "The type of habitat where the sample was collected.",
+    "example": "Forest",
+    "mapped_manifests": {
+      "dwc": true,
+      "mixs": false,
+      "schemaorg": true,
+      "tol": true
+    },
+    "mapping": {
+      "dwc": {
+        "label": "Habitat",
+        "name": "habitat",
+        "reference": "http://rs.tdwg.org/dwc/terms/habitat"
+      },
+      "mixs": {
+        "label": "Host Body Habitat",
+        "name": "host_body_habitat",
+        "reference": ""
+      },
+      "schemaorg": {
+        "label": "",
+        "name": "",
+        "reference": ""
+      },
+      "tol": {
+        "label": "Habitat",
+        "name": "HABITAT"
+      }
+    },
+    "regex": "^[A-Za-z]+$",
+    "schema_types": [
+      "sc_rnaseq",
+      "stx_fish",
+      "stx_seq"
+    ],
+    "termset": "core",
+    "type": "string"
+  },
   "country": {
     "default_map": {
       "allowed_values": [
@@ -324,54 +1015,6 @@
     "termset": "core",
     "type": "string"
   },
-  "day": {
-    "default_map": {
-      "allowed_values": [],
-      "label": "Day",
-      "name": "day",
-      "reference": "",
-      "required": false
-    },
-    "description": "The integer day of the month on which the sample was collected.",
-    "error": "Invalid day. Please enter a valid day (01-31).",
-    "example": "15",
-    "mapped_manifests": {
-      "dwc": true,
-      "mixs": false,
-      "schemaorg": true,
-      "tol": true
-    },
-    "mapping": {
-      "dwc": {
-        "label": "Day",
-        "name": "day",
-        "reference": ""
-      },
-      "mixs": {
-        "label": "Weekday",
-        "name": "weekday",
-        "reference": ""
-      },
-      "schemaorg": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "tol": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      }
-    },
-    "regex": "^(0[1-9]|[12][0-9]|3[01])$",
-    "schema_types": [
-      "sc_rnaseq",
-      "stx_fish",
-      "stx_seq"
-    ],
-    "termset": "core",
-    "type": "string"
-  },
   "decimalLatitude": {
     "default_map": {
       "label": "Decimal Latitude",
@@ -466,16 +1109,15 @@
     "type": "integer",
     "unit": "DD"
   },
-  "family": {
+  "year": {
     "default_map": {
-      "allowed_values": [],
-      "label": "Family",
-      "name": "family",
-      "reference": "http://rs.tdwg.org/dwc/terms/family",
+      "label": "Year",
+      "name": "year",
+      "reference": "http://rs.tdwg.org/dwc/terms/year",
       "required": false
     },
-    "description": "The taxonomic family of the organism.",
-    "example": "Arenicolidae",
+    "description": "The four-digit year in which the sample was collected.",
+    "example": "2024",
     "mapped_manifests": {
       "dwc": true,
       "mixs": false,
@@ -484,163 +1126,9 @@
     },
     "mapping": {
       "dwc": {
-        "label": "Family",
-        "name": "family",
-        "reference": "http://rs.tdwg.org/dwc/terms/family"
-      },
-      "mixs": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "schemaorg": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "tol": {
-        "label": "Family",
-        "name": "FAMILY",
-        "reference": ""
-      }
-    },
-    "regex": "^[A-Za-z]+$",
-    "schema_types": [
-      "sc_rnaseq",
-      "stx_fish",
-      "stx_seq"
-    ],
-    "termset": "core",
-    "type": "string"
-  },
-  "genus": {
-    "default_map": {
-      "label": "Genus",
-      "name": "genus",
-      "reference": "http://rs.tdwg.org/dwc/terms/genus",
-      "required": false
-    },
-    "description": "The taxonomic genus of the organism.",
-    "example": "Arenicola",
-    "mapped_manifests": {
-      "dwc": true,
-      "mixs": false,
-      "schemaorg": true,
-      "tol": true
-    },
-    "mapping": {
-      "dwc": {
-        "label": "Genus",
-        "name": "genus",
-        "reference": "http://rs.tdwg.org/dwc/terms/genus"
-      },
-      "mixs": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "schemaorg": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "tol": {
-        "label": "Genus",
-        "name": "GENUS"
-      }
-    },
-    "regex": "^[A-Za-z]+$",
-    "schema_types": [
-      "sc_rnaseq",
-      "stx_fish",
-      "stx_seq"
-    ],
-    "termset": "core",
-    "type": "string"
-  },
-  "habitat": {
-    "default_map": {
-      "allowed_values": [],
-      "label": "Habitat",
-      "name": "habitat",
-      "reference": "http://rs.tdwg.org/dwc/terms/habitat",
-      "required": false
-    },
-    "description": "The type of habitat where the sample was collected.",
-    "example": "Forest",
-    "mapped_manifests": {
-      "dwc": true,
-      "mixs": false,
-      "schemaorg": true,
-      "tol": true
-    },
-    "mapping": {
-      "dwc": {
-        "label": "Habitat",
-        "name": "habitat",
-        "reference": "http://rs.tdwg.org/dwc/terms/habitat"
-      },
-      "mixs": {
-        "label": "Host Body Habitat",
-        "name": "host_body_habitat",
-        "reference": ""
-      },
-      "schemaorg": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "tol": {
-        "label": "Habitat",
-        "name": "HABITAT"
-      }
-    },
-    "regex": "^[A-Za-z]+$",
-    "schema_types": [
-      "sc_rnaseq",
-      "stx_fish",
-      "stx_seq"
-    ],
-    "termset": "core",
-    "type": "string"
-  },
-  "lifeStage": {
-    "default_map": {
-      "allowed_values": [
-        "Adult",
-        "Egg",
-        "Embryo",
-        "Gametophyte",
-        "Juvenile",
-        "Larva",
-        "Pupa",
-        "Spore bearing structure",
-        "Sporophyte",
-        "Vegetative cell",
-        "Vegetative structure",
-        "Zygote",
-        "Not applicable",
-        "Not collected",
-        "Not provided"
-      ],
-      "label": "Life Stage",
-      "name": "lifeStage",
-      "reference": "http://rs.tdwg.org/dwc/terms/lifeStage",
-      "required": false
-    },
-    "description": "The life stage or age class of the organism when sampled.",
-    "example": "Adult",
-    "mapped_manifests": {
-      "dwc": true,
-      "mixs": false,
-      "schemaorg": true,
-      "tol": true
-    },
-    "mapping": {
-      "dwc": {
-        "label": "Life Stage",
-        "name": "lifeStage",
-        "reference": "http://rs.tdwg.org/dwc/terms/lifeStage"
+        "label": "Year",
+        "name": "year",
+        "reference": "http://rs.tdwg.org/dwc/terms/year"
       },
       "mixs": {
         "label": "",
@@ -657,99 +1145,7 @@
         "name": ""
       }
     },
-    "regex": "^(Adult|Egg|Embryo|Gametophyte|Juvenile|Larva|Pupa|Spore bearing structure|Sporophyte|Vegetative cell|Vegetative structure|Zygote|Not applicable|Not collected|Not provided)$",
-    "schema_types": [
-      "sc_rnaseq",
-      "stx_fish",
-      "stx_seq"
-    ],
-    "termset": "core",
-    "type": "string"
-  },
-  "materialEntityID": {
-    "default_map": {
-      "allowed_values": [],
-      "label": "Material Entity ID",
-      "name": "materialEntityID",
-      "reference": "http://rs.tdwg.org/dwc/terms/materialEntityID",
-      "required": false
-    },
-    "description": "A unique unique alphanumeric identifier for the material entity (sample).",
-    "example": "matEnt12345",
-    "mapped_manifests": {
-      "dwc": true,
-      "mixs": false,
-      "schemaorg": true,
-      "tol": true
-    },
-    "mapping": {
-      "dwc": {
-        "label": "Material Entity ID",
-        "name": "materialEntityID",
-        "reference": "http://rs.tdwg.org/dwc/terms/materialEntityID"
-      },
-      "mixs": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "schemaorg": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "tol": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      }
-    },
-    "regex": "^[A-Z]{3}-\\d+$",
-    "schema_types": [
-      "sc_rnaseq",
-      "stx_fish",
-      "stx_seq"
-    ],
-    "termset": "core",
-    "type": "string"
-  },
-  "materialSampleID": {
-    "default_map": {
-      "label": "Material Sample ID",
-      "name": "materialSampleID",
-      "reference": "http://rs.tdwg.org/dwc/terms/materialSampleID",
-      "required": false
-    },
-    "description": "A unique alphanumeric identifier for the sample.",
-    "example": "matSample67890",
-    "mapped_manifests": {
-      "dwc": true,
-      "mixs": false,
-      "schemaorg": true,
-      "tol": true
-    },
-    "mapping": {
-      "dwc": {
-        "label": "Material Sample ID",
-        "name": "materialSampleID",
-        "reference": "http://rs.tdwg.org/dwc/terms/materialSampleID"
-      },
-      "mixs": {
-        "label": "Sample Name",
-        "name": "samp_name",
-        "reference": "https://genomicsstandardsconsortium.github.io/mixs/0001107"
-      },
-      "schemaorg": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "tol": {
-        "label": "Collector Sample ID",
-        "name": "COLLECTOR_SAMPLE_ID"
-      }
-    },
-    "regex": "^[A-Z]{4}-\\d+$",
+    "regex": "^\\d{4}$",
     "schema_types": [
       "sc_rnaseq",
       "stx_fish",
@@ -806,280 +1202,17 @@
     "termset": "core",
     "type": "string"
   },
-  "order": {
-    "default_map": {
-      "label": "Order",
-      "name": "order",
-      "reference": "http://rs.tdwg.org/dwc/terms/order",
-      "required": false
-    },
-    "description": "The taxonomic order of the organism.",
-    "example": "Capitellida",
-    "mapped_manifests": {
-      "dwc": true,
-      "mixs": false,
-      "schemaorg": true,
-      "tol": true
-    },
-    "mapping": {
-      "dwc": {
-        "label": "Order",
-        "name": "order",
-        "reference": "http://rs.tdwg.org/dwc/terms/order"
-      },
-      "mixs": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "schemaorg": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "tol": {
-        "label": "Order or Group",
-        "name": "ORDER_OR_GROUP"
-      }
-    },
-    "regex": "^[A-Za-z]+$",
-    "schema_types": [
-      "sc_rnaseq",
-      "stx_fish",
-      "stx_seq"
-    ],
-    "termset": "core",
-    "type": "string"
-  },
-  "organismName": {
-    "default_map": {
-      "allowed_values": [
-        "Abdomen",
-        "Anterior Body",
-        "Blade",
-        "Blood",
-        "Bodywall",
-        "Bract",
-        "Brain",
-        "Bud",
-        "Cap",
-        "Cephalothorax",
-        "Egg",
-        "Eggshell",
-        "Endocrine Tissue",
-        "Eye",
-        "Fat Body",
-        "Fin",
-        "Flower",
-        "Gill Animal",
-        "Gill Fungi",
-        "Gonad",
-        "Hair",
-        "Head",
-        "Heart",
-        "Hepatopancreas",
-        "Holdfast Fungi",
-        "Intestine",
-        "Kidney",
-        "Leaf",
-        "Leg",
-        "Liver",
-        "Lung",
-        "Mid Body",
-        "Modular Colony",
-        "Mollusc Foot",
-        "Multicellular Organisms In Culture",
-        "Muscle",
-        "Mycelium",
-        "Mycorrhiza",
-        "Ovary Animal",
-        "Oviduct",
-        "Pancreas",
-        "Petiole",
-        "Posterior Body",
-        "Root",
-        "Scales",
-        "Scat",
-        "Seed",
-        "Seedling",
-        "Shoot",
-        "Skin",
-        "Sperm Seminal Fluid",
-        "Spleen",
-        "Spore Bearing Structure",
-        "Spore",
-        "Stem",
-        "Stipe",
-        "Stomach",
-        "Tentacle",
-        "Terminal Body",
-        "Testis",
-        "Thallus Fungi",
-        "Thallus Plant",
-        "Thorax",
-        "Unicellular Organisms In Culture",
-        "Whole Organism",
-        "Whole Plant",
-        "Other Fungal Tissue",
-        "Other Plant Tissue",
-        "Other Reproductive Animal Tissue",
-        "Other Somatic Animal Tissue",
-        "Not Applicable",
-        "Not Collected",
-        "Not Provided"
-      ],
-      "label": "Organism Name",
-      "name": "organismName",
-      "reference": "http://rs.tdwg.org/dwc/terms/organismName",
-      "required": false
-    },
-    "description": "The name of the organism.",
-    "example": "Arenicola marina",
-    "mapped_manifests": {
-      "dwc": true,
-      "mixs": false,
-      "schemaorg": true,
-      "tol": true
-    },
-    "mapping": {
-      "dwc": {
-        "label": "Organism Name",
-        "name": "organismName",
-        "reference": "http://rs.tdwg.org/dwc/terms/organismName"
-      },
-      "mixs": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "schemaorg": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "tol": {
-        "label": "Organism Part",
-        "name": "ORGANISM_PART"
-      }
-    },
-    "regex": "^[A-Za-z ]+$",
-    "schema_types": [
-      "sc_rnaseq",
-      "stx_fish",
-      "stx_seq"
-    ],
-    "termset": "core",
-    "type": "string"
-  },
-  "recordNumber": {
+  "day": {
     "default_map": {
       "allowed_values": [],
-      "label": "Record Number",
-      "name": "recordNumber",
-      "reference": "http://rs.tdwg.org/dwc/terms/recordNumber",
-      "required": false
-    },
-    "description": "A unique number assigned to this record.",
-    "example": "rec123",
-    "mapped_manifests": {
-      "dwc": true,
-      "mixs": false,
-      "schemaorg": true,
-      "tol": true
-    },
-    "mapping": {
-      "dwc": {
-        "label": "Record Number",
-        "name": "recordNumber",
-        "reference": "http://rs.tdwg.org/dwc/terms/recordNumber"
-      },
-      "mixs": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "schemaorg": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "tol": {
-        "label": "",
-        "name": ""
-      }
-    },
-    "regex": "",
-    "schema_types": [
-      "sc_rnaseq",
-      "stx_fish",
-      "stx_seq"
-    ],
-    "termset": "core",
-    "type": "string"
-  },
-  "scientificName": {
-    "default_map": {
-      "label": "Scientific Name",
-      "name": "scientificName",
-      "reference": "http://rs.tdwg.org/dwc/terms/scientificName",
-      "required": false
-    },
-    "description": "The scientific name of the organism.",
-    "example": "Arenicola marina",
-    "mapped_manifests": {
-      "dwc": true,
-      "mixs": false,
-      "schemaorg": true,
-      "tol": true
-    },
-    "mapping": {
-      "dwc": {
-        "label": "Scientific Name",
-        "name": "scientificName",
-        "reference": "http://rs.tdwg.org/dwc/terms/scientificName"
-      },
-      "mixs": {
-        "label": "Specific Host",
-        "name": "specific_host",
-        "reference": "https://genomicsstandardsconsortium.github.io/mixs/0000029"
-      },
-      "schemaorg": {
-        "label": "",
-        "name": ""
-      },
-      "tol": {
-        "label": "Scientific Name",
-        "name": "SCIENTIFIC_NAME"
-      }
-    },
-    "regex": "^[A-Za-z]+[a-z]+$",
-    "schema_types": [
-      "sc_rnaseq",
-      "stx_fish",
-      "stx_seq"
-    ],
-    "termset": "core",
-    "type": "string"
-  },
-  "sex": {
-    "default_map": {
-      "allowed_values": [
-        "Asexual morph",
-        "Female",
-        "Hermaphrodite monoecious",
-        "Male",
-        "Sexual morph",
-        "Not applicable",
-        "Not collected",
-        "Not provided"
-      ],
-      "label": "Sex",
-      "name": "sex",
+      "label": "Day",
+      "name": "day",
       "reference": "",
       "required": false
     },
-    "description": "The sex of the organism (if applicable).",
-    "example": "Male",
+    "description": "The integer day of the month on which the sample was collected.",
+    "error": "Invalid day. Please enter a valid day (01-31).",
+    "example": "15",
     "mapped_manifests": {
       "dwc": true,
       "mixs": false,
@@ -1088,108 +1221,13 @@
     },
     "mapping": {
       "dwc": {
-        "label": "Sex",
-        "name": "sex",
+        "label": "Day",
+        "name": "day",
         "reference": ""
       },
       "mixs": {
-        "label": "Urobiom Sex",
-        "name": "urobiom_sex",
-        "reference": ""
-      },
-      "schemaorg": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "tol": {
-        "label": "Sex",
-        "name": "SEX",
-        "reference": ""
-      }
-    },
-    "regex": "^(Asexual morph|Female|Hermaphrodite monoecious|Male|Sexual morph|Not applicable|Not collected|Not provided)$",
-    "schema_types": [
-      "sc_rnaseq",
-      "stx_fish",
-      "stx_seq"
-    ],
-    "termset": "core",
-    "type": "string"
-  },
-  "taxonID": {
-    "default_map": {
-      "label": "Taxon ID",
-      "name": "taxonID",
-      "reference": "http://rs.tdwg.org/dwc/terms/taxonID",
-      "required": true
-    },
-    "description": "A unique identifier for species or organism studied.",
-    "example": "6344",
-    "mapped_manifests": {
-      "dwc": true,
-      "mixs": false,
-      "schemaorg": true,
-      "tol": true
-    },
-    "mapping": {
-      "dwc": {
-        "label": "Taxon ID",
-        "name": "taxonID",
-        "reference": "http://rs.tdwg.org/dwc/terms/taxonID"
-      },
-      "mixs": {
-        "label": "Sample Taxon ID",
-        "name": "samp_taxon_id",
-        "reference": ""
-      },
-      "schemaorg": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "tol": {
-        "label": "Taxon ID",
-        "name": "TAXON_ID"
-      }
-    },
-    "regex": "^\\d+$",
-    "schema_types": [
-      "sc_rnaseq",
-      "stx_fish",
-      "stx_seq"
-    ],
-    "termset": "core",
-    "type": "string"
-  },
-  "taxonRank": {
-    "default_map": {
-      "allowed_values": [
-        "Species",
-        "Subspecies"
-      ],
-      "label": "Taxon Rank",
-      "name": "taxonRank",
-      "reference": "http://rs.tdwg.org/dwc/terms/taxonRank",
-      "required": false
-    },
-    "description": "The rank of the taxon for this organism.",
-    "example": "Species",
-    "mapped_manifests": {
-      "dwc": true,
-      "mixs": false,
-      "schemaorg": true,
-      "tol": true
-    },
-    "mapping": {
-      "dwc": {
-        "label": "Taxon Rank",
-        "name": "taxonRank",
-        "reference": "http://rs.tdwg.org/dwc/terms/taxonRank"
-      },
-      "mixs": {
-        "label": "",
-        "name": "",
+        "label": "Weekday",
+        "name": "weekday",
         "reference": ""
       },
       "schemaorg": {
@@ -1203,52 +1241,7 @@
         "reference": ""
       }
     },
-    "regex": "^[A-Za-z]+$",
-    "schema_types": [
-      "sc_rnaseq",
-      "stx_fish",
-      "stx_seq"
-    ],
-    "termset": "core",
-    "type": "string"
-  },
-  "year": {
-    "default_map": {
-      "label": "Year",
-      "name": "year",
-      "reference": "http://rs.tdwg.org/dwc/terms/year",
-      "required": false
-    },
-    "description": "The four-digit year in which the sample was collected.",
-    "example": "2024",
-    "mapped_manifests": {
-      "dwc": true,
-      "mixs": false,
-      "schemaorg": true,
-      "tol": true
-    },
-    "mapping": {
-      "dwc": {
-        "label": "Year",
-        "name": "year",
-        "reference": "http://rs.tdwg.org/dwc/terms/year"
-      },
-      "mixs": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "schemaorg": {
-        "label": "",
-        "name": "",
-        "reference": ""
-      },
-      "tol": {
-        "label": "",
-        "name": ""
-      }
-    },
-    "regex": "^\\d{4}$",
+    "regex": "^(0[1-9]|[12][0-9]|3[01])$",
     "schema_types": [
       "sc_rnaseq",
       "stx_fish",
