@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single Cell Schemas</title>
+
+    <!-- CSS links -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* General styles */
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .header-div {
+        background-color: #1b1c1d;
+        padding: 50px 15px;
+        text-align: center;
+      }
+      .content {
+          margin-left: 250px;
+          padding-bottom: 100px;
+      }
+
+      .card {
+        margin-top: 20px;
+      }
+
+      .fa-stack {
+        display: inline-block;
+        width: 2em;
+        height: 2em;
+        line-height: 2em;
+        text-align: center;
+      }
+
+      .fa-stack-2x {
+        font-size: 2em;
+      }
+
+      .fa-stack-1x {
+        font-size: 1em;
+      }
+
+      /* Position styles */
+      .position-absolute {
+        position: absolute !important;
+      }
+
+      .fl-left {
+        float: left;
+      }
+
+      .fl-right {
+        float: right;
+      }
+
+      .top-0 {
+        top: 0 !important;
+      }
+
+      .end-0 {
+        right: 0 !important;
+      }
+
+      /* Margin styles */
+      .mt-100 {
+        margin-top: 100px !important;
+      }
+
+      .mb-50 {
+        margin-bottom: 50px !important;
+      }
+
+      .mr-1 {
+        margin-right: 1rem !important;
+      }
+
+      .mb-10 {
+        margin-bottom: 10px;
+      }
+      .mt-1 {
+        margin-top: 1rem !important;
+      }
+
+      .ml-1 {
+        margin-left: 1rem !important;
+      }
+
+      /* Icon styles */
+      .blue-colour {
+        color: #0d6efd;
+      }
+
+      .github-link {
+        color: #0d6efd;
+        text-decoration: none;
+        font-size: 20px;
+      }
+
+      .github-link:hover {
+        color: #ccc;
+      }
+
+      .header-icon {
+        margin-top: 20px;
+        font-size: 2rem;
+      }
+
+      /* Sidebar styles */
+      .sidebar {
+        position: absolute;
+        top: 244px;
+        right: 0;
+        width: 250px;
+        max-height: 80vh;
+        overflow-y: auto;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+        padding-left: 20px;
+      }
+
+      .sidebar a {
+        text-decoration: none;
+        color: #333;
+      }
+
+      .sidebar a:hover {
+        color: #0d6efd;
+      }
+
+      .sidebar .list-group-item {
+        border: none;
+        padding: 5px 10px;
+      }
+
+      .sidebar .collapse:not(.show)  {
+        padding-left: 0;
+      }
+
+      .sidebar .collapse.show {
+        padding-left: 20px;
+        transition: padding-left 0.2s ease-out;
+      }
+
+      .sidebar a.active {
+        font-weight: bold;
+        color: #0d6efd;
+        background-color: transparent;
+      }
+
+      /* Footer styles*/
+      .footer_div {
+        position: relative;
+        width: 100%;
+        background-color: #1b1c1d;
+        padding: 20px;
+        clear: both;
+      }
+      .footer-icon {
+        font-size: 1.2em;
+      }
+
+      /* Search box styles */
+      .search-box {
+        width: 250px;
+      }
+
+      .search-dialog {
+        max-width: 500px;
+        margin: 20px auto;
+      }
+
+      .search-result-header {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .search-results {
+        max-height: 300px;
+        overflow-y: auto;
+      }
+
+      .search-result-item {
+        cursor: pointer;
+      }
+
+      .search-result-link {
+        text-decoration: none;
+        color: #0d6efd;
+      }
+
+      #totalMatches {
+        background-color: #ededec;
+        color: #ededec;
+        font-size: .8rem;
+        line-height: 1.8rem;
+        padding: 0 .8rem;
+        scroll-snap-align: start;
+      }
+
+      /* Media queries */
+      @media (max-width: 768px) {
+        .header-lead {
+          font-size: 1rem;
+          margin-left: 5%;
+          margin-right: 5%;
+        }
+        .sidebar {
+          position: relative;
+          width: 200px;
+          max-height: none;
+          padding: 0;
+          margin-top: 20px;
+        }
+        
+        .content {
+          margin-left: 200px;
+        }
+
+        .header-div {
+          padding-top: 60px;
+          padding-bottom: 30px;
+        }
+
+        .search-box {
+          width: 100%;
+        }
+
+        .fa-stack {
+          font-size: 1.5em;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .header-lead {
+            font-size: 0.9rem;
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header-div container-fluid text-center text-white">
+      <h1 class="ui header">Single Cell Schema</h1>
+      <p class="header-lead">
+        This webpage provides information on the schemas used in Single Cell
+        experiments, detailing the fields and standards involved. It also offers
+        links to the project's GitHub repository for further exploration and a
+        section for reporting issues. The creation of these schemas is a
+        collaborative, community-driven effort aimed at developing, maintaining,
+        and promoting standards for Single Cell experiments in the biodiversity
+        community.
+      </p>
+      <!-- Header icons -->
+      <div class="position-absolute top-0 end-0 mr-1 mt-1">
+        <a
+          href="https://github.com/TGAC/SingleCellSchemas"
+          target="_blank"
+          class="github-link"
+          title="View repository on GitHub"
+        >
+          <span class="fa-stack fa-sml mb-10">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+        <a
+          href="https://github.com/TGAC/SingleCellSchemas/issues"
+          target="_blank"
+          class="github-link ml-1"
+          title="Report issues"
+        >
+          <i class="fa-solid fa-bug header-icon"></i>
+        </a>
+      </div>
+    </div>
+    <!-- Search Box -->
+      <div class="input-group search-box mx-auto mt-3 w-80">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search..."
+          id="searchInput"
+          readonly
+        />
+        <button class="btn btn-primary" id="searchButton">
+          <i class="fa-solid fa-search"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Dialog -->
+    <div
+      class="modal fade"
+      id="searchModal"
+      tabindex="-1"
+      aria-labelledby="searchModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog search-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="searchModalLabel">Search</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <input
+              type="text"
+              id="searchQuery"
+              class="form-control"
+              placeholder="Enter search query"
+            />
+             <!-- Total matching count -->
+            <div id="totalMatches" class="mt-2 mb-2 text-muted"></div>
+            <!-- Search results container -->
+            <div class="list-group search-results mt-3" id="searchResults"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page content -->
+    <div class="container">
+      <div class="row">
+        <div id="content" class="col-12 col-md-9">
+          <!-- Main content i.e. content for searching-->
+          {% for component in components %}
+          <div id="{{component.group_name}}" class="mb-50 component-div">
+            <h1 class="mt-100 component-label">{{component.group_label}}</h1>
+            <hr />
+            {% for field in component.fields %}
+            <div id="{{component.group_name}}-{{field.name}}" class="card">
+              <h5 id="{{field.name}}" class="card-header">
+                {{field.label}} {% if field.mandatory == "mandatory" %}
+                <span class="badge bg-dark ms-auto fl-right">Required</span>
+                {% endif %}
+              </h5>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <tr>
+                      <td>Description</td>
+                      <td id="description">{{ field.description }}</td>
+                    </tr>
+
+                    {% if field.example %}
+                    <tr>
+                      <td>Example</td>
+                      <td>{{ field.example }}</td>
+                    </tr>
+                    {% endif %} {% if field.allowed_values|length > 0 %}
+                    <tr>
+                      <td>Allowed Values</td>
+                      <td>
+                        {% for value in field.allowed_values %}
+                        <span class="badge bg-dark">{{ value }}</span>
+                        {% endfor %}
+                      </td>
+                    </tr>
+                    {% endif %} {% if field.reference %}
+                    <tr>
+                      <td>Reference</td>
+                      <td>
+                        <a href="{{ field.reference }}" target="_blank"
+                          >{{ field.reference }}</a
+                        >
+                      </td>
+                    </tr>
+                    {% endif %}
+                  </table>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+
+        <!-- Sidebar -->
+         {% include 'sidebar.html' %}
+      </div>
+    </div>
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
+
+    <!-- JavaScript links -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.2/semantic.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Sidebar navigation
+      document.addEventListener('DOMContentLoaded', function () {
+        const sidebarLinks = document.querySelectorAll(
+          '.sidebar a.list-group-item'
+        );
+        const sections = Array.from(sidebarLinks).map((link) => {
+          const targetId = link.getAttribute('href').substring(1);
+          return document.getElementById(targetId);
+        });
+        
+        // Function to highlight the active sidebar link and expand its parent collapse
+        function highlightActiveLink() {
+          const scrollPosition =
+            window.scrollY || document.documentElement.scrollTop;
+          const offset = 150; // Offset to adjust for header height
+          
+          let activeLink = null;
+          let activeCollapse = null;
+
+          sections.forEach((section, index) => {
+            const link = sidebarLinks[index];
+            const parentCollapse = link.closest('.collapse');
+
+            // Skip if section is not found
+            if (!section) return;
+
+            // Check if section is in the viewport
+            if (
+              section.offsetTop - offset <= scrollPosition &&
+              section.offsetTop + section.offsetHeight - offset > scrollPosition
+            ) {
+              // Update active link and its parent collapse
+              activeLink = link;
+              activeCollapse = parentCollapse;
+
+              // Remove 'active' class from all links
+              sidebarLinks.forEach((link) => link.classList.remove('active'));
+
+              // Add 'active' class to the current link
+              link.classList.add('active');
+
+              // Expand the parent component if it is collapsed
+              if (
+                parentCollapse &&
+                !parentCollapse.classList.contains('show')
+              ) {
+                const collapseInstance = new bootstrap.Collapse(
+                  parentCollapse,
+                  {
+                    toggle: false,
+                  }
+                );
+                collapseInstance.show();
+              }
+            }
+          });
+
+          // If an active link is found, scroll it into view
+          if (activeLink) {
+            activeLink.scrollIntoView({
+              behavior: 'smooth',
+              block: 'center',  
+              inline: 'nearest'
+            });
+          }
+        }
+
+        // Scroll listener
+        window.addEventListener('scroll', highlightActiveLink);
+
+        // Initial highlight in case the page is already scrolled
+        highlightActiveLink();
+      });
+      
+      // Adjust sidebar position on scroll
+      window.addEventListener('scroll', function() {
+        const sidebar = document.querySelector('.sidebar');
+        const headerDiv = document.querySelector('.header_div');
+        const initialTop = 244; // The initial position of the sidebar
+
+        // Get the current scroll position
+        const scrollY = window.scrollY;
+
+        // Check if the page has been scrolled past the header
+        if (scrollY > initialTop) {
+            // Fix the sidebar to the top
+            sidebar.style.position = 'fixed';
+            sidebar.style.top = '0px';
+        } else {
+            // Return the sidebar to its original position
+            sidebar.style.position = 'absolute';
+            sidebar.style.top = `${initialTop}px`;
+        }
+      });
+
+      // Search functionality
+      document.addEventListener('DOMContentLoaded', function () {
+        const searchButton = document.getElementById('searchButton');
+        const searchInput = document.getElementById('searchInput');
+        const searchModalElement = document.getElementById('searchModal');
+        const searchModal = new bootstrap.Modal(searchModalElement);
+        const searchQuery = document.getElementById('searchQuery');
+        const searchResults = document.getElementById('searchResults');
+        const totalMatches = document.getElementById('totalMatches');
+       
+        searchInput.addEventListener('click', () => searchModal.show());
+
+        // Open search dialog
+        searchButton.addEventListener('click', () => searchModal.show());
+
+        // Focus the search input box when the modal is shown
+        searchModalElement.addEventListener('shown.bs.modal', function () {
+          searchQuery.focus();
+        });
+        
+        searchQuery.addEventListener('input', function () {
+          const query = this.value.toLowerCase().trim();
+          searchResults.innerHTML = '';
+          totalMatches.textContent = '';
+
+          // Select all card elements within the content area for searching
+          const items = document.querySelectorAll('#content .card');
+
+          let matchCount = 0; // Counter for matching items
+
+          items.forEach((item) => {
+            const header = item.querySelector('.card-header');
+            const termLabel = header.textContent.replace('Required', '').trim();
+            const termId = header.getAttribute('id');
+            const descriptionElem = item.querySelector('.card-body #description');
+            const descriptionText = descriptionElem ? descriptionElem.textContent.trim() : 'No description available';
+
+            // Check if the term label, ID or description includes the query
+            if (termLabel.toLowerCase().includes(query) || termId.toLowerCase().includes(query) || descriptionElem.textContent.trim().toLowerCase().includes(query)) {
+              matchCount++;
+
+              // Create a list item for each matching result
+              const listItem = document.createElement('div');
+              listItem.className = 'list-group-item list-group-item-action search-result-item';
+              
+              // Add term header
+              const termLinkHeader = document.createElement('h1');
+              termLinkHeader.className = 'search-result-header';
+              termLinkHeader.textContent = 'Term: '
+
+              // Add term label
+              const termLink = document.createElement('a');
+              termLink.href = `#${termId}`;
+              termLink.className = 'text-primary search-result-link';
+              termLink.textContent = termLabel;
+
+              // Add component name for the term
+              const component = document.createElement('span');
+              component.className = 'badge bg-dark ms-auto fl-right';
+              component.textContent = item.closest('.component-div').querySelector('.component-label').textContent;
+              
+              // Add click listener to scroll to the item and close the modal
+              listItem.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default link behavior
+                searchModal.hide();
+
+                // Clear search input
+                searchQuery.value = ''; 
+                searchResults.innerHTML = '';
+                totalMatches.textContent = '';
+                
+                // Scroll to the selected item
+                const targetElement = document.getElementById(termId);
+                if (targetElement) {
+                  targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                  });
+                }
+              });
+
+              // Add term description
+              const description = document.createElement('p');
+              description.className = 'mb-1 text-muted';
+              description.textContent = descriptionText;
+
+              // Append the link and description to the list item
+              termLinkHeader.appendChild(termLink);
+              termLinkHeader.appendChild(component);
+              listItem.appendChild(termLinkHeader);
+              listItem.appendChild(description);
+
+              // Append to the search results container
+              searchResults.appendChild(listItem);
+            }
+          });
+
+          // Update total matching count
+          if (matchCount > 0) {
+            totalMatches.textContent = `${matchCount} matching documents`;
+          } else {
+            totalMatches.textContent = 'No matching documents found';
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

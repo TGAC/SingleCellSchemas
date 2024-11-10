@@ -325,10 +325,10 @@ def extract_components_to_html(data_dict, output_file_path, termset, standard):
 
     # Render HTML using Jinja2 template
     environment = Environment(loader=FileSystemLoader("templates"))
-    fields_template = environment.get_template("fields_template.html")
+    fields_base_template = environment.get_template("base.html")
     context = {"components": components}
     with open(output_file_path, mode="w", encoding="utf-8") as fields:
-        fields.write(fields_template.render(context))
+        fields.write(fields_base_template.render(context))
 
 def extract_and_convert_schema(json_schema_file_path, termset, standard):
     # Get fields based on the termset
