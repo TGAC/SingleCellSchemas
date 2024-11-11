@@ -1969,26 +1969,41 @@
           },
           "scientificName": {
             "default_map": {
-              "allowed_values": [],
               "label": "Scientific Name",
               "name": "scientificName",
+              "reference": "http://rs.tdwg.org/dwc/terms/scientificName",
               "required": false
             },
             "description": "The scientific name of the organism.",
             "example": "Arenicola marina",
             "mapped_manifests": {
-              "tol": true,
               "dwc": true,
-              "mixs": true,
-              "schemaorg": true
+              "mixs": false,
+              "schemaorg": true,
+              "tol": true
             },
             "mapping": {
-              "tol": {
+              "dwc": {
+                "label": "Scientific Name",
+                "name": "scientificName",
+                "reference": "http://rs.tdwg.org/dwc/terms/scientificName"
+              },
+              "mixs": {
+                "label": "Specific Host",
+                "name": "specific_host",
+                "reference": "https://genomicsstandardsconsortium.github.io/mixs/0000029"
+              },
+              "schemaorg": {
                 "label": "",
                 "name": ""
+              },
+              "tol": {
+                "label": "Scientific Name",
+                "name": "SCIENTIFIC_NAME"
               }
             },
-            "regex": "^[A-Za-z]+ [a-z]+$"
+            "regex": "^[A-Za-z]+[a-z]+$",
+            "type": "string"
           },
           "sex": {
             "default_map": {
@@ -2177,9 +2192,9 @@
               "required": true,
               "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
             },
-            "description": "A unique alphanumeric identifier for the imaging protocol.",
-            "error": "Imaging Protocol ID is required",
-            "example": "img123",
+            "description": "A unique identifier for the sample used in the study.",
+            "error": "Sample reference is required",
+            "example": "SAMPLE123",
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -2188,19 +2203,19 @@
             },
             "mapping": {
               "dwc": {
-                "label": "Imaging Protocol ID",
-                "name": "imaging_protocol_id",
+                "label": "",
+                "name": "",
                 "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
               },
               "mixs": {
                 "label": "",
                 "name": "",
-                "reference": ""
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
               },
               "schemaorg": {
-                "label": "",
-                "name": "",
-                "reference": ""
+                "label": "Imaging Protocol ID",
+                "name": "imaging_protocol_id",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
               },
               "tol": {
                 "label": "",
@@ -3229,13 +3244,13 @@
             "description": "Any deviations from the official protocol. Separate individual deviations with '|'",
             "error": "Deviations from official protocol is required",
             "example": "None",
-            "instruction": "Separate individual deviations with '|'",
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
               "schemaorg": true,
               "tol": true
             },
+            "instruction": "Separate individual deviations with '|'",
             "mapping": {
               "dwc": {
                 "label": "",
@@ -3265,17 +3280,17 @@
       "component": "file",
       "fields": [
         {
-          "imaging_protocol_id": {
+          "imaging_protocol_ref": {
             "default_map": {
               "allowed_values": [],
-              "label": "Imaging Protocol ID",
-              "name": "imaging_protocol_id",
+              "label": "Imaging Protocol Reference",
+              "name": "imaging_protocol_ref",
               "required": true,
               "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
             },
-            "description": "A unique alphanumeric identifier for the imaging protocol.",
-            "error": "Imaging Protocol ID is required",
-            "example": "img123",
+            "description": "The name of the file that contains the imaging protocol information.",
+            "error": "Imaging protocol reference is required",
+            "example": "file1_imaging_protocol.json",
             "mapped_manifests": {
               "dwc": true,
               "mixs": true,
@@ -3284,19 +3299,19 @@
             },
             "mapping": {
               "dwc": {
-                "label": "Imaging Protocol ID",
-                "name": "imaging_protocol_id",
+                "label": "",
+                "name": "",
                 "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
               },
               "mixs": {
                 "label": "",
                 "name": "",
-                "reference": ""
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
               },
               "schemaorg": {
-                "label": "",
-                "name": "",
-                "reference": ""
+                "label": "Imaging Protocol Reference",
+                "name": "imaging_protocol_ref",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
               },
               "tol": {
                 "label": "",

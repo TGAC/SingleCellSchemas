@@ -20,13 +20,6 @@ body {
   margin-top: 20px;
 }
 
-.card-header {
-  background-color: #eaeaea !important; /* Change to your desired color */
-  color: #000000 !important; /* Optional: change text color */
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
-
-}
-
 .topMargin {
   margin-top: 100px;
 }
@@ -48,7 +41,7 @@ body {
     border-radius: 8px 8px 0 0;
 
     .accordion-button {
-      background-color: #efefef;
+      background-color: #e3e3e3;
       color: #000;
       font-weight: bold;
       font-size: 30px;
