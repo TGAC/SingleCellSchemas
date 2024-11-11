@@ -39,7 +39,14 @@ Please follow the instructions below to convert the JSON schema to an excel file
 
    `pip3 install -r requirements/requirements.txt`
 
-5. Make the following directories if they do not exist
+5. Install sass (if not already installed)
+
+   `npm install -g sass`
+
+6. run
+   `sass --watch templates/scss/styles.scss:dist/css/styles.css`
+
+7. Make the following directories if they do not exist
 
    ### Core directories
 
@@ -57,7 +64,7 @@ Please follow the instructions below to convert the JSON schema to an excel file
 
    `mkdir dist/checklists/extended/xlsx`
 
-6. Different ways to run the `convert.py` script which is found in the project root directory
+7. Different ways to run the `convert.py` script which is found in the project root directory
 
    - Use `launch.json` file to run the script in VSCode by selecting the appropriate configuration
 
