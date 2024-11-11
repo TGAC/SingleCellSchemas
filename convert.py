@@ -308,7 +308,7 @@ def extract_components_to_html(data_dict, output_file_path, termset, standard):
                 if data_dict:
                     mapping_dict = data_dict.get('mapping', {})
                     default_map = data_dict.get('default_map', {})
-
+                    reference = data_dict.get('default_map', {}).get('reference', '')
                     current_field = {
                         "label": mapping_dict.get(standard, {}).get('label', ''),
                         "name": mapping_dict.get(standard, {}).get('name', ''),
@@ -319,6 +319,7 @@ def extract_components_to_html(data_dict, output_file_path, termset, standard):
                         "mandatory": 'mandatory' if  default_map.get('required', False) else 'optional',
                         "multiplicity": data_dict.get('multiplicity', 'single'),
                         "reference": default_map.get('reference', '')
+
                     }
                     component_dict["fields"].append(current_field)
         components.append(component_dict)

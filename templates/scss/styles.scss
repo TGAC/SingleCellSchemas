@@ -1,0 +1,61 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+$black: #000000;
+$white: #ffffff;
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+
+}
+
+.head_div {
+  background-color: #1b1c1d;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin-bottom: 50px;
+}
+
+.card {
+  margin-top: 20px;
+}
+
+.card-header {
+  background-color: #eaeaea !important; /* Change to your desired color */
+  color: #000000 !important; /* Optional: change text color */
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+
+}
+
+.topMargin {
+  margin-top: 100px;
+}
+
+.bottomMargin {
+  margin-bottom: 50px;
+}
+
+.accordion {
+  .accordion-item {
+
+    margin-bottom: 8px; // Space between items
+    background-color: #fff;
+
+  }
+
+  .accordion-header {
+
+    border-radius: 8px 8px 0 0;
+
+    .accordion-button {
+      background-color: #efefef;
+      color: #000;
+      font-weight: bold;
+      font-size: 30px;
+      padding: 10px 15px;
+      font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+
+    }
+
+  }
+}
