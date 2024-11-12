@@ -16,7 +16,7 @@ eggs/
 lib/
 lib64/
 parts/
-
+node_modules
 var/
 wheels/
 share/python-wheels/
@@ -165,3 +165,4 @@ utils/script.py
 
 # Hide test outputs directory
 test/outputs
+/node_modules/
