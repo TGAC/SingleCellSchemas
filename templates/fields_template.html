@@ -51,6 +51,11 @@
                         {% endif %}
                         <div class="card-body">
                             <table class="table">
+
+                                <tr>
+                                    <td>Name</td>
+                                    <td>{{ field.name }}</td>
+                                </tr>
                                 <tr>
                                     <td>Description</td>
                                     <td>{{ field.description }}</td>
@@ -58,6 +63,14 @@
                                 <tr>
                                     <td>Example</td>
                                     <td>{{ field.example }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Reference</td>
+                                    <td>{{ field.reference }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Regex</td>
+                                    <td>{{ field.regex }}</td>
                                 </tr>
                                 {% if field.allowed_values|length > 0 %}
                                 <tr>
