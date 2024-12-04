@@ -19,84 +19,120 @@
 <body>
 <div class="head_div container_fluid text-center text-white">
     <h1 class="ui header">Single Cell Schemas</h1>
+
+
 </div>
 
 <div class="row">
-    <div class="col-3"></div>
+    <div class="col-3">
+
+    <div class="container mt-4">
+    <form>
+      <!-- First Dropdown -->
+      <div class="mb-3">
+        <label for="selectDropdown1" class="form-label">Based on Standard...</label>
+        <select class="form-select" id="selectDropdown1">
+          <option value="" selected>Darwin Core</option>
+          <option value="1">MIxS</option>
+          <option value="2">Tree of Life</option>
+          <option value="3">Schema.org</option>
+        </select>
+      </div>
+
+      <!-- Second Dropdown -->
+      <div class="mb-3">
+        <label for="selectDropdown2" class="form-label">Technology</label>
+        <select class="form-select" id="selectDropdown2">
+          <option value="" selected>Single Cell RNAseq</option>
+          <option value="A">Spatial Transcriptomic Fish</option>
+          <option value="B">Spatial Transcriptomic Seq</option>
+
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+
+
+    </div>
     <div class="col-6">
 
-    <div class="accordion" id="accordionExample">
-        {% for component in components %}
-        <div class="accordion-item">
-            <div class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapse{{ component.group_name }}" aria-expanded="true"
-                        aria-controls="collapse{{ component.group_name }}">
-                    {{component.group_name}}
-                </button>
-            </div>
-            <div id="collapse{{ component.group_name }}" class="accordion-collapse collapse"
-                 data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    {% for field in component.fields %}
-                    <div class="card">
-                        {% if field.mandatory == "mandatory" %}
-                        <h5 class="card-header d-flex align-items-start">
-                            {{field.label_element}} <span class="badge bg-dark ms-auto">Required</span>
-                        </h5>
-                        {% else %}
-                        <h5 class="card-header">
-                            {{field.label_element}}
-                        </h5>
-                        {% endif %}
-                        <div class="card-body">
-                            <table class="table">
+        <div class="accordion" id="accordionExample">
+            {% for component in components %}
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse{{ component.group_name }}" aria-expanded="true"
+                            aria-controls="collapse{{ component.group_name }}">
+                        {{component.group_name}}
+                    </button>
+                </div>
+                <div id="collapse{{ component.group_name }}" class="accordion-collapse collapse"
+                     data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {% for field in component.fields %}
+                        <div class="card">
+                            {% if field.mandatory == "mandatory" %}
+                            <h5 class="card-header d-flex align-items-start">
+                                {{field.label_element}} <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            {% else %}
+                            <h5 class="card-header">
+                                {{field.label_element}}
+                            </h5>
+                            {% endif %}
+                            <div class="card-body">
+                                <table class="table">
 
-                                <tr>
-                                    <td>Name</td>
-                                    <td>{{ field.name }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Description</td>
-                                    <td>{{ field.description }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Example</td>
-                                    <td>{{ field.example }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Reference</td>
-                                    <td>{{ field.reference }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Regex</td>
-                                    <td>{{ field.regex }}</td>
-                                </tr>
-                                {% if field.allowed_values|length > 0 %}
-                                <tr>
-                                    <td>Allowed Values</td>
-                                    <td>
-                                        {% for value in field.allowed_values %}
-                                        <span class="badge bg-dark">{{ value }}</span>
-                                        {% endfor %}
-                                    </td>
-                                </tr>
-                                {% endif %}
-                            </table>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>{{ field.name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td>{{ field.description }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Example</td>
+                                        <td>{{ field.example }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Reference</td>
+                                        <td>{{ field.reference }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Regex</td>
+                                        <td>{{ field.regex }}</td>
+                                    </tr>
+                                    {% if field.allowed_values|length > 0 %}
+                                    <tr>
+                                        <td>Allowed Values</td>
+                                        <td>
+                                            {% for value in field.allowed_values %}
+                                            <span class="badge bg-dark">{{ value }}</span>
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                </table>
+                            </div>
                         </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
-</div>
-<div class="col-3"></div>
+    <div class="col-3"></div>
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Semantic UI JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.2/semantic.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Semantic UI JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.2/semantic.min.js"></script>
 </body>
 </html>

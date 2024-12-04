@@ -1,4 +1,4 @@
-@import "../../node_modules/bootstrap/scss/bootstrap";
+@use "../../node_modules/bootstrap/scss/bootstrap";
 
 $black: #000000;
 $white: #ffffff;
@@ -6,15 +6,24 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-
+  background-color: #f8f9fa;
 }
 
 .head_div {
   background-color: #1b1c1d;
   padding-top: 100px;
-  padding-bottom: 100px;
-  margin-bottom: 50px;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
 }
+
+#doc_select_form {
+  margin-left: 20px;
+  .col {
+    width: 250px;
+    margin-right: 20px;
+  }
+}
+
 
 .card {
   margin-top: 20px;
