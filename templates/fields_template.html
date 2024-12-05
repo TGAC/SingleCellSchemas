@@ -26,39 +26,46 @@
 <div class="row">
     <div class="col-3">
 
-    <div class="container mt-4">
-    <form>
-      <!-- First Dropdown -->
-      <div class="mb-3">
-        <label for="selectDropdown1" class="form-label">Based on Standard...</label>
-        <select class="form-select" id="selectDropdown1">
-          <option value="" selected>Darwin Core</option>
-          <option value="1">MIxS</option>
-          <option value="2">Tree of Life</option>
-          <option value="3">Schema.org</option>
-        </select>
-      </div>
+        <div class="container mt-4">
+            <form>
+                <!-- First Dropdown -->
+                <div class="mb-3">
+                    <label for="std_dropdown" class="form-label">Based on Standard...</label>
+                    <select class="form-select" id="std_dropdown">
+                        <option value="dwc" selected>Darwin Core</option>
+                        <option value="mixs">MIxS</option>
+                        <option value="schemaorg">Tree of Life</option>
+                        <option value="tol">Schema.org</option>
+                    </select>
+                </div>
 
-      <!-- Second Dropdown -->
-      <div class="mb-3">
-        <label for="selectDropdown2" class="form-label">Technology</label>
-        <select class="form-select" id="selectDropdown2">
-          <option value="" selected>Single Cell RNAseq</option>
-          <option value="A">Spatial Transcriptomic Fish</option>
-          <option value="B">Spatial Transcriptomic Seq</option>
+                <!-- Second Dropdown -->
+                <div class="mb-3">
+                    <label for="tech_dropdown" class="form-label">Technology</label>
+                    <select class="form-select" id="tech_dropdown">
+                        <option value="sc_rnaseq" selected>Single Cell RNAseq</option>
+                        <option value="stx_fish">Spatial Transcriptomic Fish</option>
+                        <option value="stx_seq">Spatial Transcriptomic Seq</option>
 
-        </select>
-      </div>
+                    </select>
+                </div>
 
-      <!-- Submit Button -->
-      <div class="d-flex justify-content-end">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
-  </div>
+                <div class="mb-3">
+                    <label for="core_dropdown" class="form-label">Version</label>
+                    <select class="form-select" id="core_dropdown">
+                        <option value="extended" selected>Extended</option>
+                        <option value="core">Core</option>
+                    </select>
+                </div>
 
-
+                <!-- Submit Button -->
+                <div class="d-flex justify-content-end">
+                    <button type="submit" id="sub_btn" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
+
     <div class="col-6">
 
         <div class="accordion" id="accordionExample">
@@ -129,10 +136,30 @@
         </div>
     </div>
     <div class="col-3"></div>
+</div>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Semantic UI JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.2/semantic.min.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Semantic UI JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.2/semantic.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $('#sub_btn').click(function (e) {
+            e.preventDefault();
+            let standard = $('#std_dropdown').val();
+            let technology = $('#tech_dropdown').val();
+            let version = $('#core_dropdown').val();
+            let tail = standard + '/' + technology + '_' + version + "_" + standard +  ".html";
+            console.log(tail)
+            console.log(window.location.href)
+            window.location.href = tail;
+
+        });
+    })
+
+</script>
+
 </body>
 </html>

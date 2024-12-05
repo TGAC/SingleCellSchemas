@@ -260,7 +260,7 @@ def extract_components_to_html(data_dict, output_file_path, termset, standard):
 
     # Create output directory if it does not exist
     output_file_path = (
-        output_file_path.replace('.json', f'_{termset}.html')
+        output_file_path.replace('.json', f'.html')
         .replace('.xlsx', f'_{termset}.html')
         .replace(f'{helpers.SCHEMA_BASE_DIR_PATH}/', f'dist/checklists/{termset}/html/{standard}/')
         .replace('.xml', '.html')
@@ -346,7 +346,7 @@ def extract_and_convert_schema(json_schema_file_path, termset, standard):
     extract_components_to_excel(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.xlsx'), termset, standard)
     extract_components_to_json(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.json'), termset, standard)
     extract_components_to_xml(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.xml'), termset, standard)
-    extract_components_to_html(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.html'), termset, standard)
+    extract_components_to_html(data_dict, json_schema_file_path.replace('.json', f'_{termset}.html'), termset, standard)
 
 if __name__ == '__main__':
     args = sys.argv
