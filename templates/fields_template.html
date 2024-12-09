@@ -146,17 +146,34 @@
 <script>
 
     $(document).ready(function () {
+        load_selects_values()
         $('#sub_btn').click(function (e) {
             e.preventDefault();
+            save_selects_values()
             let standard = $('#std_dropdown').val();
             let technology = $('#tech_dropdown').val();
             let version = $('#core_dropdown').val();
-            let tail = standard + '/' + technology + '_' + version + "_" + standard +  ".html";
-            console.log(tail)
-            console.log(window.location.href)
-            window.location.href = tail;
-
+            let url = window.location.href;
+            let newUrl = url.split("checklists")[0] + "checklists/" + version + "/html/" + standard + '/' + technology + '_' + version + ".html";
+            window.location.href = newUrl;
         });
+
+        function save_selects_values() {
+            let selects = document.querySelectorAll('select');
+            for (let i = 0; i < selects.length; i++) {
+                sessionStorage.setItem(selects[i].id, selects[i].value)
+            }
+        }
+
+        function load_selects_values() {
+            let selects = document.querySelectorAll('select');
+            for (let i = 0; i < selects.length; i++) {
+                if (sessionStorage.getItem(selects[i].id)) {
+                    console.log(sessionStorage.getItem(selects[i].id))
+                    selects[i].value = sessionStorage.getItem(selects[i].id)
+                }
+            }
+        }
     })
 
 </script>
