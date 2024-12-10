@@ -140,41 +140,50 @@
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Semantic UI JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.2/semantic.min.js"></script>
 
 <script>
 
-    $(document).ready(function () {
-        load_selects_values()
-        $('#sub_btn').click(function (e) {
-            e.preventDefault();
-            save_selects_values()
-            let standard = $('#std_dropdown').val();
-            let technology = $('#tech_dropdown').val();
-            let version = $('#core_dropdown').val();
-            let url = window.location.href;
-            let newUrl = url.split("checklists")[0] + "checklists/" + version + "/html/" + standard + '/' + technology + '_' + version + ".html";
-            window.location.href = newUrl;
-        });
+   $(document).ready(function () {
+    // Call the function to load the values of the dropdowns from the URL parameters
+    load_selects_values();
 
-        function save_selects_values() {
-            let selects = document.querySelectorAll('select');
-            for (let i = 0; i < selects.length; i++) {
-                sessionStorage.setItem(selects[i].id, selects[i].value)
-            }
+    // Attach a click event handler to the submit button
+    $('#sub_btn').click(function (e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        // Get the selected values from the dropdowns
+        let standard = $('#std_dropdown').val();
+        let technology = $('#tech_dropdown').val();
+        let version = $('#core_dropdown').val();
+
+        // Construct the new URL with the selected values as query parameters
+        let url = window.location.href;
+        let args = "?std_dropdown=" + standard + "&tech_dropdown=" + technology + "&core_dropdown=" + version;
+        window.location.href = url.split("checklists")[0] + "checklists/" + version + "/html/" + standard + '/' + technology + '_' + version + ".html" + args;
+    });
+
+    /**
+     * Load the values of the dropdowns from the URL parameters and set them in the dropdowns.
+     */
+    function load_selects_values() {
+        let args = new URLSearchParams(window.location.search);
+
+        // Set the value of the standard dropdown if it exists in the URL parameters
+        if (args.get('std_dropdown') !== null) {
+            $('#std_dropdown').val(args.get('std_dropdown'));
         }
 
-        function load_selects_values() {
-            let selects = document.querySelectorAll('select');
-            for (let i = 0; i < selects.length; i++) {
-                if (sessionStorage.getItem(selects[i].id)) {
-                    console.log(sessionStorage.getItem(selects[i].id))
-                    selects[i].value = sessionStorage.getItem(selects[i].id)
-                }
-            }
+        // Set the value of the technology dropdown if it exists in the URL parameters
+        if (args.get('tech_dropdown') !== null) {
+            $('#tech_dropdown').val(args.get('tech_dropdown'));
         }
-    })
+
+        // Set the value of the version dropdown if it exists in the URL parameters
+        if (args.get('core_dropdown') !== null) {
+            $('#core_dropdown').val(args.get('core_dropdown'));
+        }
+    }
+});
 
 </script>
 
