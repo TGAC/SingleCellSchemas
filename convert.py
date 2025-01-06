@@ -57,12 +57,15 @@ def extract_components_to_excel(data_dict, output_file_path, termset, standard):
         required_format = workbook.add_format({'bold': True, 'locked': True})
 
         for component in data_dict['components']:
-            column_names = list(helpers.get_field_label_mapping(component, standard).keys())
+            column_names = list(helpers.get_field_label_mapping(component, standard, termset).keys())
             column_length = len(column_names)
-            df = pd.DataFrame(columns=column_names)
 
-            required_columns = helpers.get_required_columns(component, standard)
-            col_desc_eg = helpers.get_col_desc_eg(component, standard)
+            if column_length == 0:
+                continue
+
+            df = pd.DataFrame(columns=column_names)
+            required_columns = helpers.get_required_columns(component, standard, termset)
+            col_desc_eg = helpers.get_col_desc_eg(component, standard, termset)
 
             # Remove NaNs columns (if any rows are present)
             if not df.empty:
@@ -89,13 +92,13 @@ def extract_components_to_excel(data_dict, output_file_path, termset, standard):
             helpers.format_and_protect_worksheet(element)
             
             # Apply dropdown list validation where required
-            column_validation = helpers.get_validation(component, standard)
+            column_validation = helpers.get_validation(component, standard, termset)
             helpers.apply_dropdown_list(component, df, column_validation, writer, standard)
 
         # Apply autofit to all sheets
         helpers.autofit_all_sheets(writer)
 
-    # Save to output filex
+    # Save to output file
     output_file_path = output_file_path.replace(f'{helpers.SCHEMA_BASE_DIR_PATH}/', f'dist/checklists/{termset}/xlsx/{standard}/')
     directory_path = os.path.dirname(output_file_path) # Get the directory path
     os.makedirs(directory_path, exist_ok=True) # Create output directory if it does not exist
@@ -138,7 +141,7 @@ def extract_components_to_xml(data_dict, output_file_path, termset, standard):
         shutil.rmtree(output_file_path)  # Remove the directory and its contents
 
     # Prepare checklist type details
-    checklist_type_abbreviation = file_name.replace(f'_{standard}_{termset}.xml', '').replace('_','').upper()
+    checklist_type_abbreviation = file_name.replace('base_', '').replace('.xml', '').replace(f'_{termset}','').replace('_','').upper()
     accession = helpers.CHECKLIST_MAPPING.get(checklist_type_abbreviation,'').get('accession', '')
     checklist_type = helpers.CHECKLIST_MAPPING.get(checklist_type_abbreviation,'').get('checklistType', '')
     label = helpers.CHECKLIST_MAPPING.get(checklist_type_abbreviation,'').get('label', '')
@@ -176,10 +179,10 @@ def extract_components_to_xml(data_dict, output_file_path, termset, standard):
 
     # Process FIELD_GROUPs from components
     for component in data_dict['components']:
-        field_label_mapping = helpers.get_field_label_mapping(component, standard)
+        field_label_mapping = helpers.get_field_label_mapping(component, standard, termset)
 
         # Get the component validation
-        component_validation = helpers.get_validation(component, standard)
+        component_validation = helpers.get_validation(component, standard, termset)
 
         field_group = ET.SubElement(descriptor, 'FIELD_GROUP', restrictionType=component.get('restriction_type', 'Any number or none of the fields'))
         
@@ -286,34 +289,33 @@ def extract_components_to_html(data_dict, output_file_path, termset, standard):
     # Process FIELD_GROUPs from components
     components = []
     for component in data_dict['components']:
+        group_label = helpers.convertStringToTitleCase(component.get('component', ''))
         component_dict = {
             "group_name": component.get('component', ''),
             "group_description": component.get('description', ''),
             "fields": []
         }
-        field_label_mapping = helpers.get_field_label_mapping(component, standard)
-        component_validation = helpers.get_validation(component, standard)
+        field_label_mapping = helpers.get_field_label_mapping(component, standard, termset)
+        component_validation = helpers.get_validation(component, standard, termset)
 
-        for field_dict in component.get('fields', []):
+        for field_dict in component.get('fields', {}):
+            label = field_dict.get('term_label', '')
             for field, value_dict in field_dict.items():
-                label = next((k for k, v in field_label_mapping.items() if v == field), '')
                 data_dict = component_validation.get(label, {})
 
                 if data_dict:
-                    mapping_dict = data_dict.get('mapping', {})
-                    allowed_values = data_dict.get('default_map', {}).get('allowed_values', [])
-                    is_field_required = data_dict.get('default_map', {}).get('required', False)
-                    reference = data_dict.get('default_map', {}).get('reference', '')
+                    is_field_required = data_dict.get('term_required', False)
+
                     current_field = {
-                        "label_element": mapping_dict.get(standard, {}).get('label', ''),
-                        "name": mapping_dict.get(standard, {}).get('name', ''),
-                        "description": data_dict.get('description', ''),
-                        "example": data_dict.get('example', ''),
-                        "regex": data_dict.get('regex', ''),
-                        "allowed_values": allowed_values,
+                        "label": data_dict.get('term_label'),
+                        "name": data_dict.get('term_name'),
+                        "description": data_dict.get('term_description', ''),
+                        "example": data_dict.get('term_example', ''),
+                        "regex": data_dict.get('term_regex', ''),
+                        "allowed_values": data_dict.get('allowed_values', []),
                         "mandatory": 'mandatory' if is_field_required else 'optional',
-                        "multiplicity": data_dict.get('multiplicity', 'single'),
-                        "reference": reference
+                        "cardinaltity": data_dict.get('term_cardinality', 'single'),
+                        "reference": data_dict.get('term_reference', '')
                     }
                     component_dict["fields"].append(current_field)
         components.append(component_dict)
@@ -325,28 +327,15 @@ def extract_components_to_html(data_dict, output_file_path, termset, standard):
     with open(output_file_path, mode="w", encoding="utf-8") as fields:
         fields.write(fields_template.render(context))
 
-def extract_and_convert_schema(json_schema_file_path, termset, standard):
-    # Get fields based on the termset
-    termset_fields = helpers.retrieve_data_by_termset(termset)
-
-    # Update schema data with termset fields
-    helpers.update_schema_with_termset_fields(json_schema_file_path, termset_fields, termset)
-
-    # Read JSON schema data
-    with open(json_schema_file_path, 'r') as schema_data:
-        data_dict = json.loads(schema_data.read())
-
-    # Add the termset fields to the schema for the 'sample' component
-    sample = next(d for d in data_dict['components'] if d['component'] == 'sample')
-
-    # Extend the 'sample' component fields with DwC fields and remove duplicates
-    sample['fields'] = helpers.remove_duplicates(sample['fields'], termset_fields)
+def extract_and_convert_schema(file_path, termset, standard):
+    # Convert Excel to data_dict structure
+    data_dict = helpers.read_excel_to_data_dict(file_path)
 
     # Extract components to formats
-    extract_components_to_excel(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.xlsx'), termset, standard)
-    extract_components_to_json(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.json'), termset, standard)
-    extract_components_to_xml(data_dict, json_schema_file_path.replace('.json', f'_{standard}_{termset}.xml'), termset, standard)
-    extract_components_to_html(data_dict, json_schema_file_path.replace('.json', f'_{termset}.html'), termset, standard)
+    extract_components_to_excel(data_dict, file_path.replace('.json', f'_{standard}_{termset}.xlsx'), termset, standard)
+    extract_components_to_json(data_dict, file_path.replace('.json', f'_{standard}_{termset}.json'), termset, standard)
+    extract_components_to_xml(data_dict, file_path.replace('.json', f'_{standard}_{termset}.xml'), termset, standard)
+    extract_components_to_html(data_dict, file_path.replace('.json', f'_{termset}.html'), termset, standard)
 
 if __name__ == '__main__':
     args = sys.argv
@@ -356,20 +345,20 @@ if __name__ == '__main__':
         print('Usage:')
         print('  1. python convert.py : Extract components using all termsets and standards')
         print('  2. python convert.py <termset> : Extract components using a specific termset')
-        print('  3. python convert.py <json_schema_file_path> <termset> : Extract components from a provided JSON schema file with a specific termset')
-        print('  4. python convert.py <json_schema_file_path> <termset> <standard>: Extract components from a provided JSON schema file with a specific termset and standard')
+        print('  3. python convert.py <file_path> <termset> : Extract components from a provided JSON schema file with a specific termset')
+        print('  4. python convert.py <file_path> <termset> <standard>: Extract components from a provided JSON schema file with a specific termset and standard')
         sys.exit(1)
 
     # If no arguments are provided
     if len(args) == 1:
         # Get the JSON schema file paths
-        for json_schema_file_path in helpers.SCHEMA_FILE_PATHS:
+        for x in helpers.SCHEMA_FILE_PATHS:
             # Extract schema data and converts it into multiple formats for all mapping
             for termset in helpers.TERMSETS:
-                print(f'\n_________\n\n--Extracting "{json_schema_file_path}" with "{termset}" termset--\n')
+                print(f'\n_________\n\n--Extracting "{x}" with "{termset}" termset--\n')
                 for standard in helpers.MAPPING:
                     print(f'\n*-With "{standard}" standard-*\n')
-                    extract_and_convert_schema(json_schema_file_path, termset, standard)
+                    extract_and_convert_schema(x, termset, standard)
     elif len(args) == 2:
         # If only termset is provided
         termset = args[1]
@@ -382,20 +371,20 @@ if __name__ == '__main__':
         )
         
         # Get the JSON schema file paths
-        for json_schema_file_path in helpers.SCHEMA_FILE_PATHS:
+        for x in helpers.SCHEMA_FILE_PATHS:
             # Extract schema data and converts it into multiple formats for all mapping
-            print(f'\n_________\n\n--Extracting "{json_schema_file_path}" with "{termset}" termset--\n')
+            print(f'\n_________\n\n--Extracting "{x}" with "{termset}" termset--\n')
             for standard in helpers.MAPPING:
                 print(f'\n*-With "{standard}" standard-*\n')
-                extract_and_convert_schema(json_schema_file_path, termset, standard)
+                extract_and_convert_schema(x, termset, standard)
     elif len(args) == 3:
-        # If json_schema_file_path, termset and standard are provided
-        json_schema_file_path = args[1]  # Path to the schema JSON file
+        # If file_path, termset and standard are provided
+        file_path = args[1]  # Path to the schema JSON file
         termset = args[2]
 
         # Check if the file path provided is valid
         helpers.validate_argument(
-            argument=json_schema_file_path,
+            argument=file_path,
             valid_arguments=helpers.SCHEMA_FILE_PATHS,
             error=msg['error_msg_invalid_file_path']
         )
@@ -409,15 +398,15 @@ if __name__ == '__main__':
 
         # Extract schema data and converts it into multiple formats for all mapping
         for standard in helpers.MAPPING:
-            extract_and_convert_schema(json_schema_file_path, termset, standard)
+            extract_and_convert_schema(file_path, termset, standard)
     elif len(args) == 4:
-        json_schema_file_path = args[1]
+        file_path = args[1]
         termset = args[2]
         standard = args[3]
 
         # Check if the file path provided is valid
         helpers.validate_argument(
-            argument=json_schema_file_path,
+            argument=file_path,
             valid_arguments=helpers.SCHEMA_FILE_PATHS,
             error=msg['error_msg_invalid_file_path']
         )
@@ -437,4 +426,4 @@ if __name__ == '__main__':
         )
         
         # Extract schema data and converts it into multiple formats with a specific standard
-        extract_and_convert_schema(json_schema_file_path, termset, standard)
+        extract_and_convert_schema(file_path, termset, standard)

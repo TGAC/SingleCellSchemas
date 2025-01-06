@@ -3,18 +3,19 @@ from openpyxl.utils import get_column_letter
 import json
 import os
 import pandas as pd
+import re
 import sys
 
 # Helpers: Variables
-EXCLUDED_FILES = ['exclusions.json', 'sample_fields_core.json', 'sample_fields_extended.json']
+EXCLUDED_FILES = []
 
-MAPPING = ['dwc', 'mixs', 'schemaorg', 'tol']
+MAPPING = ['bca', 'dwc', 'global', 'minsce', 'mixs', 'tol']
 
-SCHEMA_BASE_DIR_PATH = 'schemas/base'
+SCHEMA_BASE_DIR_PATH = 'schemas'
 
 SCHEMA_FILE_PATHS = [f'{SCHEMA_BASE_DIR_PATH}/{filename}' for root, dirs, files in os.walk(SCHEMA_BASE_DIR_PATH) 
-                        for filename in files if filename.endswith('.json') and 
-                        filename not in EXCLUDED_FILES
+                        for filename in files if  filename.startswith('base_') and
+                        filename.endswith('.xlsx')
                     ]
 
 TERMSETS = ['core', 'extended']
@@ -43,6 +44,14 @@ CHECKLIST_MAPPING = {
         'checklistType': 'reads'
     }
 }
+STANDARD_MAPPING = {
+    'bca': 'Biodiversity Cell Atlas (BCA)',
+    'dwc': 'Darwin Core (DwC)',
+    'global': 'Field must always be included in the filtered set regardless of mapping.',
+    'minsce': 'Minimum Information about a Single Cell Experiment (MINsCE)',
+    'mixs': 'Minimum Information about any (x) Sequence (MIxS)',
+    'tol': 'Tree of Life (ToL)'
+}
 
 MESSAGES = {
     'error_msg_invalid_file_path': f'Invalid .json schema file path. Please check the "{SCHEMA_BASE_DIR_PATH}" directory for available files',
@@ -51,12 +60,44 @@ MESSAGES = {
 }
 
 # Helpers: Functions
-def convertStringToTitleCase(text):
-    # Convert given a string to title case/sentence case
-    return text.title().replace('_', ' ')
+def is_camel_case(text):
+    # Regular expression to check if text follows camelCase
+    return bool(re.match(r'^[a-z]+(?:[A-Z][a-z]+)*$', text))
 
-def get_col_desc_eg(component, standard):
-    field_validation = get_validation(component, standard)
+def is_title_case_with_spaces(text):
+    # Regular expression to check if text follows Title Case
+    return bool(re.match(r'^[A-Z][a-z]+(?: [A-Z][a-z]+)*$', text))
+
+def convertStringToTitleCase(text):
+    '''
+    Convert a given string to title case, handling camel case by adding spaces 
+    where necessary and replacing certain abbreviations and terms.
+    '''
+    # Convert camelCase to space-separated words if applicable
+    if is_camel_case(text):
+      text = re.sub(r'([A-Z])', r' \1', text).strip()
+
+    # Ensure title case format with spaces if not already properly formatted
+    if not is_title_case_with_spaces(text):
+      text = re.sub(r'(?<!^)(?=[A-Z])', ' ', text)
+
+    # Apply title casing and replace certain terms
+    return text.title() \
+        .replace('_', ' ') \
+        .replace('  ', ' ') \
+        .replace('I D', 'ID') \
+        .replace('Geogr', 'Geographic') \
+        .replace('Locat', 'Location') \
+        .replace('Latit', 'Latitude') \
+        .replace('Longi', 'Longitude') \
+        .replace('Longitudegitude', 'Longitude') \
+        .replace('Latitudeitude', 'Latitude') \
+        .replace('Locationation', 'Location') \
+        .replace('Geographicreference', 'Geographical Reference') \
+        .replace('Cdna', 'cDNA')
+
+def get_col_desc_eg(component, standard, termset):
+    field_validation = get_validation(component, standard, termset)
     return {field: {'description': field_info.get('description', ''), 'example': field_info.get('example', '')} for field, field_info in field_validation.items()}
 
 def generate_json_file(data, output_file_path):
@@ -83,45 +124,25 @@ def generate_json_file(data, output_file_path):
 
     print(f'{file_name} created!')
 
-def get_validation(component, standard):
+def get_validation(component, standard, termset):
     field_validation = {}
 
-    for element in component['fields']:
-        for field, field_info in element.items():
-            if field_info.get('mapped_manifests',{}).get(standard, False):
-                # Get the default label and name from the 'schemaorg' 
-                # standard if no label or name is provided for the standard
-                default_label = field_info.get('default_map', {}).get('label', '')
-                default_name = field_info.get('default_map', {}).get('name','')
-                
-                label = (
-                    field_info.get('mapping', {}).get(standard, {}).get('label') or 
-                    default_label or  convertStringToTitleCase(field)
-                )
-
-                name = (
-                    field_info.get('mapping', {}).get(standard, {}).get('name') or
-                    default_name or field
-                )
-
-                # Ensure the 'mapping' dictionary and the specific standard sub-dictionary exist
-                field_info.setdefault('mapping', {}).setdefault(standard, {})
-
-                # Assign the label and name values
-                field_info['mapping'][standard]['label'] = label
-                field_info['mapping'][standard]['name'] = name
-
-                # Update field_validation with the label as the key
-                field_validation[label] = field_info
+    for field in component['fields']:
+        # Check if the 'namespace' is either the given standard or "global"
+        if field.get('namespace') in {standard, "global"} and field.get('termset') in {termset, "global"}:
+            # Use 'term_label' as the key, default to an empty string if not present
+            label = field.get('term_label', '')
+            if label:
+                field_validation[label] = field
     return field_validation
 
-def get_field_label_mapping(component, standard):
-    field_validation = get_validation(component, standard)
-    label_mapping = {field: field_info.get('mapping',dict()).get(standard,str()).get('name', field) for field, field_info in field_validation.items()}
+def get_field_label_mapping(component, standard, termset):
+    field_validation = get_validation(component, standard, termset)
+    label_mapping = {field: field_info.get("term_name","") for field, field_info in field_validation.items()}
     return label_mapping
 
-def get_required_columns(component, standard):
-    field_validation = get_validation(component, standard)
+def get_required_columns(component, standard, termset):
+    field_validation = get_validation(component, standard, termset)
     return [field for field, field_info in field_validation.items() if field_info.get('default_map', {}).get('required', False)]
 
 def merge_row(worksheet, row, last_column_letter, merge_format):
@@ -160,6 +181,39 @@ def merge_row(worksheet, row, last_column_letter, merge_format):
 
     except Exception as e:
         print(f'Error: {e}')
+
+def read_excel_to_data_dict(file_path):
+    """
+    Read the Excel file and convert it to a dictionary
+    """
+    df = pd.read_excel(file_path, sheet_name='data')
+    
+    df_allowed_values = pd.read_excel(file_path, sheet_name='allowed_values')
+    
+    # Convert allowed_values into a dictionary where keys are column names and values are lists of unique non-null values
+    allowed_values_dict = {
+        column: [value for value in df_allowed_values[column].unique() if not pd.isna(value)]
+        for column in df_allowed_values.columns.str.strip()
+    }
+
+    # Group rows by 'component_name' to create the 'components' structure
+    components = []
+    for component_name, group in df.groupby('component_name'):
+        fields = group.to_dict(orient='records')
+        
+        # Merge allowed values into fields
+        for field in fields:
+            field_name = field.get('term_name')
+            if field_name in allowed_values_dict:
+                field['allowed_values'] = allowed_values_dict[field_name]
+                
+        component = {
+            'component': component_name,
+            'fields': fields
+        }
+        components.append(component)
+    
+    return {'components': components}
 
 def retrieve_data_by_termset(termset):
     '''
@@ -211,6 +265,49 @@ def remove_duplicates(fields, new_fields):
     # Convert back to the original list of dictionaries format
     return [{key: value} for key, value in unique_fields.items()]
 
+def merge_fields(existing_fields, new_fields):
+    '''
+    Merge new fields into existing fields, avoiding duplicates based on the 'name' key in 'default_map'.
+    '''
+    # Extract names of existing fields
+    existing_field_names = {
+        list(field.keys())[0] for field in existing_fields
+    }
+
+    for field in new_fields:
+        field_name = field  # Get the name of the field
+        if field_name not in existing_field_names:
+            existing_fields.append(field)
+    return existing_fields
+
+def remove_duplicate_keys_from_file(file_path):
+  def recursive_check(obj):
+    if isinstance(obj, dict):
+      keys = list(obj.keys())
+      seen = set()
+      for key in keys:
+        if key in seen:
+            del obj[key]
+        else:
+            seen.add(key)
+      # Recur for nested dictionaries
+      for key in obj:
+        recursive_check(obj[key])
+    elif isinstance(obj, list):
+      for item in obj:
+        recursive_check(item)
+
+  # Read JSON from the file
+  with open(file_path, 'r') as file:
+    json_data = file.read()
+
+  # Parse JSON and remove duplicates
+  parsed_data = json.loads(json_data)
+  recursive_check(parsed_data)
+
+  # Write cleaned JSON back to the same file
+  generate_json_file(parsed_data, file_path)
+
 def update_schema_with_termset_fields(json_schema_file_path, termset_fields, termset):
     file_name = os.path.basename(json_schema_file_path).replace('.json', '')
     
@@ -243,6 +340,21 @@ def update_schema_with_termset_fields(json_schema_file_path, termset_fields, ter
                         # Update the field attributes with termset_info data
                         field[key] = termset_info
 
+    # Extend the sample component with the fields from the termset
+    sample_component = next(component for component in components if component['component'] == 'sample')
+    sample_component['fields'] = remove_duplicates(sample_component['fields'], termset_fields)
+    sample_component['fields'] = merge_fields(sample_component["fields"], termset_fields)
+
+    # Remove "termset" key and "schema_types" key in sample_component["fields"]
+    for field in sample_component['fields']:
+        field_name = list(field.keys())[0]
+        field_value = field[field_name]
+        schema_types = field_value.get('schema_types', [])
+
+        if file_name in schema_types:
+            field_value.pop('termset', None)
+            field_value.pop('schema_types', None)
+
     # Save the updated data to a new JSON file
     updated_data = {'components': components}
 
@@ -251,6 +363,10 @@ def update_schema_with_termset_fields(json_schema_file_path, termset_fields, ter
     
     # Write the updated data to a new JSON file
     generate_json_file(updated_data, output_file_path)
+
+    # Remove duplicate keys from the schema
+    remove_duplicate_keys_from_file(output_file_path)
+    remove_duplicate_keys_from_file(json_schema_file_path)
 
     print(f"\n{output_file_name} schema updated with '{termset}' termset fields!\n")
 
@@ -370,7 +486,7 @@ def apply_dropdown_list(component, dataframe, column_validation, pandas_writer, 
         if column_name in column_validation:
             is_field_required = column_validation[column_name].get('default_map',{}).get('required', False)
             dropdown_list = column_validation[column_name].get('default_map',{}).get('allowed_values', [])
-            error_message = column_validation[column_name].get('error', f'{column_validation[column_name]["mapping"][standard]["label"]} required')
+            error_message = column_validation[column_name].get('error', '')
             field_type = column_validation[column_name].get('type', '')
             regex = column_validation[column_name].get('regex', '')
 

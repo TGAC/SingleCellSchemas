@@ -1,0 +1,3785 @@
+{
+  "components": [
+    {
+      "component": "study",
+      "fields": [
+        {
+          "study_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Study ID",
+              "name": "study_id",
+              "required": true
+            },
+            "description": "A unique alphanumeric identifier for this study",
+            "error": "Input is required",
+            "example": "A7F9B3X2",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Study ID",
+                "name": "study_id"
+              }
+            },
+            "regex": "^[a-zA-Z0-9]+$",
+            "type": "string"
+          }
+        },
+        {
+          "contact_first_name": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "First Name",
+              "name": "contact_first_name",
+              "required": true
+            },
+            "description": "Given first name",
+            "error": "Input is required",
+            "example": "Jane",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "First Name",
+                "name": "contact_first_name"
+              }
+            },
+            "regex": "^[a-zA-Z]+$",
+            "type": "string"
+          }
+        },
+        {
+          "contact_last_name": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Last Name",
+              "name": "contact_last_name",
+              "required": true
+            },
+            "description": "Given last name.",
+            "error": "Input is required",
+            "example": "Doe",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Last Name",
+                "name": "contact_last_name"
+              }
+            },
+            "regex": "^[a-zA-Z]+$",
+            "type": "string"
+          }
+        },
+        {
+          "contact_email": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Email",
+              "name": "contact_email",
+              "required": true
+            },
+            "description": "Valid email address",
+            "error": "Email address is required",
+            "example": "janedoe@example.com",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Email",
+                "name": "contact_email"
+              }
+            },
+            "regex": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
+            "type": "string"
+          }
+        },
+        {
+          "institutionCode": {
+            "default_map": {
+              "label": "Institution",
+              "name": "institutionCode",
+              "required": true,
+              "reference": "http://rs.tdwg.org/dwc/terms/institutionCode"
+            },
+            "description": "The name (or acronym) representing the lead institution responsible for the study.",
+            "example": "EI",
+            "mapped_manifests": {
+              "dwc": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "Institution",
+                "name": "institutionCode",
+                "reference": "http://rs.tdwg.org/dwc/terms/institutionCode"
+              },
+              "tol": {
+                "label": "Collector Affiliation",
+                "name": "COLLECTOR_AFFILIATION"
+              }
+            },
+            "regex": "^[A-Z]{2,10}$",
+            "type": "string"
+          }
+        },
+        {
+          "title": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Title",
+              "name": "title",
+              "required": true,
+              "reference": "http://purl.org/dc/terms/title"
+            },
+            "description": "An official title for the study or project. Project title should be fewer than 30 words, such as a title of a grant proposal or a publication.",
+            "error": "Title is required",
+            "example": "Study of single cells in the human body",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "Title",
+                "name": "title",
+                "reference": "http://purl.org/dc/terms/title"
+              },
+              "mixs": {
+                "label": "Project Name",
+                "name": "project_name",
+                "reference": "https://genomicsstandardsconsortium.github.io/mixs/0000092"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "description": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Description",
+              "name": "description",
+              "required": true,
+              "reference": "http://purl.org/dc/terms/description"
+            },
+            "description": "A detailed description of the project which includes research goals and experimental approach. Project description should be fewer than 300 words, such as an abstract from a grant application or publication.",
+            "error": "Description is required",
+            "example": "This project explores the intricate details of single cells in the human body, focusing on their structure, function, and behavior. By studying individual cells, it aims to uncover how they contribute to overall health, disease progression, and human biology. This research can provide deeper insights into cellular processes, paving the way for advancements in medical treatments and personalised medicine.",
+            "mapped_manifests": {
+              "dwc": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "Description",
+                "name": "description",
+                "reference": "http://purl.org/dc/terms/description"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "bibliographicCitation": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Bibliographic Citation",
+              "name": "bibliographicCitation",
+              "required": true,
+              "reference": "http://purl.org/dc/terms/bibliographicCitation"
+            },
+            "description": "A citation for the study resource, following a standard format.",
+            "error": "Bibliographic citation is required",
+            "example": "Doe J., et al. (2024). Single Cell Transcriptomic Analysis of Human Liver Cells. Journal of Cellular Biology.",
+            "mapped_manifests": {
+              "dwc": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "Bibliographic Citation",
+                "name": "bibliographicCitation",
+                "reference": "http://purl.org/dc/terms/bibliographicCitation"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "created": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Created",
+              "name": "created",
+              "required": true,
+              "reference": "http://purl.org/dc/terms/created"
+            },
+            "description": "The date when the study was created or registered.",
+            "error": "Date study was created is required",
+            "example": "2024-10-14",
+            "mapped_manifests": {
+              "dwc": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "Created",
+                "name": "created",
+                "reference": "http://purl.org/dc/terms/created"
+              }
+            },
+            "regex": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+            "type": "date"
+          }
+        },
+        {
+          "technology": {
+            "default_map": {
+              "allowed_values": [
+                "10X",
+                "Smartseq",
+                "Vizgen",
+                "Mas_seq"
+              ],
+              "label": "Technology",
+              "name": "technology",
+              "required": true
+            },
+            "description": "The sorting or visualisation technology used.",
+            "error": "Technology is required",
+            "example": "Vizgen",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Technology",
+                "name": "technology"
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        }
+      ]
+    },
+    {
+      "component": "sample",
+      "fields": [
+        {
+          "study_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Study ID",
+              "name": "study_id",
+              "required": true
+            },
+            "description": "A unique alphanumeric reference or identifier for the study.",
+            "error": "Study reference is required",
+            "example": "study123",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Sample ID",
+                "name": "sample_id"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "sample_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sample ID",
+              "name": "sample_id",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
+            },
+            "description": "A unique alphanumeric reference or identifier assigned to the sample in the study.",
+            "error": "Sample ID is required",
+            "example": "sample123",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Sample ID",
+                "name": "sample_id"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "scientificName": {
+            "default_map": {
+              "label": "Scientific Name",
+              "name": "scientificName",
+              "reference": "http://rs.tdwg.org/dwc/terms/scientificName",
+              "required": false
+            },
+            "description": "The full scientific name of the species studied.",
+            "example": "Arenicola marina",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "minsce": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "Scientific Name",
+                "name": "scientificName",
+                "reference": "http://rs.tdwg.org/dwc/terms/scientificName"
+              },
+              "mixs": {
+                "label": "Specific Host",
+                "name": "specific_host",
+                "reference": "https://genomicsstandardsconsortium.github.io/mixs/0000029"
+              },
+              "minsce": {
+                "label": "Organism",
+                "name": "organism"
+              },
+              "tol": {
+                "label": "Scientific Name",
+                "name": "SCIENTIFIC_NAME"
+              }
+            },
+            "regex": "^[A-Za-z]+[a-z]+$",
+            "type": "string"
+          }
+        },
+        {
+          "strain": {
+            "default_map": {
+              "label": "Strain",
+              "name": "strain",
+              "reference": "http://www.ebi.ac.uk/efo/EFO_0005135",
+              "required": false
+            },
+            "description": "An identifier of the strain of the organism, if applicable.",
+            "example": "CCAP1119/17",
+            "mapped_manifests": {
+              "dwc": true,
+              "minsce": true,
+              "mixs": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "Occurrence ID",
+                "name": "occurrenceID",
+                "reference": "http://rs.tdwg.org/dwc/terms/occurrenceID"
+              },
+              "minsce": {
+                "label": "Strain",
+                "name": "strain",
+                "reference": "http://www.ebi.ac.uk/efo/EFO_0005135"
+              },
+              "mixs": {
+                "label": "Microbial Start Taxon ID",
+                "name": "microb_start_taxID"
+              },
+              "tol": {
+                "label": "Culture or Strain ID",
+                "name": "CULTURE_OR_STRAIN_ID"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "tissue": {
+            "default_map": {
+              "allowed_values": [
+                "Abdomen",
+                "Anterior Body",
+                "Blade",
+                "Blood",
+                "Bodywall",
+                "Bract",
+                "Brain",
+                "Bud",
+                "Cap",
+                "Cephalothorax",
+                "Dna Extract",
+                "Egg",
+                "Eggshell",
+                "Endocrine Tissue",
+                "Eye",
+                "Fat Body",
+                "Fin",
+                "Flower",
+                "Gill Animal",
+                "Gill Fungi",
+                "Gonad",
+                "Hair",
+                "Head",
+                "Heart",
+                "Hepatopancreas",
+                "Holdfast Fungi",
+                "Intestine",
+                "Kidney",
+                "Leaf",
+                "Leg",
+                "Liver",
+                "Lung",
+                "Mid Body",
+                "Modular Colony",
+                "Mollusc Foot",
+                "Multicellular Organisms In Culture",
+                "Muscle",
+                "Mycelium",
+                "Mycorrhiza",
+                "Ovary Animal",
+                "Oviduct",
+                "Pancreas",
+                "Petiole",
+                "Posterior Body",
+                "Root",
+                "Scales",
+                "Scat",
+                "Seed",
+                "Seedling",
+                "Shoot",
+                "Skin",
+                "Sperm Seminal Fluid",
+                "Spleen",
+                "Spore Bearing Structure",
+                "Spore",
+                "Stem",
+                "Stipe",
+                "Stomach",
+                "Tentacle",
+                "Terminal Body",
+                "Testis",
+                "Thallus Fungi",
+                "Thallus Plant",
+                "Thorax",
+                "Unicellular Organisms In Culture",
+                "Whole Organism",
+                "Whole Plant",
+                "Other Fungal Tissue",
+                "Other Plant Tissue",
+                "Other Reproductive Animal Tissue",
+                "Other Somatic Animal Tissue",
+                "Not Applicable",
+                "Not Collected",
+                "Not Provided"
+              ],
+              "label": "Tissue",
+              "name": "tissue",
+              "required": false
+            },
+            "description": "The type of tissue sampled for the study.",
+            "error": "Tissue is required",
+            "example": "Leaf",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Tissue",
+                "name": "tissue"
+              },
+              "tol": {
+                "label": "Tissue for Barcoding",
+                "name": "TISSUE_FOR_BARCODING"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "preservation_procedure": {
+            "default_map": {
+              "allowed_values": [
+                "Air dried",
+                "Dry ice",
+                "Ethanol/Dry ice slurry",
+                "Lyophilised",
+                "RNALater",
+                "Snap frozen",
+                "Other",
+                "Not Applicable",
+                "Not Collected",
+                "Not Provided"
+              ],
+              "label": "Preservation Method",
+              "name": "preservation_method",
+              "required": false
+            },
+            "description": "A brief description of how the sample was preserved.",
+            "error": "Preservation method is required",
+            "example": "Fresh",
+            "mapped_manifests": {
+              "dwc": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "Preparations",
+                "name": "preparations",
+                "reference": "http://rs.tdwg.org/dwc/terms/preparations"
+              },
+              "tol": {
+                "label": "Preservation Approach",
+                "name": "PRESERVATION_APPROACH"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "collection_date": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Collection Date",
+              "name": "collection_date",
+              "required": false
+            },
+            "description": "The date when the sample was collected with year, month and day specified in the format, YYYY-MM-DD.",
+            "error": "Collection date is required",
+            "example": "2024-09-20",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "Event Date",
+                "name": "eventDate",
+                "reference": "http://rs.tdwg.org/dwc/terms/eventDate"
+              },
+              "mixs": {
+                "label": "Collection Date",
+                "name": "collection_date",
+                "reference": "https://genomicsstandardsconsortium.github.io/mixs/0000011"
+              },
+              "tol": {
+                "label": "Date of Collection",
+                "name": "DATE_OF_COLLECTION"
+              }
+            },
+            "regex": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+            "type": "date"
+          }
+        },
+        {
+          "decimalLatitude": {
+            "default_map": {
+              "label": "Decimal Latitude",
+              "name": "decimalLatitude",
+              "reference": "http://rs.tdwg.org/dwc/terms/decimalLatitude",
+              "required": false
+            },
+            "description": "The geographic latitude where the specimen or sample was taken in decimal degrees, between -90 and 90. Locations should be specified to a minimum of 3 decimal places and a maximum of 8 decimal places.",
+            "error": "Invalid decimal latitude. Please enter a valid decimal latitude.",
+            "example": "52.2053",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "Decimal Latitude",
+                "name": "decimalLatitude",
+                "reference": "http://rs.tdwg.org/dwc/terms/decimalLatitude"
+              },
+              "mixs": {
+                "description": "The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system.",
+                "label": "Geographic Location (Latitude and Longitude)",
+                "name": "lat_lon",
+                "reference": "https://genomicsstandardsconsortium.github.io/mixs/0000009"
+              },
+              "tol": {
+                "label": "Decimal Latitude",
+                "name": "DECIMAL_LATITUDE"
+              }
+            },
+            "regex": "^-?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$",
+            "type": "number",
+            "unit": "DD"
+          }
+        },
+        {
+          "decimalLongitude": {
+            "default_map": {
+              "label": "Decimal Longitude",
+              "name": "decimalLongitude",
+              "reference": "http://rs.tdwg.org/dwc/terms/decimalLongitude",
+              "required": false
+            },
+            "description": "The longitude of the sample collection site, in decimal degrees.",
+            "error": "Invalid decimal longitude. Please enter a valid decimal longitude.",
+            "example": "0.1218",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "tol": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "Decimal Longitude",
+                "name": "decimalLongitude",
+                "reference": "http://rs.tdwg.org/dwc/terms/decimalLongitude"
+              },
+              "mixs": {
+                "description": "The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system.",
+                "label": "Geographic Location (Latitude and Longitude)",
+                "name": "lat_lon",
+                "reference": "https://genomicsstandardsconsortium.github.io/mixs/0000009"
+              },
+              "tol": {
+                "label": "Decimal Longitude",
+                "name": "DECIMAL_LONGITUDE"
+              }
+            },
+            "regex": "^-?(180(\\.0+)?|((1[0-7]\\d)|(\\d{1,2}))(\\.\\d+)?)$",
+            "type": "number",
+            "unit": "DD"
+          }
+        },
+        {
+          "broad_scale_environmental_context": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Broad Scale Environmental Context",
+              "name": "broad_scale_environmental_context",
+              "required": false
+            },
+            "description": "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). Reference: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.",
+            "error": "Broad scale environmental context is required",
+            "example": "Urban",
+            "mapped_manifests": {
+              "mixs": true
+            },
+            "mapping": {
+              "mixs": {
+                "label": "Broad-scale Environmental Context",
+                "name": "env_broad_scale",
+                "reference": "https://genomicsstandardsconsortium.github.io/mixs/0000012"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "local_scale_environmental_context": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Local Scale Environmental Context",
+              "name": "local_scale_environmental_context",
+              "required": false
+            },
+            "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling.",
+            "error": "Local scale environmental context is required",
+            "example": "Laboratory",
+            "mapped_manifests": {
+              "mixs": true
+            },
+            "mapping": {
+              "mixs": {
+                "label": "Local Environmental Context",
+                "name": "env_local_scale",
+                "reference": "https://genomicsstandardsconsortium.github.io/mixs/0000013"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "environmental_medium": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Environmental Medium",
+              "name": "environmental_medium",
+              "required": false
+            },
+            "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling.",
+            "error": "Environmental medium is required",
+            "example": "Tissue culture",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true
+            },
+            "mapping": {
+              "dwc": {
+                "label": "Medium",
+                "name": "medium",
+                "reference": "http://purl.org/dc/terms/medium"
+              },
+              "mixs": {
+                "label": "Environmental Medium",
+                "name": "env_medium",
+                "reference": "https://genomicsstandardsconsortium.github.io/mixs/0000014"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "accession_number": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Accession Number",
+              "name": "accession_number",
+              "required": false
+            },
+            "description": "A unique alphanumeric reference or identifier assigned to the sample in the study related to NCBI Taxonomy.",
+            "example": "accession123",
+            "mapped_manifests": {
+              "bca": true
+            },
+            "mapping": {
+              "bca": {
+                "label": "Accession Number",
+                "name": "accession_number"
+              }
+            },
+            "type": "string"
+          }
+        }
+      ]
+    },
+    {
+      "component": "dissociation",
+      "fields": [
+        {
+          "dissociation_protocol_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Dissociation Protocol ID",
+              "name": "dissociation_protocol_id",
+              "required": true
+            },
+            "description": "A unique alphanumeric code for the dissociation protocol in the study",
+            "error": "Dissociation protocol ID is required",
+            "example": "disProtocol123",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Dissociation Protocol ID",
+                "name": "dissociation_protocol_id"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "protocol_name": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Protocol Name",
+              "name": "protocol_name",
+              "required": true
+            },
+            "description": "A descriptive name of the protocol used for single-cell sequencing.",
+            "error": "Protocol name is required.",
+            "example": "10X Genomics Single Cell 3' Library Prep",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Protocol Name",
+                "name": "protocol_name"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "dissociation_description": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Dissociation Description",
+              "name": "dissociation_description",
+              "required": true
+            },
+            "description": "A free-text description of the process used to separate cells from tissues or cell aggregates.",
+            "error": "Dissociation description is required.",
+            "example": "Tissue was enzymatically dissociated using collagenase for 30 minutes.",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Dissociation Description",
+                "name": "dissociation_description"
+              }
+            },
+            "type": "free-text"
+          }
+        },
+        {
+          "enrichment_markers": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Enrichment Markers",
+              "name": "enrichment_markers",
+              "required": false
+            },
+            "description": "A free-text description of the markers used to enrich specific cell types during single-cell isolation.",
+            "error": "Enrichment markers are required.",
+            "example": "CD45",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Enrichment Markers",
+                "name": "enrichment_markers"
+              }
+            },
+            "type": "free-text"
+          }
+        },
+        {
+          "isolation_kit": {
+            "default_map": {
+              "allowed_values": [
+                "10x Nuclei Isolation Kit",
+                "3' standard throughput kit"
+              ],
+              "label": "Isolation Kit",
+              "name": "isolation_kit",
+              "required": false
+            },
+            "description": "The kit used to isolate the cells.",
+            "error": "Isolation Kit is required",
+            "example": "BD Rhapsody Single-Cell Analysis System",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Isolation Kit",
+                "name": "isolation_kit"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "literature_source_reference": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Literature Source Reference",
+              "name": "literature_source_reference",
+              "required": false
+            },
+            "description": "Reference to literature sources that describe the protocol or methods used.",
+            "error": "Literature source reference is required.",
+            "example": "Doe et al. (2024), 'Single-cell RNA-seq: A comprehensive overview'",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Literature Source Reference",
+                "name": "literature_source_reference"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "protocols_io_reference": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Protocols IO Reference",
+              "name": "protocols_io_reference",
+              "required": false
+            },
+            "description": "Reference link to protocols.io for additional details on the protocol.",
+            "error": "Protocols.io reference is required.",
+            "example": "https://www.protocols.io/view/sample-protocol-b2ubqesn",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Protocols Io Reference",
+                "name": "protocols_io_reference"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "workflow_hub_SOP_reference": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "WorkflowHub SOP Reference",
+              "name": "workflow_hub_SOP_reference",
+              "required": false
+            },
+            "description": "Reference to the Standard Operating Procedure (SOP) in workflow hub.",
+            "error": "Workflow hub SOP reference is required.",
+            "example": "https://workflowhub.eu/works/12345",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Workflowhub Sop Reference",
+                "name": "workflow_hub_SOP_reference"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "dissociation_protocol_method": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Dissociation Protocol Method",
+              "name": "dissociation_protocol_method",
+              "required": false
+            },
+            "description": "The method used to dissociate tissues into single cells.",
+            "error": "Dissociation Protocol Method is required",
+            "example": "Mechanical and enzymatic dissociation",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Dissociation Protocol Method",
+                "name": "dissociation_protocol_method"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "single_cell_quality_metric": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Single Cell Quality Metric",
+              "name": "single_cell_quality_metric",
+              "required": false
+            },
+            "description": "Metrics used to assess the quality of single cells before sequencing.",
+            "error": "Single Cell Quality Metric is required",
+            "example": "Cell viability percentage",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Single Cell Quality Metric",
+                "name": "single_cell_quality_metric"
+              }
+            },
+            "type": "string"
+          }
+        }
+      ]
+    },
+    {
+      "component": "cell_suspension",
+      "fields": [
+        {
+          "sample_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sample ID",
+              "name": "sample_id",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/NCIT_C16576"
+            },
+            "description": "A unique alphanumeric reference or identifier assigned to the cell suspension for the sample in the study.",
+            "error": "Sample ID is required",
+            "example": "sample123",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Sample ID",
+                "name": "sample_id"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "dissociation_protocol_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Dissociation Protocol ID",
+              "name": "dissociation_protocol_id",
+              "required": true
+            },
+            "description": "A unique alphanumeric code for the dissociation protocol in the study",
+            "error": "Dissociation protocol ID is required",
+            "example": "disProtocol123",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Dissociation Protocol ID",
+                "name": "dissociation_protocol_id"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "cell_suspension_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cell Suspension ID",
+              "name": "cell_suspension_id",
+              "required": true
+            },
+            "description": "A unique alphanumeric code for the cell suspension for the sample",
+            "error": "Cell Suspension ID is required",
+            "example": "cellSusp123",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Cell Suspension ID",
+                "name": "cell_suspension_id"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "suspension_type": {
+            "default_map": {
+              "allowed_values": [
+                "Cell",
+                "Nuclei",
+                "Protoplast"
+              ],
+              "label": "Suspension Type",
+              "name": "suspension_type",
+              "required": true
+            },
+            "description": "The type of suspension used to keep cells in solution during processing.",
+            "error": "Suspension type is required",
+            "example": "Cell",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Suspension Type",
+                "name": "suspension_type"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "cell_count": {
+            "default_map": {
+              "allowed_values": [
+                "1",
+                "2-10",
+                "11-50",
+                "51-100",
+                "101-10000",
+                "10001-50000",
+                "50001-100000",
+                "100001-500000",
+                "500001-1000000",
+                "1000000+"
+              ],
+              "label": "Cell Count",
+              "name": "cell_count",
+              "required": false
+            },
+            "description": "An number representing the number of cells in the sequencing library.",
+            "example": "10000",
+            "mapped_manifests": {
+              "global": true,
+              "tol": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Cell Count",
+                "name": "cell_count"
+              },
+              "tol": {
+                "label": "Cell Number",
+                "name": "CELL_NUMBER"
+              }
+            },
+            "regex": "^(1|2-10|11-50|51-100|101-10000|10001-50000|50001-100000|100001-500000|500001-1000000|1000000+)$",
+            "type": "number"
+          }
+        },
+        {
+          "cell_viability": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cell Viability",
+              "name": "cell_viability",
+              "required": false
+            },
+            "description": "The percentage of living cells in a sample, indicating the health and quality of cells for RNA-sequencing analysis.",
+            "example": "95",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Cell Viability",
+                "name": "cell_viability"
+              }
+            },
+            "regex": "",
+            "type": "string",
+            "unit": "%"
+          }
+        },
+        {
+          "cell_viability_assessment_method": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cell Viability Assessment Method",
+              "name": "cell_viability_assessment_method",
+              "required": false
+            },
+            "description": "The method used to evaluate the viability of cells in the sample, often involving staining or flow cytometry techniques.",
+            "example": "Trypan Blue Exclusion",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Cell Viability Assessment Method",
+                "name": "cell_viability_assessment_method"
+              }
+            },
+            "regex": "",
+            "type": "string"
+          }
+        },
+        {
+          "cell_size": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cell Size",
+              "name": "cell_size",
+              "required": false
+            },
+            "description": "The size of the cell, typically measured in micrometres.",
+            "error": "Cell size is required",
+            "example": "10",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Cell Size",
+                "name": "cell_size"
+              }
+            },
+            "type": "number",
+            "unit": "",
+            "unit_reference": ""
+          }
+        },
+        {
+          "suspension_volume_\u00b5l": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Suspension Volume \u039cl",
+              "name": "suspension_volume_\u00b5l",
+              "required": false
+            },
+            "description": "The volume of the cell suspension in microlitres.",
+            "error": "Suspension volume \u039cl is required",
+            "example": "100",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Suspension Volume \u039cl",
+                "name": "suspension_volume_\u00b5l"
+              }
+            },
+            "type": "number",
+            "unit": "microlitre",
+            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000101"
+          }
+        },
+        {
+          "suspension_concentration_cells_per_\u00b5l": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Suspension Concentration Cells Per \u039cl",
+              "name": "suspension_concentration_cells_per_\u00b5l",
+              "required": false
+            },
+            "description": "The concentration of cells in the suspension.",
+            "error": "Suspension concentration cells per \u039cl is required",
+            "example": "1000",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Suspension Concentration Cells Per \u039cl",
+                "name": "suspension_concentration_cells_per_\u00b5l"
+              }
+            },
+            "type": "number",
+            "unit:": "cells/ul",
+            "unit_reference": "http://snomed.info/id/258878000"
+          }
+        },
+        {
+          "suspension_dilution": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Suspension Dilution",
+              "name": "suspension_dilution",
+              "required": false
+            },
+            "description": "The dilution factor of the cell suspension.",
+            "error": "Suspension Dilution is required",
+            "example": "1:10",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Suspension Dilution",
+                "name": "suspension_dilution",
+                "reference": "http://purl.allotrope.org/ontologies/process#AFP_0000785"
+              }
+            },
+            "type": "number",
+            "unit:": "cells/ul",
+            "unit_reference": "http://snomed.info/id/258878000"
+          }
+        },
+        {
+          "loading_volume_\u00b5l": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Loading Volume \u039cl",
+              "name": "loading_volume_\u00b5l",
+              "required": false
+            },
+            "description": "The volume of the cell suspension loaded into the single-cell RNA-sequencing system for analysis.",
+            "error": "Loading Volume is required",
+            "example": "10",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "global": true,
+              "tol": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Loading Volume \u039cl",
+                "name": "loading_volume_\u00b5l"
+              }
+            },
+            "type": "number",
+            "unit:": "cells/ul"
+          }
+        },
+        {
+          "suspension_dilution_buffer": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Suspension Dilution Buffer",
+              "name": "suspension_dilution_buffer",
+              "required": false
+            },
+            "description": "A solution used to dilute cell suspensions to a desired concentration, typically prior to loading cells into a device for single-cell RNA sequencing. It helps maintain cell viability and integrity during processing.",
+            "error": "Suspension Dilution Buffer is required",
+            "example": "PBS (Phosphate-buffered saline) with 0.04% BSA (Bovine serum albumin)",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "global": true,
+              "tol": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Suspension Dilution Buffer",
+                "name": "suspension_dilution_buffer"
+              }
+            },
+            "type": "string",
+            "unit_reference": ""
+          }
+        }
+      ]
+    },
+    {
+      "component": "library_preparation",
+      "fields": [
+        {
+          "library_preparation_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Library Preparation ID",
+              "name": "library_preparation_id",
+              "required": true
+            },
+            "description": "A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.",
+            "error": "Library preparation reference is required",
+            "example": "libPrep123",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Library Preparation ID",
+                "name": "library_prep_id"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "cell_suspension_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cell Suspension ID",
+              "name": "cell_suspension_id",
+              "required": true
+            },
+            "description": "A unique alphanumeric code for the cell suspension for the library preparation.",
+            "error": "Cell Suspension ID is required",
+            "example": "cellSusp123",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Cell Suspension ID",
+                "name": "cell_suspension_id"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "library_preparation_kit": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Library Preparation Kit",
+              "name": "library_preparation_kit",
+              "required": true
+            },
+            "description": "The kit used for library preparation.",
+            "error": "Library preparation kit is required",
+            "example": "10X Genomics Single Cell 3' v3",
+            "mapped_manifests": {
+              "mixs": true
+            },
+            "mapping": {
+              "mixs": {
+                "label": "Library Preparation Kit",
+                "name": "library_prep_kit",
+                "reference": "https://genomicsstandardsconsortium.github.io/mixs/0001145"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "library_preparation_kit_version": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Library Preparation Kit Version",
+              "name": "library_preparation_kit_version",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149"
+            },
+            "description": "The version number of the library preparation kit used for sequencing.",
+            "error": "Library preparation kit version is required",
+            "example": "2",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Library Preparation Kit Version",
+                "name": "library_prep_kit_version"
+              }
+            },
+            "type": "number"
+          }
+        },
+        {
+          "amplification_method": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Amplification Method",
+              "name": "amplification_method",
+              "required": true
+            },
+            "description": "The method used to amplify the Complementary DNA (cDNA).",
+            "error": "Amplification Method is required",
+            "example": "PCR",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "Amplification Method",
+                "name": "amplification_method"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "cDNA_amplification_cycles": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "cDNA Amplification Cycles",
+              "name": "cDNA_amplification_cycles",
+              "required": true
+            },
+            "description": "The number of cycles used during the Complementary DNA (cDNA) amplification process.",
+            "error": "cDNA Amplification Cycles is required",
+            "example": "12",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "cDNA Amplification Cycles",
+                "name": "cDNA_amplification_cycles"
+              }
+            },
+            "type": "number"
+          }
+        },
+        {
+          "average_size_distribution_bp": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Average Size Distribution (BP)",
+              "name": "average_size_distribution_bp",
+              "required": false
+            },
+            "description": "The average length of RNA fragments in base pairs (BP) after library preparation, indicating the quality and suitability of the RNA for sequencing.",
+            "error": "Average size distribution is required",
+            "example": "350",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Average Size Distribution",
+                "name": "average_size_distribution"
+              }
+            },
+            "type": "number",
+            "unit": "bp",
+            "unit_reference": "http://purl.obolibrary.org/obo/UO_0000244"
+          }
+        },
+        {
+          "library_construction_method": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Library Construction Method",
+              "name": "library_construction_method",
+              "required": false
+            },
+            "description": "The library construction method (including version) that was used.",
+            "error": "Library Construction Method is required",
+            "example": "Smart-Seq2",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "Library Construction Method",
+                "name": "library_construction_method"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "input_molecule": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Input Molecule",
+              "name": "input_molecule",
+              "required": false
+            },
+            "description": "The specific fraction of biological macromolecule from which the sequencing library is derived.",
+            "error": "Input Molecule is required",
+            "example": "RNA",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "Input Molecule",
+                "name": "input_molecule"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "primer": {
+            "default_map": {
+              "allowed_values": [
+                "Oligo-dT",
+                "Random"
+              ],
+              "label": "Primer",
+              "name": "primer",
+              "required": false
+            },
+            "description": "The type of primer used for reverse transcription. This allows users to identify content of the cDNA library input for mRNA.",
+            "error": "Primer is required",
+            "example": "Random",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "Primer",
+                "name": "primer"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "primeness": {
+            "default_map": {
+              "allowed_values": [
+                "3'",
+                "5'",
+                "Both"
+              ],
+              "label": "Primeness",
+              "name": "primeness",
+              "required": true
+            },
+            "description": "The end from which the molecule was sequenced.",
+            "error": "Primeness is required",
+            "example": "5'",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Primeness",
+                "name": "primeness"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "end_bias": {
+            "default_map": {
+              "allowed_values": [
+                "3",
+                "5"
+              ],
+              "label": "End Bias",
+              "name": "end_bias",
+              "required": false
+            },
+            "description": "The end bias of the library.",
+            "error": "End bias is required",
+            "example": "3",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "End Bias",
+                "name": "end_bias"
+              }
+            },
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "library_strand": {
+            "default_map": {
+              "allowed_values": [
+                "Antisense",
+                "Both",
+                "Sense",
+                "Unstranded"
+              ],
+              "label": "Library Strand",
+              "name": "library_strand",
+              "required": false
+            },
+            "description": "The Complementary DNA (cDNA) strand of the library from which the reads derived from - sense (first), antisense (second), both or none.",
+            "error": "Library strand is required",
+            "example": "Antisense",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "Library Strand",
+                "name": "library_strand"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "spike_in": {
+            "default_map": {
+              "allowed_values": [
+                "Yes",
+                "No"
+              ],
+              "label": "Spike In",
+              "name": "spike_in",
+              "required": true
+            },
+            "description": "External RNA added to the sample as a control to assess technical variability and normalization in RNA-sequencing. State whether spike-in was used.",
+            "error": "Spike-in is required",
+            "example": "Yes",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "Spike In",
+                "name": "spike_in"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "spike_type": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Spike Type",
+              "name": "spike_type",
+              "required": false
+            },
+            "description": "The specific type of external RNA used for spiking in, often indicating the source or nature of the control RNA.",
+            "error": "Spike-in is required",
+            "example": "Synthetic RNA",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "Spike Type",
+                "name": "spike_type"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "spike_in_dilution_or_concentration": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Spike in Dilution or Concentration",
+              "name": "spike_in_dilution_or_concentration",
+              "required": false
+            },
+            "description": "The final concentration or dilution (for commercial sets) of the spike in mix.",
+            "error": "Spike in dilution or concentration is required",
+            "example": "1:1000",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "Spike In Dilution Or Concentration",
+                "name": "spike_in_dilution_or_concentration"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "i5_index": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "i5 Index",
+              "name": "i5_index",
+              "required": true
+            },
+            "description": "Barcode sequence used on the i5 adapter during library preparation for identifying samples in multiplexed single-cell RNA-sequencing.",
+            "error": "i5 Index is required",
+            "example": "ATCACG",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "i5 Index",
+                "name": "i5_index"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "i7_index": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "i7 Index",
+              "name": "i7_index",
+              "required": true
+            },
+            "description": "Barcode sequence used on the i7 adapter to distinguish samples in multiplexed sequencing runs.",
+            "error": "i7 Index is required",
+            "example": "CGATGT",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "i7 Index",
+                "name": "i7_index"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "dual_single_index": {
+            "default_map": {
+              "allowed_values": [
+                "Dual",
+                "Single"
+              ],
+              "label": "Dual or Single Index",
+              "name": "dual_single_index",
+              "required": true
+            },
+            "description": "Specifies if both i5 and i7 indices (dual) or only one index (single) was used for sample identification during sequencing.",
+            "error": "Dual or Single Index is required",
+            "example": "Dual",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Dual or Single Index",
+                "name": "dual_single_index"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "index_length": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Index Length",
+              "name": "index_length",
+              "required": true
+            },
+            "description": "The length (in base pairs) of the index sequences used (i5 and/or i7).",
+            "error": "Index length is required",
+            "example": "8",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Index Length",
+                "name": "index_length"
+              }
+            },
+            "type": "number",
+            "unit": "bp"
+          }
+        },
+        {
+          "i5_sequence": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "i5 Sequence",
+              "name": "i5_sequence",
+              "required": true
+            },
+            "description": "The nucleotide sequence of the i5 index used in multiplexing during sequencing.",
+            "error": "I5 sequence is required",
+            "example": "ATCGTAGC",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "I5 Sequence",
+                "name": "i5_sequence"
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": ""
+          }
+        },
+        {
+          "i7_sequence": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "i7 Sequence",
+              "name": "i7_sequence",
+              "required": true
+            },
+            "description": "The specific nucleotide sequence of the i7 index used for a sample.",
+            "error": "i7 sequence is required",
+            "example": "TGCATGCA",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "i7 Sequence",
+                "name": "i7_sequence"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "plate_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Plate ID",
+              "name": "plate_id",
+              "required": false
+            },
+            "description": "Identifier for the 96-well plate used in sample preparation.",
+            "error": "Plate ID is required",
+            "example": "plate123",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Plate ID",
+                "name": "plate_id"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "well_row": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Well Row",
+              "name": "well_row",
+              "required": false
+            },
+            "description": "The row identifier in a 96-well plate indicating the sample's position.",
+            "error": "Well Row is required",
+            "example": "A",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Well Row",
+                "name": "well_row"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "well_col": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Well Column",
+              "name": "well_col",
+              "required": false
+            },
+            "description": "The column identifier in a 96-well plate indicating the sample's position.",
+            "error": "Well Column is required",
+            "example": "5",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Well Column",
+                "name": "well_col"
+              }
+            },
+            "type": "number"
+          }
+        },
+        {
+          "cell_phenotype": {
+            "default_map": {
+              "allowed_values": [
+                "CD41-",
+                "CD41+"
+              ],
+              "label": "Cell Phenotype",
+              "name": "cell_phenotype",
+              "required": false
+            },
+            "description": "The cell marker for the Fluorescence-Activated Cell Sorting (FACS) of cells.",
+            "error": "Cell phenotype is required",
+            "example": "CD41-",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Cell Phenotype",
+                "name": "cell_phenotype"
+              }
+            },
+            "type": "string"
+          }
+        }
+      ]
+    },
+    {
+      "component": "sequencing",
+      "fields": [
+        {
+          "sequencing_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sequencing ID",
+              "name": "sequencing_id",
+              "required": true
+            },
+            "description": "A unique alphanumeric reference or identifier for the sequencing protocol.",
+            "error": "Sequencing ID is required",
+            "example": "seq123",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Sequencing ID",
+                "name": "sequencing_id"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "sequencing_platform_name": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sequencing Platform Name",
+              "name": "sequencing_platform_name",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/NCIT_C172274"
+            },
+            "description": "The name of the sequencing platform used for the experiment.",
+            "error": "Sequence platform name is required",
+            "example": "Pacbio",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "global": true,
+              "tol": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Sequencing Platform Name",
+                "name": "sequencing_platform_name",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C172274"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "sequencing_instrument_model": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sequencing Instrument Model",
+              "name": "sequencing_instrument_model",
+              "required": true,
+              "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149"
+            },
+            "description": "This refers to the machine or platform used for sequencing, with variations in throughput, read lengths, error rates, and application suitability.",
+            "error": "Sequence instrument model is required",
+            "example": "Illumina NovaSeq 6000",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Sequencing Instrument Model",
+                "name": "sequencing_instrument_model",
+                "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "library_layout": {
+            "default_map": {
+              "allowed_values": [
+                "Single",
+                "Paired",
+                "Pool"
+              ],
+              "label": "Library Layout",
+              "name": "library_layout",
+              "required": true
+            },
+            "description": "The type of library layout used for sequencing.",
+            "error": "Library layout is required",
+            "example": "single",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Library Layout",
+                "name": "library_layout",
+                "reference": "http://purl.obolibrary.org/obo/NCIT_C150423"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "desired_reads_per_cell": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Desired Reads Per Cell",
+              "name": "desired_reads_per_cell",
+              "required": true
+            },
+            "description": "The ideal number of sequencing reads to be generated per cell.",
+            "error": "Desired reads per cell is required",
+            "example": "1000000",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Desired Reads Per Cell",
+                "name": "desired_reads_per_cell"
+              }
+            },
+            "type": "number"
+          }
+        },
+        {
+          "UMI_barcode_read": {
+            "default_map": {
+              "allowed_values": [
+                "index1",
+                "index2",
+                "read1",
+                "read2"
+              ],
+              "label": "UMI Barcode Read",
+              "name": "UMI_barcode_read",
+              "required": false
+            },
+            "description": "The type of read that contains the Unique Molecular Identifier (UMI) barcode.",
+            "error": "UMI barcode read is required",
+            "example": "index2",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "UMI Barcode Read",
+                "name": "UMI_barcode_read"
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": ""
+          }
+        },
+        {
+          "UMI_barcode_offset": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "UMI Barcode Offset",
+              "name": "UMI_barcode_offset",
+              "required": false
+            },
+            "description": "The offset in sequence of the Unique Molecular Identifier (UMI) identifying barcode.",
+            "error": "UMI barcode offset is required",
+            "example": "0",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "UMI Barcode Offset",
+                "name": "UMI_barcode_offset"
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": ""
+          }
+        },
+        {
+          "UMI_barcode_size": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "UMI Barcode Size",
+              "name": "UMI_barcode_size",
+              "required": false
+            },
+            "description": "The size of the Unique Molecular Identifier (UMI) identifying barcode.",
+            "error": "UMI barcode size is required",
+            "example": "10",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "UMI Barcode Size",
+                "name": "UMI_barcode_size"
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": ""
+          }
+        },
+        {
+          "cell_barcode_read": {
+            "default_map": {
+              "allowed_values": [
+                "index1",
+                "index2",
+                "read1",
+                "read2"
+              ],
+              "label": "Cell Barcode Read",
+              "name": "cell_barcode_read",
+              "required": false
+            },
+            "description": "The type of read that contains the UMI barcode.",
+            "error": "Cell barcode read is required",
+            "example": "index1",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "Cell Barcode Read",
+                "name": "cell_barcode_read"
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "cell_barcode_offset": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cell Barcode Offset",
+              "name": "cell_barcode_offset",
+              "required": false
+            },
+            "description": "The offset in sequence of the cell identifying barcode.\nE.g. \"0\".",
+            "error": "Cell barcode offset is required",
+            "example": "10",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Cell Barcode Offset",
+                "name": "cell_barcode_offset"
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "cell_barcode_size": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cell Barcode Size",
+              "name": "cell_barcode_size",
+              "required": false
+            },
+            "description": "The offset in sequence of the cell identifying barcode.\nE.g. \"0\".",
+            "error": "Cell barcode size is required",
+            "example": "0",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "global": true,
+              "tol": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Cell Barcode Size",
+                "name": "cell_barcode_size"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "sample_barcode_read": {
+            "default_map": {
+              "allowed_values": [
+                "index1",
+                "index2",
+                "read1",
+                "read2"
+              ],
+              "label": "Cell Barcode Read",
+              "name": "cell_barcode_read",
+              "required": false
+            },
+            "description": "The type of read that contains the UMI barcode.",
+            "error": "Cell barcode read is required",
+            "example": "index1",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "global": true,
+              "tol": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Cell Barcode Read",
+                "name": "cell_barcode_read"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "sample_barcode_offset": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cell Barcode Offset",
+              "name": "cell_barcode_offset",
+              "required": false
+            },
+            "description": "The offset in sequence of the cell identifying barcode.\nE.g. \"0\".",
+            "error": "Cell barcode offset is required",
+            "example": "10",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "global": true,
+              "tol": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Cell Barcode Offset",
+                "name": "cell_barcode_offset"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "sample_barcode_size": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cell Barcode Size",
+              "name": "cell_barcode_size",
+              "required": false
+            },
+            "description": "The offset in sequence of the cell identifying barcode.\nE.g. \"0\".",
+            "error": "Cell barcode size is required",
+            "example": "0",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "global": true,
+              "tol": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Cell Barcode Size",
+                "name": "cell_barcode_size"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": "",
+            "value": ""
+          }
+        },
+        {
+          "cDNA_read": {
+            "default_map": {
+              "allowed_values": [
+                "index1",
+                "index2",
+                "read1",
+                "read2"
+              ],
+              "label": "cDNA Read",
+              "name": "cDNA_read",
+              "required": true
+            },
+            "description": "The actual nucleotide sequence obtained from Complementary DNA (cDNA) during sequencing.",
+            "error": "cDNA read is required",
+            "example": "read1",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "global": true,
+              "tol": true
+            },
+            "mapping": {
+              "global": {
+                "label": "cDNA Read",
+                "name": "cDNA_read"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": ""
+          }
+        },
+        {
+          "cDNA_read_offset": {
+            "default_map": {
+              "allowed_values": [
+                "index1",
+                "index2",
+                "read1",
+                "read2"
+              ],
+              "label": "cDNA Read Offset",
+              "name": "cDNA_read_offset",
+              "required": false
+            },
+            "description": "The starting position of the Complementary DNA (cDNA) read within the entire sequence, indicating where the read begins after any barcodes or technical sequences.",
+            "error": "cDNA Read Offset is required",
+            "example": "read2",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "global": true,
+              "tol": true
+            },
+            "mapping": {
+              "global": {
+                "label": "cDNA Read Offset",
+                "name": "cDNA_read_offset"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": ""
+          }
+        },
+        {
+          "cDNA_read_size": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "cDNA Read Size",
+              "name": "cDNA_read_size",
+              "required": false
+            },
+            "description": "The size of the Complementary DNA (cDNA) read.",
+            "error": "cDNA read size is required",
+            "example": "75",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "global": true,
+              "tol": true
+            },
+            "mapping": {
+              "global": {
+                "label": "cDNA Read Size",
+                "name": "cDNA_read_size"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": ""
+          }
+        }
+      ]
+    },
+    {
+      "component": "file",
+      "fields": [
+        {
+          "library_preparation_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Library Preparation ID",
+              "name": "library_preparation_id",
+              "required": true
+            },
+            "description": "A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.",
+            "error": "Library preparation reference is required",
+            "example": "libPrep123",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Library Preparation ID",
+                "name": "library_preparation_id"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "sequencing_id": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sequencing ID",
+              "name": "sequencing_id",
+              "required": true
+            },
+            "description": "A unique alphanumeric reference or identifier for the sequencing protocol.",
+            "error": "Sequencing ID is required",
+            "example": "seq123",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Sequencing ID",
+                "name": "sequencing_id"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "read_1_file": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Read 1 File",
+              "name": "read_1_file",
+              "required": true
+            },
+            "description": "The name of the file that contains read 1.",
+            "error": "Read 1 file name is required",
+            "example": "file1_r1.fastq.gz",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Read 1 File",
+                "name": "read_1_file"
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": ""
+          }
+        },
+        {
+          "read_2_file": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Read 2 File",
+              "name": "read_2_file",
+              "required": true
+            },
+            "description": "The name of the file that contains read 2.",
+            "error": "Read 2 file name is required",
+            "example": "file2_r2.fastq.gz",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "global": true,
+              "tol": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Read 2 File",
+                "name": "read_2_file"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": ""
+          }
+        },
+        {
+          "index_1_file": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Index 1 File",
+              "name": "index_1_file",
+              "required": true
+            },
+            "description": "The name of the file that contains index 1.",
+            "error": "Index 1 file name is required",
+            "example": "file1_i1.fastq.gz",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "global": true,
+              "tol": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Index 1 File",
+                "name": "index_1_file"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": ""
+          }
+        },
+        {
+          "index_2_file": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Index 2 File",
+              "name": "index_2_file",
+              "required": true
+            },
+            "description": "The name of the file that contains index 2.",
+            "error": "Index 2 file name is required",
+            "example": "file2_i2.fastq.gz",
+            "mapped_manifests": {
+              "dwc": true,
+              "mixs": true,
+              "global": true,
+              "tol": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Index 2 File",
+                "name": "index_2_file"
+              },
+              "tol": {
+                "label": "",
+                "name": ""
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": ""
+          }
+        },
+        {
+          "read_checksum": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Read Checksum",
+              "name": "read_checksum",
+              "required": true
+            },
+            "description": "Result of a hash function calculated on the content of both the read 1 file and the read 2 file to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).",
+            "error": "Read checksum is required",
+            "example": "d41d8cd98f00b204e9800998ecf8427e,5a105e8b9d40e1329780d62ea2265d8a77a1a45e",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Read Checksum",
+                "name": "read_checksum"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "index_checksum": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Index Checksum",
+              "name": "index_checksum",
+              "required": true
+            },
+            "description": "Result of a hash function calculated on the content of both the index 1 file and the index 2 file to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).",
+            "error": "Index checksum is required",
+            "example": "d3486ae9136e7856bc42212385ea797094475802,b7e23ec29af22b0b4e41da31e868d57226121c84",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Index Checksum",
+                "name": "index_checksum"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "white_list_barcode_file": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "White List Barcode File",
+              "name": "white_list_barcode_file",
+              "required": false
+            },
+            "description": "A file containing the known cell barcodes in the\ndataset.",
+            "error": "White List Barcode File is required",
+            "example": "barcodes.tsv",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "White List Barcode File",
+                "name": "white_list_barcode_file"
+              }
+            },
+            "type": "string",
+            "unit": "",
+            "unit_reference": ""
+          }
+        }
+      ]
+    },
+    {
+      "component": "analysis_derived_data",
+      "fields": [
+        {
+          "file_derived_from": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "File Derived From",
+              "name": "file_derived_from",
+              "required": false
+            },
+            "description": "The name of the file that was used to generate the analysis derived data.",
+            "error": "File derived from is required",
+            "example": "file1_sequencing.json",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "File Derived From",
+                "name": "file_derived_from"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "inferred_cell_type": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Inferred Cell Type",
+              "name": "inferred_cell_type",
+              "required": false
+            },
+            "description": "Post analysis cell type or identity declaration based on expression profile or known gene function identified by the performer.",
+            "error": "Inferred cell type is required",
+            "example": "type II bipolar neuron",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "Inferred Cell Type",
+                "name": "inferred_cell_type"
+              }
+            },
+            "regex": "",
+            "type": "string"
+          }
+        },
+        {
+          "post_analysis_cell_well_quality": {
+            "default_map": {
+              "allowed_values": [
+                "Pass",
+                "Fail"
+              ],
+              "label": "Post Analysis Cell Well Quality",
+              "name": "post_analysis_cell_well_quality",
+              "required": false
+            },
+            "description": "Performer defined measure of whether the read output\nfrom the cell was included in the sequencing analysis. For example, cells might be excluded if a threshold percentage of reads did not map to the genome or if pre-sequencing quality measures were not passed.",
+            "error": "Post analysis cell well quality is required",
+            "example": "Passed",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "Post Analysis Cell Well Quality",
+                "name": "post_analysis_cell_well_quality"
+              }
+            },
+            "regex": "^Pass$|^Fail$",
+            "type": "string"
+          }
+        },
+        {
+          "other_derived_cell_attributes": {
+            "default_map": {
+              "allowed_values": [
+                "cluster",
+                "gene",
+                "count",
+                "UMI",
+                "count",
+                "tSNE coordinates"
+              ],
+              "label": "Other Derived Cell Attributes",
+              "name": "other_derived_cell_attributes",
+              "required": false
+            },
+            "description": "Any other cell level measurement or annotation as result of the analysis.",
+            "error": "Other derived cell attributes is required",
+            "example": "cluster",
+            "mapped_manifests": {
+              "minsce": true
+            },
+            "mapping": {
+              "minsce": {
+                "label": "Other Derived Cell Attributes",
+                "name": "other_derived_cell_attributes"
+              }
+            },
+            "regex": "",
+            "type": "string"
+          }
+        }
+      ]
+    },
+    {
+      "component": "raw_data_processing",
+      "fields": [
+        {
+          "reference_genome": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Reference Genome",
+              "name": "reference_genome",
+              "required": false
+            },
+            "description": "Indicate version and include stable link to genome data (or attach genome fasta file).",
+            "example": "GRCh38, https://example.org/grch38.fa",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Reference Genome",
+                "name": "reference_genome"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "genome_annotation": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Genome Annotation",
+              "name": "genome_annotation",
+              "required": false
+            },
+            "description": "Indicate version and include stable link. Also indicate if any modification to the original annotation has been applied (e.g. 3' UTR extension) and include modified annotation file employed in the analysis.",
+            "example": "Ensembl v101, https://example.org/ensembl_v101.gtf",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Genome Annotation",
+                "name": "genome_annotation"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "annotation_filtering": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Annotation Filtering",
+              "name": "annotation_filtering",
+              "required": false
+            },
+            "description": "Indicate which features were filtered (i.e. protein coding, pseudo-genes, TCRs, etc.)",
+            "example": "Filtered to include only protein-coding genes",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Annotation Filtering",
+                "name": "annotation_filtering"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "genes_vs_exons": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Genes vs Exons",
+              "name": "genes_vs_exons",
+              "required": false
+            },
+            "description": "Quantification using whole gene intervals or exons.",
+            "example": "Exon quantification",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Genes vs Exons",
+                "name": "genes_vs_exons"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "library_structure": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Library Structure",
+              "name": "library_structure",
+              "required": false
+            },
+            "description": "seqspec format",
+            "example": "Single-cell 3' library",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Library Structure",
+                "name": "library_structure"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "mapping_and_demultiplexing_software": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Mapping and Demultiplexing Software",
+              "name": "mapping_and_demultiplexing_software",
+              "required": false
+            },
+            "description": "Reads/UMI",
+            "example": "Cell Ranger 6.0.0",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Mapping and Demultiplexing Software",
+                "name": "mapping_and_demultiplexing_software"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "read_mapping_statistics": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Read Mapping Statistics",
+              "name": "read_mapping_statistics",
+              "required": false
+            },
+            "description": "Statistics of the Reads or Unique Molecular Identifier (UMI).",
+            "example": "80% reads mapped to reference",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Read Mapping Statistics",
+                "name": "read_mapping_statistics"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "sequencing_saturation": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sequencing Saturation",
+              "name": "sequencing_saturation",
+              "required": false
+            },
+            "description": "Depending on number of cells recovered (not targeted) and technology",
+            "example": "95% sequencing saturation",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Sequencing Saturation",
+                "name": "sequencing_saturation"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "UMIs_barcode_distribution_qc": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "UMIs or Barcode Distribution QC",
+              "name": "UMIs_barcode_distribution_qc",
+              "required": false
+            },
+            "description": "Show Unique Molecular Identifiers (UMIs) per barcode distribution and threshold applied",
+            "example": "Threshold: 10 UMIs per barcode",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "UMIs or Barcode Distribution QC",
+                "name": "UMIs_barcode_distribution_qc"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "cell_non_cell_filtering_strategy": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cell or Non-Cell Filtering Strategy",
+              "name": "cell_non_cell_filtering_strategy",
+              "required": false
+            },
+            "description": "Unique Molecular Identifier (UMI) threshold used to discriminate cells from non-cells. Description of algorithm (if any) and parameters used to determine cells or non-cells.",
+            "example": "Threshold: 5 UMIs for cell detection",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Cell or Non-Cell Filtering Strategy",
+                "name": "cell_non_cell_filtering_strategy"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "other_quality_filters_applied": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Other Quality Filters Applied",
+              "name": "other_quality_filters_applied",
+              "required": false
+            },
+            "description": "Cells/nuclei discarded based on % mitochondrial reads, % rRNA reads, etc.",
+            "example": "Cells with >20% mitochondrial reads discarded",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Other Quality Filters Applied",
+                "name": "other_quality_filters_applied"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "ambient_rna_qc": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Ambient RNA QC",
+              "name": "ambient_rna_qc",
+              "required": false
+            },
+            "description": "Report % UMIs in background cell barcodes, and algorithm (if any) used to remove ambient RNA",
+            "example": "Ambient RNA removed if >5% UMIs in background barcodes",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Ambient RNA QC",
+                "name": "ambient_rna_qc"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "predicted_doublet_rate_qc": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Predicted Doublet Rate QC",
+              "name": "predicted_doublet_rate_qc",
+              "required": false
+            },
+            "description": "Depending on number of cells recovered (not targeted) and technology",
+            "example": "Predicted doublet rate: 1.5%",
+            "mapped_manifests": {
+              "global": true
+            },
+            "mapping": {
+              "global": {
+                "label": "Predicted Doublet Rate QC",
+                "name": "predicted_doublet_rate_qc"
+              }
+            },
+            "type": "string"
+          }
+        },
+        {
+          "individual_organism_snp_demultiplexing": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Individual Organism SNP Demultiplexing",
+              "name": "individual_organism_snp_demultiplexing",
+              "required": false
+            },
+            "description": "If carried out, show SNP partitioning quality (e.g. SNP UMAP embedding or covariance matrix), algorithm used",
+            "example": "SNP UMAP embedding using CellSNP",
+            "mapped_manifests": {
+              "bca": true
+            },
+            "mapping": {
+              "bca": {
+                "label": "Individual Organism SNP Demultiplexing",
+                "name": "individual_organism_snp_demultiplexing"
+              }
+            },
+            "type": "string"
+          }
+        }
+      ]
+    },
+    {
+      "component": "downstream_processing",
+      "fields": [
+        {
+          "clustering_algorithm_and_version": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Clustering Algorithm and Version",
+              "name": "clustering_algorithm_and_version",
+              "required": false
+            },
+            "description": "If compared/integrated with existing datasets",
+            "example": "Louvain 0.8.0",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Clustering Algorithm and Version",
+                "name": "clustering_algorithm_and_version"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "clustering_parameters": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Clustering Parameters",
+              "name": "clustering_parameters",
+              "required": false
+            },
+            "description": "If compared/integrated with existing datasets",
+            "example": "Resolution: 0.6, K-nearest neighbors: 10",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Clustering Parameters",
+                "name": "clustering_parameters"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "integration_batch_correction": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Integration/Batch Correction",
+              "name": "integration_batch_correction",
+              "required": false
+            },
+            "description": "If compared/integrated with existing datasets",
+            "example": "Harmony v1.0",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Integration/Batch Correction",
+                "name": "integration_batch_correction"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "component": "raw_data_processing",
+      "fields": [
+        {
+          "reference_genome": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Reference Genome",
+              "name": "reference_genome",
+              "required": false
+            },
+            "description": "Indicate version and include stable link to genome data (or attach genome fasta file).",
+            "example": "GRCh38, https://example.org/grch38.fa",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Reference Genome",
+                "name": "reference_genome"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "genome_annotation": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Genome Annotation",
+              "name": "genome_annotation",
+              "required": false
+            },
+            "description": "Indicate version and include stable link. Also indicate if any modification to the original annotation has been applied (e.g. 3' UTR extension) and include modified annotation file employed in the analysis.",
+            "example": "Ensembl v101, https://example.org/ensembl_v101.gtf",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Genome Annotation",
+                "name": "genome_annotation"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "annotation_filtering": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Annotation Filtering",
+              "name": "annotation_filtering",
+              "required": false
+            },
+            "description": "Indicate which features were filtered (i.e. protein coding, pseudo-genes, TCRs, etc.)",
+            "example": "Filtered to include only protein-coding genes",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Annotation Filtering",
+                "name": "annotation_filtering"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "genes_vs_exons": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Genes vs Exons",
+              "name": "genes_vs_exons",
+              "required": false
+            },
+            "description": "Quantification using whole gene intervals or exons.",
+            "example": "Exon quantification",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Genes vs Exons",
+                "name": "genes_vs_exons"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "library_structure": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Library Structure",
+              "name": "library_structure",
+              "required": false
+            },
+            "description": "seqspec format",
+            "example": "Single-cell 3' library",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Library Structure",
+                "name": "library_structure"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "mapping_and_demultiplexing_software": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Mapping and Demultiplexing Software",
+              "name": "mapping_and_demultiplexing_software",
+              "required": false
+            },
+            "description": "Reads/UMI",
+            "example": "Cell Ranger 6.0.0",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Mapping and Demultiplexing Software",
+                "name": "mapping_and_demultiplexing_software"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "read_mapping_statistics": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Read Mapping Statistics",
+              "name": "read_mapping_statistics",
+              "required": false
+            },
+            "description": "Reads/UMI",
+            "example": "80% reads mapped to reference",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Read Mapping Statistics",
+                "name": "read_mapping_statistics"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "sequencing_saturation": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Sequencing Saturation",
+              "name": "sequencing_saturation",
+              "required": false
+            },
+            "description": "Depending on number of cells recovered (not targeted) and technology",
+            "example": "95% sequencing saturation",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Sequencing Saturation",
+                "name": "sequencing_saturation"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "umis_barcode_distribution_qc": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "UMIs/Barcode Distribution QC",
+              "name": "umis_barcode_distribution_qc",
+              "required": false
+            },
+            "description": "Show UMIs per barcode distribution and threshold applied",
+            "example": "Threshold: 10 UMIs per barcode",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "UMIs/Barcode Distribution QC",
+                "name": "umis_barcode_distribution_qc"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "cell_non_cell_filtering_strategy": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cell/Non-Cell Filtering Strategy",
+              "name": "cell_non_cell_filtering_strategy",
+              "required": false
+            },
+            "description": "UMI threshold used to discriminate cells from non-cells. Description of algorithm (if any) and parameters used to determine cells/non-cells.",
+            "example": "Threshold: 5 UMIs for cell detection",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Cell/Non-Cell Filtering Strategy",
+                "name": "cell_non_cell_filtering_strategy"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "other_quality_filters_applied": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Other Quality Filters Applied",
+              "name": "other_quality_filters_applied",
+              "required": false
+            },
+            "description": "Cells/nuclei discarded based on % mitochondrial reads, % rRNA reads, etc.",
+            "example": "Cells with >20% mitochondrial reads discarded",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Other Quality Filters Applied",
+                "name": "other_quality_filters_applied"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "ambient_rna_qc": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Ambient RNA QC",
+              "name": "ambient_rna_qc",
+              "required": false
+            },
+            "description": "Report % UMIs in background cell barcodes, and algorithm (if any) used to remove ambient RNA",
+            "example": "Ambient RNA removed if >5% UMIs in background barcodes",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Ambient RNA QC",
+                "name": "ambient_rna_qc"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "predicted_doublet_rate_qc": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Predicted Doublet Rate QC",
+              "name": "predicted_doublet_rate_qc",
+              "required": false
+            },
+            "description": "Depending on number of cells recovered (not targeted) and technology",
+            "example": "Predicted doublet rate: 1.5%",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Predicted Doublet Rate QC",
+                "name": "predicted_doublet_rate_qc"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "individual_organism_snp_demultiplexing": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Individual Organism SNP Demultiplexing",
+              "name": "individual_organism_snp_demultiplexing",
+              "required": false
+            },
+            "description": "If carried out, show SNP partitioning quality (e.g. SNP UMAP embedding or covariance matrix), algorithm used",
+            "example": "SNP UMAP embedding using CellSNP",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Individual Organism SNP Demultiplexing",
+                "name": "individual_organism_snp_demultiplexing"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "component": "downstream_processing",
+      "fields": [
+        {
+          "clustering_algorithm_and_version": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Clustering Algorithm and Version",
+              "name": "clustering_algorithm_and_version",
+              "required": false
+            },
+            "description": "If compared/integrated with existing datasets",
+            "example": "Louvain 0.8.0",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Clustering Algorithm and Version",
+                "name": "clustering_algorithm_and_version"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "clustering_parameters": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Clustering Parameters",
+              "name": "clustering_parameters",
+              "required": false
+            },
+            "description": "If compared/integrated with existing datasets",
+            "example": "Resolution: 0.6, K-nearest neighbors: 10",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Clustering Parameters",
+                "name": "clustering_parameters"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "integration_batch_correction": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Integration/Batch Correction",
+              "name": "integration_batch_correction",
+              "required": false
+            },
+            "description": "If compared/integrated with existing datasets",
+            "example": "Harmony v1.0",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Integration/Batch Correction",
+                "name": "integration_batch_correction"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "component": "data_availability_checklist",
+      "fields": [
+        {
+          "source_code": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Source Code",
+              "name": "source_code",
+              "required": false
+            },
+            "description": "If any newly developed code/software has been used in the processing and downstream analysis of the dataset.",
+            "example": "Source code is hosted on GitHub and includes custom algorithms for UMI count normalization. The repository can be found at: https://github.com/user/umi-normalization.",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Source Code",
+                "name": "source_code"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "umi_count_matrix": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "UMI Count Matrix",
+              "name": "umi_count_matrix",
+              "required": false
+            },
+            "description": "Gene x cell matrix with UMI counts for each gene in each cell.",
+            "example": "The UMI count matrix is stored in a CSV file with gene IDs as rows (e.g., ENSG00000139618) and cell barcodes as columns (e.g., Cell_001, Cell_002). The matrix file is available at: https://example.com/umi_count_matrix.csv.",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "UMI Count Matrix",
+                "name": "umi_count_matrix"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "ensembl_ids": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Ensembl IDs",
+              "name": "ensembl_ids",
+              "required": false
+            },
+            "description": "Gene or transcript names should be listed as Ensembl (or other standardized ID), with gene short names in metadata.",
+            "example": "The UMI count matrix includes genes identified by their Ensembl IDs, such as 'ENSG00000139618' for the BRCA1 gene. See the full list of Ensembl IDs in the metadata file.",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Ensembl IDs",
+                "name": "ensembl_ids"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "functional_gene_annotations": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Functional Gene Annotations",
+              "name": "functional_gene_annotations",
+              "required": false
+            },
+            "description": "Any functional annotation generated/used (gene names, GOs, structural domains, etc.).",
+            "example": "Functional gene annotations, including Gene Ontology (GO) terms, are provided in the metadata. For example, the gene 'ENSG00000139618' (BRCA1) is annotated with the GO term 'GO:0003674' (DNA binding).",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Functional Gene Annotations",
+                "name": "functional_gene_annotations"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "protein_models": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Protein Models",
+              "name": "protein_models",
+              "required": false
+            },
+            "description": "FASTA file with (or stable link to) the predicted proteins associated to genes in the UMI count matrix and matching IDs.",
+            "example": "The protein sequences for genes are provided in a FASTA file available at: https://example.com/protein_models.fasta, where each protein sequence is linked to the corresponding gene ID.",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Protein Models",
+                "name": "protein_models"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "cell_metadata": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cell Metadata",
+              "name": "cell_metadata",
+              "required": false
+            },
+            "description": "Table mapping cell IDs to cluster/cell type/broad cell type annotations.",
+            "example": "Cell metadata includes information such as cell type annotations ('Tumor', 'Normal') and experimental conditions ('Control', 'Treatment'). This data is available in a table at: https://example.com/cell_metadata.csv.",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Cell Metadata",
+                "name": "cell_metadata"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "cluster_level_normalized_expression_tables": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Cluster-Level Normalised Expression Tables",
+              "name": "cluster_level_normalised_expression_tables",
+              "required": false
+            },
+            "description": "Expression tables that show normalised gene expression at the cluster or cell-type level.",
+            "example": "Normalised gene expression data at the cluster level is provided in a tab-delimited text file. For example, gene 'ENSG00000139618' (BRCA1) has expression values for clusters: Cluster_1: 1200, Cluster_2: 900. The full expression table is available at: https://example.com/cluster_level_expression.csv.",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Cluster-Level Normalised Expression Tables",
+                "name": "cluster_level_normalised_expression_tables"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        },
+        {
+          "other_resource_files": {
+            "default_map": {
+              "allowed_values": [],
+              "label": "Other Resource Files",
+              "name": "other_resource_files",
+              "required": false
+            },
+            "description": "Necessary to re-use and interpret the data. E.g. barcode information in complex, serial multiplexing protocols (clicktags).",
+            "example": "Barcode information used in multiplexing protocols is provided in a separate file, which can be accessed at: https://example.com/barcode_data.csv.",
+            "type": "string",
+            "mapping": {
+              "bca": {
+                "label": "Other Resource Files",
+                "name": "other_resource_files"
+              }
+            },
+            "mapped_manifests": {
+              "bca": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
