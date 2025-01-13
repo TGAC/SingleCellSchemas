@@ -35,15 +35,15 @@
                 >Based on Standard...</label
               >
               <select class="form-select" id="std_dropdown">
-                <option value="bca">Biodiversity Cell Atlas</option>
-                <option value="dwc" selected>Darwin Core</option>
+                <option value="bca">Biodiversity Cell Atlas (BCA)</option>
+                <option value="dwc" selected>Darwin Core (DwC)</option>
                 <option value="minsce">
-                  Minimum Information about a Single Cell Experiment
+                  Minimum Information about a Single Cell Experiment (MINsCE)
                 </option>
                 <option value="mixs">
-                  Minimum Information about any (x) Sequence
+                  Minimum Information about any (x) Sequence (MIxS)
                 </option>
-                <option value="tol">Tree of Life</option>
+                <option value="tol">Tree of Life (ToL)</option>
               </select>
             </div>
 
@@ -51,9 +51,9 @@
             <div class="mb-3">
               <label for="tech_dropdown" class="form-label">Technology</label>
               <select class="form-select" id="tech_dropdown">
-                <option value="sc_rnaseq" selected>Single Cell RNAseq</option>
-                <option value="stx_fish">Spatial Transcriptomic Fish</option>
-                <option value="stx_seq">Spatial Transcriptomic Seq</option>
+                <option value="sc_rnaseq" selected>Single Cell RNA-Sequencing</option>
+                <option value="stx_fish">Spatial Transcriptomics Fish</option>
+                <option value="stx_seq">Spatial Transcriptomics Sequencing</option>
               </select>
             </div>
 
@@ -88,7 +88,7 @@
                 aria-expanded="true"
                 aria-controls="collapse{{ component.group_name }}"
               >
-                {{component.group_name}}
+                {{component.group_label}}
               </button>
             </div>
             <div
@@ -132,11 +132,13 @@
                             </a>
                         </td>
                       </tr>
-                       {% endif %}
+                      {% endif %}
+                      {% if field.regex %}
                       <tr>
                         <td>Regex</td>
                         <td>{{ field.regex }}</td>
                       </tr>
+                      {% endif %}
                       {% if field.allowed_values|length > 0 %}
                       <tr>
                         <td>Allowed Values</td>
@@ -194,6 +196,8 @@
             standard +
             '/' +
             technology +
+            '_' +
+            standard +
             '_' +
             version +
             '.html' +
