@@ -26,15 +26,15 @@ def generate_base_schema_xlsx(file_path):
         data_df.to_excel(writer, sheet_name='data', index=False)
         allowed_values_df.to_excel(writer, sheet_name='allowed_values', index=False)
         
-        # Group data by namespace and write each namespace to its own protected sheet
-        for namespace, group in data_df.groupby('namespace'):
-            namespace_df = group.copy()
-            sheet_name = namespace[:31]  # Ensure sheet name length is valid for Excel
-            namespace_df.to_excel(writer, sheet_name=sheet_name, index=False)
+        # Group data by namespace prefix and write each namespace prefix to its own protected sheet
+        for namespace_prefix, group in data_df.groupby('namespace_prefix'):
+            namespace_prefix_df = group.copy()
+            sheet_name = namespace_prefix[:31]  # Ensure sheet name length is valid for Excel
+            namespace_prefix_df.to_excel(writer, sheet_name=sheet_name, index=False)
         
         # Autofit columns for all sheets
         autofit_all_sheets(writer)
-    # Protect namespace sheets
+    # Protect namespace prefix sheets
     wb = load_workbook(temp_output_path)
     for sheet in wb.worksheets:
         if sheet.title not in ['data', 'allowed_values']:
