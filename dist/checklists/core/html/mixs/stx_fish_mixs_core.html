@@ -35,11 +35,7 @@
                 >Based on Standard...</label
               >
               <select class="form-select" id="std_dropdown">
-                <option value="bca">Biodiversity Cell Atlas (BCA)</option>
                 <option value="dwc" selected>Darwin Core (DwC)</option>
-                <option value="minsce">
-                  Minimum Information about a Single Cell Experiment (MINsCE)
-                </option>
                 <option value="mixs">
                   Minimum Information about any (x) Sequence (MIxS)
                 </option>
@@ -51,9 +47,13 @@
             <div class="mb-3">
               <label for="tech_dropdown" class="form-label">Technology</label>
               <select class="form-select" id="tech_dropdown">
-                <option value="sc_rnaseq" selected>Single Cell RNA-Sequencing</option>
+                <option value="sc_rnaseq" selected>
+                  Single Cell RNA-Sequencing
+                </option>
                 <option value="stx_fish">Spatial Transcriptomics Fish</option>
-                <option value="stx_seq">Spatial Transcriptomics Sequencing</option>
+                <option value="stx_seq">
+                  Spatial Transcriptomics Sequencing
+                </option>
               </select>
             </div>
 
@@ -129,6 +129,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:study_id
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -156,7 +166,7 @@
                         <td>Jane</td>
                       </tr>
                       
-                      
+                                   
                       <tr>
                         <td>Reference</td>
                         <td>
@@ -170,6 +180,18 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[a-zA-Z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="http://purl.obolibrary.org/obo/NCIT_C40974" target="_blank">
+                              ei:contact_first_name
+                            </a>
+                          
+                        </td>
                       </tr>
                       
                       
@@ -200,7 +222,7 @@
                         <td>Doe</td>
                       </tr>
                       
-                      
+                                   
                       <tr>
                         <td>Reference</td>
                         <td>
@@ -214,6 +236,18 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[a-zA-Z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="http://purl.obolibrary.org/obo/NCIT_C40975" target="_blank">
+                              ei:contact_last_name
+                            </a>
+                          
+                        </td>
                       </tr>
                       
                       
@@ -252,6 +286,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:contact_email
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -279,7 +323,7 @@
                         <td>Study of single cells in the human body</td>
                       </tr>
                       
-                      
+                                   
                       <tr>
                         <td>Reference</td>
                         <td>
@@ -293,6 +337,18 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="https://genomicsstandardsconsortium.github.io/mixs/0000092" target="_blank">
+                              mixs:project_name
+                            </a>
+                          
+                        </td>
                       </tr>
                       
                       
@@ -329,16 +385,18 @@
                       
                       
                       <tr>
-                        <td>Allowed Values</td>
+                        <td>Namespace</td>
                         <td>
                           
-                          <span class="badge bg-dark">Microfluidics, Facs, Sequencing</span>
+                             ei:workflow
                           
-                          <span class="badge bg-dark">Microfluidics, Facs, Culturing</span>
-                          
-                          <span class="badge bg-dark">Microfluidics, Facs, Culturing, Sequencing</span>
-                          
-                          <span class="badge bg-dark">Spatial transcriptomics</span>
+                        </td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
                           
                           <span class="badge bg-dark">Laser microdissection</span>
                           
@@ -347,6 +405,14 @@
                           <span class="badge bg-dark">Laser microdissection, Culturing, Sequencing</span>
                           
                           <span class="badge bg-dark">Laser microdissection, Sequencing</span>
+                          
+                          <span class="badge bg-dark">Microfluidics, Facs, Culturing</span>
+                          
+                          <span class="badge bg-dark">Microfluidics, Facs, Culturing, Sequencing</span>
+                          
+                          <span class="badge bg-dark">Microfluidics, Facs, Sequencing</span>
+                          
+                          <span class="badge bg-dark">Spatial transcriptomics</span>
                           
                         </td>
                       </tr>
@@ -410,6 +476,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:sample_id
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -434,7 +510,7 @@
                         <td>Arenicola marina</td>
                       </tr>
                       
-                      
+                                   
                       <tr>
                         <td>Reference</td>
                         <td>
@@ -448,6 +524,113 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]+[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="https://genomicsstandardsconsortium.github.io/mixs/0000029" target="_blank">
+                              mixs:specific_host
+                            </a>
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Organism</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>organism</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The full scientific name of the species studied.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Arenicola marina</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]+[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:organism
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Strain</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>strain</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>An identifier of the strain of the organism, if applicable.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>CCAP1119/17</td>
+                      </tr>
+                      
+                                   
+                      <tr>
+                        <td>Reference</td>
+                        <td>
+                            <a href="http://www.ebi.ac.uk/efo/EFO_0005135" target="_blank">
+                                http://www.ebi.ac.uk/efo/EFO_0005135
+                            </a>
+                        </td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="http://www.ebi.ac.uk/efo/EFO_0005135" target="_blank">
+                              ei:strain
+                            </a>
+                          
+                        </td>
                       </tr>
                       
                       
@@ -475,7 +658,7 @@
                         <td>CCAP1119/17</td>
                       </tr>
                       
-                      
+                                   
                       <tr>
                         <td>Reference</td>
                         <td>
@@ -489,6 +672,18 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="https://genomicsstandardsconsortium.github.io/mixs/0001222" target="_blank">
+                              mixs:microb_start_taxID
+                            </a>
+                          
+                        </td>
                       </tr>
                       
                       
@@ -516,7 +711,7 @@
                         <td>Leaf</td>
                       </tr>
                       
-                      
+                                   
                       <tr>
                         <td>Reference</td>
                         <td>
@@ -526,6 +721,18 @@
                         </td>
                       </tr>
                       
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="http://purl.obolibrary.org/obo/NCIT_C19697" target="_blank">
+                              ei:tissue
+                            </a>
+                          
+                        </td>
+                      </tr>
                       
                       
                       <tr>
@@ -610,6 +817,20 @@
                           
                           <span class="badge bg-dark">Mycorrhiza</span>
                           
+                          <span class="badge bg-dark">Not Applicable</span>
+                          
+                          <span class="badge bg-dark">Not Collected</span>
+                          
+                          <span class="badge bg-dark">Not Provided</span>
+                          
+                          <span class="badge bg-dark">Other Fungal Tissue</span>
+                          
+                          <span class="badge bg-dark">Other Plant Tissue</span>
+                          
+                          <span class="badge bg-dark">Other Reproductive Animal Tissue</span>
+                          
+                          <span class="badge bg-dark">Other Somatic Animal Tissue</span>
+                          
                           <span class="badge bg-dark">Ovary Animal</span>
                           
                           <span class="badge bg-dark">Oviduct</span>
@@ -638,9 +859,9 @@
                           
                           <span class="badge bg-dark">Spleen</span>
                           
-                          <span class="badge bg-dark">Spore Bearing Structure</span>
-                          
                           <span class="badge bg-dark">Spore</span>
+                          
+                          <span class="badge bg-dark">Spore Bearing Structure</span>
                           
                           <span class="badge bg-dark">Stem</span>
                           
@@ -665,20 +886,6 @@
                           <span class="badge bg-dark">Whole Organism</span>
                           
                           <span class="badge bg-dark">Whole Plant</span>
-                          
-                          <span class="badge bg-dark">Other Fungal Tissue</span>
-                          
-                          <span class="badge bg-dark">Other Plant Tissue</span>
-                          
-                          <span class="badge bg-dark">Other Reproductive Animal Tissue</span>
-                          
-                          <span class="badge bg-dark">Other Somatic Animal Tissue</span>
-                          
-                          <span class="badge bg-dark">Not Applicable</span>
-                          
-                          <span class="badge bg-dark">Not Collected</span>
-                          
-                          <span class="badge bg-dark">Not Provided</span>
                           
                         </td>
                       </tr>
@@ -707,7 +914,7 @@
                         <td>Urban</td>
                       </tr>
                       
-                      
+                                   
                       <tr>
                         <td>Reference</td>
                         <td>
@@ -721,6 +928,18 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="https://genomicsstandardsconsortium.github.io/mixs/0000012" target="_blank">
+                              mixs:env_broad_scale
+                            </a>
+                          
+                        </td>
                       </tr>
                       
                       
@@ -748,7 +967,7 @@
                         <td>Laboratory</td>
                       </tr>
                       
-                      
+                                   
                       <tr>
                         <td>Reference</td>
                         <td>
@@ -762,6 +981,18 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="https://genomicsstandardsconsortium.github.io/mixs/0000013" target="_blank">
+                              mixs:env_local_scale
+                            </a>
+                          
+                        </td>
                       </tr>
                       
                       
@@ -789,7 +1020,7 @@
                         <td>Tissue culture</td>
                       </tr>
                       
-                      
+                                   
                       <tr>
                         <td>Reference</td>
                         <td>
@@ -803,6 +1034,60 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="https://genomicsstandardsconsortium.github.io/mixs/0000014" target="_blank">
+                              mixs:env_medium
+                            </a>
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Accession Number</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>accession_number</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric reference or identifier assigned to the sample in the study related to NCBI Taxonomy.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>accession123</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:accession_number
+                          
+                        </td>
                       </tr>
                       
                       
@@ -830,7 +1115,7 @@
                         <td>South America | Argentina | Patagonia</td>
                       </tr>
                       
-                      
+                                   
                       <tr>
                         <td>Reference</td>
                         <td>
@@ -844,6 +1129,18 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="https://genomicsstandardsconsortium.github.io/mixs/0000010/" target="_blank">
+                              mixs:geo_loc_name
+                            </a>
+                          
+                        </td>
                       </tr>
                       
                       
@@ -906,6 +1203,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:imaging_protocol_id
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -938,6 +1245,16 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:platform
+                          
+                        </td>
                       </tr>
                       
                       
@@ -976,6 +1293,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:instrument
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -1005,6 +1332,16 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:dissociation_method
+                          
+                        </td>
                       </tr>
                       
                       
@@ -1041,7 +1378,7 @@
                         <td>30</td>
                       </tr>
                       
-                      
+                                   
                       <tr>
                         <td>Reference</td>
                         <td>
@@ -1055,6 +1392,18 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="http://purl.obolibrary.org/obo/XCO_0000153" target="_blank">
+                              ei:dissociation_time
+                            </a>
+                          
+                        </td>
                       </tr>
                       
                       
@@ -1090,6 +1439,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:dissociation_temperature
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -1119,6 +1478,16 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:dissociation_enzyme
+                          
+                        </td>
                       </tr>
                       
                       
@@ -1163,6 +1532,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:dissociation_enzyme_concentration
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -1195,6 +1574,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:material_incubation_temperature
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -1219,7 +1608,7 @@
                         <td>30</td>
                       </tr>
                       
-                      
+                                   
                       <tr>
                         <td>Reference</td>
                         <td>
@@ -1233,6 +1622,18 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="http://purl.obolibrary.org/obo/XCO_0000153" target="_blank">
+                              ei:material_incubation_time
+                            </a>
+                          
+                        </td>
                       </tr>
                       
                       
@@ -1265,6 +1666,16 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:lysis_buffer_solution
+                          
+                        </td>
                       </tr>
                       
                       
@@ -1303,6 +1714,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:target_probes
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -1332,6 +1753,16 @@
                       <tr>
                         <td>Regex</td>
                         <td>^\d+(\.\d+)?$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:section_thickness_µm
+                          
+                        </td>
                       </tr>
                       
                       
@@ -1367,6 +1798,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:section_thickness_method
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -1396,6 +1837,16 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:section_thickness_temperature
+                          
+                        </td>
                       </tr>
                       
                       
@@ -1431,6 +1882,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:is_pathological
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -1460,6 +1921,16 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:digestion_workflow
+                          
+                        </td>
                       </tr>
                       
                       
@@ -1495,6 +1966,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:digestion_time_in_minutes
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -1527,6 +2008,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:digestion_temperature
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -1556,6 +2047,16 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:photobleaching_duration_in_hours
+                          
+                        </td>
                       </tr>
                       
                       
@@ -1594,6 +2095,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:instrument_user_guide
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -1626,6 +2137,16 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:instrument_user_guide_revision
+                          
+                        </td>
                       </tr>
                       
                       
@@ -1664,6 +2185,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:sample_preparation_guide
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -1699,6 +2230,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:sample_preparation_guide_revision
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -1731,6 +2272,16 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:deviations_from_official_protocol
+                          
+                        </td>
                       </tr>
                       
                       
@@ -1793,6 +2344,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:imaging_protocol_id
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -1828,6 +2389,16 @@
                       </tr>
                       
                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:file_name
+                          
+                        </td>
+                      </tr>
+                      
+                      
                     </table>
                   </div>
                 </div>
@@ -1860,6 +2431,16 @@
                       <tr>
                         <td>Regex</td>
                         <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:file_type
+                          
+                        </td>
                       </tr>
                       
                       

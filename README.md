@@ -74,7 +74,7 @@ Please follow the instructions below to convert the Excel schema into an excel f
 
    - `python3 convert.py schemas/xlsx/<schema-file-path> <termset> <namespace>`
 
-     where `<schema-file-path>` is the name of the schema file in the `schemas/xlsx` directory, `<termset>` is the type of terms to be used (extended, core) and `<namespace>` is the namespace to be used (e.g. bca, dwc, minsce, mixs, tol)
+     where `<schema-file-path>` is the name of the schema file in the `schemas/xlsx` directory, `<termset>` is the type of terms to be used (extended, core) and `<namespace>` is the namespace to be used (e.g. dwc, mixs, tol)
      e.g. `python3 convert.py schemas/xlsx/sc_rnaseq.xlsx core dwc`
 
      --**OR**--

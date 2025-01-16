@@ -4,11 +4,12 @@ import json
 import os
 import pandas as pd
 import re
+import shutil
 import sys
 
 # Helpers: Variables
+BASE_NAMESPACE_PREFIX = 'ei'
 DEFAULT_SCHEMA_EXTENSION = '.xlsx'
-EXCLUDED_FILES = []
 
 SCHEMA_BASE_DIR_PATH = 'schemas'
 SCHEMA_BASE_DIR_PATH_XLSX = f'{SCHEMA_BASE_DIR_PATH}/xlsx'
@@ -53,25 +54,23 @@ FORMATS = {
     "html": ".html",
 }
 
-NAMESPACE_MAPPING = {
-    'bca': 'Biodiversity Cell Atlas (BCA)',
+NAMESPACE_PREFIX_MAPPING = {
     'dwc': 'Darwin Core (DwC)',
-    'global': 'Field must always be included in the filtered set regardless of mapping.',
-    'minsce': 'Minimum Information about a Single Cell Experiment (MINsCE)',
+    BASE_NAMESPACE_PREFIX: 'Earlham Institute (EI)',
     'mixs': 'Minimum Information about any (x) Sequence (MIxS)',
     'tol': 'Tree of Life (ToL)'
 }
 
-# Remove 'global' from the NAMESPACE_MAPPING
-NAMESPACE_MAPPING_FILTERED = {
+# Remove the base namespace prefix, 'ei', from the NAMESPACE_PREFIX_MAPPING
+NAMESPACE_PREFIX_MAPPING_FILTERED = {
     key: value
-    for key, value in NAMESPACE_MAPPING.items()
-    if key != 'global'
+    for key, value in NAMESPACE_PREFIX_MAPPING.items()
+    if key != BASE_NAMESPACE_PREFIX
 }
 
 MESSAGES = {
     'error_msg_invalid_file_path': f'Invalid .json schema file path. Please check the "{SCHEMA_BASE_DIR_PATH_XLSX}" directory for available files',
-    'error_msg_invalid_standard': f"""Invalid namespace. Please use {' or '.join([f'"{term}"' for term in NAMESPACE_MAPPING_FILTERED])} as namespace.""",
+    'error_msg_invalid_standard': f"""Invalid namespace prefix. Please use {' or '.join([f'"{term}"' for term in NAMESPACE_PREFIX_MAPPING_FILTERED])} as  prefix.""",
     'error_msg_invalid_termset': f"""Invalid termset. Please use {' or '.join([f'"{term}"' for term in TERMSETS])} as termset."""
 }
 
@@ -112,16 +111,16 @@ def convertStringToTitleCase(text):
         .replace('Geographicreference', 'Geographical Reference') \
         .replace('Cdna', 'cDNA')
 
-def get_base_schema_json(data_df, allowed_values_dict, namespace=None, termset=None):
+def get_base_schema_json(data_df, allowed_values_dict, namespace_prefix=None, termset=None):
     '''
-    Load data from an Excel file and return JSON data filtered by namespace and termset.
-    The 'global' data (i.e., rows that do not match the filters) should be returned in  
+    Load data from an Excel file and return JSON data filtered by prefix and termset.
+    The base namespace prefix, 'ei', data (i.e., rows that do not match the filters) should be returned in  
     addition to the provided inputs.
 
     Parameters:
         data_df (DataFrame): The DataFrame containing the data from the Excel file.
         allowed_values_dict (dict): A dictionary containing allowed values for each column.
-        namespace (str): The namespace to filter by (optional).
+        namespace_prefix (str): The namespace prefix to filter by (optional).
         termset (str): The termset to filter by (optional).
 
     Returns:
@@ -133,7 +132,7 @@ def get_base_schema_json(data_df, allowed_values_dict, namespace=None, termset=N
         field = {
             'component_name': row['component_name'],
             'component_label': row['component_label'],
-            'namespace': row['namespace'],
+            'namespace': f"{row.get('namespace_prefix', '')}:{row.get('term_name', '')}",
             'term_name': row['term_name'],
             'term_label': row['term_label'],
             'term_description': row['term_description'],
@@ -162,16 +161,23 @@ def get_base_schema_json(data_df, allowed_values_dict, namespace=None, termset=N
         # Conditionally add allowed_values if available and not empty
         allowed_values = allowed_values_dict.get(row['term_name'], [])
         if allowed_values:
+            allowed_values.sort() # Sort the allowed values
             field['allowed_values'] = allowed_values
             
         json_data.append(field)
 
     return json_data
 
-def get_col_desc_eg(component_df, namespace, termset):
+def get_col_desc_eg(component_df, namespace_prefix, termset):
+     # Filter the dataframe by the namespace prefix and termset
+    filtered_df = component_df[
+        component_df['namespace_prefix'].isin([namespace_prefix, BASE_NAMESPACE_PREFIX]) &
+        component_df['termset'].isin([termset, BASE_NAMESPACE_PREFIX])
+    ]
+    
     return  {
                 row['term_label']: {'description': row.get('term_description', ''), 'example': row.get('term_example', '')}
-                for _, row in component_df.iterrows()
+                for _, row in filtered_df.iterrows()
             }
 
 def generate_json_file(data, output_file_path):
@@ -198,14 +204,14 @@ def generate_json_file(data, output_file_path):
 
     print(f'{file_name} created!')
 
-def generate_output_file_path(file_path, namespace, termset, default_extension=DEFAULT_SCHEMA_EXTENSION, input_extension=".json"):
+def generate_output_file_path(file_path, namespace_prefix, termset, default_extension=DEFAULT_SCHEMA_EXTENSION, input_extension=".json"):
     """
     Replace the default file extension in the given file path with a new extension 
-    incorporating namespace and termset.
+    incorporating namespace prefix and termset.
 
     Parameters:
     - file_path (str): Original file path.
-    - namespace (str): Namespace to include in the new file name.
+    - namespace_prefix (str): Namespace prefix to include in the new file name.
     - termset (str): Termset to include in the new file name.
     - default_extension (str): Default file extension to replace. Default is '.xlsx'.
     - input_extension (str): Input file extension to search for. Default is '.json'.
@@ -215,17 +221,17 @@ def generate_output_file_path(file_path, namespace, termset, default_extension=D
     """
     # Ensure file_path ends with the input extension
     if file_path.endswith(default_extension):
-        return file_path.replace(f'{SCHEMA_BASE_DIR_PATH_XLSX}/base_', f'dist/checklists/{termset}/{input_extension.lstrip(".")}/{namespace}/') \
-            .replace(default_extension, f'_{namespace}_{termset}{input_extension}')
+        return file_path.replace(f'{SCHEMA_BASE_DIR_PATH_XLSX}/base_', f'dist/checklists/{termset}/{input_extension.lstrip(".")}/{namespace_prefix}/') \
+            .replace(default_extension, f'_{namespace_prefix}_{termset}{input_extension}')
     
     # Handle cases where the input extension is not found
     raise ValueError(f"File path must end with {default_extension}, but got: {file_path}")
 
-def get_required_columns(component_df, namespace, termset):
+def get_required_columns(component_df, namespace_prefix, termset):
     return component_df.loc[
         (component_df['term_required'] == True) &
-        (component_df['namespace'].isin([namespace, 'global'])) &
-        (component_df['termset'].isin([termset, 'global'])),
+        (component_df['namespace_prefix'].isin([namespace_prefix, BASE_NAMESPACE_PREFIX])) &
+        (component_df['termset'].isin([termset, BASE_NAMESPACE_PREFIX])),
         'term_label'
     ].tolist()
     
@@ -266,12 +272,15 @@ def merge_row(worksheet, row, last_column_letter, merge_format):
     except Exception as e:
         print(f'Error: {e}')
 
-def read_excel_data(file_path, namespace=None, termset=None, return_dict=True):
+def read_excel_data(file_path, namespace_prefix=None, termset=None, return_dict=True):
     """
     Reads an Excel file and returns a DataFrame and a dictionary of allowed values.
 
     Parameters:
     file_path (str): Path to the Excel file.
+    namespace_prefix (str): Namespace prefix to filter by (optional).
+    termset (str): Termset to filter by (optional).
+    return_dict (bool): Flag to return a dictionary of allowed values. Default is True.
 
     Returns:
     tuple: A DataFrame containing the data sheet and a dictionary for allowed values.
@@ -290,11 +299,11 @@ def read_excel_data(file_path, namespace=None, termset=None, return_dict=True):
         for column in allowed_values_df.columns
     }
     
-    # Filter the DataFrame by 'global' as well as namespace and termset if provided
-    if namespace:
-        data_df = data_df[data_df['namespace'].isin([namespace, 'global'])]
+    # Filter the DataFrame by the base namespace prefix, 'ei', as well as namespace prefix and termset if provided
+    if namespace_prefix:
+        data_df = data_df[data_df['namespace_prefix'].isin([namespace_prefix, BASE_NAMESPACE_PREFIX])]
     if termset:
-        data_df = data_df[data_df['termset'].isin([termset, 'global'])]
+        data_df = data_df[data_df['termset'].isin([termset, BASE_NAMESPACE_PREFIX])]
 
     # Return the DataFrame and the dictionary of allowed values based on the return_dict flag
     if return_dict:
@@ -302,161 +311,14 @@ def read_excel_data(file_path, namespace=None, termset=None, return_dict=True):
     else:
         return data_df, allowed_values_df
 
-def retrieve_data_by_termset(termset):
+def remove_dist_directory():
     '''
-    Retrieve dictionary data from a JSON file based on the specified termset.
-
-    Parameters:
-    termset (str): The termset to filter by, either 'extended' or 'core'.
-
-    Returns:
-    dict: A dictionary containing the fields that match the specified termset.
+    Remove the 'dist' directory and its contents.
     '''
-    if termset not in TERMSETS:
-        sys.exit("Invalid termset. Please use 'core' or 'extended' as termset.")
-
-    # Define the file path based on the termset
-    file_path = f'schemas/{termset}/sample_fields_{termset}.json'
-    
-    # Read the JSON file
-    try:
-        with open(file_path, 'r') as file:
-            data = json.load(file)
-    except FileNotFoundError:
-        print(f'File not found: {file_path}')
-        return {}
-
-    # Filter data based on the termset value
-    filtered_data = {
-        key: value
-        for key, value in data.items()
-        if value.get('termset') == termset
-    }
-
-    return filtered_data
-
-def remove_duplicates(fields, new_fields):
-   # Create a dictionary to hold unique fields by their key (e.g., 'sample_id')
-    unique_fields = {}
-
-    # Add existing fields to the unique_fields dictionary
-    for field in fields:
-        # Extract the key and the field data
-        field_key = list(field.keys())[0]
-        unique_fields[field_key] = field[field_key]
-
-    # Add or update new fields from new_fields
-    for new_field_key, new_field_value in new_fields.items():
-        unique_fields[new_field_key] = new_field_value
-
-    # Convert back to the original list of dictionaries format
-    return [{key: value} for key, value in unique_fields.items()]
-
-def merge_fields(existing_fields, new_fields):
-    '''
-    Merge new fields into existing fields, avoiding duplicates based on the 'name' key in 'default_map'.
-    '''
-    # Extract names of existing fields
-    existing_field_names = {
-        list(field.keys())[0] for field in existing_fields
-    }
-
-    for field in new_fields:
-        field_name = field  # Get the name of the field
-        if field_name not in existing_field_names:
-            existing_fields.append(field)
-    return existing_fields
-
-def remove_duplicate_keys_from_file(file_path):
-  def recursive_check(obj):
-    if isinstance(obj, dict):
-      keys = list(obj.keys())
-      seen = set()
-      for key in keys:
-        if key in seen:
-            del obj[key]
-        else:
-            seen.add(key)
-      # Recur for nested dictionaries
-      for key in obj:
-        recursive_check(obj[key])
-    elif isinstance(obj, list):
-      for item in obj:
-        recursive_check(item)
-
-  # Read JSON from the file
-  with open(file_path, 'r') as file:
-    json_data = file.read()
-
-  # Parse JSON and remove duplicates
-  parsed_data = json.loads(json_data)
-  recursive_check(parsed_data)
-
-  # Write cleaned JSON back to the same file
-  generate_json_file(parsed_data, file_path)
-
-def update_schema_with_termset_fields(json_schema_file_path, termset_fields, termset):
-    file_name = os.path.basename(json_schema_file_path).replace('.json', '')
-    
-    if not termset_fields:
-        print(f'No termset fields found for {termset}')
-        return
-
-    # Load the current schema data
-    with open(json_schema_file_path, 'r') as f:
-        data = json.load(f)
-
-    # Retrieve components from the JSON schema data
-    components = data.get('components', [])
-
-    # Update each component with matching termset fields
-    for component in components:
-        for field in component.get('fields', []):
-            for key, attributes in field.items():
-                # Check if the key exists in termset_fields
-                if key in termset_fields:
-                    termset_info = termset_fields[key]
-                    schema_types = termset_info.get('schema_types', [])
-
-                    # Update the field if the schema file name is in schema_types
-                    if file_name in schema_types:
-                        # Remove schema_types and termset to avoid including it in the updated schema
-                        termset_info.pop('schema_types', None)
-                        termset_info.pop('termset', None)
-
-                        # Update the field attributes with termset_info data
-                        field[key] = termset_info
-
-    # Extend the sample component with the fields from the termset
-    sample_component = next(component for component in components if component['component'] == 'sample')
-    sample_component['fields'] = remove_duplicates(sample_component['fields'], termset_fields)
-    sample_component['fields'] = merge_fields(sample_component["fields"], termset_fields)
-
-    # Remove "termset" key and "schema_types" key in sample_component["fields"]
-    for field in sample_component['fields']:
-        field_name = list(field.keys())[0]
-        field_value = field[field_name]
-        schema_types = field_value.get('schema_types', [])
-
-        if file_name in schema_types:
-            field_value.pop('termset', None)
-            field_value.pop('schema_types', None)
-
-    # Save the updated data to a new JSON file
-    updated_data = {'components': components}
-
-    output_file_name = f'{file_name}_{termset}.json'
-    output_file_path = os.path.join('schemas', termset, output_file_name)
-    
-    # Write the updated data to a new JSON file
-    generate_json_file(updated_data, output_file_path)
-
-    # Remove duplicate keys from the schema
-    remove_duplicate_keys_from_file(output_file_path)
-    remove_duplicate_keys_from_file(json_schema_file_path)
-
-    print(f"\n{output_file_name} schema updated with '{termset}' termset fields!\n")
-
+    dist_directory = 'dist/checklists'
+    if os.path.exists(dist_directory):
+        shutil.rmtree(dist_directory)
+        
 def validate_argument(argument, valid_arguments, error):
     '''
     This function checks if the given argument is valid or not.
@@ -530,7 +392,7 @@ def autofit_all_sheets(writer):
     for sheet in writer.sheets.values():
         sheet.autofit()
 
-def get_excel_data_validation_from_regex(regex, column_letter, namespace):
+def get_excel_data_validation_from_regex(regex, column_letter):
     # Define a mapping from regex patterns to Excel custom validation formulas
     # NB: Data starts from row 5
     row_start = 5
@@ -622,7 +484,7 @@ def apply_data_validation(component_df, dataframe, pandas_writer, namespace, all
         # Apply data formula to the column if regex is provided
         # Ensure that data that has allowed values/dropdown list is not validated by regex
         if regex and not dropdown_list:
-            validation_formula = get_excel_data_validation_from_regex(regex, column_letter, namespace)
+            validation_formula = get_excel_data_validation_from_regex(regex, column_letter)
             if validation_formula:
                 sheet.data_validation(row_start_end, {'validate': 'custom', 'value': validation_formula})
 

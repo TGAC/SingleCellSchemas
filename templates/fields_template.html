@@ -35,11 +35,7 @@
                 >Based on Standard...</label
               >
               <select class="form-select" id="std_dropdown">
-                <option value="bca">Biodiversity Cell Atlas (BCA)</option>
                 <option value="dwc" selected>Darwin Core (DwC)</option>
-                <option value="minsce">
-                  Minimum Information about a Single Cell Experiment (MINsCE)
-                </option>
                 <option value="mixs">
                   Minimum Information about any (x) Sequence (MIxS)
                 </option>
@@ -51,9 +47,13 @@
             <div class="mb-3">
               <label for="tech_dropdown" class="form-label">Technology</label>
               <select class="form-select" id="tech_dropdown">
-                <option value="sc_rnaseq" selected>Single Cell RNA-Sequencing</option>
+                <option value="sc_rnaseq" selected>
+                  Single Cell RNA-Sequencing
+                </option>
                 <option value="stx_fish">Spatial Transcriptomics Fish</option>
-                <option value="stx_seq">Spatial Transcriptomics Sequencing</option>
+                <option value="stx_seq">
+                  Spatial Transcriptomics Sequencing
+                </option>
               </select>
             </div>
 
@@ -123,7 +123,7 @@
                         <td>{{ field.example }}</td>
                       </tr>
                       {% endif %}
-                      {% if field.reference %}
+                      {% if field.reference %}             
                       <tr>
                         <td>Reference</td>
                         <td>
@@ -137,6 +137,20 @@
                       <tr>
                         <td>Regex</td>
                         <td>{{ field.regex }}</td>
+                      </tr>
+                      {% endif %}
+                      {% if field.namespace %}
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          {% if field.reference %}
+                            <a href="{{ field.reference }}" target="_blank">
+                              {{ field.namespace }}
+                            </a>
+                          {% else %}
+                             {{ field.namespace }}
+                          {% endif %}
+                        </td>
                       </tr>
                       {% endif %}
                       {% if field.allowed_values|length > 0 %}

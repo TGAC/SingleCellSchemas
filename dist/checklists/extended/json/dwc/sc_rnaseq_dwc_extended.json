@@ -2,7 +2,7 @@
   {
     "component_name": "study",
     "component_label": "Study",
-    "namespace": "global",
+    "namespace": "ei:study_id",
     "term_name": "study_id",
     "term_label": "Study ID",
     "term_description": "A unique alphanumeric identifier for this study",
@@ -11,14 +11,14 @@
     "term_regex": "^[a-zA-Z0-9]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "study",
     "component_label": "Study",
-    "namespace": "global",
+    "namespace": "ei:contact_first_name",
     "term_name": "contact_first_name",
     "term_label": "First Name",
     "term_description": "Given first name",
@@ -28,14 +28,14 @@
     "term_cardinality": "single",
     "term_type": "string",
     "term_reference": "http://purl.obolibrary.org/obo/NCIT_C40974",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "study",
     "component_label": "Study",
-    "namespace": "global",
+    "namespace": "ei:contact_last_name",
     "term_name": "contact_last_name",
     "term_label": "Last Name",
     "term_description": "Given last name.",
@@ -45,14 +45,14 @@
     "term_cardinality": "single",
     "term_type": "string",
     "term_reference": "http://purl.obolibrary.org/obo/NCIT_C40975",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "study",
     "component_label": "Study",
-    "namespace": "global",
+    "namespace": "ei:contact_email",
     "term_name": "contact_email",
     "term_label": "Email",
     "term_description": "Valid email address",
@@ -61,14 +61,14 @@
     "term_regex": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "study",
     "component_label": "Study",
-    "namespace": "global",
+    "namespace": "ei:technology",
     "term_name": "technology",
     "term_label": "Technology",
     "term_description": "The sorting or visualisation technology used.",
@@ -76,20 +76,20 @@
     "term_required": true,
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
       "10X",
+      "Mas_seq",
       "Smartseq",
-      "Vizgen",
-      "Mas_seq"
+      "Vizgen"
     ]
   },
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "global",
+    "namespace": "ei:sample_id",
     "term_name": "sample_id",
     "term_label": "Sample ID",
     "term_description": "A unique alphanumeric reference or identifier for the study.",
@@ -98,14 +98,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:occurrenceID",
     "term_name": "occurrenceID",
     "term_label": "Occurrence ID",
     "term_description": "An identifier of the strain of the organism, if applicable.",
@@ -122,7 +122,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "global",
+    "namespace": "ei:tissue",
     "term_name": "tissue",
     "term_label": "Tissue",
     "term_description": "The type of tissue sampled for the study.",
@@ -131,7 +131,7 @@
     "term_cardinality": "single",
     "term_type": "string",
     "term_reference": "http://purl.obolibrary.org/obo/NCIT_C19697",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
@@ -174,6 +174,13 @@
       "Muscle",
       "Mycelium",
       "Mycorrhiza",
+      "Not Applicable",
+      "Not Collected",
+      "Not Provided",
+      "Other Fungal Tissue",
+      "Other Plant Tissue",
+      "Other Reproductive Animal Tissue",
+      "Other Somatic Animal Tissue",
       "Ovary Animal",
       "Oviduct",
       "Pancreas",
@@ -188,8 +195,8 @@
       "Skin",
       "Sperm Seminal Fluid",
       "Spleen",
-      "Spore Bearing Structure",
       "Spore",
+      "Spore Bearing Structure",
       "Stem",
       "Stipe",
       "Stomach",
@@ -201,20 +208,13 @@
       "Thorax",
       "Unicellular Organisms In Culture",
       "Whole Organism",
-      "Whole Plant",
-      "Other Fungal Tissue",
-      "Other Plant Tissue",
-      "Other Reproductive Animal Tissue",
-      "Other Somatic Animal Tissue",
-      "Not Applicable",
-      "Not Collected",
-      "Not Provided"
+      "Whole Plant"
     ]
   },
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:eventDate",
     "term_name": "eventDate",
     "term_label": "Event Date",
     "term_description": "The date when the sample was collected with year, month and day specified in the format, YYYY-MM-DD.",
@@ -231,7 +231,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:acceptedNameUsage",
     "term_name": "acceptedNameUsage",
     "term_label": "Accepted Name Usage",
     "term_description": "The full name, with authorship and date information if known, of the currently valid (zoological) or accepted (botanical) dwc:Taxon.",
@@ -248,7 +248,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:acceptedNameUsageID",
     "term_name": "acceptedNameUsageID",
     "term_label": "Accepted Name Usage ID",
     "term_description": "An identifier for the name usage (documented meaning of the name according to a source) of the currently valid (zoological) or accepted (botanical) taxon.",
@@ -265,7 +265,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:accessRights",
     "term_name": "accessRights",
     "term_label": "Access Rights",
     "term_description": "Information about who can access the resource or an indication of its security status.",
@@ -282,7 +282,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:associatedMedia",
     "term_name": "associatedMedia",
     "term_label": "Associated Media",
     "term_description": "A related resource that is referenced, cited, or otherwise associated to the sequence.",
@@ -299,7 +299,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:associatedOccurrences",
     "term_name": "associatedOccurrences",
     "term_label": "Associated Occurrences",
     "term_description": "A list (concatenated and separated) of identifiers of other dwc:Occurrence records and their associations to this dwc:Occurrence.",
@@ -316,7 +316,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:associatedOrganisms",
     "term_name": "associatedOrganisms",
     "term_label": "Associated Organisms",
     "term_description": "A list (concatenated and separated) of identifiers of other dwc:Organisms and the associations of this dwc:Organism to each of them.",
@@ -333,7 +333,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:associatedReferences",
     "term_name": "associatedReferences",
     "term_label": "Associated References",
     "term_description": "A list (concatenated and separated) of identifiers (publication, bibliographic reference, global unique identifier, URI) of literature associated with the dwc:Occurrence.",
@@ -350,7 +350,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:associatedSequences",
     "term_name": "associatedSequences",
     "term_label": "Associated Sequences",
     "term_description": "A list (concatenated and separated) of identifiers (publication, global unique identifier, URI) of genetic sequence information associated with the dwc:MaterialEntity.",
@@ -367,7 +367,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:associatedTaxa",
     "term_name": "associatedTaxa",
     "term_label": "Associated Taxa",
     "term_description": "A list (concatenated and separated) of identifiers or names of dwc:Taxon records and the associations of this dwc:Occurrence to each of them.",
@@ -384,7 +384,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:basisOfRecord",
     "term_name": "basisOfRecord",
     "term_label": "Basis Of Record",
     "term_description": "The specific nature of the data record.",
@@ -401,7 +401,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:bed",
     "term_name": "bed",
     "term_label": "Bed",
     "term_description": "The full name of the lithostratigraphic bed from which the dwc:MaterialEntity was collected.",
@@ -418,7 +418,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:caste",
     "term_name": "caste",
     "term_label": "Caste",
     "term_description": "Categorisation of individuals for eusocial species (including some mammals and arthropods).",
@@ -435,7 +435,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:catalogNumber",
     "term_name": "catalogNumber",
     "term_label": "Catalog Number",
     "term_description": "An identifier (preferably unique) for the record within the data set or collection.",
@@ -452,7 +452,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:class",
     "term_name": "class",
     "term_label": "Class",
     "term_description": "The full scientific name of the class in which the dwc:Taxon is classified.",
@@ -469,7 +469,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:collectionCode",
     "term_name": "collectionCode",
     "term_label": "Collection Code",
     "term_description": "The name, acronym, code, or initialism identifying the collection or data set from which the record was derived.",
@@ -486,7 +486,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:collectionID",
     "term_name": "collectionID",
     "term_label": "Collection ID",
     "term_description": "An identifier for the collection or dataset from which the record was derived.",
@@ -503,7 +503,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:continent",
     "term_name": "continent",
     "term_label": "Continent",
     "term_description": "The name of the continent in which the dcterms:Location occurs.",
@@ -520,7 +520,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:coordinatePrecision",
     "term_name": "coordinatePrecision",
     "term_label": "Coordinate Precision",
     "term_description": "A decimal representation of the precision of the coordinates given in the dwc:decimalLatitude and dwc:decimalLongitude.",
@@ -537,7 +537,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:coordinateUncertaintyInMeters",
     "term_name": "coordinateUncertaintyInMeters",
     "term_label": "Coordinate Uncertainty In Metres",
     "term_description": "The horizontal distance (in meters) from the given dwc:decimalLatitude and dwc:decimalLongitude describing the smallest circle containing the whole of the dcterms:Location. Leave the value empty if the uncertainty is unknown, cannot be estimated, or is not applicable (because there are no coordinates). Zero is not a valid value for this term.",
@@ -554,7 +554,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:countryCode",
     "term_name": "countryCode",
     "term_label": "Country Code",
     "term_description": "The standard code for the country in which the dcterms:Location occurs.",
@@ -571,7 +571,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:county",
     "term_name": "county",
     "term_label": "County",
     "term_description": "The full, unabbreviated name of the next smaller administrative region than stateProvince (county, shire, department, etc.) in which the dcterms:Location occurs.",
@@ -588,7 +588,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:cultivarEpithet",
     "term_name": "cultivarEpithet",
     "term_label": "Cultivar Epithet",
     "term_description": "Part of the name of a cultivar, cultivar group or grex that follows the dwc:scientificName.",
@@ -605,7 +605,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:dataGeneralizations",
     "term_name": "dataGeneralizations",
     "term_label": "Data Generalisations",
     "term_description": "Actions taken to make the shared data less specific or complete than in its original form. Suggests that alternative data of higher quality may be available on request.",
@@ -622,7 +622,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:datasetID",
     "term_name": "datasetID",
     "term_label": "Dataset ID",
     "term_description": "An identifier for the set of data. May be a global unique identifier or an identifier specific to a collection or institution.",
@@ -639,7 +639,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:datasetName",
     "term_name": "datasetName",
     "term_label": "Dataset Name",
     "term_description": "The name identifying the data set from which the record was derived.",
@@ -656,7 +656,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:dateIdentified",
     "term_name": "dateIdentified",
     "term_label": "Date Identified",
     "term_description": "The date on which the subject was determined as representing the dwc:Taxon.",
@@ -673,7 +673,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:degreeOfEstablishment",
     "term_name": "degreeOfEstablishment",
     "term_label": "Degree Of Establishment",
     "term_description": "The degree to which a dwc:Organism survives, reproduces, and expands its range at the given place and time.",
@@ -686,23 +686,23 @@
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
-      "native",
       "Captive",
-      "Cultivated",
-      "Released",
-      "Failing",
       "Casual",
-      "Reproducing",
-      "Established",
       "Colonising",
+      "Cultivated",
+      "Established",
+      "Failing",
       "Invasive",
-      "Widespread Invasive"
+      "Released",
+      "Reproducing",
+      "Widespread Invasive",
+      "native"
     ]
   },
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:disposition",
     "term_name": "disposition",
     "term_label": "Disposition",
     "term_description": "The current state of a specimen with respect to the collection identified in dwc:collectionCode or dwc:collectionID.",
@@ -715,18 +715,18 @@
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
+      "Deaccessioned",
+      "Destroyed",
       "In collection",
       "Missing",
       "On loan",
-      "Used up",
-      "Destroyed",
-      "Deaccessioned"
+      "Used up"
     ]
   },
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:dynamicProperties",
     "term_name": "dynamicProperties",
     "term_label": "Dynamic Properties",
     "term_description": "A list of additional measurements, facts, characteristics, or assertions about the record. Meant to provide a mechanism for structured content. Use a key:value encoding schema for a data interchange format such as JSON.",
@@ -743,7 +743,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:earliestAgeOrLowestStage",
     "term_name": "earliestAgeOrLowestStage",
     "term_label": "Earliest Age Or Lowest Stage",
     "term_description": "The full name of the earliest possible geochronologic age or lowest chronostratigraphic stage attributable to the stratigraphic horizon from which the dwc:MaterialEntity was collected.",
@@ -760,7 +760,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:earliestEonOrLowestEonothem",
     "term_name": "earliestEonOrLowestEonothem",
     "term_label": "Earliest Eon Or Lowest Eonothem",
     "term_description": "The full name of the earliest possible geochronologic eon or lowest chrono-stratigraphic eonothem or the informal name (\"Precambrian\") attributable to the stratigraphic horizon from which the dwc:MaterialEntity was collected.",
@@ -777,7 +777,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:earliestEpochOrLowestSeries",
     "term_name": "earliestEpochOrLowestSeries",
     "term_label": "Earliest Epoch Or Lowest Series",
     "term_description": "The full name of the earliest possible geochronologic epoch or lowest chronostratigraphic series attributable to the stratigraphic horizon from which the dwc:MaterialEntity was collected.",
@@ -794,7 +794,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:earliestEraOrLowestErathem",
     "term_name": "earliestEraOrLowestErathem",
     "term_label": "Earliest Era Or Lowest Erathem",
     "term_description": "The full name of the earliest possible geochronologic era or lowest chronostratigraphic erathem attributable to the stratigraphic horizon from which the dwc:MaterialEntity was collected.",
@@ -811,7 +811,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:earliestPeriodOrLowestSystem",
     "term_name": "earliestPeriodOrLowestSystem",
     "term_label": "Earliest Period Or Lowest System",
     "term_description": "The full name of the earliest possible geochronologic period or lowest chronostratigraphic system attributable to the stratigraphic horizon from which the dwc:MaterialEntity was collected.",
@@ -828,7 +828,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:endDayOfYear",
     "term_name": "endDayOfYear",
     "term_label": "End Day Of Year",
     "term_description": "The latest integer day of the year on which the dwc:Event occurred (1 for January 1, 365 for December 31, except in a leap year, in which case it is 366).",
@@ -845,7 +845,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:establishmentMeans",
     "term_name": "establishmentMeans",
     "term_label": "Establishment Means",
     "term_description": "Statement about whether a dwc:Organism has been introduced to a given place and time through the direct or indirect activity of modern humans.",
@@ -858,18 +858,18 @@
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
-      "Native",
-      "Native Reintroduced",
       "Introduced",
       "Introduced Assisted Colonisation",
-      "Vagrant",
-      "Uncertain"
+      "Native",
+      "Native Reintroduced",
+      "Uncertain",
+      "Vagrant"
     ]
   },
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:eventID",
     "term_name": "eventID",
     "term_label": "Event ID",
     "term_description": "An identifier for the set of information associated with a dwc:Event (something that occurs at a place and time). May be a global unique identifier or an identifier specific to the data set.",
@@ -886,7 +886,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:eventRemarks",
     "term_name": "eventRemarks",
     "term_label": "Event Remarks",
     "term_description": "Comments or notes about the dwc:Event.",
@@ -903,7 +903,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:eventTime",
     "term_name": "eventTime",
     "term_label": "Event Time",
     "term_description": "The time or interval during which a dwc:Event occurred.",
@@ -920,7 +920,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:eventType",
     "term_name": "eventType",
     "term_label": "Event Type",
     "term_description": "The nature of the dwc:Event.",
@@ -933,20 +933,20 @@
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
-      "Sample",
-      "Observation",
-      "Site Visit",
-      "Biotic Interaction",
       "Bioblitz",
+      "Biotic Interaction",
       "Expedition",
-      "Survey",
-      "Project"
+      "Observation",
+      "Project",
+      "Sample",
+      "Site Visit",
+      "Survey"
     ]
   },
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:fieldNotes",
     "term_name": "fieldNotes",
     "term_label": "Field Notes",
     "term_description": "One of a) an indicator of the existence of, b) a reference to (publication, URI), or c) the text of notes taken in the field about the dwc:Event.",
@@ -963,7 +963,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:fieldNumber",
     "term_name": "fieldNumber",
     "term_label": "Field Number",
     "term_description": "An identifier given to the event in the field. Often serves as a link between field notes and the dwc:Event.",
@@ -980,7 +980,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:footprintSRS",
     "term_name": "footprintSRS",
     "term_label": "Footprint SRS",
     "term_description": "The ellipsoid, geodetic datum, or spatial reference system (SRS) upon which the geometry given in dwc:footprintWKT is based.",
@@ -997,7 +997,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:footprintSpatialFit",
     "term_name": "footprintSpatialFit",
     "term_label": "Footprint Spatial Fit",
     "term_description": "The ratio of the area of the dwc:footprintWKT to the area of the True (original, or most specific) spatial representation of the dcterms:Location. Legal values are 0, greater than or equal to 1, or undefined. A value of 1 is an exact match or 100% overlap. A value of 0 should be used if the given dwc:footprintWKT does not completely contain the original representation. The dwc:footprintSpatialFit is undefined (and should be left empty) if the original representation is any geometry without area (e.g., a point or polyline) and without uncertainty and the given georeference is not that same geometry (without uncertainty). If both the original and the given georeference are the same point, the dwc:footprintSpatialFit is 1.",
@@ -1014,7 +1014,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:footprintWKT",
     "term_name": "footprintWKT",
     "term_label": "Footprint WKT",
     "term_description": "A Well-Known Text (WKT) representation of the shape (footprint, geometry) that defines the dcterms:Location. A dcterms:Location may have both a point-radius representation (see dwc:decimalLatitude) and a footprint representation, and they may differ from each other.",
@@ -1031,7 +1031,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:formation",
     "term_name": "formation",
     "term_label": "Formation",
     "term_description": "The full name of the lithostratigraphic formation from which the dwc:MaterialEntity was collected.",
@@ -1048,7 +1048,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:genericName",
     "term_name": "genericName",
     "term_label": "Generic Name",
     "term_description": "The genus part of the dwc:scientificName without authorship.",
@@ -1065,7 +1065,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:geodeticDatum",
     "term_name": "geodeticDatum",
     "term_label": "Geodetic Datum",
     "term_description": "The ellipsoid, geodetic datum, or spatial reference system (SRS) upon which the geographic coordinates given in dwc:decimalLatitude and dwc:decimalLongitude is based.",
@@ -1082,7 +1082,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:geologicalContextID",
     "term_name": "geologicalContextID",
     "term_label": "Geological Context ID",
     "term_description": "An identifier for the set of information associated with a dwc:GeologicalContext (the location within a geological context, such as stratigraphy). May be a global unique identifier or an identifier specific to the data set.",
@@ -1099,7 +1099,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:georeferenceProtocol",
     "term_name": "georeferenceProtocol",
     "term_label": "Georeference Protocol",
     "term_description": "A description or reference to the methods used to determine the spatial footprint, coordinates, and uncertainties.",
@@ -1116,7 +1116,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:georeferenceRemarks",
     "term_name": "georeferenceRemarks",
     "term_label": "Georeference Remarks",
     "term_description": "Notes or comments about the spatial description determination, explaining assumptions made in addition or opposition to the those formalized in the method referred to in dwc:georeferenceProtocol.",
@@ -1133,7 +1133,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:georeferenceSources",
     "term_name": "georeferenceSources",
     "term_label": "Georeference Sources",
     "term_description": "A map, gazetteer, or other resource used to georeference the dcterms:Location.",
@@ -1150,7 +1150,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:georeferenceVerificationStatus",
     "term_name": "georeferenceVerificationStatus",
     "term_label": "Georeference Verification Status",
     "term_description": "A categorical description of the extent to which the georeference has been verified to represent the best possible spatial description for the dcterms:Location of the dwc:Occurrence.",
@@ -1163,17 +1163,17 @@
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
-      "Unable to georeference",
       "Requires georeference",
       "Requires verification",
-      "Verified by data custodian",
-      "Verified by contributor"
+      "Unable to georeference",
+      "Verified by contributor",
+      "Verified by data custodian"
     ]
   },
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:georeferencedBy",
     "term_name": "georeferencedBy",
     "term_label": "Georeferenced By",
     "term_description": "A person, group, or organization who determined the georeference (spatial representation) for the dcterms:Location.",
@@ -1190,7 +1190,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:georeferencedDate",
     "term_name": "georeferencedDate",
     "term_label": "Georeferenced Date",
     "term_description": "The date on which the dcterms:Location was georeferenced.",
@@ -1207,7 +1207,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:group",
     "term_name": "group",
     "term_label": "Group",
     "term_description": "The full name of the lithostratigraphic group from which the dwc:MaterialEntity was collected.",
@@ -1224,7 +1224,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:higherClassification",
     "term_name": "higherClassification",
     "term_label": "Higher Classification",
     "term_description": "A list (concatenated and separated) of taxa names terminating at the rank immediately superior to the referenced dwc:Taxon.",
@@ -1241,7 +1241,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:higherGeography",
     "term_name": "higherGeography",
     "term_label": "Higher Geography",
     "term_description": "A list (concatenated and separated) of geographic names less specific than the information captured in the dwc:locality term.",
@@ -1258,7 +1258,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:higherGeographyID",
     "term_name": "higherGeographyID",
     "term_label": "Higher Geography ID",
     "term_description": "An identifier for the geographic region within which the dcterms:Location occurred.",
@@ -1275,7 +1275,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:highestBiostratigraphicZone",
     "term_name": "highestBiostratigraphicZone",
     "term_label": "Highest Biostratigraphic Zone",
     "term_description": "The full name of the highest possible geological biostratigraphic zone of the stratigraphic horizon from which the dwc:MaterialEntity was collected.",
@@ -1292,7 +1292,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:identificationID",
     "term_name": "identificationID",
     "term_label": "Identification ID",
     "term_description": "An identifier for the dwc:Identification (the body of information associated with the assignment of a scientific name). May be a global unique identifier or an identifier specific to the data set.",
@@ -1309,7 +1309,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:identificationQualifier",
     "term_name": "identificationQualifier",
     "term_label": "Identification Qualifier",
     "term_description": "A controlled value to express the determiner's doubts about the dwc:Identification.",
@@ -1326,7 +1326,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:identificationReferences",
     "term_name": "identificationReferences",
     "term_label": "Identification References",
     "term_description": "A list (concatenated and separated) of references (publication, global unique identifier, URI) used in the dwc:Identification.",
@@ -1343,7 +1343,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:identificationRemarks",
     "term_name": "identificationRemarks",
     "term_label": "Identification Remarks",
     "term_description": "Comments or notes about the dwc:Identification.",
@@ -1360,7 +1360,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:identificationVerificationStatus",
     "term_name": "identificationVerificationStatus",
     "term_label": "Identification Verification Status",
     "term_description": "A categorical indicator of the extent to which the taxonomic identification has been verified to be correct.",
@@ -1377,7 +1377,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:identifiedBy",
     "term_name": "identifiedBy",
     "term_label": "Identified By",
     "term_description": "A person, group, or organization who assigned the dwc:Taxon to the subject.",
@@ -1394,7 +1394,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:identifiedByID",
     "term_name": "identifiedByID",
     "term_label": "Identified By ID",
     "term_description": "A list (concatenated and separated) of the globally unique identifier for the person, people, groups, or organizations responsible for assigning the dwc:Taxon to the subject.",
@@ -1411,7 +1411,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:individualCount",
     "term_name": "individualCount",
     "term_label": "Individual Count",
     "term_description": "The number of individuals present at the time of the dwc:Occurrence.",
@@ -1428,7 +1428,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:informationWithheld",
     "term_name": "informationWithheld",
     "term_label": "Information Withheld",
     "term_description": "Additional information that exists, but that has not been shared in the given record.",
@@ -1445,7 +1445,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:infragenericEpithet",
     "term_name": "infragenericEpithet",
     "term_label": "Infrageneric Epithet",
     "term_description": "The infrageneric part of a binomial name at ranks above species but below genus.",
@@ -1462,7 +1462,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:infraspecificEpithet",
     "term_name": "infraspecificEpithet",
     "term_label": "Infraspecific Epithet",
     "term_description": "The name of the lowest or terminal infraspecific epithet of the dwc:scientificName, excluding any rank designation.",
@@ -1479,7 +1479,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:institutionID",
     "term_name": "institutionID",
     "term_label": "Institution ID",
     "term_description": "An identifier for the institution having custody of the object(s) or information referred to in the record.",
@@ -1496,7 +1496,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:island",
     "term_name": "island",
     "term_label": "Island",
     "term_description": "The name of the island on or near which the dcterms:Location occurs.",
@@ -1513,7 +1513,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:islandGroup",
     "term_name": "islandGroup",
     "term_label": "Island Group",
     "term_description": "The name of the island group in which the dcterms:Location occurs.",
@@ -1530,7 +1530,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:kingdom",
     "term_name": "kingdom",
     "term_label": "Kingdom",
     "term_description": "The full scientific name of the kingdom in which the dwc:Taxon is classified.",
@@ -1547,7 +1547,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:language",
     "term_name": "language",
     "term_label": "Language",
     "term_description": "A language of the resource.",
@@ -1564,7 +1564,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:latestAgeOrHighestStage",
     "term_name": "latestAgeOrHighestStage",
     "term_label": "Latest Age Or Highest Stage",
     "term_description": "The full name of the latest possible geochronologic age or highest chronostratigraphic stage attributable to the stratigraphic horizon from which the dwc:MaterialEntity was collected.",
@@ -1581,7 +1581,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:latestEonOrHighestEonothem",
     "term_name": "latestEonOrHighestEonothem",
     "term_label": "Latests Eon Or Highest Eonothem",
     "term_description": "The full name of the latest possible geochronologic eon or highest chrono-stratigraphic eonothem or the informal name (\"Precambrian\") attributable to the stratigraphic horizon from which the dwc:MaterialEntity was collected.",
@@ -1598,7 +1598,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:latestEpochOrHighestSeries",
     "term_name": "latestEpochOrHighestSeries",
     "term_label": "Latest Epoch Or Highest Series",
     "term_description": "The full name of the latest possible geochronologic epoch or highest chronostratigraphic series attributable to the stratigraphic horizon from which the dwc:MaterialEntity was collected.",
@@ -1615,7 +1615,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:latestEraOrHighestErathem",
     "term_name": "latestEraOrHighestErathem",
     "term_label": "Latest Era Or Highest Erathem",
     "term_description": "The full name of the latest possible geochronologic era or highest chronostratigraphic erathem attributable to the stratigraphic horizon from which the dwc:MaterialEntity was collected.",
@@ -1632,7 +1632,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:latestPeriodOrHighestSystem",
     "term_name": "latestPeriodOrHighestSystem",
     "term_label": "Latest Period Or Highest System",
     "term_description": "The full name of the latest possible geochronologic period or highest chronostratigraphic system attributable to the stratigraphic horizon from which the dwc:MaterialEntity was collected.",
@@ -1649,7 +1649,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:license",
     "term_name": "license",
     "term_label": "License",
     "term_description": "A legal document giving official permission to do something with the resource.",
@@ -1666,7 +1666,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:lithostratigraphicTerms",
     "term_name": "lithostratigraphicTerms",
     "term_label": "Lithostratigraphic Terms",
     "term_description": "The combination of all litho-stratigraphic names for the rock from which the dwc:MaterialEntity was collected.",
@@ -1683,7 +1683,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:locality",
     "term_name": "locality",
     "term_label": "Locality",
     "term_description": "The specific description of the place.",
@@ -1700,7 +1700,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:locationAccordingTo",
     "term_name": "locationAccordingTo",
     "term_label": "Location According To",
     "term_description": "Information about the source of this dcterms:Location information. Could be a publication (gazetteer), institution, or team of individuals.",
@@ -1717,7 +1717,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:locationID",
     "term_name": "locationID",
     "term_label": "Location ID",
     "term_description": "An identifier for the set of dcterms:Location information. May be a global unique identifier or an identifier specific to the data set.",
@@ -1734,7 +1734,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:locationRemarks",
     "term_name": "locationRemarks",
     "term_label": "Location Remarks",
     "term_description": "Comments or notes about the dcterms:Location.",
@@ -1751,7 +1751,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:lowestBiostratigraphicZone",
     "term_name": "lowestBiostratigraphicZone",
     "term_label": "Lowest Biostratigraphic Zone",
     "term_description": "The full name of the lowest possible geological biostratigraphic zone of the stratigraphic horizon from which the dwc:MaterialEntity was collected.",
@@ -1768,7 +1768,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:materialEntityRemarks",
     "term_name": "materialEntityRemarks",
     "term_label": "Material Entity Remarks",
     "term_description": "Comments or notes about the dwc:MaterialEntity instance.",
@@ -1785,7 +1785,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:maximumDepthInMeters",
     "term_name": "maximumDepthInMeters",
     "term_label": "Maximum Depth In Metres",
     "term_description": "The greater depth of a range of depth below the local surface, in metres.",
@@ -1802,7 +1802,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:maximumDistanceAboveSurfaceInMeters",
     "term_name": "maximumDistanceAboveSurfaceInMeters",
     "term_label": "Maximum Distance Above Surface In Metres",
     "term_description": "The greater distance in a range of distance from a reference surface in the vertical direction, in meters. Use positive values for locations above the surface, negative values for locations below. If depth measures are given, the reference surface is the location given by the depth, otherwise the reference surface is the location given by the elevation.",
@@ -1819,7 +1819,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:maximumElevationInMeters",
     "term_name": "maximumElevationInMeters",
     "term_label": "Maximum Elevation In Metres",
     "term_description": "The upper limit of the range of elevation (altitude, usually above sea level), in metres.",
@@ -1836,7 +1836,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:measurementAccuracy",
     "term_name": "measurementAccuracy",
     "term_label": "Measurement Accuracy",
     "term_description": "The description of the potential error associated with the dwc:measurementValue.",
@@ -1853,7 +1853,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:measurementDeterminedBy",
     "term_name": "measurementDeterminedBy",
     "term_label": "Measurement Determined By",
     "term_description": "A person, group, or organization who determined the value of the dwc:MeasurementOrFact.",
@@ -1870,7 +1870,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:measurementDeterminedDate",
     "term_name": "measurementDeterminedDate",
     "term_label": "Measurement Determined Date",
     "term_description": "The date on which the dwc:MeasurementOrFact was made.",
@@ -1887,7 +1887,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:measurementID",
     "term_name": "measurementID",
     "term_label": "Measurement ID",
     "term_description": "An identifier for the dwc:MeasurementOrFact (information pertaining to measurements, facts, characteristics, or assertions). May be a global unique identifier or an identifier specific to the data set.",
@@ -1904,7 +1904,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:measurementMethod",
     "term_name": "measurementMethod",
     "term_label": "Measurement Method",
     "term_description": "The method or protocol used to determine the measurement, fact, characteristic, or assertion.",
@@ -1921,7 +1921,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:measurementRemarks",
     "term_name": "measurementRemarks",
     "term_label": "Measurement Remarks",
     "term_description": "Comments or notes accompanying the dwc:MeasurementOrFact.",
@@ -1938,7 +1938,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:measurementType",
     "term_name": "measurementType",
     "term_label": "Measurement Type",
     "term_description": "The nature of the measurement, fact, characteristic, or assertion.",
@@ -1951,17 +1951,17 @@
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
+      "Survey area",
       "Tail length",
       "Temperature",
       "Trap line length",
-      "Survey area",
       "Trap type"
     ]
   },
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:measurementUnit",
     "term_name": "measurementUnit",
     "term_label": "Measurement Unit",
     "term_description": "The units associated with the dwc:measurementValue.",
@@ -1974,20 +1974,20 @@
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
-      "m",
-      "g",
-      "l",
-      "\u00b0C",
-      "mm",
-      "km\u00b2",
       "%",
-      "hh:mm:ss"
+      "g",
+      "hh:mm:ss",
+      "km\u00b2",
+      "l",
+      "m",
+      "mm",
+      "\u00b0C"
     ]
   },
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:measurementValue",
     "term_name": "measurementValue",
     "term_label": "Measurement Value",
     "term_description": "The value of the measurement, fact, characteristic, or assertion.",
@@ -2004,7 +2004,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:member",
     "term_name": "member",
     "term_label": "Member",
     "term_description": "The full name of the lithostratigraphic member from which the dwc:MaterialEntity was collected.",
@@ -2021,7 +2021,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:minimumDepthInMeters",
     "term_name": "minimumDepthInMeters",
     "term_label": "Minimum Depth In Metres",
     "term_description": "The lesser depth of a range of depth below the local surface, in metres.",
@@ -2038,7 +2038,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:minimumDistanceAboveSurfaceInMeters",
     "term_name": "minimumDistanceAboveSurfaceInMeters",
     "term_label": "Minimum Distance Above Surface In Metres",
     "term_description": "The lesser distance in a range of distance from a reference surface in the vertical direction, in meters. Use positive values for locations above the surface, negative values for locations below. If depth measures are given, the reference surface is the location given by the depth, otherwise the reference surface is the location given by the elevation.",
@@ -2055,7 +2055,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:minimumElevationInMeters",
     "term_name": "minimumElevationInMeters",
     "term_label": "Minimum Elevation In Metres",
     "term_description": "The lower limit of the range of elevation (altitude, usually above sea level), in metres",
@@ -2072,7 +2072,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:modified",
     "term_name": "modified",
     "term_label": "Modified",
     "term_description": "The most recent date-time on which the resource was changed.",
@@ -2089,7 +2089,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:municipality",
     "term_name": "municipality",
     "term_label": "Municipality",
     "term_description": "The full, unabbreviated name of the next smaller administrative region than county (city, municipality, etc.) in which the dcterms:Location occurs. Do not use this term for a nearby named place that does not contain the actual dcterms:Location.",
@@ -2106,7 +2106,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:nameAccordingTo",
     "term_name": "nameAccordingTo",
     "term_label": "Name According To",
     "term_description": "The reference to the source in which the specific taxon concept circumscription is defined or implied - traditionally signified by the Latin \"sensu\" or \"sec.\" (from secundum, meaning \"according to\"). For taxa that result from identifications, a reference to the keys, monographs, experts and other sources should be given.",
@@ -2123,7 +2123,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:nameAccordingToID",
     "term_name": "nameAccordingToID",
     "term_label": "Name According To ID",
     "term_description": "An identifier for the source in which the specific taxon concept circumscription is defined or implied. See dwc:nameAccordingTo.",
@@ -2140,7 +2140,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:namePublishedIn",
     "term_name": "namePublishedIn",
     "term_label": "Name Published In",
     "term_description": "A reference for the publication in which the dwc:scientificName was originally established under the rules of the associated dwc:nomenclaturalCode.",
@@ -2157,7 +2157,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:namePublishedInID",
     "term_name": "namePublishedInID",
     "term_label": "Name Published In ID",
     "term_description": "An identifier for the publication in which the dwc:scientificName was originally established under the rules of the associated dwc:nomenclaturalCode.",
@@ -2174,7 +2174,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:namePublishedInYear",
     "term_name": "namePublishedInYear",
     "term_label": "Name Published In Year",
     "term_description": "The four-digit year in which the dwc:scientificName was published.",
@@ -2191,7 +2191,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:nomenclaturalCode",
     "term_name": "nomenclaturalCode",
     "term_label": "Nomenclatural Code",
     "term_description": "The nomenclatural code (or codes in the case of an ambiregnal name) under which the dwc:scientificName is constructed.",
@@ -2208,7 +2208,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:nomenclaturalStatus",
     "term_name": "nomenclaturalStatus",
     "term_label": "Nomenclatural Status",
     "term_description": "The status related to the original publication of the name and its conformance to the relevant rules of nomenclature. It is based essentially on an algorithm according to the business rules of the code. It requires no taxonomic opinion.",
@@ -2225,7 +2225,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:occurrenceRemarks",
     "term_name": "occurrenceRemarks",
     "term_label": "Occurrence Remarks",
     "term_description": "Comments or notes about the dwc:Occurrence.",
@@ -2242,7 +2242,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:occurrenceStatus",
     "term_name": "occurrenceStatus",
     "term_label": "Occurrence Status",
     "term_description": "A statement about the presence or absence of a dwc:Taxon at a dcterms:Location.",
@@ -2255,14 +2255,14 @@
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
-      "Present",
-      "Absent"
+      "Absent",
+      "Present"
     ]
   },
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:organismID",
     "term_name": "organismID",
     "term_label": "Organism ID",
     "term_description": "An identifier for the dwc:Organism instance (as opposed to a particular digital record of the dwc:Organism). May be a globally unique identifier or an identifier specific to the data set.",
@@ -2279,7 +2279,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:organismQuantity",
     "term_name": "organismQuantity",
     "term_label": "Organism Quantity",
     "term_description": "A number or enumeration value for the quantity of dwc:Organisms.",
@@ -2296,7 +2296,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:organismQuantityType",
     "term_name": "organismQuantityType",
     "term_label": "Organism Quantity Type",
     "term_description": "The type of quantification system used for the quantity of organisms.",
@@ -2313,7 +2313,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:organismRemarks",
     "term_name": "organismRemarks",
     "term_label": "Organism Remarks",
     "term_description": "Comments or notes about the dwc:Organism instance.",
@@ -2330,7 +2330,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:organismScope",
     "term_name": "organismScope",
     "term_label": "Organism Scope",
     "term_description": "A description of the kind of dwc:Organism instance. Can be used to indicate whether the dwc:Organism instance represents a discrete organism or if it represents a particular type of aggregation.",
@@ -2347,7 +2347,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:originalNameUsage",
     "term_name": "originalNameUsage",
     "term_label": "Original Name Usage",
     "term_description": "The taxon name, with authorship and date information if known, as it originally appeared when first established under the rules of the associated dwc:nomenclaturalCode. The basionym (botany) or basonym (bacteriology) of the dwc:scientificName or the senior/earlier homonym for replaced names.",
@@ -2364,7 +2364,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:originalNameUsageID",
     "term_name": "originalNameUsageID",
     "term_label": "Original Name Usage ID",
     "term_description": "An identifier for the name usage (documented meaning of the name according to a source) in which the terminal element of the dwc:scientificName was originally established under the rules of the associated dwc:nomenclaturalCode.",
@@ -2381,7 +2381,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:otherCatalogNumbers",
     "term_name": "otherCatalogNumbers",
     "term_label": "Other Catalog Numbers",
     "term_description": "A list (concatenated and separated) of previous or alternate fully qualified catalog numbers or other human-used identifiers for the same dwc:Occurrence, whether in the current or any other data set or collection.",
@@ -2398,7 +2398,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:ownerInstitutionCode",
     "term_name": "ownerInstitutionCode",
     "term_label": "Owner Institution Code",
     "term_description": "The name (or acronym) in use by the institution having ownership of the object(s) or information referred to in the record.",
@@ -2415,7 +2415,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:parentEventID",
     "term_name": "parentEventID",
     "term_label": "Parent Event ID",
     "term_description": "An identifier for the broader dwc:Event that groups this and potentially other dwc:Events.",
@@ -2432,7 +2432,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:parentMeasurementID",
     "term_name": "parentMeasurementID",
     "term_label": "Parent Measurement ID",
     "term_description": "An identifier for a broader dwc:MeasurementOrFact that groups this and potentially other dwc:MeasurementOrFacts.",
@@ -2449,7 +2449,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:parentNameUsage",
     "term_name": "parentNameUsage",
     "term_label": "Parent Name Usage",
     "term_description": "The full name, with authorship and date information if known, of the direct, most proximate higher-rank parent dwc:Taxon (in a classification) of the most specific element of the dwc:scientificName.",
@@ -2466,7 +2466,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:parentNameUsageID",
     "term_name": "parentNameUsageID",
     "term_label": "Parent Name Usage ID",
     "term_description": "An identifier for the name usage (documented meaning of the name according to a source) of the direct, most proximate higher-rank parent taxon (in a classification) of the most specific element of the dwc:scientificName.",
@@ -2483,7 +2483,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:pathway",
     "term_name": "pathway",
     "term_label": "Pathway",
     "term_description": "The process by which a dwc:Organism came to be in a given place at a given time.",
@@ -2500,7 +2500,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:phylum",
     "term_name": "phylum",
     "term_label": "Phylum",
     "term_description": "The full scientific name of the phylum or division in which the dwc:Taxon is classified.",
@@ -2517,7 +2517,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:pointRadiusSpatialFit",
     "term_name": "pointRadiusSpatialFit",
     "term_label": "Point Radius Spatial Fit",
     "term_description": "The ratio of the area of the point-radius (dwc:decimalLatitude, dwc:decimalLongitude, dwc:coordinateUncertaintyInMeters) to the area of the True (original, or most specific) spatial representation of the dcterms:Location. Legal values are 0, greater than or equal to 1, or undefined. A value of 1 is an exact match or 100% overlap. A value of 0 should be used if the given point-radius does not completely contain the original representation. The dwc:pointRadiusSpatialFit is undefined (and should be left empty) if the original representation is any geometry without area (e.g., a point or polyline) and without uncertainty and the given georeference is not that same geometry (without uncertainty). If both the original and the given georeference are the same point, the dwc:pointRadiusSpatialFit is 1.",
@@ -2534,7 +2534,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:previousIdentifications",
     "term_name": "previousIdentifications",
     "term_label": "Previous Identifications",
     "term_description": "A list (concatenated and separated) of previous assignments of names to the dwc:Organism.",
@@ -2551,7 +2551,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:recordedBy",
     "term_name": "recordedBy",
     "term_label": "Recorded By",
     "term_description": "A person, group, or organization responsible for recording the original dwc:Occurrence.",
@@ -2568,7 +2568,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:recordedByID",
     "term_name": "recordedByID",
     "term_label": "Recorded By ID",
     "term_description": "A list (concatenated and separated) of the globally unique identifier for the person, people, groups, or organizations responsible for recording the original dwc:Occurrence.",
@@ -2585,7 +2585,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:references",
     "term_name": "references",
     "term_label": "References",
     "term_description": "A related resource that is referenced, cited, or otherwise pointed to by the described resource.",
@@ -2602,7 +2602,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:relatedResourceID",
     "term_name": "relatedResourceID",
     "term_label": "Related Resource ID",
     "term_description": "An identifier for a related resource (the object, rather than the subject of the relationship).",
@@ -2619,7 +2619,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:relationshipAccordingTo",
     "term_name": "relationshipAccordingTo",
     "term_label": "Relationship According To",
     "term_description": "The source (person, organization, publication, reference) establishing the relationship between the two resources.",
@@ -2636,7 +2636,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:relationshipEstablishedDate",
     "term_name": "relationshipEstablishedDate",
     "term_label": "Relationship Established Date",
     "term_description": "The date-time on which the relationship between the two resources was established.",
@@ -2653,7 +2653,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:relationshipOfResource",
     "term_name": "relationshipOfResource",
     "term_label": "Relationship Of Resource",
     "term_description": "The relationship of the subject (identified by dwc:resourceID) to the object (identified by dwc:relatedResourceID).",
@@ -2666,25 +2666,25 @@
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
-      "Same as",
       "Duplicate of",
+      "Host of",
+      "Located within",
       "Mother of",
       "Offspring of",
-      "Sibling of",
+      "On slab with",
       "Parasite of",
-      "Host of",
-      "Valid synonym of",
-      "Located within",
-      "Pollinator of members of taxon",
-      "Pollinated specific plant",
       "Pollinated by members of taxon",
-      "On slab with"
+      "Pollinated specific plant",
+      "Pollinator of members of taxon",
+      "Same as",
+      "Sibling of",
+      "Valid synonym of"
     ]
   },
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:relationshipOfResourceID",
     "term_name": "relationshipOfResourceID",
     "term_label": "Relationship Of Resource ID",
     "term_description": "An identifier for the relationship type (predicate) that connects the subject identified by dwc:resourceID to its object identified by dwc:relatedResourceID.",
@@ -2701,7 +2701,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:relationshipRemarks",
     "term_name": "relationshipRemarks",
     "term_label": "Relationship Remarks",
     "term_description": "Comments or notes about the relationship between the two resources.",
@@ -2718,7 +2718,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:reproductiveCondition",
     "term_name": "reproductiveCondition",
     "term_label": "Reproductive Condition",
     "term_description": "The reproductive condition of the biological individual(s) represented in the dwc:Occurrence.",
@@ -2731,16 +2731,16 @@
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
-      "Non-reproductive",
-      "Pregnant",
+      "Fruit-bearing",
       "In bloom",
-      "Fruit-bearing"
+      "Non-reproductive",
+      "Pregnant"
     ]
   },
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:resourceID",
     "term_name": "resourceID",
     "term_label": "Resource ID",
     "term_description": "An identifier for the resource that is the subject of the relationship.",
@@ -2757,7 +2757,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:resourceRelationshipID",
     "term_name": "resourceRelationshipID",
     "term_label": "Resource Relationship ID",
     "term_description": "An identifier for an instance of relationship between one resource (the subject) and another (dwc:relatedResource, the object).",
@@ -2774,7 +2774,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:rightsHolder",
     "term_name": "rightsHolder",
     "term_label": "Rights Holder",
     "term_description": "A person or organization owning or managing rights over the resource.",
@@ -2791,7 +2791,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:sampleSizeUnit",
     "term_name": "sampleSizeUnit",
     "term_label": "Sample Size Unit",
     "term_description": "The unit of measurement of the size (time duration, length, area, or volume) of a sample in a sampling dwc:Event.",
@@ -2808,7 +2808,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:sampleSizeValue",
     "term_name": "sampleSizeValue",
     "term_label": "Sample Size Value",
     "term_description": "A numeric value for a measurement of the size (time duration, length, area, or volume) of a sample in a sampling dwc:Event.",
@@ -2825,7 +2825,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:samplingEffort",
     "term_name": "samplingEffort",
     "term_label": "Sampling Effort",
     "term_description": "The amount of effort expended during a dwc:Event.",
@@ -2842,7 +2842,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:samplingProtocol",
     "term_name": "samplingProtocol",
     "term_label": "Sampling Protocol",
     "term_description": "The methods or protocols used during a dwc:Event, denoted by an IRI.",
@@ -2859,7 +2859,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:scientificNameAuthorship",
     "term_name": "scientificNameAuthorship",
     "term_label": "Scientific Name Authorship",
     "term_description": "The authorship information for the dwc:scientificName formatted according to the conventions of the applicable dwc:nomenclaturalCode.",
@@ -2876,7 +2876,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:scientificNameID",
     "term_name": "scientificNameID",
     "term_label": "Scientific Name ID",
     "term_description": "An identifier for the nomenclatural (not taxonomic) details of a scientific name.",
@@ -2893,7 +2893,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:specificEpithet",
     "term_name": "specificEpithet",
     "term_label": "Specific Epithet",
     "term_description": "The name of the first or species epithet of the dwc:scientificName.",
@@ -2910,7 +2910,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:startDayOfYear",
     "term_name": "startDayOfYear",
     "term_label": "Start Day Of Year",
     "term_description": "The earliest integer day of the year on which the dwc:Event occurred (1 for January 1, 365 for December 31, except in a leap year, in which case it is 366).",
@@ -2927,7 +2927,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:stateProvince",
     "term_name": "stateProvince",
     "term_label": "State Province",
     "term_description": "The name of the next smaller administrative region than country (state, province, canton, department, region, etc.) in which the dcterms:Location occurs.",
@@ -2944,7 +2944,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:subfamily",
     "term_name": "subfamily",
     "term_label": "Subfamily",
     "term_description": "The full scientific name of the subfamily in which the dwc:Taxon is classified.",
@@ -2961,7 +2961,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:subgenus",
     "term_name": "subgenus",
     "term_label": "Subgenus",
     "term_description": "The full scientific name of the subgenus in which the dwc:Taxon is classified. Values should include the genus to avoid homonym confusion.",
@@ -2978,7 +2978,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:subtribe",
     "term_name": "subtribe",
     "term_label": "Subtribe",
     "term_description": "The full scientific name of the subtribe in which the dwc:Taxon is classified.",
@@ -2995,7 +2995,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:superfamily",
     "term_name": "superfamily",
     "term_label": "Superfamily",
     "term_description": "The full scientific name of the superfamily in which the dwc:Taxon is classified.",
@@ -3012,7 +3012,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:taxonConceptID",
     "term_name": "taxonConceptID",
     "term_label": "Taxon Concept ID",
     "term_description": "An identifier for the taxonomic concept to which the record refers - not for the nomenclatural details of a dwc:Taxon.",
@@ -3029,7 +3029,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:taxonRemarks",
     "term_name": "taxonRemarks",
     "term_label": "Taxon Remarks",
     "term_description": "Comments or notes about the taxon or name.",
@@ -3046,7 +3046,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:taxonomicStatus",
     "term_name": "taxonomicStatus",
     "term_label": "Taxonomic Status",
     "term_description": "The status of the use of the dwc:scientificName as a label for a taxon. Requires taxonomic opinion to define the scope of a dwc:Taxon. Rules of priority then are used to define the taxonomic status of the nomenclature contained in that scope, combined with the experts opinion. It must be linked to a specific taxonomic reference that defines the concept.",
@@ -3063,7 +3063,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:tribe",
     "term_name": "tribe",
     "term_label": "Tribe",
     "term_description": "The full scientific name of the tribe in which the dwc:Taxon is classified.",
@@ -3080,7 +3080,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:type",
     "term_name": "type",
     "term_label": "Type",
     "term_description": "The nature or genre of the resource.",
@@ -3097,7 +3097,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:typeStatus",
     "term_name": "typeStatus",
     "term_label": "Type Status",
     "term_description": "A nomenclatural type (type status, typified scientific name, publication) applied to the subject.",
@@ -3114,7 +3114,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:verbatimCoordinateSystem",
     "term_name": "verbatimCoordinateSystem",
     "term_label": "Verbatim Coordinate System",
     "term_description": "The spatial coordinate system for the dwc:verbatimLatitude and dwc:verbatimLongitude or the dwc:verbatimCoordinates of the dcterms:Location.",
@@ -3131,7 +3131,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:verbatimCoordinates",
     "term_name": "verbatimCoordinates",
     "term_label": "Verbatim Coordinates",
     "term_description": "The verbatim original spatial coordinates of the dcterms:Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in dwc:verbatimSRS and the coordinate system should be stored in dwc:verbatimCoordinateSystem.",
@@ -3148,7 +3148,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:verbatimDepth",
     "term_name": "verbatimDepth",
     "term_label": "Verbatim Depth",
     "term_description": "The original description of the depth below the local surface.",
@@ -3165,7 +3165,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:verbatimElevation",
     "term_name": "verbatimElevation",
     "term_label": "Verbatim Elevation",
     "term_description": "The original description of the elevation (altitude, usually above sea level) of the Location.",
@@ -3182,7 +3182,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:verbatimEventDate",
     "term_name": "verbatimEventDate",
     "term_label": "Verbatim Event Date",
     "term_description": "The verbatim original representation of the date and time information for a dwc:Event.",
@@ -3199,7 +3199,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:verbatimIdentification",
     "term_name": "verbatimIdentification",
     "term_label": "Verbatim Identification",
     "term_description": "A string representing the taxonomic identification as it appeared in the original record.",
@@ -3216,7 +3216,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:verbatimLabel",
     "term_name": "verbatimLabel",
     "term_label": "Verbatim Label",
     "term_description": "The content of this term should include no embellishments, prefixes, headers or other additions made to the text. Abbreviations must not be expanded and supposed misspellings must not be corrected. Lines or breakpoints between blocks of text that could be verified by seeing the original labels or images of them may be used. Examples of material entities include preserved specimens, fossil specimens, and material samples. Best practice is to use UTF-8 for all characters. Best practice is to add comment \u201a\u00c4\u00faverbatimLabel derived from human transcription\u201a\u00c4\u00f9 in dwc:occurrenceRemarks.",
@@ -3233,7 +3233,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:verbatimLatitude",
     "term_name": "verbatimLatitude",
     "term_label": "Verbatim Latitude",
     "term_description": "The verbatim original latitude of the dcterms:Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in dwc:verbatimSRS and the coordinate system should be stored in dwc:verbatimCoordinateSystem.",
@@ -3250,7 +3250,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:verbatimLocality",
     "term_name": "verbatimLocality",
     "term_label": "Verbatim Locationality",
     "term_description": "The original textual description of the place.",
@@ -3267,7 +3267,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:verbatimLongitude",
     "term_name": "verbatimLongitude",
     "term_label": "Verbatim Longitude",
     "term_description": "The verbatim original longitude of the dcterms:Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in dwc:verbatimSRS and the coordinate system should be stored in dwc:verbatimCoordinateSystem.",
@@ -3284,7 +3284,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:verbatimSRS",
     "term_name": "verbatimSRS",
     "term_label": "Verbatim SRS",
     "term_description": "The ellipsoid, geodetic datum, or spatial reference system (SRS) upon which coordinates given in dwc:verbatimLatitude and dwc:verbatimLongitude, or dwc:verbatimCoordinates are based.",
@@ -3301,7 +3301,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:verbatimTaxonRank",
     "term_name": "verbatimTaxonRank",
     "term_label": "Verbatim Taxon Rank",
     "term_description": "The taxonomic rank of the most specific name in the dwc:scientificName as it appears in the original record.",
@@ -3318,7 +3318,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:vernacularName",
     "term_name": "vernacularName",
     "term_label": "Vernacular Name",
     "term_description": "A common or vernacular name.",
@@ -3335,7 +3335,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:verticalDatum",
     "term_name": "verticalDatum",
     "term_label": "Vertical Datum",
     "term_description": "The vertical datum used as the reference upon which the values in the elevation terms are based.",
@@ -3352,7 +3352,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:vitality",
     "term_name": "vitality",
     "term_label": "Vitality",
     "term_description": "An indication of whether a dwc:Organism was alive or dead at the time of collection or observation.",
@@ -3369,7 +3369,7 @@
   {
     "component_name": "sample",
     "component_label": "Sample",
-    "namespace": "dwc",
+    "namespace": "dwc:waterBody",
     "term_name": "waterBody",
     "term_label": "Water Body",
     "term_description": "The name of the water body in which the dcterms:Location occurs.",
@@ -3386,7 +3386,7 @@
   {
     "component_name": "dissociation",
     "component_label": "Dissociation",
-    "namespace": "global",
+    "namespace": "ei:dissociation_protocol_id",
     "term_name": "dissociation_protocol_id",
     "term_label": "Dissociation Protocol ID",
     "term_description": "A unique alphanumeric code for the dissociation protocol in the study",
@@ -3395,14 +3395,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "dissociation",
     "component_label": "Dissociation",
-    "namespace": "global",
+    "namespace": "ei:protocol_name",
     "term_name": "protocol_name",
     "term_label": "Protocol Name",
     "term_description": "A descriptive name of the protocol used for single-cell sequencing.",
@@ -3411,14 +3411,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "dissociation",
     "component_label": "Dissociation",
-    "namespace": "global",
+    "namespace": "ei:dissociation_description",
     "term_name": "dissociation_description",
     "term_label": "Dissociation Description",
     "term_description": "A free-text description of the process used to separate cells from tissues or cell aggregates.",
@@ -3428,14 +3428,14 @@
     "term_cardinality": "single",
     "term_type": "free-text",
     "term_reference": "http://www.ebi.ac.uk/efo/EFO_0009088",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "dissociation",
     "component_label": "Dissociation",
-    "namespace": "global",
+    "namespace": "ei:enrichment_markers",
     "term_name": "enrichment_markers",
     "term_label": "Enrichment Markers",
     "term_description": "A free-text description of the markers used to enrich specific cell types during single-cell isolation.",
@@ -3444,14 +3444,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "free-text",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "dissociation",
     "component_label": "Dissociation",
-    "namespace": "global",
+    "namespace": "ei:isolation_kit",
     "term_name": "isolation_kit",
     "term_label": "Isolation Kit",
     "term_description": "The kit used to isolate the cells.",
@@ -3459,7 +3459,7 @@
     "term_required": false,
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
@@ -3470,7 +3470,7 @@
   {
     "component_name": "dissociation",
     "component_label": "Dissociation",
-    "namespace": "global",
+    "namespace": "ei:literature_source_reference",
     "term_name": "literature_source_reference",
     "term_label": "Literature Source Reference",
     "term_description": "Reference to literature sources that describe the protocol or methods used.",
@@ -3479,14 +3479,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "dissociation",
     "component_label": "Dissociation",
-    "namespace": "global",
+    "namespace": "ei:protocols_io_reference",
     "term_name": "protocols_io_reference",
     "term_label": "Protocols Io Reference",
     "term_description": "Reference link to protocols.io for additional details on the protocol.",
@@ -3495,14 +3495,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "dissociation",
     "component_label": "Dissociation",
-    "namespace": "global",
+    "namespace": "ei:workflow_hub_SOP_reference",
     "term_name": "workflow_hub_SOP_reference",
     "term_label": "Workflowhub Sop Reference",
     "term_description": "Reference to the Standard Operating Procedure (SOP) in workflow hub.",
@@ -3511,14 +3511,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "dissociation",
     "component_label": "Dissociation",
-    "namespace": "global",
+    "namespace": "ei:dissociation_protocol_method",
     "term_name": "dissociation_protocol_method",
     "term_label": "Dissociation Protocol Method",
     "term_description": "The method used to dissociate tissues into single cells.",
@@ -3527,14 +3527,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "dissociation",
     "component_label": "Dissociation",
-    "namespace": "global",
+    "namespace": "ei:single_cell_quality_metric",
     "term_name": "single_cell_quality_metric",
     "term_label": "Single Cell Quality Metric",
     "term_description": "Metrics used to assess the quality of single cells before sequencing.",
@@ -3543,14 +3543,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "cell_suspension",
     "component_label": "Cell Suspension",
-    "namespace": "global",
+    "namespace": "ei:sample_id",
     "term_name": "sample_id",
     "term_label": "Sample ID",
     "term_description": "A unique alphanumeric reference or identifier assigned to the cell suspension for the sample in the study.",
@@ -3559,14 +3559,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "cell_suspension",
     "component_label": "Cell Suspension",
-    "namespace": "global",
+    "namespace": "ei:dissociation_protocol_id",
     "term_name": "dissociation_protocol_id",
     "term_label": "Dissociation Protocol ID",
     "term_description": "A unique alphanumeric code for the dissociation protocol in the study",
@@ -3575,14 +3575,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "cell_suspension",
     "component_label": "Cell Suspension",
-    "namespace": "global",
+    "namespace": "ei:cell_suspension_id",
     "term_name": "cell_suspension_id",
     "term_label": "Cell Suspension ID",
     "term_description": "A unique alphanumeric code for the cell suspension for the sample",
@@ -3591,14 +3591,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "cell_suspension",
     "component_label": "Cell Suspension",
-    "namespace": "global",
+    "namespace": "ei:suspension_type",
     "term_name": "suspension_type",
     "term_label": "Suspension Type",
     "term_description": "The type of suspension used to keep cells in solution during processing.",
@@ -3606,7 +3606,7 @@
     "term_required": true,
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
@@ -3618,7 +3618,7 @@
   {
     "component_name": "cell_suspension",
     "component_label": "Cell Suspension",
-    "namespace": "global",
+    "namespace": "ei:cell_count",
     "term_name": "cell_count",
     "term_label": "Cell Count",
     "term_description": "An number representing the number of cells in the sequencing library.",
@@ -3626,26 +3626,26 @@
     "term_required": false,
     "term_cardinality": "single",
     "term_type": "number",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
       "1",
-      "2-10",
-      "11-50",
-      "51-100",
-      "101-10000",
-      "10001-50000",
-      "50001-100000",
+      "1000000+",
       "100001-500000",
+      "10001-50000",
+      "101-10000",
+      "11-50",
+      "2-10",
       "500001-1000000",
-      "1000000+"
+      "50001-100000",
+      "51-100"
     ]
   },
   {
     "component_name": "cell_suspension",
     "component_label": "Cell Suspension",
-    "namespace": "global",
+    "namespace": "ei:cell_viability",
     "term_name": "cell_viability",
     "term_label": "Cell Viability",
     "term_description": "The percentage of living cells in a sample, indicating the health and quality of cells for RNA-sequencing analysis.",
@@ -3654,14 +3654,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "cell_suspension",
     "component_label": "Cell Suspension",
-    "namespace": "global",
+    "namespace": "ei:cell_viability_assessment_method",
     "term_name": "cell_viability_assessment_method",
     "term_label": "Cell Viability Assessment Method",
     "term_description": "The method used to evaluate the viability of cells in the sample, often involving staining or flow cytometry techniques.",
@@ -3670,14 +3670,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "cell_suspension",
     "component_label": "Cell Suspension",
-    "namespace": "global",
+    "namespace": "ei:cell_size",
     "term_name": "cell_size",
     "term_label": "Cell Size",
     "term_description": "The size of the cell, typically measured in micrometres.",
@@ -3686,14 +3686,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "number",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "cell_suspension",
     "component_label": "Cell Suspension",
-    "namespace": "global",
+    "namespace": "ei:suspension_volume_\u00b5l",
     "term_name": "suspension_volume_\u00b5l",
     "term_label": "Suspension Volume \u039cl",
     "term_description": "The volume of the cell suspension in microlitres.",
@@ -3702,14 +3702,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "number",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "cell_suspension",
     "component_label": "Cell Suspension",
-    "namespace": "global",
+    "namespace": "ei:suspension_concentration_cells_per_\u00b5l",
     "term_name": "suspension_concentration_cells_per_\u00b5l",
     "term_label": "Suspension Concentration Cells Per \u039cl",
     "term_description": "The concentration of cells in the suspension.",
@@ -3718,14 +3718,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "number",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "cell_suspension",
     "component_label": "Cell Suspension",
-    "namespace": "global",
+    "namespace": "ei:suspension_dilution",
     "term_name": "suspension_dilution",
     "term_label": "Suspension Dilution",
     "term_description": "The dilution factor of the cell suspension.",
@@ -3734,14 +3734,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "number",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "cell_suspension",
     "component_label": "Cell Suspension",
-    "namespace": "global",
+    "namespace": "ei:loading_volume_\u00b5l",
     "term_name": "loading_volume_\u00b5l",
     "term_label": "Loading Volume \u039cl",
     "term_description": "The volume of the cell suspension loaded into the single-cell RNA-sequencing system for analysis.",
@@ -3750,14 +3750,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "number",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "cell_suspension",
     "component_label": "Cell Suspension",
-    "namespace": "global",
+    "namespace": "ei:suspension_dilution_buffer",
     "term_name": "suspension_dilution_buffer",
     "term_label": "Suspension Dilution Buffer",
     "term_description": "A solution used to dilute cell suspensions to a desired concentration, typically prior to loading cells into a device for single-cell RNA sequencing. It helps maintain cell viability and integrity during processing.",
@@ -3766,14 +3766,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "library_preparation",
     "component_label": "Library Preparation",
-    "namespace": "global",
+    "namespace": "ei:library_prep_id",
     "term_name": "library_prep_id",
     "term_label": "Library Preparation ID",
     "term_description": "A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.",
@@ -3782,14 +3782,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "library_preparation",
     "component_label": "Library Preparation",
-    "namespace": "global",
+    "namespace": "ei:cell_suspension_id",
     "term_name": "cell_suspension_id",
     "term_label": "Cell Suspension ID",
     "term_description": "A unique alphanumeric code for the cell suspension for the library preparation.",
@@ -3798,14 +3798,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "library_preparation",
     "component_label": "Library Preparation",
-    "namespace": "global",
+    "namespace": "ei:library_prep_kit_version",
     "term_name": "library_prep_kit_version",
     "term_label": "Library Preparation Kit Version",
     "term_description": "The version number of the library preparation kit used for sequencing.",
@@ -3815,14 +3815,14 @@
     "term_cardinality": "single",
     "term_type": "number",
     "term_reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "library_preparation",
     "component_label": "Library Preparation",
-    "namespace": "global",
+    "namespace": "ei:average_size_distribution",
     "term_name": "average_size_distribution",
     "term_label": "Average Size Distribution",
     "term_description": "The average length of RNA fragments in base pairs (BP) after library preparation, indicating the quality and suitability of the RNA for sequencing.",
@@ -3831,14 +3831,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "number",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "library_preparation",
     "component_label": "Library Preparation",
-    "namespace": "global",
+    "namespace": "ei:primeness",
     "term_name": "primeness",
     "term_label": "Primeness",
     "term_description": "The end from which the molecule was sequenced.",
@@ -3846,7 +3846,7 @@
     "term_required": true,
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
@@ -3858,7 +3858,7 @@
   {
     "component_name": "library_preparation",
     "component_label": "Library Preparation",
-    "namespace": "global",
+    "namespace": "ei:i5_index",
     "term_name": "i5_index",
     "term_label": "i5 Index",
     "term_description": "Barcode sequence used on the i5 adapter during library preparation for identifying samples in multiplexed single-cell RNA-sequencing.",
@@ -3867,14 +3867,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "library_preparation",
     "component_label": "Library Preparation",
-    "namespace": "global",
+    "namespace": "ei:i7_index",
     "term_name": "i7_index",
     "term_label": "i7 Index",
     "term_description": "Barcode sequence used on the i7 adapter to distinguish samples in multiplexed sequencing runs.",
@@ -3883,14 +3883,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "library_preparation",
     "component_label": "Library Preparation",
-    "namespace": "global",
+    "namespace": "ei:dual_single_index",
     "term_name": "dual_single_index",
     "term_label": "Dual or Single Index",
     "term_description": "Specifies if both i5 and i7 indices (dual) or only one index (single) was used for sample identification during sequencing.",
@@ -3898,7 +3898,7 @@
     "term_required": true,
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
@@ -3909,7 +3909,7 @@
   {
     "component_name": "library_preparation",
     "component_label": "Library Preparation",
-    "namespace": "global",
+    "namespace": "ei:index_length",
     "term_name": "index_length",
     "term_label": "Index Length",
     "term_description": "The length (in base pairs) of the index sequences used (i5 and/or i7).",
@@ -3918,14 +3918,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "number",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "library_preparation",
     "component_label": "Library Preparation",
-    "namespace": "global",
+    "namespace": "ei:i5_sequence",
     "term_name": "i5_sequence",
     "term_label": "I5 Sequence",
     "term_description": "The nucleotide sequence of the i5 index used in multiplexing during sequencing.",
@@ -3934,14 +3934,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "library_preparation",
     "component_label": "Library Preparation",
-    "namespace": "global",
+    "namespace": "ei:i7_sequence",
     "term_name": "i7_sequence",
     "term_label": "i7 Sequence",
     "term_description": "The specific nucleotide sequence of the i7 index used for a sample.",
@@ -3950,14 +3950,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "library_preparation",
     "component_label": "Library Preparation",
-    "namespace": "global",
+    "namespace": "ei:plate_id",
     "term_name": "plate_id",
     "term_label": "Plate ID",
     "term_description": "Identifier for the 96-well plate used in sample preparation.",
@@ -3966,14 +3966,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "library_preparation",
     "component_label": "Library Preparation",
-    "namespace": "global",
+    "namespace": "ei:well_row",
     "term_name": "well_row",
     "term_label": "Well Row",
     "term_description": "The row identifier in a 96-well plate indicating the sample's position.",
@@ -3982,14 +3982,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "library_preparation",
     "component_label": "Library Preparation",
-    "namespace": "global",
+    "namespace": "ei:well_col",
     "term_name": "well_col",
     "term_label": "Well Column",
     "term_description": "The column identifier in a 96-well plate indicating the sample's position.",
@@ -3998,14 +3998,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "number",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "library_preparation",
     "component_label": "Library Preparation",
-    "namespace": "global",
+    "namespace": "ei:cell_phenotype",
     "term_name": "cell_phenotype",
     "term_label": "Cell Phenotype",
     "term_description": "The cell marker for the Fluorescence-Activated Cell Sorting (FACS) of cells.",
@@ -4013,18 +4013,18 @@
     "term_required": false,
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
-      "CD41-",
-      "CD41+"
+      "CD41+",
+      "CD41-"
     ]
   },
   {
     "component_name": "sequencing",
     "component_label": "Sequencing",
-    "namespace": "global",
+    "namespace": "ei:sequencing_id",
     "term_name": "sequencing_id",
     "term_label": "Sequencing ID",
     "term_description": "A unique alphanumeric reference or identifier for the sequencing protocol.",
@@ -4033,14 +4033,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "sequencing",
     "component_label": "Sequencing",
-    "namespace": "global",
+    "namespace": "ei:sequencing_platform_name",
     "term_name": "sequencing_platform_name",
     "term_label": "Sequencing Platform Name",
     "term_description": "The name of the sequencing platform used for the experiment.",
@@ -4050,14 +4050,14 @@
     "term_cardinality": "single",
     "term_type": "string",
     "term_reference": "http://purl.obolibrary.org/obo/NCIT_C172274",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "sequencing",
     "component_label": "Sequencing",
-    "namespace": "global",
+    "namespace": "ei:sequencing_instrument_model",
     "term_name": "sequencing_instrument_model",
     "term_label": "Sequencing Instrument Model",
     "term_description": "This refers to the machine or platform used for sequencing, with variations in throughput, read lengths, error rates, and application suitability.",
@@ -4067,14 +4067,14 @@
     "term_cardinality": "single",
     "term_type": "string",
     "term_reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "sequencing",
     "component_label": "Sequencing",
-    "namespace": "global",
+    "namespace": "ei:library_layout",
     "term_name": "library_layout",
     "term_label": "Library Layout",
     "term_description": "The type of library layout used for sequencing.",
@@ -4082,20 +4082,20 @@
     "term_required": true,
     "term_cardinality": "single",
     "term_type": "string",
-    "term_reference": "http://purl.obolibrary.org/obo/NCIT_C150423",
-    "termset": "global",
+    "term_reference": "ttp://purl.obolibrary.org/obo/NCIT_C150423",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
-      "Single",
       "Paired",
-      "Pool"
+      "Pool",
+      "Single"
     ]
   },
   {
     "component_name": "sequencing",
     "component_label": "Sequencing",
-    "namespace": "global",
+    "namespace": "ei:desired_reads_per_cell",
     "term_name": "desired_reads_per_cell",
     "term_label": "Desired Reads Per Cell",
     "term_description": "The ideal number of sequencing reads to be generated per cell.",
@@ -4104,14 +4104,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "number",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "sequencing",
     "component_label": "Sequencing",
-    "namespace": "global",
+    "namespace": "ei:cell_barcode_offset",
     "term_name": "cell_barcode_offset",
     "term_label": "Cell Barcode Offset",
     "term_description": "The offset in sequence of the cell identifying barcode.",
@@ -4121,14 +4121,14 @@
     "term_cardinality": "single",
     "term_type": "number",
     "term_reference": "http://www.ebi.ac.uk/efo/EFO_0010204",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "sequencing",
     "component_label": "Sequencing",
-    "namespace": "global",
+    "namespace": "ei:cell_barcode_size",
     "term_name": "cell_barcode_size",
     "term_label": "Cell Barcode Size",
     "term_description": "The offset in sequence of the cell identifying barcode.\nE.g. \"0\".",
@@ -4138,14 +4138,14 @@
     "term_cardinality": "single",
     "term_type": "number",
     "term_reference": "http://www.ebi.ac.uk/efo/EFO_0010205",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "sequencing",
     "component_label": "Sequencing",
-    "namespace": "global",
+    "namespace": "ei:cell_barcode_read",
     "term_name": "cell_barcode_read",
     "term_label": "Cell Barcode Read",
     "term_description": "The type of read that contains the UMI barcode.",
@@ -4154,7 +4154,7 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
@@ -4167,7 +4167,7 @@
   {
     "component_name": "sequencing",
     "component_label": "Sequencing",
-    "namespace": "global",
+    "namespace": "ei:cDNA_read",
     "term_name": "cDNA_read",
     "term_label": "cDNA Read",
     "term_description": "The actual nucleotide sequence obtained from Complementary DNA (cDNA) during sequencing.",
@@ -4176,7 +4176,7 @@
     "term_cardinality": "single",
     "term_type": "string",
     "term_reference": "http://www.ebi.ac.uk/efo/EFO_0010195",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
@@ -4189,7 +4189,7 @@
   {
     "component_name": "sequencing",
     "component_label": "Sequencing",
-    "namespace": "global",
+    "namespace": "ei:cDNA_read_offset",
     "term_name": "cDNA_read_offset",
     "term_label": "cDNA Read Offset",
     "term_description": "The starting position of the Complementary DNA (cDNA) read within the entire sequence, indicating where the read begins after any barcodes or technical sequences.",
@@ -4198,7 +4198,7 @@
     "term_cardinality": "single",
     "term_type": "number",
     "term_reference": "http://www.ebi.ac.uk/efo/EFO_0010201",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
     "allowed_values": [
@@ -4211,7 +4211,7 @@
   {
     "component_name": "sequencing",
     "component_label": "Sequencing",
-    "namespace": "global",
+    "namespace": "ei:cDNA_read_size",
     "term_name": "cDNA_read_size",
     "term_label": "cDNA Read Size",
     "term_description": "The size of the Complementary DNA (cDNA) read.",
@@ -4221,14 +4221,14 @@
     "term_cardinality": "single",
     "term_type": "number",
     "term_reference": "http://www.ebi.ac.uk/efo/EFO_0010202",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "file",
     "component_label": "File",
-    "namespace": "global",
+    "namespace": "ei:library_preparation_id",
     "term_name": "library_preparation_id",
     "term_label": "Library Preparation ID",
     "term_description": "A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.",
@@ -4237,14 +4237,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "file",
     "component_label": "File",
-    "namespace": "global",
+    "namespace": "ei:sequencing_id",
     "term_name": "sequencing_id",
     "term_label": "Sequencing ID",
     "term_description": "A unique alphanumeric reference or identifier for the sequencing protocol.",
@@ -4253,14 +4253,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "file",
     "component_label": "File",
-    "namespace": "global",
+    "namespace": "ei:read_1_file",
     "term_name": "read_1_file",
     "term_label": "Read 1 File",
     "term_description": "The name of the file that contains read 1.",
@@ -4269,14 +4269,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "file",
     "component_label": "File",
-    "namespace": "global",
+    "namespace": "ei:read_2_file",
     "term_name": "read_2_file",
     "term_label": "Read 2 File",
     "term_description": "The name of the file that contains read 2.",
@@ -4285,14 +4285,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "file",
     "component_label": "File",
-    "namespace": "global",
+    "namespace": "ei:index_1_file",
     "term_name": "index_1_file",
     "term_label": "Index 1 File",
     "term_description": "The name of the file that contains index 1.",
@@ -4301,14 +4301,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "file",
     "component_label": "File",
-    "namespace": "global",
+    "namespace": "ei:index_2_file",
     "term_name": "index_2_file",
     "term_label": "Index 2 File",
     "term_description": "The name of the file that contains index 2.",
@@ -4317,14 +4317,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "file",
     "component_label": "File",
-    "namespace": "global",
+    "namespace": "ei:read_checksum",
     "term_name": "read_checksum",
     "term_label": "Read Checksum",
     "term_description": "Result of a hash function calculated on the content of both the read 1 file and the read 2 file to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).",
@@ -4333,14 +4333,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "file",
     "component_label": "File",
-    "namespace": "global",
+    "namespace": "ei:index_checksum",
     "term_name": "index_checksum",
     "term_label": "Index Checksum",
     "term_description": "Result of a hash function calculated on the content of both the index 1 file and the index 2 file to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).",
@@ -4349,14 +4349,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "file",
     "component_label": "File",
-    "namespace": "global",
+    "namespace": "ei:white_list_barcode_file",
     "term_name": "white_list_barcode_file",
     "term_label": "White List Barcode File",
     "term_description": "A file containing the known cell barcodes in the\ndataset.",
@@ -4365,14 +4365,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "raw_data_processing",
     "component_label": "Raw Data Processing",
-    "namespace": "global",
+    "namespace": "ei:reference_genome",
     "term_name": "reference_genome",
     "term_label": "Reference Genome",
     "term_description": "Indicate version and include stable link to genome data (or attach genome fasta file).",
@@ -4381,14 +4381,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "raw_data_processing",
     "component_label": "Raw Data Processing",
-    "namespace": "global",
+    "namespace": "ei:genes_vs_exons",
     "term_name": "genes_vs_exons",
     "term_label": "Genes vs Exons",
     "term_description": "Quantification using whole gene intervals or exons.",
@@ -4397,14 +4397,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "raw_data_processing",
     "component_label": "Raw Data Processing",
-    "namespace": "global",
+    "namespace": "ei:library_structure",
     "term_name": "library_structure",
     "term_label": "Library Structure",
     "term_description": "seqspec format",
@@ -4413,14 +4413,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "raw_data_processing",
     "component_label": "Raw Data Processing",
-    "namespace": "global",
+    "namespace": "ei:mapping_and_demultiplexing_software",
     "term_name": "mapping_and_demultiplexing_software",
     "term_label": "Mapping and Demultiplexing Software",
     "term_description": "Reads/UMI",
@@ -4429,14 +4429,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "raw_data_processing",
     "component_label": "Raw Data Processing",
-    "namespace": "global",
+    "namespace": "ei:read_mapping_statistics",
     "term_name": "read_mapping_statistics",
     "term_label": "Read Mapping Statistics",
     "term_description": "Statistics of the Reads or Unique Molecular Identifier (UMI).",
@@ -4445,14 +4445,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "raw_data_processing",
     "component_label": "Raw Data Processing",
-    "namespace": "global",
+    "namespace": "ei:sequencing_saturation",
     "term_name": "sequencing_saturation",
     "term_label": "Sequencing Saturation",
     "term_description": "Depending on number of cells recovered (not targeted) and technology",
@@ -4461,14 +4461,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "raw_data_processing",
     "component_label": "Raw Data Processing",
-    "namespace": "global",
+    "namespace": "ei:UMIs_barcode_distribution_qc",
     "term_name": "UMIs_barcode_distribution_qc",
     "term_label": "UMIs or Barcode Distribution QC",
     "term_description": "Show Unique Molecular Identifiers (UMIs) per barcode distribution and threshold applied",
@@ -4477,14 +4477,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "raw_data_processing",
     "component_label": "Raw Data Processing",
-    "namespace": "global",
+    "namespace": "ei:cell_non_cell_filtering_strategy",
     "term_name": "cell_non_cell_filtering_strategy",
     "term_label": "Cell or Non-Cell Filtering Strategy",
     "term_description": "Unique Molecular Identifier (UMI) threshold used to discriminate cells from non-cells. Description of algorithm (if any) and parameters used to determine cells or non-cells.",
@@ -4493,14 +4493,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "raw_data_processing",
     "component_label": "Raw Data Processing",
-    "namespace": "global",
+    "namespace": "ei:other_quality_filters_applied",
     "term_name": "other_quality_filters_applied",
     "term_label": "Other Quality Filters Applied",
     "term_description": "Cells/nuclei discarded based on % mitochondrial reads, % rRNA reads, etc.",
@@ -4509,14 +4509,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "raw_data_processing",
     "component_label": "Raw Data Processing",
-    "namespace": "global",
+    "namespace": "ei:ambient_rna_qc",
     "term_name": "ambient_rna_qc",
     "term_label": "Ambient RNA QC",
     "term_description": "Report % UMIs in background cell barcodes, and algorithm (if any) used to remove ambient RNA",
@@ -4525,14 +4525,14 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "raw_data_processing",
     "component_label": "Raw Data Processing",
-    "namespace": "global",
+    "namespace": "ei:predicted_doublet_rate_qc",
     "term_name": "predicted_doublet_rate_qc",
     "term_label": "Predicted Doublet Rate QC",
     "term_description": "Depending on number of cells recovered (not targeted) and technology",
@@ -4541,7 +4541,7 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "termset": "global",
+    "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   }
