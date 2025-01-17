@@ -1,0 +1,3462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single Cell Schemas</title>
+
+    <link rel="stylesheet" href="../../../../css/styles.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="head_div container_fluid text-center text-white">
+      <h1 class="ui header">Single Cell Schemas</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <div class="container mt-4">
+          <form>
+            <!-- First Dropdown -->
+            <div class="mb-3">
+              <label for="std_dropdown" class="form-label"
+                >Based on Standard...</label
+              >
+              <select class="form-select" id="std_dropdown">
+                <option value="dwc" selected>Darwin Core (DwC)</option>
+                <option value="mixs">
+                  Minimum Information about any (x) Sequence (MIxS)
+                </option>
+                <option value="tol">Tree of Life (ToL)</option>
+              </select>
+            </div>
+
+            <!-- Second Dropdown -->
+            <div class="mb-3">
+              <label for="tech_dropdown" class="form-label">Technology</label>
+              <select class="form-select" id="tech_dropdown">
+                <option value="sc_rnaseq" selected>
+                  Single Cell RNA-Sequencing
+                </option>
+                <option value="stx_fish">Spatial Transcriptomics Fish</option>
+                <option value="stx_seq">
+                  Spatial Transcriptomics Sequencing
+                </option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="core_dropdown" class="form-label">Version</label>
+              <select class="form-select" id="core_dropdown">
+                <option value="extended" selected>Extended</option>
+                <option value="core">Core</option>
+              </select>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-flex justify-content-end">
+              <button type="submit" id="sub_btn" class="btn btn-primary">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="accordion" id="accordionExample">
+          
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapsestudy"
+                aria-expanded="true"
+                aria-controls="collapsestudy"
+              >
+                Study
+              </button>
+            </div>
+            <div
+              id="collapsestudy"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Study ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>study_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric identifier for this study</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>A7F9B3X2</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[a-zA-Z0-9]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:study_id
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    First Name
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>contact_first_name</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>Given first name</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Jane</td>
+                      </tr>
+                      
+                                   
+                      <tr>
+                        <td>Reference</td>
+                        <td>
+                            <a href="http://purl.obolibrary.org/obo/NCIT_C40974" target="_blank">
+                                http://purl.obolibrary.org/obo/NCIT_C40974
+                            </a>
+                        </td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[a-zA-Z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="http://purl.obolibrary.org/obo/NCIT_C40974" target="_blank">
+                              ei:contact_first_name
+                            </a>
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Last Name
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>contact_last_name</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>Given last name.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Doe</td>
+                      </tr>
+                      
+                                   
+                      <tr>
+                        <td>Reference</td>
+                        <td>
+                            <a href="http://purl.obolibrary.org/obo/NCIT_C40975" target="_blank">
+                                http://purl.obolibrary.org/obo/NCIT_C40975
+                            </a>
+                        </td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[a-zA-Z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="http://purl.obolibrary.org/obo/NCIT_C40975" target="_blank">
+                              ei:contact_last_name
+                            </a>
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Email
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>contact_email</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>Valid email address</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>janedoe@example.com</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:contact_email
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Workflow</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>workflow</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The workflow or protocol followed during the study.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>spatial_transcriptomics</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:workflow
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">Laser microdissection</span>
+                          
+                          <span class="badge bg-dark">Laser microdissection, Culturing</span>
+                          
+                          <span class="badge bg-dark">Laser microdissection, Culturing, Sequencing</span>
+                          
+                          <span class="badge bg-dark">Laser microdissection, Sequencing</span>
+                          
+                          <span class="badge bg-dark">Microfluidics, Facs, Culturing</span>
+                          
+                          <span class="badge bg-dark">Microfluidics, Facs, Culturing, Sequencing</span>
+                          
+                          <span class="badge bg-dark">Microfluidics, Facs, Sequencing</span>
+                          
+                          <span class="badge bg-dark">Spatial transcriptomics</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapsesample"
+                aria-expanded="true"
+                aria-controls="collapsesample"
+              >
+                Sample
+              </button>
+            </div>
+            <div
+              id="collapsesample"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Sample ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>sample_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric reference or identifier for the study.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>study123</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:sample_id
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Tissue</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>tissue</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The type of tissue sampled for the study.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Leaf</td>
+                      </tr>
+                      
+                                   
+                      <tr>
+                        <td>Reference</td>
+                        <td>
+                            <a href="http://purl.obolibrary.org/obo/NCIT_C19697" target="_blank">
+                                http://purl.obolibrary.org/obo/NCIT_C19697
+                            </a>
+                        </td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="http://purl.obolibrary.org/obo/NCIT_C19697" target="_blank">
+                              ei:tissue
+                            </a>
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">Abdomen</span>
+                          
+                          <span class="badge bg-dark">Anterior Body</span>
+                          
+                          <span class="badge bg-dark">Blade</span>
+                          
+                          <span class="badge bg-dark">Blood</span>
+                          
+                          <span class="badge bg-dark">Bodywall</span>
+                          
+                          <span class="badge bg-dark">Bract</span>
+                          
+                          <span class="badge bg-dark">Brain</span>
+                          
+                          <span class="badge bg-dark">Bud</span>
+                          
+                          <span class="badge bg-dark">Cap</span>
+                          
+                          <span class="badge bg-dark">Cephalothorax</span>
+                          
+                          <span class="badge bg-dark">Dna Extract</span>
+                          
+                          <span class="badge bg-dark">Egg</span>
+                          
+                          <span class="badge bg-dark">Eggshell</span>
+                          
+                          <span class="badge bg-dark">Endocrine Tissue</span>
+                          
+                          <span class="badge bg-dark">Eye</span>
+                          
+                          <span class="badge bg-dark">Fat Body</span>
+                          
+                          <span class="badge bg-dark">Fin</span>
+                          
+                          <span class="badge bg-dark">Flower</span>
+                          
+                          <span class="badge bg-dark">Gill Animal</span>
+                          
+                          <span class="badge bg-dark">Gill Fungi</span>
+                          
+                          <span class="badge bg-dark">Gonad</span>
+                          
+                          <span class="badge bg-dark">Hair</span>
+                          
+                          <span class="badge bg-dark">Head</span>
+                          
+                          <span class="badge bg-dark">Heart</span>
+                          
+                          <span class="badge bg-dark">Hepatopancreas</span>
+                          
+                          <span class="badge bg-dark">Holdfast Fungi</span>
+                          
+                          <span class="badge bg-dark">Intestine</span>
+                          
+                          <span class="badge bg-dark">Kidney</span>
+                          
+                          <span class="badge bg-dark">Leaf</span>
+                          
+                          <span class="badge bg-dark">Leg</span>
+                          
+                          <span class="badge bg-dark">Liver</span>
+                          
+                          <span class="badge bg-dark">Lung</span>
+                          
+                          <span class="badge bg-dark">Mid Body</span>
+                          
+                          <span class="badge bg-dark">Modular Colony</span>
+                          
+                          <span class="badge bg-dark">Mollusc Foot</span>
+                          
+                          <span class="badge bg-dark">Multicellular Organisms In Culture</span>
+                          
+                          <span class="badge bg-dark">Muscle</span>
+                          
+                          <span class="badge bg-dark">Mycelium</span>
+                          
+                          <span class="badge bg-dark">Mycorrhiza</span>
+                          
+                          <span class="badge bg-dark">Not Applicable</span>
+                          
+                          <span class="badge bg-dark">Not Collected</span>
+                          
+                          <span class="badge bg-dark">Not Provided</span>
+                          
+                          <span class="badge bg-dark">Other Fungal Tissue</span>
+                          
+                          <span class="badge bg-dark">Other Plant Tissue</span>
+                          
+                          <span class="badge bg-dark">Other Reproductive Animal Tissue</span>
+                          
+                          <span class="badge bg-dark">Other Somatic Animal Tissue</span>
+                          
+                          <span class="badge bg-dark">Ovary Animal</span>
+                          
+                          <span class="badge bg-dark">Oviduct</span>
+                          
+                          <span class="badge bg-dark">Pancreas</span>
+                          
+                          <span class="badge bg-dark">Petiole</span>
+                          
+                          <span class="badge bg-dark">Posterior Body</span>
+                          
+                          <span class="badge bg-dark">Root</span>
+                          
+                          <span class="badge bg-dark">Scales</span>
+                          
+                          <span class="badge bg-dark">Scat</span>
+                          
+                          <span class="badge bg-dark">Seed</span>
+                          
+                          <span class="badge bg-dark">Seedling</span>
+                          
+                          <span class="badge bg-dark">Shoot</span>
+                          
+                          <span class="badge bg-dark">Skin</span>
+                          
+                          <span class="badge bg-dark">Sperm Seminal Fluid</span>
+                          
+                          <span class="badge bg-dark">Spleen</span>
+                          
+                          <span class="badge bg-dark">Spore</span>
+                          
+                          <span class="badge bg-dark">Spore Bearing Structure</span>
+                          
+                          <span class="badge bg-dark">Stem</span>
+                          
+                          <span class="badge bg-dark">Stipe</span>
+                          
+                          <span class="badge bg-dark">Stomach</span>
+                          
+                          <span class="badge bg-dark">Tentacle</span>
+                          
+                          <span class="badge bg-dark">Terminal Body</span>
+                          
+                          <span class="badge bg-dark">Testis</span>
+                          
+                          <span class="badge bg-dark">Thallus Fungi</span>
+                          
+                          <span class="badge bg-dark">Thallus Plant</span>
+                          
+                          <span class="badge bg-dark">Thorax</span>
+                          
+                          <span class="badge bg-dark">Unicellular Organisms In Culture</span>
+                          
+                          <span class="badge bg-dark">Whole Organism</span>
+                          
+                          <span class="badge bg-dark">Whole Plant</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Infraspecific Epithet</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>INFRASPECIFIC_EPITHET</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The name of the lowest or terminal infraspecific epithet of the dwc:scientificName, excluding any rank designation.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>concolor</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             tol:INFRASPECIFIC_EPITHET
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseimaging_protocol"
+                aria-expanded="true"
+                aria-controls="collapseimaging_protocol"
+              >
+                Imaging Protocol
+              </button>
+            </div>
+            <div
+              id="collapseimaging_protocol"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Imaging Protocol ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>imaging_protocol_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric identifier for the imaging protocol.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>img123</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:imaging_protocol_id
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Platform
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>platform</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The platform used to isolate the cells.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Illumina NovaSeq</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:platform
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Instrument
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>instrument</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The instrument used to isolate the cells.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Illumina NovaSeq 6000</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:instrument
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Dissociation Method</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>dissociation_method</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The method used for dissociating the cells.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>enzymatic</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:dissociation_method
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">Enzymatic</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Dissociation Time</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>dissociation_time</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The time duration for dissociation in minutes.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>30</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:dissociation_time
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Dissociation Temperature</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>dissociation_temperature</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The temperature at which dissociation is performed in degrees celsius.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>37</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^-?\d+(\.\d+)?$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:dissociation_temperature
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Dissociation Enzyme</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>dissociation_enzyme</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The enzyme used for dissociation.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>collagenase</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:dissociation_enzyme
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">Collagenase</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Dissociation Enzyme Concentration</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>dissociation_enzyme_concentration</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The concentration of the dissociation enzyme.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>0.25</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:dissociation_enzyme_concentration
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Material Incubation Temperature</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>material_incubation_temperature</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The temperature at which the material is incubated in degrees C.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>37</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^-?\d+(\.\d+)?$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:material_incubation_temperature
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Material Incubation Time</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>material_incubation_time</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The time duration for material incubation in hours.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>30</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:material_incubation_time
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Lysis Buffer Solution</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>lysis_buffer_solution</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The solution used for lysis buffer.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>RIPA buffe</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:lysis_buffer_solution
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Target Probes
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>target_probes</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The type of probes used to detect and quantify specific RNA molecules in their native spatial context within a tissue or cell.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Oligo-dT</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:target_probes
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Section Thickness Μm</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>section_thickness_µm</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The thickness of the tissue section in micrometres.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>10</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d+(\.\d+)?$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:section_thickness_µm
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Section Thickness Method</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>section_thickness_method</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The method used to measure tissue section thickness.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Microtome</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:section_thickness_method
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Section Thickness Temperature</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>section_thickness_temperature</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The temperature at which the section was made.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Room temperature</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:section_thickness_temperature
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Is Pathological</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>is_pathological</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A quality inhering in a bearer by virtue of the bearer's being abnormal and having a destructive effect on living tissue.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>No</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:is_pathological
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Digestion Workflow</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>digestion_workflow</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A link to a workflow describing the digestion protocol in Protocols.io</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Spatial transcriptomics dissociation</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:digestion_workflow
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Digestion Time In Minutes</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>digestion_time_in_minutes</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The duration of digestion in minutes.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>45</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:digestion_time_in_minutes
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Digestion Temperature</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>digestion_temperature</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The temperature at which digestion was carried out.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>37</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^-?\d+(\.\d+)?$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:digestion_temperature
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Photobleaching Duration In Hours</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>photobleaching_duration_in_hours</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The duration of photobleaching in hours</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>2</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:photobleaching_duration_in_hours
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Instrument User Guide
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>instrument_user_guide</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The user guide for the instrument used.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>User Guide v1.2</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:instrument_user_guide
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Instrument User Guide Revision
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>instrument_user_guide_revision</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The revision of the instrument user guide.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>1.2</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:instrument_user_guide_revision
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Sample Preparation Guide
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>sample_preparation_guide</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The guide used for sample preparation.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>preparation_guide_v1.0.pdf</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:sample_preparation_guide
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Sample Preparation Guide Revision
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>sample_preparation_guide_revision</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The revision of the sample preparation guide.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>1.0</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:sample_preparation_guide_revision
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Deviations From Official Protocol
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>deviations_from_official_protocol</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>Any deviations from the official protocol. Separate individual deviations with '|'.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Temperature exceeded 25°C during storage | Sample handling delayed by 2 hours</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:deviations_from_official_protocol
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapselibrary_preparation"
+                aria-expanded="true"
+                aria-controls="collapselibrary_preparation"
+              >
+                Library Preparation
+              </button>
+            </div>
+            <div
+              id="collapselibrary_preparation"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Library Preparation ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>library_prep_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>libPrep123</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:library_prep_id
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Cell Suspension ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>cell_suspension_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric code for the cell suspension for the library preparation.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>cellSusp123</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:cell_suspension_id
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Library Preparation Kit Version
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>library_prep_kit_version</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The version number of the library preparation kit used for sequencing.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>2</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:library_prep_kit_version
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Average Size Distribution</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>average_size_distribution</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The average length of RNA fragments in base pairs (BP) after library preparation, indicating the quality and suitability of the RNA for sequencing.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>350</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:average_size_distribution
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Primeness
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>primeness</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The end from which the molecule was sequenced.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>5'</td>
+                      </tr>
+                      
+                      
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:primeness
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">3'</span>
+                          
+                          <span class="badge bg-dark">5'</span>
+                          
+                          <span class="badge bg-dark">Both</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapsesequencing"
+                aria-expanded="true"
+                aria-controls="collapsesequencing"
+              >
+                Sequencing
+              </button>
+            </div>
+            <div
+              id="collapsesequencing"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Sequencing Reference
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>sequencing_reference</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric reference or identifier for the sequencing protocol.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>seq123</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:sequencing_reference
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Technical Replicate Group Or Library Reference</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>technical_replicate_group_or_library_reference</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A common term for all runs or files belonging to the same cell or library. It is recommended to use a stable sample accession from a biosample archive like BioSample. Alternatively, the library ID can be referenced from which the files were generated.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>lib1</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:technical_replicate_group_or_library_reference
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Sequencing Platform Name</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>sequencing_platform_name</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The name of the sequencing platform used for the experiment.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Paired-end</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:sequencing_platform_name
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Sequencing Instrument Model</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>sequencing_instrument_model</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>This refers to the specific machine or platform used to carry out the sequencing process. Different models can have varying throughput, read lengths, error rates, and application suitability.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Illumina NovaSeq 6000</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:sequencing_instrument_model
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Library Layout
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>library_layout</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The type of library layout used for sequencing.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>single</td>
+                      </tr>
+                      
+                                   
+                      <tr>
+                        <td>Reference</td>
+                        <td>
+                            <a href="http://purl.obolibrary.org/obo/NCIT_C150423" target="_blank">
+                                http://purl.obolibrary.org/obo/NCIT_C150423
+                            </a>
+                        </td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                            <a href="http://purl.obolibrary.org/obo/NCIT_C150423" target="_blank">
+                              ei:library_layout
+                            </a>
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">Paired</span>
+                          
+                          <span class="badge bg-dark">Single</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Reads Per Sample</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>reads_per_sample</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The number of sequencing reads generated per sample.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>1000000</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:reads_per_sample
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Umi Barcode Read</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>UMI_barcode_read</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The type of read that contains the UMI barcode:</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>index2</td>
+                      </tr>
+                      
+                      
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:UMI_barcode_read
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">index1</span>
+                          
+                          <span class="badge bg-dark">index2</span>
+                          
+                          <span class="badge bg-dark">read1</span>
+                          
+                          <span class="badge bg-dark">read2</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Umi Barcode Offset</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>UMI_barcode_offset</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The offset in sequence of the UUnique Molecular Identifier (UMI)MI identifying barcode.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>16</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:UMI_barcode_offset
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Umi Barcode Size</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>UMI_barcode_size</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The size of the Unique Molecular Identifier (UMI) identifying barcode.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>10</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:UMI_barcode_size
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Cell Barcode Read</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>cell_barcode_read</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The type of read that contains the UMI barcode.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>index1</td>
+                      </tr>
+                      
+                      
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:cell_barcode_read
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">index1</span>
+                          
+                          <span class="badge bg-dark">index2</span>
+                          
+                          <span class="badge bg-dark">read1</span>
+                          
+                          <span class="badge bg-dark">read2</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Cell Barcode Offset</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>cell_barcode_offset</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The offset in sequence of the cell identifying barcode.
+E.g. "0".</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>10</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:cell_barcode_offset
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Cell Barcode Size</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>cell_barcode_size</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The offset in sequence of the cell identifying barcode.
+E.g. "0".</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>0</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:cell_barcode_size
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Cdna Read</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>cDNA_read</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The type of read that contains the Complementary DNA (cDNA) read.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>read1</td>
+                      </tr>
+                      
+                      
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:cDNA_read
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">index1</span>
+                          
+                          <span class="badge bg-dark">index2</span>
+                          
+                          <span class="badge bg-dark">read1</span>
+                          
+                          <span class="badge bg-dark">read2</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Cdna Read Offset</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>cDNA_read_offset</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The type of read that contains the Complementary DNA (cDNA) read.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>5</td>
+                      </tr>
+                      
+                      
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:cDNA_read_offset
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">index1</span>
+                          
+                          <span class="badge bg-dark">index2</span>
+                          
+                          <span class="badge bg-dark">read1</span>
+                          
+                          <span class="badge bg-dark">read2</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Cdna Read Size</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>cDNA_read_size</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The size of the cDNA read. E.g. "100".</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>75</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:cDNA_read_size
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Sample Barcode Read</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>sample_barcode_read</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The type of read that contains the sample barcode.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>read2</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:sample_barcode_read
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">index1</span>
+                          
+                          <span class="badge bg-dark">index2</span>
+                          
+                          <span class="badge bg-dark">read1</span>
+                          
+                          <span class="badge bg-dark">read2</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Sample Barcode Offset</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>sample_barcode_offset</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The offset in sequence of the sample identifying barcode.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>30</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:sample_barcode_offset
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Sample Barcode Size</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>sample_barcode_size</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The size of the read that contains the sample barcode.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>8</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:sample_barcode_size
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapsefile"
+                aria-expanded="true"
+                aria-controls="collapsefile"
+              >
+                File
+              </button>
+            </div>
+            <div
+              id="collapsefile"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Imaging Protocol ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>imaging_protocol_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric identifier for the imaging protocol.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>img123</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:imaging_protocol_id
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Library Preparation ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>library_preparation_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>libPrep123</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:library_preparation_id
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Sequencing ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>sequencing_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric reference or identifier for the sequencing protocol.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>seq123</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:sequencing_id
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Read 1 File
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>read_1_file</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The name of the file that contains read 1.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>file1_r1.fastq.gz</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:read_1_file
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Read 2 File
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>read_2_file</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The name of the file that contains read 2.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>file2_r2.fastq.gz</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:read_2_file
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Index 1 File
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>index_1_file</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The name of the file that contains index 1.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>file1_i1.fastq.gz</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:index_1_file
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Index 2 File
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>index_2_file</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The name of the file that contains index 2.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>file2_i2.fastq.gz</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:index_2_file
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Read Checksum
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>read_checksum</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>Result of a hash function calculated on the content of both the read 1 file and the read 2 file to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>d41d8cd98f00b204e9800998ecf8427e,5a105e8b9d40e1329780d62ea2265d8a77a1a45e</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:read_checksum
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Index Checksum
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>index_checksum</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>Result of a hash function calculated on the content of both the index 1 file and the index 2 file to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>d3486ae9136e7856bc42212385ea797094475802,b7e23ec29af22b0b4e41da31e868d57226121c84</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:index_checksum
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">White List Barcode File</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>white_list_barcode_file</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A file containing the known cell barcodes in the
+dataset.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>barcodes.tsv</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             ei:white_list_barcode_file
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="col-3"></div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        // Call the function to load the values of the dropdowns from the URL parameters
+        load_selects_values();
+
+        // Attach a click event handler to the submit button
+        $('#sub_btn').click(function (e) {
+          e.preventDefault(); // Prevent the default form submission
+
+          // Get the selected values from the dropdowns
+          let standard = $('#std_dropdown').val();
+          let technology = $('#tech_dropdown').val();
+          let version = $('#core_dropdown').val();
+
+          // Construct the new URL with the selected values as query parameters
+          let url = window.location.href;
+          let args =
+            '?std_dropdown=' +
+            standard +
+            '&tech_dropdown=' +
+            technology +
+            '&core_dropdown=' +
+            version;
+          window.location.href =
+            url.split('checklists')[0] +
+            'checklists/' +
+            version +
+            '/html/' +
+            standard +
+            '/' +
+            technology +
+            '_' +
+            standard +
+            '_' +
+            version +
+            '.html' +
+            args;
+        });
+
+        /**
+         * Load the values of the dropdowns from the URL parameters and set them in the dropdowns.
+         */
+        function load_selects_values() {
+          let args = new URLSearchParams(window.location.search);
+
+          // Set the value of the standard dropdown if it exists in the URL parameters
+          if (args.get('std_dropdown') !== null) {
+            $('#std_dropdown').val(args.get('std_dropdown'));
+          }
+
+          // Set the value of the technology dropdown if it exists in the URL parameters
+          if (args.get('tech_dropdown') !== null) {
+            $('#tech_dropdown').val(args.get('tech_dropdown'));
+          }
+
+          // Set the value of the version dropdown if it exists in the URL parameters
+          if (args.get('core_dropdown') !== null) {
+            $('#core_dropdown').val(args.get('core_dropdown'));
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
