@@ -5,7 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-dist/
+
 .sass-cache/
 # Distribution / packaging
 .Python
@@ -26,7 +26,7 @@ share/python-wheels/
 *.egg
 .sass-cache/
 node_modules/
-dist/
+
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -165,7 +165,8 @@ cython_debug/
 # User-specific files
 ~$*
 utils/script.py
-
+# dist
+# dist/
 # Hide test outputs directory
 test/outputs
 /node_modules/
