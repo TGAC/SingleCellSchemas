@@ -2,7 +2,11 @@
 
 The **SingleCellSchema** repository houses developments related to Earlham Institute's (EI’s) CELLGEN ISP metadata mapping and schemas, designed to describe a variety of Single Cell Genomics and Spatial Transcriptomics experiment types, such as those from 10X Genomics and Vizgen.
 
-It contains the following directories:
+Visit the SingleCellSchema website at https://singlecellschemas.org.
+
+---
+
+The **SingleCellSchema** repository contains the following directories:
 
 - `dist`: contains the output files generated from the conversion process.
 
@@ -10,14 +14,14 @@ It contains the following directories:
 
 - `utils`: contains Python helper scripts to convert base Excel files into formats such as HTML, XML and Excel.
 
-The `update_base_schema.py` script is responsible for updating the Excel base schema files located in the `schemas/xlsx` directory and generating corresponding JSON files based on these Excel files. The script is located in the `utils` directory.
+The `update_and_convert_schema.py` script is responsible for updating the Excel base schema files located in the `schemas/xlsx` directory and generating corresponding JSON files based on these Excel files. The script is located in the `utils` directory.
 
-The main script, `convert.py`, is used to convert the Excel schema into Excel, XML, html and JSON files according to the namespace. It is found in the project root directory.
+The main script, `convert.py`, is used to convert the Excel schema into Excel, XML, html and JSON files according to the namespace prefix. It is found in the project root directory.
 
-**Important Note**:
+> **Important note**:
 Please do not directly modify the base JSON files in the `schemas/json directory`. To make changes, update the `data` worksheet in one of the base Excel files located in the `schemas/xlsx` directory.
 
-After making changes to the Excel files, run the `update_base_schema.py` script in the `utils` directory to regenerate and update the JSON schema files. To run the update script, execute in the terminal - `python3 utils/update_base_schema.py`.
+After making changes to the Excel files, run the `update_and_convert_schema.py` script in the `utils` directory to regenerate and update the JSON schema files. To run the update script, execute in the terminal - `python3 utils/update_and_convert_schema.py`.
 
 **Abbreviations**:
 
@@ -55,7 +59,7 @@ Please follow the instructions below to convert the Excel schema into an excel f
    - `python3 convert.py`
 
      This will convert the schema into an excel file, xml and json files using
-     all termsets, namespaces and schemas in the `schemas/xlsx` directory
+     all termsets, namespace prefixes and schemas in the `schemas/xlsx` directory
 
      --**OR**--
 
@@ -72,9 +76,9 @@ Please follow the instructions below to convert the Excel schema into an excel f
 
      --**OR**--
 
-   - `python3 convert.py schemas/xlsx/<schema-file-path> <termset> <namespace>`
+   - `python3 convert.py schemas/xlsx/<schema-file-path> <termset> <namespace_prefix>`
 
-     where `<schema-file-path>` is the name of the schema file in the `schemas/xlsx` directory, `<termset>` is the type of terms to be used (extended, core) and `<namespace>` is the namespace to be used (e.g. dwc, mixs, tol)
+     where `<schema-file-path>` is the name of the schema file in the `schemas/xlsx` directory, `<termset>` is the type of terms to be used (extended, core) and `<namespace_prefix>` is the namespace prefix to be used (e.g. dwc, mixs, tol)
      e.g. `python3 convert.py schemas/xlsx/sc_rnaseq.xlsx core dwc`
 
      --**OR**--
