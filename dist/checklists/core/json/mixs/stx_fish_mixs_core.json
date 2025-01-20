@@ -77,7 +77,7 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "term_reference": "https://genomicsstandardsconsortium.github.io/mixs/0000092",
+    "term_reference": "https://w3id.org/mixs/0000092",
     "termset": "core",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -130,13 +130,13 @@
     "namespace": "mixs:specific_host",
     "term_name": "specific_host",
     "term_label": "Specific Host",
-    "term_description": "The full scientific name of the species studied.",
+    "term_description": "Report the host's taxonomic name and/or NCBI taxonomy ID",
     "term_example": "Arenicola marina",
     "term_required": false,
     "term_regex": "^[A-Za-z]+[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "term_reference": "https://genomicsstandardsconsortium.github.io/mixs/0000029",
+    "term_reference": "https://w3id.org/mixs/0000029",
     "termset": "core",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -186,7 +186,7 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "term_reference": "https://genomicsstandardsconsortium.github.io/mixs/0001222",
+    "term_reference": "https://w3id.org/mixs/0001222",
     "termset": "core",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -295,7 +295,7 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "term_reference": "https://genomicsstandardsconsortium.github.io/mixs/0000012",
+    "term_reference": "https://w3id.org/mixs/0000012",
     "termset": "core",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -312,7 +312,7 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "term_reference": "https://genomicsstandardsconsortium.github.io/mixs/0000013",
+    "term_reference": "https://w3id.org/mixs/0000013",
     "termset": "core",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -329,7 +329,7 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
-    "term_reference": "https://genomicsstandardsconsortium.github.io/mixs/0000014",
+    "term_reference": "https://w3id.org/mixs/0000014",
     "termset": "core",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -355,17 +355,17 @@
     "component_label": "Sample",
     "namespace": "mixs:geo_loc_name",
     "term_name": "geo_loc_name",
-    "term_label": "Geographic Location Name",
-    "term_description": "A list (concatenated and separated) of geographic names less specific than the information captured in the dwc:locality term.",
-    "term_example": "South America | Argentina | Patagonia",
+    "term_label": "Geographic Location (Country and/or Sea, Region)",
+    "term_description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)",
+    "term_example": "USA: Maryland, Bethesda",
     "term_required": false,
-    "term_regex": "^[A-Za-z]*[a-z]+$",
+    "term_regex": "^([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+): ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+), ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$",
     "term_cardinality": "single",
     "term_type": "string",
-    "term_reference": "https://genomicsstandardsconsortium.github.io/mixs/0000010/",
+    "term_reference": "https://w3id.org/mixs/0000010/",
     "termset": "core",
-    "schema_name": "stx_fish",
-    "schema_label": "Spatial Transcriptomics Image"
+    "schema_name": "sc_rnaseq",
+    "schema_label": "Single-cell RNA Sequencing"
   },
   {
     "component_name": "imaging_protocol",
@@ -462,7 +462,7 @@
     "term_required": false,
     "term_regex": "^-?\\d+(\\.\\d+)?$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -497,7 +497,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -513,7 +513,7 @@
     "term_required": false,
     "term_regex": "^-?\\d+(\\.\\d+)?$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -529,7 +529,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "term_reference": "http://purl.obolibrary.org/obo/XCO_0000153",
     "termset": "ei",
     "schema_name": "stx_fish",
@@ -578,7 +578,7 @@
     "term_required": false,
     "term_regex": "^\\d+(\\.\\d+)?$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -610,7 +610,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -658,7 +658,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -674,7 +674,7 @@
     "term_required": false,
     "term_regex": "^-?\\d+(\\.\\d+)?$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -690,7 +690,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"

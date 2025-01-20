@@ -1,131 +1,147 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "name": "Python: Extract All Components in All Standards and Termsets",
-        "type": "debugpy",
-        "request": "launch",
-        "program": "${workspaceFolder}/convert.py",
-        "console": "integratedTerminal",
-        "args": [],
-        "python": "${workspaceFolder}/venv/bin/python",
-        "env": {
-          "PYTHONPATH": "${workspaceFolder}"
-        },
-        "justMyCode": true, // Skip debugging code from libraries
-        "pythonArgs": [
-          "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
-        ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Extract All Components in All Standards and Termsets",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/convert.py",
+      "console": "integratedTerminal",
+      "args": [],
+      "python": "${workspaceFolder}/venv/bin/python",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
       },
-      {
-        "name": "Python: Extract All Core Components in All Standards",
-        "type": "debugpy",
-        "request": "launch",
-        "program": "${workspaceFolder}/convert.py",
-        "console": "integratedTerminal",
-        "args": [
-          "core" // Termset argument (either 'core' or 'extended')
-        ],
-        "python": "${workspaceFolder}/venv/bin/python",
-        "env": {
-          "PYTHONPATH": "${workspaceFolder}"
-        },
-        "justMyCode": true, // Skip debugging code from libraries
-        "pythonArgs": [
-          "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
-        ]
+      "justMyCode": true, // Skip debugging code from libraries
+      "pythonArgs": [
+        "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
+      ]
+    },
+    {
+      "name": "Python: Extract All Core Components in All Standards",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/convert.py",
+      "console": "integratedTerminal",
+      "args": [
+        "core" // Termset argument (either 'core' or 'extended')
+      ],
+      "python": "${workspaceFolder}/venv/bin/python",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
       },
-      {
-        "name": "Python: Extract sc_rnaseq Core Components",
-        "type": "debugpy",
-        "request": "launch",
-        "program": "${workspaceFolder}/convert.py",
-        "console": "integratedTerminal",
-        "args": [
-          "${workspaceFolder}/schemas/xlsx/base_sc_rnaseq.xlsx", // Path to the input Excel schema file
-          "core", // Termset argument (either 'core' or 'extended')
-          "dwc" // Standard argument (either 'tol', 'dwc', or 'mixs')
-        ],
-        "python": "${workspaceFolder}/venv/bin/python",
-        "env": {
-          "PYTHONPATH": "${workspaceFolder}"
-        },
-        "justMyCode": true, // Skip debugging code from libraries
-        "pythonArgs": [
-          "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
-        ]
+      "justMyCode": true, // Skip debugging code from libraries
+      "pythonArgs": [
+        "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
+      ]
+    },
+    {
+      "name": "Python: Extract sc_rnaseq Core Components",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/convert.py",
+      "console": "integratedTerminal",
+      "args": [
+        "${workspaceFolder}/schemas/xlsx/base_sc_rnaseq.xlsx", // Path to the input Excel schema file
+        "core", // Termset argument (either 'core' or 'extended')
+        "dwc" // Standard argument (either 'tol', 'dwc', or 'mixs')
+      ],
+      "python": "${workspaceFolder}/venv/bin/python",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
       },
-      {
-        "name": "Python: Extract stx_fish Core Components",
-        "type": "debugpy",
-        "request": "launch",
-        "program": "${workspaceFolder}/convert.py",
-        "console": "integratedTerminal",
-        "args": [
-          "${workspaceFolder}/schemas/xlsx/base_stx_fish.xlsx", // Path to the input Excel schema file
-          "core", // Termset argument (either 'core' or 'extended')
-          "schemaorg" // Standard argument (either 'tol', 'dwc', or 'mixs')
-        ],
-        "python": "${workspaceFolder}/venv/bin/python",
-        "env": {
-          "PYTHONPATH": "${workspaceFolder}"
-        },
-        "justMyCode": true, // Skip debugging code from libraries
-        "pythonArgs": [
-          "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
-        ]
+      "justMyCode": true, // Skip debugging code from libraries
+      "pythonArgs": [
+        "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
+      ]
+    },
+    {
+      "name": "Python: Extract stx_fish Core Components",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/convert.py",
+      "console": "integratedTerminal",
+      "args": [
+        "${workspaceFolder}/schemas/xlsx/base_stx_fish.xlsx", // Path to the input Excel schema file
+        "core", // Termset argument (either 'core' or 'extended')
+        "schemaorg" // Standard argument (either 'tol', 'dwc', or 'mixs')
+      ],
+      "python": "${workspaceFolder}/venv/bin/python",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
       },
-      {
-        "name": "Python: Extract stx_seq Core Components",
-        "type": "debugpy",
-        "request": "launch",
-        "program": "${workspaceFolder}/convert.py",
-        "console": "integratedTerminal",
-        "args": [
-          "${workspaceFolder}/schemas/xlsx/base_stx_seq.xlsx", // Path to the input Excel schema file
-          "core", // Termset argument (either 'core' or 'extended')
-          "schemaorg" // Standard argument (either 'tol', 'dwc', or 'mixs')
-        ],
-        "python": "${workspaceFolder}/venv/bin/python",
-        "env": {
-          "PYTHONPATH": "${workspaceFolder}"
-        },
-        "justMyCode": true, // Skip debugging code from libraries
-        "pythonArgs": [
-          "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
-        ]
+      "justMyCode": true, // Skip debugging code from libraries
+      "pythonArgs": [
+        "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
+      ]
+    },
+    {
+      "name": "Python: Extract stx_seq Core Components",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/convert.py",
+      "console": "integratedTerminal",
+      "args": [
+        "${workspaceFolder}/schemas/xlsx/base_stx_seq.xlsx", // Path to the input Excel schema file
+        "core", // Termset argument (either 'core' or 'extended')
+        "schemaorg" // Standard argument (either 'tol', 'dwc', or 'mixs')
+      ],
+      "python": "${workspaceFolder}/venv/bin/python",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
       },
-      {
-        "name": "Python: Test convert script",
-        "type": "debugpy",
-        "request": "launch",
-        "program": "${workspaceFolder}/test/test_cases.py",
-        "console": "integratedTerminal",
-        "args": [],
-        "python": "${workspaceFolder}/venv/bin/python",
-        "env": {
-          "PYTHONPATH": "${workspaceFolder}"
-        },
-        "justMyCode": true, // Skip debugging code from libraries
-        "pythonArgs": [
-          "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
-        ]
+      "justMyCode": true, // Skip debugging code from libraries
+      "pythonArgs": [
+        "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
+      ]
+    },
+    {
+      "name": "Python: Test convert script",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/test/test_cases.py",
+      "console": "integratedTerminal",
+      "args": [],
+      "python": "${workspaceFolder}/venv/bin/python",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
       },
-      {
-        "name": "Python: Run generate_base_schema script",
-        "type": "debugpy",
-        "request": "launch",
-        "program": "${workspaceFolder}/utils/update_base_schema.py",
-        "console": "integratedTerminal",
-        "args": [],
-        "python": "${workspaceFolder}/venv/bin/python",
-        "env": {
-          "PYTHONPATH": "${workspaceFolder}"
-        },
-        "justMyCode": true, // Skip debugging code from libraries
-        "pythonArgs": [
-          "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
-        ]
-      }
-    ]
+      "justMyCode": true, // Skip debugging code from libraries
+      "pythonArgs": [
+        "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
+      ]
+    },
+    {
+      "name": "Python: Run update_and_convert_schema script",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/utils/update_and_convert_schema.py",
+      "console": "integratedTerminal",
+      "args": [],
+      "python": "${workspaceFolder}/venv/bin/python",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      },
+      "justMyCode": true, // Skip debugging code from libraries
+      "pythonArgs": [
+        "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
+      ]
+    },
+    {
+      "name": "Python: Run append_to_schema_data script",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/utils/append_to_schema_data.py",
+      "console": "integratedTerminal",
+      "args": [],
+      "python": "${workspaceFolder}/venv/bin/python",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      },
+      "justMyCode": true, // Skip debugging code from libraries
+      "pythonArgs": [
+        "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
+      ]
+    }
+  ]
 }

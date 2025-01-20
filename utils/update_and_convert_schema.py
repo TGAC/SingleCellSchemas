@@ -1,3 +1,14 @@
+'''
+Script Name: update_and_convert_schema.py
+Description:
+    This script updates the information in the 'data' worksheet of a base schema
+    Excel file and propagates changes to other worksheets. The updated Excel file
+    is then converted into JSON format for further use.
+
+Usage:
+    python update_and_convert_schema.py --file_path <path_to_file> --output <output_path>
+'''
+
 import json
 import os
 import pandas as pd

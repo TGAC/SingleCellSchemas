@@ -1521,15 +1521,6 @@
                         <td>Tissue was enzymatically dissociated using collagenase for 30 minutes.</td>
                       </tr>
                       
-                                   
-                      <tr>
-                        <td>Reference</td>
-                        <td>
-                            <a href="http://www.ebi.ac.uk/efo/EFO_0009088" target="_blank">
-                                http://www.ebi.ac.uk/efo/EFO_0009088
-                            </a>
-                        </td>
-                      </tr>
                       
                       
                       <tr>
@@ -1542,9 +1533,7 @@
                         <td>Namespace</td>
                         <td>
                           
-                            <a href="http://www.ebi.ac.uk/efo/EFO_0009088" target="_blank">
-                              ei:dissociation_description
-                            </a>
+                             ei:dissociation_description
                           
                         </td>
                       </tr>
@@ -2476,15 +2465,15 @@
                 class="accordion-button"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#collapselibrary_preparation"
+                data-bs-target="#collapselib_prep"
                 aria-expanded="true"
-                aria-controls="collapselibrary_preparation"
+                aria-controls="collapselib_prep"
               >
                 Library Preparation
               </button>
             </div>
             <div
-              id="collapselibrary_preparation"
+              id="collapselib_prep"
               class="accordion-collapse collapse"
               data-bs-parent="#accordionExample"
             >
@@ -3685,6 +3674,15 @@
                         <td>seq123</td>
                       </tr>
                       
+                                   
+                      <tr>
+                        <td>Reference</td>
+                        <td>
+                            <a href="https://w3id.org/mixs/0000016" target="_blank">
+                                https://w3id.org/mixs/0000016
+                            </a>
+                        </td>
+                      </tr>
                       
                       
                       <tr>
@@ -3697,7 +3695,9 @@
                         <td>Namespace</td>
                         <td>
                           
-                             ei:sequencing_id
+                            <a href="https://w3id.org/mixs/0000016" target="_blank">
+                              ei:sequencing_id
+                            </a>
                           
                         </td>
                       </tr>
@@ -4236,63 +4236,6 @@ E.g. "0".</td>
                 
                 <div class="card">
                   
-                  <h5 class="card-header">Cell Barcode Read</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>cell_barcode_read</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The type of read that contains the UMI barcode.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>index1</td>
-                      </tr>
-                      
-                      
-                      
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                      
-                      
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                             ei:cell_barcode_read
-                          
-                        </td>
-                      </tr>
-                      
-                      
-                      <tr>
-                        <td>Allowed Values</td>
-                        <td>
-                          
-                          <span class="badge bg-dark">index1</span>
-                          
-                          <span class="badge bg-dark">index2</span>
-                          
-                          <span class="badge bg-dark">read1</span>
-                          
-                          <span class="badge bg-dark">read2</span>
-                          
-                        </td>
-                      </tr>
-                      
-                    </table>
-                  </div>
-                </div>
-                
-                <div class="card">
-                  
                   <h5 class="card-header d-flex align-items-start">
                     cDNA Read
                     <span class="badge bg-dark ms-auto">Required</span>
@@ -4508,7 +4451,7 @@ E.g. "0".</td>
                     <table class="table">
                       <tr>
                         <td>Name</td>
-                        <td>library_preparation_id</td>
+                        <td>lib_prep_id</td>
                       </tr>
                       <tr>
                         <td>Description</td>
@@ -4532,7 +4475,7 @@ E.g. "0".</td>
                         <td>Namespace</td>
                         <td>
                           
-                             ei:library_preparation_id
+                             ei:lib_prep_id
                           
                         </td>
                       </tr>
@@ -5481,7 +5424,7 @@ from the cell was included in the sequencing analysis. For example, cells might 
                     <table class="table">
                       <tr>
                         <td>Name</td>
-                        <td>UMIs_barcode_distribution_qc</td>
+                        <td>umis_barcode_distribution_qc</td>
                       </tr>
                       <tr>
                         <td>Description</td>
@@ -5505,7 +5448,7 @@ from the cell was included in the sequencing analysis. For example, cells might 
                         <td>Namespace</td>
                         <td>
                           
-                             ei:UMIs_barcode_distribution_qc
+                             ei:umis_barcode_distribution_qc
                           
                         </td>
                       </tr>
@@ -5716,468 +5659,6 @@ from the cell was included in the sequencing analysis. For example, cells might 
                         <td>
                           
                              ei:individual_organism_snp_demultiplexing
-                          
-                        </td>
-                      </tr>
-                      
-                      
-                    </table>
-                  </div>
-                </div>
-                
-                <div class="card">
-                  
-                  <h5 class="card-header">Reference Genome</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>reference_genome</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>Indicate version and include stable link to genome data (or attach genome fasta file).</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>GRCh38, https://example.org/grch38.fa</td>
-                      </tr>
-                      
-                      
-                      
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                      
-                      
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                             ei:reference_genome
-                          
-                        </td>
-                      </tr>
-                      
-                      
-                    </table>
-                  </div>
-                </div>
-                
-                <div class="card">
-                  
-                  <h5 class="card-header">Genes vs Exons</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>genes_vs_exons</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>Quantification using whole gene intervals or exons.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Exon quantification</td>
-                      </tr>
-                      
-                      
-                      
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                      
-                      
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                             ei:genes_vs_exons
-                          
-                        </td>
-                      </tr>
-                      
-                      
-                    </table>
-                  </div>
-                </div>
-                
-                <div class="card">
-                  
-                  <h5 class="card-header">Library Structure</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>library_structure</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>seqspec format</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Single-cell 3' library</td>
-                      </tr>
-                      
-                      
-                      
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                      
-                      
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                             ei:library_structure
-                          
-                        </td>
-                      </tr>
-                      
-                      
-                    </table>
-                  </div>
-                </div>
-                
-                <div class="card">
-                  
-                  <h5 class="card-header">Mapping and Demultiplexing Software</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>mapping_and_demultiplexing_software</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>Reads/UMI</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Cell Ranger 6.0.0</td>
-                      </tr>
-                      
-                      
-                      
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                      
-                      
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                             ei:mapping_and_demultiplexing_software
-                          
-                        </td>
-                      </tr>
-                      
-                      
-                    </table>
-                  </div>
-                </div>
-                
-                <div class="card">
-                  
-                  <h5 class="card-header">Read Mapping Statistics</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>read_mapping_statistics</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>Reads/UMI</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>80% reads mapped to reference</td>
-                      </tr>
-                      
-                      
-                      
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                      
-                      
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                             ei:read_mapping_statistics
-                          
-                        </td>
-                      </tr>
-                      
-                      
-                    </table>
-                  </div>
-                </div>
-                
-                <div class="card">
-                  
-                  <h5 class="card-header">Sequencing Saturation</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>sequencing_saturation</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>Depending on number of cells recovered (not targeted) and technology</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>95% sequencing saturation</td>
-                      </tr>
-                      
-                      
-                      
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                      
-                      
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                             ei:sequencing_saturation
-                          
-                        </td>
-                      </tr>
-                      
-                      
-                    </table>
-                  </div>
-                </div>
-                
-                <div class="card">
-                  
-                  <h5 class="card-header">UMIs/Barcode Distribution QC</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>umis_barcode_distribution_qc</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>Show UMIs per barcode distribution and threshold applied</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Threshold: 10 UMIs per barcode</td>
-                      </tr>
-                      
-                      
-                      
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                      
-                      
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                             ei:umis_barcode_distribution_qc
-                          
-                        </td>
-                      </tr>
-                      
-                      
-                    </table>
-                  </div>
-                </div>
-                
-                <div class="card">
-                  
-                  <h5 class="card-header">Cell/Non-Cell Filtering Strategy</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>cell_non_cell_filtering_strategy</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>UMI threshold used to discriminate cells from non-cells. Description of algorithm (if any) and parameters used to determine cells/non-cells.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Threshold: 5 UMIs for cell detection</td>
-                      </tr>
-                      
-                      
-                      
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                      
-                      
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                             ei:cell_non_cell_filtering_strategy
-                          
-                        </td>
-                      </tr>
-                      
-                      
-                    </table>
-                  </div>
-                </div>
-                
-                <div class="card">
-                  
-                  <h5 class="card-header">Other Quality Filters Applied</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>other_quality_filters_applied</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>Cells/nuclei discarded based on % mitochondrial reads, % rRNA reads, etc.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Cells with >20% mitochondrial reads discarded</td>
-                      </tr>
-                      
-                      
-                      
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                      
-                      
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                             ei:other_quality_filters_applied
-                          
-                        </td>
-                      </tr>
-                      
-                      
-                    </table>
-                  </div>
-                </div>
-                
-                <div class="card">
-                  
-                  <h5 class="card-header">Ambient RNA QC</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>ambient_rna_qc</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>Report % UMIs in background cell barcodes, and algorithm (if any) used to remove ambient RNA</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Ambient RNA removed if >5% UMIs in background barcodes</td>
-                      </tr>
-                      
-                      
-                      
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                      
-                      
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                             ei:ambient_rna_qc
-                          
-                        </td>
-                      </tr>
-                      
-                      
-                    </table>
-                  </div>
-                </div>
-                
-                <div class="card">
-                  
-                  <h5 class="card-header">Predicted Doublet Rate QC</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>predicted_doublet_rate_qc</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>Depending on number of cells recovered (not targeted) and technology</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Predicted doublet rate: 1.5%</td>
-                      </tr>
-                      
-                      
-                      
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                      
-                      
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                             ei:predicted_doublet_rate_qc
                           
                         </td>
                       </tr>

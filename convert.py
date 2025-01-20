@@ -222,16 +222,16 @@ def extract_components_to_xml(element):
             field_element = ET.SubElement(field_group, 'FIELD')
 
             label_element = ET.SubElement(field_element, 'LABEL')
-            label_element.text = row.get('term_label', '')
+            label_element.text = str(row.get('term_label', ''))
 
             name = ET.SubElement(field_element, 'NAME')
-            name.text = row.get('term_name', '')
+            name.text = str(row.get('term_name', ''))
 
             description = ET.SubElement(field_element, 'DESCRIPTION')
-            description.text = row.get('term_description', '')
+            description.text = str(row.get('term_description', ''))
 
             example = ET.SubElement(field_element, 'EXAMPLE')
-            example.text = row.get('term_example', '')
+            example.text = str(row.get('term_example', ''))
             
             namespace_prefix_value = row.get('namespace_prefix', '')
             
@@ -263,19 +263,34 @@ def extract_components_to_xml(element):
                 for value in allowed_values:
                     text_value = ET.SubElement(choice_field, 'TEXT_VALUE')
                     value_element = ET.SubElement(text_value, 'VALUE')
-                    value_element.text = value
+                    value_element.text = str(value)
 
             mandatory = ET.SubElement(field_element, 'MANDATORY')
-            mandatory.text = 'mandatory' if row.get('term_required', False) else 'optional'
+            mandatory.text = str('mandatory' if row.get('term_required', False) else 'optional')
 
             multiplicity = ET.SubElement(field_element, 'CARDINALITY')
-            multiplicity.text = row.get('term_cardinality', 'single')
+            multiplicity.text = str(row.get('term_cardinality', 'single'))
 
     # Write XML file
     tree = ET.ElementTree(checklist_set)
-    tree.write(output_file_path, encoding='utf-8', xml_declaration=True)
-
-    print(f'{file_name} created!')
+    
+    try:
+        # Check if output_file_path is a valid file path (str or bytes)
+        if not isinstance(output_file_path, (str, bytes)):
+            raise TypeError(
+                f'Expected a file path (str/bytes), got {type(output_file_path)} for "{output_file_path}"'
+            )
+        
+        # Ensure the directory exists
+        dir_path = os.path.dirname(output_file_path)
+        if not os.path.exists(dir_path):
+            os.makedirs(dir_path)
+        
+        tree.write(output_file_path, encoding='utf-8', xml_declaration=True)
+        print(f'{file_name} created!')
+    except Exception as e:
+        raise IOError(f"Failed to write XML to {output_file_path}: {e}")
+    
 
 def extract_components_to_html(element):
     '''

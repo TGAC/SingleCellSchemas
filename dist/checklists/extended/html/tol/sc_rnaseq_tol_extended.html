@@ -669,6 +669,132 @@
                   </div>
                 </div>
                 
+                <div class="card">
+                  
+                  <h5 class="card-header">Collector Sample ID</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>COLLECTOR_SAMPLE_ID</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>Unique name assigned to the sample by the COLLECTOR or COLLECTOR_AFFILIATION. Do not use spaces or special characters, other than hyphens and underscores ("-" and "_") i.e do not use #, !,^*, etc. Free text.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>UDUK0000331</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             tol:COLLECTOR_SAMPLE_ID
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Description Of Collection Method</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>DESCRIPTION_OF_COLLECTION_METHOD</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A detailed as possible description of the sample collection methods</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Caught with fiber net within densely wooded area, and immediately placed into the collection container</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             tol:DESCRIPTION_OF_COLLECTION_METHOD
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Taxonomy ID</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>TAXON_ID</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A valid NCBI TAXON_ID to the species level ismandatory in order to submit data to public repositories. The species name in themanifest must be identical to that listed in the "current name" box in the T axonomy Browser for that species.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>458489</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             tol:TAXON_ID
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
               </div>
             </div>
           </div>
@@ -806,15 +932,6 @@
                         <td>Tissue was enzymatically dissociated using collagenase for 30 minutes.</td>
                       </tr>
                       
-                                   
-                      <tr>
-                        <td>Reference</td>
-                        <td>
-                            <a href="http://www.ebi.ac.uk/efo/EFO_0009088" target="_blank">
-                                http://www.ebi.ac.uk/efo/EFO_0009088
-                            </a>
-                        </td>
-                      </tr>
                       
                       
                       <tr>
@@ -827,9 +944,7 @@
                         <td>Namespace</td>
                         <td>
                           
-                            <a href="http://www.ebi.ac.uk/efo/EFO_0009088" target="_blank">
-                              ei:dissociation_description
-                            </a>
+                             ei:dissociation_description
                           
                         </td>
                       </tr>
@@ -1761,15 +1876,15 @@
                 class="accordion-button"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#collapselibrary_preparation"
+                data-bs-target="#collapselib_prep"
                 aria-expanded="true"
-                aria-controls="collapselibrary_preparation"
+                aria-controls="collapselib_prep"
               >
                 Library Preparation
               </button>
             </div>
             <div
-              id="collapselibrary_preparation"
+              id="collapselib_prep"
               class="accordion-collapse collapse"
               data-bs-parent="#accordionExample"
             >
@@ -2513,6 +2628,15 @@
                         <td>seq123</td>
                       </tr>
                       
+                                   
+                      <tr>
+                        <td>Reference</td>
+                        <td>
+                            <a href="https://w3id.org/mixs/0000016" target="_blank">
+                                https://w3id.org/mixs/0000016
+                            </a>
+                        </td>
+                      </tr>
                       
                       
                       <tr>
@@ -2525,7 +2649,9 @@
                         <td>Namespace</td>
                         <td>
                           
-                             ei:sequencing_id
+                            <a href="https://w3id.org/mixs/0000016" target="_blank">
+                              ei:sequencing_id
+                            </a>
                           
                         </td>
                       </tr>
@@ -2865,63 +2991,6 @@ E.g. "0".</td>
                 
                 <div class="card">
                   
-                  <h5 class="card-header">Cell Barcode Read</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>cell_barcode_read</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The type of read that contains the UMI barcode.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>index1</td>
-                      </tr>
-                      
-                      
-                      
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                      
-                      
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                             ei:cell_barcode_read
-                          
-                        </td>
-                      </tr>
-                      
-                      
-                      <tr>
-                        <td>Allowed Values</td>
-                        <td>
-                          
-                          <span class="badge bg-dark">index1</span>
-                          
-                          <span class="badge bg-dark">index2</span>
-                          
-                          <span class="badge bg-dark">read1</span>
-                          
-                          <span class="badge bg-dark">read2</span>
-                          
-                        </td>
-                      </tr>
-                      
-                    </table>
-                  </div>
-                </div>
-                
-                <div class="card">
-                  
                   <h5 class="card-header d-flex align-items-start">
                     cDNA Read
                     <span class="badge bg-dark ms-auto">Required</span>
@@ -3137,7 +3206,7 @@ E.g. "0".</td>
                     <table class="table">
                       <tr>
                         <td>Name</td>
-                        <td>library_preparation_id</td>
+                        <td>lib_prep_id</td>
                       </tr>
                       <tr>
                         <td>Description</td>
@@ -3161,7 +3230,7 @@ E.g. "0".</td>
                         <td>Namespace</td>
                         <td>
                           
-                             ei:library_preparation_id
+                             ei:lib_prep_id
                           
                         </td>
                       </tr>
@@ -3813,7 +3882,7 @@ dataset.</td>
                     <table class="table">
                       <tr>
                         <td>Name</td>
-                        <td>UMIs_barcode_distribution_qc</td>
+                        <td>umis_barcode_distribution_qc</td>
                       </tr>
                       <tr>
                         <td>Description</td>
@@ -3837,7 +3906,7 @@ dataset.</td>
                         <td>Namespace</td>
                         <td>
                           
-                             ei:UMIs_barcode_distribution_qc
+                             ei:umis_barcode_distribution_qc
                           
                         </td>
                       </tr>

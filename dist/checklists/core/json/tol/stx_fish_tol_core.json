@@ -425,7 +425,7 @@
     "term_required": false,
     "term_regex": "^-?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "core",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -441,7 +441,7 @@
     "term_required": false,
     "term_regex": "^-?(180(\\.0+)?|((1[0-7]\\d)|(\\d{1,2}))(\\.\\d+)?)$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "core",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -557,7 +557,7 @@
     "term_required": false,
     "term_regex": "^-?\\d+(\\.\\d+)?$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -592,7 +592,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -608,7 +608,7 @@
     "term_required": false,
     "term_regex": "^-?\\d+(\\.\\d+)?$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -624,7 +624,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "term_reference": "http://purl.obolibrary.org/obo/XCO_0000153",
     "termset": "ei",
     "schema_name": "stx_fish",
@@ -673,7 +673,7 @@
     "term_required": false,
     "term_regex": "^\\d+(\\.\\d+)?$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -705,7 +705,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -753,7 +753,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -769,7 +769,7 @@
     "term_required": false,
     "term_regex": "^-?\\d+(\\.\\d+)?$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"
@@ -785,7 +785,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_fish",
     "schema_label": "Spatial Transcriptomics Image"

@@ -368,7 +368,7 @@
     "term_required": false,
     "term_regex": "^-?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "term_reference": "http://rs.tdwg.org/dwc/terms/decimalLatitude",
     "termset": "core",
     "schema_name": "sc_rnaseq",
@@ -385,7 +385,7 @@
     "term_required": false,
     "term_regex": "^-?(180(\\.0+)?|((1[0-7]\\d)|(\\d{1,2}))(\\.\\d+)?)$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "term_reference": "http://rs.tdwg.org/dwc/terms/decimalLongitude",
     "termset": "core",
     "schema_name": "sc_rnaseq",
@@ -485,7 +485,6 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "free-text",
-    "term_reference": "http://www.ebi.ac.uk/efo/EFO_0009088",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
@@ -683,7 +682,7 @@
     "term_example": "10000",
     "term_required": false,
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing",
@@ -743,7 +742,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
@@ -759,7 +758,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
@@ -775,7 +774,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
@@ -791,7 +790,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
@@ -807,7 +806,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
@@ -829,7 +828,7 @@
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:library_prep_id",
     "term_name": "library_prep_id",
@@ -845,7 +844,7 @@
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:cell_suspension_id",
     "term_name": "cell_suspension_id",
@@ -861,7 +860,7 @@
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:library_prep_kit_version",
     "term_name": "library_prep_kit_version",
@@ -871,14 +870,14 @@
     "term_required": true,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "term_reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:amplification_method",
     "term_name": "amplification_method",
@@ -894,7 +893,7 @@
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:cDNA_amplification_cycles",
     "term_name": "cDNA_amplification_cycles",
@@ -904,13 +903,13 @@
     "term_required": true,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "core",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:average_size_distribution",
     "term_name": "average_size_distribution",
@@ -920,13 +919,13 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:library_construction_method",
     "term_name": "library_construction_method",
@@ -942,7 +941,7 @@
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:input_molecule",
     "term_name": "input_molecule",
@@ -958,7 +957,7 @@
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:primer",
     "term_name": "primer",
@@ -977,7 +976,7 @@
     ]
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:primeness",
     "term_name": "primeness",
@@ -997,7 +996,7 @@
     ]
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:end_bias",
     "term_name": "end_bias",
@@ -1016,7 +1015,7 @@
     ]
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:library_strand",
     "term_name": "library_strand",
@@ -1037,7 +1036,7 @@
     ]
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:spike_in",
     "term_name": "spike_in",
@@ -1056,7 +1055,7 @@
     ]
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:spike_type",
     "term_name": "spike_type",
@@ -1072,7 +1071,7 @@
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:spike_in_dilution_or_concentration",
     "term_name": "spike_in_dilution_or_concentration",
@@ -1088,7 +1087,7 @@
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:i5_index",
     "term_name": "i5_index",
@@ -1104,7 +1103,7 @@
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:i7_index",
     "term_name": "i7_index",
@@ -1120,7 +1119,7 @@
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:dual_single_index",
     "term_name": "dual_single_index",
@@ -1139,7 +1138,7 @@
     ]
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:index_length",
     "term_name": "index_length",
@@ -1149,13 +1148,13 @@
     "term_required": true,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:i5_sequence",
     "term_name": "i5_sequence",
@@ -1171,7 +1170,7 @@
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:i7_sequence",
     "term_name": "i7_sequence",
@@ -1187,7 +1186,7 @@
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:plate_id",
     "term_name": "plate_id",
@@ -1203,7 +1202,7 @@
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:well_row",
     "term_name": "well_row",
@@ -1219,7 +1218,7 @@
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:well_col",
     "term_name": "well_col",
@@ -1229,13 +1228,13 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:cell_phenotype",
     "term_name": "cell_phenotype",
@@ -1265,6 +1264,7 @@
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
     "term_type": "string",
+    "term_reference": "https://w3id.org/mixs/0000016",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
@@ -1335,7 +1335,7 @@
     "term_required": true,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
@@ -1372,7 +1372,7 @@
     "term_required": false,
     "term_regex": "^\\d+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "core",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
@@ -1388,7 +1388,7 @@
     "term_required": false,
     "term_regex": "^\\d+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "core",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
@@ -1426,7 +1426,7 @@
     "term_required": false,
     "term_regex": "^\\d+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "term_reference": "http://www.ebi.ac.uk/efo/EFO_0010204",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
@@ -1443,33 +1443,11 @@
     "term_required": false,
     "term_regex": "^\\d+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "term_reference": "http://www.ebi.ac.uk/efo/EFO_0010205",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
     "schema_label": "Single-cell RNA Sequencing"
-  },
-  {
-    "component_name": "sequencing",
-    "component_label": "Sequencing",
-    "namespace": "ei:cell_barcode_read",
-    "term_name": "cell_barcode_read",
-    "term_label": "Cell Barcode Read",
-    "term_description": "The type of read that contains the UMI barcode.",
-    "term_example": "index1",
-    "term_required": false,
-    "term_regex": "^[A-Za-z]*[a-z]+$",
-    "term_cardinality": "single",
-    "term_type": "string",
-    "termset": "ei",
-    "schema_name": "sc_rnaseq",
-    "schema_label": "Single-cell RNA Sequencing",
-    "allowed_values": [
-      "index1",
-      "index2",
-      "read1",
-      "read2"
-    ]
   },
   {
     "component_name": "sequencing",
@@ -1503,7 +1481,7 @@
     "term_example": "read2",
     "term_required": false,
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "term_reference": "http://www.ebi.ac.uk/efo/EFO_0010201",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
@@ -1526,7 +1504,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "term_reference": "http://www.ebi.ac.uk/efo/EFO_0010202",
     "termset": "ei",
     "schema_name": "sc_rnaseq",
@@ -1535,8 +1513,8 @@
   {
     "component_name": "file",
     "component_label": "File",
-    "namespace": "ei:library_preparation_id",
-    "term_name": "library_preparation_id",
+    "namespace": "ei:lib_prep_id",
+    "term_name": "lib_prep_id",
     "term_label": "Library Preparation ID",
     "term_description": "A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.",
     "term_example": "libPrep123",
@@ -1881,8 +1859,8 @@
   {
     "component_name": "raw_data_processing",
     "component_label": "Raw Data Processing",
-    "namespace": "ei:UMIs_barcode_distribution_qc",
-    "term_name": "UMIs_barcode_distribution_qc",
+    "namespace": "ei:umis_barcode_distribution_qc",
+    "term_name": "umis_barcode_distribution_qc",
     "term_label": "UMIs or Barcode Distribution QC",
     "term_description": "Show Unique Molecular Identifiers (UMIs) per barcode distribution and threshold applied",
     "term_example": "Threshold: 10 UMIs per barcode",
@@ -2014,182 +1992,6 @@
     "term_label": "Integration/Batch Correction",
     "term_description": "If compared/integrated with existing datasets",
     "term_example": "Harmony v1.0",
-    "term_required": false,
-    "term_regex": "^[A-Za-z]*[a-z]+$",
-    "term_cardinality": "single",
-    "term_type": "string",
-    "termset": "core",
-    "schema_name": "sc_rnaseq",
-    "schema_label": "Single-cell RNA Sequencing"
-  },
-  {
-    "component_name": "raw_data_processing",
-    "component_label": "Raw Data Processing",
-    "namespace": "ei:reference_genome",
-    "term_name": "reference_genome",
-    "term_label": "Reference Genome",
-    "term_description": "Indicate version and include stable link to genome data (or attach genome fasta file).",
-    "term_example": "GRCh38, https://example.org/grch38.fa",
-    "term_required": false,
-    "term_regex": "^[A-Za-z]*[a-z]+$",
-    "term_cardinality": "single",
-    "term_type": "string",
-    "termset": "core",
-    "schema_name": "sc_rnaseq",
-    "schema_label": "Single-cell RNA Sequencing"
-  },
-  {
-    "component_name": "raw_data_processing",
-    "component_label": "Raw Data Processing",
-    "namespace": "ei:genes_vs_exons",
-    "term_name": "genes_vs_exons",
-    "term_label": "Genes vs Exons",
-    "term_description": "Quantification using whole gene intervals or exons.",
-    "term_example": "Exon quantification",
-    "term_required": false,
-    "term_regex": "^[A-Za-z]*[a-z]+$",
-    "term_cardinality": "single",
-    "term_type": "string",
-    "termset": "core",
-    "schema_name": "sc_rnaseq",
-    "schema_label": "Single-cell RNA Sequencing"
-  },
-  {
-    "component_name": "raw_data_processing",
-    "component_label": "Raw Data Processing",
-    "namespace": "ei:library_structure",
-    "term_name": "library_structure",
-    "term_label": "Library Structure",
-    "term_description": "seqspec format",
-    "term_example": "Single-cell 3' library",
-    "term_required": false,
-    "term_regex": "^[A-Za-z]*[a-z]+$",
-    "term_cardinality": "single",
-    "term_type": "string",
-    "termset": "core",
-    "schema_name": "sc_rnaseq",
-    "schema_label": "Single-cell RNA Sequencing"
-  },
-  {
-    "component_name": "raw_data_processing",
-    "component_label": "Raw Data Processing",
-    "namespace": "ei:mapping_and_demultiplexing_software",
-    "term_name": "mapping_and_demultiplexing_software",
-    "term_label": "Mapping and Demultiplexing Software",
-    "term_description": "Reads/UMI",
-    "term_example": "Cell Ranger 6.0.0",
-    "term_required": false,
-    "term_regex": "^[A-Za-z]*[a-z]+$",
-    "term_cardinality": "single",
-    "term_type": "string",
-    "termset": "core",
-    "schema_name": "sc_rnaseq",
-    "schema_label": "Single-cell RNA Sequencing"
-  },
-  {
-    "component_name": "raw_data_processing",
-    "component_label": "Raw Data Processing",
-    "namespace": "ei:read_mapping_statistics",
-    "term_name": "read_mapping_statistics",
-    "term_label": "Read Mapping Statistics",
-    "term_description": "Reads/UMI",
-    "term_example": "80% reads mapped to reference",
-    "term_required": false,
-    "term_regex": "^[A-Za-z]*[a-z]+$",
-    "term_cardinality": "single",
-    "term_type": "string",
-    "termset": "core",
-    "schema_name": "sc_rnaseq",
-    "schema_label": "Single-cell RNA Sequencing"
-  },
-  {
-    "component_name": "raw_data_processing",
-    "component_label": "Raw Data Processing",
-    "namespace": "ei:sequencing_saturation",
-    "term_name": "sequencing_saturation",
-    "term_label": "Sequencing Saturation",
-    "term_description": "Depending on number of cells recovered (not targeted) and technology",
-    "term_example": "95% sequencing saturation",
-    "term_required": false,
-    "term_regex": "^[A-Za-z]*[a-z]+$",
-    "term_cardinality": "single",
-    "term_type": "string",
-    "termset": "core",
-    "schema_name": "sc_rnaseq",
-    "schema_label": "Single-cell RNA Sequencing"
-  },
-  {
-    "component_name": "raw_data_processing",
-    "component_label": "Raw Data Processing",
-    "namespace": "ei:umis_barcode_distribution_qc",
-    "term_name": "umis_barcode_distribution_qc",
-    "term_label": "UMIs/Barcode Distribution QC",
-    "term_description": "Show UMIs per barcode distribution and threshold applied",
-    "term_example": "Threshold: 10 UMIs per barcode",
-    "term_required": false,
-    "term_regex": "^[A-Za-z]*[a-z]+$",
-    "term_cardinality": "single",
-    "term_type": "string",
-    "termset": "core",
-    "schema_name": "sc_rnaseq",
-    "schema_label": "Single-cell RNA Sequencing"
-  },
-  {
-    "component_name": "raw_data_processing",
-    "component_label": "Raw Data Processing",
-    "namespace": "ei:cell_non_cell_filtering_strategy",
-    "term_name": "cell_non_cell_filtering_strategy",
-    "term_label": "Cell/Non-Cell Filtering Strategy",
-    "term_description": "UMI threshold used to discriminate cells from non-cells. Description of algorithm (if any) and parameters used to determine cells/non-cells.",
-    "term_example": "Threshold: 5 UMIs for cell detection",
-    "term_required": false,
-    "term_regex": "^[A-Za-z]*[a-z]+$",
-    "term_cardinality": "single",
-    "term_type": "string",
-    "termset": "core",
-    "schema_name": "sc_rnaseq",
-    "schema_label": "Single-cell RNA Sequencing"
-  },
-  {
-    "component_name": "raw_data_processing",
-    "component_label": "Raw Data Processing",
-    "namespace": "ei:other_quality_filters_applied",
-    "term_name": "other_quality_filters_applied",
-    "term_label": "Other Quality Filters Applied",
-    "term_description": "Cells/nuclei discarded based on % mitochondrial reads, % rRNA reads, etc.",
-    "term_example": "Cells with >20% mitochondrial reads discarded",
-    "term_required": false,
-    "term_regex": "^[A-Za-z]*[a-z]+$",
-    "term_cardinality": "single",
-    "term_type": "string",
-    "termset": "core",
-    "schema_name": "sc_rnaseq",
-    "schema_label": "Single-cell RNA Sequencing"
-  },
-  {
-    "component_name": "raw_data_processing",
-    "component_label": "Raw Data Processing",
-    "namespace": "ei:ambient_rna_qc",
-    "term_name": "ambient_rna_qc",
-    "term_label": "Ambient RNA QC",
-    "term_description": "Report % UMIs in background cell barcodes, and algorithm (if any) used to remove ambient RNA",
-    "term_example": "Ambient RNA removed if >5% UMIs in background barcodes",
-    "term_required": false,
-    "term_regex": "^[A-Za-z]*[a-z]+$",
-    "term_cardinality": "single",
-    "term_type": "string",
-    "termset": "core",
-    "schema_name": "sc_rnaseq",
-    "schema_label": "Single-cell RNA Sequencing"
-  },
-  {
-    "component_name": "raw_data_processing",
-    "component_label": "Raw Data Processing",
-    "namespace": "ei:predicted_doublet_rate_qc",
-    "term_name": "predicted_doublet_rate_qc",
-    "term_label": "Predicted Doublet Rate QC",
-    "term_description": "Depending on number of cells recovered (not targeted) and technology",
-    "term_example": "Predicted doublet rate: 1.5%",
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",

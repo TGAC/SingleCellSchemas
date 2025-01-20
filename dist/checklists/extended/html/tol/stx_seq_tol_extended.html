@@ -679,6 +679,132 @@
                   </div>
                 </div>
                 
+                <div class="card">
+                  
+                  <h5 class="card-header">Collector Sample ID</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>COLLECTOR_SAMPLE_ID</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>Unique name assigned to the sample by the COLLECTOR or COLLECTOR_AFFILIATION. Do not use spaces or special characters, other than hyphens and underscores ("-" and "_") i.e do not use #, !,^*, etc. Free text.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>UDUK0000331</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             tol:COLLECTOR_SAMPLE_ID
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Description Of Collection Method</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>DESCRIPTION_OF_COLLECTION_METHOD</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A detailed as possible description of the sample collection methods</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Caught with fiber net within densely wooded area, and immediately placed into the collection container</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             tol:DESCRIPTION_OF_COLLECTION_METHOD
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Taxonomy ID</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>TAXON_ID</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A valid NCBI TAXON_ID to the species level ismandatory in order to submit data to public repositories. The species name in themanifest must be identical to that listed in the "current name" box in the T axonomy Browser for that species.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>458489</td>
+                      </tr>
+                      
+                      
+                      
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d+$</td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                             tol:TAXON_ID
+                          
+                        </td>
+                      </tr>
+                      
+                      
+                    </table>
+                  </div>
+                </div>
+                
               </div>
             </div>
           </div>
@@ -1808,15 +1934,15 @@
                 class="accordion-button"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#collapselibrary_preparation"
+                data-bs-target="#collapselib_prep"
                 aria-expanded="true"
-                aria-controls="collapselibrary_preparation"
+                aria-controls="collapselib_prep"
               >
                 Library Preparation
               </button>
             </div>
             <div
-              id="collapselibrary_preparation"
+              id="collapselib_prep"
               class="accordion-collapse collapse"
               data-bs-parent="#accordionExample"
             >
@@ -2992,7 +3118,7 @@ E.g. "0".</td>
                     <table class="table">
                       <tr>
                         <td>Name</td>
-                        <td>library_preparation_id</td>
+                        <td>lib_prep_id</td>
                       </tr>
                       <tr>
                         <td>Description</td>
@@ -3016,7 +3142,7 @@ E.g. "0".</td>
                         <td>Namespace</td>
                         <td>
                           
-                             ei:library_preparation_id
+                             ei:lib_prep_id
                           
                         </td>
                       </tr>

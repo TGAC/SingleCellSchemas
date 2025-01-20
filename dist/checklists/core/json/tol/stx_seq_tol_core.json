@@ -425,7 +425,7 @@
     "term_required": false,
     "term_regex": "^-?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "core",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -441,7 +441,7 @@
     "term_required": false,
     "term_regex": "^-?(180(\\.0+)?|((1[0-7]\\d)|(\\d{1,2}))(\\.\\d+)?)$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "core",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -556,7 +556,7 @@
     "term_required": false,
     "term_regex": "^-?\\d+(\\.\\d+)?$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -591,7 +591,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -607,7 +607,7 @@
     "term_required": false,
     "term_regex": "^-?\\d+(\\.\\d+)?$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -623,7 +623,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -671,7 +671,7 @@
     "term_required": false,
     "term_regex": "^\\d+(\\.\\d+)?$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -703,7 +703,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -751,7 +751,7 @@
     "term_required": false,
     "term_regex": "^\\d+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -767,7 +767,7 @@
     "term_required": false,
     "term_regex": "^-?\\d+(\\.\\d+)?$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -783,7 +783,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -869,7 +869,7 @@
     "schema_label": "Spatial Transcriptomics Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:library_prep_id",
     "term_name": "library_prep_id",
@@ -885,7 +885,7 @@
     "schema_label": "Spatial Transcriptomics Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:cell_suspension_id",
     "term_name": "cell_suspension_id",
@@ -901,7 +901,7 @@
     "schema_label": "Spatial Transcriptomics Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:library_prep_kit_version",
     "term_name": "library_prep_kit_version",
@@ -911,13 +911,13 @@
     "term_required": true,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:amplification_method",
     "term_name": "amplification_method",
@@ -933,7 +933,7 @@
     "schema_label": "Spatial Transcriptomics Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:cDNA_amplification_cycles",
     "term_name": "cDNA_amplification_cycles",
@@ -943,13 +943,13 @@
     "term_required": true,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "core",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:average_size_distribution",
     "term_name": "average_size_distribution",
@@ -959,13 +959,13 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:library_construction_method",
     "term_name": "library_construction_method",
@@ -981,7 +981,7 @@
     "schema_label": "Spatial Transcriptomics Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:input_molecule",
     "term_name": "input_molecule",
@@ -997,7 +997,7 @@
     "schema_label": "Spatial Transcriptomics Sequencing"
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:primer",
     "term_name": "primer",
@@ -1016,7 +1016,7 @@
     ]
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:primeness",
     "term_name": "primeness",
@@ -1036,7 +1036,7 @@
     ]
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:end_bias",
     "term_name": "end_bias",
@@ -1055,7 +1055,7 @@
     ]
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:library_strand",
     "term_name": "library_strand",
@@ -1076,7 +1076,7 @@
     ]
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:spike_in",
     "term_name": "spike_in",
@@ -1095,7 +1095,7 @@
     ]
   },
   {
-    "component_name": "library_preparation",
+    "component_name": "lib_prep",
     "component_label": "Library Preparation",
     "namespace": "ei:spike_in_dilution_or_concentration",
     "term_name": "spike_in_dilution_or_concentration",
@@ -1205,7 +1205,7 @@
     "term_required": false,
     "term_regex": "^[A-Za-z]*[a-z]+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -1242,7 +1242,7 @@
     "term_required": false,
     "term_regex": "^\\d+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -1295,7 +1295,7 @@
     "term_required": false,
     "term_regex": "^\\d+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -1311,7 +1311,7 @@
     "term_required": false,
     "term_regex": "^\\d+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -1347,7 +1347,7 @@
     "term_example": "5",
     "term_required": false,
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing",
@@ -1407,7 +1407,7 @@
     "term_required": false,
     "term_regex": "^\\d+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -1423,7 +1423,7 @@
     "term_required": false,
     "term_regex": "^\\d+$",
     "term_cardinality": "single",
-    "term_type": "number",
+    "term_type": "integer",
     "termset": "ei",
     "schema_name": "stx_seq",
     "schema_label": "Spatial Transcriptomics Sequencing"
@@ -1447,8 +1447,8 @@
   {
     "component_name": "file",
     "component_label": "File",
-    "namespace": "ei:library_preparation_id",
-    "term_name": "library_preparation_id",
+    "namespace": "ei:lib_prep_id",
+    "term_name": "lib_prep_id",
     "term_label": "Library Preparation ID",
     "term_description": "A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.",
     "term_example": "libPrep123",
