@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Python: Extract All Components in All Standards and Termsets",
+      "name": "Python: Extract All Components in All Standards",
       "type": "debugpy",
       "request": "launch",
       "program": "${workspaceFolder}/convert.py",
@@ -18,13 +18,13 @@
       ]
     },
     {
-      "name": "Python: Extract All Core Components in All Standards",
+      "name": "Python: Extract All Components with 'dwc' Namespace Prefix",
       "type": "debugpy",
       "request": "launch",
       "program": "${workspaceFolder}/convert.py",
       "console": "integratedTerminal",
       "args": [
-        "core" // Termset argument (either 'core' or 'extended')
+        "dwc" // Termset argument (either 'dwc', 'mixs' or 'tol')
       ],
       "python": "${workspaceFolder}/venv/bin/python",
       "env": {
@@ -36,55 +36,13 @@
       ]
     },
     {
-      "name": "Python: Extract sc_rnaseq Core Components",
+      "name": "Python: Extract All Components with 'html' Output Format",
       "type": "debugpy",
       "request": "launch",
       "program": "${workspaceFolder}/convert.py",
       "console": "integratedTerminal",
       "args": [
-        "${workspaceFolder}/schemas/xlsx/base_sc_rnaseq.xlsx", // Path to the input Excel schema file
-        "core", // Termset argument (either 'core' or 'extended')
-        "dwc" // Standard argument (either 'tol', 'dwc', or 'mixs')
-      ],
-      "python": "${workspaceFolder}/venv/bin/python",
-      "env": {
-        "PYTHONPATH": "${workspaceFolder}"
-      },
-      "justMyCode": true, // Skip debugging code from libraries
-      "pythonArgs": [
-        "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
-      ]
-    },
-    {
-      "name": "Python: Extract stx_fish Core Components",
-      "type": "debugpy",
-      "request": "launch",
-      "program": "${workspaceFolder}/convert.py",
-      "console": "integratedTerminal",
-      "args": [
-        "${workspaceFolder}/schemas/xlsx/base_stx_fish.xlsx", // Path to the input Excel schema file
-        "core", // Termset argument (either 'core' or 'extended')
-        "schemaorg" // Standard argument (either 'tol', 'dwc', or 'mixs')
-      ],
-      "python": "${workspaceFolder}/venv/bin/python",
-      "env": {
-        "PYTHONPATH": "${workspaceFolder}"
-      },
-      "justMyCode": true, // Skip debugging code from libraries
-      "pythonArgs": [
-        "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
-      ]
-    },
-    {
-      "name": "Python: Extract stx_seq Core Components",
-      "type": "debugpy",
-      "request": "launch",
-      "program": "${workspaceFolder}/convert.py",
-      "console": "integratedTerminal",
-      "args": [
-        "${workspaceFolder}/schemas/xlsx/base_stx_seq.xlsx", // Path to the input Excel schema file
-        "core", // Termset argument (either 'core' or 'extended')
-        "schemaorg" // Standard argument (either 'tol', 'dwc', or 'mixs')
+        "html" // Termset argument (either 'excel', 'json', 'xml')
       ],
       "python": "${workspaceFolder}/venv/bin/python",
       "env": {
@@ -116,22 +74,6 @@
       "type": "debugpy",
       "request": "launch",
       "program": "${workspaceFolder}/utils/update_and_convert_schema.py",
-      "console": "integratedTerminal",
-      "args": [],
-      "python": "${workspaceFolder}/venv/bin/python",
-      "env": {
-        "PYTHONPATH": "${workspaceFolder}"
-      },
-      "justMyCode": true, // Skip debugging code from libraries
-      "pythonArgs": [
-        "-Xfrozen_modules=off" // Disable frozen modules to ensure breakpoints are hit
-      ]
-    },
-    {
-      "name": "Python: Run append_to_schema_data script",
-      "type": "debugpy",
-      "request": "launch",
-      "program": "${workspaceFolder}/utils/append_to_schema_data.py",
       "console": "integratedTerminal",
       "args": [],
       "python": "${workspaceFolder}/venv/bin/python",

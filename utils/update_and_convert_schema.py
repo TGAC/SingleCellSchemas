@@ -2,7 +2,7 @@
 Script Name: update_and_convert_schema.py
 Description:
     This script updates the information in the 'data' worksheet of a base schema
-    Excel file and propagates changes to other worksheets. The updated Excel file
+    spreadsheet file and propagates changes to other worksheets. The updated spreadsheet file
     is then converted into JSON format for further use.
 
 Usage:
@@ -13,75 +13,197 @@ import json
 import os
 import pandas as pd
 import tempfile
+import urllib.parse
 import utils.helpers as helpers
+import yaml
 
 from openpyxl import load_workbook
 from openpyxl.styles import Protection
 from openpyxl.worksheet.protection import SheetProtection
 from openpyxl.utils import get_column_letter
 
-def autofit_all_sheets(writer):
-    for sheet in writer.sheets.values():
-        sheet.autofit()
+def generate_base_schema_yaml():
+    '''
+    Generates a base schema YAML file by extracting schema information from an Excel file.
+    The YAML file is stored in the schema base directory.
+    '''
+    file_path = helpers.SCHEMA_FILE_PATH
+    
+    # Initialise base structure of the YAML schema
+    combined_yaml_data = {
+        'id': 'https://w3id.org/linkml/examples/single_cell_model',
+        'name': 'singlecell_schema_model',
+        'description': "The Single-cell schema YAML file contains metadata mapping and schemas related to the Earlham Institute's (EI's) CELLGEN ISP project. These metadata are designed to describe various Single Cell Genomics and Spatial Transcriptomics experiment types, including those from platforms like 10X Genomics and Vizgen.",
+        'license': 'https://creativecommons.org/publicdomain/zero/1.0/',
+        'prefixes': {
+            'dc': 'http://purl.org/dc/elements/1.1',
+            'dcterms': 'http://purl.org/dc/terms/',
+            'dwc': 'http://rs.tdwg.org/dwc/terms/',
+            'dwciri': 'http://rs.tdwg.org/dwc/iri/',
+            'linkml': 'https://w3id.org/linkml/',
+            'mixs': 'https://w3id.org/mixs/',
+            'schemaorg': 'http://schema.org/',
+            'singlecell': 'https://singlecellschemas.org/terms/'
+        },
+        'default_curi_maps': ['semweb_context'],
+        'imports': ['linkml:types'],
+        'default_prefix': 'singlecell',
+        'default_range': 'string',
+        'classes': {},
+        'enums': {}
+    }
+    
+    # Read data once for all standards
+    data_df, allowed_values_dict = helpers.read_xlsx_data()
+    
+    for checklist in helpers.CHECKLISTS_DICT.values():
+        # Populate the element dictionary
+        element = {
+            'allowed_values_dict': allowed_values_dict,
+            'data_df': data_df,
+            'version_column_name': checklist['version_column_name'],
+            'version_column_label': checklist['version_column_label'],
+            'version_description': checklist['version_description'],
+            'standard_name': checklist['standard_name'],
+            'standard_label': checklist['standard_label'],
+            'technology_name': checklist['technology_name'],
+            'technology_label': checklist['technology_label'],
+            'file_path': helpers.SCHEMA_FILE_PATH,
+            'output_file_name': checklist['output_file_name']
+        }
+        
+        # Filter dataframe by namespace prefix name and schema name
+        element['data_df'] = helpers.filter_data_frame(element)
+        
+        if element['data_df'].empty:
+            print(f"No data found for '{element['standard_name']}' standard and '{element['technology_name']}' technology. Skipping...")
+            continue
+            
+        # Generate base YAML data for the filtered data    
+        yaml_data = helpers.get_base_schema_json(element)
+            
+        if yaml_data:
+            version_column_name = element['version_column_name']
+            
+            # Combine the YAML data for all standards
+            for field in yaml_data:
+                # if field.startswith('version_') and not field.get(version_column_name, ''):
+                #     continue
+                class_name = helpers.COMPONENTS.get(field.get('component_name',''))
+                if class_name not in combined_yaml_data['classes']:
+                    combined_yaml_data['classes'][class_name] = {'attributes': {}}
+                
+                is_multi_valued = False if field.get('term_cardinality', 'single') == 'single' else True
+                
+                # Encode field names and labels to avoid special characters
+                attribute_name = urllib.parse.quote(field.get('term_name', ''))
+                attribute_label = urllib.parse.quote(field.get('term_label', ''))
+                examples = (
+                            [{'value': example.strip()} for example in str(field.get('term_example', '')).split(',') if example.strip()]
+                            if isinstance(field.get('term_example', ''), str)
+                            else [{'value': str(field.get('term_example', ''))}]
+                        )
+                            
+                combined_yaml_data['classes'][class_name]['attributes'][attribute_name] = {
+                    'identifier': field.get('identifier', False),
+                    'required': True if field.get(version_column_name, '') == 'M' else False,
+                    'description': field.get('term_description', ''),
+                    'examples': examples,
+                    'slot_uri': f"{field.get('namespace_prefix', '')}:{attribute_name}",
+                    'domain': class_name,
+                    'range': field.get('term_type', 'string'),
+                    'multivalued': is_multi_valued,
+                    'inlined': False
+                }
+                
+                # Handle enums if available
+                allowed_values = allowed_values_dict.get(attribute_name, '')
+                if allowed_values and field.get('term_type', 'string') == 'enum':
+                    enum_name = attribute_name.capitalize()
+                    combined_yaml_data['enums'].setdefault(enum_name, {'permissible_values': {}})
+                    for value in allowed_values:
+                        combined_yaml_data['enums'][enum_name]['permissible_values'][value] = {}
 
-def generate_base_schema_xlsx(file_path):
-    data_df, allowed_values_df = helpers.read_excel_data(file_path, return_dict=False)
-    
-    # Create a temporary file to write the output
-    with tempfile.NamedTemporaryFile(suffix=".xlsx", delete=False) as temp_file:
-        temp_output_path = temp_file.name
+    # Write YAML to a temporary file
+    if combined_yaml_data['classes']:  
+        with tempfile.NamedTemporaryFile(suffix='.yaml', delete=False, mode='w') as temp_file:
+            temp_output_path = temp_file.name
+            yaml.dump(combined_yaml_data, temp_file, sort_keys=False, default_flow_style=False, indent=2)
         
-    # Create the Excel writer object
-    with pd.ExcelWriter(temp_output_path, engine='xlsxwriter') as writer:
-        # Write the 'data' worksheet and 'allowed_values' worksheet
-        data_df.to_excel(writer, sheet_name='data', index=False)
-        allowed_values_df.to_excel(writer, sheet_name='allowed_values', index=False)
+        # Overwrite the original file with the generated YAML file
+        file_name = os.path.basename(file_path).replace('.xlsx', '.yaml')
+        output_file = f'{helpers.SCHEMA_BASE_DIR_PATH}/{file_name}'
+        os.replace(temp_output_path, output_file)
+        print(f'Base YAML file generated/updated: {output_file}')
+    else:
+        print('No data to generate YAML file.')
         
-        # Group data by namespace prefix and write each namespace prefix to its own protected sheet
-        for namespace_prefix, group in data_df.groupby('namespace_prefix'):
-            namespace_prefix_df = group.copy()
-            sheet_name = namespace_prefix[:31]  # Ensure sheet name length is valid for Excel
-            namespace_prefix_df.to_excel(writer, sheet_name=sheet_name, index=False)
+def generate_base_schema_json():
+    '''
+    Generates a base schema JSON file by extracting schema information from an Excel file.
+    The JSON file is stored in the schema base directory.
+    '''
+    file_path = helpers.SCHEMA_FILE_PATH
+    combined_json_data = []
+    
+    # Read data once for all standards
+    data_df, allowed_values_dict = helpers.read_xlsx_data()
+    
+    for checklist in helpers.CHECKLISTS_DICT.values():
+        # Populate the element dictionary
+        element = {
+            'allowed_values_dict': allowed_values_dict,
+            'data_df': data_df,
+            'version_column_name': checklist['version_column_name'],
+            'version_column_label': checklist['version_column_label'],
+            'version_description': checklist['version_description'],
+            'standard_name': checklist['standard_name'],
+            'standard_label': checklist['standard_label'],
+            'technology_name': checklist['technology_name'],
+            'technology_label': checklist['technology_label'],
+            'file_path': helpers.SCHEMA_FILE_PATH,
+            'output_file_name': checklist['output_file_name']
+        }
+             
+        # Filter dataframe by namespace prefix name and schema name
+        element['data_df'] = helpers.filter_data_frame(element)
         
-        # Autofit columns for all sheets
-        autofit_all_sheets(writer)
-    # Protect namespace prefix sheets
-    wb = load_workbook(temp_output_path)
-    for sheet in wb.worksheets:
-        if sheet.title not in ['data', 'allowed_values']:
-            for col in range(1, sheet.max_column + 1):
-                col_letter = get_column_letter(col)
-                sheet.column_dimensions[col_letter].hidden = False
-            sheet.protection = SheetProtection(sheet=True)
-    
-    # Save the workbook with protections applied
-    wb.save(temp_output_path)
-    
-    # Overwrite the original file with the generated file
-    os.replace(temp_output_path, file_path)
-    print(f'Excel file updated: {file_path}')
-    
-def generate_base_schema_json(file_path):
-    data_df, allowed_values_dict = helpers.read_excel_data(file_path)
-    
-    json_data = helpers.get_base_schema_json(data_df, allowed_values_dict)
+        if element['data_df'].empty:
+            print(f"No data found for '{element['standard_name']}' standard and '{element['technology_name']}' technology. Skipping...")
+            continue
+            
+        # Generate base JSON data for the filtered data 
+        json_data = helpers.get_base_schema_json(element)
 
+        if json_data:  # Only extend if json_data is not empty
+            # Add the modified json_data to the combined_json_data list
+            combined_json_data.extend(json_data)
+        else:
+            print(f'No valid json_data for schema: {technology_name}, namespace: {namespace_prefix}, skipping.')
+            
     # Write JSON to a temporary file
-    with tempfile.NamedTemporaryFile(suffix=".json", delete=False, mode="w") as temp_file:
-        temp_output_path = temp_file.name
-        json.dump(json_data, temp_file, indent=4)
-    
-    # Overwrite the original file with the generated JSON file
-    file_name = os.path.basename(file_path).replace('.xlsx', '.json')
-    output_file = f'{helpers.SCHEMA_BASE_DIR_PATH_JSON}/{file_name}'
-    os.replace(temp_output_path, output_file)
-    print(f'JSON file generated/updated: {output_file}')
+    if combined_json_data:  
+        with tempfile.NamedTemporaryFile(suffix='.json', delete=False, mode='w') as temp_file:
+            temp_output_path = temp_file.name
+            json.dump(combined_json_data, temp_file, indent=4, default=helpers.datetime_converter)
+        
+        # Overwrite the original file with the generated JSON file
+        file_name = os.path.basename(file_path).replace('.xlsx', '.json')
+        output_file = f'{helpers.SCHEMA_BASE_DIR_PATH}/{file_name}'
+        os.replace(temp_output_path, output_file)
+        print(f'Base JSON file generated/updated: {output_file}')
+    else:
+        print('No data to generate JSON file.')
     
 if __name__ == '__main__':    
-    for file_path in helpers.SCHEMA_FILE_PATHS:
-        if file_path.endswith('.xlsx'):
-            generate_base_schema_xlsx(file_path)
-            generate_base_schema_json(file_path)
-            print('\n_______\n')
-        else:
-            print(f'Unsupported file type: {file_path}')
+    # Check if schema base input file is valid
+    is_schema_file_valid = helpers.validate_schema_file()
+    
+    # Generate base schema JSON and YAML files
+    if is_schema_file_valid:
+        # Get checklists from the schema file
+        helpers.get_checklists_from_xlsx_file()
+    
+        generate_base_schema_json()
+        print('\n_______\n')
+        generate_base_schema_yaml()

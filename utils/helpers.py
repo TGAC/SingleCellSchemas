@@ -1,80 +1,105 @@
+from datetime import datetime
 from openpyxl.utils import get_column_letter
 
 import json
 import os
+import numpy as np
 import pandas as pd
 import re
 import shutil
 import sys
+import uuid
 
 # Helpers: Variables
-BASE_NAMESPACE_PREFIX = 'ei'
+DWC_NAMESPACE_PREFIXES = ['dwc', 'dcterms']
 DEFAULT_SCHEMA_EXTENSION = '.xlsx'
 
 SCHEMA_BASE_DIR_PATH = 'schemas'
-SCHEMA_BASE_DIR_PATH_XLSX = f'{SCHEMA_BASE_DIR_PATH}/xlsx'
-SCHEMA_BASE_DIR_PATH_JSON = f'{SCHEMA_BASE_DIR_PATH}/json'
+SCHEMA_FILE_PATH = f'{SCHEMA_BASE_DIR_PATH}/base_sc_schemas{DEFAULT_SCHEMA_EXTENSION}'
 
-SCHEMA_FILE_PATHS = [f'{SCHEMA_BASE_DIR_PATH_XLSX}/{filename}' for root, dirs, files in os.walk(SCHEMA_BASE_DIR_PATH_XLSX) 
-                        for filename in files if  filename.startswith('base_') and filename.endswith('.xlsx')
-                    ]
-
-TERMSETS = ['core', 'extended']
-
+# Global variables
+CHECKLISTS_DICT = dict() # Global set to store the schema names
+COMPONENTS = dict() # Global set to store the components
+REGEX_TO_SPREADSHEET_DATA_VALIDATION_MAPPING = dict()
+    
 # Helpers: Mappings
-CHECKLIST_MAPPING = {
-    'SCRNASEQ':{
-        'accession': 'SCRNASEQ1',
-        'label': 'COPO Single Cell RNA-Sequencing Checklist',
-        'name': 'COPO Single Cell RNA-Sequencing Checklist',
-        'description': 'Minimum information to standardise metadata related to samples used in RNA seq experiments...',
-        'checklistType': 'read'
-    },
-    'STXFISH':{
-        'accession': 'STXIMG1',
-        'label': 'COPO Spatial Transcriptomics Fish Checklist',
-        'name': 'COPO Spatial Transcriptomics Fish Checklist',
-        'description': 'Minimum information to standardise metadata related to samples used in RNA seq experiments. Useful for downstream services to select RNA-Seq read data for appropriate alignment processing and display. Also useful for external users to select RNA-Seq read files, their alignments, and structured metadata describing the source material.',
-        'checklistType': 'image'
-    },
-    'STXSEQ':{
-        'accession': 'STXSEQ1',
-        'label': 'COPO Spatial Transcriptomics Sequencing Checklist',
-        'name': 'COPO Spatial Transcriptomics Sequencing Checklist',
-        'description': 'Minimum information to standardise metadata related to samples used in RNA seq experiments. Useful for downstream services to select RNA-Seq read data for appropriate alignment processing and display. Also useful for external users to select RNA-Seq read files, their alignments, and structured metadata describing the source material.',
-        'checklistType': 'read'
-    }
-}
-
- # Supported output formats and their extensions
 FORMATS = {
-    "excel": ".xlsx",
+    "xlsx": ".xlsx",
     "json": ".json",
     "xml": ".xml",
     "html": ".html",
 }
 
-NAMESPACE_PREFIX_MAPPING = {
-    'dwc': 'Darwin Core (DwC)',
-    BASE_NAMESPACE_PREFIX: 'Earlham Institute (EI)',
-    'mixs': 'Minimum Information about any (x) Sequence (MIxS)',
-    'tol': 'Tree of Life (ToL)'
-}
-
-# Remove the base namespace prefix, 'ei', from the NAMESPACE_PREFIX_MAPPING
-NAMESPACE_PREFIX_MAPPING_FILTERED = {
-    key: value
-    for key, value in NAMESPACE_PREFIX_MAPPING.items()
-    if key != BASE_NAMESPACE_PREFIX
-}
-
-MESSAGES = {
-    'error_msg_invalid_file_path': f'Invalid .json schema file path. Please check the "{SCHEMA_BASE_DIR_PATH_XLSX}" directory for available files',
-    'error_msg_invalid_standard': f"""Invalid namespace prefix. Please use {' or '.join([f'"{term}"' for term in NAMESPACE_PREFIX_MAPPING_FILTERED])} as  prefix.""",
-    'error_msg_invalid_termset': f"""Invalid termset. Please use {' or '.join([f'"{term}"' for term in TERMSETS])} as termset."""
-}
-
 # Helpers: Functions
+def apply_data_validation(component_df, dataframe, pandas_writer, namespace, allowed_values_dict):
+    column_names = component_df['term_label'].drop_duplicates().tolist()
+    
+    sheet_name = COMPONENTS.get(component_df['component_name'].iloc[0])
+    sheet = pandas_writer.sheets[sheet_name]
+    workbook = pandas_writer.book
+
+    # Create a hidden sheet for long dropdown lists
+    hidden_sheet_name = 'HiddenDropdowns'
+    hidden_sheet = workbook.get_worksheet_by_name(hidden_sheet_name)
+    
+    if not hidden_sheet:
+        hidden_sheet = workbook.add_worksheet(hidden_sheet_name)
+        hidden_sheet.hide()  # Hide the worksheet
+ 
+    # Remove duplicate columns from the DataFrame
+    dataframe = dataframe.loc[:, ~dataframe.columns.duplicated()]
+    
+    for column_name in column_names:
+        term_name = component_df.loc[component_df['term_label'] == column_name, 'term_name'].iloc[0]
+        dropdown_list = allowed_values_dict.get(term_name, [])
+        regex = component_df.loc[component_df['term_label'] == column_name, 'term_regex'].iloc[0] if 'term_regex' in component_df else ''
+
+        # Get spreadsheet official column header letter
+        # Indexing starts at 0 by default but in this case, it should start at 1 so increment by 1
+        column_index = column_names.index(column_name)
+        column_letter = get_column_letter(column_index + 1)
+
+        # Get first row to the last row in a column
+        # NB: The first 4 rows of the sheet are locked so the data starts from row 5
+        # row_start = 5 # Start from row 5
+        # row_end = 1005 # End at row 1005
+        # Start from row 5, End at row 1005
+        row_start, row_end = 5, max(1005, len(dataframe) + 5)
+        row_start_end = f'{column_letter}{row_start}:{column_letter}{row_end}'
+        
+        # Apply data formula to the column if regex is provided
+        # Ensure that data that has allowed values/dropdown list is not validated by regex
+        if regex and not dropdown_list:
+            validation_formula = get_xlsx_data_validation_from_regex(regex, column_letter)
+            if validation_formula:
+                sheet.data_validation(row_start_end, {'validate': 'custom', 'value': validation_formula})
+
+        # Apply the dropdown list to the column
+        if dropdown_list:
+            dropdown_list = list(set(dropdown_list)) # Remove duplicates
+
+            # Capitalise the first letter of each word in the list and replace underscores with spaces
+            dropdown_list = [i.title().replace('_', ' ') for i in dropdown_list]
+            dropdown_list.sort() # Sort the list in ascending order
+            number_of_characters = len(','.join(dropdown_list)) # Calculate the total length of the string
+
+            if number_of_characters >= 255:
+                print(f'Info: "{column_name}" column dropdown too long for spreadsheet. A hidden sheet will be created.')
+
+                # Start from row 5, leave row 1 for header, row 2 for file description, and row 3 for example data
+                for index, val in enumerate(dropdown_list, start=row_start):  
+                    hidden_sheet.write(f'{column_letter}{index}', val)
+
+                # Create a range reference for the hidden sheet
+                data_validation_range = f'={hidden_sheet_name}!${column_letter}${row_start}:${column_letter}${index}'
+                sheet.data_validation(row_start_end, {'validate': 'list', 'source': data_validation_range, 'input_message': 'Choose from the list'})
+            else:
+                sheet.data_validation(row_start_end, {'validate': 'list', 'source': dropdown_list, 'input_message': 'Choose from the list'})
+
+def autofit_all_sheets(writer):
+    for sheet in writer.sheets.values():
+        sheet.autofit()
+
 def is_camel_case(text):
     # Regular expression to check if text follows camelCase
     return bool(re.match(r'^[a-z]+(?:[A-Z][a-z]+)*$', text))
@@ -82,8 +107,8 @@ def is_camel_case(text):
 def is_title_case_with_spaces(text):
     # Regular expression to check if text follows Title Case
     return bool(re.match(r'^[A-Z][a-z]+(?: [A-Z][a-z]+)*$', text))
-
-def convertStringToTitleCase(text):
+     
+def convert_string_to_title_case(text):
     '''
     Convert a given string to title case, handling camel case by adding spaces 
     where necessary and replacing certain abbreviations and terms.
@@ -111,242 +136,99 @@ def convertStringToTitleCase(text):
         .replace('Geographicreference', 'Geographical Reference') \
         .replace('Cdna', 'cDNA')
 
-def get_base_schema_json(data_df, allowed_values_dict, namespace_prefix=None, termset=None):
+def create_readme_worksheet(readme_sheet_data):
+    # Create README sheet
+    technology_name = readme_sheet_data['technology_name']
+    technology_label = readme_sheet_data['technology_label']
+    version_description = readme_sheet_data['version_description']
+    standard_name = readme_sheet_data['standard_name']
+    standard_label = readme_sheet_data['standard_label']
+    version_column_name = readme_sheet_data['version_column_name']
+    writer = readme_sheet_data['writer']
+    workbook = writer.book
+    locked_format = readme_sheet_data['locked_format']
+    
+    readme_df = pd.DataFrame({
+        'key': [version_column_name],  
+        'name': [f'{technology_label} [{standard_label}]'],  
+        'description': [version_description],
+        'standard': [standard_name],
+        'technology': [technology_name]
+    })
+
+    # Write README sheet with formatting
+    readme_df.to_excel(writer, sheet_name='README', index=False)
+
+    # Get the README worksheet
+    readme_worksheet = writer.sheets['README']
+
+    # Apply formatting to the header row (bold text)
+    header_format = workbook.add_format({'bold': True, 'locked': True})
+    readme_worksheet.set_row(0, None, header_format)
+    
+    # Lock all columns dynamically
+    num_columns = len(readme_df.columns)
+    column_range = f'A:{chr(65 + num_columns - 1)}'  # Calculate the column range dynamically (e.g., A:E)
+    
+    # Lock the cells in the range determined by the DataFrame columns
+    readme_worksheet.set_column(column_range, None, locked_format)
+    
+    # Protect the worksheet to prevent editing
+    readme_worksheet.protect(password=str(uuid.uuid4()))  # This will use a random UUID as the password
+
+def datetime_converter(obj):
+    if isinstance(obj, datetime):
+        return obj.isoformat()  # Convert datetime to ISO format string
+    raise TypeError(f'Type {type(obj)} not serialisable')
+
+def filter_data_frame(element):
     '''
-    Load data from an Excel file and return JSON data filtered by prefix and termset.
-    The base namespace prefix, 'ei', data (i.e., rows that do not match the filters) should be returned in  
-    addition to the provided inputs.
+    Filters the DataFrame rows based on column headers that matches 
+    the version column name and non-empty values within that column
 
     Parameters:
-        data_df (DataFrame): The DataFrame containing the data from the Excel file.
-        allowed_values_dict (dict): A dictionary containing allowed values for each column.
-        namespace_prefix (str): The namespace prefix to filter by (optional).
-        termset (str): The termset to filter by (optional).
+    element (dict): A dictionary containing the following:
+        data_df (pd.DataFrame): The input data frame.
+        standard_name (str): The namespace prefix to filter by.
+        technology_name (str): The schema name to filter by.
+        technology_label (str): The schema label to set in the config.
+        version_column_name: Name of the column pertaining to the namespace 
 
     Returns:
-        list: A list of dictionaries representing the filtered JSON data.
+       - pd.DataFrame: The original DataFrame filtered by rows matching the criteria.
     '''
-    # Generate JSON structure
-    json_data = []
-    for _, row in data_df.iterrows():
-        field = {
-            'component_name': row['component_name'],
-            'component_label': row['component_label'],
-            'namespace': f"{row.get('namespace_prefix', '')}:{row.get('term_name', '')}",
-            'term_name': row['term_name'],
-            'term_label': row['term_label'],
-            'term_description': row['term_description'],
-            'term_example': row['term_example'],
-            'term_required': row['term_required']
-        }
-        
-        # Add fields as strings
-        term_regex = row.get('term_regex', '')
-        if term_regex:
-            field['term_regex'] = term_regex
-            
-        field['term_cardinality'] = row['term_cardinality']
-        field['term_type'] = row['term_type']
-        
-        # Conditionally add term_reference if it exists
-        term_reference = row.get('term_reference', '')
-        if term_reference:
-            field['term_reference'] = term_reference
-        
-        # Add other fields as strings
-        field['termset'] = row['termset']
-        field['schema_name'] = row['schema_name']
-        field['schema_label'] = row['schema_label']
-            
-        # Conditionally add allowed_values if available and not empty
-        allowed_values = allowed_values_dict.get(row['term_name'], [])
-        if allowed_values:
-            allowed_values.sort() # Sort the allowed values
-            field['allowed_values'] = allowed_values
-            
-        json_data.append(field)
-
-    return json_data
-
-def get_col_desc_eg(component_df, namespace_prefix, termset):
-     # Filter the dataframe by the namespace prefix and termset
-    filtered_df = component_df[
-        component_df['namespace_prefix'].isin([namespace_prefix, BASE_NAMESPACE_PREFIX]) &
-        component_df['termset'].isin([termset, BASE_NAMESPACE_PREFIX])
-    ]
+    data_df = element['data_df']
+    standard_name = element['standard_name']
+    technology_name = element['technology_name']
+    technology_label = element['technology_label']
+    version_column_name = element['version_column_name']
     
-    return  {
-                row['term_label']: {'description': row.get('term_description', ''), 'example': row.get('term_example', '')}
-                for _, row in filtered_df.iterrows()
-            }
+    standard_name = 'dwc' if standard_name in DWC_NAMESPACE_PREFIXES else standard_name
 
-def generate_json_file(data, output_file_path):
-    '''
-    This function writes data to a JSON file.
-
-    Parameters:
-    data (dict): The data to write to the JSON file.
-    output_file_path (str): The path to the JSON file.
-    '''
-    directory_path = os.path.dirname(output_file_path) # Get the directory path
-    os.makedirs(directory_path, exist_ok=True) # Create output directory if it does not exist
-    file_name = output_file_path.split('/')[-1]
+    # Filter the DataFrame by the version column name
+    if version_column_name not in data_df.columns:
+        print(f'\nNo data found for {standard_name} in {technology_name} technology and "{version_column_name}" version column.')
+        return pd.DataFrame()
     
-    # Check if there's a conflicting directory with the same name as the file
-    if os.path.isdir(output_file_path):
-        print(f"Warning: A directory exists with the name '{output_file_path}'. Overwriting it.")
-        shutil.rmtree(output_file_path)  # Remove the directory and its contents
-
-    file_name = output_file_path.split('/')[-1]
-
-    with open(output_file_path, 'w') as f:
-        f.write(json.dumps(data, indent=2))
-
-    print(f'{file_name} created!')
-
-def generate_output_file_path(file_path, namespace_prefix, termset, default_extension=DEFAULT_SCHEMA_EXTENSION, input_extension=".json"):
-    """
-    Replace the default file extension in the given file path with a new extension 
-    incorporating namespace prefix and termset.
-
-    Parameters:
-    - file_path (str): Original file path.
-    - namespace_prefix (str): Namespace prefix to include in the new file name.
-    - termset (str): Termset to include in the new file name.
-    - default_extension (str): Default file extension to replace. Default is '.xlsx'.
-    - input_extension (str): Input file extension to search for. Default is '.json'.
-
-    Returns:
-    - str: Updated file path with the replaced extension.
-    """
-    # Ensure file_path ends with the input extension
-    if file_path.endswith(default_extension):
-        return file_path.replace(f'{SCHEMA_BASE_DIR_PATH_XLSX}/base_', f'dist/checklists/{termset}/{input_extension.lstrip(".")}/{namespace_prefix}/') \
-            .replace(default_extension, f'_{namespace_prefix}_{termset}{input_extension}')
+    # Filter rows where the version column has non-empty (not null, not empty) values           non_empty = data_df[version_column_name].notna() & (data_df[version_column_name] != '')
+    non_empty = data_df[version_column_name].notna() & (data_df[version_column_name] != '')
     
-    # Handle cases where the input extension is not found
-    raise ValueError(f"File path must end with {default_extension}, but got: {file_path}")
-
-def get_required_columns(component_df, namespace_prefix, termset):
-    return component_df.loc[
-        (component_df['term_required'] == True) &
-        (component_df['namespace_prefix'].isin([namespace_prefix, BASE_NAMESPACE_PREFIX])) &
-        (component_df['termset'].isin([termset, BASE_NAMESPACE_PREFIX])),
-        'term_label'
-    ].tolist()
+    # Check that the non-empty rows are actually 'M' (mandatory) or 'O' (optional) in the version column
+    validate_version_column_value(data_df, non_empty, version_column_name)
     
-def merge_row(worksheet, row, last_column_letter, merge_format):
-    """
-    Function to merge cells in a row, unmerging any existing merged cells in that row if necessary.
-    
-    Args:
-        worksheet: The worksheet object where the merge operation should be applied.
-        row: The row number where merging is to occur.
-        last_column_letter: The last column letter up to which the merge should occur.
-        merge_format: The format to apply to the merged range.
-    """
-    # Iterate through all the existing merge ranges to check if any conflicts exist
-    merged_range = None
-    # Check if there are any merged ranges
-    if worksheet.merged_cells.get('ranges', dict()):  # Check if there are merged ranges
-        for merge_range in worksheet.merged_cells.ranges:
-            # Parse the merge range in the format 'A1:B1'
-            start_cell, end_cell = merge_range.split(":")
-            start_row = int(''.join(filter(str.isdigit, start_cell)))
-
-            # If the row is the same as the one we're trying to merge
-            if start_row == row:
-                merged_range = (start_cell, end_cell)
-                break
-
-    try:
-        # If the row is already merged, unmerge the conflicting range
-        if merged_range:
-            start_cell, end_cell = merged_range
-            print(f'Row {row} is already merged between {start_cell} and {end_cell}. Undoing merge first.')
-            worksheet.unmerge_range(f'{start_cell}:{end_cell}')
-        
-        # Proceed with merging the new range
-        worksheet.merge_range(f'A{row}:{last_column_letter}{row}', 'FILL OUT INFORMATION BELOW THIS ROW', merge_format)
-
-    except Exception as e:
-        print(f'Error: {e}')
-
-def read_excel_data(file_path, namespace_prefix=None, termset=None, return_dict=True):
-    """
-    Reads an Excel file and returns a DataFrame and a dictionary of allowed values.
-
-    Parameters:
-    file_path (str): Path to the Excel file.
-    namespace_prefix (str): Namespace prefix to filter by (optional).
-    termset (str): Termset to filter by (optional).
-    return_dict (bool): Flag to return a dictionary of allowed values. Default is True.
-
-    Returns:
-    tuple: A DataFrame containing the data sheet and a dictionary for allowed values.
-    """
-    
-    # Load the Excel file
-    data_df = pd.read_excel(file_path, sheet_name='data').fillna('')  # Replace NaN with empty strings
-    allowed_values_df = pd.read_excel(file_path, sheet_name='allowed_values', dtype=str)
-    
-    # Strip whitespace from all string entries in the DataFrame
-    data_df = data_df.apply(lambda col: col.map(lambda x: x.strip() if isinstance(x, str) else x))
-    
-    # Create a dictionary for allowed_values mapping
-    allowed_values_dict = {
-        column: allowed_values_df[column].dropna().tolist()  # Drop empty values
-        for column in allowed_values_df.columns
-    }
-    
-    # Filter the DataFrame by the base namespace prefix, 'ei', as well as namespace prefix and termset if provided
-    if namespace_prefix:
-        data_df = data_df[data_df['namespace_prefix'].isin([namespace_prefix, BASE_NAMESPACE_PREFIX])]
-    if termset:
-        data_df = data_df[data_df['termset'].isin([termset, BASE_NAMESPACE_PREFIX])]
-
-    # Return the DataFrame and the dictionary of allowed values based on the return_dict flag
-    if return_dict:
-        return data_df, allowed_values_dict
-    else:
-        return data_df, allowed_values_df
-
-def remove_dist_directory():
-    '''
-    Remove the 'dist' directory and its contents.
-    '''
-    dist_directory = 'dist/checklists'
-    if os.path.exists(dist_directory):
-        shutil.rmtree(dist_directory)
-        
-def validate_argument(argument, valid_arguments, error):
-    '''
-    This function checks if the given argument is valid or not.
-
-    Parameters:
-    argument (str): The argument to validate.
-    valid_arguments (list): A list of valid arguments.
-
-    Returns:
-    An error message and exits the program if the argument is not valid.
-    '''
-
-    if argument not in valid_arguments:
-        print(f'Error: {error}')
-        sys.exit(1)
-
-    return argument in valid_arguments
-
-# Helpers: Excel
+    # Return the original DataFrame with only the matching rows
+    return data_df[non_empty]
+              
 def format_and_protect_worksheet(element):
     '''
     This function applies formatting and protection to the given worksheet.
     
     Parameters:
-    worksheet: The worksheet to format.
-    column_names: List of column names for determining the last column.
-    locked_format: The format to lock the cells.
-    merge_format: The format for merged cells.
+    element (dict): A dictionary containing the following:
+        worksheet: The worksheet to format.
+        column_names: List of column names for determining the last column.
+        locked_format: The format to lock the cells.
+        merge_format: The format for merged cells.
     '''
     worksheet = element['worksheet']
     column_names = element['column_names']
@@ -386,126 +268,364 @@ def format_and_protect_worksheet(element):
     worksheet.set_column(f'A5:{last_column_letter}1005', None, unlocked_format)
 
     # Protect the worksheet
-    worksheet.protect()
+    worksheet.protect(password=str(uuid.uuid4()))  # This will use a random UUID as the password
+     
+def get_base_schema_json(element):
+    '''
+    Load data from an spreadsheet file and return JSON data filtered by namespace prefix.
+    The base namespace prefix, 'ei', data (i.e., rows that do not match the filters) should be returned in  
+    addition to the provided inputs.
 
-def autofit_all_sheets(writer):
-    for sheet in writer.sheets.values():
-        sheet.autofit()
+    Parameters:
+        data_df (DataFrame): The DataFrame containing the data from the spreadsheet file.
+        allowed_values_dict (dict): A dictionary containing allowed values for each column.
+        standard_name (str): The namespace prefix to filter by (optional).
 
-def get_excel_data_validation_from_regex(regex, column_letter):
-    # Define a mapping from regex patterns to Excel custom validation formulas
-    # NB: Data starts from row 5
-    row_start = 5
-
-    REGEX_TO_EXCEL_DATA_VALIDATION_MAPPING = {
-        # Alphanumeric only
-        '^[a-zA-Z0-9]+$': f'AND(LEN({column_letter}{row_start})>0, {column_letter}{row_start}=TEXTJOIN("", TRUE, IF(ISNUMBER(FIND(MID({column_letter}{row_start}, ROW(INDIRECT("1:"&LEN({column_letter}{row_start}))), 1), "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")), MID({column_letter}{row_start}, ROW(INDIRECT("1:"&LEN({column_letter}{row_start}))), 1), "")))',
-        
-        # Alphabetic characters only
-        '^[a-zA-Z]+$': f'AND(LEN({column_letter}{row_start})>0, EXACT({column_letter}{row_start}, LOWER({column_letter}{row_start})), {column_letter}{row_start}=SUBSTITUTE({column_letter}{row_start}, " ", ""))',
-        
-        # Uppercase letters only (2-10 characters)
-        '^[A-Z]{2,10}$': f'AND(LEN({column_letter}{row_start})>=2, LEN({column_letter}{row_start})<=10, EXACT({column_letter}{row_start}, UPPER({column_letter}{row_start})))',
-
-        # At least one lowercase letter, mixed case allowed
-        '^[A-Za-z]*[a-z]+$': f'AND(SUM(--ISNUMBER(FIND(MID({column_letter}{row_start}, ROW(INDIRECT("1:"&LEN({column_letter}{row_start}))), 1), "abcdefghijklmnopqrstuvwxyz"))) > 0)',
-        
-        # At least one lowercase letter, must start with a letter
-        '^[A-Za-z]+[a-z]+$': f'AND(LEN({column_letter}{row_start})>0, CODE(LEFT({column_letter}{row_start},1))>=65, CODE(LEFT({column_letter}{row_start},1))<=90, SUM(--ISNUMBER(FIND(MID({column_letter}{row_start}, ROW(INDIRECT("1:"&LEN({column_letter}{row_start}))), 1), "abcdefghijklmnopqrstuvwxyz"))) > 0)',
-
-        # Date in YYYY-MM-DD format
-        '^[0-9]{4}-[0-9]{2}-[0-9]{2}$': f'AND(LEN({column_letter}{row_start})>0, {column_letter}{row_start}=SUBSTITUTE(SUBSTITUTE({column_letter}{row_start}, "-", ""), " ", ""), ISNUMBER(SUBSTITUTE({column_letter}{row_start}, "-", "") + 0))',
-        
-        # ISO 8601 date or range
-        '^((\d{4})(-\d{2}(-\d{2}(T\d{2}:\d{2}(:\d{2})?(Z|[+-]\d{2}:?\d{2})?)?)?)?(/(\d{4}|(\d{2}(-\d{2}(T\d{2}:\d{2}(:\d{2})?(Z|[+-]\d{2}:?\d{2})?)?)?)?))?)$':
-            f'AND(ISNUMBER(SEARCH("T", {column_letter}{row_start})), ISNUMBER(DATEVALUE(LEFT({column_letter}{row_start}, FIND("T", {column_letter}{row_start})-1))))',
-
-        # Latitude: -90 to 90
-        '^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$': f'AND(LEN({column_letter}{row_start})>0, {column_letter}{row_start}=SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE({column_letter}{row_start}, "-", ""), "+", ""), ".", ""), " ", ""), ISNUMBER(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE({column_letter}{row_start}, "-", ""), "+", ""), ".", "") + 0))',
-            # Longitude: -180 to 180
-        '^-?(180(\.0+)?|((1[0-7]\d)|(\d{1,2}))(\.\d+)?)$': f'AND(ISNUMBER({column_letter}{row_start}+0), {column_letter}{row_start}>=-180, {column_letter}{row_start}<=180)',
-
-        # Positive decimal numbers
-        '^\d+(\.\d+)?$': f'AND(ISNUMBER({column_letter}{row_start}+0), {column_letter}{row_start}>=0)',
-
-        # Binned numeric ranges
-        '^(1|2-10|11-50|51-100|101-10000|10001-50000|50001-100000|100001-500000|500001-1000000|1000000+)$':
-            f'OR({column_letter}{row_start}="1", ISNUMBER(FIND("-", {column_letter}{row_start})), {column_letter}{row_start}="1000000+")',
-
-        # Positive integers
-        '^\d+$': f'AND(ISNUMBER({column_letter}{row_start}+0), INT({column_letter}{row_start}+0)={column_letter}{row_start}+0)',
-
-        # Literal values 'Pass' or 'Fail'
-        '^Pass$|^Fail$': f'OR({column_letter}{row_start}="Pass", {column_letter}{row_start}="Fail")',
-
-        # Email format
-        '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$': f'AND(ISNUMBER(FIND("@", {column_letter}{row_start})), FIND(".", {column_letter}{row_start}, FIND("@", {column_letter}{row_start})) > FIND("@", {column_letter}{row_start}))'
-    }
-
-    # Return the corresponding Excel formula or None if regex is not in the mapping
-    return REGEX_TO_EXCEL_DATA_VALIDATION_MAPPING.get(regex, None)
-
-def apply_data_validation(component_df, dataframe, pandas_writer, namespace, allowed_values_dict):
-    column_names = component_df['term_label'].drop_duplicates().tolist()
+    Returns:
+        list: A list of dictionaries representing the filtered JSON data.
+    '''    
+    # Generate JSON structure
+    json_data = []
+    fields_to_check = ['copo_name', 'identifier', 'referenced_component', 'term_regex', 'term_cardinality', 'term_type', 'term_reference']
     
-    sheet_name = component_df['component_label'].iloc[0]
-    sheet = pandas_writer.sheets[sheet_name]
-    workbook = pandas_writer.book
-
-    # Create a hidden sheet for long dropdown lists
-    hidden_sheet_name = 'HiddenDropdowns'
-    hidden_sheet = workbook.get_worksheet_by_name(hidden_sheet_name)
+    data_df = element['data_df']
+    allowed_values_dict = element['allowed_values_dict']
+    technology_name = element['technology_name']
+    technology_label = element['technology_label']
     
-    if not hidden_sheet:
-        hidden_sheet = workbook.add_worksheet(hidden_sheet_name)
-        hidden_sheet.hide()  # Hide the worksheet
- 
-    # Remove duplicate columns from the DataFrame
-    dataframe = dataframe.loc[:, ~dataframe.columns.duplicated()]
-    
-    for column_name in column_names:
-        term_name = component_df.loc[component_df['term_label'] == column_name, 'term_name'].iloc[0]
-        dropdown_list = allowed_values_dict.get(term_name, [])
-        regex = component_df.loc[component_df['term_label'] == column_name, 'term_regex'].iloc[0] if 'term_regex' in component_df else ''
+    for _, row in data_df.iterrows():
+        field = {}
 
-        # Get MS Excel official column header letter
-        # Indexing starts at 0 by default but in this case, it should start at 1 so increment by 1
-        column_index = column_names.index(column_name)
-        column_letter = get_column_letter(column_index + 1)
-
-        # Get first row to the last row in a column
-        # NB: The first 4 rows of the sheet are locked so the data starts from row 5
-        # row_start = 5 # Start from row 5
-        # row_end = 1005 # End at row 1005
-        # Start from row 5, End at row 1005
-        row_start, row_end = 5, max(1005, len(dataframe) + 5)
-        row_start_end = f'{column_letter}{row_start}:{column_letter}{row_end}'
-        
-        # Apply data formula to the column if regex is provided
-        # Ensure that data that has allowed values/dropdown list is not validated by regex
-        if regex and not dropdown_list:
-            validation_formula = get_excel_data_validation_from_regex(regex, column_letter)
-            if validation_formula:
-                sheet.data_validation(row_start_end, {'validate': 'custom', 'value': validation_formula})
-
-        # Apply the dropdown list to the column
-        if dropdown_list:
-            dropdown_list = list(set(dropdown_list)) # Remove duplicates
-
-            # Capitalise the first letter of each word in the list and replace underscores with spaces
-            dropdown_list = [i.title().replace('_', ' ') for i in dropdown_list]
-            dropdown_list.sort() # Sort the list in ascending order
-            number_of_characters = len(','.join(dropdown_list)) # Calculate the total length of the string
-
-            if number_of_characters >= 255:
-                print(f'Info: "{column_name}" column dropdown too long for Excel. A hidden sheet will be created.')
-
-                # Start from row 5, leave row 1 for header, row 2 for file description, and row 3 for example data
-                for index, val in enumerate(dropdown_list, start=row_start):  
-                    hidden_sheet.write(f'{column_letter}{index}', val)
-
-                # Create a range reference for the hidden sheet
-                data_validation_range = f'={hidden_sheet_name}!${column_letter}${row_start}:${column_letter}${index}'
-                sheet.data_validation(row_start_end, {'validate': 'list', 'source': data_validation_range, 'input_message': 'Choose from the list'})
+        # Add fields dynamically from the dataframe, excluding keys that start with "version_"
+        for column in data_df.columns:
+            value = row[column]
+            
+            # Explicitly convert boolean values to boolean type to avoid JSON serialization issues with '0.0' and '1.0'
+            if isinstance(value, bool):
+                value = bool(value)  
+            elif isinstance(value, (int, float)) and value in [1, 0]:
+                value = bool(value)  
+                    
+            # Only add to the 'field' dictionary if the value exists i.e. is not empty
+            if value:
+                field[column] = value
             else:
-                sheet.data_validation(row_start_end, {'validate': 'list', 'source': dropdown_list, 'input_message': 'Choose from the list'})
+                # Remove the key if it exists in the dictionary
+                field.pop(column, None)
+        
+        # Add other fields as strings
+        field['technology_name'] = technology_name
+        field['technology_label'] = technology_label
+            
+        # Conditionally add allowed_values if available and not empty
+        allowed_values = allowed_values_dict.get(row['term_name'], [])
+        
+        # Validate allowed values
+        validate_allowed_values(row, allowed_values)
+        
+        if allowed_values and row['term_type'] == 'enum':
+            allowed_values.sort() # Sort the allowed values
+            field['allowed_values'] = allowed_values
+            
+        json_data.append(field)
+
+    return json_data
+
+def get_col_desc_eg(component_df, version_column_name):
+    filtered_df = component_df[
+        component_df[version_column_name].isin(['M', 'O'])
+    ]
+    
+    return  {
+                row['term_label']: {'description': row.get('term_description', ''), 'example': row.get('term_example', '')}
+                for _, row in filtered_df.iterrows()
+            }
+    
+def get_xlsx_data_validation_from_regex(regex, column_letter):
+    # Define a mapping from regex patterns to spreadsheet custom validation formulas
+    # NB: Data starts from row 5
+    global REGEX_TO_SPREADSHEET_DATA_VALIDATION_MAPPING
+    row_start = 5
+    
+    # Get the spreadsheet formula from the mapping or None if regex is not in the mapping
+    formula = REGEX_TO_SPREADSHEET_DATA_VALIDATION_MAPPING.get(regex, None)
+    
+    # Replace placeholders with actual values
+    if formula:
+        formula = formula.replace('{column_letter}', column_letter).replace('{row_start}', str(row_start))
+    return None
+    
+def generate_json_file(data, output_file_path):
+    '''
+    This function writes data to a JSON file.
+
+    Parameters:
+    data (dict): The data to write to the JSON file.
+    output_file_path (str): The path to the JSON file.
+    '''
+    directory_path = os.path.dirname(output_file_path) # Get the directory path
+    os.makedirs(directory_path, exist_ok=True) # Create output directory if it does not exist
+    file_name = os.path.basename(output_file_path)
+    
+    # Check if there's a conflicting directory with the same name as the file
+    if os.path.isdir(output_file_path):
+        print(f"Warning: A directory exists with the name '{output_file_path}'. Overwriting it.")
+        shutil.rmtree(output_file_path)  # Remove the directory and its contents
+
+    with open(output_file_path, 'w') as f:
+        f.write(json.dumps(data, indent=2, default=datetime_converter))
+
+    print(f"'{file_name}' created!")
+
+def generate_output_file_path(element, default_extension=DEFAULT_SCHEMA_EXTENSION):
+    '''
+    Replace the default file extension in the given file path with a new extension 
+    incorporating namespace prefix.
+
+    Parameters:
+    - default_extension (str): Default file extension to replace. Default is '.xlsx'.
+    - element (dict): A dictionary containing the following:
+        data_df (pd.DataFrame): The input data frame.
+        file_path (str): Original file path.
+        output_file_name (str): Output file name to use.
+        standard_name (str): Standard name to include in the new file name.
+        technology_name (str): Schema name to include in the new file name.
+        input_extension (str): Input file extension to search for. Default is '.json'.
+
+    Returns:
+    - str: Updated file path with the replaced extension.
+    '''
+    data_df = element['data_df']
+    file_path = element['file_path']
+    output_file_name = element['output_file_name']
+    standard_name = element['standard_name']
+    technology_name = element['technology_name']
+    input_extension = element.get('input_extension', '.json')
+    
+    # Ensure file path ends with the input extension
+    if not file_path.endswith(default_extension):
+        raise ValueError(f'File path must end with {default_extension}, but got: {file_path}')
+        
+    # Build the output file path incorporating the suffix i.e. the schema name
+    output_directory = os.path.join('dist', 'checklists', input_extension.lstrip('.'), standard_name)
+    output_file_name = f'{output_file_name}{input_extension}'
+    output_file_path = os.path.join(output_directory, output_file_name)
+    return output_file_path
+     
+def get_required_columns(component_df, version_column_name):
+    # Mandatory columns are columns with 'M' cells
+    # Optional columns are columns with 'O' cells
+    return component_df.loc[
+        (component_df[version_column_name] == 'M'),
+        'term_label'
+    ].tolist()
+    
+def get_checklists_from_xlsx_file():
+    '''
+    Reads a spreadsheet file and extracts the checklists from the 'checklists' worksheet.
+    The worksheet is expected to have 'key', 'name', 'standard' and 'technology' as column headers.
+
+    Returns:
+       - dict: A dictionary where keys are the 'key' column values, values are the 
+               'name' column values, standards as the 'standard' column values and 
+               technology as the 'technology' column values
+    '''
+    # Declare the global variable
+    global CHECKLISTS_DICT
+    
+    try:
+        # Load the specified worksheet into a DataFrame
+        checklists_df = pd.read_excel(SCHEMA_FILE_PATH, sheet_name='checklists').fillna('') 
+        
+        # Ensure the required columns exist in the 'checklists' worksheet
+        required_columns = {'key', 'name', 'description', 'standard', 'technology'}
+
+        if not required_columns.issubset(checklists_df.columns):
+            raise  ValueError(f"'checklists' worksheet must contain {required_columns} columns.")
+        
+       # Create a dictionary where each 'key' maps to a dictionary of attributes
+        checklists = {
+            row['key']: {
+                'version_column_name': row['key'],
+                'version_column_label': row['name'],
+                'version_description': row['description'],
+                'standard_name': row['standard'],
+                'standard_label': re.search(r'\[(.*?)\]', row['name']).group(1),
+                'output_file_name': f"{row['technology']}_{row['standard']}",
+                'technology_name': row['technology'],
+                'technology_label': re.sub(r'\s*\[.*?\]', '', row['name']).strip(),
+            }
+            for _, row in checklists_df.iterrows()
+        }
+        # Update the global dictionary
+        CHECKLISTS_DICT.update(checklists)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"The file '{file_path}' does not exist.")
+    except Exception as e:
+        raise RuntimeError(f"An error occurred while processing the file: {e}")
+                           
+def merge_row(worksheet, row, last_column_letter, merge_format):
+    '''
+    Function to merge cells in a row, unmerging any existing merged cells in that row if necessary.
+    
+    Args:
+        worksheet: The worksheet object where the merge operation should be applied.
+        row: The row number where merging is to occur.
+        last_column_letter: The last column letter up to which the merge should occur.
+        merge_format: The format to apply to the merged range.
+    '''
+    # Iterate through all the existing merge ranges to check if any conflicts exist
+    merged_range = None
+    
+    # Check if there are any merged ranges
+    if worksheet.merged_cells.get('ranges', dict()):  # Check if there are merged ranges
+        for merge_range in worksheet.merged_cells.ranges:
+            # Parse the merge range in the format 'A1:B1'
+            start_cell, end_cell = merge_range.split(":")
+            start_row = int(''.join(filter(str.isdigit, start_cell)))
+
+            # If the row is the same as the one we're trying to merge
+            if start_row == row:
+                merged_range = (start_cell, end_cell)
+                break
+            
+    try:
+        # If the row is already merged, unmerge the conflicting range
+        if merged_range:
+            start_cell, end_cell = merged_range
+            print(f'Row {row} is already merged between {start_cell} and {end_cell}. Undoing merge first.')
+            worksheet.unmerge_range(f'{start_cell}:{end_cell}')
+        
+        # Proceed with merging the new range
+        start_cell = f'A{row}'
+        end_cell = f'{last_column_letter}{row}'
+        
+        if start_cell != end_cell:  # Ensure it's a valid range
+            worksheet.merge_range(f'{start_cell}:{end_cell}', 'FILL OUT INFORMATION BELOW THIS ROW', merge_format)
+        else:
+            print(f'Skipping merge: {start_cell}:{end_cell}. Cannot merge a single cell because start and end cells are the same.')
+
+    except Exception as e:
+        print(f'Error: {e}')
+
+def read_xlsx_data(return_dict=True):
+    '''
+    Reads a spreadsheet file and returns a DataFrame and a dictionary of allowed values.
+
+    Parameters:
+    return_dict (bool): Flag to return a dictionary of allowed values. Default is True.
+
+    Returns:
+    tuple: A DataFrame containing the data sheet and a dictionary for allowed values.
+    '''
+    # Declare the global variable
+    global COMPONENTS
+    global REGEX_TO_SPREADSHEET_DATA_VALIDATION_MAPPING
+    
+    try:
+        # Load the spreadsheet file
+        data_df = pd.read_excel(SCHEMA_FILE_PATH, sheet_name='data').fillna('')  # Replace NaN with empty strings
+        allowed_values_df = pd.read_excel(SCHEMA_FILE_PATH, sheet_name='allowed_values', dtype=str)
+        components_df = pd.read_excel(SCHEMA_FILE_PATH, sheet_name='components').fillna('')
+        regex_to_formula_df = pd.read_excel(SCHEMA_FILE_PATH, sheet_name='regex_to_formula').fillna('')
+        
+        # 'data' worksheet logic 
+        # Strip whitespace from all string entries in the DataFrame
+        data_df = data_df.apply(lambda col: col.map(lambda x: x.strip() if isinstance(x, str) else x))
+        
+        # 'allowed_values' worksheet logic 
+        # Create a dictionary for allowed_values mapping
+        allowed_values_dict = {
+            column: allowed_values_df[column].dropna().tolist()  # Drop empty values
+            for column in allowed_values_df.columns
+        }
+        
+        # 'components' logic
+        # Create a dictionary from the 'key' and 'name' columns
+        components = dict(zip(components_df['key'], components_df['name']))
+        
+        # Add the dictionary items directly to the global set as a frozenset
+        COMPONENTS.update(frozenset(components.items()))
+        
+        # Regex logic
+        # Create a dictionary from the 'regex' and 'formula' columns
+        regex_to_formula = dict(zip(regex_to_formula_df['term_regex'], regex_to_formula_df['spreadsheet_formula']))
+        REGEX_TO_SPREADSHEET_DATA_VALIDATION_MAPPING.update(frozenset(regex_to_formula.items()))
+        
+        # Validate if each regex in the term_regex column exists in the REGEX_TO_SPREADSHEET_DATA_VALIDATION_MAPPING
+        validate_term_regex_values(data_df)
+        
+        # Return the DataFrame and the dictionary of allowed values based on the return_dict flag
+        if return_dict:
+            return data_df, allowed_values_dict
+        else:
+            return data_df, allowed_values_df
+    except FileNotFoundError:
+        raise FileNotFoundError(f"The file '{SCHEMA_FILE_PATH}' does not exist.")
+    except Exception as e:
+        raise RuntimeError(f'An error occurred while processing the file: {e}')
+
+def remove_dist_directory():
+    '''
+    Remove the 'dist' directory and its contents.
+    '''
+    dist_directory = 'dist/checklists'
+    if os.path.exists(dist_directory):
+        shutil.rmtree(dist_directory)
+        
+def validate_allowed_values(row, allowed_values):
+    if row['term_type'] == 'enum' and not allowed_values:
+        raise ValueError(f"Allowed values not found for '{row['term_name']}' in the 'allowed_values' sheet.")
+    
+    if row['term_type'] != 'enum' and  allowed_values:
+        raise ValueError(f"Allowed values found for '{row['term_name']}' in the 'allowed_values' sheet, but term_type is not 'enum'.")
+
+def validate_schema_file():
+    file_name = os.path.basename(SCHEMA_FILE_PATH)
+    
+    if not file_name.startswith('base_') and not file_name.endswith('.xlsx'):
+        raise ValueError(f'Unsupported file type: {SCHEMA_FILE_PATH}')
+    return True
+
+def validate_term_regex_values(data_df):
+    global REGEX_TO_SPREADSHEET_DATA_VALIDATION_MAPPING
+        
+    # Filter rows where term_regex is not empty
+    non_empty_regex_rows = data_df[data_df['term_regex'].astype(bool)]
+    
+    # Create a set of all regex values in the mapping for reverse lookup
+    regex_in_map = {r'' + regex for regex in REGEX_TO_SPREADSHEET_DATA_VALIDATION_MAPPING.keys()}
+    
+    for index, row in non_empty_regex_rows.iterrows():
+        term_name = row['term_name']
+        term_regex =  row['term_regex']
+        
+        # Ensure the term_regex is treated as a raw string
+        term_regex = r'' + term_regex  # Adding 'r' to indicate it as a raw string
+        
+        # Check if the regex exists in the mapping
+        if term_regex not in regex_in_map:
+            # Raise ValueError with term_name and term_regex if it's not in the mapping
+            raise ValueError(f"Regex '{term_regex}' not found in 'regex_to_formula' worksheet for term '{term_name}'!")
+        
+        # Check if any regex in the mapping is found in the dataframe
+        if not any(map(lambda regex: regex in term_regex, regex_in_map)):
+            raise ValueError(f"None of the regex patterns from the mapping found in the regex for term '{term_name}'!")
+
+    return True
+
+def validate_version_column_value(data_df, non_empty, version_column_name):
+    # Filter out only the non-empty rows
+    non_empty_rows = data_df[non_empty]
+
+    # Check if the valid values in the column are 'M' (mandatory) or 'O' (optional)
+    is_version_column_value_valid = non_empty_rows[version_column_name].isin(['M', 'O'])
+
+    # Iterate through the rows where the validation fails
+    invalid_rows = non_empty_rows[~is_version_column_value_valid]  # Get rows where validation fails
+
+    if not invalid_rows.empty:
+        for index, row in invalid_rows.iterrows():
+            # You can specify what exactly you want to report (invalid value, row number, and column name)
+            invalid_value = row[version_column_name]
+            raise ValueError(f"Invalid value '{invalid_value}' found in row {index} of column '{version_column_name}'. Only 'M' or 'O' are allowed.")

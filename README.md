@@ -10,18 +10,18 @@ The **SingleCellSchema** repository contains the following directories:
 
 - `dist`: contains the output files generated from the conversion process.
 
-- `schemas/xlsx`: contains the xlsx base versions of the schema.
+- `schemas`: contains the xlsx base versions of the schema.
 
-- `utils`: contains Python helper scripts to convert base Excel files into formats such as HTML, XML and Excel.
+- `utils`: contains Python helper scripts to convert the base XLSX file into formats such as HTML, XML and XLSX.
 
-The `update_and_convert_schema.py` script is responsible for updating the Excel base schema files located in the `schemas/xlsx` directory and generating corresponding JSON files based on these Excel files. The script is located in the `utils` directory.
+The `update_and_convert_schema.py` script is responsible for updating the XLSX base schema files located in the `schemas` directory and generating corresponding YAML and JSON files based on the XLSX file. The script is located in the `utils` directory.
 
-The main script, `convert.py`, is used to convert the Excel schema into Excel, XML, html and JSON files according to the namespace prefix. It is found in the project root directory.
+The main script, `convert.py`, is used to convert the XLSX schema into XLSX, XML, html and JSON files according to the namespace prefix. It is found in the project root directory.
 
 > **Important note**:
-Please do not directly modify the base JSON files in the `schemas/json directory`. To make changes, update the `data` worksheet in one of the base Excel files located in the `schemas/xlsx` directory.
+Please do not directly modify the base YAML and JSON files in the `schemas` directory. To make changes, update the `data` worksheet in `base_sc_schemas.xlsx` spreadsheet located in the `schemas` directory.
 
-After making changes to the Excel files, run the `update_and_convert_schema.py` script in the `utils` directory to regenerate and update the JSON schema files. To run the update script, execute in the terminal - `python3 utils/update_and_convert_schema.py`.
+After making changes to the base XLSX file, run the `update_and_convert_schema.py` script in the `utils` directory to regenerate and update the YAML and JSON files. To run the update script, execute in the terminal - `python3 utils/update_and_convert_schema.py`.
 
 **Abbreviations**:
 
@@ -30,7 +30,7 @@ After making changes to the Excel files, run the `update_and_convert_schema.py` 
 
 <br />
 
-Please follow the instructions below to convert the Excel schema into an excel file, xml, html and json files:
+Please follow the instructions below to convert the XLSX schema into an xlsx, xml, html and json files:
 
 1. Download or clone this repository and navigate to its directory in the terminal
 
@@ -48,7 +48,7 @@ Please follow the instructions below to convert the Excel schema into an excel f
 
 4. Install dependencies
 
-   `pip3 install -r requirements/requirements.txt`
+   `pip3 install -r requirements.txt`
 
 5. Different ways to run the `convert.py` script which is found in the project root directory
 
@@ -58,28 +58,22 @@ Please follow the instructions below to convert the Excel schema into an excel f
 
    - `python3 convert.py`
 
-     This will convert the schema into an excel file, xml and json files using
-     all termsets, namespace prefixes and schemas in the `schemas/xlsx` directory
+     This will convert the schema into a spreadsheet file, xml and json files using
+     all namespace prefixes and schemas in the `schemas` directory
 
      --**OR**--
 
-   - `python3 convert.py <termset>`
+   - `python3 convert.py <namespace_prefix>`
 
-     where `<termset>` is the type of terms to be used (extended, core)
-     e.g. `python3 convert.py core`
-
-     --**OR**--
-
-   - `python3 convert.py schemas/xlsx/<schema-file-path> <termset>`
-
-     where `<schema-file-path>` is the name of the schema file in the `schemas/xlsx` directory, `<termset>` is the type of terms to be used (extended, core) e.g. `python3 convert.py schemas/xlsx/sc_rnaseq.xlsx core`
+     where `<namespace_prefix>` is the namespace prefix to be used (e.g. dwc, faang, mixs, tol)
+     e.g. `python3 convert.py dwc`
 
      --**OR**--
 
-   - `python3 convert.py schemas/xlsx/<schema-file-path> <termset> <namespace_prefix>`
+   - `python3 convert.py <format_type>`
 
-     where `<schema-file-path>` is the name of the schema file in the `schemas/xlsx` directory, `<termset>` is the type of terms to be used (extended, core) and `<namespace_prefix>` is the namespace prefix to be used (e.g. dwc, mixs, tol)
-     e.g. `python3 convert.py schemas/xlsx/sc_rnaseq.xlsx core dwc`
+     where `<format_type>` is the format type that the output will be returned in (e.g. xlsx, xml, html, json)
+      e.g. `python3 convert.py html`
 
      --**OR**--
 
