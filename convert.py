@@ -1,7 +1,3 @@
-from io import BytesIO
-from jinja2 import Environment, FileSystemLoader
-from openpyxl.utils import get_column_letter
-
 import jinja2 as j2
 import json
 import numpy as np
@@ -14,6 +10,10 @@ import utils.helpers as helpers
 import xlsxwriter
 import xml.dom.minidom
 import xml.etree.ElementTree as ET
+
+from io import BytesIO
+from jinja2 import Environment, FileSystemLoader
+from openpyxl.utils import get_column_letter
 
 # Function to handle format extraction
 def handle_format(element, format_type):
@@ -100,8 +100,8 @@ def extract_components_to_xlsx(element):
         for component_name in data_df['component_name'].unique():
             component_df = data_df[data_df['component_name'] == component_name].copy()
             
-            # Get the label of the terms as the column names from the component DataFrame
-            column_names = component_df['term_label'].tolist()
+            # Get the name of the terms as the column names from the component DataFrame
+            column_names = component_df['term_name'].tolist()
 
             # If there are no fields for this component, skip it
             if not column_names:
@@ -119,7 +119,7 @@ def extract_components_to_xlsx(element):
                 df.dropna(axis=1, how='all', inplace=True)
 
             # Write the DataFrame to an spreadsheet sheet
-            sheet_name = helpers.COMPONENTS.get(component_df['component_name'].iloc[0], '')
+            sheet_name = helpers.get_worksheet_info(component_df)
             df.to_excel(writer, sheet_name=sheet_name, index=False, header=True)
             worksheet = writer.sheets[sheet_name]
 
@@ -233,11 +233,12 @@ def extract_components_to_xml(element):
         group_name = ET.SubElement(field_group, 'NAME')
         group_name.text = component_name
         
+        worksheet_label = helpers.get_worksheet_info(component_df, return_label=True)
         group_label = ET.SubElement(field_group, 'LABEL')
-        group_label.text = helpers.COMPONENTS.get(component_df['component_name'].iloc[0], '')
+        group_label.text = worksheet_label
 
         group_description = ET.SubElement(field_group, 'DESCRIPTION')
-        group_description.text = f"Fields under component '{helpers.COMPONENTS.get(component_df['component_name'].iloc[0], '')}'"
+        group_description.text = f"Fields under component '{worksheet_label}'"
 
         for _, row in component_df.iterrows():
             field_element = ET.SubElement(field_group, 'FIELD')
@@ -354,7 +355,7 @@ def extract_components_to_html(element):
         for component_name in data_df['component_name'].unique():
             component_df = data_df[data_df['component_name'] == component_name].copy()
             
-            group_label = helpers.COMPONENTS.get(component_df['component_name'].iloc[0], '')
+            group_label = helpers.get_worksheet_info(component_df, return_label=True)
             component_dict = {
                 'group_name': component_name,
                 'group_label': group_label,
@@ -392,7 +393,7 @@ def extract_components_to_html(element):
         
         standards = {value['standard_name']:value['standard_label']for value in helpers.CHECKLISTS_DICT.values()}
         technologies = {value['technology_name']:value['technology_label']for value in helpers.CHECKLISTS_DICT.values()}
-        output_file_name_dict = {f"{value['output_file_name']}.html": (value['technology_name'], value['standard_name']) for value in helpers.CHECKLISTS_DICT.values()}
+        output_file_name_dict = {f"{value['output_file_name']}_{helpers.SCHEMA_VERSION}.html": (value['technology_name'], value['standard_name']) for value in helpers.CHECKLISTS_DICT.values()}
         
         context = {'components': components, 'standards': standards, 'technologies': technologies, 'output_data':output_file_name_dict }
         
@@ -430,7 +431,7 @@ def extract_and_convert_schema(standard=None, format_type=None):
             'technology_name': checklist['technology_name'],
             'technology_label': checklist['technology_label'],
             'file_path': helpers.SCHEMA_FILE_PATH,
-            'output_file_name': checklist['output_file_name']
+            'output_file_name': f"{checklist['output_file_name']}_{helpers.SCHEMA_VERSION}"
         }
         
         # Filter dataframe by namespace prefix name and schema name

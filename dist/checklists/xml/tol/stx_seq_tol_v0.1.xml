@@ -1,0 +1,1723 @@
+<?xml version="1.0" ?>
+<CHECKLIST_SET>
+  <CHECKLIST accession="STXSEQ1" checklistType="single_cell">
+    <IDENTIFIERS>
+      <PRIMARY_ID>STXSEQ1</PRIMARY_ID>
+    </IDENTIFIERS>
+    <DESCRIPTOR>
+      <LABEL>Spatial Transcriptomics Sequencing</LABEL>
+      <NAME>stx_seq</NAME>
+      <DESCRIPTION>TBC tol_stx_seq</DESCRIPTION>
+      <AUTHORITY>COPO</AUTHORITY>
+      <FIELD_GROUP restrictionType="Any number or none of the fields">
+        <NAME>study</NAME>
+        <LABEL>Study</LABEL>
+        <DESCRIPTION>Fields under component 'Study'</DESCRIPTION>
+        <FIELD>
+          <LABEL>Study ID</LABEL>
+          <NAME>study_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this study</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:study_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Title</LABEL>
+          <NAME>title</NAME>
+          <DESCRIPTION>A name given to the study or project. Project title should be fewer than 30 words, such as a title of a grant proposal or a publication.</DESCRIPTION>
+          <EXAMPLE>Study of single cells in the human body</EXAMPLE>
+          <NAMESPACE>dcterms:title</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Description</LABEL>
+          <NAME>description</NAME>
+          <DESCRIPTION>A detailed description of the project which includes research goals and experimental approach. Project description should be fewer than 300 words, such as an abstract from a grant application or publication.</DESCRIPTION>
+          <EXAMPLE>This project explores the intricate details of single cells in the human body, focusing on their structure, function, and behavior. By studying individual cells, it aims to uncover how they contribute to overall health, disease progression, and human biology. This research can provide deeper insights into cellular processes, paving the way for advancements in medical treatments and personalised medicine.</EXAMPLE>
+          <NAMESPACE>dcterms:description</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Workflow</LABEL>
+          <NAME>workflow</NAME>
+          <DESCRIPTION>The workflow or protocol followed during the study.</DESCRIPTION>
+          <EXAMPLE>spatial_transcriptomics</EXAMPLE>
+          <NAMESPACE>ei:workflow</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>Laser microdissection</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Laser microdissection, Culturing</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Laser microdissection, Culturing, Sequencing</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Laser microdissection, Sequencing</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Microfluidics, Facs, Culturing</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Microfluidics, Facs, Culturing, Sequencing</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Microfluidics, Facs, Sequencing</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Spatial Transcriptomics</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Technology</LABEL>
+          <NAME>technology</NAME>
+          <DESCRIPTION>The sorting or visualisation technology used.</DESCRIPTION>
+          <EXAMPLE>Vizgen</EXAMPLE>
+          <NAMESPACE>ei:technology</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>10X</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>10X_3'</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Mas_seq</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Smartseq</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Vizgen</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+      </FIELD_GROUP>
+      <FIELD_GROUP restrictionType="Any number or none of the fields">
+        <NAME>person</NAME>
+        <LABEL>Person</LABEL>
+        <DESCRIPTION>Fields under component 'Person'</DESCRIPTION>
+        <FIELD>
+          <LABEL>First Name</LABEL>
+          <NAME>givenName</NAME>
+          <DESCRIPTION>The first name of a Person.</DESCRIPTION>
+          <EXAMPLE>Jane</EXAMPLE>
+          <NAMESPACE>schema.org:givenName</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Last Name</LABEL>
+          <NAME>familyName</NAME>
+          <DESCRIPTION>The last name of a Person.</DESCRIPTION>
+          <EXAMPLE>Doe</EXAMPLE>
+          <NAMESPACE>schema.org:familyName</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Affiliation/Institution</LABEL>
+          <NAME>affiliation</NAME>
+          <DESCRIPTION>An organization that this person is affiliated with. For example, a school/university, a club, or a team.</DESCRIPTION>
+          <EXAMPLE>University of Liverpool</EXAMPLE>
+          <NAMESPACE>schema.org:affiliation</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Funder</LABEL>
+          <NAME>funder</NAME>
+          <DESCRIPTION>A person or organization that supports (sponsors) something through some kind of financial contribution.</DESCRIPTION>
+          <EXAMPLE>BBSRC</EXAMPLE>
+          <NAMESPACE>schema.org:funder</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Grant Award</LABEL>
+          <NAME>funding</NAME>
+          <DESCRIPTION>A Grant that directly or indirectly provide funding or sponsorship for this item.</DESCRIPTION>
+          <EXAMPLE>GRAK3489</EXAMPLE>
+          <NAMESPACE>schema.org:funding</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+      </FIELD_GROUP>
+      <FIELD_GROUP restrictionType="Any number or none of the fields">
+        <NAME>sample</NAME>
+        <LABEL>Sample</LABEL>
+        <DESCRIPTION>Fields under component 'Sample'</DESCRIPTION>
+        <FIELD>
+          <LABEL>Study ID</LABEL>
+          <NAME>study_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for the  study if refering to</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:study_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Sample ID</LABEL>
+          <NAME>sample_id</NAME>
+          <DESCRIPTION>A unique alphanumeric reference or identifier for the study.</DESCRIPTION>
+          <EXAMPLE>study123</EXAMPLE>
+          <NAMESPACE>ei:sample_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Organism</LABEL>
+          <NAME>organism</NAME>
+          <DESCRIPTION>The full scientific name of the species studied.</DESCRIPTION>
+          <EXAMPLE>Arenicola marina</EXAMPLE>
+          <NAMESPACE>ei:organism</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]+[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Scientific Name</LABEL>
+          <NAME>scientific_name</NAME>
+          <DESCRIPTION>The full scientific name of the species studied.</DESCRIPTION>
+          <EXAMPLE>Arenicola marina</EXAMPLE>
+          <NAMESPACE>tol:scientific_name</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]+[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Culture or Strain ID</LABEL>
+          <NAME>culture_or_strain_id</NAME>
+          <DESCRIPTION>Give the reference ID from the source culture collection, such that the culture accession can be found in the collection’s database. This is only relevant if the sequenced material is derived from a living, culturable, named laboratory strain (e.g., Anopheles coluzzii N’Gousso strain).</DESCRIPTION>
+          <EXAMPLE>CCAP1119/17</EXAMPLE>
+          <NAMESPACE>tol:culture_or_strain_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Tissue</LABEL>
+          <NAME>tissue</NAME>
+          <DESCRIPTION>The type of tissue sampled for the study.</DESCRIPTION>
+          <EXAMPLE>Leaf</EXAMPLE>
+          <NAMESPACE>ei:tissue</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>Abdomen</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Anterior Body</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Blade</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Blood</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Bodywall</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Bract</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Brain</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Bud</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Cap</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Cephalothorax</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>DNA Extract</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Egg</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Eggshell</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Endocrine Tissue</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Endosperm</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Eye</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Fat Body</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Fin</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Flower</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Gill Animal</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Gill Fungi</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Gonad</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Hair</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Head</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Heart</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Hepatopancreas</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Holdfast Fungi</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Intestine</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Kidney</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Leaf</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Leg</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Liver</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Lung</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Mid Body</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Modular Colony</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Mollusc Foot</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Multicellular Organisms In Culture</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Muscle</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Mycelium</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Mycorrhiza</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Not Applicable</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Not Collected</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Not Provided</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Other Fungal Tissue</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Other Plant Tissue</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Other Reproductive Animal Tissue</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Other Somatic Animal Tissue</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Ovary Animal</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Oviduct</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Pancreas</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Petiole</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Posterior Body</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Root</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Scales</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Scat</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Seed</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Seedling</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Shoot</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Skin</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Sperm Seminal Fluid</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Spleen</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Spore</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Spore Bearing Structure</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Stem</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Stipe</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Stomach</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Tentacle</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Terminal Body</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Testis</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Thallus Fungi</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Thallus Plant</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Thorax</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Unicellular Organisms In Culture</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Whole Organism</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Whole Plant</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Tissue for Barcoding</LABEL>
+          <NAME>tissue_for_barcoding</NAME>
+          <DESCRIPTION>The type of tissue sampled for the study.</DESCRIPTION>
+          <EXAMPLE>Leaf</EXAMPLE>
+          <NAMESPACE>tol:tissue_for_barcoding</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>Abdomen</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Anterior Body</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Blade</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Blood</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Bodywall</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Bract</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Brain</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Bud</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Cap</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Cephalothorax</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>DNA Extract</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Egg</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Eggshell</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Endocrine Tissue</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Endosperm</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Eye</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Fat Body</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Fin</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Flower</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Gill Animal</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Gill Fungi</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Gonad</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Hair</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Head</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Heart</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Hepatopancreas</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Holdfast Fungi</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Intestine</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Kidney</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Leaf</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Leg</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Liver</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Lung</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Mid Body</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Modular Colony</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Mollusc Foot</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Multicellular Organisms In Culture</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Muscle</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Mycelium</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Mycorrhiza</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Not Applicable</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Not Collected</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Not Provided</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Other Fungal Tissue</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Other Plant Tissue</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Other Reproductive Animal Tissue</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Other Somatic Animal Tissue</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Ovary Animal</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Oviduct</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Pancreas</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Petiole</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Posterior Body</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Root</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Scales</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Scat</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Seed</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Seedling</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Shoot</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Skin</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Sperm Seminal Fluid</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Spleen</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Spore</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Spore Bearing Structure</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Stem</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Stipe</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Stomach</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Tentacle</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Terminal Body</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Testis</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Thallus Fungi</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Thallus Plant</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Thorax</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Unicellular Organisms In Culture</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Whole Organism</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Whole Plant</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Preservation Approach</LABEL>
+          <NAME>preservation_approach</NAME>
+          <DESCRIPTION>A brief description of how the sample was preserved.</DESCRIPTION>
+          <EXAMPLE>Fresh</EXAMPLE>
+          <NAMESPACE>tol:preservation_approach</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>Air dried</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Dry ice</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Ethanol/Dry ice slurry</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Lyophilised</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Not Applicable</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Not Collected</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Not Provided</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Other</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>RNALater</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Snap frozen</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Date of Collection</LABEL>
+          <NAME>date_of_collection</NAME>
+          <DESCRIPTION>The date when the sample was collected with year, month and day specified in the format, YYYY-MM-DD.</DESCRIPTION>
+          <EXAMPLE>2024-09-20</EXAMPLE>
+          <NAMESPACE>tol:date_of_collection</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^(\d{4})(-\d{2})(-\d{2})$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Decimal Latitude</LABEL>
+          <NAME>decimal_latitude</NAME>
+          <DESCRIPTION>The geographic latitude where the specimen or sample was taken in decimal degrees, between -90 and 90. Locations should be specified to a minimum of 3 decimal places and a maximum of 8 decimal places.</DESCRIPTION>
+          <EXAMPLE>52.2053</EXAMPLE>
+          <NAMESPACE>tol:decimal_latitude</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^-?([1-8]?\d(\.\d+)?|90(\.0+)?)$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Decimal Longitude</LABEL>
+          <NAME>decimal_longitude</NAME>
+          <DESCRIPTION>The longitude of the sample collection site, in decimal degrees.</DESCRIPTION>
+          <EXAMPLE>0.1218</EXAMPLE>
+          <NAMESPACE>tol:decimal_longitude</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^-?(180(\.0+)?|((1[0-7]\d)|(\d{1,2}))(\.\d+)?)$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Accession Number</LABEL>
+          <NAME>accession_number</NAME>
+          <DESCRIPTION>A unique alphanumeric reference or identifier assigned to the sample in the study related to NCBI Taxonomy.</DESCRIPTION>
+          <EXAMPLE>accession123</EXAMPLE>
+          <NAMESPACE>ei:accession_number</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Infraspecific Epithet</LABEL>
+          <NAME>infraspecific_epithet</NAME>
+          <DESCRIPTION>The name of the lowest or terminal infraspecific epithet of the dwc:scientificName, excluding any rank designation.</DESCRIPTION>
+          <EXAMPLE>concolor</EXAMPLE>
+          <NAMESPACE>tol:infraspecific_epithet</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Collector Sample ID</LABEL>
+          <NAME>collector_sample_id</NAME>
+          <DESCRIPTION>Unique name assigned to the sample by the COLLECTOR or COLLECTOR_AFFILIATION. Do not use spaces or special characters, other than hyphens and underscores (&quot;-&quot; and &quot;_&quot;) i.e do not use #, !,^*, etc. Free text.</DESCRIPTION>
+          <EXAMPLE>UDUK0000331</EXAMPLE>
+          <NAMESPACE>tol:collector_sample_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Description Of Collection Method</LABEL>
+          <NAME>description_of_collection_method</NAME>
+          <DESCRIPTION>A detailed as possible description of the sample collection methods</DESCRIPTION>
+          <EXAMPLE>Caught with fiber net within densely wooded area, and immediately placed into the collection container</EXAMPLE>
+          <NAMESPACE>tol:description_of_collection_method</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Taxonomy ID</LABEL>
+          <NAME>taxon_id</NAME>
+          <DESCRIPTION>A valid NCBI TAXON_ID to the species level ismandatory in order to submit data to public repositories. The species name in themanifest must be identical to that listed in the &quot;current name&quot; box in the T axonomy Browser for that species.</DESCRIPTION>
+          <EXAMPLE>458489</EXAMPLE>
+          <NAMESPACE>tol:taxon_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+      </FIELD_GROUP>
+      <FIELD_GROUP restrictionType="Any number or none of the fields">
+        <NAME>lib_prep</NAME>
+        <LABEL>Library Preparation</LABEL>
+        <DESCRIPTION>Fields under component 'Library Preparation'</DESCRIPTION>
+        <FIELD>
+          <LABEL>Study ID</LABEL>
+          <NAME>study_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this study</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:study_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Library Preparation ID</LABEL>
+          <NAME>library_prep_id</NAME>
+          <DESCRIPTION>A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.</DESCRIPTION>
+          <EXAMPLE>libPrep123</EXAMPLE>
+          <NAMESPACE>ei:library_prep_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Sample ID</LABEL>
+          <NAME>sample_id</NAME>
+          <DESCRIPTION>A unique alphanumeric reference or identifier assigned to the cell suspension for the sample in the study.</DESCRIPTION>
+          <EXAMPLE>sample123</EXAMPLE>
+          <NAMESPACE>ei:sample_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Library Preparation Kit Version</LABEL>
+          <NAME>library_prep_kit_version</NAME>
+          <DESCRIPTION>The version number of the library preparation kit used for sequencing.</DESCRIPTION>
+          <EXAMPLE>2</EXAMPLE>
+          <NAMESPACE>ei:library_prep_kit_version</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Amplification Method</LABEL>
+          <NAME>amplification_method</NAME>
+          <DESCRIPTION>The method used to amplify the Complementary DNA (cDNA).</DESCRIPTION>
+          <EXAMPLE>PCR</EXAMPLE>
+          <NAMESPACE>ei:amplification_method</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>cDNA Amplification Cycles</LABEL>
+          <NAME>cdna_amplification_cycles</NAME>
+          <DESCRIPTION>The number of cycles used during the Complementary DNA (cDNA) amplification process.</DESCRIPTION>
+          <EXAMPLE>12</EXAMPLE>
+          <NAMESPACE>ei:cdna_amplification_cycles</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Average Size Distribution</LABEL>
+          <NAME>average_size_distribution</NAME>
+          <DESCRIPTION>The average length of RNA fragments in base pairs (BP) after library preparation, indicating the quality and suitability of the RNA for sequencing.</DESCRIPTION>
+          <EXAMPLE>350</EXAMPLE>
+          <NAMESPACE>ei:average_size_distribution</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Library Construction Method</LABEL>
+          <NAME>lib_construction_method</NAME>
+          <DESCRIPTION>The library construction method (including version) that was used.</DESCRIPTION>
+          <EXAMPLE>Smart-Seq2</EXAMPLE>
+          <NAMESPACE>ei:lib_construction_method</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Input Molecule</LABEL>
+          <NAME>input_molecule</NAME>
+          <DESCRIPTION>The specific fraction of biological macromolecule from which the sequencing library is derived.</DESCRIPTION>
+          <EXAMPLE>RNA</EXAMPLE>
+          <NAMESPACE>ei:input_molecule</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Primer</LABEL>
+          <NAME>primer</NAME>
+          <DESCRIPTION>The type of primer used for reverse transcription. This allows users to identify content of the cDNA library input for mRNA.</DESCRIPTION>
+          <EXAMPLE>Random</EXAMPLE>
+          <NAMESPACE>ei:primer</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>Oligo-dT</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Random</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Primeness</LABEL>
+          <NAME>primeness</NAME>
+          <DESCRIPTION>The end from which the molecule was sequenced.</DESCRIPTION>
+          <EXAMPLE>5'</EXAMPLE>
+          <NAMESPACE>ei:primeness</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>3'</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>5'</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Both</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>End Bias</LABEL>
+          <NAME>end_bias</NAME>
+          <DESCRIPTION>The end bias of the library.</DESCRIPTION>
+          <EXAMPLE>3</EXAMPLE>
+          <NAMESPACE>ei:end_bias</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>3</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>5</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Library Strand</LABEL>
+          <NAME>library_strand</NAME>
+          <DESCRIPTION>The Complementary DNA (cDNA) strand of the library from which the reads derived from - sense (first), antisense (second), both or none.</DESCRIPTION>
+          <EXAMPLE>Antisense</EXAMPLE>
+          <NAMESPACE>ei:library_strand</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>Antisense</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Both</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Sense</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Unstranded</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Spike In</LABEL>
+          <NAME>spike_in</NAME>
+          <DESCRIPTION>External RNA added to the sample as a control to assess technical variability and normalization in RNA-sequencing. State whether spike-in was used.</DESCRIPTION>
+          <EXAMPLE>Yes</EXAMPLE>
+          <NAMESPACE>ei:spike_in</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>No</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Yes</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Spike Type</LABEL>
+          <NAME>spike_type</NAME>
+          <DESCRIPTION>The specific type of external RNA used for spiking in, often indicating the source or nature of the control RNA.</DESCRIPTION>
+          <EXAMPLE>Synthetic RNA</EXAMPLE>
+          <NAMESPACE>ei:spike_type</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Spike In Dilution Or Concentration</LABEL>
+          <NAME>spike_in_dilution_or_concentration</NAME>
+          <DESCRIPTION>The final concentration or dilution (for commercial sets) of the spike in mix.</DESCRIPTION>
+          <EXAMPLE>1:1000</EXAMPLE>
+          <NAMESPACE>ei:spike_in_dilution_or_concentration</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>i5 Index</LABEL>
+          <NAME>i5_index</NAME>
+          <DESCRIPTION>Barcode sequence used on the i5 adapter during library preparation for identifying samples in multiplexed single-cell RNA-sequencing.</DESCRIPTION>
+          <EXAMPLE>ATCACG</EXAMPLE>
+          <NAMESPACE>ei:i5_index</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>i7 Index</LABEL>
+          <NAME>i7_index</NAME>
+          <DESCRIPTION>Barcode sequence used on the i7 adapter to distinguish samples in multiplexed sequencing runs.</DESCRIPTION>
+          <EXAMPLE>CGATGT</EXAMPLE>
+          <NAMESPACE>ei:i7_index</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Dual or Single Index</LABEL>
+          <NAME>dual_single_index</NAME>
+          <DESCRIPTION>Specifies if both i5 and i7 indices (dual) or only one index (single) was used for sample identification during sequencing.</DESCRIPTION>
+          <EXAMPLE>Dual</EXAMPLE>
+          <NAMESPACE>ei:dual_single_index</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>Dual</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Single</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>I5 Sequence</LABEL>
+          <NAME>i5_sequence</NAME>
+          <DESCRIPTION>The nucleotide sequence of the i5 index used in multiplexing during sequencing.</DESCRIPTION>
+          <EXAMPLE>ATCGTAGC</EXAMPLE>
+          <NAMESPACE>ei:i5_sequence</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>i7 Sequence</LABEL>
+          <NAME>i7_sequence</NAME>
+          <DESCRIPTION>The specific nucleotide sequence of the i7 index used for a sample.</DESCRIPTION>
+          <EXAMPLE>TGCATGCA</EXAMPLE>
+          <NAMESPACE>ei:i7_sequence</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Plate ID</LABEL>
+          <NAME>plate_id</NAME>
+          <DESCRIPTION>Identifier for the 96-well plate used in sample preparation.</DESCRIPTION>
+          <EXAMPLE>plate123</EXAMPLE>
+          <NAMESPACE>ei:plate_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Well Row</LABEL>
+          <NAME>well_row</NAME>
+          <DESCRIPTION>The row identifier in a 96-well plate indicating the sample's position.</DESCRIPTION>
+          <EXAMPLE>A</EXAMPLE>
+          <NAMESPACE>ei:well_row</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Well Column</LABEL>
+          <NAME>well_col</NAME>
+          <DESCRIPTION>The column identifier in a 96-well plate indicating the sample's position.</DESCRIPTION>
+          <EXAMPLE>5</EXAMPLE>
+          <NAMESPACE>ei:well_col</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Cell Phenotype</LABEL>
+          <NAME>cell_phenotype</NAME>
+          <DESCRIPTION>The cell marker for the Fluorescence-Activated Cell Sorting (FACS) of cells.</DESCRIPTION>
+          <EXAMPLE>CD41-</EXAMPLE>
+          <NAMESPACE>ei:cell_phenotype</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>CD41+</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>CD41-</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+      </FIELD_GROUP>
+      <FIELD_GROUP restrictionType="Any number or none of the fields">
+        <NAME>sequencing</NAME>
+        <LABEL>Sequencing</LABEL>
+        <DESCRIPTION>Fields under component 'Sequencing'</DESCRIPTION>
+        <FIELD>
+          <LABEL>Study ID</LABEL>
+          <NAME>study_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this study</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:study_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Sequencing ID</LABEL>
+          <NAME>sequencing_id</NAME>
+          <DESCRIPTION>A unique alphanumeric reference or identifier for the sequencing protocol.</DESCRIPTION>
+          <EXAMPLE>seq123</EXAMPLE>
+          <NAMESPACE>ei:sequencing_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Sequencing Platform Name</LABEL>
+          <NAME>sequencing_platform_name</NAME>
+          <DESCRIPTION>The name of the sequencing platform used for the experiment.</DESCRIPTION>
+          <EXAMPLE>Pacbio</EXAMPLE>
+          <NAMESPACE>ei:sequencing_platform_name</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Sequencing Instrument Model</LABEL>
+          <NAME>sequencing_instrument_model</NAME>
+          <DESCRIPTION>This refers to the machine or platform used for sequencing, with variations in throughput, read lengths, error rates, and application suitability.</DESCRIPTION>
+          <EXAMPLE>Illumina NovaSeq 6000</EXAMPLE>
+          <NAMESPACE>ei:sequencing_instrument_model</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Library Layout</LABEL>
+          <NAME>lib_layout</NAME>
+          <DESCRIPTION>Specify whether to expect single, paired, or other configuration of reads for sequencing</DESCRIPTION>
+          <EXAMPLE>Paired</EXAMPLE>
+          <NAMESPACE>mixs:lib_layout</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>Other</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Paired</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Single</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Vector</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>UMI Barcode Read</LABEL>
+          <NAME>umi_barcode_read</NAME>
+          <DESCRIPTION>The type of read that contains the Unique Molecular Identifier (UMI) barcode.</DESCRIPTION>
+          <EXAMPLE>index2</EXAMPLE>
+          <NAMESPACE>ei:umi_barcode_read</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>index1</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>index2</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>read1</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>read2</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>UMI Barcode Offset</LABEL>
+          <NAME>umi_barcode_offset</NAME>
+          <DESCRIPTION>The offset in sequence of the Unique Molecular Identifier (UMI) identifying barcode.</DESCRIPTION>
+          <EXAMPLE>0</EXAMPLE>
+          <NAMESPACE>ei:umi_barcode_offset</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>UMI Barcode Size</LABEL>
+          <NAME>umi_barcode_size</NAME>
+          <DESCRIPTION>The size of the Unique Molecular Identifier (UMI) identifying barcode.</DESCRIPTION>
+          <EXAMPLE>10</EXAMPLE>
+          <NAMESPACE>ei:umi_barcode_size</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Cell Barcode Read</LABEL>
+          <NAME>cell_barcode_read</NAME>
+          <DESCRIPTION>The type of read that contains the UMI barcode.</DESCRIPTION>
+          <EXAMPLE>index1</EXAMPLE>
+          <NAMESPACE>ei:cell_barcode_read</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>index1</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>index2</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>read1</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>read2</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Cell Barcode Offset</LABEL>
+          <NAME>cell_barcode_offset</NAME>
+          <DESCRIPTION>The offset in sequence of the cell identifying barcode.</DESCRIPTION>
+          <EXAMPLE>10</EXAMPLE>
+          <NAMESPACE>ei:cell_barcode_offset</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Cell Barcode Size</LABEL>
+          <NAME>cell_barcode_size</NAME>
+          <DESCRIPTION>The offset in sequence of the cell identifying barcode.</DESCRIPTION>
+          <EXAMPLE>0</EXAMPLE>
+          <NAMESPACE>ei:cell_barcode_size</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>cDNA Read</LABEL>
+          <NAME>cdna_read</NAME>
+          <DESCRIPTION>The actual nucleotide sequence obtained from Complementary DNA (cDNA) during sequencing.</DESCRIPTION>
+          <EXAMPLE>read1</EXAMPLE>
+          <NAMESPACE>ei:cdna_read</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>index1</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>index2</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>read1</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>read2</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>cDNA Read Offset</LABEL>
+          <NAME>cdna_read_offset</NAME>
+          <DESCRIPTION>The starting position of the Complementary DNA (cDNA) read within the entire sequence, indicating where the read begins after any barcodes or technical sequences.</DESCRIPTION>
+          <EXAMPLE>6</EXAMPLE>
+          <NAMESPACE>ei:cdna_read_offset</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>cDNA Read Size</LABEL>
+          <NAME>cdna_read_size</NAME>
+          <DESCRIPTION>The size of the Complementary DNA (cDNA) read.</DESCRIPTION>
+          <EXAMPLE>75</EXAMPLE>
+          <NAMESPACE>ei:cdna_read_size</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+      </FIELD_GROUP>
+      <FIELD_GROUP restrictionType="Any number or none of the fields">
+        <NAME>file</NAME>
+        <LABEL>File</LABEL>
+        <DESCRIPTION>Fields under component 'File'</DESCRIPTION>
+        <FIELD>
+          <LABEL>Study ID</LABEL>
+          <NAME>study_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this study</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:study_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>File ID</LABEL>
+          <NAME>file_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this file</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:file_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Library Preparation ID</LABEL>
+          <NAME>lib_prep_id</NAME>
+          <DESCRIPTION>A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.</DESCRIPTION>
+          <EXAMPLE>libPrep123</EXAMPLE>
+          <NAMESPACE>ei:lib_prep_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Sequencing ID</LABEL>
+          <NAME>sequencing_id</NAME>
+          <DESCRIPTION>A unique alphanumeric reference or identifier for the sequencing protocol.</DESCRIPTION>
+          <EXAMPLE>seq123</EXAMPLE>
+          <NAMESPACE>ei:sequencing_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Read 1 File</LABEL>
+          <NAME>read_1_file</NAME>
+          <DESCRIPTION>The name or accession of the file that contains read 1.</DESCRIPTION>
+          <EXAMPLE>file1_r1.fastq.gz</EXAMPLE>
+          <NAMESPACE>ei:read_1_file</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Read 2 File</LABEL>
+          <NAME>read_2_file</NAME>
+          <DESCRIPTION>The name or accession of the file that contains read 2.</DESCRIPTION>
+          <EXAMPLE>file2_r2.fastq.gz</EXAMPLE>
+          <NAMESPACE>ei:read_2_file</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Index 1 File</LABEL>
+          <NAME>index_1_file</NAME>
+          <DESCRIPTION>The name or accession of the file that contains index 1.</DESCRIPTION>
+          <EXAMPLE>file1_i1.fastq.gz</EXAMPLE>
+          <NAMESPACE>ei:index_1_file</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Index 2 File</LABEL>
+          <NAME>index_2_file</NAME>
+          <DESCRIPTION>The name or accession of the file that contains index 2.</DESCRIPTION>
+          <EXAMPLE>file2_i2.fastq.gz</EXAMPLE>
+          <NAMESPACE>ei:index_2_file</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Read Checksum</LABEL>
+          <NAME>read_checksum</NAME>
+          <DESCRIPTION>Result of a hash function calculated on the content of both the read 1 file and the read 2 file to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).</DESCRIPTION>
+          <EXAMPLE>d41d8cd98f00b204e9800998ecf8427e,5a105e8b9d40e1329780d62ea2265d8a77a1a45e</EXAMPLE>
+          <NAMESPACE>ei:read_checksum</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Index Checksum</LABEL>
+          <NAME>index_checksum</NAME>
+          <DESCRIPTION>Result of a hash function calculated on the content of both the index 1 file and the index 2 file to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).</DESCRIPTION>
+          <EXAMPLE>d3486ae9136e7856bc42212385ea797094475802,b7e23ec29af22b0b4e41da31e868d57226121c84</EXAMPLE>
+          <NAMESPACE>ei:index_checksum</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>White List Barcode File</LABEL>
+          <NAME>white_list_barcode_file</NAME>
+          <DESCRIPTION>A file containing the known cell barcodes in the
+dataset.</DESCRIPTION>
+          <EXAMPLE>barcodes.tsv</EXAMPLE>
+          <NAMESPACE>ei:white_list_barcode_file</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>File Name</LABEL>
+          <NAME>file_name</NAME>
+          <DESCRIPTION>A filename or file name is a name used to uniquely identify a data file related to the study.</DESCRIPTION>
+          <EXAMPLE>file001</EXAMPLE>
+          <NAMESPACE>ei:file_name</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>File Type</LABEL>
+          <NAME>file_type</NAME>
+          <DESCRIPTION>A file type is a name given to a specific kind of file. Common file types are fastq, gtf, fasta, bam, etc.</DESCRIPTION>
+          <EXAMPLE>fastq</EXAMPLE>
+          <NAMESPACE>ei:file_type</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+      </FIELD_GROUP>
+    </DESCRIPTOR>
+  </CHECKLIST>
+</CHECKLIST_SET>

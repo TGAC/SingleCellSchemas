@@ -1,21 +1,32 @@
-from datetime import datetime
-from openpyxl.utils import get_column_letter
-
 import json
 import os
 import numpy as np
 import pandas as pd
 import re
+import sass
 import shutil
 import sys
 import uuid
+
+from datetime import datetime
+from openpyxl.utils import get_column_letter
+from pathlib import Path
 
 # Helpers: Variables
 DWC_NAMESPACE_PREFIXES = ['dwc', 'dcterms']
 DEFAULT_SCHEMA_EXTENSION = '.xlsx'
 
-SCHEMA_BASE_DIR_PATH = 'schemas'
-SCHEMA_FILE_PATH = f'{SCHEMA_BASE_DIR_PATH}/base_sc_schemas{DEFAULT_SCHEMA_EXTENSION}'
+SCHEMA_DIR_PATH = 'schemas'
+
+SCHEMA_FILE_PATH = next(
+    (str(file) for file in Path(SCHEMA_DIR_PATH).iterdir() 
+     if file.is_file() and file.name.endswith(DEFAULT_SCHEMA_EXTENSION) and file.name.startswith('singlecell')), 
+    None
+)
+# Extract filename without extension
+SCHEMA_FILENAME_WO_EXT = Path(SCHEMA_FILE_PATH).stem  # e.g. 'singlecell_schema_main_v0.1'
+# Find the part starting with 'v' at the end
+SCHEMA_VERSION = SCHEMA_FILENAME_WO_EXT.split('_')[-1] if SCHEMA_FILENAME_WO_EXT.split('_')[-1].startswith('v') else None
 
 # Global variables
 CHECKLISTS_DICT = dict() # Global set to store the schema names
@@ -32,9 +43,9 @@ FORMATS = {
 
 # Helpers: Functions
 def apply_data_validation(component_df, dataframe, pandas_writer, namespace, allowed_values_dict):
-    column_names = component_df['term_label'].drop_duplicates().tolist()
+    column_names = component_df['term_name'].drop_duplicates().tolist() # Use term name instead of term label
     
-    sheet_name = COMPONENTS.get(component_df['component_name'].iloc[0])
+    sheet_name = get_worksheet_info(component_df, return_label=False)
     sheet = pandas_writer.sheets[sheet_name]
     workbook = pandas_writer.book
 
@@ -50,9 +61,9 @@ def apply_data_validation(component_df, dataframe, pandas_writer, namespace, all
     dataframe = dataframe.loc[:, ~dataframe.columns.duplicated()]
     
     for column_name in column_names:
-        term_name = component_df.loc[component_df['term_label'] == column_name, 'term_name'].iloc[0]
+        term_name = component_df.loc[component_df['term_name'] == column_name, 'term_name'].iloc[0]
         dropdown_list = allowed_values_dict.get(term_name, [])
-        regex = component_df.loc[component_df['term_label'] == column_name, 'term_regex'].iloc[0] if 'term_regex' in component_df else ''
+        regex = component_df.loc[component_df['term_name'] == column_name, 'term_regex'].iloc[0] if 'term_regex' in component_df else ''
 
         # Get spreadsheet official column header letter
         # Indexing starts at 0 by default but in this case, it should start at 1 so increment by 1
@@ -107,7 +118,7 @@ def is_camel_case(text):
 def is_title_case_with_spaces(text):
     # Regular expression to check if text follows Title Case
     return bool(re.match(r'^[A-Z][a-z]+(?: [A-Z][a-z]+)*$', text))
-     
+            
 def convert_string_to_title_case(text):
     '''
     Convert a given string to title case, handling camel case by adding spaces 
@@ -153,7 +164,8 @@ def create_readme_worksheet(readme_sheet_data):
         'name': [f'{technology_label} [{standard_label}]'],  
         'description': [version_description],
         'standard': [standard_name],
-        'technology': [technology_name]
+        'technology': [technology_name],
+        'manifest_version': [SCHEMA_VERSION.replace('v', '')]
     })
 
     # Write README sheet with formatting
@@ -335,12 +347,20 @@ def get_col_desc_eg(component_df, version_column_name):
     filtered_df = component_df[
         component_df[version_column_name].isin(['M', 'O'])
     ]
-    
+    # Use the term name as the key
     return  {
-                row['term_label']: {'description': row.get('term_description', ''), 'example': row.get('term_example', '')}
+                row['term_name']: {'description': row.get('term_description', ''), 'example': row.get('term_example', '')}
                 for _, row in filtered_df.iterrows()
             }
-    
+
+def get_worksheet_info(component_df, return_label=False):
+    component_name = component_df['component_name'].iloc[0]
+
+    if component_name not in COMPONENTS:
+        raise ValueError(f"Component name, '{component_name}', not found in the 'components' worksheet.")
+
+    return COMPONENTS[component_name] if return_label else component_name
+              
 def get_xlsx_data_validation_from_regex(regex, column_letter):
     # Define a mapping from regex patterns to spreadsheet custom validation formulas
     # NB: Data starts from row 5
@@ -415,9 +435,10 @@ def generate_output_file_path(element, default_extension=DEFAULT_SCHEMA_EXTENSIO
 def get_required_columns(component_df, version_column_name):
     # Mandatory columns are columns with 'M' cells
     # Optional columns are columns with 'O' cells
+    # Use the term name instead of term label as the key
     return component_df.loc[
         (component_df[version_column_name] == 'M'),
-        'term_label'
+        'term_name'
     ].tolist()
     
 def get_checklists_from_xlsx_file():

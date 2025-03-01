@@ -132,7 +132,7 @@ def generate_base_schema_yaml():
         
         # Overwrite the original file with the generated YAML file
         file_name = os.path.basename(file_path).replace('.xlsx', '.yaml')
-        output_file = f'{helpers.SCHEMA_BASE_DIR_PATH}/{file_name}'
+        output_file = f'{helpers.SCHEMA_DIR_PATH}/{file_name}'
         os.replace(temp_output_path, output_file)
         print(f'Base YAML file generated/updated: {output_file}')
     else:
@@ -189,7 +189,7 @@ def generate_base_schema_json():
         
         # Overwrite the original file with the generated JSON file
         file_name = os.path.basename(file_path).replace('.xlsx', '.json')
-        output_file = f'{helpers.SCHEMA_BASE_DIR_PATH}/{file_name}'
+        output_file = f'{helpers.SCHEMA_DIR_PATH}/{file_name}'
         os.replace(temp_output_path, output_file)
         print(f'Base JSON file generated/updated: {output_file}')
     else:

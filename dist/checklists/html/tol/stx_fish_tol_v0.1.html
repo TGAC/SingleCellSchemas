@@ -1,0 +1,2562 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../../../images/favicon.ico" type="image/x-icon">
+
+    <title>Single-cell Schemas</title>
+
+    <!-- CSS -->
+    <link href="../../../css/styles.css" rel="stylesheet">
+    <link href="../../../css/fontawesome.6.7.2.all.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="header-div container-fluid text-center text-white">
+      <h1 class="ui header">Single-cell Schemas</h1>
+      <!-- Header icons -->
+      <div class="position-absolute top-0 end-0 mr-1 mt-2">
+        <a  class="github-link" href="https://github.com/TGAC/SingleCellSchemas" target="_blank" title="View GitHub repository">
+          <span class="fa-stack mb-10">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <div class="container mt-4">
+          <form>
+            <!-- Standards dropdown menu -->
+            <div class="mb-3">
+              <label for="std_dropdown" class="form-label"
+                >Based on Standard...</label
+              >
+              <select class="form-select" id="std_dropdown">
+                
+                  <option value="dwc" selected>
+                    Darwin Core (DwC)
+                  </option>
+              
+                  <option value="mixs" >
+                    Minimum Information about any (x) Sequence (MIxS)
+                  </option>
+              
+                  <option value="tol" >
+                    Tree of Life (ToL)
+                  </option>
+              
+                  <option value="faang" >
+                    Functional Annotation of Animal Genomes (FAANG)
+                  </option>
+              
+            </select>
+            </div>
+
+            <!-- Technology dropdown menu -->
+            <div class="mb-3">
+              <label for="tech_dropdown" class="form-label">Technology</label>
+              <select class="form-select" id="tech_dropdown">
+                  
+                    <option value="sc_rnaseq" selected>
+                      Single-cell RNA Sequencing
+                    </option>
+                  
+                    <option value="stx_seq" >
+                      Spatial Transcriptomics Sequencing
+                    </option>
+                  
+                    <option value="stx_fish" >
+                      Spatial Transcriptomics Fish
+                    </option>
+                  
+              </select>
+            </div>
+
+             <!-- Buttons -->
+            <div class="d-flex justify-content-end">
+              <!-- Submit button -->
+              <button id="sub_btn" class="btn btn-primary" type="submit">
+                Submit
+              </button>
+
+              <!-- Download manifest button -->
+              <button id="download-manifest-btn" class="btn btn-outline-primary btn-sm" 
+                  type="button" title="Download blank manifest">
+                <i class="fa fa-download"></i>
+                <span class="action-label" style="padding-left: 3px;">Download manifest</span> 
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="accordion" id="accordionExample">
+          
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapsestudy"
+                aria-expanded="true"
+                aria-controls="collapsestudy"
+              >
+                Study
+              </button>
+            </div>
+            <div
+              id="collapsestudy"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Study ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>study_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric identifier for this study</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>A7F9B3X2</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[a-zA-Z0-9]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:study_id 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Title</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>title</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A name given to the study or project. Project title should be fewer than 30 words, such as a title of a grant proposal or a publication.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Study of single cells in the human body</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Reference</td>
+                        <td>
+                          <a href="http://purl.org/dc/terms/title" target="_blank">
+                            http://purl.org/dc/terms/title
+                          </a>
+                        </td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                          <a href="http://purl.org/dc/terms/title" target="_blank">
+                            dcterms:title
+                          </a>
+                          
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Description</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>description</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A detailed description of the project which includes research goals and experimental approach. Project description should be fewer than 300 words, such as an abstract from a grant application or publication.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>This project explores the intricate details of single cells in the human body, focusing on their structure, function, and behavior. By studying individual cells, it aims to uncover how they contribute to overall health, disease progression, and human biology. This research can provide deeper insights into cellular processes, paving the way for advancements in medical treatments and personalised medicine.</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Reference</td>
+                        <td>
+                          <a href="http://purl.org/dc/terms/description" target="_blank">
+                            http://purl.org/dc/terms/description
+                          </a>
+                        </td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                          <a href="http://purl.org/dc/terms/description" target="_blank">
+                            dcterms:description
+                          </a>
+                          
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Workflow</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>workflow</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The workflow or protocol followed during the study.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>spatial_transcriptomics</td>
+                      </tr>
+                         
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:workflow 
+                        </td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">Laser microdissection</span>
+                          
+                          <span class="badge bg-dark">Laser microdissection, Culturing</span>
+                          
+                          <span class="badge bg-dark">Laser microdissection, Culturing, Sequencing</span>
+                          
+                          <span class="badge bg-dark">Laser microdissection, Sequencing</span>
+                          
+                          <span class="badge bg-dark">Microfluidics, Facs, Culturing</span>
+                          
+                          <span class="badge bg-dark">Microfluidics, Facs, Culturing, Sequencing</span>
+                          
+                          <span class="badge bg-dark">Microfluidics, Facs, Sequencing</span>
+                          
+                          <span class="badge bg-dark">Spatial Transcriptomics</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Technology
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>technology</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The sorting or visualisation technology used.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Vizgen</td>
+                      </tr>
+                         
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:technology 
+                        </td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">10X</span>
+                          
+                          <span class="badge bg-dark">10X_3'</span>
+                          
+                          <span class="badge bg-dark">Mas_seq</span>
+                          
+                          <span class="badge bg-dark">Smartseq</span>
+                          
+                          <span class="badge bg-dark">Vizgen</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseperson"
+                aria-expanded="true"
+                aria-controls="collapseperson"
+              >
+                Person
+              </button>
+            </div>
+            <div
+              id="collapseperson"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    First Name
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>givenName</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The first name of a Person.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Jane</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Reference</td>
+                        <td>
+                          <a href="https://schema.org/givenName" target="_blank">
+                            https://schema.org/givenName
+                          </a>
+                        </td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                          <a href="https://schema.org/givenName" target="_blank">
+                            schema.org:givenName
+                          </a>
+                          
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Last Name
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>familyName</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The last name of a Person.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Doe</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Reference</td>
+                        <td>
+                          <a href="https://schema.org/familyName" target="_blank">
+                            https://schema.org/familyName
+                          </a>
+                        </td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                          <a href="https://schema.org/familyName" target="_blank">
+                            schema.org:familyName
+                          </a>
+                          
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Affiliation/Institution
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>affiliation</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>An organization that this person is affiliated with. For example, a school/university, a club, or a team.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>University of Liverpool</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Reference</td>
+                        <td>
+                          <a href="https://schema.org/affiliation" target="_blank">
+                            https://schema.org/affiliation
+                          </a>
+                        </td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                          <a href="https://schema.org/affiliation" target="_blank">
+                            schema.org:affiliation
+                          </a>
+                          
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Funder</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>funder</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A person or organization that supports (sponsors) something through some kind of financial contribution.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>BBSRC</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Reference</td>
+                        <td>
+                          <a href="https://schema.org/funder" target="_blank">
+                            https://schema.org/funder
+                          </a>
+                        </td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                          <a href="https://schema.org/funder" target="_blank">
+                            schema.org:funder
+                          </a>
+                          
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Grant Award</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>funding</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A Grant that directly or indirectly provide funding or sponsorship for this item.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>GRAK3489</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Reference</td>
+                        <td>
+                          <a href="https://schema.org/funding" target="_blank">
+                            https://schema.org/funding
+                          </a>
+                        </td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                          <a href="https://schema.org/funding" target="_blank">
+                            schema.org:funding
+                          </a>
+                          
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapsesample"
+                aria-expanded="true"
+                aria-controls="collapsesample"
+              >
+                Sample
+              </button>
+            </div>
+            <div
+              id="collapsesample"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Study ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>study_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric identifier for the  study if refering to</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>A7F9B3X2</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[a-zA-Z0-9]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:study_id 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Sample ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>sample_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric reference or identifier for the study.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>study123</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:sample_id 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Organism</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>organism</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The full scientific name of the species studied.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Arenicola marina</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]+[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:organism 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Scientific Name</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>scientific_name</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The full scientific name of the species studied.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Arenicola marina</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]+[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           tol:scientific_name 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Culture or Strain ID</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>culture_or_strain_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>Give the reference ID from the source culture collection, such that the culture accession can be found in the collection’s database. This is only relevant if the sequenced material is derived from a living, culturable, named laboratory strain (e.g., Anopheles coluzzii N’Gousso strain).</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>CCAP1119/17</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           tol:culture_or_strain_id 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Tissue</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>tissue</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The type of tissue sampled for the study.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Leaf</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Reference</td>
+                        <td>
+                          <a href="http://purl.obolibrary.org/obo/NCIT_C19697" target="_blank">
+                            http://purl.obolibrary.org/obo/NCIT_C19697
+                          </a>
+                        </td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                          <a href="http://purl.obolibrary.org/obo/NCIT_C19697" target="_blank">
+                            ei:tissue
+                          </a>
+                          
+                        </td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">Abdomen</span>
+                          
+                          <span class="badge bg-dark">Anterior Body</span>
+                          
+                          <span class="badge bg-dark">Blade</span>
+                          
+                          <span class="badge bg-dark">Blood</span>
+                          
+                          <span class="badge bg-dark">Bodywall</span>
+                          
+                          <span class="badge bg-dark">Bract</span>
+                          
+                          <span class="badge bg-dark">Brain</span>
+                          
+                          <span class="badge bg-dark">Bud</span>
+                          
+                          <span class="badge bg-dark">Cap</span>
+                          
+                          <span class="badge bg-dark">Cephalothorax</span>
+                          
+                          <span class="badge bg-dark">DNA Extract</span>
+                          
+                          <span class="badge bg-dark">Egg</span>
+                          
+                          <span class="badge bg-dark">Eggshell</span>
+                          
+                          <span class="badge bg-dark">Endocrine Tissue</span>
+                          
+                          <span class="badge bg-dark">Endosperm</span>
+                          
+                          <span class="badge bg-dark">Eye</span>
+                          
+                          <span class="badge bg-dark">Fat Body</span>
+                          
+                          <span class="badge bg-dark">Fin</span>
+                          
+                          <span class="badge bg-dark">Flower</span>
+                          
+                          <span class="badge bg-dark">Gill Animal</span>
+                          
+                          <span class="badge bg-dark">Gill Fungi</span>
+                          
+                          <span class="badge bg-dark">Gonad</span>
+                          
+                          <span class="badge bg-dark">Hair</span>
+                          
+                          <span class="badge bg-dark">Head</span>
+                          
+                          <span class="badge bg-dark">Heart</span>
+                          
+                          <span class="badge bg-dark">Hepatopancreas</span>
+                          
+                          <span class="badge bg-dark">Holdfast Fungi</span>
+                          
+                          <span class="badge bg-dark">Intestine</span>
+                          
+                          <span class="badge bg-dark">Kidney</span>
+                          
+                          <span class="badge bg-dark">Leaf</span>
+                          
+                          <span class="badge bg-dark">Leg</span>
+                          
+                          <span class="badge bg-dark">Liver</span>
+                          
+                          <span class="badge bg-dark">Lung</span>
+                          
+                          <span class="badge bg-dark">Mid Body</span>
+                          
+                          <span class="badge bg-dark">Modular Colony</span>
+                          
+                          <span class="badge bg-dark">Mollusc Foot</span>
+                          
+                          <span class="badge bg-dark">Multicellular Organisms In Culture</span>
+                          
+                          <span class="badge bg-dark">Muscle</span>
+                          
+                          <span class="badge bg-dark">Mycelium</span>
+                          
+                          <span class="badge bg-dark">Mycorrhiza</span>
+                          
+                          <span class="badge bg-dark">Not Applicable</span>
+                          
+                          <span class="badge bg-dark">Not Collected</span>
+                          
+                          <span class="badge bg-dark">Not Provided</span>
+                          
+                          <span class="badge bg-dark">Other Fungal Tissue</span>
+                          
+                          <span class="badge bg-dark">Other Plant Tissue</span>
+                          
+                          <span class="badge bg-dark">Other Reproductive Animal Tissue</span>
+                          
+                          <span class="badge bg-dark">Other Somatic Animal Tissue</span>
+                          
+                          <span class="badge bg-dark">Ovary Animal</span>
+                          
+                          <span class="badge bg-dark">Oviduct</span>
+                          
+                          <span class="badge bg-dark">Pancreas</span>
+                          
+                          <span class="badge bg-dark">Petiole</span>
+                          
+                          <span class="badge bg-dark">Posterior Body</span>
+                          
+                          <span class="badge bg-dark">Root</span>
+                          
+                          <span class="badge bg-dark">Scales</span>
+                          
+                          <span class="badge bg-dark">Scat</span>
+                          
+                          <span class="badge bg-dark">Seed</span>
+                          
+                          <span class="badge bg-dark">Seedling</span>
+                          
+                          <span class="badge bg-dark">Shoot</span>
+                          
+                          <span class="badge bg-dark">Skin</span>
+                          
+                          <span class="badge bg-dark">Sperm Seminal Fluid</span>
+                          
+                          <span class="badge bg-dark">Spleen</span>
+                          
+                          <span class="badge bg-dark">Spore</span>
+                          
+                          <span class="badge bg-dark">Spore Bearing Structure</span>
+                          
+                          <span class="badge bg-dark">Stem</span>
+                          
+                          <span class="badge bg-dark">Stipe</span>
+                          
+                          <span class="badge bg-dark">Stomach</span>
+                          
+                          <span class="badge bg-dark">Tentacle</span>
+                          
+                          <span class="badge bg-dark">Terminal Body</span>
+                          
+                          <span class="badge bg-dark">Testis</span>
+                          
+                          <span class="badge bg-dark">Thallus Fungi</span>
+                          
+                          <span class="badge bg-dark">Thallus Plant</span>
+                          
+                          <span class="badge bg-dark">Thorax</span>
+                          
+                          <span class="badge bg-dark">Unicellular Organisms In Culture</span>
+                          
+                          <span class="badge bg-dark">Whole Organism</span>
+                          
+                          <span class="badge bg-dark">Whole Plant</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Tissue for Barcoding</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>tissue_for_barcoding</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The type of tissue sampled for the study.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Leaf</td>
+                      </tr>
+                         
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           tol:tissue_for_barcoding 
+                        </td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">Abdomen</span>
+                          
+                          <span class="badge bg-dark">Anterior Body</span>
+                          
+                          <span class="badge bg-dark">Blade</span>
+                          
+                          <span class="badge bg-dark">Blood</span>
+                          
+                          <span class="badge bg-dark">Bodywall</span>
+                          
+                          <span class="badge bg-dark">Bract</span>
+                          
+                          <span class="badge bg-dark">Brain</span>
+                          
+                          <span class="badge bg-dark">Bud</span>
+                          
+                          <span class="badge bg-dark">Cap</span>
+                          
+                          <span class="badge bg-dark">Cephalothorax</span>
+                          
+                          <span class="badge bg-dark">DNA Extract</span>
+                          
+                          <span class="badge bg-dark">Egg</span>
+                          
+                          <span class="badge bg-dark">Eggshell</span>
+                          
+                          <span class="badge bg-dark">Endocrine Tissue</span>
+                          
+                          <span class="badge bg-dark">Endosperm</span>
+                          
+                          <span class="badge bg-dark">Eye</span>
+                          
+                          <span class="badge bg-dark">Fat Body</span>
+                          
+                          <span class="badge bg-dark">Fin</span>
+                          
+                          <span class="badge bg-dark">Flower</span>
+                          
+                          <span class="badge bg-dark">Gill Animal</span>
+                          
+                          <span class="badge bg-dark">Gill Fungi</span>
+                          
+                          <span class="badge bg-dark">Gonad</span>
+                          
+                          <span class="badge bg-dark">Hair</span>
+                          
+                          <span class="badge bg-dark">Head</span>
+                          
+                          <span class="badge bg-dark">Heart</span>
+                          
+                          <span class="badge bg-dark">Hepatopancreas</span>
+                          
+                          <span class="badge bg-dark">Holdfast Fungi</span>
+                          
+                          <span class="badge bg-dark">Intestine</span>
+                          
+                          <span class="badge bg-dark">Kidney</span>
+                          
+                          <span class="badge bg-dark">Leaf</span>
+                          
+                          <span class="badge bg-dark">Leg</span>
+                          
+                          <span class="badge bg-dark">Liver</span>
+                          
+                          <span class="badge bg-dark">Lung</span>
+                          
+                          <span class="badge bg-dark">Mid Body</span>
+                          
+                          <span class="badge bg-dark">Modular Colony</span>
+                          
+                          <span class="badge bg-dark">Mollusc Foot</span>
+                          
+                          <span class="badge bg-dark">Multicellular Organisms In Culture</span>
+                          
+                          <span class="badge bg-dark">Muscle</span>
+                          
+                          <span class="badge bg-dark">Mycelium</span>
+                          
+                          <span class="badge bg-dark">Mycorrhiza</span>
+                          
+                          <span class="badge bg-dark">Not Applicable</span>
+                          
+                          <span class="badge bg-dark">Not Collected</span>
+                          
+                          <span class="badge bg-dark">Not Provided</span>
+                          
+                          <span class="badge bg-dark">Other Fungal Tissue</span>
+                          
+                          <span class="badge bg-dark">Other Plant Tissue</span>
+                          
+                          <span class="badge bg-dark">Other Reproductive Animal Tissue</span>
+                          
+                          <span class="badge bg-dark">Other Somatic Animal Tissue</span>
+                          
+                          <span class="badge bg-dark">Ovary Animal</span>
+                          
+                          <span class="badge bg-dark">Oviduct</span>
+                          
+                          <span class="badge bg-dark">Pancreas</span>
+                          
+                          <span class="badge bg-dark">Petiole</span>
+                          
+                          <span class="badge bg-dark">Posterior Body</span>
+                          
+                          <span class="badge bg-dark">Root</span>
+                          
+                          <span class="badge bg-dark">Scales</span>
+                          
+                          <span class="badge bg-dark">Scat</span>
+                          
+                          <span class="badge bg-dark">Seed</span>
+                          
+                          <span class="badge bg-dark">Seedling</span>
+                          
+                          <span class="badge bg-dark">Shoot</span>
+                          
+                          <span class="badge bg-dark">Skin</span>
+                          
+                          <span class="badge bg-dark">Sperm Seminal Fluid</span>
+                          
+                          <span class="badge bg-dark">Spleen</span>
+                          
+                          <span class="badge bg-dark">Spore</span>
+                          
+                          <span class="badge bg-dark">Spore Bearing Structure</span>
+                          
+                          <span class="badge bg-dark">Stem</span>
+                          
+                          <span class="badge bg-dark">Stipe</span>
+                          
+                          <span class="badge bg-dark">Stomach</span>
+                          
+                          <span class="badge bg-dark">Tentacle</span>
+                          
+                          <span class="badge bg-dark">Terminal Body</span>
+                          
+                          <span class="badge bg-dark">Testis</span>
+                          
+                          <span class="badge bg-dark">Thallus Fungi</span>
+                          
+                          <span class="badge bg-dark">Thallus Plant</span>
+                          
+                          <span class="badge bg-dark">Thorax</span>
+                          
+                          <span class="badge bg-dark">Unicellular Organisms In Culture</span>
+                          
+                          <span class="badge bg-dark">Whole Organism</span>
+                          
+                          <span class="badge bg-dark">Whole Plant</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Preservation Approach</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>preservation_approach</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A brief description of how the sample was preserved.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Fresh</td>
+                      </tr>
+                         
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           tol:preservation_approach 
+                        </td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">Air dried</span>
+                          
+                          <span class="badge bg-dark">Dry ice</span>
+                          
+                          <span class="badge bg-dark">Ethanol/Dry ice slurry</span>
+                          
+                          <span class="badge bg-dark">Lyophilised</span>
+                          
+                          <span class="badge bg-dark">Not Applicable</span>
+                          
+                          <span class="badge bg-dark">Not Collected</span>
+                          
+                          <span class="badge bg-dark">Not Provided</span>
+                          
+                          <span class="badge bg-dark">Other</span>
+                          
+                          <span class="badge bg-dark">RNALater</span>
+                          
+                          <span class="badge bg-dark">Snap frozen</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Date of Collection</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>date_of_collection</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The date when the sample was collected with year, month and day specified in the format, YYYY-MM-DD.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>2024-09-20</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^(\d{4})(-\d{2})(-\d{2})$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           tol:date_of_collection 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Decimal Latitude</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>decimal_latitude</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The geographic latitude where the specimen or sample was taken in decimal degrees, between -90 and 90. Locations should be specified to a minimum of 3 decimal places and a maximum of 8 decimal places.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>52.2053</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^-?([1-8]?\d(\.\d+)?|90(\.0+)?)$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           tol:decimal_latitude 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Decimal Longitude</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>decimal_longitude</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The longitude of the sample collection site, in decimal degrees.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>0.1218</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^-?(180(\.0+)?|((1[0-7]\d)|(\d{1,2}))(\.\d+)?)$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           tol:decimal_longitude 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Cultivar</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>cultivar</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A plant variety that has been selectively bred and maintained through cultivation to have specific desirable traits, such as yield, resistance to disease, or appearance.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>cv. Paragon</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:cultivar 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Material Source ID</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>materialSourceID</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The code used to identify the biological germplasm, strain, cell line or other source material. Useful for reordering material.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>JIC GRU WM0013</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:materialSourceID 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Accession Number</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>accession_number</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric reference or identifier assigned to the sample in the study related to NCBI Taxonomy.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>accession123</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:accession_number 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Infraspecific Epithet</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>infraspecific_epithet</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The name of the lowest or terminal infraspecific epithet of the dwc:scientificName, excluding any rank designation.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>concolor</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           tol:infraspecific_epithet 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Collector Sample ID</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>collector_sample_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>Unique name assigned to the sample by the COLLECTOR or COLLECTOR_AFFILIATION. Do not use spaces or special characters, other than hyphens and underscores ("-" and "_") i.e do not use #, !,^*, etc. Free text.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>UDUK0000331</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           tol:collector_sample_id 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Description Of Collection Method</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>description_of_collection_method</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A detailed as possible description of the sample collection methods</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Caught with fiber net within densely wooded area, and immediately placed into the collection container</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           tol:description_of_collection_method 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Taxonomy ID</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>taxon_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A valid NCBI TAXON_ID to the species level ismandatory in order to submit data to public repositories. The species name in themanifest must be identical to that listed in the "current name" box in the T axonomy Browser for that species.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>458489</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           tol:taxon_id 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapsefile"
+                aria-expanded="true"
+                aria-controls="collapsefile"
+              >
+                File
+              </button>
+            </div>
+            <div
+              id="collapsefile"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Study ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>study_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric identifier for this study</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>A7F9B3X2</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[a-zA-Z0-9]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:study_id 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    File ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>file_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric identifier for this file</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>A7F9B3X2</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:file_id 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Imaging Protocol ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>imaging_protocol_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric identifier for the imaging protocol.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>img123</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:imaging_protocol_id 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    File Name
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>file_name</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A filename or file name is a name used to uniquely identify a data file related to the study.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>file001</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:file_name 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    File Type
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>file_type</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A file type is a name given to a specific kind of file. Common file types are fastq, gtf, fasta, bam, etc.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>fastq</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:file_type 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Centroid X</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>centroidX</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>X Coordinate of the approximate center pixel for this sample</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>450</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:centroidX 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Centroid Y</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>centroidY</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>Y Coordinate of the approximate center pixel for this sample</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>450</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:centroidY 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseimaging_protocol"
+                aria-expanded="true"
+                aria-controls="collapseimaging_protocol"
+              >
+                Imaging Protocol
+              </button>
+            </div>
+            <div
+              id="collapseimaging_protocol"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Study ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>study_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric identifier for this study</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>A7F9B3X2</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[a-zA-Z0-9]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:study_id 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Imaging Protocol ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>imaging_protocol_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric identifier for the imaging protocol.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>img123</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:imaging_protocol_id 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Platform
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>platform</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The platform used to isolate the cells.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Illumina NovaSeq</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:platform 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Instrument
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>instrument</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The instrument used to isolate the cells.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Illumina NovaSeq 6000</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:instrument 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Target Probes
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>target_probes</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The type of probes used to detect and quantify specific RNA molecules in their native spatial context within a tissue or cell.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Oligo-dT</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:target_probes 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Section Thickness Μm</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>section_thickness_µm</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The thickness of the tissue section in micrometres.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>10</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d+(\.\d+)?$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:section_thickness_µm 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Section Thickness Method</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>section_thickness_method</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The method used to measure tissue section thickness.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Microtome</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:section_thickness_method 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Section Thickness Temperature</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>section_thickness_temperature</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The temperature at which the section was made in degree celsius.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>22</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^-?\d+(\.\d+)?$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:section_thickness_temperature 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Is Pathological</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>is_pathological</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A quality inhering in a bearer by virtue of the bearer's being abnormal and having a destructive effect on living tissue.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>No</td>
+                      </tr>
+                         
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:is_pathological 
+                        </td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Allowed Values</td>
+                        <td>
+                          
+                          <span class="badge bg-dark">No</span>
+                          
+                          <span class="badge bg-dark">Yes</span>
+                          
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header">Photobleaching Duration In Hours</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>photobleaching_duration_in_hours</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The duration of photobleaching in hours</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>2</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:photobleaching_duration_in_hours 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Instrument User Guide
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>instrument_user_guide</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The user guide for the instrument used.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>User Guide</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:instrument_user_guide 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Instrument User Guide Revision
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>instrument_user_guide_revision</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The revision of the instrument user guide.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>1.2</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d+(\.\d+)?$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:instrument_user_guide_revision 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Sample Preparation Guide
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>sample_preparation_guide</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The guide used for sample preparation.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>preparation_guide_v1.0.pdf</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:sample_preparation_guide 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Sample Preparation Guide Revision
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>sample_preparation_guide_revision</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>The revision of the sample preparation guide.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>1.0</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d+(\.\d+)?$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:sample_preparation_guide_revision 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Deviations From Official Protocol
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>deviations_from_official_protocol</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>Any deviations from the official protocol. Separate individual deviations with '|'.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>Temperature exceeded 25°C during storage | Sample handling delayed by 2 hours</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[A-Za-z]*[a-z]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:deviations_from_official_protocol 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="col-3"></div>
+    </div>
+
+    <!-- JS -->
+    <script src="../../../js/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+
+    <script>
+      var outputFileData = {"sc_rnaseq_dwc_v0.1.html": ["sc_rnaseq", "dwc"], "sc_rnaseq_faang_v0.1.html": ["sc_rnaseq", "faang"], "sc_rnaseq_mixs_v0.1.html": ["sc_rnaseq", "mixs"], "sc_rnaseq_tol_v0.1.html": ["sc_rnaseq", "tol"], "stx_fish_dwc_v0.1.html": ["stx_fish", "dwc"], "stx_fish_mixs_v0.1.html": ["stx_fish", "mixs"], "stx_fish_tol_v0.1.html": ["stx_fish", "tol"], "stx_seq_dwc_v0.1.html": ["stx_seq", "dwc"], "stx_seq_mixs_v0.1.html": ["stx_seq", "mixs"], "stx_seq_tol_v0.1.html": ["stx_seq", "tol"]};
+    </script>
+
+    <script src="../../../js/scripts.js" type="text/javascript"></script>
+  </body>
+</html>

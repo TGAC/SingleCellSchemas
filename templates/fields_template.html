@@ -3,33 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../../../images/favicon.ico" type="image/x-icon">
+
     <title>Single-cell Schemas</title>
 
-    <link rel="stylesheet" href="../../../../css/styles.css">
-
+    <!-- CSS -->
+    <link href="../../../css/styles.css" rel="stylesheet">
+    <link href="../../../css/fontawesome.6.7.2.all.min.css" rel="stylesheet">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
   </head>
   <body>
-    <div class="head_div container_fluid text-center text-white">
+    <div class="header-div container-fluid text-center text-white">
       <h1 class="ui header">Single-cell Schemas</h1>
+      <!-- Header icons -->
+      <div class="position-absolute top-0 end-0 mr-1 mt-2">
+        <a  class="github-link" href="https://github.com/TGAC/SingleCellSchemas" target="_blank" title="View GitHub repository">
+          <span class="fa-stack mb-10">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </div>
     </div>
 
     <div class="row">
       <div class="col-3">
         <div class="container mt-4">
           <form>
-            <!-- Standards Dropdown -->
+            <!-- Standards dropdown menu -->
             <div class="mb-3">
               <label for="std_dropdown" class="form-label"
                 >Based on Standard...</label
@@ -43,7 +49,7 @@
             </select>
             </div>
 
-            <!-- Technology dropdown -->
+            <!-- Technology dropdown menu -->
             <div class="mb-3">
               <label for="tech_dropdown" class="form-label">Technology</label>
               <select class="form-select" id="tech_dropdown">
@@ -55,10 +61,18 @@
               </select>
             </div>
 
-            <!-- Submit Button -->
+             <!-- Buttons -->
             <div class="d-flex justify-content-end">
-              <button type="submit" id="sub_btn" class="btn btn-primary">
+              <!-- Submit button -->
+              <button id="sub_btn" class="btn btn-primary" type="submit">
                 Submit
+              </button>
+
+              <!-- Download manifest button -->
+              <button id="download-manifest-btn" class="btn btn-outline-primary btn-sm" 
+                  type="button" title="Download blank manifest">
+                <i class="fa fa-download"></i>
+                <span class="action-label" style="padding-left: 3px;">Download manifest</span> 
               </button>
             </div>
           </form>
@@ -160,67 +174,14 @@
       <div class="col-3"></div>
     </div>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
-    <script>
-        var outputFileData = {{ output_data | tojson }};
-    </script>
+    <!-- JS -->
+    <script src="../../../js/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
     <script>
-      $(document).ready(function () {
-        // Call the function to load the values of the dropdowns from the URL parameters
-        load_selects_values();
-
-        // Attach a click event handler to the submit button
-        $('#sub_btn').click(function (e) {
-          e.preventDefault(); // Prevent the default form submission
-
-          // Get the selected values from the dropdowns
-          let standard = $('#std_dropdown').val();
-          let technology = $('#tech_dropdown').val();
-
-           // Find the corresponding output file name
-          let outputFileName = null;
-          for (let file in outputFileData) {
-              let [tech, std] = outputFileData[file]; // Destructure tuple values
-              if (tech === technology && std === standard) {
-                  outputFileName = file;
-                  break;
-              }
-          }
-
-          if (!outputFileName) {
-              alert('No data available for the selected options.');
-              return;
-          }
-
-          // Construct the file URL
-          let baseUrl = window.location.href.split('checklists')[0];
-          let targetUrl = `${baseUrl}checklists/html/${standard}/${outputFileName}`;
-          let args = `?std_dropdown=${standard}&tech_dropdown=${technology}`;
-
-          // Redirect to to the URL with query parameters
-          window.location.href = targetUrl + args;
-         
-        });
-
-        /**
-         * Load the values of the dropdowns from the URL parameters and set them in the dropdowns.
-         */
-        function load_selects_values() {
-          let args = new URLSearchParams(window.location.search);
-
-          // Set the value of the standard dropdown if it exists in the URL parameters
-          if (args.get('std_dropdown') !== null) {
-            $('#std_dropdown').val(args.get('std_dropdown'));
-          }
-
-          // Set the value of the technology dropdown if it exists in the URL parameters
-          if (args.get('tech_dropdown') !== null) {
-            $('#tech_dropdown').val(args.get('tech_dropdown'));
-          }
-        }
-      });
+      var outputFileData = {{ output_data | tojson }};
     </script>
+
+    <script src="../../../js/scripts.js" type="text/javascript"></script>
   </body>
 </html>

@@ -36,7 +36,7 @@ class TestConvert(unittest.TestCase):
         # Define the input JSON paths for testing
         self.base_file_path = helpers.SCHEMA_FILE_PATH
         self.standard = 'dwc' # options: 'mixs', 'tol', 'faang', 'dwc'
-        self.schemas_directory = helpers.SCHEMA_BASE_DIR_PATH
+        self.schemas_directory = helpers.SCHEMA_DIR_PATH
         self.technology_name = 'sc_rnaseq' # options: 'stx_seq', 'stx_fish', 'sc_rnaseq'
         self.technology_label = 'Single-cell RNA Sequencing' # options: 'Spatial Transcriptomics', 'Single-cell RNA Sequencing'
         
