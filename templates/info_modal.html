@@ -1,0 +1,88 @@
+<!-- Info modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center text-white" id="infoModalLabel">How to Use the Single-cell Schemas Website</h5>
+        <button type="button" class="btn-close rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Introduction -->
+        <p>The <b>Single-cell Schema</b> website supports two main research areas:</p>
+        <ul>
+          <li>Single-Cell Ribonucleic Acid Sequencing (Single-cell RNA Sequencing)</li> 
+          <li>Spatial Transcriptomics with a focus on Sequencing and Fluorescence In Situ Hybridisation (FISH)</li>
+        </ul>
+        <!-- Steps to using the website -->
+        <p>Follow these steps to navigate the site effectively:</p>
+        <ol>
+          <li>
+            Select a <b class="text-hover" data-bs-toggle="tooltip" 
+            title="Standards define the required structure and data format for single-cell schemas.">standard</b> 
+            and a <b class="text-hover" data-bs-toggle="tooltip" 
+            title="Technologies define the methods used for data collection and processing.">technology</b>  
+            from the dropdown menus on the left of the web page.
+          </li>
+          <li>
+            If data is available for your selection, the contents in the centre of the web page will automatically 
+            update to reflect the matching data.
+          </li>
+          <li>
+            If no data is available, a modal will notify you.
+          </li>
+          <li>
+            You can download a <b class="text-hover" data-bs-toggle="tooltip" 
+            title="Manifest is a spreadsheet that lists the required and optional metadata fields for the selection.">blank manifest</b> 
+            related to your selection if data is available for it.  
+          </li>
+        </ol>
+        <hr>
+        <p>
+          Navigate through the sections below to understand how the website integrates different combinations of 
+          standards and technologies.
+        </p>
+
+        <!-- Collapsible sections -->
+        <div class="accordion" id="infoAccordion">
+          <!-- Single-Cell RNA Sequencing Accordion Item -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSingleCellRNASeq">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseSingleCellRNASeq" aria-expanded="false" aria-controls="collapseSingleCellRNASeq">
+                Single-Cell Ribonucleic Acid (RNA) Sequencing
+              </button>
+            </h2>
+            <div id="collapseSingleCellRNASeq" class="accordion-collapse collapse" aria-labelledby="headingSingleCellRNASeq"
+              data-bs-parent="#infoAccordion">
+              <div class="accordion-body">
+                <p>Single-Cell Ribonucleic Acid Sequencing (scRNA-seq) is a technique that allows researchers to profile gene expression at 
+                  the single-cell level. Below are the key combinations of standards and technologies used in this field:
+                </p>
+                <ul id="singleCellInfoModalListID"></ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Spatial Transcriptomics Accordion Item -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSpatialTranscriptomics">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseSpatialTranscriptomics" aria-expanded="false" aria-controls="collapseSpatialTranscriptomics">
+                Spatial Transcriptomics
+              </button>
+            </h2>
+            <div id="collapseSpatialTranscriptomics" class="accordion-collapse collapse" aria-labelledby="headingSpatialTranscriptomics"
+              data-bs-parent="#infoAccordion">
+              <div class="accordion-body">
+                <p>Spatial Transcriptomics (ST) integrates high-throughput sequencing with spatial mapping of gene expression. Here are the 
+                  key combinations of standards and technologies used in this area:
+                </p>
+                <ul id="stxInfoModalListID"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

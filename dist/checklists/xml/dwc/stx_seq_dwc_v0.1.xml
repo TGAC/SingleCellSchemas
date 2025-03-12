@@ -5,9 +5,9 @@
       <PRIMARY_ID>STXSEQ1</PRIMARY_ID>
     </IDENTIFIERS>
     <DESCRIPTOR>
-      <LABEL>Spatial Transcriptomics Sequencing</LABEL>
+      <LABEL>Spatial Transcriptomics Sequencing (ST-Seq)</LABEL>
       <NAME>stx_seq</NAME>
-      <DESCRIPTION>TBC dwc_stx_seq</DESCRIPTION>
+      <DESCRIPTION>Spatial transcriptomics sequencing to map gene expression within tissue samples, following Darwin Core (DwC) standards for transmitting biodiversity data, to help analyse cellular interactions in a spatial context.</DESCRIPTION>
       <AUTHORITY>COPO</AUTHORITY>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>study</NAME>
@@ -41,7 +41,7 @@
           <LABEL>Description</LABEL>
           <NAME>description</NAME>
           <DESCRIPTION>A detailed description of the project which includes research goals and experimental approach. Project description should be fewer than 300 words, such as an abstract from a grant application or publication.</DESCRIPTION>
-          <EXAMPLE>This project explores the intricate details of single cells in the human body, focusing on their structure, function, and behavior. By studying individual cells, it aims to uncover how they contribute to overall health, disease progression, and human biology. This research can provide deeper insights into cellular processes, paving the way for advancements in medical treatments and personalised medicine.</EXAMPLE>
+          <EXAMPLE>This project explores the intricate details of single cells in the human body, focusing on their structure, function, and behaviour. By studying individual cells, it aims to uncover how they contribute to overall health, disease progression, and human biology. This research can provide deeper insights into cellular processes, paving the way for advancements in medical treatments and personalised medicine.</EXAMPLE>
           <NAMESPACE>dcterms:description</NAMESPACE>
           <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
@@ -65,7 +65,7 @@
           <NAMESPACE>dcterms:created</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[0-9]{4}-[0-9]{2}-[0-9]{2}$</REGEX_VALUE>
+              <REGEX_VALUE>^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -142,14 +142,42 @@
         <LABEL>Person</LABEL>
         <DESCRIPTION>Fields under component 'Person'</DESCRIPTION>
         <FIELD>
+          <LABEL>Study ID</LABEL>
+          <NAME>study_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this study</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:study_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Orcid ID</LABEL>
+          <NAME>orcid_id</NAME>
+          <DESCRIPTION>A 16-digit number that uniquely identify researchers.</DESCRIPTION>
+          <EXAMPLE>0000-1234-5678-9012</EXAMPLE>
+          <NAMESPACE>ei:orcid_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d{4}-\d{4}-\d{4}-\d{4}$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
           <LABEL>First Name</LABEL>
           <NAME>givenName</NAME>
-          <DESCRIPTION>The first name of a Person.</DESCRIPTION>
+          <DESCRIPTION>A first name (or given name) is the personal name given to an individual conducting the study.</DESCRIPTION>
           <EXAMPLE>Jane</EXAMPLE>
           <NAMESPACE>schema.org:givenName</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?:[-\s][A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -158,26 +186,40 @@
         <FIELD>
           <LABEL>Last Name</LABEL>
           <NAME>familyName</NAME>
-          <DESCRIPTION>The last name of a Person.</DESCRIPTION>
+          <DESCRIPTION>A last name (or surname) is the family name passed down from one generation to the next for the individual conducting the study.</DESCRIPTION>
           <EXAMPLE>Doe</EXAMPLE>
           <NAMESPACE>schema.org:familyName</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(-[A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Affiliation/Institution</LABEL>
+          <LABEL>Email Address</LABEL>
+          <NAME>email</NAME>
+          <DESCRIPTION>A unique identifier used to send and receive electronic messages (emails) over the internet.</DESCRIPTION>
+          <EXAMPLE>jane.doe@example.com</EXAMPLE>
+          <NAMESPACE>schema.org:email</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^(?!.*\.{2,})(?!.*-{2,})[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Affiliation or Institution</LABEL>
           <NAME>affiliation</NAME>
-          <DESCRIPTION>An organization that this person is affiliated with. For example, a school/university, a club, or a team.</DESCRIPTION>
+          <DESCRIPTION>An organisation or institution that this person is associated with.</DESCRIPTION>
           <EXAMPLE>University of Liverpool</EXAMPLE>
           <NAMESPACE>schema.org:affiliation</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -191,7 +233,7 @@
           <NAMESPACE>schema.org:funder</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -200,12 +242,12 @@
         <FIELD>
           <LABEL>Grant Award</LABEL>
           <NAME>funding</NAME>
-          <DESCRIPTION>A Grant that directly or indirectly provide funding or sponsorship for this item.</DESCRIPTION>
+          <DESCRIPTION>A grant that directly or indirectly provides funding or sponsorship for the person to conduct the study.</DESCRIPTION>
           <EXAMPLE>GRAK3489</EXAMPLE>
           <NAMESPACE>schema.org:funding</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z0-9]+(?: [A-Za-z0-9]+)*$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -238,7 +280,7 @@
           <NAMESPACE>ei:sample_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -252,7 +294,7 @@
           <NAMESPACE>dwc:scientificName</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]+[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -266,7 +308,7 @@
           <NAMESPACE>ei:organism</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]+[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -561,7 +603,7 @@
           <NAMESPACE>dwc:eventDate</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^(\d{4})(-\d{2})(-\d{2})$</REGEX_VALUE>
+              <REGEX_VALUE>^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -603,7 +645,7 @@
           <NAMESPACE>dcterms:medium</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -617,7 +659,7 @@
           <NAMESPACE>ei:accession_number</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+(?:[0-9]+)*$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -631,7 +673,7 @@
           <NAMESPACE>dwc:class</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -645,7 +687,7 @@
           <NAMESPACE>dwc:collectionCode</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -659,7 +701,7 @@
           <NAMESPACE>dwc:collectionID</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)+(?: \| https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)*)*$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -673,7 +715,7 @@
           <NAMESPACE>dwc:continent</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -685,11 +727,7 @@
           <DESCRIPTION>The standard code for the country in which the dcterms:Location occurs.</DESCRIPTION>
           <EXAMPLE>AR</EXAMPLE>
           <NAMESPACE>dwc:countryCode</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -701,7 +739,7 @@
           <NAMESPACE>dwc:county</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -715,7 +753,7 @@
           <NAMESPACE>dwc:cultivarEpithet</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -727,11 +765,7 @@
           <DESCRIPTION>An identifier for the set of data. May be a global unique identifier or an identifier specific to a collection or institution.</DESCRIPTION>
           <EXAMPLE>b15d4952-7d20-46f1-8a3e-556a512b04c5</EXAMPLE>
           <NAMESPACE>dwc:datasetID</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -743,7 +777,7 @@
           <NAMESPACE>dwc:datasetName</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -753,7 +787,7 @@
           <LABEL>Date Identified</LABEL>
           <NAME>dateIdentified</NAME>
           <DESCRIPTION>The date on which the subject was determined as representing the dwc:Taxon.</DESCRIPTION>
-          <EXAMPLE>1963-03-08T14: 07-0600</EXAMPLE>
+          <EXAMPLE>1963-03-08T14:07</EXAMPLE>
           <NAMESPACE>dwc:dateIdentified</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
@@ -802,7 +836,7 @@
           <NAMESPACE>dwc:infraspecificEpithet</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -816,7 +850,7 @@
           <NAMESPACE>dwc:institutionID</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)+(?: \| https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)*)*$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -830,7 +864,7 @@
           <NAMESPACE>dwc:island</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -844,7 +878,7 @@
           <NAMESPACE>dwc:islandGroup</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -858,7 +892,7 @@
           <NAMESPACE>dwc:kingdom</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -872,7 +906,7 @@
           <NAMESPACE>dcterms:language</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -884,11 +918,7 @@
           <DESCRIPTION>The specific description of the place.</DESCRIPTION>
           <EXAMPLE>Queets Rainforest, Olympic National Park</EXAMPLE>
           <NAMESPACE>dwc:locality</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -898,11 +928,7 @@
           <DESCRIPTION>Information about the source of this dcterms:Location information. Could be a publication (gazetteer), institution, or team of individuals.</DESCRIPTION>
           <EXAMPLE>Getty Thesaurus of Geographic Names</EXAMPLE>
           <NAMESPACE>dwc:locationAccordingTo</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -914,7 +940,7 @@
           <NAMESPACE>dwc:locationID</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)+(?: \| https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)*)*$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -926,11 +952,7 @@
           <DESCRIPTION>Comments or notes about the dcterms:Location.</DESCRIPTION>
           <EXAMPLE>under water since 2005</EXAMPLE>
           <NAMESPACE>dwc:locationRemarks</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -940,11 +962,7 @@
           <DESCRIPTION>Comments or notes about the dwc:MaterialEntity instance.</DESCRIPTION>
           <EXAMPLE>found in association with charred remains</EXAMPLE>
           <NAMESPACE>dwc:materialEntityRemarks</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -956,7 +974,7 @@
           <NAMESPACE>dwc:maximumDepthInMeters</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^-?\d+(\.\d+)?$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -970,7 +988,7 @@
           <NAMESPACE>dwc:maximumDistanceAboveSurfaceInMeters</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^-?\d+(\.\d+)?$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -984,7 +1002,7 @@
           <NAMESPACE>dwc:maximumElevationInMeters</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^-?\d+(\.\d+)?$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -998,7 +1016,7 @@
           <NAMESPACE>dwc:minimumDepthInMeters</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^-?\d+(\.\d+)?$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -1012,7 +1030,7 @@
           <NAMESPACE>dwc:minimumDistanceAboveSurfaceInMeters</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^-?\d+(\.\d+)?$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -1026,7 +1044,7 @@
           <NAMESPACE>dwc:minimumElevationInMeters</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^-?\d+(\.\d+)?$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -1038,11 +1056,7 @@
           <DESCRIPTION>An identifier for the dwc:Organism instance (as opposed to a particular digital record of the dwc:Organism). May be a globally unique identifier or an identifier specific to the data set.</DESCRIPTION>
           <EXAMPLE>organism123</EXAMPLE>
           <NAMESPACE>dwc:organismID</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1052,11 +1066,7 @@
           <DESCRIPTION>A number or enumeration value for the quantity of dwc:Organisms.</DESCRIPTION>
           <EXAMPLE>27</EXAMPLE>
           <NAMESPACE>dwc:organismQuantity</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1066,11 +1076,7 @@
           <DESCRIPTION>The type of quantification system used for the quantity of organisms.</DESCRIPTION>
           <EXAMPLE>12.5</EXAMPLE>
           <NAMESPACE>dwc:organismQuantityType</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1080,11 +1086,7 @@
           <DESCRIPTION>Comments or notes about the dwc:Organism instance.</DESCRIPTION>
           <EXAMPLE>One of a litter of six</EXAMPLE>
           <NAMESPACE>dwc:organismRemarks</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1094,11 +1096,7 @@
           <DESCRIPTION>The full scientific name of the phylum or division in which the dwc:Taxon is classified.</DESCRIPTION>
           <EXAMPLE>Chordata</EXAMPLE>
           <NAMESPACE>dwc:phylum</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1108,11 +1106,7 @@
           <DESCRIPTION>A person, group, or organization responsible for recording the original dwc:Occurrence.</DESCRIPTION>
           <EXAMPLE>José E. Crespo</EXAMPLE>
           <NAMESPACE>dwc:recordedBy</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1124,7 +1118,7 @@
           <NAMESPACE>dwc:recordedByID</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)+(?: \| https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)*)*$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -1161,11 +1155,7 @@
           <DESCRIPTION>The unit of measurement of the size (time duration, length, area, or volume) of a sample in a sampling dwc:Event.</DESCRIPTION>
           <EXAMPLE>minute</EXAMPLE>
           <NAMESPACE>dwc:sampleSizeUnit</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1177,7 +1167,7 @@
           <NAMESPACE>dwc:sampleSizeValue</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^-?\d+(\.\d+)?$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -1189,11 +1179,7 @@
           <DESCRIPTION>The amount of effort expended during a dwc:Event.</DESCRIPTION>
           <EXAMPLE>40 trap-nights</EXAMPLE>
           <NAMESPACE>dwc:samplingEffort</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1203,11 +1189,7 @@
           <DESCRIPTION>The methods or protocols used during a dwc:Event, denoted by an IRI.</DESCRIPTION>
           <EXAMPLE>UV light trap</EXAMPLE>
           <NAMESPACE>dwc:samplingProtocol</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1217,11 +1199,7 @@
           <DESCRIPTION>The name of the first or species epithet of the dwc:scientificName.</DESCRIPTION>
           <EXAMPLE>concolor</EXAMPLE>
           <NAMESPACE>dwc:specificEpithet</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1231,11 +1209,7 @@
           <DESCRIPTION>The full scientific name of the subfamily in which the dwc:Taxon is classified.</DESCRIPTION>
           <EXAMPLE>Periptyctinae</EXAMPLE>
           <NAMESPACE>dwc:subfamily</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1245,11 +1219,7 @@
           <DESCRIPTION>The full scientific name of the subgenus in which the dwc:Taxon is classified. Values should include the genus to avoid homonym confusion.</DESCRIPTION>
           <EXAMPLE>Strobus</EXAMPLE>
           <NAMESPACE>dwc:subgenus</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1259,11 +1229,7 @@
           <DESCRIPTION>An identifier for the taxonomic concept to which the record refers - not for the nomenclatural details of a dwc:Taxon.</DESCRIPTION>
           <EXAMPLE>8fa58e08-08de-4ac1-b69c-1235340b7001</EXAMPLE>
           <NAMESPACE>dwc:taxonConceptID</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1273,11 +1239,7 @@
           <DESCRIPTION>Comments or notes about the taxon or name.</DESCRIPTION>
           <EXAMPLE>this name is a misspelling in common use</EXAMPLE>
           <NAMESPACE>dwc:taxonRemarks</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1287,11 +1249,7 @@
           <DESCRIPTION>The status of the use of the dwc:scientificName as a label for a taxon. Requires taxonomic opinion to define the scope of a dwc:Taxon. Rules of priority then are used to define the taxonomic status of the nomenclature contained in that scope, combined with the experts opinion. It must be linked to a specific taxonomic reference that defines the concept.</DESCRIPTION>
           <EXAMPLE>misapplied</EXAMPLE>
           <NAMESPACE>dwc:taxonomicStatus</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1301,11 +1259,7 @@
           <DESCRIPTION>The nature or genre of the resource.</DESCRIPTION>
           <EXAMPLE>StillImage</EXAMPLE>
           <NAMESPACE>dcterms:type</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1315,11 +1269,7 @@
           <DESCRIPTION>The spatial coordinate system for the dwc:verbatimLatitude and dwc:verbatimLongitude or the dwc:verbatimCoordinates of the dcterms:Location.</DESCRIPTION>
           <EXAMPLE>decimal degrees</EXAMPLE>
           <NAMESPACE>dwc:verbatimCoordinateSystem</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1329,11 +1279,7 @@
           <DESCRIPTION>The verbatim original spatial coordinates of the dcterms:Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in dwc:verbatimSRS and the coordinate system should be stored in dwc:verbatimCoordinateSystem.</DESCRIPTION>
           <EXAMPLE>41 05 54S 121 05 34W</EXAMPLE>
           <NAMESPACE>dwc:verbatimCoordinates</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1343,11 +1289,7 @@
           <DESCRIPTION>The original description of the depth below the local surface.</DESCRIPTION>
           <EXAMPLE>100-200</EXAMPLE>
           <NAMESPACE>dwc:verbatimDepth</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1357,11 +1299,7 @@
           <DESCRIPTION>The original description of the elevation (altitude, usually above sea level) of the Location.</DESCRIPTION>
           <EXAMPLE>100-200</EXAMPLE>
           <NAMESPACE>dwc:verbatimElevation</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1371,11 +1309,7 @@
           <DESCRIPTION>The verbatim original representation of the date and time information for a dwc:Event.</DESCRIPTION>
           <EXAMPLE>spring 1910</EXAMPLE>
           <NAMESPACE>dwc:verbatimEventDate</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1385,11 +1319,7 @@
           <DESCRIPTION>A string representing the taxonomic identification as it appeared in the original record.</DESCRIPTION>
           <EXAMPLE>Peromyscus sp.</EXAMPLE>
           <NAMESPACE>dwc:verbatimIdentification</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1399,11 +1329,7 @@
           <DESCRIPTION>The content of this term should include no embellishments, prefixes, headers or other additions made to the text. Abbreviations must not be expanded and supposed misspellings must not be corrected. Lines or breakpoints between blocks of text that could be verified by seeing the original labels or images of them may be used. Examples of material entities include preserved specimens, fossil specimens, and material samples. Best practice is to use UTF-8 for all characters. Best practice is to add comment ‚ÄúverbatimLabel derived from human transcription‚Äù in dwc:occurrenceRemarks.</DESCRIPTION>
           <EXAMPLE>Monotoma longicollis 4 ♂ Det TC McElrath 2018</EXAMPLE>
           <NAMESPACE>dwc:verbatimLabel</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1413,11 +1339,7 @@
           <DESCRIPTION>The verbatim original latitude of the dcterms:Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in dwc:verbatimSRS and the coordinate system should be stored in dwc:verbatimCoordinateSystem.</DESCRIPTION>
           <EXAMPLE>41 05 54.03S</EXAMPLE>
           <NAMESPACE>dwc:verbatimLatitude</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1427,11 +1349,7 @@
           <DESCRIPTION>The original textual description of the place.</DESCRIPTION>
           <EXAMPLE>25 km NNE Bariloche por R. Nac. 237</EXAMPLE>
           <NAMESPACE>dwc:verbatimLocality</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1441,11 +1359,7 @@
           <DESCRIPTION>The verbatim original longitude of the dcterms:Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in dwc:verbatimSRS and the coordinate system should be stored in dwc:verbatimCoordinateSystem.</DESCRIPTION>
           <EXAMPLE>121d 10' 34&quot; W</EXAMPLE>
           <NAMESPACE>dwc:verbatimLongitude</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1455,11 +1369,7 @@
           <DESCRIPTION>The ellipsoid, geodetic datum, or spatial reference system (SRS) upon which coordinates given in dwc:verbatimLatitude and dwc:verbatimLongitude, or dwc:verbatimCoordinates are based.</DESCRIPTION>
           <EXAMPLE>WGS84</EXAMPLE>
           <NAMESPACE>dwc:verbatimSRS</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1469,11 +1379,7 @@
           <DESCRIPTION>The taxonomic rank of the most specific name in the dwc:scientificName as it appears in the original record.</DESCRIPTION>
           <EXAMPLE>prole</EXAMPLE>
           <NAMESPACE>dwc:verbatimTaxonRank</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1483,11 +1389,7 @@
           <DESCRIPTION>A common or vernacular name.</DESCRIPTION>
           <EXAMPLE>Andean Condor</EXAMPLE>
           <NAMESPACE>dwc:vernacularName</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1497,11 +1399,7 @@
           <DESCRIPTION>The vertical datum used as the reference upon which the values in the elevation terms are based.</DESCRIPTION>
           <EXAMPLE>EGM84</EXAMPLE>
           <NAMESPACE>dwc:verticalDatum</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1511,11 +1409,7 @@
           <DESCRIPTION>An indication of whether a dwc:Organism was alive or dead at the time of collection or observation.</DESCRIPTION>
           <EXAMPLE>alive</EXAMPLE>
           <NAMESPACE>dwc:vitality</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1525,11 +1419,7 @@
           <DESCRIPTION>The name of the water body in which the dcterms:Location occurs.</DESCRIPTION>
           <EXAMPLE>Indian Ocean</EXAMPLE>
           <NAMESPACE>dwc:waterBody</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1539,11 +1429,7 @@
           <DESCRIPTION>An identifier for the dwc:MaterialSample (as opposed to a particular digital record of the dwc:MaterialSample). In the absence of a persistent global unique identifier, construct one from a combination of identifiers in the record that will most closely make the dwc:materialSampleID globally unique.</DESCRIPTION>
           <EXAMPLE>06809dc5-f143-459a-be1a-6f03e63fc083</EXAMPLE>
           <NAMESPACE>dwc:materialSampleID</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1574,7 +1460,7 @@
           <NAMESPACE>ei:library_prep_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -1588,7 +1474,7 @@
           <NAMESPACE>ei:sample_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -1614,11 +1500,7 @@
           <DESCRIPTION>The method used to amplify the Complementary DNA (cDNA).</DESCRIPTION>
           <EXAMPLE>PCR</EXAMPLE>
           <NAMESPACE>ei:amplification_method</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1656,11 +1538,7 @@
           <DESCRIPTION>The library construction method (including version) that was used.</DESCRIPTION>
           <EXAMPLE>Smart-Seq2</EXAMPLE>
           <NAMESPACE>ei:lib_construction_method</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1670,11 +1548,7 @@
           <DESCRIPTION>The specific fraction of biological macromolecule from which the sequencing library is derived.</DESCRIPTION>
           <EXAMPLE>RNA</EXAMPLE>
           <NAMESPACE>ei:input_molecule</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1788,11 +1662,7 @@
           <DESCRIPTION>The specific type of external RNA used for spiking in, often indicating the source or nature of the control RNA.</DESCRIPTION>
           <EXAMPLE>Synthetic RNA</EXAMPLE>
           <NAMESPACE>ei:spike_type</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1802,11 +1672,7 @@
           <DESCRIPTION>The final concentration or dilution (for commercial sets) of the spike in mix.</DESCRIPTION>
           <EXAMPLE>1:1000</EXAMPLE>
           <NAMESPACE>ei:spike_in_dilution_or_concentration</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1816,11 +1682,7 @@
           <DESCRIPTION>Barcode sequence used on the i5 adapter during library preparation for identifying samples in multiplexed single-cell RNA-sequencing.</DESCRIPTION>
           <EXAMPLE>ATCACG</EXAMPLE>
           <NAMESPACE>ei:i5_index</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1830,11 +1692,7 @@
           <DESCRIPTION>Barcode sequence used on the i7 adapter to distinguish samples in multiplexed sequencing runs.</DESCRIPTION>
           <EXAMPLE>CGATGT</EXAMPLE>
           <NAMESPACE>ei:i7_index</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1863,11 +1721,7 @@
           <DESCRIPTION>The nucleotide sequence of the i5 index used in multiplexing during sequencing.</DESCRIPTION>
           <EXAMPLE>ATCGTAGC</EXAMPLE>
           <NAMESPACE>ei:i5_sequence</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1877,11 +1731,7 @@
           <DESCRIPTION>The specific nucleotide sequence of the i7 index used for a sample.</DESCRIPTION>
           <EXAMPLE>TGCATGCA</EXAMPLE>
           <NAMESPACE>ei:i7_sequence</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1893,7 +1743,7 @@
           <NAMESPACE>ei:plate_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -1905,11 +1755,7 @@
           <DESCRIPTION>The row identifier in a 96-well plate indicating the sample's position.</DESCRIPTION>
           <EXAMPLE>A</EXAMPLE>
           <NAMESPACE>ei:well_row</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1973,7 +1819,7 @@
           <NAMESPACE>ei:sequencing_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -1985,11 +1831,7 @@
           <DESCRIPTION>The name of the sequencing platform used for the experiment.</DESCRIPTION>
           <EXAMPLE>Pacbio</EXAMPLE>
           <NAMESPACE>ei:sequencing_platform_name</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1999,11 +1841,7 @@
           <DESCRIPTION>This refers to the machine or platform used for sequencing, with variations in throughput, read lengths, error rates, and application suitability.</DESCRIPTION>
           <EXAMPLE>Illumina NovaSeq 6000</EXAMPLE>
           <NAMESPACE>ei:sequencing_instrument_model</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -2211,20 +2049,6 @@
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>File ID</LABEL>
-          <NAME>file_id</NAME>
-          <DESCRIPTION>A unique alphanumeric identifier for this file</DESCRIPTION>
-          <EXAMPLE>A7F9B3X2</EXAMPLE>
-          <NAMESPACE>ei:file_id</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
           <LABEL>Library Preparation ID</LABEL>
           <NAME>lib_prep_id</NAME>
           <DESCRIPTION>A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.</DESCRIPTION>
@@ -2232,7 +2056,7 @@
           <NAMESPACE>ei:lib_prep_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -2246,7 +2070,21 @@
           <NAMESPACE>ei:sequencing_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>File ID</LABEL>
+          <NAME>file_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this file</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:file_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -2260,7 +2098,7 @@
           <NAMESPACE>ei:read_1_file</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -2274,7 +2112,7 @@
           <NAMESPACE>ei:read_2_file</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -2288,7 +2126,7 @@
           <NAMESPACE>ei:index_1_file</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -2302,7 +2140,7 @@
           <NAMESPACE>ei:index_2_file</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -2337,7 +2175,7 @@ dataset.</DESCRIPTION>
           <NAMESPACE>ei:white_list_barcode_file</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -2351,7 +2189,7 @@ dataset.</DESCRIPTION>
           <NAMESPACE>ei:file_name</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -2360,14 +2198,10 @@ dataset.</DESCRIPTION>
         <FIELD>
           <LABEL>File Type</LABEL>
           <NAME>file_type</NAME>
-          <DESCRIPTION>A file type is a name given to a specific kind of file. Common file types are fastq, gtf, fasta, bam, etc.</DESCRIPTION>
+          <DESCRIPTION>A file type is a name given to a specific kind of file. Common file types are fastq, gtf, fasta, bam, archive etc.</DESCRIPTION>
           <EXAMPLE>fastq</EXAMPLE>
           <NAMESPACE>ei:file_type</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>

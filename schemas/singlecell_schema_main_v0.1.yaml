@@ -57,7 +57,7 @@ classes:
             human body
         - value: focusing on their structure
         - value: function
-        - value: and behavior. By studying individual cells
+        - value: and behaviour. By studying individual cells
         - value: it aims to uncover how they contribute to overall health
         - value: disease progression
         - value: and human biology. This research can provide deeper insights into
@@ -106,7 +106,7 @@ classes:
         inlined: false
       technology:
         identifier: false
-        required: true
+        required: false
         description: The sorting or visualisation technology used.
         examples:
         - value: Vizgen
@@ -158,7 +158,7 @@ classes:
           manner. This field accepts ontology terms from Experimental Factor Ontology
           (EFO) and/or Ontology for Biomedical Investigations (OBI)
         examples:
-        - value: time series design
+        - value: EFO:0001779
         slot_uri: mixs:experimental_factor
         domain: Study
         range: string
@@ -213,10 +213,33 @@ classes:
         inlined: false
   Person:
     attributes:
+      study_id:
+        identifier: false
+        required: true
+        description: A unique alphanumeric identifier for this study
+        examples:
+        - value: A7F9B3X2
+        slot_uri: ei:study_id
+        domain: Person
+        range: string
+        multivalued: false
+        inlined: false
+      orcid_id:
+        identifier: false
+        required: false
+        description: A 16-digit number that uniquely identify researchers.
+        examples:
+        - value: 0000-1234-5678-9012
+        slot_uri: ei:orcid_id
+        domain: Person
+        range: string
+        multivalued: false
+        inlined: false
       givenName:
         identifier: false
         required: true
-        description: The first name of a Person.
+        description: A first name (or given name) is the personal name given to an
+          individual conducting the study.
         examples:
         - value: Jane
         slot_uri: schema.org:givenName
@@ -227,7 +250,8 @@ classes:
       familyName:
         identifier: false
         required: true
-        description: The last name of a Person.
+        description: A last name (or surname) is the family name passed down from
+          one generation to the next for the individual conducting the study.
         examples:
         - value: Doe
         slot_uri: schema.org:familyName
@@ -235,11 +259,23 @@ classes:
         range: string
         multivalued: false
         inlined: false
+      email:
+        identifier: false
+        required: false
+        description: A unique identifier used to send and receive electronic messages
+          (emails) over the internet.
+        examples:
+        - value: jane.doe@example.com
+        slot_uri: schema.org:email
+        domain: Person
+        range: string
+        multivalued: false
+        inlined: false
       affiliation:
         identifier: false
         required: true
-        description: An organization that this person is affiliated with. For example,
-          a school/university, a club, or a team.
+        description: An organisation or institution that this person is associated
+          with.
         examples:
         - value: University of Liverpool
         slot_uri: schema.org:affiliation
@@ -262,8 +298,8 @@ classes:
       funding:
         identifier: false
         required: false
-        description: A Grant that directly or indirectly provide funding or sponsorship
-          for this item.
+        description: A grant that directly or indirectly provides funding or sponsorship
+          for the person to conduct the study.
         examples:
         - value: GRAK3489
         slot_uri: schema.org:funding
@@ -511,7 +547,7 @@ classes:
         description: The date on which the subject was determined as representing
           the dwc:Taxon.
         examples:
-        - value: '1963-03-08T14: 07-0600'
+        - value: 1963-03-08T14:07
         slot_uri: dwc:dateIdentified
         domain: Sample
         range: string
@@ -1193,7 +1229,7 @@ classes:
         required: false
         description: An identifier of the strain of the organism, if applicable.
         examples:
-        - value: CCAP1119/17
+        - value: XY [en:42]
         slot_uri: mixs:microb_start_taxID
         domain: Sample
         range: string
@@ -1221,7 +1257,7 @@ classes:
           and longitude. The values should be reported in decimal degrees, limited
           to 8 decimal points, and in WGS84 system
         examples:
-        - value: '52.2053'
+        - value: '50.123'
         slot_uri: mixs:lat_lon
         domain: Sample
         range: string
@@ -1832,7 +1868,8 @@ classes:
         identifier: false
         required: true
         description: A link to the protocol for specimen collection.
-        examples: []
+        examples:
+        - value: https://data.faang.org/api/fire_api/samples/WU_SOP_GENESWITCH_PIGLET_AND_FETUS_D70_SAMPLING_20210907.pdf
         slot_uri: faang:specimen_collection_protocol
         domain: Sample
         range: string
@@ -1842,7 +1879,8 @@ classes:
         identifier: false
         required: true
         description: Sample name or BioSample ID for an animal record.
-        examples: []
+        examples:
+        - value: SAMEA112465628
         slot_uri: faang:derived_from
         domain: Sample
         range: string
@@ -2008,7 +2046,8 @@ classes:
         required: true
         description: Link to protocol describing how the single cells were separated
           into a single-cell suspension.
-        examples: []
+        examples:
+        - value: https://api.faang.org/files/protocols/samples/INRAE_SOP_PLUS4PIGS_EMBRYOS_DISSOCIATION_PROTO4_20240710.pdf
         slot_uri: faang:single_cell_isolation_protocol
         domain: Dissociation
         range: string
@@ -2018,7 +2057,8 @@ classes:
         identifier: false
         required: true
         description: Provide a cell type from the CL ontology.
-        examples: []
+        examples:
+        - value: blastocyst
         slot_uri: faang:cell_type
         domain: Dissociation
         range: string
@@ -2032,7 +2072,8 @@ classes:
           'fine needle trituration'. For blood, milk and other fluids, where there
           is no tissue dissociation use 'fluids'. Please contact FAANG DCC to add
           more terms.
-        examples: []
+        examples:
+        - value: proteolysis
         slot_uri: faang:tissue_dissociation
         domain: Dissociation
         range: enum
@@ -2042,7 +2083,8 @@ classes:
         identifier: false
         required: true
         description: Sample name or BioSample ID for a specimen record.
-        examples: []
+        examples:
+        - value: SSC_INRAE_GUT_ORGANOID_100I
         slot_uri: faang:derived_from
         domain: Dissociation
         range: string
@@ -2239,7 +2281,8 @@ classes:
         identifier: false
         required: true
         description: Sample name or BioSample ID for a specimen record.
-        examples: []
+        examples:
+        - value: SAMEA112465628
         slot_uri: faang:derived_from
         domain: Cell Suspension
         range: string
@@ -2929,211 +2972,6 @@ classes:
         range: string
         multivalued: false
         inlined: false
-  File:
-    attributes:
-      study_id:
-        identifier: false
-        required: true
-        description: A unique alphanumeric identifier for this study
-        examples:
-        - value: A7F9B3X2
-        slot_uri: ei:study_id
-        domain: File
-        range: string
-        multivalued: false
-        inlined: false
-      file_id:
-        identifier: true
-        required: true
-        description: A unique alphanumeric identifier for this file
-        examples:
-        - value: A7F9B3X2
-        slot_uri: ei:file_id
-        domain: File
-        range: string
-        multivalued: false
-        inlined: false
-      lib_prep_id:
-        identifier: false
-        required: false
-        description: A unique alphanumeric reference or identifier for the library
-          preparation protocol used during the sequencing.
-        examples:
-        - value: libPrep123
-        slot_uri: ei:lib_prep_id
-        domain: File
-        range: string
-        multivalued: false
-        inlined: false
-      sequencing_id:
-        identifier: false
-        required: false
-        description: A unique alphanumeric reference or identifier for the sequencing
-          protocol.
-        examples:
-        - value: seq123
-        slot_uri: ei:sequencing_id
-        domain: File
-        range: string
-        multivalued: false
-        inlined: false
-      read_1_file:
-        identifier: false
-        required: false
-        description: The name or accession of the file that contains read 1.
-        examples:
-        - value: file1_r1.fastq.gz
-        slot_uri: ei:read_1_file
-        domain: File
-        range: file
-        multivalued: false
-        inlined: false
-      read_2_file:
-        identifier: false
-        required: false
-        description: The name or accession of the file that contains read 2.
-        examples:
-        - value: file2_r2.fastq.gz
-        slot_uri: ei:read_2_file
-        domain: File
-        range: file
-        multivalued: false
-        inlined: false
-      index_1_file:
-        identifier: false
-        required: false
-        description: The name or accession of the file that contains index 1.
-        examples:
-        - value: file1_i1.fastq.gz
-        slot_uri: ei:index_1_file
-        domain: File
-        range: file
-        multivalued: false
-        inlined: false
-      index_2_file:
-        identifier: false
-        required: false
-        description: The name or accession of the file that contains index 2.
-        examples:
-        - value: file2_i2.fastq.gz
-        slot_uri: ei:index_2_file
-        domain: File
-        range: file
-        multivalued: false
-        inlined: false
-      read_checksum:
-        identifier: false
-        required: false
-        description: Result of a hash function calculated on the content of both the
-          read 1 file and the read 2 file to verify file integrity. Commonly used
-          algorithms include MD5 and SHA-1. The checksums should be separated by a
-          comma (,).
-        examples:
-        - value: d41d8cd98f00b204e9800998ecf8427e
-        - value: 5a105e8b9d40e1329780d62ea2265d8a77a1a45e
-        slot_uri: ei:read_checksum
-        domain: File
-        range: string
-        multivalued: false
-        inlined: false
-      index_checksum:
-        identifier: false
-        required: false
-        description: Result of a hash function calculated on the content of both the
-          index 1 file and the index 2 file to verify file integrity. Commonly used
-          algorithms include MD5 and SHA-1. The checksums should be separated by a
-          comma (,).
-        examples:
-        - value: d3486ae9136e7856bc42212385ea797094475802
-        - value: b7e23ec29af22b0b4e41da31e868d57226121c84
-        slot_uri: ei:index_checksum
-        domain: File
-        range: string
-        multivalued: false
-        inlined: false
-      white_list_barcode_file:
-        identifier: false
-        required: false
-        description: 'A file containing the known cell barcodes in the
-
-          dataset.'
-        examples:
-        - value: barcodes.tsv
-        slot_uri: ei:white_list_barcode_file
-        domain: File
-        range: file
-        multivalued: false
-        inlined: false
-      file_name:
-        identifier: false
-        required: true
-        description: A filename or file name is a name used to uniquely identify a
-          data file related to the study.
-        examples:
-        - value: file001
-        slot_uri: ei:file_name
-        domain: File
-        range: file
-        multivalued: false
-        inlined: false
-      file_type:
-        identifier: false
-        required: true
-        description: A file type is a name given to a specific kind of file. Common
-          file types are fastq, gtf, fasta, bam, etc.
-        examples:
-        - value: fastq
-        slot_uri: ei:file_type
-        domain: File
-        range: string
-        multivalued: false
-        inlined: false
-      expression_data_file:
-        identifier: false
-        required: false
-        description: The name or accession of the file which quantifies the level
-          of gene, transcript, or protein expression in a given biological sample
-          or condition.
-        examples:
-        - value: filename1.txt
-        slot_uri: ei:expression_data_file
-        domain: File
-        range: file
-        multivalued: false
-        inlined: false
-      imaging_protocol_id:
-        identifier: false
-        required: true
-        description: A unique alphanumeric identifier for the imaging protocol.
-        examples:
-        - value: img123
-        slot_uri: ei:imaging_protocol_id
-        domain: File
-        range: string
-        multivalued: false
-        inlined: false
-      centroidX:
-        identifier: false
-        required: false
-        description: X Coordinate of the approximate center pixel for this sample
-        examples:
-        - value: '450'
-        slot_uri: ei:centroidX
-        domain: File
-        range: int
-        multivalued: false
-        inlined: false
-      centroidY:
-        identifier: false
-        required: false
-        description: Y Coordinate of the approximate center pixel for this sample
-        examples:
-        - value: '450'
-        slot_uri: ei:centroidY
-        domain: File
-        range: int
-        multivalued: false
-        inlined: false
   Analysis Derived Data:
     attributes:
       study_id:
@@ -3575,9 +3413,7 @@ classes:
         description: Gene or transcript names should be listed as Ensembl (or other
           standardized ID), with gene short names in metadata.
         examples:
-        - value: The UMI count matrix includes genes identified by their Ensembl IDs
-        - value: such as 'ENSG00000139618' for the BRCA1 gene. See the full list of
-            Ensembl IDs in the metadata file.
+        - value: ENSG00000139618
         slot_uri: ei:ensembl_ids
         domain: Data Availability Checklist
         range: string
@@ -3657,6 +3493,189 @@ classes:
         range: string
         multivalued: false
         inlined: false
+  File:
+    attributes:
+      study_id:
+        identifier: false
+        required: true
+        description: A unique alphanumeric identifier for this study
+        examples:
+        - value: A7F9B3X2
+        slot_uri: ei:study_id
+        domain: File
+        range: string
+        multivalued: false
+        inlined: false
+      lib_prep_id:
+        identifier: false
+        required: false
+        description: A unique alphanumeric reference or identifier for the library
+          preparation protocol used during the sequencing.
+        examples:
+        - value: libPrep123
+        slot_uri: ei:lib_prep_id
+        domain: File
+        range: string
+        multivalued: false
+        inlined: false
+      sequencing_id:
+        identifier: false
+        required: false
+        description: A unique alphanumeric reference or identifier for the sequencing
+          protocol.
+        examples:
+        - value: seq123
+        slot_uri: ei:sequencing_id
+        domain: File
+        range: string
+        multivalued: false
+        inlined: false
+      file_id:
+        identifier: true
+        required: true
+        description: A unique alphanumeric identifier for this file
+        examples:
+        - value: A7F9B3X2
+        slot_uri: ei:file_id
+        domain: File
+        range: string
+        multivalued: false
+        inlined: false
+      read_1_file:
+        identifier: false
+        required: false
+        description: The name or accession of the file that contains read 1.
+        examples:
+        - value: file1_r1.fastq.gz
+        slot_uri: ei:read_1_file
+        domain: File
+        range: file
+        multivalued: false
+        inlined: false
+      read_2_file:
+        identifier: false
+        required: false
+        description: The name or accession of the file that contains read 2.
+        examples:
+        - value: file2_r2.fastq.gz
+        slot_uri: ei:read_2_file
+        domain: File
+        range: file
+        multivalued: false
+        inlined: false
+      index_1_file:
+        identifier: false
+        required: false
+        description: The name or accession of the file that contains index 1.
+        examples:
+        - value: file1_i1.fastq.gz
+        slot_uri: ei:index_1_file
+        domain: File
+        range: file
+        multivalued: false
+        inlined: false
+      index_2_file:
+        identifier: false
+        required: false
+        description: The name or accession of the file that contains index 2.
+        examples:
+        - value: file2_i2.fastq.gz
+        slot_uri: ei:index_2_file
+        domain: File
+        range: file
+        multivalued: false
+        inlined: false
+      read_checksum:
+        identifier: false
+        required: false
+        description: Result of a hash function calculated on the content of both the
+          read 1 file and the read 2 file to verify file integrity. Commonly used
+          algorithms include MD5 and SHA-1. The checksums should be separated by a
+          comma (,).
+        examples:
+        - value: d41d8cd98f00b204e9800998ecf8427e
+        - value: 5a105e8b9d40e1329780d62ea2265d8a77a1a45e
+        slot_uri: ei:read_checksum
+        domain: File
+        range: string
+        multivalued: false
+        inlined: false
+      index_checksum:
+        identifier: false
+        required: false
+        description: Result of a hash function calculated on the content of both the
+          index 1 file and the index 2 file to verify file integrity. Commonly used
+          algorithms include MD5 and SHA-1. The checksums should be separated by a
+          comma (,).
+        examples:
+        - value: d3486ae9136e7856bc42212385ea797094475802
+        - value: b7e23ec29af22b0b4e41da31e868d57226121c84
+        slot_uri: ei:index_checksum
+        domain: File
+        range: string
+        multivalued: false
+        inlined: false
+      white_list_barcode_file:
+        identifier: false
+        required: false
+        description: 'A file containing the known cell barcodes in the
+
+          dataset.'
+        examples:
+        - value: barcodes.tsv
+        slot_uri: ei:white_list_barcode_file
+        domain: File
+        range: file
+        multivalued: false
+        inlined: false
+      file_name:
+        identifier: false
+        required: true
+        description: A filename or file name is a name used to uniquely identify a
+          data file related to the study.
+        examples:
+        - value: file001
+        slot_uri: ei:file_name
+        domain: File
+        range: file
+        multivalued: false
+        inlined: false
+      file_type:
+        identifier: false
+        required: true
+        description: A file type is a name given to a specific kind of file. Common
+          file types are fastq, gtf, fasta, bam, archive etc.
+        examples:
+        - value: fastq
+        slot_uri: ei:file_type
+        domain: File
+        range: string
+        multivalued: false
+        inlined: false
+      expression_data_file:
+        identifier: false
+        required: false
+        description: The name or accession of the file which quantifies the level
+          of gene, transcript, or protein expression in a given biological sample
+          or condition.
+        examples:
+        - value: filename1.txt
+        slot_uri: ei:expression_data_file
+        domain: File
+        range: file
+        multivalued: false
+        inlined: false
+      imaging_protocol_id:
+        identifier: false
+        required: true
+        description: A unique alphanumeric identifier for the imaging protocol.
+        examples:
+        - value: img123
+        slot_uri: ei:imaging_protocol_id
+        domain: File
+        range: string
+        multivalued: false
+        inlined: false
   Imaging Protocol:
     attributes:
       study_id:
@@ -3703,14 +3722,14 @@ classes:
         range: string
         multivalued: false
         inlined: false
-      target_probes:
+      target_probe_code:
         identifier: false
         required: true
         description: The type of probes used to detect and quantify specific RNA molecules
           in their native spatial context within a tissue or cell.
         examples:
         - value: Oligo-dT
-        slot_uri: ei:target_probes
+        slot_uri: ei:target_probe_code
         domain: Imaging Protocol
         range: string
         multivalued: false
@@ -3767,6 +3786,29 @@ classes:
         examples:
         - value: '2'
         slot_uri: ei:photobleaching_duration_in_hours
+        domain: Imaging Protocol
+        range: string
+        multivalued: false
+        inlined: false
+      clearing_with_proteinasek:
+        identifier: false
+        required: true
+        description: "The duration of clearing at 47\xB0C with Proteinase K."
+        examples:
+        - value: 24 hrs
+        slot_uri: ei:clearing_with_proteinasek
+        domain: Imaging Protocol
+        range: string
+        multivalued: false
+        inlined: false
+      clearing_without_proteinasek:
+        identifier: false
+        required: true
+        description: "The duration of tissue clearing at 37\xB0C without Proteinase\
+          \ K."
+        examples:
+        - value: 4.5 days
+        slot_uri: ei:clearing_without_proteinasek
         domain: Imaging Protocol
         range: string
         multivalued: false

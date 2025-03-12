@@ -5,9 +5,9 @@
       <PRIMARY_ID>STXSEQ1</PRIMARY_ID>
     </IDENTIFIERS>
     <DESCRIPTOR>
-      <LABEL>Spatial Transcriptomics Sequencing</LABEL>
+      <LABEL>Spatial Transcriptomics Sequencing (ST-Seq)</LABEL>
       <NAME>stx_seq</NAME>
-      <DESCRIPTION>TBC mixs_stx_seq</DESCRIPTION>
+      <DESCRIPTION>Spatial transcriptomics sequencing, which provides a comprehensive spatial map of gene expression within tissues, adhering to the Minimum Information about any (x) Sequence (MIxS) standard, detailing the contextual information about sampling and sequencing processes.</DESCRIPTION>
       <AUTHORITY>COPO</AUTHORITY>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>study</NAME>
@@ -41,7 +41,7 @@
           <LABEL>Description</LABEL>
           <NAME>description</NAME>
           <DESCRIPTION>A detailed description of the project which includes research goals and experimental approach. Project description should be fewer than 300 words, such as an abstract from a grant application or publication.</DESCRIPTION>
-          <EXAMPLE>This project explores the intricate details of single cells in the human body, focusing on their structure, function, and behavior. By studying individual cells, it aims to uncover how they contribute to overall health, disease progression, and human biology. This research can provide deeper insights into cellular processes, paving the way for advancements in medical treatments and personalised medicine.</EXAMPLE>
+          <EXAMPLE>This project explores the intricate details of single cells in the human body, focusing on their structure, function, and behaviour. By studying individual cells, it aims to uncover how they contribute to overall health, disease progression, and human biology. This research can provide deeper insights into cellular processes, paving the way for advancements in medical treatments and personalised medicine.</EXAMPLE>
           <NAMESPACE>dcterms:description</NAMESPACE>
           <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
@@ -154,7 +154,7 @@
           <NAMESPACE>mixs:pos_cont_type</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -164,7 +164,7 @@
           <LABEL>Experimental Factor</LABEL>
           <NAME>experimental_factor</NAME>
           <DESCRIPTION>Variable aspects of an experiment design that can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI)</DESCRIPTION>
-          <EXAMPLE>time series design</EXAMPLE>
+          <EXAMPLE>EFO:0001779</EXAMPLE>
           <NAMESPACE>mixs:experimental_factor</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
@@ -182,7 +182,7 @@
           <NAMESPACE>mixs:associated_resource</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)+(?: \| https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)*)*$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -194,14 +194,42 @@
         <LABEL>Person</LABEL>
         <DESCRIPTION>Fields under component 'Person'</DESCRIPTION>
         <FIELD>
+          <LABEL>Study ID</LABEL>
+          <NAME>study_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this study</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:study_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Orcid ID</LABEL>
+          <NAME>orcid_id</NAME>
+          <DESCRIPTION>A 16-digit number that uniquely identify researchers.</DESCRIPTION>
+          <EXAMPLE>0000-1234-5678-9012</EXAMPLE>
+          <NAMESPACE>ei:orcid_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d{4}-\d{4}-\d{4}-\d{4}$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
           <LABEL>First Name</LABEL>
           <NAME>givenName</NAME>
-          <DESCRIPTION>The first name of a Person.</DESCRIPTION>
+          <DESCRIPTION>A first name (or given name) is the personal name given to an individual conducting the study.</DESCRIPTION>
           <EXAMPLE>Jane</EXAMPLE>
           <NAMESPACE>schema.org:givenName</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?:[-\s][A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -210,26 +238,40 @@
         <FIELD>
           <LABEL>Last Name</LABEL>
           <NAME>familyName</NAME>
-          <DESCRIPTION>The last name of a Person.</DESCRIPTION>
+          <DESCRIPTION>A last name (or surname) is the family name passed down from one generation to the next for the individual conducting the study.</DESCRIPTION>
           <EXAMPLE>Doe</EXAMPLE>
           <NAMESPACE>schema.org:familyName</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(-[A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Affiliation/Institution</LABEL>
+          <LABEL>Email Address</LABEL>
+          <NAME>email</NAME>
+          <DESCRIPTION>A unique identifier used to send and receive electronic messages (emails) over the internet.</DESCRIPTION>
+          <EXAMPLE>jane.doe@example.com</EXAMPLE>
+          <NAMESPACE>schema.org:email</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^(?!.*\.{2,})(?!.*-{2,})[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Affiliation or Institution</LABEL>
           <NAME>affiliation</NAME>
-          <DESCRIPTION>An organization that this person is affiliated with. For example, a school/university, a club, or a team.</DESCRIPTION>
+          <DESCRIPTION>An organisation or institution that this person is associated with.</DESCRIPTION>
           <EXAMPLE>University of Liverpool</EXAMPLE>
           <NAMESPACE>schema.org:affiliation</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -243,7 +285,7 @@
           <NAMESPACE>schema.org:funder</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -252,12 +294,12 @@
         <FIELD>
           <LABEL>Grant Award</LABEL>
           <NAME>funding</NAME>
-          <DESCRIPTION>A Grant that directly or indirectly provide funding or sponsorship for this item.</DESCRIPTION>
+          <DESCRIPTION>A grant that directly or indirectly provides funding or sponsorship for the person to conduct the study.</DESCRIPTION>
           <EXAMPLE>GRAK3489</EXAMPLE>
           <NAMESPACE>schema.org:funding</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z0-9]+(?: [A-Za-z0-9]+)*$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -290,7 +332,7 @@
           <NAMESPACE>ei:sample_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -304,7 +346,7 @@
           <NAMESPACE>mixs:specific_host</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]+[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -318,17 +360,17 @@
           <NAMESPACE>ei:organism</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]+[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL/>
+          <LABEL>Microbial Starter NCBI Taxonomy ID</LABEL>
           <NAME>microb_start_taxID</NAME>
           <DESCRIPTION>An identifier of the strain of the organism, if applicable.</DESCRIPTION>
-          <EXAMPLE>CCAP1119/17</EXAMPLE>
+          <EXAMPLE>XY [en:42]</EXAMPLE>
           <NAMESPACE>mixs:microb_start_taxID</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
@@ -594,7 +636,7 @@
           <LABEL>Geographic Location (Latitude and Longitude)</LABEL>
           <NAME>lat_lon</NAME>
           <DESCRIPTION>The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees, limited to 8 decimal points, and in WGS84 system</DESCRIPTION>
-          <EXAMPLE>52.2053</EXAMPLE>
+          <EXAMPLE>50.123</EXAMPLE>
           <NAMESPACE>mixs:lat_lon</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
@@ -612,7 +654,7 @@
           <NAMESPACE>mixs:env_broad_scale</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -626,7 +668,7 @@
           <NAMESPACE>mixs:env_local_scale</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -640,7 +682,7 @@
           <NAMESPACE>mixs:env_medium</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -654,7 +696,7 @@
           <NAMESPACE>ei:accession_number</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]*[a-z]+(?:[0-9]+)*$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -722,11 +764,7 @@
           <DESCRIPTION/>
           <EXAMPLE>ISDsoil1</EXAMPLE>
           <NAMESPACE>mixs:samp_name</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -758,11 +796,7 @@
           <DESCRIPTION>List of database(s) used for ORF annotation, along with version number and reference to website or publication</DESCRIPTION>
           <EXAMPLE>pVOGs;5;http://dmk-brain.ecn.uiowa.edu/pVOGs/ Grazziotin et al. 2017 doi:10.1093/nar/gkw9</EXAMPLE>
           <NAMESPACE>mixs:ref_db</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -816,7 +850,7 @@
           <NAMESPACE>mixs:source_mat_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -828,11 +862,7 @@
           <DESCRIPTION>The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly)</DESCRIPTION>
           <EXAMPLE>allopolyploidy</EXAMPLE>
           <NAMESPACE>mixs:ploidy</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -904,11 +934,7 @@
           <DESCRIPTION>The device used to collect an environmental sample.</DESCRIPTION>
           <EXAMPLE>sampleDevice</EXAMPLE>
           <NAMESPACE>mixs:samp_collect_device</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -960,11 +986,7 @@
           <DESCRIPTION>The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier</DESCRIPTION>
           <EXAMPLE>9606</EXAMPLE>
           <NAMESPACE>mixs:host_spec_range</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>multiple</CARDINALITY>
         </FIELD>
@@ -975,9 +997,6 @@
           <EXAMPLE>Other</EXAMPLE>
           <NAMESPACE>mixs:tax_ident</NAMESPACE>
           <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
             <TEXT_CHOICE_FIELD>
               <TEXT_VALUE>
                 <VALUE>16S rRNA gene</VALUE>
@@ -1000,9 +1019,6 @@
           <EXAMPLE>heterotroph</EXAMPLE>
           <NAMESPACE>mixs:trophic_level</NAMESPACE>
           <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
             <TEXT_CHOICE_FIELD>
               <TEXT_VALUE>
                 <VALUE>Autotroph</VALUE>
@@ -1108,11 +1124,7 @@
           <DESCRIPTION>Information about the genetic distinctness of the sequenced organism below the subspecies level, e.g., serovar, serotype, biotype, ecotype, or any relevant genetic typing schemes like Group I plasmid. Subspecies should not be recorded in this term, but in the NCBI taxonomy. Supply both the lineage name and the lineage rank separated by a colon, e.g., biovar:abc123</DESCRIPTION>
           <EXAMPLE>serovar:Newport</EXAMPLE>
           <NAMESPACE>mixs:subspecf_gen_lin</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1122,11 +1134,7 @@
           <DESCRIPTION>List of diseases with which the host has been diagnosed; can include multiple diagnoses. The value of the field depends on host; for humans the terms should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org, non-human host diseases are free text</DESCRIPTION>
           <EXAMPLE>bacterial esophagitis</EXAMPLE>
           <NAMESPACE>mixs:host_disease_stat</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1164,11 +1172,7 @@
           <DESCRIPTION>Method used for taxonomic classification, along with reference database used, classification rank, and thresholds used to classify new genomes</DESCRIPTION>
           <EXAMPLE>vConTACT vContact2</EXAMPLE>
           <NAMESPACE>mixs:tax_class</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1199,7 +1203,7 @@
           <NAMESPACE>ei:library_prep_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -1213,7 +1217,7 @@
           <NAMESPACE>ei:sample_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -1225,11 +1229,7 @@
           <DESCRIPTION>Packaged kits (containing adapters, indexes, enzymes, buffers etc.), tailored for specific sequencing workflows, which allow the simplified preparation of sequencing-ready libraries for small genomes, amplicons, and plasmids</DESCRIPTION>
           <EXAMPLE>10X Genomics Single Cell 3' v3</EXAMPLE>
           <NAMESPACE>mixs:library_prep_kit</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1253,11 +1253,7 @@
           <DESCRIPTION>The method used to amplify the Complementary DNA (cDNA).</DESCRIPTION>
           <EXAMPLE>PCR</EXAMPLE>
           <NAMESPACE>ei:amplification_method</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1295,11 +1291,7 @@
           <DESCRIPTION>The library construction method (including version) that was used.</DESCRIPTION>
           <EXAMPLE>Smart-Seq2</EXAMPLE>
           <NAMESPACE>ei:lib_construction_method</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1309,11 +1301,7 @@
           <DESCRIPTION>The specific fraction of biological macromolecule from which the sequencing library is derived.</DESCRIPTION>
           <EXAMPLE>RNA</EXAMPLE>
           <NAMESPACE>ei:input_molecule</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1427,11 +1415,7 @@
           <DESCRIPTION>The specific type of external RNA used for spiking in, often indicating the source or nature of the control RNA.</DESCRIPTION>
           <EXAMPLE>Synthetic RNA</EXAMPLE>
           <NAMESPACE>ei:spike_type</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1441,11 +1425,7 @@
           <DESCRIPTION>The final concentration or dilution (for commercial sets) of the spike in mix.</DESCRIPTION>
           <EXAMPLE>1:1000</EXAMPLE>
           <NAMESPACE>ei:spike_in_dilution_or_concentration</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1455,11 +1435,7 @@
           <DESCRIPTION>Barcode sequence used on the i5 adapter during library preparation for identifying samples in multiplexed single-cell RNA-sequencing.</DESCRIPTION>
           <EXAMPLE>ATCACG</EXAMPLE>
           <NAMESPACE>ei:i5_index</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1469,11 +1445,7 @@
           <DESCRIPTION>Barcode sequence used on the i7 adapter to distinguish samples in multiplexed sequencing runs.</DESCRIPTION>
           <EXAMPLE>CGATGT</EXAMPLE>
           <NAMESPACE>ei:i7_index</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1502,11 +1474,7 @@
           <DESCRIPTION>The nucleotide sequence of the i5 index used in multiplexing during sequencing.</DESCRIPTION>
           <EXAMPLE>ATCGTAGC</EXAMPLE>
           <NAMESPACE>ei:i5_sequence</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1516,11 +1484,7 @@
           <DESCRIPTION>The specific nucleotide sequence of the i7 index used for a sample.</DESCRIPTION>
           <EXAMPLE>TGCATGCA</EXAMPLE>
           <NAMESPACE>ei:i7_sequence</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1532,7 +1496,7 @@
           <NAMESPACE>ei:plate_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -1544,11 +1508,7 @@
           <DESCRIPTION>The row identifier in a 96-well plate indicating the sample's position.</DESCRIPTION>
           <EXAMPLE>A</EXAMPLE>
           <NAMESPACE>ei:well_row</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1593,7 +1553,7 @@
           <NAMESPACE>mixs:nucl_acid_amp</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)$</REGEX_VALUE>
+              <REGEX_VALUE>^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)$|([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -1607,7 +1567,7 @@
           <NAMESPACE>mixs:nucl_acid_ext</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)$|([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -1633,11 +1593,7 @@
           <DESCRIPTION>The estimated size of the genome prior to sequencing in base pairs (bp). Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period</DESCRIPTION>
           <EXAMPLE>300000</EXAMPLE>
           <NAMESPACE>mixs:estimated_size</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1686,11 +1642,7 @@
           <DESCRIPTION>Cloning vector type(s) used in construction of libraries</DESCRIPTION>
           <EXAMPLE>Bacteriophage P1</EXAMPLE>
           <NAMESPACE>mixs:lib_vector</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1700,11 +1652,7 @@
           <DESCRIPTION>Adapters provide priming sequences for both amplification and sequencing of the sample-library fragments. Both adapters should be reported; in uppercase letters</DESCRIPTION>
           <EXAMPLE>AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT</EXAMPLE>
           <NAMESPACE>mixs:adapters</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1714,11 +1662,7 @@
           <DESCRIPTION>A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed</DESCRIPTION>
           <EXAMPLE>filtering of seawater, storing samples in ethanol</EXAMPLE>
           <NAMESPACE>mixs:samp_mat_process</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1777,7 +1721,7 @@
           <NAMESPACE>ei:sequencing_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -1789,11 +1733,7 @@
           <DESCRIPTION>The name of the sequencing platform used for the experiment.</DESCRIPTION>
           <EXAMPLE>Pacbio</EXAMPLE>
           <NAMESPACE>ei:sequencing_platform_name</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1803,11 +1743,7 @@
           <DESCRIPTION>This refers to the machine or platform used for sequencing, with variations in throughput, read lengths, error rates, and application suitability.</DESCRIPTION>
           <EXAMPLE>Illumina NovaSeq 6000</EXAMPLE>
           <NAMESPACE>ei:sequencing_instrument_model</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -2015,11 +1951,7 @@
           <DESCRIPTION>Completeness score is typically based on either the fraction of markers found as compared to a database or the percent of a genome found as compared to a closely related reference genome. High Quality Draft: &gt;90%, Medium Quality Draft: &gt;50%, and Low Quality Draft: &lt; 50% should have the indicated completeness scores</DESCRIPTION>
           <EXAMPLE>med;60%</EXAMPLE>
           <NAMESPACE>mixs:compl_score</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -2043,11 +1975,7 @@
           <DESCRIPTION>Total number of contigs in the cleaned/submitted assembly that makes up a given genome, SAG, MAG, or UViG</DESCRIPTION>
           <EXAMPLE>40</EXAMPLE>
           <NAMESPACE>mixs:number_contig</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -2085,20 +2013,6 @@
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>File ID</LABEL>
-          <NAME>file_id</NAME>
-          <DESCRIPTION>A unique alphanumeric identifier for this file</DESCRIPTION>
-          <EXAMPLE>A7F9B3X2</EXAMPLE>
-          <NAMESPACE>ei:file_id</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
           <LABEL>Library Preparation ID</LABEL>
           <NAME>lib_prep_id</NAME>
           <DESCRIPTION>A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.</DESCRIPTION>
@@ -2106,7 +2020,7 @@
           <NAMESPACE>ei:lib_prep_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -2120,7 +2034,21 @@
           <NAMESPACE>ei:sequencing_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>File ID</LABEL>
+          <NAME>file_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this file</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:file_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -2134,7 +2062,7 @@
           <NAMESPACE>ei:read_1_file</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -2148,7 +2076,7 @@
           <NAMESPACE>ei:read_2_file</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -2162,7 +2090,7 @@
           <NAMESPACE>ei:index_1_file</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -2176,7 +2104,7 @@
           <NAMESPACE>ei:index_2_file</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -2211,7 +2139,7 @@ dataset.</DESCRIPTION>
           <NAMESPACE>ei:white_list_barcode_file</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -2225,7 +2153,7 @@ dataset.</DESCRIPTION>
           <NAMESPACE>ei:file_name</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -2234,14 +2162,10 @@ dataset.</DESCRIPTION>
         <FIELD>
           <LABEL>File Type</LABEL>
           <NAME>file_type</NAME>
-          <DESCRIPTION>A file type is a name given to a specific kind of file. Common file types are fastq, gtf, fasta, bam, etc.</DESCRIPTION>
+          <DESCRIPTION>A file type is a name given to a specific kind of file. Common file types are fastq, gtf, fasta, bam, archive etc.</DESCRIPTION>
           <EXAMPLE>fastq</EXAMPLE>
           <NAMESPACE>ei:file_type</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>

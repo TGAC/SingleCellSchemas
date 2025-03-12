@@ -29,7 +29,7 @@ def handle_format(element, format_type):
             extract_components_to_xml(element)
         case 'html':
             extract_components_to_html(element)
-                
+
 def extract_components_to_xlsx(element):
     '''
     This function extracts components from an spreadsheet file and writes them to an spreadsheet file
@@ -57,7 +57,7 @@ def extract_components_to_xlsx(element):
     technology_name = element['technology_name']
     technology_label = element['technology_label']
     version_description = element['version_description']
-     
+
     bytesIO = BytesIO()
 
     with pd.ExcelWriter(bytesIO, engine='xlsxwriter', mode='w') as writer:
@@ -82,7 +82,7 @@ def extract_components_to_xlsx(element):
         })
 
         required_format = workbook.add_format({'bold': True, 'locked': True})
-        
+
         # Create README worksheet
         readme_sheet_data = dict()
         readme_sheet_data['technology_name'] = technology_name
@@ -93,23 +93,23 @@ def extract_components_to_xlsx(element):
         readme_sheet_data['version_column_name'] = version_column_name
         readme_sheet_data['writer'] = writer
         readme_sheet_data['locked_format'] = locked_format
-        
+
         helpers.create_readme_worksheet(readme_sheet_data)
-        
+
         # Iterate through unique components
         for component_name in data_df['component_name'].unique():
             component_df = data_df[data_df['component_name'] == component_name].copy()
-            
+
             # Get the name of the terms as the column names from the component DataFrame
             column_names = component_df['term_name'].tolist()
 
             # If there are no fields for this component, skip it
             if not column_names:
                 continue
-            
+
             # Prepare DataFrame for writing to spreadsheet
             df = pd.DataFrame(columns=column_names)
-            
+
             # Extract metadata for formatting and validation
             required_columns = helpers.get_required_columns(component_df, version_column_name)
             col_desc_eg = helpers.get_col_desc_eg(component_df, version_column_name)
@@ -135,9 +135,9 @@ def extract_components_to_xlsx(element):
                 required_format=required_format,
                 desc_eg_format=desc_eg_format
             )
-            
+
             helpers.format_and_protect_worksheet(element)
-            
+
             # Apply data validation
             helpers.apply_data_validation(component_df, df, writer, standard_name, allowed_values_dict)
 
@@ -322,7 +322,6 @@ def extract_components_to_xml(element):
         print(f"'{file_name}' created!")
     except Exception as e:
         raise IOError(f"Failed to write XML to {output_file_path}: {e}")
-    
 
 def extract_components_to_html(element):
     '''
@@ -351,10 +350,10 @@ def extract_components_to_html(element):
 
         # Process FIELD_GROUPs from components
         components = []
-        
+
         for component_name in data_df['component_name'].unique():
             component_df = data_df[data_df['component_name'] == component_name].copy()
-            
+
             group_label = helpers.get_worksheet_info(component_df, return_label=True)
             component_dict = {
                 'group_name': component_name,
@@ -362,27 +361,31 @@ def extract_components_to_html(element):
                 'group_description': f"Fields under component '{group_label}'.",
                 'fields': []
             }
-            
+
             for _, row in component_df.iterrows():
                 allowed_values = allowed_values_dict.get(row.get('term_name', ''), [])
                 namespace = f"{row.get('namespace_prefix', '')}:{row.get('term_name', '')}"
                 namespace = namespace[:-1] if namespace.endswith(':') else namespace
-                    
+
                 current_field = {
-                    'label': row.get('term_label', ''),
-                    'name': row.get('term_name', ''),
-                    'description': row.get('term_description', ''),
-                    'example': row.get('term_example', ''),
-                    'regex': row.get('term_regex', ''),
-                    'namespace': namespace,
-                    'mandatory': 'mandatory' if row.get(version_column_name, '') == 'M' else 'optional',
-                    'reference': row.get('term_reference', '')
+                    "label": row.get("term_label", ""),
+                    "name": row.get("term_name", ""),
+                    "description": row.get("term_description", ""),
+                    "example": helpers.convert_datetime(row.get("term_example", "")),
+                    "regex": row.get("term_regex", ""),
+                    "namespace": namespace,
+                    "mandatory": (
+                        "mandatory"
+                        if row.get(version_column_name, "") == "M"
+                        else "optional"
+                    ),
+                    "reference": row.get("term_reference", ""),
                 }
-                
+
                 if allowed_values:
                     allowed_values.sort() # Sort the allowed values
                     current_field['allowed_values'] = allowed_values
-                    
+
                 component_dict['fields'].append(current_field)
 
             components.append(component_dict)
@@ -390,19 +393,28 @@ def extract_components_to_html(element):
         # Render HTML using Jinja2 template
         environment = Environment(loader=FileSystemLoader('templates/'))
         fields_template = environment.get_template('fields_template.html')
-        
+
         standards = {value['standard_name']:value['standard_label']for value in helpers.CHECKLISTS_DICT.values()}
         technologies = {value['technology_name']:value['technology_label']for value in helpers.CHECKLISTS_DICT.values()}
-        output_file_name_dict = {f"{value['output_file_name']}_{helpers.SCHEMA_VERSION}.html": (value['technology_name'], value['standard_name']) for value in helpers.CHECKLISTS_DICT.values()}
-        
+
+        output_file_name_dict = {
+            f"{value['output_file_name']}_{helpers.SCHEMA_VERSION}.html": helpers.VersionData(
+                value["technology_name"],
+                value["technology_label"],
+                value["standard_name"],
+                value["standard_label"],
+                value["version_description"],
+            )
+            for value in helpers.CHECKLISTS_DICT.values()
+        }
+
         context = {'components': components, 'standards': standards, 'technologies': technologies, 'output_data':output_file_name_dict }
-        
+
         with open(output_file_path, mode='w', encoding='utf-8') as fields:
             fields.write(fields_template.render(context))
     except Exception as e:
         raise RuntimeError(f'An error occurred: {e}')
-        
-    
+
 def extract_and_convert_schema(standard=None, format_type=None):
     '''
     Extract and convert schema to multiple formats: XLSX, JSON, XML, and HTML.

@@ -4,103 +4,140 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="../../../images/favicon.ico" type="image/x-icon">
-
     <title>Single-cell Schemas</title>
 
     <!-- CSS -->
     <link href="../../../css/styles.css" rel="stylesheet">
     <link href="../../../css/fontawesome.6.7.2.all.min.css" rel="stylesheet">
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
+    <link href="../../../css/bootstrap.5.3.3.min.css" rel="stylesheet">
   </head>
   <body>
+    <!-- Top navigation bar icons -->
+    <nav id="navbarID" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <!-- Search icon -->
+            <li class="nav-item" title="Search web page">
+              <i id="searchIconID" class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </li>
+            <!-- Info icon -->
+            <li class="nav-item" title="View information about the website">
+              <i id="infoIconID" class="fas fa-info-circle" aria-hidden="true"></i>
+            </li>
+            <!-- Documentation icon -->
+            <li class="nav-item" title="View documentation">
+              <a class="nav-link" 
+                href="https://copo-docs.readthedocs.io/en/latest/submissions/single-cell-submissions.html" 
+                target="_blank" aria-label="Documentation" title="View documentation">
+                <i id="docIconID" class="fa fa-book-open" aria-hidden="true"></i>
+              </a>
+            </li>
+            <!-- Email icon -->
+            <li class="nav-item p-2" title="Contact us">
+              <i id="emailIconID" class="fas fa-envelope" aria-hidden="true"></i>
+            </li>
+            <!-- GitHub link -->
+            <li class="nav-item" title="View GitHub repository">
+              <a class="github-link nav-link" 
+                href="https://github.com/TGAC/SingleCellSchemas" target="_blank" 
+                title="View GitHub repository">
+                <i id="githubIconID" class="fa-brands fa-github" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header content -->
     <div class="header-div container-fluid text-center text-white">
       <h1 class="ui header">Single-cell Schemas</h1>
-      <!-- Header icons -->
-      <div class="position-absolute top-0 end-0 mr-1 mt-2">
-        <a  class="github-link" href="https://github.com/TGAC/SingleCellSchemas" target="_blank" title="View GitHub repository">
-          <span class="fa-stack mb-10">
-            <i class="fas fa-circle fa-stack-2x"></i>
-            <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </div>
     </div>
-
+    <!-- Body content -->
     <div class="row">
       <div class="col-3">
         <div class="container mt-4">
           <form>
-            <!-- Standards dropdown menu -->
-            <div class="mb-3">
-              <label for="std_dropdown" class="form-label"
-                >Based on Standard...</label
-              >
-              <select class="form-select" id="std_dropdown">
+            <!-- Standard dropdown menu -->
+            <div class="mb-3 dropdown-menu-div">
+              <label for="std_dropdown" class="form-label text-bold">Standard:
+                <i class="fa fa-info-circle dropdown-menu-info-icon"
+                  title="Choose a standard from the dropdown menu"
+                  data-bs-toggle="popover"
+                  data-bs-trigger="click"
+                  data-bs-placement="top"
+                  data-bs-content="Please refer to the <span id='infoModalLink'>About modal</span> for more information.">
+                </i>
+              </label>
+              <select class="form-select" id="std_dropdown" data-bs-placement="right" 
+                data-bs-trigger="hover" data-bs-toggle="tooltip" title="">
                 
                   <option value="dwc" selected>
                     Darwin Core (DwC)
                   </option>
-              
+                
                   <option value="mixs" >
                     Minimum Information about any (x) Sequence (MIxS)
                   </option>
-              
+                
                   <option value="tol" >
                     Tree of Life (ToL)
                   </option>
-              
+                
                   <option value="faang" >
                     Functional Annotation of Animal Genomes (FAANG)
                   </option>
-              
-            </select>
-            </div>
-
-            <!-- Technology dropdown menu -->
-            <div class="mb-3">
-              <label for="tech_dropdown" class="form-label">Technology</label>
-              <select class="form-select" id="tech_dropdown">
-                  
-                    <option value="sc_rnaseq" selected>
-                      Single-cell RNA Sequencing
-                    </option>
-                  
-                    <option value="stx_seq" >
-                      Spatial Transcriptomics Sequencing
-                    </option>
-                  
-                    <option value="stx_fish" >
-                      Spatial Transcriptomics Fish
-                    </option>
-                  
+                
               </select>
             </div>
 
+            <!-- Technology dropdown menu -->
+            <div class="mb-3 dropdown-menu-div">
+              <label for="tech_dropdown" class="form-label text-bold">Technology:
+                <i class="fa fa-info-circle dropdown-menu-info-icon"
+                  title="Choose a technology from the dropdown menu"
+                  data-bs-toggle="popover"
+                  data-bs-trigger="click"
+                  data-bs-placement="top"
+                  data-bs-content="Please refer to the <span id='infoModalLink'>About modal</span> for more information.">
+                </i>
+              </label>
+              <select class="form-select" id="tech_dropdown" data-bs-placement="right" 
+                data-bs-trigger="hover" data-bs-toggle="tooltip" title="">
+                
+                  <option value="sc_rnaseq" selected>
+                    Single-cell Ribonucleic Acid Sequencing (scRNA-Seq)
+                  </option>
+                
+                  <option value="stx_seq" >
+                    Spatial Transcriptomics Sequencing (ST-Seq)
+                  </option>
+                
+                  <option value="stx_fish" >
+                    Spatial Transcriptomics Fluorescence In Situ Hybridisation (ST-FISH)
+                  </option>
+                
+              </select>
+            </div>
              <!-- Buttons -->
-            <div class="d-flex justify-content-end">
-              <!-- Submit button -->
-              <button id="sub_btn" class="btn btn-primary" type="submit">
-                Submit
-              </button>
-
+            <div class="d-flex justify-content-between">
               <!-- Download manifest button -->
               <button id="download-manifest-btn" class="btn btn-outline-primary btn-sm" 
                   type="button" title="Download blank manifest">
                 <i class="fa fa-download"></i>
                 <span class="action-label" style="padding-left: 3px;">Download manifest</span> 
               </button>
+              <!-- Submit button -->
+              <!-- <button id="sub_btn" class="btn btn-primary" type="submit">
+                Submit
+              </button> -->
             </div>
           </form>
         </div>
       </div>
 
       <div class="col-6">
-        <div class="accordion" id="accordionExample">
+        <div class="accordion" id="fieldsAccordion">
           
           <div class="accordion-item">
             <div class="accordion-header">
@@ -108,21 +145,20 @@
                 class="accordion-button"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#collapsestudy"
+                data-bs-target="#component-study"
                 aria-expanded="true"
-                aria-controls="collapsestudy"
+                aria-controls="component-study"
               >
                 Study
               </button>
             </div>
             <div
-              id="collapsestudy"
+              id="component-study"
               class="accordion-collapse collapse"
-              data-bs-parent="#accordionExample"
-            >
+              data-bs-parent="#fieldsAccordion">
               <div class="accordion-body">
                 
-                <div class="card">
+                <div id="term-study_id" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Study ID
@@ -161,7 +197,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-title" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Title
@@ -208,7 +244,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-description" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Description
@@ -228,7 +264,7 @@
                       
                       <tr>
                         <td>Example</td>
-                        <td>This project explores the intricate details of single cells in the human body, focusing on their structure, function, and behavior. By studying individual cells, it aims to uncover how they contribute to overall health, disease progression, and human biology. This research can provide deeper insights into cellular processes, paving the way for advancements in medical treatments and personalised medicine.</td>
+                        <td>This project explores the intricate details of single cells in the human body, focusing on their structure, function, and behaviour. By studying individual cells, it aims to uncover how they contribute to overall health, disease progression, and human biology. This research can provide deeper insights into cellular processes, paving the way for advancements in medical treatments and personalised medicine.</td>
                       </tr>
                        
                       <tr>
@@ -255,7 +291,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-bibliographicCitation" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Bibliographic Citation
@@ -302,7 +338,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-created" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Created
@@ -336,7 +372,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[0-9]{4}-[0-9]{2}-[0-9]{2}$</td>
+                        <td>^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$</td>
                       </tr>
                        
                       <tr>
@@ -354,7 +390,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-workflow" class="card">
                   
                   <h5 class="card-header">Workflow</h5>
                   
@@ -408,7 +444,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-technology" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Technology
@@ -469,21 +505,95 @@
                 class="accordion-button"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#collapseperson"
+                data-bs-target="#component-person"
                 aria-expanded="true"
-                aria-controls="collapseperson"
+                aria-controls="component-person"
               >
                 Person
               </button>
             </div>
             <div
-              id="collapseperson"
+              id="component-person"
               class="accordion-collapse collapse"
-              data-bs-parent="#accordionExample"
-            >
+              data-bs-parent="#fieldsAccordion">
               <div class="accordion-body">
                 
-                <div class="card">
+                <div id="term-study_id" class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    Study ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>study_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric identifier for this study</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>A7F9B3X2</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[a-zA-Z0-9]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:study_id 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div id="term-orcid_id" class="card">
+                  
+                  <h5 class="card-header">Orcid ID</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>orcid_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A 16-digit number that uniquely identify researchers.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>0000-1234-5678-9012</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^\d{4}-\d{4}-\d{4}-\d{4}$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:orcid_id 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div id="term-givenName" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     First Name
@@ -498,7 +608,7 @@
                       </tr>
                       <tr>
                         <td>Description</td>
-                        <td>The first name of a Person.</td>
+                        <td>A first name (or given name) is the personal name given to an individual conducting the study.</td>
                       </tr>
                       
                       <tr>
@@ -517,7 +627,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z]+(?:[-\s][A-Za-z]+)*[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -535,7 +645,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-familyName" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Last Name
@@ -550,7 +660,7 @@
                       </tr>
                       <tr>
                         <td>Description</td>
-                        <td>The last name of a Person.</td>
+                        <td>A last name (or surname) is the family name passed down from one generation to the next for the individual conducting the study.</td>
                       </tr>
                       
                       <tr>
@@ -569,7 +679,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z]+(-[A-Za-z]+)*[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -587,10 +697,59 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-email" class="card">
+                  
+                  <h5 class="card-header">Email Address</h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>email</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique identifier used to send and receive electronic messages (emails) over the internet.</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>jane.doe@example.com</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Reference</td>
+                        <td>
+                          <a href="https://schema.org/email" target="_blank">
+                            https://schema.org/email
+                          </a>
+                        </td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Regex</td>
+                        <td>^(?!.*\.{2,})(?!.*-{2,})[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                          
+                          <a href="https://schema.org/email" target="_blank">
+                            schema.org:email
+                          </a>
+                          
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div id="term-affiliation" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
-                    Affiliation/Institution
+                    Affiliation or Institution
                     <span class="badge bg-dark ms-auto">Required</span>
                   </h5>
                   
@@ -602,7 +761,7 @@
                       </tr>
                       <tr>
                         <td>Description</td>
-                        <td>An organization that this person is affiliated with. For example, a school/university, a club, or a team.</td>
+                        <td>An organisation or institution that this person is associated with.</td>
                       </tr>
                       
                       <tr>
@@ -621,7 +780,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -639,7 +798,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-funder" class="card">
                   
                   <h5 class="card-header">Funder</h5>
                   
@@ -670,7 +829,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -688,7 +847,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-funding" class="card">
                   
                   <h5 class="card-header">Grant Award</h5>
                   
@@ -700,7 +859,7 @@
                       </tr>
                       <tr>
                         <td>Description</td>
-                        <td>A Grant that directly or indirectly provide funding or sponsorship for this item.</td>
+                        <td>A grant that directly or indirectly provides funding or sponsorship for the person to conduct the study.</td>
                       </tr>
                       
                       <tr>
@@ -719,7 +878,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z0-9]+(?: [A-Za-z0-9]+)*$</td>
                       </tr>
                        
                       <tr>
@@ -747,21 +906,20 @@
                 class="accordion-button"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#collapsesample"
+                data-bs-target="#component-sample"
                 aria-expanded="true"
-                aria-controls="collapsesample"
+                aria-controls="component-sample"
               >
                 Sample
               </button>
             </div>
             <div
-              id="collapsesample"
+              id="component-sample"
               class="accordion-collapse collapse"
-              data-bs-parent="#accordionExample"
-            >
+              data-bs-parent="#fieldsAccordion">
               <div class="accordion-body">
                 
-                <div class="card">
+                <div id="term-study_id" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Study ID
@@ -800,7 +958,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-sample_id" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Sample ID
@@ -825,7 +983,7 @@
                         
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[a-zA-Z0-9]+$</td>
                       </tr>
                        
                       <tr>
@@ -839,7 +997,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-scientificName" class="card">
                   
                   <h5 class="card-header">Scientific Name</h5>
                   
@@ -870,7 +1028,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]+[a-z]+$</td>
+                        <td>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -888,7 +1046,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-organism" class="card">
                   
                   <h5 class="card-header">Organism</h5>
                   
@@ -910,7 +1068,7 @@
                         
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]+[a-z]+$</td>
+                        <td>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -924,7 +1082,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-tissue" class="card">
                   
                   <h5 class="card-header">Tissue</h5>
                   
@@ -1125,7 +1283,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-preparations" class="card">
                   
                   <h5 class="card-header">Preparations</h5>
                   
@@ -1196,7 +1354,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-eventDate" class="card">
                   
                   <h5 class="card-header">Event Date</h5>
                   
@@ -1227,7 +1385,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^(\d{4})(-\d{2})(-\d{2})$</td>
+                        <td>^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$</td>
                       </tr>
                        
                       <tr>
@@ -1245,7 +1403,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-decimalLatitude" class="card">
                   
                   <h5 class="card-header">Decimal Latitude</h5>
                   
@@ -1294,7 +1452,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-decimalLongitude" class="card">
                   
                   <h5 class="card-header">Decimal Longitude</h5>
                   
@@ -1343,7 +1501,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-medium" class="card">
                   
                   <h5 class="card-header">Medium</h5>
                   
@@ -1374,7 +1532,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z]+(?: [A-Za-z]+)*$</td>
                       </tr>
                        
                       <tr>
@@ -1392,7 +1550,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-accession_number" class="card">
                   
                   <h5 class="card-header">Accession Number</h5>
                   
@@ -1414,7 +1572,7 @@
                         
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z]*[a-z]+(?:[0-9]+)*$</td>
                       </tr>
                        
                       <tr>
@@ -1428,7 +1586,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-class" class="card">
                   
                   <h5 class="card-header">Class</h5>
                   
@@ -1459,7 +1617,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z\s]+[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -1477,7 +1635,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-collectionCode" class="card">
                   
                   <h5 class="card-header">Collection Code</h5>
                   
@@ -1508,7 +1666,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z\s]+[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -1526,7 +1684,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-collectionID" class="card">
                   
                   <h5 class="card-header">Collection ID</h5>
                   
@@ -1557,7 +1715,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)+(?: \| https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)*)*$</td>
                       </tr>
                        
                       <tr>
@@ -1575,7 +1733,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-continent" class="card">
                   
                   <h5 class="card-header">Continent</h5>
                   
@@ -1606,7 +1764,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z\s]+[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -1624,7 +1782,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-countryCode" class="card">
                   
                   <h5 class="card-header">Country Code</h5>
                   
@@ -1652,12 +1810,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -1673,7 +1826,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-county" class="card">
                   
                   <h5 class="card-header">County</h5>
                   
@@ -1704,7 +1857,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z\s]+[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -1722,7 +1875,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-cultivarEpithet" class="card">
                   
                   <h5 class="card-header">Cultivar Epithet</h5>
                   
@@ -1753,7 +1906,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z\s]+[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -1771,7 +1924,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-datasetID" class="card">
                   
                   <h5 class="card-header">Dataset ID</h5>
                   
@@ -1799,12 +1952,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -1820,7 +1968,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-datasetName" class="card">
                   
                   <h5 class="card-header">Dataset Name</h5>
                   
@@ -1851,7 +1999,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z\s]+[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -1869,7 +2017,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-dateIdentified" class="card">
                   
                   <h5 class="card-header">Date Identified</h5>
                   
@@ -1886,7 +2034,7 @@
                       
                       <tr>
                         <td>Example</td>
-                        <td>1963-03-08T14: 07-0600</td>
+                        <td>1963-03-08T14:07</td>
                       </tr>
                        
                       <tr>
@@ -1918,7 +2066,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-disposition" class="card">
                   
                   <h5 class="card-header">Disposition</h5>
                   
@@ -1981,7 +2129,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-infraspecificEpithet" class="card">
                   
                   <h5 class="card-header">Infraspecific Epithet</h5>
                   
@@ -2012,7 +2160,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z\s]+[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -2030,7 +2178,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-institutionID" class="card">
                   
                   <h5 class="card-header">Institution ID</h5>
                   
@@ -2061,7 +2209,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)+(?: \| https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)*)*$</td>
                       </tr>
                        
                       <tr>
@@ -2079,7 +2227,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-island" class="card">
                   
                   <h5 class="card-header">Island</h5>
                   
@@ -2110,7 +2258,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z\s]+[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -2128,7 +2276,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-islandGroup" class="card">
                   
                   <h5 class="card-header">Island Group</h5>
                   
@@ -2159,7 +2307,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z\s]+[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -2177,7 +2325,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-kingdom" class="card">
                   
                   <h5 class="card-header">Kingdom</h5>
                   
@@ -2208,7 +2356,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z\s]+[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -2226,7 +2374,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-language" class="card">
                   
                   <h5 class="card-header">Language</h5>
                   
@@ -2257,7 +2405,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z\s]+[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -2275,7 +2423,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-locality" class="card">
                   
                   <h5 class="card-header">Locality</h5>
                   
@@ -2303,12 +2451,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -2324,7 +2467,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-locationAccordingTo" class="card">
                   
                   <h5 class="card-header">Location According To</h5>
                   
@@ -2352,12 +2495,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -2373,7 +2511,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-locationID" class="card">
                   
                   <h5 class="card-header">Location ID</h5>
                   
@@ -2404,7 +2542,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)+(?: \| https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)*)*$</td>
                       </tr>
                        
                       <tr>
@@ -2422,7 +2560,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-locationRemarks" class="card">
                   
                   <h5 class="card-header">Location Remarks</h5>
                   
@@ -2450,12 +2588,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -2471,7 +2604,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-materialEntityRemarks" class="card">
                   
                   <h5 class="card-header">Material Entity Remarks</h5>
                   
@@ -2499,12 +2632,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -2520,7 +2648,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-maximumDepthInMeters" class="card">
                   
                   <h5 class="card-header">Maximum Depth In Metres</h5>
                   
@@ -2551,7 +2679,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^-?\d+(\.\d+)?$</td>
                       </tr>
                        
                       <tr>
@@ -2569,7 +2697,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-maximumDistanceAboveSurfaceInMeters" class="card">
                   
                   <h5 class="card-header">Maximum Distance Above Surface In Metres</h5>
                   
@@ -2600,7 +2728,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^-?\d+(\.\d+)?$</td>
                       </tr>
                        
                       <tr>
@@ -2618,7 +2746,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-maximumElevationInMeters" class="card">
                   
                   <h5 class="card-header">Maximum Elevation In Metres</h5>
                   
@@ -2649,7 +2777,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^-?\d+(\.\d+)?$</td>
                       </tr>
                        
                       <tr>
@@ -2667,7 +2795,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-minimumDepthInMeters" class="card">
                   
                   <h5 class="card-header">Minimum Depth In Metres</h5>
                   
@@ -2698,7 +2826,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^-?\d+(\.\d+)?$</td>
                       </tr>
                        
                       <tr>
@@ -2716,7 +2844,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-minimumDistanceAboveSurfaceInMeters" class="card">
                   
                   <h5 class="card-header">Minimum Distance Above Surface In Metres</h5>
                   
@@ -2747,7 +2875,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^-?\d+(\.\d+)?$</td>
                       </tr>
                        
                       <tr>
@@ -2765,7 +2893,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-minimumElevationInMeters" class="card">
                   
                   <h5 class="card-header">Minimum Elevation In Metres</h5>
                   
@@ -2796,7 +2924,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^-?\d+(\.\d+)?$</td>
                       </tr>
                        
                       <tr>
@@ -2814,7 +2942,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-organismID" class="card">
                   
                   <h5 class="card-header">Organism ID</h5>
                   
@@ -2842,12 +2970,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -2863,7 +2986,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-organismQuantity" class="card">
                   
                   <h5 class="card-header">Organism Quantity</h5>
                   
@@ -2891,12 +3014,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -2912,7 +3030,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-organismQuantityType" class="card">
                   
                   <h5 class="card-header">Organism Quantity Type</h5>
                   
@@ -2940,12 +3058,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -2961,7 +3074,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-organismRemarks" class="card">
                   
                   <h5 class="card-header">Organism Remarks</h5>
                   
@@ -2989,12 +3102,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3010,7 +3118,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-phylum" class="card">
                   
                   <h5 class="card-header">Phylum</h5>
                   
@@ -3038,12 +3146,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3059,7 +3162,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-recordedBy" class="card">
                   
                   <h5 class="card-header">Recorded By</h5>
                   
@@ -3087,12 +3190,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3108,7 +3206,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-recordedByID" class="card">
                   
                   <h5 class="card-header">Recorded By ID</h5>
                   
@@ -3139,7 +3237,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)+(?: \| https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)*)*$</td>
                       </tr>
                        
                       <tr>
@@ -3157,7 +3255,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-reproductiveCondition" class="card">
                   
                   <h5 class="card-header">Reproductive Condition</h5>
                   
@@ -3216,7 +3314,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-sampleSizeUnit" class="card">
                   
                   <h5 class="card-header">Sample Size Unit</h5>
                   
@@ -3244,12 +3342,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3265,7 +3358,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-sampleSizeValue" class="card">
                   
                   <h5 class="card-header">Sample Size Value</h5>
                   
@@ -3296,7 +3389,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^-?\d+(\.\d+)?$</td>
                       </tr>
                        
                       <tr>
@@ -3314,7 +3407,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-samplingEffort" class="card">
                   
                   <h5 class="card-header">Sampling Effort</h5>
                   
@@ -3342,12 +3435,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3363,7 +3451,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-samplingProtocol" class="card">
                   
                   <h5 class="card-header">Sampling Protocol</h5>
                   
@@ -3391,12 +3479,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3412,7 +3495,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-specificEpithet" class="card">
                   
                   <h5 class="card-header">Specific Epithet</h5>
                   
@@ -3440,12 +3523,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3461,7 +3539,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-subfamily" class="card">
                   
                   <h5 class="card-header">Subfamily</h5>
                   
@@ -3489,12 +3567,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3510,7 +3583,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-subgenus" class="card">
                   
                   <h5 class="card-header">Subgenus</h5>
                   
@@ -3538,12 +3611,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3559,7 +3627,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-taxonConceptID" class="card">
                   
                   <h5 class="card-header">Taxon Concept ID</h5>
                   
@@ -3587,12 +3655,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3608,7 +3671,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-taxonRemarks" class="card">
                   
                   <h5 class="card-header">Taxon Remarks</h5>
                   
@@ -3636,12 +3699,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3657,7 +3715,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-taxonomicStatus" class="card">
                   
                   <h5 class="card-header">Taxonomic Status</h5>
                   
@@ -3685,12 +3743,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3706,7 +3759,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-type" class="card">
                   
                   <h5 class="card-header">Type</h5>
                   
@@ -3734,12 +3787,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3755,7 +3803,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-verbatimCoordinateSystem" class="card">
                   
                   <h5 class="card-header">Verbatim Coordinate System</h5>
                   
@@ -3783,12 +3831,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3804,7 +3847,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-verbatimCoordinates" class="card">
                   
                   <h5 class="card-header">Verbatim Coordinates</h5>
                   
@@ -3832,12 +3875,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3853,7 +3891,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-verbatimDepth" class="card">
                   
                   <h5 class="card-header">Verbatim Depth</h5>
                   
@@ -3881,12 +3919,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3902,7 +3935,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-verbatimElevation" class="card">
                   
                   <h5 class="card-header">Verbatim Elevation</h5>
                   
@@ -3930,12 +3963,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -3951,7 +3979,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-verbatimEventDate" class="card">
                   
                   <h5 class="card-header">Verbatim Event Date</h5>
                   
@@ -3979,12 +4007,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -4000,7 +4023,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-verbatimIdentification" class="card">
                   
                   <h5 class="card-header">Verbatim Identification</h5>
                   
@@ -4028,12 +4051,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -4049,7 +4067,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-verbatimLabel" class="card">
                   
                   <h5 class="card-header">Verbatim Label</h5>
                   
@@ -4077,12 +4095,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -4098,7 +4111,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-verbatimLatitude" class="card">
                   
                   <h5 class="card-header">Verbatim Latitude</h5>
                   
@@ -4126,12 +4139,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -4147,7 +4155,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-verbatimLocality" class="card">
                   
                   <h5 class="card-header">Verbatim Locationality</h5>
                   
@@ -4175,12 +4183,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -4196,7 +4199,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-verbatimLongitude" class="card">
                   
                   <h5 class="card-header">Verbatim Longitude</h5>
                   
@@ -4224,12 +4227,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -4245,7 +4243,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-verbatimSRS" class="card">
                   
                   <h5 class="card-header">Verbatim SRS</h5>
                   
@@ -4273,12 +4271,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -4294,7 +4287,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-verbatimTaxonRank" class="card">
                   
                   <h5 class="card-header">Verbatim Taxon Rank</h5>
                   
@@ -4322,12 +4315,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -4343,7 +4331,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-vernacularName" class="card">
                   
                   <h5 class="card-header">Vernacular Name</h5>
                   
@@ -4371,12 +4359,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -4392,7 +4375,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-verticalDatum" class="card">
                   
                   <h5 class="card-header">Vertical Datum</h5>
                   
@@ -4420,12 +4403,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -4441,7 +4419,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-vitality" class="card">
                   
                   <h5 class="card-header">Vitality</h5>
                   
@@ -4469,12 +4447,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -4490,7 +4463,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-waterBody" class="card">
                   
                   <h5 class="card-header">Water Body</h5>
                   
@@ -4518,12 +4491,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -4539,7 +4507,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-materialSampleID" class="card">
                   
                   <h5 class="card-header">Material Sample ID</h5>
                   
@@ -4567,12 +4535,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -4598,21 +4561,20 @@
                 class="accordion-button"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#collapselib_prep"
+                data-bs-target="#component-lib_prep"
                 aria-expanded="true"
-                aria-controls="collapselib_prep"
+                aria-controls="component-lib_prep"
               >
                 Library Preparation
               </button>
             </div>
             <div
-              id="collapselib_prep"
+              id="component-lib_prep"
               class="accordion-collapse collapse"
-              data-bs-parent="#accordionExample"
-            >
+              data-bs-parent="#fieldsAccordion">
               <div class="accordion-body">
                 
-                <div class="card">
+                <div id="term-study_id" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Study ID
@@ -4651,7 +4613,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-library_prep_id" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Library Preparation ID
@@ -4676,7 +4638,7 @@
                         
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[a-zA-Z0-9]+$</td>
                       </tr>
                        
                       <tr>
@@ -4690,7 +4652,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-sample_id" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Sample ID
@@ -4715,7 +4677,7 @@
                         
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[a-zA-Z0-9]+$</td>
                       </tr>
                        
                       <tr>
@@ -4729,7 +4691,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-library_prep_kit_version" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Library Preparation Kit Version
@@ -4781,7 +4743,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-amplification_method" class="card">
                   
                   <h5 class="card-header">Amplification Method</h5>
                   
@@ -4800,12 +4762,7 @@
                         <td>Example</td>
                         <td>PCR</td>
                       </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                         
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -4817,7 +4774,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-cdna_amplification_cycles" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     cDNA Amplification Cycles
@@ -4856,7 +4813,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-average_size_distribution" class="card">
                   
                   <h5 class="card-header">Average Size Distribution</h5>
                   
@@ -4892,7 +4849,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-lib_construction_method" class="card">
                   
                   <h5 class="card-header">Library Construction Method</h5>
                   
@@ -4911,12 +4868,7 @@
                         <td>Example</td>
                         <td>Smart-Seq2</td>
                       </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                         
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -4928,7 +4880,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-input_molecule" class="card">
                   
                   <h5 class="card-header">Input Molecule</h5>
                   
@@ -4947,12 +4899,7 @@
                         <td>Example</td>
                         <td>RNA</td>
                       </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                         
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -4964,7 +4911,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-primer" class="card">
                   
                   <h5 class="card-header">Primer</h5>
                   
@@ -5006,7 +4953,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-primeness" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Primeness
@@ -5053,7 +5000,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-end_bias" class="card">
                   
                   <h5 class="card-header">End Bias</h5>
                   
@@ -5095,7 +5042,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-library_strand" class="card">
                   
                   <h5 class="card-header">Library Strand</h5>
                   
@@ -5141,7 +5088,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-spike_in" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Spike In
@@ -5186,7 +5133,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-spike_type" class="card">
                   
                   <h5 class="card-header">Spike Type</h5>
                   
@@ -5205,12 +5152,7 @@
                         <td>Example</td>
                         <td>Synthetic RNA</td>
                       </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                         
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -5222,7 +5164,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-spike_in_dilution_or_concentration" class="card">
                   
                   <h5 class="card-header">Spike In Dilution Or Concentration</h5>
                   
@@ -5241,12 +5183,7 @@
                         <td>Example</td>
                         <td>1:1000</td>
                       </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                         
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -5258,7 +5195,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-i5_index" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     i5 Index
@@ -5280,12 +5217,7 @@
                         <td>Example</td>
                         <td>ATCACG</td>
                       </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                         
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -5297,7 +5229,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-i7_index" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     i7 Index
@@ -5319,12 +5251,7 @@
                         <td>Example</td>
                         <td>CGATGT</td>
                       </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                         
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -5336,7 +5263,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-dual_single_index" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Dual or Single Index
@@ -5381,7 +5308,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-i5_sequence" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     I5 Sequence
@@ -5403,12 +5330,7 @@
                         <td>Example</td>
                         <td>ATCGTAGC</td>
                       </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                         
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -5420,7 +5342,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-i7_sequence" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     i7 Sequence
@@ -5442,12 +5364,7 @@
                         <td>Example</td>
                         <td>TGCATGCA</td>
                       </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                         
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -5459,7 +5376,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-plate_id" class="card">
                   
                   <h5 class="card-header">Plate ID</h5>
                   
@@ -5481,7 +5398,7 @@
                         
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[a-zA-Z0-9]+$</td>
                       </tr>
                        
                       <tr>
@@ -5495,7 +5412,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-well_row" class="card">
                   
                   <h5 class="card-header">Well Row</h5>
                   
@@ -5514,12 +5431,7 @@
                         <td>Example</td>
                         <td>A</td>
                       </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                         
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -5531,7 +5443,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-well_col" class="card">
                   
                   <h5 class="card-header">Well Column</h5>
                   
@@ -5567,7 +5479,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-cell_phenotype" class="card">
                   
                   <h5 class="card-header">Cell Phenotype</h5>
                   
@@ -5619,21 +5531,20 @@
                 class="accordion-button"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#collapsesequencing"
+                data-bs-target="#component-sequencing"
                 aria-expanded="true"
-                aria-controls="collapsesequencing"
+                aria-controls="component-sequencing"
               >
                 Sequencing
               </button>
             </div>
             <div
-              id="collapsesequencing"
+              id="component-sequencing"
               class="accordion-collapse collapse"
-              data-bs-parent="#accordionExample"
-            >
+              data-bs-parent="#fieldsAccordion">
               <div class="accordion-body">
                 
-                <div class="card">
+                <div id="term-study_id" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Study ID
@@ -5672,7 +5583,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-sequencing_id" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Sequencing ID
@@ -5706,7 +5617,7 @@
                        
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[a-zA-Z0-9]+$</td>
                       </tr>
                        
                       <tr>
@@ -5724,7 +5635,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-sequencing_platform_name" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Sequencing Platform Name
@@ -5755,12 +5666,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -5776,7 +5682,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-sequencing_instrument_model" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Sequencing Instrument Model
@@ -5807,12 +5713,7 @@
                           </a>
                         </td>
                       </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                        
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -5828,7 +5729,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-lib_layout" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Library Layout
@@ -5890,7 +5791,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-umi_barcode_read" class="card">
                   
                   <h5 class="card-header">UMI Barcode Read</h5>
                   
@@ -5936,7 +5837,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-umi_barcode_offset" class="card">
                   
                   <h5 class="card-header">UMI Barcode Offset</h5>
                   
@@ -5972,7 +5873,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-umi_barcode_size" class="card">
                   
                   <h5 class="card-header">UMI Barcode Size</h5>
                   
@@ -6008,7 +5909,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-cell_barcode_read" class="card">
                   
                   <h5 class="card-header">Cell Barcode Read</h5>
                   
@@ -6067,7 +5968,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-cell_barcode_offset" class="card">
                   
                   <h5 class="card-header">Cell Barcode Offset</h5>
                   
@@ -6116,7 +6017,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-cell_barcode_size" class="card">
                   
                   <h5 class="card-header">Cell Barcode Size</h5>
                   
@@ -6165,7 +6066,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-cdna_read" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     cDNA Read
@@ -6227,7 +6128,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-cdna_read_offset" class="card">
                   
                   <h5 class="card-header">cDNA Read Offset</h5>
                   
@@ -6276,7 +6177,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-cdna_read_size" class="card">
                   
                   <h5 class="card-header">cDNA Read Size</h5>
                   
@@ -6335,21 +6236,20 @@
                 class="accordion-button"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#collapsefile"
+                data-bs-target="#component-file"
                 aria-expanded="true"
-                aria-controls="collapsefile"
+                aria-controls="component-file"
               >
                 File
               </button>
             </div>
             <div
-              id="collapsefile"
+              id="component-file"
               class="accordion-collapse collapse"
-              data-bs-parent="#accordionExample"
-            >
+              data-bs-parent="#fieldsAccordion">
               <div class="accordion-body">
                 
-                <div class="card">
+                <div id="term-study_id" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Study ID
@@ -6388,46 +6288,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    File ID
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>file_id</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A unique alphanumeric identifier for this file</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>A7F9B3X2</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:file_id 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div class="card">
+                <div id="term-lib_prep_id" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Library Preparation ID
@@ -6452,7 +6313,7 @@
                         
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[a-zA-Z0-9]+$</td>
                       </tr>
                        
                       <tr>
@@ -6466,7 +6327,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-sequencing_id" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Sequencing ID
@@ -6491,7 +6352,7 @@
                         
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[a-zA-Z0-9]+$</td>
                       </tr>
                        
                       <tr>
@@ -6505,7 +6366,46 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-file_id" class="card">
+                  
+                  <h5 class="card-header d-flex align-items-start">
+                    File ID
+                    <span class="badge bg-dark ms-auto">Required</span>
+                  </h5>
+                  
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td>Name</td>
+                        <td>file_id</td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td>A unique alphanumeric identifier for this file</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Example</td>
+                        <td>A7F9B3X2</td>
+                      </tr>
+                        
+                      <tr>
+                        <td>Regex</td>
+                        <td>^[a-zA-Z0-9]+$</td>
+                      </tr>
+                       
+                      <tr>
+                        <td>Namespace</td>
+                        <td>
+                           ei:file_id 
+                        </td>
+                      </tr>
+                       
+                    </table>
+                  </div>
+                </div>
+                
+                <div id="term-read_1_file" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Read 1 File
@@ -6530,7 +6430,7 @@
                         
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z0-9._-]*[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -6544,7 +6444,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-read_2_file" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Read 2 File
@@ -6569,7 +6469,7 @@
                         
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z0-9._-]*[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -6583,7 +6483,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-index_1_file" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Index 1 File
@@ -6608,7 +6508,7 @@
                         
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z0-9._-]*[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -6622,7 +6522,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-index_2_file" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Index 2 File
@@ -6647,7 +6547,7 @@
                         
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z0-9._-]*[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -6661,7 +6561,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-read_checksum" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Read Checksum
@@ -6695,7 +6595,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-index_checksum" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     Index Checksum
@@ -6729,7 +6629,7 @@
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-white_list_barcode_file" class="card">
                   
                   <h5 class="card-header">White List Barcode File</h5>
                   
@@ -6752,7 +6652,7 @@ dataset.</td>
                         
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z0-9._-]*[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -6766,7 +6666,7 @@ dataset.</td>
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-file_name" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     File Name
@@ -6791,7 +6691,7 @@ dataset.</td>
                         
                       <tr>
                         <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
+                        <td>^[A-Za-z0-9._-]*[a-z]+$</td>
                       </tr>
                        
                       <tr>
@@ -6805,7 +6705,7 @@ dataset.</td>
                   </div>
                 </div>
                 
-                <div class="card">
+                <div id="term-file_type" class="card">
                   
                   <h5 class="card-header d-flex align-items-start">
                     File Type
@@ -6820,19 +6720,14 @@ dataset.</td>
                       </tr>
                       <tr>
                         <td>Description</td>
-                        <td>A file type is a name given to a specific kind of file. Common file types are fastq, gtf, fasta, bam, etc.</td>
+                        <td>A file type is a name given to a specific kind of file. Common file types are fastq, gtf, fasta, bam, archive etc.</td>
                       </tr>
                       
                       <tr>
                         <td>Example</td>
                         <td>fastq</td>
                       </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]*[a-z]+$</td>
-                      </tr>
-                       
+                         
                       <tr>
                         <td>Namespace</td>
                         <td>
@@ -6853,12 +6748,24 @@ dataset.</td>
       <div class="col-3"></div>
     </div>
 
+    <!-- Navigate to top of web page button -->
+    <a href="javascript:void(0);" id="navigateToTop" class="navigate-to-top"
+       title="Navigate to top of the web page">
+        <i class="up-arrow"></i><i class="up-arrow"></i>
+    </a>
+
+    <!-- Placeholder for modals -->
+    <div id="info-modal-container"></div>
+    <div id="search-modal-container"></div>
+    <div id="warning-modal-container"></div>
+
     <!-- JS -->
-    <script src="../../../js/jquery-3.6.0.min.js" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="../../../js/jquery.3.6.0.min.js" type="text/javascript"></script>
+    <script src="../../../js/bootstrap.5.3.3.bundle.min.js" type="text/javascript"></script>
 
     <script>
-      var outputFileData = {"sc_rnaseq_dwc_v0.1.html": ["sc_rnaseq", "dwc"], "sc_rnaseq_faang_v0.1.html": ["sc_rnaseq", "faang"], "sc_rnaseq_mixs_v0.1.html": ["sc_rnaseq", "mixs"], "sc_rnaseq_tol_v0.1.html": ["sc_rnaseq", "tol"], "stx_fish_dwc_v0.1.html": ["stx_fish", "dwc"], "stx_fish_mixs_v0.1.html": ["stx_fish", "mixs"], "stx_fish_tol_v0.1.html": ["stx_fish", "tol"], "stx_seq_dwc_v0.1.html": ["stx_seq", "dwc"], "stx_seq_mixs_v0.1.html": ["stx_seq", "mixs"], "stx_seq_tol_v0.1.html": ["stx_seq", "tol"]};
+      var outputFileData = {"sc_rnaseq_dwc_v0.1.html": ["sc_rnaseq", "Single-cell Ribonucleic Acid Sequencing (scRNA-Seq)", "dwc", "Darwin Core (DwC)", "A genomic approach for detecting and quantitatively analysing messenger Ribonucleic Acid (RNA) in individual cells, aimed at transmitting biodiversity-related information in alignment with the Darwin Core (DwC) standard."], "sc_rnaseq_faang_v0.1.html": ["sc_rnaseq", "Single-cell Ribonucleic Acid Sequencing (scRNA-Seq)", "faang", "Functional Annotation of Animal Genomes (FAANG)", "Ribonucleic Acid (RNA) sequencing of individual cells for functional annotation of animal genomes (FAANG) with the aim to improve understanding of animal genomics and gene functions."], "sc_rnaseq_mixs_v0.1.html": ["sc_rnaseq", "Single-cell Ribonucleic Acid Sequencing (scRNA-Seq)", "mixs", "Minimum Information about any (x) Sequence (MIxS)", "An approach for analysing gene expression in individual cells, with a focus on the essential contextual details for the sampling and sequencing of genomic data."], "sc_rnaseq_tol_v0.1.html": ["sc_rnaseq", "Single-cell Ribonucleic Acid Sequencing ((scRNA-Seq)", "tol", "Tree of Life (ToL)", "Ribonucleic Acid (RNA) sequencing to investigate the gene expression patterns of individual cells, following the Tree of Life (ToL) initiative, which applies Deoxyribonucleic acid (DNA) sequencing and cellular technologies to understand the origins and diversity of life on Earth."], "stx_fish_dwc_v0.1.html": ["stx_fish", "Spatial Transcriptomics Fluorescence In Situ Hybridisation (ST-FISH)", "dwc", "Darwin Core (DwC)", "Spatial transcriptomics using Fluorescence In Situ Hybridisation (FISH) to study gene expression patterns within intact tissues, adhering to Darwin Core (DwC) standards for biodiversity data transmission."], "stx_fish_mixs_v0.1.html": ["stx_fish", "Spatial Transcriptomics Fluorescence In Situ Hybridisation (ST-FISH)", "mixs", "Minimum Information about any (x) Sequence (MIxS)", "Spatial transcriptomics using Fluorescence In Situ Hybridisation (FISH), providing insights into gene expression within tissues, following the Minimum Information about any (x) Sequence (MIxS) standard for contextual data about sequencing and sampling."], "stx_fish_tol_v0.1.html": ["stx_fish", "Spatial Transcriptomics Fluorescence In Situ Hybridisation (ST-FISH)", "tol", "Tree of Life (ToL)", "Spatial transcriptomics via Fluorescence In Situ Hybridisation (FISH), providing spatially resolved gene expression data within tissues, based on the Tree of Life (ToL) initiative\u2019s goals to explore the origins and diversity of life through advanced genomic technologies."], "stx_seq_dwc_v0.1.html": ["stx_seq", "Spatial Transcriptomics Sequencing (ST-Seq)", "dwc", "Darwin Core (DwC)", "Spatial transcriptomics sequencing to map gene expression within tissue samples, following Darwin Core (DwC) standards for transmitting biodiversity data, to help analyse cellular interactions in a spatial context."], "stx_seq_mixs_v0.1.html": ["stx_seq", "Spatial Transcriptomics Sequencing (ST-Seq)", "mixs", "Minimum Information about any (x) Sequence (MIxS)", "Spatial transcriptomics sequencing, which provides a comprehensive spatial map of gene expression within tissues, adhering to the Minimum Information about any (x) Sequence (MIxS) standard, detailing the contextual information about sampling and sequencing processes."], "stx_seq_tol_v0.1.html": ["stx_seq", "Spatial Transcriptomics Sequencing (ST-Seq)", "tol", "Tree of Life (ToL)", "Spatial transcriptomics sequencing to analyse gene expression in tissues with respect to their spatial organisation, following the Tree of Life (ToL) standards, which leverage genomic technologies to explore life\u2019s diversity and origins."]};
+      var components = [{"fields": [{"description": "A unique alphanumeric identifier for this study", "example": "A7F9B3X2", "label": "Study ID", "mandatory": "mandatory", "name": "study_id", "namespace": "ei:study_id", "reference": "", "regex": "^[a-zA-Z0-9]+$"}, {"description": "A name given to the study or project. Project title should be fewer than 30 words, such as a title of a grant proposal or a publication.", "example": "Study of single cells in the human body", "label": "Title", "mandatory": "mandatory", "name": "title", "namespace": "dcterms:title", "reference": "http://purl.org/dc/terms/title", "regex": ""}, {"description": "A detailed description of the project which includes research goals and experimental approach. Project description should be fewer than 300 words, such as an abstract from a grant application or publication.", "example": "This project explores the intricate details of single cells in the human body, focusing on their structure, function, and behaviour. By studying individual cells, it aims to uncover how they contribute to overall health, disease progression, and human biology. This research can provide deeper insights into cellular processes, paving the way for advancements in medical treatments and personalised medicine.", "label": "Description", "mandatory": "mandatory", "name": "description", "namespace": "dcterms:description", "reference": "http://purl.org/dc/terms/description", "regex": ""}, {"description": "A citation for the study resource, following a standard format.", "example": "Doe J., et al. (2024). Single Cell Transcriptomic Analysis of Human Liver Cells. Journal of Cellular Biology.", "label": "Bibliographic Citation", "mandatory": "mandatory", "name": "bibliographicCitation", "namespace": "dcterms:bibliographicCitation", "reference": "http://purl.org/dc/terms/bibliographicCitation", "regex": ""}, {"description": "The date when the study was created or registered.", "example": "2024-10-14", "label": "Created", "mandatory": "mandatory", "name": "created", "namespace": "dcterms:created", "reference": "http://purl.org/dc/terms/created", "regex": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$"}, {"allowed_values": ["Laser microdissection", "Laser microdissection, Culturing", "Laser microdissection, Culturing, Sequencing", "Laser microdissection, Sequencing", "Microfluidics, Facs, Culturing", "Microfluidics, Facs, Culturing, Sequencing", "Microfluidics, Facs, Sequencing", "Spatial Transcriptomics"], "description": "The workflow or protocol followed during the study.", "example": "spatial_transcriptomics", "label": "Workflow", "mandatory": "optional", "name": "workflow", "namespace": "ei:workflow", "reference": "", "regex": ""}, {"allowed_values": ["10X", "10X_3\u0027", "Mas_seq", "Smartseq", "Vizgen"], "description": "The sorting or visualisation technology used.", "example": "Vizgen", "label": "Technology", "mandatory": "mandatory", "name": "technology", "namespace": "ei:technology", "reference": "", "regex": ""}], "group_description": "Fields under component \u0027Study\u0027.", "group_label": "Study", "group_name": "study"}, {"fields": [{"description": "A unique alphanumeric identifier for this study", "example": "A7F9B3X2", "label": "Study ID", "mandatory": "mandatory", "name": "study_id", "namespace": "ei:study_id", "reference": "", "regex": "^[a-zA-Z0-9]+$"}, {"description": "A 16-digit number that uniquely identify researchers.", "example": "0000-1234-5678-9012", "label": "Orcid ID", "mandatory": "optional", "name": "orcid_id", "namespace": "ei:orcid_id", "reference": "", "regex": "^\\d{4}-\\d{4}-\\d{4}-\\d{4}$"}, {"description": "A first name (or given name) is the personal name given to an individual conducting the study.", "example": "Jane", "label": "First Name", "mandatory": "mandatory", "name": "givenName", "namespace": "schema.org:givenName", "reference": "https://schema.org/givenName", "regex": "^[A-Za-z]+(?:[-\\s][A-Za-z]+)*[a-z]+$"}, {"description": "A last name (or surname) is the family name passed down from one generation to the next for the individual conducting the study.", "example": "Doe", "label": "Last Name", "mandatory": "mandatory", "name": "familyName", "namespace": "schema.org:familyName", "reference": "https://schema.org/familyName", "regex": "^[A-Za-z]+(-[A-Za-z]+)*[a-z]+$"}, {"description": "A unique identifier used to send and receive electronic messages (emails) over the internet.", "example": "jane.doe@example.com", "label": "Email Address", "mandatory": "optional", "name": "email", "namespace": "schema.org:email", "reference": "https://schema.org/email", "regex": "^(?!.*\\.{2,})(?!.*-{2,})[\\w.-]+@[a-zA-Z\\d.-]+\\.[a-zA-Z]{2,}$"}, {"description": "An organisation or institution that this person is associated with.", "example": "University of Liverpool", "label": "Affiliation or Institution", "mandatory": "mandatory", "name": "affiliation", "namespace": "schema.org:affiliation", "reference": "https://schema.org/affiliation", "regex": "^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$"}, {"description": "A person or organization that supports (sponsors) something through some kind of financial contribution.", "example": "BBSRC", "label": "Funder", "mandatory": "optional", "name": "funder", "namespace": "schema.org:funder", "reference": "https://schema.org/funder", "regex": "^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$"}, {"description": "A grant that directly or indirectly provides funding or sponsorship for the person to conduct the study.", "example": "GRAK3489", "label": "Grant Award", "mandatory": "optional", "name": "funding", "namespace": "schema.org:funding", "reference": "https://schema.org/funding", "regex": "^[A-Za-z0-9]+(?: [A-Za-z0-9]+)*$"}], "group_description": "Fields under component \u0027Person\u0027.", "group_label": "Person", "group_name": "person"}, {"fields": [{"description": "A unique alphanumeric identifier for the  study if refering to", "example": "A7F9B3X2", "label": "Study ID", "mandatory": "mandatory", "name": "study_id", "namespace": "ei:study_id", "reference": "", "regex": "^[a-zA-Z0-9]+$"}, {"description": "A unique alphanumeric reference or identifier for the study.", "example": "study123", "label": "Sample ID", "mandatory": "mandatory", "name": "sample_id", "namespace": "ei:sample_id", "reference": "", "regex": "^[a-zA-Z0-9]+$"}, {"description": "The full scientific name of the species studied.", "example": "Arenicola marina", "label": "Scientific Name", "mandatory": "optional", "name": "scientificName", "namespace": "dwc:scientificName", "reference": "http://rs.tdwg.org/dwc/terms/scientificName", "regex": "^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$"}, {"description": "The full scientific name of the species studied.", "example": "Arenicola marina", "label": "Organism", "mandatory": "optional", "name": "organism", "namespace": "ei:organism", "reference": "", "regex": "^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$"}, {"allowed_values": ["Abdomen", "Anterior Body", "Blade", "Blood", "Bodywall", "Bract", "Brain", "Bud", "Cap", "Cephalothorax", "DNA Extract", "Egg", "Eggshell", "Endocrine Tissue", "Endosperm", "Eye", "Fat Body", "Fin", "Flower", "Gill Animal", "Gill Fungi", "Gonad", "Hair", "Head", "Heart", "Hepatopancreas", "Holdfast Fungi", "Intestine", "Kidney", "Leaf", "Leg", "Liver", "Lung", "Mid Body", "Modular Colony", "Mollusc Foot", "Multicellular Organisms In Culture", "Muscle", "Mycelium", "Mycorrhiza", "Not Applicable", "Not Collected", "Not Provided", "Other Fungal Tissue", "Other Plant Tissue", "Other Reproductive Animal Tissue", "Other Somatic Animal Tissue", "Ovary Animal", "Oviduct", "Pancreas", "Petiole", "Posterior Body", "Root", "Scales", "Scat", "Seed", "Seedling", "Shoot", "Skin", "Sperm Seminal Fluid", "Spleen", "Spore", "Spore Bearing Structure", "Stem", "Stipe", "Stomach", "Tentacle", "Terminal Body", "Testis", "Thallus Fungi", "Thallus Plant", "Thorax", "Unicellular Organisms In Culture", "Whole Organism", "Whole Plant"], "description": "The type of tissue sampled for the study.", "example": "Leaf", "label": "Tissue", "mandatory": "optional", "name": "tissue", "namespace": "ei:tissue", "reference": "http://purl.obolibrary.org/obo/NCIT_C19697", "regex": ""}, {"allowed_values": ["Air dried", "Dry ice", "Ethanol/Dry ice slurry", "Lyophilised", "Not Applicable", "Not Collected", "Not Provided", "Other", "RNALater", "Snap frozen"], "description": "A brief description of how the sample was preserved.", "example": "Fresh", "label": "Preparations", "mandatory": "optional", "name": "preparations", "namespace": "dwc:preparations", "reference": "http://rs.tdwg.org/dwc/terms/preparations", "regex": ""}, {"description": "The date when the sample was collected with year, month and day specified in the format, YYYY-MM-DD.", "example": "2024-09-20", "label": "Event Date", "mandatory": "optional", "name": "eventDate", "namespace": "dwc:eventDate", "reference": "http://rs.tdwg.org/dwc/terms/eventDate", "regex": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$"}, {"description": "The geographic latitude where the specimen or sample was taken in decimal degrees, between -90 and 90. Locations should be specified to a minimum of 3 decimal places and a maximum of 8 decimal places.", "example": "52.2053", "label": "Decimal Latitude", "mandatory": "optional", "name": "decimalLatitude", "namespace": "dwc:decimalLatitude", "reference": "http://rs.tdwg.org/dwc/terms/decimalLatitude", "regex": "^-?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$"}, {"description": "The longitude of the sample collection site, in decimal degrees.", "example": "0.1218", "label": "Decimal Longitude", "mandatory": "optional", "name": "decimalLongitude", "namespace": "dwc:decimalLongitude", "reference": "http://rs.tdwg.org/dwc/terms/decimalLongitude", "regex": "^-?(180(\\.0+)?|((1[0-7]\\d)|(\\d{1,2}))(\\.\\d+)?)$"}, {"description": "The material or physical carrier of the resource.", "example": "Tissue culture", "label": "Medium", "mandatory": "optional", "name": "medium", "namespace": "dcterms:medium", "reference": "http://purl.org/dc/terms/medium", "regex": "^[A-Za-z]+(?: [A-Za-z]+)*$"}, {"description": "A unique alphanumeric reference or identifier assigned to the sample in the study related to NCBI Taxonomy.", "example": "accession123", "label": "Accession Number", "mandatory": "optional", "name": "accession_number", "namespace": "ei:accession_number", "reference": "", "regex": "^[A-Za-z]*[a-z]+(?:[0-9]+)*$"}, {"description": "The full scientific name of the class in which the dwc:Taxon is classified.", "example": "Hepaticopsida", "label": "Class", "mandatory": "optional", "name": "class", "namespace": "dwc:class", "reference": "http://rs.tdwg.org/dwc/terms/class", "regex": "^[A-Za-z\\s]+[a-z]+$"}, {"description": "The name, acronym, code, or initialism identifying the collection or data set from which the record was derived.", "example": "Hildebrandt", "label": "Collection Code", "mandatory": "optional", "name": "collectionCode", "namespace": "dwc:collectionCode", "reference": "http://rs.tdwg.org/dwc/terms/collectionCode", "regex": "^[A-Za-z\\s]+[a-z]+$"}, {"description": "An identifier for the collection or dataset from which the record was derived.", "example": "https://www.gbif.org/grscicoll/collection/fbd3ed74-5a21-4e01-b86a-33d36f032d9c", "label": "Collection ID", "mandatory": "optional", "name": "collectionID", "namespace": "dwc:collectionID", "reference": "http://rs.tdwg.org/dwc/terms/collectionID", "regex": "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\\+.~#?\u0026\\/=]*)+(?: \\| https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\\+.~#?\u0026\\/=]*)*)*$"}, {"description": "The name of the continent in which the dcterms:Location occurs.", "example": "Europe", "label": "Continent", "mandatory": "optional", "name": "continent", "namespace": "dwc:continent", "reference": "http://rs.tdwg.org/dwc/terms/continent", "regex": "^[A-Za-z\\s]+[a-z]+$"}, {"description": "The standard code for the country in which the dcterms:Location occurs.", "example": "AR", "label": "Country Code", "mandatory": "optional", "name": "countryCode", "namespace": "dwc:countryCode", "reference": "http://rs.tdwg.org/dwc/terms/countryCode", "regex": ""}, {"description": "The full, unabbreviated name of the next smaller administrative region than stateProvince (county, shire, department, etc.) in which the dcterms:Location occurs.", "example": "Los Lagos", "label": "County", "mandatory": "optional", "name": "county", "namespace": "dwc:county", "reference": "http://rs.tdwg.org/dwc/terms/county", "regex": "^[A-Za-z\\s]+[a-z]+$"}, {"description": "Part of the name of a cultivar, cultivar group or grex that follows the dwc:scientificName.", "example": "King Edward", "label": "Cultivar Epithet", "mandatory": "optional", "name": "cultivarEpithet", "namespace": "dwc:cultivarEpithet", "reference": "http://rs.tdwg.org/dwc/terms/cultivarEpithet", "regex": "^[A-Za-z\\s]+[a-z]+$"}, {"description": "An identifier for the set of data. May be a global unique identifier or an identifier specific to a collection or institution.", "example": "b15d4952-7d20-46f1-8a3e-556a512b04c5", "label": "Dataset ID", "mandatory": "optional", "name": "datasetID", "namespace": "dwc:datasetID", "reference": "http://rs.tdwg.org/dwc/terms/datasetID", "regex": ""}, {"description": "The name identifying the data set from which the record was derived.", "example": "Grinnell Resurvey Mammals", "label": "Dataset Name", "mandatory": "optional", "name": "datasetName", "namespace": "dwc:datasetName", "reference": "http://rs.tdwg.org/dwc/terms/datasetName", "regex": "^[A-Za-z\\s]+[a-z]+$"}, {"description": "The date on which the subject was determined as representing the dwc:Taxon.", "example": "1963-03-08T14:07", "label": "Date Identified", "mandatory": "optional", "name": "dateIdentified", "namespace": "dwc:dateIdentified", "reference": "http://rs.tdwg.org/dwc/terms/dateIdentified", "regex": "^((\\d{4})(-\\d{2}(-\\d{2}(T\\d{2}:\\d{2}(:\\d{2})?(Z|[+-]\\d{2}:?\\d{2})?)?)?)?(/(\\d{4}|(\\d{2}(-\\d{2}(T\\d{2}:\\d{2}(:\\d{2})?(Z|[+-]\\d{2}:?\\d{2})?)?)?)?))?)$"}, {"allowed_values": ["Deaccessioned", "Destroyed", "In collection", "Missing", "On loan", "Used up"], "description": "The current state of a specimen with respect to the collection identified in dwc:collectionCode or dwc:collectionID.", "example": "Used up", "label": "Disposition", "mandatory": "optional", "name": "disposition", "namespace": "dwc:disposition", "reference": "http://rs.tdwg.org/dwc/terms/disposition", "regex": ""}, {"description": "The name of the lowest or terminal infraspecific epithet of the dwc:scientificName, excluding any rank designation.", "example": "concolor", "label": "Infraspecific Epithet", "mandatory": "optional", "name": "infraspecificEpithet", "namespace": "dwc:infraspecificEpithet", "reference": "http://rs.tdwg.org/dwc/terms/infraspecificEpithet", "regex": "^[A-Za-z\\s]+[a-z]+$"}, {"description": "An identifier for the institution having custody of the object(s) or information referred to in the record.", "example": "https: //ror.org/015hz7p22", "label": "Institution ID", "mandatory": "optional", "name": "institutionID", "namespace": "dwc:institutionID", "reference": "http://rs.tdwg.org/dwc/terms/institutionID", "regex": "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\\+.~#?\u0026\\/=]*)+(?: \\| https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\\+.~#?\u0026\\/=]*)*)*$"}, {"description": "The name of the island on or near which the dcterms:Location occurs.", "example": "Zanzibar", "label": "Island", "mandatory": "optional", "name": "island", "namespace": "dwc:island", "reference": "http://rs.tdwg.org/dwc/terms/island", "regex": "^[A-Za-z\\s]+[a-z]+$"}, {"description": "The name of the island group in which the dcterms:Location occurs.", "example": "Alexander Archipelago", "label": "Island Group", "mandatory": "optional", "name": "islandGroup", "namespace": "dwc:islandGroup", "reference": "http://rs.tdwg.org/dwc/terms/islandGroup", "regex": "^[A-Za-z\\s]+[a-z]+$"}, {"description": "The full scientific name of the kingdom in which the dwc:Taxon is classified.", "example": "Animalia", "label": "Kingdom", "mandatory": "optional", "name": "kingdom", "namespace": "dwc:kingdom", "reference": "http://rs.tdwg.org/dwc/terms/kingdom", "regex": "^[A-Za-z\\s]+[a-z]+$"}, {"description": "A language of the resource.", "example": "en", "label": "Language", "mandatory": "optional", "name": "language", "namespace": "dcterms:language", "reference": "http://purl.org/dc/elements/1.1/language", "regex": "^[A-Za-z\\s]+[a-z]+$"}, {"description": "The specific description of the place.", "example": "Queets Rainforest, Olympic National Park", "label": "Locality", "mandatory": "optional", "name": "locality", "namespace": "dwc:locality", "reference": "http://rs.tdwg.org/dwc/terms/locality", "regex": ""}, {"description": "Information about the source of this dcterms:Location information. Could be a publication (gazetteer), institution, or team of individuals.", "example": "Getty Thesaurus of Geographic Names", "label": "Location According To", "mandatory": "optional", "name": "locationAccordingTo", "namespace": "dwc:locationAccordingTo", "reference": "http://rs.tdwg.org/dwc/terms/locationAccordingTo", "regex": ""}, {"description": "An identifier for the set of dcterms:Location information. May be a global unique identifier or an identifier specific to the data set.", "example": "https://opencontext.org/subjects/768A875F-E205-4D0B-DE55-BAB7598D0FD1", "label": "Location ID", "mandatory": "optional", "name": "locationID", "namespace": "dwc:locationID", "reference": "http://rs.tdwg.org/dwc/terms/locationID", "regex": "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\\+.~#?\u0026\\/=]*)+(?: \\| https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\\+.~#?\u0026\\/=]*)*)*$"}, {"description": "Comments or notes about the dcterms:Location.", "example": "under water since 2005", "label": "Location Remarks", "mandatory": "optional", "name": "locationRemarks", "namespace": "dwc:locationRemarks", "reference": "http://rs.tdwg.org/dwc/terms/locationRemarks", "regex": ""}, {"description": "Comments or notes about the dwc:MaterialEntity instance.", "example": "found in association with charred remains", "label": "Material Entity Remarks", "mandatory": "optional", "name": "materialEntityRemarks", "namespace": "dwc:materialEntityRemarks", "reference": "http://rs.tdwg.org/dwc/terms/materialEntityRemarks", "regex": ""}, {"description": "The greater depth of a range of depth below the local surface, in metres.", "example": "200", "label": "Maximum Depth In Metres", "mandatory": "optional", "name": "maximumDepthInMeters", "namespace": "dwc:maximumDepthInMeters", "reference": "http://rs.tdwg.org/dwc/terms/maximumDepthInMeters", "regex": "^-?\\d+(\\.\\d+)?$"}, {"description": "The greater distance in a range of distance from a reference surface in the vertical direction, in meters. Use positive values for locations above the surface, negative values for locations below. If depth measures are given, the reference surface is the location given by the depth, otherwise the reference surface is the location given by the elevation.", "example": "-1.5", "label": "Maximum Distance Above Surface In Metres", "mandatory": "optional", "name": "maximumDistanceAboveSurfaceInMeters", "namespace": "dwc:maximumDistanceAboveSurfaceInMeters", "reference": "http://rs.tdwg.org/dwc/terms/maximumDistanceAboveSurfaceInMeters", "regex": "^-?\\d+(\\.\\d+)?$"}, {"description": "The upper limit of the range of elevation (altitude, usually above sea level), in metres.", "example": "1236", "label": "Maximum Elevation In Metres", "mandatory": "optional", "name": "maximumElevationInMeters", "namespace": "dwc:maximumElevationInMeters", "reference": "http://rs.tdwg.org/dwc/terms/maximumElevationInMeters", "regex": "^-?\\d+(\\.\\d+)?$"}, {"description": "The lesser depth of a range of depth below the local surface, in metres.", "example": "100", "label": "Minimum Depth In Metres", "mandatory": "optional", "name": "minimumDepthInMeters", "namespace": "dwc:minimumDepthInMeters", "reference": "http://rs.tdwg.org/dwc/terms/minimumDepthInMeters", "regex": "^-?\\d+(\\.\\d+)?$"}, {"description": "The lesser distance in a range of distance from a reference surface in the vertical direction, in meters. Use positive values for locations above the surface, negative values for locations below. If depth measures are given, the reference surface is the location given by the depth, otherwise the reference surface is the location given by the elevation.", "example": "4.2", "label": "Minimum Distance Above Surface In Metres", "mandatory": "optional", "name": "minimumDistanceAboveSurfaceInMeters", "namespace": "dwc:minimumDistanceAboveSurfaceInMeters", "reference": "http://rs.tdwg.org/dwc/terms/minimumDistanceAboveSurfaceInMeters", "regex": "^-?\\d+(\\.\\d+)?$"}, {"description": "The lower limit of the range of elevation (altitude, usually above sea level), in metres", "example": "-100", "label": "Minimum Elevation In Metres", "mandatory": "optional", "name": "minimumElevationInMeters", "namespace": "dwc:minimumElevationInMeters", "reference": "http://rs.tdwg.org/dwc/terms/minimumElevationInMeters", "regex": "^-?\\d+(\\.\\d+)?$"}, {"description": "An identifier for the dwc:Organism instance (as opposed to a particular digital record of the dwc:Organism). May be a globally unique identifier or an identifier specific to the data set.", "example": "organism123", "label": "Organism ID", "mandatory": "optional", "name": "organismID", "namespace": "dwc:organismID", "reference": "http://rs.tdwg.org/dwc/terms/organismID", "regex": ""}, {"description": "A number or enumeration value for the quantity of dwc:Organisms.", "example": "27", "label": "Organism Quantity", "mandatory": "optional", "name": "organismQuantity", "namespace": "dwc:organismQuantity", "reference": "http://rs.tdwg.org/dwc/terms/organismQuantity", "regex": ""}, {"description": "The type of quantification system used for the quantity of organisms.", "example": "12.5", "label": "Organism Quantity Type", "mandatory": "optional", "name": "organismQuantityType", "namespace": "dwc:organismQuantityType", "reference": "http://rs.tdwg.org/dwc/terms/organismQuantityType", "regex": ""}, {"description": "Comments or notes about the dwc:Organism instance.", "example": "One of a litter of six", "label": "Organism Remarks", "mandatory": "optional", "name": "organismRemarks", "namespace": "dwc:organismRemarks", "reference": "http://rs.tdwg.org/dwc/terms/organismRemarks", "regex": ""}, {"description": "The full scientific name of the phylum or division in which the dwc:Taxon is classified.", "example": "Chordata", "label": "Phylum", "mandatory": "optional", "name": "phylum", "namespace": "dwc:phylum", "reference": "http://rs.tdwg.org/dwc/terms/phylum", "regex": ""}, {"description": "A person, group, or organization responsible for recording the original dwc:Occurrence.", "example": "Jos\u00e9 E. Crespo", "label": "Recorded By", "mandatory": "optional", "name": "recordedBy", "namespace": "dwc:recordedBy", "reference": "http://rs.tdwg.org/dwc/terms/recordedBy", "regex": ""}, {"description": "A list (concatenated and separated) of the globally unique identifier for the person, people, groups, or organizations responsible for recording the original dwc:Occurrence.", "example": "https://orcid.org/0000-0002-1825-0097 | https://orcid.org/0000-0002-1825-0098", "label": "Recorded By ID", "mandatory": "optional", "name": "recordedByID", "namespace": "dwc:recordedByID", "reference": "http://rs.tdwg.org/dwc/terms/recordedByID", "regex": "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\\+.~#?\u0026\\/=]*)+(?: \\| https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\\+.~#?\u0026\\/=]*)*)*$"}, {"allowed_values": ["Fruit-bearing", "In bloom", "Non-reproductive", "Pregnant"], "description": "The reproductive condition of the biological individual(s) represented in the dwc:Occurrence.", "example": "Fruit-bearing", "label": "Reproductive Condition", "mandatory": "optional", "name": "reproductiveCondition", "namespace": "dwc:reproductiveCondition", "reference": "http://rs.tdwg.org/dwc/terms/reproductiveCondition", "regex": ""}, {"description": "The unit of measurement of the size (time duration, length, area, or volume) of a sample in a sampling dwc:Event.", "example": "minute", "label": "Sample Size Unit", "mandatory": "optional", "name": "sampleSizeUnit", "namespace": "dwc:sampleSizeUnit", "reference": "http://rs.tdwg.org/dwc/terms/sampleSizeUnit", "regex": ""}, {"description": "A numeric value for a measurement of the size (time duration, length, area, or volume) of a sample in a sampling dwc:Event.", "example": "5", "label": "Sample Size Value", "mandatory": "optional", "name": "sampleSizeValue", "namespace": "dwc:sampleSizeValue", "reference": "http://rs.tdwg.org/dwc/terms/sampleSizeValue", "regex": "^-?\\d+(\\.\\d+)?$"}, {"description": "The amount of effort expended during a dwc:Event.", "example": "40 trap-nights", "label": "Sampling Effort", "mandatory": "optional", "name": "samplingEffort", "namespace": "dwc:samplingEffort", "reference": "http://rs.tdwg.org/dwc/terms/samplingEffort", "regex": ""}, {"description": "The methods or protocols used during a dwc:Event, denoted by an IRI.", "example": "UV light trap", "label": "Sampling Protocol", "mandatory": "optional", "name": "samplingProtocol", "namespace": "dwc:samplingProtocol", "reference": "http://rs.tdwg.org/dwc/terms/samplingProtocol", "regex": ""}, {"description": "The name of the first or species epithet of the dwc:scientificName.", "example": "concolor", "label": "Specific Epithet", "mandatory": "optional", "name": "specificEpithet", "namespace": "dwc:specificEpithet", "reference": "http://rs.tdwg.org/dwc/terms/specificEpithet", "regex": ""}, {"description": "The full scientific name of the subfamily in which the dwc:Taxon is classified.", "example": "Periptyctinae", "label": "Subfamily", "mandatory": "optional", "name": "subfamily", "namespace": "dwc:subfamily", "reference": "http://rs.tdwg.org/dwc/terms/subfamily", "regex": ""}, {"description": "The full scientific name of the subgenus in which the dwc:Taxon is classified. Values should include the genus to avoid homonym confusion.", "example": "Strobus", "label": "Subgenus", "mandatory": "optional", "name": "subgenus", "namespace": "dwc:subgenus", "reference": "http://rs.tdwg.org/dwc/terms/subgenus", "regex": ""}, {"description": "An identifier for the taxonomic concept to which the record refers - not for the nomenclatural details of a dwc:Taxon.", "example": "8fa58e08-08de-4ac1-b69c-1235340b7001", "label": "Taxon Concept ID", "mandatory": "optional", "name": "taxonConceptID", "namespace": "dwc:taxonConceptID", "reference": "http://rs.tdwg.org/dwc/terms/taxonConceptID", "regex": ""}, {"description": "Comments or notes about the taxon or name.", "example": "this name is a misspelling in common use", "label": "Taxon Remarks", "mandatory": "optional", "name": "taxonRemarks", "namespace": "dwc:taxonRemarks", "reference": "http://rs.tdwg.org/dwc/terms/taxonRemarks", "regex": ""}, {"description": "The status of the use of the dwc:scientificName as a label for a taxon. Requires taxonomic opinion to define the scope of a dwc:Taxon. Rules of priority then are used to define the taxonomic status of the nomenclature contained in that scope, combined with the experts opinion. It must be linked to a specific taxonomic reference that defines the concept.", "example": "misapplied", "label": "Taxonomic Status", "mandatory": "optional", "name": "taxonomicStatus", "namespace": "dwc:taxonomicStatus", "reference": "http://rs.tdwg.org/dwc/terms/taxonomicStatus", "regex": ""}, {"description": "The nature or genre of the resource.", "example": "StillImage", "label": "Type", "mandatory": "optional", "name": "type", "namespace": "dcterms:type", "reference": "http://purl.org/dc/elements/1.1/type", "regex": ""}, {"description": "The spatial coordinate system for the dwc:verbatimLatitude and dwc:verbatimLongitude or the dwc:verbatimCoordinates of the dcterms:Location.", "example": "decimal degrees", "label": "Verbatim Coordinate System", "mandatory": "optional", "name": "verbatimCoordinateSystem", "namespace": "dwc:verbatimCoordinateSystem", "reference": "http://rs.tdwg.org/dwc/terms/verbatimCoordinateSystem", "regex": ""}, {"description": "The verbatim original spatial coordinates of the dcterms:Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in dwc:verbatimSRS and the coordinate system should be stored in dwc:verbatimCoordinateSystem.", "example": "41 05 54S 121 05 34W", "label": "Verbatim Coordinates", "mandatory": "optional", "name": "verbatimCoordinates", "namespace": "dwc:verbatimCoordinates", "reference": "http://rs.tdwg.org/dwc/terms/verbatimCoordinates", "regex": ""}, {"description": "The original description of the depth below the local surface.", "example": "100-200", "label": "Verbatim Depth", "mandatory": "optional", "name": "verbatimDepth", "namespace": "dwc:verbatimDepth", "reference": "http://rs.tdwg.org/dwc/terms/verbatimDepth", "regex": ""}, {"description": "The original description of the elevation (altitude, usually above sea level) of the Location.", "example": "100-200", "label": "Verbatim Elevation", "mandatory": "optional", "name": "verbatimElevation", "namespace": "dwc:verbatimElevation", "reference": "http://rs.tdwg.org/dwc/terms/verbatimElevation", "regex": ""}, {"description": "The verbatim original representation of the date and time information for a dwc:Event.", "example": "spring 1910", "label": "Verbatim Event Date", "mandatory": "optional", "name": "verbatimEventDate", "namespace": "dwc:verbatimEventDate", "reference": "http://rs.tdwg.org/dwc/terms/verbatimEventDate", "regex": ""}, {"description": "A string representing the taxonomic identification as it appeared in the original record.", "example": "Peromyscus sp.", "label": "Verbatim Identification", "mandatory": "optional", "name": "verbatimIdentification", "namespace": "dwc:verbatimIdentification", "reference": "http://rs.tdwg.org/dwc/terms/verbatimIdentification", "regex": ""}, {"description": "The content of this term should include no embellishments, prefixes, headers or other additions made to the text. Abbreviations must not be expanded and supposed misspellings must not be corrected. Lines or breakpoints between blocks of text that could be verified by seeing the original labels or images of them may be used. Examples of material entities include preserved specimens, fossil specimens, and material samples. Best practice is to use UTF-8 for all characters. Best practice is to add comment \u201a\u00c4\u00faverbatimLabel derived from human transcription\u201a\u00c4\u00f9 in dwc:occurrenceRemarks.", "example": "Monotoma longicollis 4 \u2642 Det TC McElrath 2018", "label": "Verbatim Label", "mandatory": "optional", "name": "verbatimLabel", "namespace": "dwc:verbatimLabel", "reference": "http://rs.tdwg.org/dwc/terms/verbatimLabel", "regex": ""}, {"description": "The verbatim original latitude of the dcterms:Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in dwc:verbatimSRS and the coordinate system should be stored in dwc:verbatimCoordinateSystem.", "example": "41 05 54.03S", "label": "Verbatim Latitude", "mandatory": "optional", "name": "verbatimLatitude", "namespace": "dwc:verbatimLatitude", "reference": "http://rs.tdwg.org/dwc/terms/verbatimLatitude", "regex": ""}, {"description": "The original textual description of the place.", "example": "25 km NNE Bariloche por R. Nac. 237", "label": "Verbatim Locationality", "mandatory": "optional", "name": "verbatimLocality", "namespace": "dwc:verbatimLocality", "reference": "http://rs.tdwg.org/dwc/terms/verbatimLocality", "regex": ""}, {"description": "The verbatim original longitude of the dcterms:Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in dwc:verbatimSRS and the coordinate system should be stored in dwc:verbatimCoordinateSystem.", "example": "121d 10\u0027 34\" W", "label": "Verbatim Longitude", "mandatory": "optional", "name": "verbatimLongitude", "namespace": "dwc:verbatimLongitude", "reference": "http://rs.tdwg.org/dwc/terms/verbatimLongitude", "regex": ""}, {"description": "The ellipsoid, geodetic datum, or spatial reference system (SRS) upon which coordinates given in dwc:verbatimLatitude and dwc:verbatimLongitude, or dwc:verbatimCoordinates are based.", "example": "WGS84", "label": "Verbatim SRS", "mandatory": "optional", "name": "verbatimSRS", "namespace": "dwc:verbatimSRS", "reference": "http://rs.tdwg.org/dwc/terms/verbatimSRS", "regex": ""}, {"description": "The taxonomic rank of the most specific name in the dwc:scientificName as it appears in the original record.", "example": "prole", "label": "Verbatim Taxon Rank", "mandatory": "optional", "name": "verbatimTaxonRank", "namespace": "dwc:verbatimTaxonRank", "reference": "http://rs.tdwg.org/dwc/terms/verbatimTaxonRank", "regex": ""}, {"description": "A common or vernacular name.", "example": "Andean Condor", "label": "Vernacular Name", "mandatory": "optional", "name": "vernacularName", "namespace": "dwc:vernacularName", "reference": "http://rs.tdwg.org/dwc/terms/vernacularName", "regex": ""}, {"description": "The vertical datum used as the reference upon which the values in the elevation terms are based.", "example": "EGM84", "label": "Vertical Datum", "mandatory": "optional", "name": "verticalDatum", "namespace": "dwc:verticalDatum", "reference": "http://rs.tdwg.org/dwc/terms/verticalDatum", "regex": ""}, {"description": "An indication of whether a dwc:Organism was alive or dead at the time of collection or observation.", "example": "alive", "label": "Vitality", "mandatory": "optional", "name": "vitality", "namespace": "dwc:vitality", "reference": "http://rs.tdwg.org/dwc/terms/vitality", "regex": ""}, {"description": "The name of the water body in which the dcterms:Location occurs.", "example": "Indian Ocean", "label": "Water Body", "mandatory": "optional", "name": "waterBody", "namespace": "dwc:waterBody", "reference": "http://rs.tdwg.org/dwc/terms/waterBody", "regex": ""}, {"description": "An identifier for the dwc:MaterialSample (as opposed to a particular digital record of the dwc:MaterialSample). In the absence of a persistent global unique identifier, construct one from a combination of identifiers in the record that will most closely make the dwc:materialSampleID globally unique.", "example": "06809dc5-f143-459a-be1a-6f03e63fc083", "label": "Material Sample ID", "mandatory": "optional", "name": "materialSampleID", "namespace": "dwc:materialSampleID", "reference": "http://rs.tdwg.org/dwc/terms/materialSampleID", "regex": ""}], "group_description": "Fields under component \u0027Sample\u0027.", "group_label": "Sample", "group_name": "sample"}, {"fields": [{"description": "A unique alphanumeric identifier for this study", "example": "A7F9B3X2", "label": "Study ID", "mandatory": "mandatory", "name": "study_id", "namespace": "ei:study_id", "reference": "", "regex": "^[a-zA-Z0-9]+$"}, {"description": "A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.", "example": "libPrep123", "label": "Library Preparation ID", "mandatory": "mandatory", "name": "library_prep_id", "namespace": "ei:library_prep_id", "reference": "", "regex": "^[a-zA-Z0-9]+$"}, {"description": "A unique alphanumeric reference or identifier assigned to the cell suspension for the sample in the study.", "example": "sample123", "label": "Sample ID", "mandatory": "mandatory", "name": "sample_id", "namespace": "ei:sample_id", "reference": "", "regex": "^[a-zA-Z0-9]+$"}, {"description": "The version number of the library preparation kit used for sequencing.", "example": "2", "label": "Library Preparation Kit Version", "mandatory": "mandatory", "name": "library_prep_kit_version", "namespace": "ei:library_prep_kit_version", "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149", "regex": "^\\d+$"}, {"description": "The method used to amplify the Complementary DNA (cDNA).", "example": "PCR", "label": "Amplification Method", "mandatory": "optional", "name": "amplification_method", "namespace": "ei:amplification_method", "reference": "", "regex": ""}, {"description": "The number of cycles used during the Complementary DNA (cDNA) amplification process.", "example": "12", "label": "cDNA Amplification Cycles", "mandatory": "mandatory", "name": "cdna_amplification_cycles", "namespace": "ei:cdna_amplification_cycles", "reference": "", "regex": "^\\d+$"}, {"description": "The average length of RNA fragments in base pairs (BP) after library preparation, indicating the quality and suitability of the RNA for sequencing.", "example": "350", "label": "Average Size Distribution", "mandatory": "optional", "name": "average_size_distribution", "namespace": "ei:average_size_distribution", "reference": "", "regex": "^\\d+$"}, {"description": "The library construction method (including version) that was used.", "example": "Smart-Seq2", "label": "Library Construction Method", "mandatory": "optional", "name": "lib_construction_method", "namespace": "ei:lib_construction_method", "reference": "", "regex": ""}, {"description": "The specific fraction of biological macromolecule from which the sequencing library is derived.", "example": "RNA", "label": "Input Molecule", "mandatory": "optional", "name": "input_molecule", "namespace": "ei:input_molecule", "reference": "", "regex": ""}, {"allowed_values": ["Oligo-dT", "Random"], "description": "The type of primer used for reverse transcription. This allows users to identify content of the cDNA library input for mRNA.", "example": "Random", "label": "Primer", "mandatory": "optional", "name": "primer", "namespace": "ei:primer", "reference": "", "regex": ""}, {"allowed_values": ["3\u0027", "5\u0027", "Both"], "description": "The end from which the molecule was sequenced.", "example": "5\u0027", "label": "Primeness", "mandatory": "mandatory", "name": "primeness", "namespace": "ei:primeness", "reference": "", "regex": ""}, {"allowed_values": ["3", "5"], "description": "The end bias of the library.", "example": "3", "label": "End Bias", "mandatory": "optional", "name": "end_bias", "namespace": "ei:end_bias", "reference": "", "regex": ""}, {"allowed_values": ["Antisense", "Both", "Sense", "Unstranded"], "description": "The Complementary DNA (cDNA) strand of the library from which the reads derived from - sense (first), antisense (second), both or none.", "example": "Antisense", "label": "Library Strand", "mandatory": "optional", "name": "library_strand", "namespace": "ei:library_strand", "reference": "", "regex": ""}, {"allowed_values": ["No", "Yes"], "description": "External RNA added to the sample as a control to assess technical variability and normalization in RNA-sequencing. State whether spike-in was used.", "example": "Yes", "label": "Spike In", "mandatory": "mandatory", "name": "spike_in", "namespace": "ei:spike_in", "reference": "", "regex": ""}, {"description": "The specific type of external RNA used for spiking in, often indicating the source or nature of the control RNA.", "example": "Synthetic RNA", "label": "Spike Type", "mandatory": "optional", "name": "spike_type", "namespace": "ei:spike_type", "reference": "", "regex": ""}, {"description": "The final concentration or dilution (for commercial sets) of the spike in mix.", "example": "1:1000", "label": "Spike In Dilution Or Concentration", "mandatory": "optional", "name": "spike_in_dilution_or_concentration", "namespace": "ei:spike_in_dilution_or_concentration", "reference": "", "regex": ""}, {"description": "Barcode sequence used on the i5 adapter during library preparation for identifying samples in multiplexed single-cell RNA-sequencing.", "example": "ATCACG", "label": "i5 Index", "mandatory": "mandatory", "name": "i5_index", "namespace": "ei:i5_index", "reference": "", "regex": ""}, {"description": "Barcode sequence used on the i7 adapter to distinguish samples in multiplexed sequencing runs.", "example": "CGATGT", "label": "i7 Index", "mandatory": "mandatory", "name": "i7_index", "namespace": "ei:i7_index", "reference": "", "regex": ""}, {"allowed_values": ["Dual", "Single"], "description": "Specifies if both i5 and i7 indices (dual) or only one index (single) was used for sample identification during sequencing.", "example": "Dual", "label": "Dual or Single Index", "mandatory": "mandatory", "name": "dual_single_index", "namespace": "ei:dual_single_index", "reference": "", "regex": ""}, {"description": "The nucleotide sequence of the i5 index used in multiplexing during sequencing.", "example": "ATCGTAGC", "label": "I5 Sequence", "mandatory": "mandatory", "name": "i5_sequence", "namespace": "ei:i5_sequence", "reference": "", "regex": ""}, {"description": "The specific nucleotide sequence of the i7 index used for a sample.", "example": "TGCATGCA", "label": "i7 Sequence", "mandatory": "mandatory", "name": "i7_sequence", "namespace": "ei:i7_sequence", "reference": "", "regex": ""}, {"description": "Identifier for the 96-well plate used in sample preparation.", "example": "plate123", "label": "Plate ID", "mandatory": "optional", "name": "plate_id", "namespace": "ei:plate_id", "reference": "", "regex": "^[a-zA-Z0-9]+$"}, {"description": "The row identifier in a 96-well plate indicating the sample\u0027s position.", "example": "A", "label": "Well Row", "mandatory": "optional", "name": "well_row", "namespace": "ei:well_row", "reference": "", "regex": ""}, {"description": "The column identifier in a 96-well plate indicating the sample\u0027s position.", "example": "5", "label": "Well Column", "mandatory": "optional", "name": "well_col", "namespace": "ei:well_col", "reference": "", "regex": "^\\d+$"}, {"allowed_values": ["CD41+", "CD41-"], "description": "The cell marker for the Fluorescence-Activated Cell Sorting (FACS) of cells.", "example": "CD41-", "label": "Cell Phenotype", "mandatory": "optional", "name": "cell_phenotype", "namespace": "ei:cell_phenotype", "reference": "", "regex": ""}], "group_description": "Fields under component \u0027Library Preparation\u0027.", "group_label": "Library Preparation", "group_name": "lib_prep"}, {"fields": [{"description": "A unique alphanumeric identifier for this study", "example": "A7F9B3X2", "label": "Study ID", "mandatory": "mandatory", "name": "study_id", "namespace": "ei:study_id", "reference": "", "regex": "^[a-zA-Z0-9]+$"}, {"description": "A unique alphanumeric reference or identifier for the sequencing protocol.", "example": "seq123", "label": "Sequencing ID", "mandatory": "mandatory", "name": "sequencing_id", "namespace": "ei:sequencing_id", "reference": "https://w3id.org/mixs/0000016", "regex": "^[a-zA-Z0-9]+$"}, {"description": "The name of the sequencing platform used for the experiment.", "example": "Pacbio", "label": "Sequencing Platform Name", "mandatory": "mandatory", "name": "sequencing_platform_name", "namespace": "ei:sequencing_platform_name", "reference": "http://purl.obolibrary.org/obo/NCIT_C172274", "regex": ""}, {"description": "This refers to the machine or platform used for sequencing, with variations in throughput, read lengths, error rates, and application suitability.", "example": "Illumina NovaSeq 6000", "label": "Sequencing Instrument Model", "mandatory": "mandatory", "name": "sequencing_instrument_model", "namespace": "ei:sequencing_instrument_model", "reference": "http://purl.obolibrary.org/obo/GENEPIO_0000149", "regex": ""}, {"allowed_values": ["Other", "Paired", "Single", "Vector"], "description": "Specify whether to expect single, paired, or other configuration of reads for sequencing", "example": "Paired", "label": "Library Layout", "mandatory": "mandatory", "name": "lib_layout", "namespace": "mixs:lib_layout", "reference": "https://w3id.org/mixs/0000111", "regex": ""}, {"allowed_values": ["index1", "index2", "read1", "read2"], "description": "The type of read that contains the Unique Molecular Identifier (UMI) barcode.", "example": "index2", "label": "UMI Barcode Read", "mandatory": "optional", "name": "umi_barcode_read", "namespace": "ei:umi_barcode_read", "reference": "", "regex": ""}, {"description": "The offset in sequence of the Unique Molecular Identifier (UMI) identifying barcode.", "example": "0", "label": "UMI Barcode Offset", "mandatory": "optional", "name": "umi_barcode_offset", "namespace": "ei:umi_barcode_offset", "reference": "", "regex": "^\\d+$"}, {"description": "The size of the Unique Molecular Identifier (UMI) identifying barcode.", "example": "10", "label": "UMI Barcode Size", "mandatory": "optional", "name": "umi_barcode_size", "namespace": "ei:umi_barcode_size", "reference": "", "regex": "^\\d+$"}, {"allowed_values": ["index1", "index2", "read1", "read2"], "description": "The type of read that contains the UMI barcode.", "example": "index1", "label": "Cell Barcode Read", "mandatory": "optional", "name": "cell_barcode_read", "namespace": "ei:cell_barcode_read", "reference": "http://www.ebi.ac.uk/efo/EFO_0010203", "regex": ""}, {"description": "The offset in sequence of the cell identifying barcode.", "example": "10", "label": "Cell Barcode Offset", "mandatory": "optional", "name": "cell_barcode_offset", "namespace": "ei:cell_barcode_offset", "reference": "http://www.ebi.ac.uk/efo/EFO_0010204", "regex": "^\\d+$"}, {"description": "The offset in sequence of the cell identifying barcode.", "example": "0", "label": "Cell Barcode Size", "mandatory": "optional", "name": "cell_barcode_size", "namespace": "ei:cell_barcode_size", "reference": "http://www.ebi.ac.uk/efo/EFO_0010205", "regex": "^\\d+$"}, {"allowed_values": ["index1", "index2", "read1", "read2"], "description": "The actual nucleotide sequence obtained from Complementary DNA (cDNA) during sequencing.", "example": "read1", "label": "cDNA Read", "mandatory": "mandatory", "name": "cdna_read", "namespace": "ei:cdna_read", "reference": "http://www.ebi.ac.uk/efo/EFO_0010195", "regex": ""}, {"description": "The starting position of the Complementary DNA (cDNA) read within the entire sequence, indicating where the read begins after any barcodes or technical sequences.", "example": 6, "label": "cDNA Read Offset", "mandatory": "optional", "name": "cdna_read_offset", "namespace": "ei:cdna_read_offset", "reference": "http://www.ebi.ac.uk/efo/EFO_0010201", "regex": "^\\d+$"}, {"description": "The size of the Complementary DNA (cDNA) read.", "example": "75", "label": "cDNA Read Size", "mandatory": "optional", "name": "cdna_read_size", "namespace": "ei:cdna_read_size", "reference": "http://www.ebi.ac.uk/efo/EFO_0010202", "regex": "^\\d+$"}], "group_description": "Fields under component \u0027Sequencing\u0027.", "group_label": "Sequencing", "group_name": "sequencing"}, {"fields": [{"description": "A unique alphanumeric identifier for this study", "example": "A7F9B3X2", "label": "Study ID", "mandatory": "mandatory", "name": "study_id", "namespace": "ei:study_id", "reference": "", "regex": "^[a-zA-Z0-9]+$"}, {"description": "A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.", "example": "libPrep123", "label": "Library Preparation ID", "mandatory": "mandatory", "name": "lib_prep_id", "namespace": "ei:lib_prep_id", "reference": "", "regex": "^[a-zA-Z0-9]+$"}, {"description": "A unique alphanumeric reference or identifier for the sequencing protocol.", "example": "seq123", "label": "Sequencing ID", "mandatory": "mandatory", "name": "sequencing_id", "namespace": "ei:sequencing_id", "reference": "", "regex": "^[a-zA-Z0-9]+$"}, {"description": "A unique alphanumeric identifier for this file", "example": "A7F9B3X2", "label": "File ID", "mandatory": "mandatory", "name": "file_id", "namespace": "ei:file_id", "reference": "", "regex": "^[a-zA-Z0-9]+$"}, {"description": "The name or accession of the file that contains read 1.", "example": "file1_r1.fastq.gz", "label": "Read 1 File", "mandatory": "mandatory", "name": "read_1_file", "namespace": "ei:read_1_file", "reference": "", "regex": "^[A-Za-z0-9._-]*[a-z]+$"}, {"description": "The name or accession of the file that contains read 2.", "example": "file2_r2.fastq.gz", "label": "Read 2 File", "mandatory": "mandatory", "name": "read_2_file", "namespace": "ei:read_2_file", "reference": "", "regex": "^[A-Za-z0-9._-]*[a-z]+$"}, {"description": "The name or accession of the file that contains index 1.", "example": "file1_i1.fastq.gz", "label": "Index 1 File", "mandatory": "mandatory", "name": "index_1_file", "namespace": "ei:index_1_file", "reference": "", "regex": "^[A-Za-z0-9._-]*[a-z]+$"}, {"description": "The name or accession of the file that contains index 2.", "example": "file2_i2.fastq.gz", "label": "Index 2 File", "mandatory": "mandatory", "name": "index_2_file", "namespace": "ei:index_2_file", "reference": "", "regex": "^[A-Za-z0-9._-]*[a-z]+$"}, {"description": "Result of a hash function calculated on the content of both the read 1 file and the read 2 file to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).", "example": "d41d8cd98f00b204e9800998ecf8427e,5a105e8b9d40e1329780d62ea2265d8a77a1a45e", "label": "Read Checksum", "mandatory": "mandatory", "name": "read_checksum", "namespace": "ei:read_checksum", "reference": "", "regex": ""}, {"description": "Result of a hash function calculated on the content of both the index 1 file and the index 2 file to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).", "example": "d3486ae9136e7856bc42212385ea797094475802,b7e23ec29af22b0b4e41da31e868d57226121c84", "label": "Index Checksum", "mandatory": "mandatory", "name": "index_checksum", "namespace": "ei:index_checksum", "reference": "", "regex": ""}, {"description": "A file containing the known cell barcodes in the\ndataset.", "example": "barcodes.tsv", "label": "White List Barcode File", "mandatory": "optional", "name": "white_list_barcode_file", "namespace": "ei:white_list_barcode_file", "reference": "", "regex": "^[A-Za-z0-9._-]*[a-z]+$"}, {"description": "A filename or file name is a name used to uniquely identify a data file related to the study.", "example": "file001", "label": "File Name", "mandatory": "mandatory", "name": "file_name", "namespace": "ei:file_name", "reference": "", "regex": "^[A-Za-z0-9._-]*[a-z]+$"}, {"description": "A file type is a name given to a specific kind of file. Common file types are fastq, gtf, fasta, bam, archive etc.", "example": "fastq", "label": "File Type", "mandatory": "mandatory", "name": "file_type", "namespace": "ei:file_type", "reference": "", "regex": ""}], "group_description": "Fields under component \u0027File\u0027.", "group_label": "File", "group_name": "file"}];
     </script>
 
     <script src="../../../js/scripts.js" type="text/javascript"></script>

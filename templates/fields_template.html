@@ -4,83 +4,120 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="../../../images/favicon.ico" type="image/x-icon">
-
     <title>Single-cell Schemas</title>
 
     <!-- CSS -->
     <link href="../../../css/styles.css" rel="stylesheet">
     <link href="../../../css/fontawesome.6.7.2.all.min.css" rel="stylesheet">
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
+    <link href="../../../css/bootstrap.5.3.3.min.css" rel="stylesheet">
   </head>
   <body>
+    <!-- Top navigation bar icons -->
+    <nav id="navbarID" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <!-- Search icon -->
+            <li class="nav-item" title="Search web page">
+              <i id="searchIconID" class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </li>
+            <!-- Info icon -->
+            <li class="nav-item" title="View information about the website">
+              <i id="infoIconID" class="fas fa-info-circle" aria-hidden="true"></i>
+            </li>
+            <!-- Documentation icon -->
+            <li class="nav-item" title="View documentation">
+              <a class="nav-link" 
+                href="https://copo-docs.readthedocs.io/en/latest/submissions/single-cell-submissions.html" 
+                target="_blank" aria-label="Documentation" title="View documentation">
+                <i id="docIconID" class="fa fa-book-open" aria-hidden="true"></i>
+              </a>
+            </li>
+            <!-- Email icon -->
+            <li class="nav-item p-2" title="Contact us">
+              <i id="emailIconID" class="fas fa-envelope" aria-hidden="true"></i>
+            </li>
+            <!-- GitHub link -->
+            <li class="nav-item" title="View GitHub repository">
+              <a class="github-link nav-link" 
+                href="https://github.com/TGAC/SingleCellSchemas" target="_blank" 
+                title="View GitHub repository">
+                <i id="githubIconID" class="fa-brands fa-github" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header content -->
     <div class="header-div container-fluid text-center text-white">
       <h1 class="ui header">Single-cell Schemas</h1>
-      <!-- Header icons -->
-      <div class="position-absolute top-0 end-0 mr-1 mt-2">
-        <a  class="github-link" href="https://github.com/TGAC/SingleCellSchemas" target="_blank" title="View GitHub repository">
-          <span class="fa-stack mb-10">
-            <i class="fas fa-circle fa-stack-2x"></i>
-            <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </div>
     </div>
-
+    <!-- Body content -->
     <div class="row">
       <div class="col-3">
         <div class="container mt-4">
           <form>
-            <!-- Standards dropdown menu -->
-            <div class="mb-3">
-              <label for="std_dropdown" class="form-label"
-                >Based on Standard...</label
-              >
-              <select class="form-select" id="std_dropdown">
+            <!-- Standard dropdown menu -->
+            <div class="mb-3 dropdown-menu-div">
+              <label for="std_dropdown" class="form-label text-bold">Standard:
+                <i class="fa fa-info-circle dropdown-menu-info-icon"
+                  title="Choose a standard from the dropdown menu"
+                  data-bs-toggle="popover"
+                  data-bs-trigger="click"
+                  data-bs-placement="top"
+                  data-bs-content="Please refer to the <span id='infoModalLink'>About modal</span> for more information.">
+                </i>
+              </label>
+              <select class="form-select" id="std_dropdown" data-bs-placement="right" 
+                data-bs-trigger="hover" data-bs-toggle="tooltip" title="">
                 {% for key, value in standards.items() %}
                   <option value="{{ key }}" {% if key == "dwc" %}selected{% endif %}>
                     {{ value }}
                   </option>
-              {% endfor %}
-            </select>
-            </div>
-
-            <!-- Technology dropdown menu -->
-            <div class="mb-3">
-              <label for="tech_dropdown" class="form-label">Technology</label>
-              <select class="form-select" id="tech_dropdown">
-                  {% for key, value in technologies.items() %}
-                    <option value="{{ key }}" {% if key == "sc_rnaseq" %}selected{% endif %}>
-                      {{ value }}
-                    </option>
-                  {% endfor %}
+                {% endfor %}
               </select>
             </div>
 
+            <!-- Technology dropdown menu -->
+            <div class="mb-3 dropdown-menu-div">
+              <label for="tech_dropdown" class="form-label text-bold">Technology:
+                <i class="fa fa-info-circle dropdown-menu-info-icon"
+                  title="Choose a technology from the dropdown menu"
+                  data-bs-toggle="popover"
+                  data-bs-trigger="click"
+                  data-bs-placement="top"
+                  data-bs-content="Please refer to the <span id='infoModalLink'>About modal</span> for more information.">
+                </i>
+              </label>
+              <select class="form-select" id="tech_dropdown" data-bs-placement="right" 
+                data-bs-trigger="hover" data-bs-toggle="tooltip" title="">
+                {% for key, value in technologies.items() %}
+                  <option value="{{ key }}" {% if key == "sc_rnaseq" %}selected{% endif %}>
+                    {{ value }}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
              <!-- Buttons -->
-            <div class="d-flex justify-content-end">
-              <!-- Submit button -->
-              <button id="sub_btn" class="btn btn-primary" type="submit">
-                Submit
-              </button>
-
+            <div class="d-flex justify-content-between">
               <!-- Download manifest button -->
               <button id="download-manifest-btn" class="btn btn-outline-primary btn-sm" 
                   type="button" title="Download blank manifest">
                 <i class="fa fa-download"></i>
                 <span class="action-label" style="padding-left: 3px;">Download manifest</span> 
               </button>
+              <!-- Submit button -->
+              <!-- <button id="sub_btn" class="btn btn-primary" type="submit">
+                Submit
+              </button> -->
             </div>
           </form>
         </div>
       </div>
 
       <div class="col-6">
-        <div class="accordion" id="accordionExample">
+        <div class="accordion" id="fieldsAccordion">
           {% for component in components %}
           <div class="accordion-item">
             <div class="accordion-header">
@@ -88,21 +125,20 @@
                 class="accordion-button"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#collapse{{ component.group_name }}"
+                data-bs-target="#component-{{ component.group_name }}"
                 aria-expanded="true"
-                aria-controls="collapse{{ component.group_name }}"
+                aria-controls="component-{{ component.group_name }}"
               >
                 {{component.group_label}}
               </button>
             </div>
             <div
-              id="collapse{{ component.group_name }}"
+              id="component-{{ component.group_name }}"
               class="accordion-collapse collapse"
-              data-bs-parent="#accordionExample"
-            >
+              data-bs-parent="#fieldsAccordion">
               <div class="accordion-body">
                 {% for field in component.fields %}
-                <div class="card">
+                <div id="term-{{field.name}}" class="card">
                   {% if field.mandatory == "mandatory" %}
                   <h5 class="card-header d-flex align-items-start">
                     {{field.label}}
@@ -174,12 +210,24 @@
       <div class="col-3"></div>
     </div>
 
+    <!-- Navigate to top of web page button -->
+    <a href="javascript:void(0);" id="navigateToTop" class="navigate-to-top"
+       title="Navigate to top of the web page">
+        <i class="up-arrow"></i><i class="up-arrow"></i>
+    </a>
+
+    <!-- Placeholder for modals -->
+    <div id="info-modal-container"></div>
+    <div id="search-modal-container"></div>
+    <div id="warning-modal-container"></div>
+
     <!-- JS -->
-    <script src="../../../js/jquery-3.6.0.min.js" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="../../../js/jquery.3.6.0.min.js" type="text/javascript"></script>
+    <script src="../../../js/bootstrap.5.3.3.bundle.min.js" type="text/javascript"></script>
 
     <script>
-      var outputFileData = {{ output_data | tojson }};
+      var outputFileData = {{ output_data | tojson | safe }};
+      var components = {{ components | tojson | safe }};
     </script>
 
     <script src="../../../js/scripts.js" type="text/javascript"></script>

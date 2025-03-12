@@ -5,9 +5,9 @@
       <PRIMARY_ID>STXFISH1</PRIMARY_ID>
     </IDENTIFIERS>
     <DESCRIPTOR>
-      <LABEL>Spatial Transcriptomics Fish</LABEL>
+      <LABEL>Spatial Transcriptomics Fluorescence In Situ Hybridisation (ST-FISH)</LABEL>
       <NAME>stx_fish</NAME>
-      <DESCRIPTION>TBC tol_stx_fish</DESCRIPTION>
+      <DESCRIPTION>Spatial transcriptomics via Fluorescence In Situ Hybridisation (FISH), providing spatially resolved gene expression data within tissues, based on the Tree of Life (ToL) initiative’s goals to explore the origins and diversity of life through advanced genomic technologies.</DESCRIPTION>
       <AUTHORITY>COPO</AUTHORITY>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>study</NAME>
@@ -33,16 +33,6 @@
           <DESCRIPTION>A name given to the study or project. Project title should be fewer than 30 words, such as a title of a grant proposal or a publication.</DESCRIPTION>
           <EXAMPLE>Study of single cells in the human body</EXAMPLE>
           <NAMESPACE>dcterms:title</NAMESPACE>
-          <FIELD_TYPE/>
-          <MANDATORY>optional</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
-          <LABEL>Description</LABEL>
-          <NAME>description</NAME>
-          <DESCRIPTION>A detailed description of the project which includes research goals and experimental approach. Project description should be fewer than 300 words, such as an abstract from a grant application or publication.</DESCRIPTION>
-          <EXAMPLE>This project explores the intricate details of single cells in the human body, focusing on their structure, function, and behavior. By studying individual cells, it aims to uncover how they contribute to overall health, disease progression, and human biology. This research can provide deeper insights into cellular processes, paving the way for advancements in medical treatments and personalised medicine.</EXAMPLE>
-          <NAMESPACE>dcterms:description</NAMESPACE>
           <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
@@ -84,48 +74,48 @@
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
-        <FIELD>
-          <LABEL>Technology</LABEL>
-          <NAME>technology</NAME>
-          <DESCRIPTION>The sorting or visualisation technology used.</DESCRIPTION>
-          <EXAMPLE>Vizgen</EXAMPLE>
-          <NAMESPACE>ei:technology</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_CHOICE_FIELD>
-              <TEXT_VALUE>
-                <VALUE>10X</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>10X_3'</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>Mas_seq</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>Smartseq</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>Vizgen</VALUE>
-              </TEXT_VALUE>
-            </TEXT_CHOICE_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
       </FIELD_GROUP>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>person</NAME>
         <LABEL>Person</LABEL>
         <DESCRIPTION>Fields under component 'Person'</DESCRIPTION>
         <FIELD>
+          <LABEL>Study ID</LABEL>
+          <NAME>study_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this study</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:study_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Orcid ID</LABEL>
+          <NAME>orcid_id</NAME>
+          <DESCRIPTION>A 16-digit number that uniquely identify researchers.</DESCRIPTION>
+          <EXAMPLE>0000-1234-5678-9012</EXAMPLE>
+          <NAMESPACE>ei:orcid_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d{4}-\d{4}-\d{4}-\d{4}$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
           <LABEL>First Name</LABEL>
           <NAME>givenName</NAME>
-          <DESCRIPTION>The first name of a Person.</DESCRIPTION>
+          <DESCRIPTION>A first name (or given name) is the personal name given to an individual conducting the study.</DESCRIPTION>
           <EXAMPLE>Jane</EXAMPLE>
           <NAMESPACE>schema.org:givenName</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?:[-\s][A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -134,26 +124,40 @@
         <FIELD>
           <LABEL>Last Name</LABEL>
           <NAME>familyName</NAME>
-          <DESCRIPTION>The last name of a Person.</DESCRIPTION>
+          <DESCRIPTION>A last name (or surname) is the family name passed down from one generation to the next for the individual conducting the study.</DESCRIPTION>
           <EXAMPLE>Doe</EXAMPLE>
           <NAMESPACE>schema.org:familyName</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(-[A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Affiliation/Institution</LABEL>
+          <LABEL>Email Address</LABEL>
+          <NAME>email</NAME>
+          <DESCRIPTION>A unique identifier used to send and receive electronic messages (emails) over the internet.</DESCRIPTION>
+          <EXAMPLE>jane.doe@example.com</EXAMPLE>
+          <NAMESPACE>schema.org:email</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^(?!.*\.{2,})(?!.*-{2,})[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Affiliation or Institution</LABEL>
           <NAME>affiliation</NAME>
-          <DESCRIPTION>An organization that this person is affiliated with. For example, a school/university, a club, or a team.</DESCRIPTION>
+          <DESCRIPTION>An organisation or institution that this person is associated with.</DESCRIPTION>
           <EXAMPLE>University of Liverpool</EXAMPLE>
           <NAMESPACE>schema.org:affiliation</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -167,7 +171,7 @@
           <NAMESPACE>schema.org:funder</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -176,12 +180,12 @@
         <FIELD>
           <LABEL>Grant Award</LABEL>
           <NAME>funding</NAME>
-          <DESCRIPTION>A Grant that directly or indirectly provide funding or sponsorship for this item.</DESCRIPTION>
+          <DESCRIPTION>A grant that directly or indirectly provides funding or sponsorship for the person to conduct the study.</DESCRIPTION>
           <EXAMPLE>GRAK3489</EXAMPLE>
           <NAMESPACE>schema.org:funding</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z0-9]+(?: [A-Za-z0-9]+)*$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -214,7 +218,7 @@
           <NAMESPACE>ei:sample_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -228,7 +232,7 @@
           <NAMESPACE>ei:organism</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]+[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -242,7 +246,7 @@
           <NAMESPACE>tol:scientific_name</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]+[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -256,7 +260,7 @@
           <NAMESPACE>tol:culture_or_strain_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9/]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -789,7 +793,7 @@
           <NAMESPACE>tol:date_of_collection</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^(\d{4})(-\d{2})(-\d{2})$</REGEX_VALUE>
+              <REGEX_VALUE>^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -831,7 +835,7 @@
           <NAMESPACE>ei:cultivar</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z. ]*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -845,21 +849,7 @@
           <NAMESPACE>ei:materialSourceID</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>optional</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
-          <LABEL>Accession Number</LABEL>
-          <NAME>accession_number</NAME>
-          <DESCRIPTION>A unique alphanumeric reference or identifier assigned to the sample in the study related to NCBI Taxonomy.</DESCRIPTION>
-          <EXAMPLE>accession123</EXAMPLE>
-          <NAMESPACE>ei:accession_number</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+(?: [a-zA-Z0-9]+)*$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -873,7 +863,7 @@
           <NAMESPACE>tol:infraspecific_epithet</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -887,7 +877,7 @@
           <NAMESPACE>tol:collector_sample_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
@@ -899,11 +889,7 @@
           <DESCRIPTION>A detailed as possible description of the sample collection methods</DESCRIPTION>
           <EXAMPLE>Caught with fiber net within densely wooded area, and immediately placed into the collection container</EXAMPLE>
           <NAMESPACE>tol:description_of_collection_method</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -913,109 +899,6 @@
           <DESCRIPTION>A valid NCBI TAXON_ID to the species level ismandatory in order to submit data to public repositories. The species name in themanifest must be identical to that listed in the &quot;current name&quot; box in the T axonomy Browser for that species.</DESCRIPTION>
           <EXAMPLE>458489</EXAMPLE>
           <NAMESPACE>tol:taxon_id</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^\d+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>optional</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-      </FIELD_GROUP>
-      <FIELD_GROUP restrictionType="Any number or none of the fields">
-        <NAME>file</NAME>
-        <LABEL>File</LABEL>
-        <DESCRIPTION>Fields under component 'File'</DESCRIPTION>
-        <FIELD>
-          <LABEL>Study ID</LABEL>
-          <NAME>study_id</NAME>
-          <DESCRIPTION>A unique alphanumeric identifier for this study</DESCRIPTION>
-          <EXAMPLE>A7F9B3X2</EXAMPLE>
-          <NAMESPACE>ei:study_id</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
-          <LABEL>File ID</LABEL>
-          <NAME>file_id</NAME>
-          <DESCRIPTION>A unique alphanumeric identifier for this file</DESCRIPTION>
-          <EXAMPLE>A7F9B3X2</EXAMPLE>
-          <NAMESPACE>ei:file_id</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
-          <LABEL>Imaging Protocol ID</LABEL>
-          <NAME>imaging_protocol_id</NAME>
-          <DESCRIPTION>A unique alphanumeric identifier for the imaging protocol.</DESCRIPTION>
-          <EXAMPLE>img123</EXAMPLE>
-          <NAMESPACE>ei:imaging_protocol_id</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
-          <LABEL>File Name</LABEL>
-          <NAME>file_name</NAME>
-          <DESCRIPTION>A filename or file name is a name used to uniquely identify a data file related to the study.</DESCRIPTION>
-          <EXAMPLE>file001</EXAMPLE>
-          <NAMESPACE>ei:file_name</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
-          <LABEL>File Type</LABEL>
-          <NAME>file_type</NAME>
-          <DESCRIPTION>A file type is a name given to a specific kind of file. Common file types are fastq, gtf, fasta, bam, etc.</DESCRIPTION>
-          <EXAMPLE>fastq</EXAMPLE>
-          <NAMESPACE>ei:file_type</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
-          <LABEL>Centroid X</LABEL>
-          <NAME>centroidX</NAME>
-          <DESCRIPTION>X Coordinate of the approximate center pixel for this sample</DESCRIPTION>
-          <EXAMPLE>450</EXAMPLE>
-          <NAMESPACE>ei:centroidX</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^\d+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>optional</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
-          <LABEL>Centroid Y</LABEL>
-          <NAME>centroidY</NAME>
-          <DESCRIPTION>Y Coordinate of the approximate center pixel for this sample</DESCRIPTION>
-          <EXAMPLE>450</EXAMPLE>
-          <NAMESPACE>ei:centroidY</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
               <REGEX_VALUE>^\d+$</REGEX_VALUE>
@@ -1051,7 +934,7 @@
           <NAMESPACE>ei:imaging_protocol_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -1063,11 +946,7 @@
           <DESCRIPTION>The platform used to isolate the cells.</DESCRIPTION>
           <EXAMPLE>Illumina NovaSeq</EXAMPLE>
           <NAMESPACE>ei:platform</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1077,30 +956,22 @@
           <DESCRIPTION>The instrument used to isolate the cells.</DESCRIPTION>
           <EXAMPLE>Illumina NovaSeq 6000</EXAMPLE>
           <NAMESPACE>ei:instrument</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Target Probes</LABEL>
-          <NAME>target_probes</NAME>
+          <LABEL>Target Probe Code</LABEL>
+          <NAME>target_probe_code</NAME>
           <DESCRIPTION>The type of probes used to detect and quantify specific RNA molecules in their native spatial context within a tissue or cell.</DESCRIPTION>
           <EXAMPLE>Oligo-dT</EXAMPLE>
-          <NAMESPACE>ei:target_probes</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <NAMESPACE>ei:target_probe_code</NAMESPACE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Section Thickness Μm</LABEL>
+          <LABEL>Section Thickness (µm)</LABEL>
           <NAME>section_thickness_µm</NAME>
           <DESCRIPTION>The thickness of the tissue section in micrometres.</DESCRIPTION>
           <EXAMPLE>10</EXAMPLE>
@@ -1119,11 +990,7 @@
           <DESCRIPTION>The method used to measure tissue section thickness.</DESCRIPTION>
           <EXAMPLE>Microtome</EXAMPLE>
           <NAMESPACE>ei:section_thickness_method</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -1175,6 +1042,34 @@
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
+          <LABEL>Clearing with ProteinaseK</LABEL>
+          <NAME>clearing_with_proteinasek</NAME>
+          <DESCRIPTION>The duration of clearing at 47°C with Proteinase K.</DESCRIPTION>
+          <EXAMPLE>24 hrs</EXAMPLE>
+          <NAMESPACE>ei:clearing_with_proteinasek</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+(\.\d+)?\s*(hrs?|days?|mins?|seconds?)$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Clearing without ProteinaseK</LABEL>
+          <NAME>clearing_without_proteinasek</NAME>
+          <DESCRIPTION>The duration of tissue clearing at 37°C without Proteinase K.</DESCRIPTION>
+          <EXAMPLE>4.5 days</EXAMPLE>
+          <NAMESPACE>ei:clearing_without_proteinasek</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+(\.\d+)?\s*(hrs?|days?|mins?|seconds?)$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
           <LABEL>Instrument User Guide</LABEL>
           <NAME>instrument_user_guide</NAME>
           <DESCRIPTION>The user guide for the instrument used.</DESCRIPTION>
@@ -1182,7 +1077,7 @@
           <NAMESPACE>ei:instrument_user_guide</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -1210,7 +1105,7 @@
           <NAMESPACE>ei:sample_preparation_guide</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
@@ -1236,11 +1131,78 @@
           <DESCRIPTION>Any deviations from the official protocol. Separate individual deviations with '|'.</DESCRIPTION>
           <EXAMPLE>Temperature exceeded 25°C during storage | Sample handling delayed by 2 hours</EXAMPLE>
           <NAMESPACE>ei:deviations_from_official_protocol</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+      </FIELD_GROUP>
+      <FIELD_GROUP restrictionType="Any number or none of the fields">
+        <NAME>file</NAME>
+        <LABEL>File</LABEL>
+        <DESCRIPTION>Fields under component 'File'</DESCRIPTION>
+        <FIELD>
+          <LABEL>Study ID</LABEL>
+          <NAME>study_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this study</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:study_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]*[a-z]+$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Imaging Protocol ID</LABEL>
+          <NAME>imaging_protocol_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for the imaging protocol.</DESCRIPTION>
+          <EXAMPLE>img123</EXAMPLE>
+          <NAMESPACE>ei:imaging_protocol_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>File ID</LABEL>
+          <NAME>file_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this file</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:file_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>File Name</LABEL>
+          <NAME>file_name</NAME>
+          <DESCRIPTION>A filename or file name is a name used to uniquely identify a data file related to the study.</DESCRIPTION>
+          <EXAMPLE>file001</EXAMPLE>
+          <NAMESPACE>ei:file_name</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>File Type</LABEL>
+          <NAME>file_type</NAME>
+          <DESCRIPTION>A file type is a name given to a specific kind of file. Common file types are fastq, gtf, fasta, bam, archive etc.</DESCRIPTION>
+          <EXAMPLE>fastq</EXAMPLE>
+          <NAMESPACE>ei:file_type</NAMESPACE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
