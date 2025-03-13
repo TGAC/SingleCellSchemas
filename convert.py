@@ -408,7 +408,7 @@ def extract_components_to_html(element):
             for value in helpers.CHECKLISTS_DICT.values()
         }
 
-        context = {'components': components, 'standards': standards, 'technologies': technologies, 'output_data':output_file_name_dict }
+        context = {'components': components, 'standards': standards, 'technologies': technologies, 'output_data':output_file_name_dict, 'version': helpers.SCHEMA_VERSION }
 
         with open(output_file_path, mode='w', encoding='utf-8') as fields:
             fields.write(fields_template.render(context))

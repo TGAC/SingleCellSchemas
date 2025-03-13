@@ -226,7 +226,7 @@ function loadInfoModal() {
     event.preventDefault();
 
     // Load the modal HTML dynamically
-    fetch('../../../../templates/info_modal.html')
+    fetch('../../../templates/info_modal.html')
       .then((response) => response.text())
       .then((data) => {
         modalContainer.innerHTML = data;
@@ -260,7 +260,7 @@ function loadSearchModal() {
 
   searchIcon.addEventListener('click', async function () {
     try {
-      const response = await fetch('../../../../templates/search_modal.html');
+      const response = await fetch('../../../templates/search_modal.html');
       let modalHTML = await response.text();
       modalContainer.innerHTML = modalHTML;
 
@@ -494,7 +494,7 @@ function loadEmailModal() {
     event.preventDefault();
 
     // Load the email modal HTML dynamically
-    fetch('../../../../templates/email_modal.html')
+    fetch('../../../templates/email_modal.html')
       .then((response) => response.text())
       .then((data) => {
         modalContainer.innerHTML = data;
@@ -524,7 +524,7 @@ function showWarningModal() {
   }
 
   // Load the modal HTML dynamically
-  fetch('../../../../templates/warning_modal.html')
+  fetch('../../../templates/warning_modal.html')
     .then((response) => response.text())
     .then((data) => {
       modalContainer.innerHTML = data;
