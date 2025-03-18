@@ -342,17 +342,6 @@ classes:
         range: string
         multivalued: false
         inlined: false
-      organism:
-        identifier: false
-        required: false
-        description: The full scientific name of the species studied.
-        examples:
-        - value: Arenicola marina
-        slot_uri: ei:organism
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
       tissue:
         identifier: false
         required: false
@@ -1220,6 +1209,17 @@ classes:
         examples:
         - value: Arenicola marina
         slot_uri: mixs:specific_host
+        domain: Sample
+        range: string
+        multivalued: false
+        inlined: false
+      organism:
+        identifier: false
+        required: false
+        description: The full scientific name of the species studied.
+        examples:
+        - value: Arenicola marina
+        slot_uri: ei:organism
         domain: Sample
         range: string
         multivalued: false
@@ -3917,6 +3917,7 @@ enums:
       Heart: {}
       Hepatopancreas: {}
       Holdfast Fungi: {}
+      Inflorescence: {}
       Intestine: {}
       Kidney: {}
       Leaf: {}
@@ -3995,6 +3996,7 @@ enums:
     permissible_values:
       10x Nuclei Isolation Kit: {}
       3' standard throughput kit: {}
+      Custom: {}
   Suspension_type:
     permissible_values:
       Cell: {}
@@ -4177,6 +4179,7 @@ enums:
       Heart: {}
       Hepatopancreas: {}
       Holdfast Fungi: {}
+      Inflorescence: {}
       Intestine: {}
       Kidney: {}
       Leaf: {}

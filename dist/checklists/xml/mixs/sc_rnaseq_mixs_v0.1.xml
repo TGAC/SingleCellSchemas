@@ -7,7 +7,7 @@
     <DESCRIPTOR>
       <LABEL>Single-cell Ribonucleic Acid Sequencing (scRNA-Seq)</LABEL>
       <NAME>sc_rnaseq</NAME>
-      <DESCRIPTION>An approach for analysing gene expression in individual cells, with a focus on the essential contextual details for the sampling and sequencing of genomic data.</DESCRIPTION>
+      <DESCRIPTION>For single cell RNA-seq studies with a focus on the essential contextual details for the sampling and sequencing of genomic data.</DESCRIPTION>
       <AUTHORITY>COPO</AUTHORITY>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>study</NAME>
@@ -468,6 +468,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Holdfast Fungi</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Inflorescence</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Intestine</VALUE>
@@ -1252,6 +1255,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>3' standard throughput kit</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Custom</VALUE>
               </TEXT_VALUE>
             </TEXT_CHOICE_FIELD>
           </FIELD_TYPE>

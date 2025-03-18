@@ -178,6 +178,7 @@ def apply_data_validation(
                     },
                 )
 
+
 def autofit_all_sheets(writer):
     for sheet in writer.sheets.values():
         sheet.autofit()
@@ -191,6 +192,7 @@ def is_camel_case(text):
 def is_title_case_with_spaces(text):
     # Regular expression to check if text follows Title Case
     return bool(re.match(r"^[A-Z][a-z]+(?: [A-Z][a-z]+)*$", text))
+
 
 def convert_datetime(obj):
     if isinstance(obj, datetime):
@@ -383,9 +385,7 @@ def format_and_protect_worksheet(element):
     worksheet.set_column(f"A5:{last_column_letter}1005", None, unlocked_format)
 
     # Protect the worksheet. This will use a random UUID as the password
-    worksheet.protect(
-        password=str(uuid.uuid4())
-    )  
+    worksheet.protect(password=str(uuid.uuid4()))
 
 
 def get_base_schema_json(element):
@@ -491,13 +491,13 @@ def get_xlsx_data_validation_from_regex(regex, column_letter):
         return None
 
     # Get the spreadsheet formula from the mapping or None if regex is not in the mapping
-    formula = REGEX_TO_SPREADSHEET_DATA_VALIDATION_MAPPING.get(regex, None)
+    # formula = REGEX_TO_SPREADSHEET_DATA_VALIDATION_MAPPING.get(regex, None)
 
-    # Replace placeholders with actual values
-    if formula:
-        return formula.replace("{column_letter}", column_letter).replace(
-            "{row_start}", str(row_start)
-        )
+    # # Replace placeholders with actual values
+    # if formula:
+    #     return formula.replace("{column_letter}", column_letter).replace(
+    #         "{row_start}", str(row_start)
+    #     )
     return None
 
 

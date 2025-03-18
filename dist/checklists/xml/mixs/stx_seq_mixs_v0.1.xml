@@ -7,7 +7,7 @@
     <DESCRIPTOR>
       <LABEL>Spatial Transcriptomics Sequencing (ST-Seq)</LABEL>
       <NAME>stx_seq</NAME>
-      <DESCRIPTION>Spatial transcriptomics sequencing, which provides a comprehensive spatial map of gene expression within tissues, adhering to the Minimum Information about any (x) Sequence (MIxS) standard, detailing the contextual information about sampling and sequencing processes.</DESCRIPTION>
+      <DESCRIPTION>Spatial transcriptomics sequencing, using  Minimum Information about any (x) Sequence (MIxS) standard, detailing the contextual information about sampling and sequencing processes.</DESCRIPTION>
       <AUTHORITY>COPO</AUTHORITY>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>study</NAME>
@@ -468,6 +468,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Holdfast Fungi</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Inflorescence</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Intestine</VALUE>

@@ -7,7 +7,7 @@
     <DESCRIPTOR>
       <LABEL>Spatial Transcriptomics Fluorescence In Situ Hybridisation (ST-FISH)</LABEL>
       <NAME>stx_fish</NAME>
-      <DESCRIPTION>Spatial transcriptomics using Fluorescence In Situ Hybridisation (FISH), providing insights into gene expression within tissues, following the Minimum Information about any (x) Sequence (MIxS) standard for contextual data about sequencing and sampling.</DESCRIPTION>
+      <DESCRIPTION>Spatial transcriptomics using Fluorescence In Situ Hybridisation (FISH), Minimum Information about any (x) Sequence (MIxS) standard for contextual data about sequencing and sampling.</DESCRIPTION>
       <AUTHORITY>COPO</AUTHORITY>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>study</NAME>
@@ -354,6 +354,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Holdfast Fungi</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Inflorescence</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Intestine</VALUE>

@@ -423,30 +423,6 @@
   {
     "component_name": "sample",
     "namespace_prefix": "ei",
-    "term_name": "organism",
-    "term_label": "Organism",
-    "copo_name": "scientific_name",
-    "term_description": "The full scientific name of the species studied.",
-    "term_example": "Arenicola marina",
-    "term_regex": "^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$",
-    "term_error_message": "String must start with uppercase and contain at least one lowercase letter.",
-    "term_cardinality": "single",
-    "term_type": "string",
-    "version_dwc_sc_rnaseq": "O",
-    "version_mixs_sc_rnaseq": "O",
-    "version_tol_sc_rnaseq": "O",
-    "version_dwc_stx_seq": "O",
-    "version_mixs_stx_seq": "O",
-    "version_tol_stx_seq": "O",
-    "version_dwc_stx_fish": "O",
-    "version_mixs_stx_fish": "O",
-    "version_tol_stx_fish": "O",
-    "technology_name": "sc_rnaseq",
-    "technology_label": "Single-cell Ribonucleic Acid Sequencing (scRNA-Seq)"
-  },
-  {
-    "component_name": "sample",
-    "namespace_prefix": "ei",
     "term_name": "tissue",
     "term_label": "Tissue",
     "term_description": "The type of tissue sampled for the study.",
@@ -493,6 +469,7 @@
       "Heart",
       "Hepatopancreas",
       "Holdfast Fungi",
+      "Inflorescence",
       "Intestine",
       "Kidney",
       "Leaf",
@@ -1895,7 +1872,8 @@
     "technology_label": "Single-cell Ribonucleic Acid Sequencing (scRNA-Seq)",
     "allowed_values": [
       "10x Nuclei Isolation Kit",
-      "3' standard throughput kit"
+      "3' standard throughput kit",
+      "Custom"
     ]
   },
   {

@@ -7,7 +7,7 @@
     <DESCRIPTOR>
       <LABEL>Spatial Transcriptomics Sequencing (ST-Seq)</LABEL>
       <NAME>stx_seq</NAME>
-      <DESCRIPTION>Spatial transcriptomics sequencing to analyse gene expression in tissues with respect to their spatial organisation, following the Tree of Life (ToL) standards, which leverage genomic technologies to explore life’s diversity and origins.</DESCRIPTION>
+      <DESCRIPTION>Spatial transcriptomics sequencing following the Tree of Life (ToL) standards, which leverage genomic technologies to explore life’s diversity and origins.</DESCRIPTION>
       <AUTHORITY>COPO</AUTHORITY>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>study</NAME>
@@ -394,6 +394,9 @@
                 <VALUE>Holdfast Fungi</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Inflorescence</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Intestine</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
@@ -630,6 +633,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Holdfast Fungi</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Inflorescence</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Intestine</VALUE>

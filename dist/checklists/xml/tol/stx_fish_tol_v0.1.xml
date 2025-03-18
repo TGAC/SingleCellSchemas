@@ -7,7 +7,7 @@
     <DESCRIPTOR>
       <LABEL>Spatial Transcriptomics Fluorescence In Situ Hybridisation (ST-FISH)</LABEL>
       <NAME>stx_fish</NAME>
-      <DESCRIPTION>Spatial transcriptomics via Fluorescence In Situ Hybridisation (FISH), providing spatially resolved gene expression data within tissues, based on the Tree of Life (ToL) initiative’s goals to explore the origins and diversity of life through advanced genomic technologies.</DESCRIPTION>
+      <DESCRIPTION>Spatial transcriptomics via Fluorescence In Situ Hybridisation (FISH), with metadata based on the Tree of Life (ToL) initiative’s goals to explore the origins and diversity of life through advanced genomic technologies.</DESCRIPTION>
       <AUTHORITY>COPO</AUTHORITY>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>study</NAME>
@@ -356,6 +356,9 @@
                 <VALUE>Holdfast Fungi</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Inflorescence</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Intestine</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
@@ -592,6 +595,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Holdfast Fungi</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Inflorescence</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Intestine</VALUE>

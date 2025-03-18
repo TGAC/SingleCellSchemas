@@ -931,7 +931,8 @@
     "technology_label": "Single-cell Ribonucleic Acid Sequencing (scRNA-Seq)",
     "allowed_values": [
       "10x Nuclei Isolation Kit",
-      "3' standard throughput kit"
+      "3' standard throughput kit",
+      "Custom"
     ]
   },
   {

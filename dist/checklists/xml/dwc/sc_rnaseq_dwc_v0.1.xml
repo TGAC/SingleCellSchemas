@@ -7,7 +7,7 @@
     <DESCRIPTOR>
       <LABEL>Single-cell Ribonucleic Acid Sequencing (scRNA-Seq)</LABEL>
       <NAME>sc_rnaseq</NAME>
-      <DESCRIPTION>A genomic approach for detecting and quantitatively analysing messenger Ribonucleic Acid (RNA) in individual cells, aimed at transmitting biodiversity-related information in alignment with the Darwin Core (DwC) standard.</DESCRIPTION>
+      <DESCRIPTION>For single cell RNA-seq studies aimed focused on biodiversity-related information in alignment with the Darwin Core (DwC) standard.</DESCRIPTION>
       <AUTHORITY>COPO</AUTHORITY>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>study</NAME>
@@ -301,20 +301,6 @@
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Organism</LABEL>
-          <NAME>organism</NAME>
-          <DESCRIPTION>The full scientific name of the species studied.</DESCRIPTION>
-          <EXAMPLE>Arenicola marina</EXAMPLE>
-          <NAMESPACE>ei:organism</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>optional</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
           <LABEL>Tissue</LABEL>
           <NAME>tissue</NAME>
           <DESCRIPTION>The type of tissue sampled for the study.</DESCRIPTION>
@@ -402,6 +388,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Holdfast Fungi</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Inflorescence</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Intestine</VALUE>
@@ -1509,6 +1498,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>3' standard throughput kit</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Custom</VALUE>
               </TEXT_VALUE>
             </TEXT_CHOICE_FIELD>
           </FIELD_TYPE>

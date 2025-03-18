@@ -7,7 +7,7 @@
     <DESCRIPTOR>
       <LABEL>Single-cell Ribonucleic Acid Sequencing ((scRNA-Seq)</LABEL>
       <NAME>sc_rnaseq</NAME>
-      <DESCRIPTION>Ribonucleic Acid (RNA) sequencing to investigate the gene expression patterns of individual cells, following the Tree of Life (ToL) initiative, which applies Deoxyribonucleic acid (DNA) sequencing and cellular technologies to understand the origins and diversity of life on Earth.</DESCRIPTION>
+      <DESCRIPTION>For single cell RNA-seq studies, using Tree of Life metadata, aimed at understanding the origins and diversity of life on Earth.</DESCRIPTION>
       <AUTHORITY>COPO</AUTHORITY>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>study</NAME>
@@ -394,6 +394,9 @@
                 <VALUE>Holdfast Fungi</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Inflorescence</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Intestine</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
@@ -630,6 +633,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Holdfast Fungi</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Inflorescence</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Intestine</VALUE>
@@ -1007,6 +1013,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>3' standard throughput kit</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Custom</VALUE>
               </TEXT_VALUE>
             </TEXT_CHOICE_FIELD>
           </FIELD_TYPE>

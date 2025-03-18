@@ -7,7 +7,7 @@
     <DESCRIPTOR>
       <LABEL>Spatial Transcriptomics Sequencing (ST-Seq)</LABEL>
       <NAME>stx_seq</NAME>
-      <DESCRIPTION>Spatial transcriptomics sequencing to map gene expression within tissue samples, following Darwin Core (DwC) standards for transmitting biodiversity data, to help analyse cellular interactions in a spatial context.</DESCRIPTION>
+      <DESCRIPTION>Spatial transcriptomics sequencing to map gene expression within tissue samples, following Darwin Core (DwC) standards for biodiversity data.</DESCRIPTION>
       <AUTHORITY>COPO</AUTHORITY>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>study</NAME>
@@ -301,20 +301,6 @@
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Organism</LABEL>
-          <NAME>organism</NAME>
-          <DESCRIPTION>The full scientific name of the species studied.</DESCRIPTION>
-          <EXAMPLE>Arenicola marina</EXAMPLE>
-          <NAMESPACE>ei:organism</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>optional</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
           <LABEL>Tissue</LABEL>
           <NAME>tissue</NAME>
           <DESCRIPTION>The type of tissue sampled for the study.</DESCRIPTION>
@@ -402,6 +388,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Holdfast Fungi</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Inflorescence</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Intestine</VALUE>
