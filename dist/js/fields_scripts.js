@@ -282,8 +282,14 @@ function loadSearchModal() {
 
         // Auto-focus on search input when modal is shown
         searchModalElement.addEventListener('shown.bs.modal', function () {
+          this.removeAttribute('aria-hidden');
+
           const searchQuery = document.getElementById('searchQuery');
           if (searchQuery) searchQuery.focus();
+        });
+
+        searchModalElement.addEventListener('hidden.bs.modal', function () {
+          this.setAttribute('aria-hidden', 'true');
         });
 
         // Attach search functionality
@@ -295,7 +301,47 @@ function loadSearchModal() {
   });
 }
 
-// Separate function to handle search logic
+function scrollToTerm(termId) {
+  const termElement = document.getElementById(termId);
+  if (termElement) {
+    termElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+    });
+  }
+}
+
+// Function to handle accordion expansion and scrolling
+function handleAccordionExpand(termId, targetAccordion) {
+  function scrollToTermWrapper() {
+    scrollToTerm(termId);
+    targetAccordion.removeEventListener(
+      'shown.bs.collapse',
+      scrollToTermWrapper
+    );
+  }
+  const accordionButton = targetAccordion
+    .closest('.accordion-item')
+    ?.querySelector('.accordion-button');
+
+  if (accordionButton) {
+    const isCollapsed =
+      accordionButton.getAttribute('aria-expanded') === 'false';
+
+    if (isCollapsed) {
+      accordionButton.click(); // Expand accordion
+
+      targetAccordion.addEventListener(
+        'shown.bs.collapse',
+        scrollToTermWrapper
+      );
+    } else {
+      scrollToTerm(termId);
+    }
+  }
+}
+
+// Handle search logic
 function attachSearchFunctionality(searchModal, modalContainer) {
   const searchQueryInput = document.getElementById('searchQuery');
   const searchResults = document.getElementById('searchResults');
@@ -323,9 +369,6 @@ function attachSearchFunctionality(searchModal, modalContainer) {
       console.error('Error: No component data available.');
       return;
     }
-
-    console.log('componentData:', componentData);
-    console.log('Is componentsData an array?:', Array.isArray(components));
 
     // Iterate over the components (fields) directly
     componentData.forEach((field) => {
@@ -359,9 +402,10 @@ function attachSearchFunctionality(searchModal, modalContainer) {
 
         const componentBadge = document.createElement('span');
         componentBadge.className = 'badge bg-dark ms-auto fl-right';
-        componentBadge.textContent = field.componentLabel; // Display the component label
+        componentBadge.textContent = field.componentLabel;
         componentBadge.id = componentId;
 
+        // Event listener for search results
         listItem.addEventListener('click', (event) => {
           event.preventDefault();
           searchModal.hide();
@@ -372,52 +416,7 @@ function attachSearchFunctionality(searchModal, modalContainer) {
           const targetAccordion = document.getElementById(componentId);
 
           if (targetAccordion) {
-            const accordionItem = targetAccordion.closest('.accordion-item');
-            const accordionButton =
-              accordionItem?.querySelector('.accordion-button');
-
-            if (accordionButton) {
-              const isCollapsed =
-                accordionButton.getAttribute('aria-expanded') === 'false';
-
-              if (isCollapsed) {
-                console.log('Expanding Accordion...'); // Debugging line
-                // Expand the accordion
-                accordionButton.click();
-
-                // Wait for the collapse animation to finish before scrolling
-                targetAccordion.addEventListener(
-                  'shown.bs.collapse',
-                  function scrollToTerm() {
-                    const termElement = document.getElementById(termId);
-                    console.log('Term Element:', termElement); // Debugging line
-                    if (termElement) {
-                      termElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center',
-                      });
-                      console.log('Scrolling to term'); // Debugging line
-                    }
-
-                    // Remove event listener to avoid multiple triggers
-                    targetAccordion.removeEventListener(
-                      'shown.bs.collapse',
-                      scrollToTerm
-                    );
-                  }
-                );
-              } else {
-                console.log('Accordion already expanded'); // Debugging line
-                // Accordion is already expanded, scroll immediately
-                const termElement = document.getElementById(termId);
-                if (termElement) {
-                  termElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center',
-                  });
-                }
-              }
-            }
+            handleAccordionExpand(termId, targetAccordion);
           }
         });
 
