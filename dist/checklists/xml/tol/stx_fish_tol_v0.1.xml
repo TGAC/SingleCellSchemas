@@ -41,7 +41,7 @@
           <LABEL>Workflow</LABEL>
           <NAME>workflow</NAME>
           <DESCRIPTION>The workflow or protocol followed during the study.</DESCRIPTION>
-          <EXAMPLE>spatial_transcriptomics</EXAMPLE>
+          <EXAMPLE>Laser microdissection</EXAMPLE>
           <NAMESPACE>ei:workflow</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
@@ -290,6 +290,9 @@
                 <VALUE>Bodywall</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Bone marrow hematopoietic niches</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Bract</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
@@ -305,13 +308,28 @@
                 <VALUE>Cephalothorax</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Cortex development in roots</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>DNA Extract</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Developing brain</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Developing embryo</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Developing seed coat</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Egg</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Eggshell</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Embryonic stem cells</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Endocrine Tissue</VALUE>
@@ -326,10 +344,28 @@
                 <VALUE>Fat Body</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Fetal heart</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Fetal kidney</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Fetal liver</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Fetal lung</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Fin</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Floral meristem</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Flower</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Gastrulation-stage embryo</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Gill Animal</VALUE>
@@ -339,6 +375,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Gonad</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Gut</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Hair</VALUE>
@@ -356,6 +395,9 @@
                 <VALUE>Holdfast Fungi</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Hypocotyl</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Inflorescence</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
@@ -368,7 +410,13 @@
                 <VALUE>Leaf</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Leaf primordia</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Leg</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Limb bud</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Liver</VALUE>
@@ -398,6 +446,15 @@
                 <VALUE>Mycorrhiza</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Neonatal retina</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Neural crest cells</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Nodules</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Not Applicable</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
@@ -405,6 +462,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Not Provided</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Olfactory epithelium</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Other Fungal Tissue</VALUE>
@@ -425,16 +485,34 @@
                 <VALUE>Oviduct</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Ovule primordium</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Pancreas</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Petiole</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Placental trophoblast cells</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Pollen mother cells</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Posterior Body</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Postnatal thymus</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Rhizome meristem </VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Root</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Root apical meristem</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Scales</VALUE>
@@ -452,7 +530,13 @@
                 <VALUE>Shoot</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Shoot apical meristem</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Skin</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Somitic mesoderm</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Sperm Seminal Fluid</VALUE>
@@ -494,7 +578,13 @@
                 <VALUE>Thorax</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Trichome precursor cells</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Unicellular Organisms In Culture</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Vascular cambium</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Whole Organism</VALUE>
@@ -531,6 +621,9 @@
                 <VALUE>Bodywall</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Bone marrow hematopoietic niches</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Bract</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
@@ -546,13 +639,28 @@
                 <VALUE>Cephalothorax</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Cortex development in roots</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>DNA Extract</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Developing brain</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Developing embryo</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Developing seed coat</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Egg</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Eggshell</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Embryonic stem cells</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Endocrine Tissue</VALUE>
@@ -567,10 +675,28 @@
                 <VALUE>Fat Body</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Fetal heart</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Fetal kidney</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Fetal liver</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Fetal lung</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Fin</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Floral meristem</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Flower</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Gastrulation-stage embryo</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Gill Animal</VALUE>
@@ -580,6 +706,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Gonad</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Gut</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Hair</VALUE>
@@ -597,6 +726,9 @@
                 <VALUE>Holdfast Fungi</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Hypocotyl</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Inflorescence</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
@@ -609,7 +741,13 @@
                 <VALUE>Leaf</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Leaf primordia</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Leg</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Limb bud</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Liver</VALUE>
@@ -639,6 +777,15 @@
                 <VALUE>Mycorrhiza</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Neonatal retina</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Neural crest cells</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Nodules</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Not Applicable</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
@@ -646,6 +793,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Not Provided</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Olfactory epithelium</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Other Fungal Tissue</VALUE>
@@ -666,16 +816,34 @@
                 <VALUE>Oviduct</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Ovule primordium</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Pancreas</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Petiole</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Placental trophoblast cells</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Pollen mother cells</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Posterior Body</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Postnatal thymus</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Rhizome meristem </VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Root</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Root apical meristem</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Scales</VALUE>
@@ -693,7 +861,13 @@
                 <VALUE>Shoot</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Shoot apical meristem</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Skin</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Somitic mesoderm</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Sperm Seminal Fluid</VALUE>
@@ -735,7 +909,13 @@
                 <VALUE>Thorax</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Trichome precursor cells</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Unicellular Organisms In Culture</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Vascular cambium</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Whole Organism</VALUE>
@@ -991,11 +1171,11 @@
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Section Thickness Method</LABEL>
-          <NAME>section_thickness_method</NAME>
+          <LABEL>Section Thickness Measurement Method</LABEL>
+          <NAME>section_thickness_measurement_method</NAME>
           <DESCRIPTION>The method used to measure tissue section thickness.</DESCRIPTION>
           <EXAMPLE>Microtome</EXAMPLE>
-          <NAMESPACE>ei:section_thickness_method</NAMESPACE>
+          <NAMESPACE>ei:section_thickness_measurement_method</NAMESPACE>
           <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
@@ -1194,11 +1374,7 @@
           <DESCRIPTION>A filename or file name is a name used to uniquely identify a data file related to the study.</DESCRIPTION>
           <EXAMPLE>file001</EXAMPLE>
           <NAMESPACE>ei:file_name</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>

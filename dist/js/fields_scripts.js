@@ -1,32 +1,33 @@
 $(document).ready(function () {
   let baseUrl = window.location.href.split('checklists')[0];
 
-  // Store components as cached data
-  window.appData = window.appData || {}; // Ensure it exists
-  window.appData.componentData = components.flatMap((component) =>
-    component.fields.map((field) => ({
-      termLabel: field.label,
-      termName: field.name,
-      termId: `term-${field.name}`,
-      descriptionText: field.description || 'No description available',
-      componentLabel: component.group_label || '',
-      componentId: `component-${component.group_name}`,
-    }))
-  );
-
-  // Load values from the dropdowns
-  // from the URL parameters
-  setTimeout(loadSelectedValues, 100);
+  // Load values from the dropdown menu
+  loadSelectedValues();
 
   // Load modals
   loadInfoModal();
   loadSearchModal();
   loadEmailModal();
 
-  //  Tooltips initialisation
-  initialiseTooltipsAndPopovers();
+  // Initialise UI components
+  initialiseUIComponents();
 
   // Click events
+  $('.dropdown-menu-info-icon').on('click', function (e) {
+    e.stopPropagation(); // Prevent the event from bubbling up to the document
+
+    // Close all other popovers before opening the new one
+    $('.dropdown-menu-info-icon').not(this).popover('hide');
+
+    // Toggle the clicked popover (show if hidden, hide if shown)
+    $(this).popover('toggle');
+  });
+
+  // Close any open popovers when clicking anywhere else on the document
+  $(document).on('click', function () {
+    $('.dropdown-menu-info-icon').popover('hide');
+  });
+
   $(document).on('click', '#infoModalLink', function (event) {
     event.preventDefault(); // Prevent the default link behavior
 
@@ -39,7 +40,7 @@ $(document).ready(function () {
     });
 
     // Open the info modal
-    $('#infoIconID').click(); // Assuming the modal has an id 'infoModal'
+    $('#infoIconID').click();
   });
 
   $('#download-manifest-btn').on('click', function (e) {
@@ -68,50 +69,42 @@ $(document).ready(function () {
   });
 
   // Change events
-  // Attach event handlers to the dropdowns
+  // Attach event handlers to the dropdown menus
   $('#std_dropdown, #tech_dropdown').on('change', function (e) {
     e.preventDefault(); // Prevent the default form submission
+    updateUrlWithParams();
 
-    let standard = $('#std_dropdown').val();
-    let technology = $('#tech_dropdown').val();
-
-    let currentParams = new URLSearchParams(window.location.search);
     let outputFileName = getOutputFileName();
-    let selectedText = $(this).find('option:selected').text();
+    let fieldsAccordion = $('#fieldsAccordion');
 
     $('#sub_btn').prop('disabled', false);
     $('#download-manifest-btn')
       .prop('disabled', false)
       .attr('title', 'Download blank manifest');
 
-    // Update title attribute
-    // $(this)
-    //   .attr('title', selectedText) // Update title
-    //   .attr('data-bs-original-title', selectedText); // Update Bootstrap's stored title
-
-    // Reinitialise the tooltip
-    let tooltipInstance = bootstrap.Tooltip.getInstance(this);
-    if (tooltipInstance) {
-      tooltipInstance.dispose(); // Remove existing tooltip
-    }
-    new bootstrap.Tooltip(this); // Create a new tooltip instance
-
     if (!outputFileName) {
-      // Disable the download buttons if no valid output file is found
+      // Disable the download button if no valid output file is found
       $('#sub_btn').prop('disabled', true);
       $('#download-manifest-btn')
         .prop('disabled', true)
         .attr('title', 'No manifest to download');
+
+      fieldsAccordion.empty();
+      fieldsAccordion.append(`
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <button class="accordion-button" type="button">
+            No data found
+          </button>
+        </div>
+      </div>
+    `);
       showWarningModal();
       return;
     }
 
-    // Construct the file URL
-    let targetUrl = `${baseUrl}checklists/html/${standard}/${outputFileName}`;
-    let args = `?std_dropdown=${standard}&tech_dropdown=${technology}`;
-
-    // Redirect to the target URL with the query parameters
-    window.location.href = `${targetUrl}${args}`;
+    // Update content based on the selected filters
+    updateContentBasedOnSelection();
   });
 
   // Window events
@@ -138,37 +131,25 @@ $(document).ready(function () {
   });
 });
 
-/*
- * Load the values of the dropdowns from the URL parameters
- *  and set them in the dropdowns.
- */
-
 function loadSelectedValues() {
-  let args = new URLSearchParams(window.location.search);
+  let urlParams = new URLSearchParams(window.location.search);
 
   // Set the value of the dropdown menu options
   // if it exists in the URL parameters
-  function updateDropdown(selector, paramName) {
-    let value = args.get(paramName);
+  function updateDropdown(selector, paramName, defaultValue) {
+    let value = urlParams.get(paramName) || defaultValue;
     let $dropdown = $(selector);
 
     if (value !== null && $dropdown.find(`option[value="${value}"]`).length) {
       $dropdown.val(value);
     }
-
-    // let selectedText = $dropdown.find('option:selected').text().trim();
-    // if (selectedText) {
-    //   $dropdown
-    //     .attr('title', selectedText)
-    //     .attr('data-bs-original-title', selectedText)
-    //     .tooltip('dispose') // Dispose of the old tooltip
-    //     .tooltip(); // Reinitialize Bootstrap tooltip
-    // }
   }
 
   // Apply to both dropdowns
-  updateDropdown('#std_dropdown', 'std_dropdown');
-  updateDropdown('#tech_dropdown', 'tech_dropdown');
+  updateDropdown('#std_dropdown', 'std_dropdown', 'dwc');
+  updateDropdown('#tech_dropdown', 'tech_dropdown', 'sc_rnaseq');
+  updateUrlWithParams(); // Update the URL with the selected parameters
+  updateContentBasedOnSelection();
 }
 
 function getOutputFileName() {
@@ -198,7 +179,7 @@ function populateInfoModalContent() {
       version_description,
     ] = outputFileData[key];
 
-    let listItem = `<li><strong>${standard_label} & ${technology_label} (${technology_name}):</strong> ${version_description}</li>`;
+    let listItem = `<li><strong>${standard_label} & ${technology_label}:</strong> ${version_description}</li>`;
 
     if (key.includes('sc_rnaseq')) {
       scInfoModalContent += listItem;
@@ -226,7 +207,7 @@ function loadInfoModal() {
     event.preventDefault();
 
     // Load the modal HTML dynamically
-    fetch('../../../templates/info_modal.html')
+    fetch(`${relPathTraverse}templates/info_modal.html`)
       .then((response) => response.text())
       .then((data) => {
         modalContainer.innerHTML = data;
@@ -260,7 +241,9 @@ function loadSearchModal() {
 
   searchIcon.addEventListener('click', async function () {
     try {
-      const response = await fetch('../../../templates/search_modal.html');
+      const response = await fetch(
+        `${relPathTraverse}templates/search_modal.html`
+      );
       let modalHTML = await response.text();
       modalContainer.innerHTML = modalHTML;
 
@@ -286,10 +269,6 @@ function loadSearchModal() {
 
           const searchQuery = document.getElementById('searchQuery');
           if (searchQuery) searchQuery.focus();
-        });
-
-        searchModalElement.addEventListener('hidden.bs.modal', function () {
-          this.setAttribute('aria-hidden', 'true');
         });
 
         // Attach search functionality
@@ -320,29 +299,33 @@ function handleAccordionExpand(termId, targetAccordion) {
       scrollToTermWrapper
     );
   }
-  const accordionButton = targetAccordion
-    .closest('.accordion-item')
-    ?.querySelector('.accordion-button');
 
-  if (accordionButton) {
-    const isCollapsed =
-      accordionButton.getAttribute('aria-expanded') === 'false';
+  const accordionItem = targetAccordion.closest('.accordion-item');
+  const accordionButton = accordionItem?.querySelector('.accordion-button');
+  const accordionCollapse = accordionItem?.querySelector('.accordion-collapse');
 
-    if (isCollapsed) {
+  if (accordionButton && accordionCollapse) {
+    const isExpanded =
+      accordionButton.getAttribute('aria-expanded') === 'true' &&
+      accordionCollapse.classList.contains('show');
+
+    if (isExpanded) {
+      // Already expanded, scroll to term
+      scrollToTerm(termId);
+    } else {
       accordionButton.click(); // Expand accordion
 
       targetAccordion.addEventListener(
         'shown.bs.collapse',
         scrollToTermWrapper
       );
-    } else {
-      scrollToTerm(termId);
     }
   }
 }
 
 // Handle search logic
 function attachSearchFunctionality(searchModal, modalContainer) {
+  let outputFileName = getOutputFileName();
   const searchQueryInput = document.getElementById('searchQuery');
   const searchResults = document.getElementById('searchResults');
   const totalMatches = document.getElementById('totalMatches');
@@ -352,110 +335,116 @@ function attachSearchFunctionality(searchModal, modalContainer) {
     return;
   }
 
+  // Get selected values from dropdowns
+  let selected_standard = $('#std_dropdown').val();
+  let selected_technology = $('#tech_dropdown').val();
+
+  if (!outputFileName) {
+    $('#selectedStandard').text(selected_standard);
+    $('#selectedTechnology').text(selected_technology);
+    $('#searchCriteria').show();
+
+    searchQueryInput.disabled = true;
+    searchQueryInput.style.display = 'none';
+    totalMatches.textContent = 'No matching items found for selected filters';
+  }
+
   searchQueryInput.addEventListener('input', function () {
     const query = this.value.toLowerCase().trim();
+    let matchCount = 0;
     searchResults.innerHTML = '';
     totalMatches.textContent = '';
-
-    const items = modalContainer.querySelectorAll('#content .card');
-    let matchCount = 0;
+    searchQueryInput.disabled = false;
+    searchQueryInput.style.display = 'block';
 
     // Exit early if query is empty
     if (query === '') return;
 
-    const componentData = window.appData?.componentData || [];
-
-    if (!Array.isArray(componentData) || componentData.length === 0) {
+    if (!Array.isArray(components) || components.length === 0) {
       console.error('Error: No component data available.');
       return;
     }
 
     // Iterate over the components (fields) directly
-    componentData.forEach((field) => {
-      const termLabel = field.termLabel.toLowerCase();
-      const termName = field.termName.toLowerCase();
-      const termId = field.termId;
-      const descriptionText = field.descriptionText.toLowerCase();
-      const componentId = field.componentId;
+    components.forEach((component) => {
+      const componentId = `component-${component.group_name}`;
+      const componentLabel = component.group_label;
+      
+      component.fields.forEach((field) => {
+        const termLabel = field.label.toLowerCase();
+        const termName = field.name.toLowerCase();
+        const termId = `term-${field.name}`;
+        const descriptionText = field.description.toLowerCase();
 
-      // Check if any of the fields' content matches the search query
-      if (
-        termLabel.includes(query) ||
-        termName.toLowerCase().includes(query) ||
-        descriptionText.includes(query)
-      ) {
-        matchCount++;
+        // Check if any of the fields' content matches the search query
+        if (
+          termLabel.includes(query) ||
+          termName.toLowerCase().includes(query) ||
+          descriptionText.includes(query)
+        ) {
+          matchCount++;
 
-        // Create a list item for the search result
-        const listItem = document.createElement('div');
-        listItem.className =
-          'list-group-item list-group-item-action search-result-item';
+          // Create a list item for the search result
+          const listItem = document.createElement('div');
+          listItem.className =
+            'list-group-item list-group-item-action search-result-item';
 
-        const termLinkHeader = document.createElement('h1');
-        termLinkHeader.className = 'search-result-header';
-        termLinkHeader.textContent = 'Term: ';
+          const termLinkHeader = document.createElement('h1');
+          termLinkHeader.className = 'search-result-header';
+          termLinkHeader.textContent = 'Term: ';
 
-        const termLink = document.createElement('a');
-        termLink.href = `#${termId}`;
-        termLink.className = 'text-primary search-result-link';
-        termLink.textContent = field.termLabel;
+          const termLink = document.createElement('a');
+          termLink.href = `#${termId}`;
+          termLink.className = 'text-primary search-result-link';
+          termLink.textContent = field.label;
 
-        const componentBadge = document.createElement('span');
-        componentBadge.className = 'badge bg-dark ms-auto fl-right';
-        componentBadge.textContent = field.componentLabel;
-        componentBadge.id = componentId;
+          const componentBadge = document.createElement('span');
+          componentBadge.className = 'badge bg-dark ms-auto fl-right';
+          componentBadge.textContent = componentLabel;
+          componentBadge.id = componentId;
 
-        // Event listener for search results
-        listItem.addEventListener('click', (event) => {
-          event.preventDefault();
-          searchModal.hide();
-          searchQueryInput.value = '';
-          searchResults.innerHTML = '';
-          totalMatches.textContent = '';
+          // Event listener for search results
+          listItem.addEventListener('click', (event) => {
+            event.preventDefault();
+            searchModal.hide();
+            searchQueryInput.value = '';
+            searchResults.innerHTML = '';
+            totalMatches.textContent = '';
 
-          const targetAccordion = document.getElementById(componentId);
+            const targetAccordion = document.getElementById(componentId);
 
-          if (targetAccordion) {
-            handleAccordionExpand(termId, targetAccordion);
-          }
-        });
+            if (targetAccordion) {
+              handleAccordionExpand(termId, targetAccordion);
+            }
+          });
 
-        const description = document.createElement('p');
-        description.className = 'mb-1 text-muted';
-        description.textContent = field.descriptionText;
+          const description = document.createElement('p');
+          description.className = 'mb-1 text-muted';
+          description.textContent = field.description;
 
-        termLinkHeader.appendChild(termLink);
-        termLinkHeader.appendChild(componentBadge);
-        listItem.appendChild(termLinkHeader);
-        listItem.appendChild(description);
-        searchResults.appendChild(listItem);
-      }
+          termLinkHeader.appendChild(termLink);
+          termLinkHeader.appendChild(componentBadge);
+          listItem.appendChild(termLinkHeader);
+          listItem.appendChild(description);
+          searchResults.appendChild(listItem);
+        }
+      });
     });
-
-    // Get selected values from dropdowns
-    let outputFileName = getOutputFileName();
-    let selected_standard = $('#std_dropdown').val();
-    let selected_technology = $('#tech_dropdown').val();
 
     // Display the selected filter criteria above the results
     $('#selectedStandard').text(selected_standard);
     $('#selectedTechnology').text(selected_technology);
-
-    if (!outputFileName) {
-      // Hide the searchCriteria div if no valid selections
-      $('#searchCriteria').hide();
-    }
 
     $('#searchCriteria').show();
 
     totalMatches.textContent =
       matchCount > 0 || outputFileName
         ? `${matchCount} matching items for selected filters`
-        : `No matching items found for selected filters`;
+        : 'No matching items found for selected filters';
   });
 }
 
-function initialiseTooltipsAndPopovers() {
+function initialiseUIComponents() {
   // Initialise tooltips
   var tooltipTriggerList = [].slice.call(
     document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -493,7 +482,7 @@ function loadEmailModal() {
     event.preventDefault();
 
     // Load the email modal HTML dynamically
-    fetch('../../../templates/email_modal.html')
+    fetch(`${relPathTraverse}templates/email_modal.html`)
       .then((response) => response.text())
       .then((data) => {
         modalContainer.innerHTML = data;
@@ -523,7 +512,7 @@ function showWarningModal() {
   }
 
   // Load the modal HTML dynamically
-  fetch('../../../templates/warning_modal.html')
+  fetch(`${relPathTraverse}templates/warning_modal.html`)
     .then((response) => response.text())
     .then((data) => {
       modalContainer.innerHTML = data;
@@ -545,6 +534,8 @@ function showWarningModal() {
 function updateUrlWithParams() {
   // Get current query parameters from the URL
   let currentParams = new URLSearchParams(window.location.search);
+
+  // Get the values from the dropdown menus
   let standard = $('#std_dropdown').val();
   let technology = $('#tech_dropdown').val();
 
@@ -552,8 +543,119 @@ function updateUrlWithParams() {
   currentParams.set('tech_dropdown', technology);
 
   // Construct the new URL with only the query parameters
-  let newUrl = '?' + currentParams.toString(); // Keep only the query parameters in the URL
+  let newUrl = window.location.pathname + '?' + currentParams.toString();
 
   // Use history.pushState to update the URL without reloading the page
   history.pushState(null, '', newUrl);
+}
+
+// Dynamically load and update content based on selected filters
+function updateContentBasedOnSelection() {
+  let selectedStandard = $('#std_dropdown').val();
+  let selectedTechnology = $('#tech_dropdown').val();
+  let fieldsAccordion = $('#fieldsAccordion');
+
+  // Filter components based on standardName and technologyName
+  let filteredComponents = components.filter((item) => {
+    return (
+      item.standard_name === selectedStandard &&
+      item.technology_name === selectedTechnology
+    );
+  });
+
+  // Empty the current accordion content
+  fieldsAccordion.empty();
+
+  if (filteredComponents.length) {
+    // Iterate over the filtered components and dynamically add them to the accordion
+    filteredComponents.forEach(function (component) {
+      let accordionItem = `
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+            data-bs-target="#component-${component.group_name}" 
+            aria-expanded="true" 
+            aria-controls="component-${component.group_name}">
+            ${component.group_label}
+          </button>
+        </div>
+        <div id="component-${component.group_name}" 
+          class="accordion-collapse collapse" data-bs-parent="#fieldsAccordion">
+          <div class="accordion-body">
+          ${component.fields
+            .map(
+              (field) => `
+              <div id="term-${field.name}" class="card">
+                <h5 class="card-header d-flex align-items-start">
+                  ${field.label}
+                  ${
+                    field.mandatory === 'mandatory'
+                      ? `<span class="badge bg-dark ms-auto">Required</span>`
+                      : ''
+                  }
+                </h5>
+                <div class="card-body">
+                  <table class="table">
+                    <tr><td>Name</td><td>${field.name}</td></tr>
+                    <tr><td>Description</td><td>${field.description}</td></tr>
+                    ${
+                      field.example
+                        ? `<tr><td>Example</td><td>${field.example}</td></tr>`
+                        : ''
+                    }
+                    ${
+                      field.reference
+                        ? `
+                          <tr><td>Reference</td><td>
+                              <a href="${field.reference}" target="_blank">${field.reference}</a>
+                          </td></tr>`
+                        : ''
+                    }
+                    ${
+                      field.regex
+                        ? `<tr><td>Regex</td><td>${field.regex}</td></tr>`
+                        : ''
+                    }
+                    ${
+                      field.namespace
+                        ? `
+                          <tr><td>Namespace</td><td>
+                              ${
+                                field.reference
+                                  ? `<a href="${field.reference}" target="_blank">${field.namespace}</a>`
+                                  : field.namespace
+                              }
+                          </td></tr>`
+                        : ''
+                    }
+                    ${
+                      field.allowedValues && field.allowedValues.length > 0
+                        ? `
+                          <tr><td>Allowed Values</td><td>
+                              ${field.allowedValues
+                                .map(
+                                  (value) =>
+                                    `<span class="badge bg-dark">${value}</span>`
+                                )
+                                .join(' ')}
+                          </td></tr>`
+                        : ''
+                    }
+                  </table>
+                </div>
+              </div>
+            `
+            )
+            .join('')}
+          </div>
+        </div>
+      </div>`;
+
+      // Append the dynamically created accordion item
+      fieldsAccordion.append(accordionItem);
+    });
+  }
+  //  Reinitialise UI components
+  initialiseUIComponents();
+  updateUrlWithParams(); // Update the URL with the selected parameters
 }

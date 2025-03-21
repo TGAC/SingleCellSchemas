@@ -98,7 +98,7 @@ classes:
         required: false
         description: The workflow or protocol followed during the study.
         examples:
-        - value: spatial_transcriptomics
+        - value: Laser microdissection
         slot_uri: ei:workflow
         domain: Study
         range: enum
@@ -112,7 +112,7 @@ classes:
         - value: Vizgen
         slot_uri: ei:technology
         domain: Study
-        range: enum
+        range: string
         multivalued: false
         inlined: false
       project_name:
@@ -1257,7 +1257,7 @@ classes:
           and longitude. The values should be reported in decimal degrees, limited
           to 8 decimal points, and in WGS84 system
         examples:
-        - value: '50.123'
+        - value: 50.123 6.24512
         slot_uri: mixs:lat_lon
         domain: Sample
         range: string
@@ -1517,18 +1517,6 @@ classes:
         domain: Sample
         range: string
         multivalued: false
-        inlined: false
-      host_spec_range:
-        identifier: false
-        required: false
-        description: The range and diversity of host species that an organism is capable
-          of infecting, defined by NCBI taxonomy identifier
-        examples:
-        - value: '9606'
-        slot_uri: mixs:host_spec_range
-        domain: Sample
-        range: string
-        multivalued: true
         inlined: false
       tax_ident:
         identifier: false
@@ -2200,7 +2188,7 @@ classes:
       suspension_volume_%C2%B5l:
         identifier: false
         required: false
-        description: The volume of the cell suspension in microlitres.
+        description: "The volume of the cell suspension in microlitres (\xB5L)."
         examples:
         - value: '100'
         slot_uri: ei:suspension_volume_%C2%B5l
@@ -2211,7 +2199,8 @@ classes:
       suspension_concentration_cells_per_%C2%B5l:
         identifier: false
         required: false
-        description: The concentration of cells in the suspension.
+        description: "The concentration of cells in the suspension in microlitres\
+          \ (\xB5L)."
         examples:
         - value: '1000'
         slot_uri: ei:suspension_concentration_cells_per_%C2%B5l
@@ -2599,6 +2588,16 @@ classes:
         range: enum
         multivalued: false
         inlined: false
+      design_description:
+        identifier: false
+        required: false
+        description: The design of the library including details of how it was constructed.
+        examples: []
+        slot_uri: ei:design_description
+        domain: Library Preparation
+        range: string
+        multivalued: false
+        inlined: false
       nucl_acid_amp:
         identifier: false
         required: false
@@ -2790,7 +2789,7 @@ classes:
         - value: Illumina NovaSeq 6000
         slot_uri: ei:sequencing_instrument_model
         domain: Sequencing
-        range: string
+        range: enum
         multivalued: false
         inlined: false
       lib_layout:
@@ -3585,32 +3584,54 @@ classes:
         range: file
         multivalued: false
         inlined: false
-      read_checksum:
+      read_1_checksum:
         identifier: false
         required: false
-        description: Result of a hash function calculated on the content of both the
-          read 1 file and the read 2 file to verify file integrity. Commonly used
-          algorithms include MD5 and SHA-1. The checksums should be separated by a
-          comma (,).
+        description: Result of a hash function calculated on the content of the read
+          1 file  to verify file integrity. Commonly used algorithms include MD5 and
+          SHA-1. The checksums should be separated by a comma (,).
         examples:
         - value: d41d8cd98f00b204e9800998ecf8427e
-        - value: 5a105e8b9d40e1329780d62ea2265d8a77a1a45e
-        slot_uri: ei:read_checksum
+        slot_uri: ei:read_1_checksum
         domain: File
         range: string
         multivalued: false
         inlined: false
-      index_checksum:
+      read_2_checksum:
         identifier: false
         required: false
-        description: Result of a hash function calculated on the content of both the
-          index 1 file and the index 2 file to verify file integrity. Commonly used
-          algorithms include MD5 and SHA-1. The checksums should be separated by a
-          comma (,).
+        description: Result of a hash function calculated on the content of the read
+          2 file  to verify file integrity. Commonly used algorithms include MD5 and
+          SHA-1. The checksums should be separated by a comma (,).
         examples:
-        - value: d3486ae9136e7856bc42212385ea797094475802
-        - value: b7e23ec29af22b0b4e41da31e868d57226121c84
-        slot_uri: ei:index_checksum
+        - value: d41d8cd98f00b204e9800998ecf8427e
+        slot_uri: ei:read_2_checksum
+        domain: File
+        range: string
+        multivalued: false
+        inlined: false
+      index_1_checksum:
+        identifier: false
+        required: false
+        description: Result of a hash function calculated on the content of  the index
+          1 file  to verify file integrity. Commonly used algorithms include MD5 and
+          SHA-1. The checksums should be separated by a comma (,).
+        examples:
+        - value: d41d8cd98f00b204e9800998ecf8427e
+        slot_uri: ei:index_1_checksum
+        domain: File
+        range: string
+        multivalued: false
+        inlined: false
+      index_2_checksum:
+        identifier: false
+        required: false
+        description: Result of a hash function calculated on the content of  the index
+          2 file  to verify file integrity. Commonly used algorithms include MD5 and
+          SHA-1. The checksums should be separated by a comma (,).
+        examples:
+        - value: d41d8cd98f00b204e9800998ecf8427e
+        slot_uri: ei:index_2_checksum
         domain: File
         range: string
         multivalued: false
@@ -3745,13 +3766,13 @@ classes:
         range: string
         multivalued: false
         inlined: false
-      section_thickness_method:
+      section_thickness_measurement_method:
         identifier: false
         required: false
         description: The method used to measure tissue section thickness.
         examples:
         - value: Microtome
-        slot_uri: ei:section_thickness_method
+        slot_uri: ei:section_thickness_measurement_method
         domain: Imaging Protocol
         range: string
         multivalued: false
@@ -3881,13 +3902,6 @@ enums:
       Microfluidics, Facs, Culturing, Sequencing: {}
       Microfluidics, Facs, Sequencing: {}
       Spatial Transcriptomics: {}
-  Technology:
-    permissible_values:
-      10X: {}
-      10X_3': {}
-      Mas_seq: {}
-      Smartseq: {}
-      Vizgen: {}
   Tissue:
     permissible_values:
       Abdomen: {}
@@ -3895,33 +3909,49 @@ enums:
       Blade: {}
       Blood: {}
       Bodywall: {}
+      Bone marrow hematopoietic niches: {}
       Bract: {}
       Brain: {}
       Bud: {}
       Cap: {}
       Cephalothorax: {}
+      Cortex development in roots: {}
       DNA Extract: {}
+      Developing brain: {}
+      Developing embryo: {}
+      Developing seed coat: {}
       Egg: {}
       Eggshell: {}
+      Embryonic stem cells: {}
       Endocrine Tissue: {}
       Endosperm: {}
       Eye: {}
       Fat Body: {}
+      Fetal heart: {}
+      Fetal kidney: {}
+      Fetal liver: {}
+      Fetal lung: {}
       Fin: {}
+      Floral meristem: {}
       Flower: {}
+      Gastrulation-stage embryo: {}
       Gill Animal: {}
       Gill Fungi: {}
       Gonad: {}
+      Gut: {}
       Hair: {}
       Head: {}
       Heart: {}
       Hepatopancreas: {}
       Holdfast Fungi: {}
+      Hypocotyl: {}
       Inflorescence: {}
       Intestine: {}
       Kidney: {}
       Leaf: {}
+      Leaf primordia: {}
       Leg: {}
+      Limb bud: {}
       Liver: {}
       Lung: {}
       Mid Body: {}
@@ -3931,25 +3961,37 @@ enums:
       Muscle: {}
       Mycelium: {}
       Mycorrhiza: {}
+      Neonatal retina: {}
+      Neural crest cells: {}
+      Nodules: {}
       Not Applicable: {}
       Not Collected: {}
       Not Provided: {}
+      Olfactory epithelium: {}
       Other Fungal Tissue: {}
       Other Plant Tissue: {}
       Other Reproductive Animal Tissue: {}
       Other Somatic Animal Tissue: {}
       Ovary Animal: {}
       Oviduct: {}
+      Ovule primordium: {}
       Pancreas: {}
       Petiole: {}
+      Placental trophoblast cells: {}
+      Pollen mother cells: {}
       Posterior Body: {}
+      Postnatal thymus: {}
+      'Rhizome meristem ': {}
       Root: {}
+      Root apical meristem: {}
       Scales: {}
       Scat: {}
       Seed: {}
       Seedling: {}
       Shoot: {}
+      Shoot apical meristem: {}
       Skin: {}
+      Somitic mesoderm: {}
       Sperm Seminal Fluid: {}
       Spleen: {}
       Spore: {}
@@ -3963,7 +4005,9 @@ enums:
       Thallus Fungi: {}
       Thallus Plant: {}
       Thorax: {}
+      Trichome precursor cells: {}
       Unicellular Organisms In Culture: {}
+      Vascular cambium: {}
       Whole Organism: {}
       Whole Plant: {}
   Preparations:
@@ -4033,6 +4077,91 @@ enums:
     permissible_values:
       CD41+: {}
       CD41-: {}
+  Sequencing_instrument_model:
+    permissible_values:
+      454 GS: {}
+      454 GS 20: {}
+      454 GS FLX: {}
+      454 GS FLX Titanium: {}
+      454 GS FLX+: {}
+      454 GS Junior: {}
+      AB 310 Genetic Analyzer: {}
+      AB 3130 Genetic Analyzer: {}
+      AB 3130xL Genetic Analyzer: {}
+      AB 3500 Genetic Analyzer: {}
+      AB 3500xL Genetic Analyzer: {}
+      AB 3730 Genetic Analyzer: {}
+      AB 3730xL Genetic Analyzer: {}
+      AB 5500 Genetic Analyzer: {}
+      AB 5500xl Genetic Analyzer: {}
+      AB 5500xl-W Genetic Analysis System: {}
+      AB SOLiD 3 Plus System: {}
+      AB SOLiD 4 System: {}
+      AB SOLiD 4hq System: {}
+      AB SOLiD PI System: {}
+      AB SOLiD System: {}
+      AB SOLiD System 2.0: {}
+      AB SOLiD System 3.0: {}
+      BGISEQ-50: {}
+      BGISEQ-500: {}
+      Complete Genomics: {}
+      DNBSEQ-G400: {}
+      DNBSEQ-G400 FAST: {}
+      DNBSEQ-G50: {}
+      DNBSEQ-T10x4RS: {}
+      DNBSEQ-T7: {}
+      Element AVITI: {}
+      FASTASeq 300: {}
+      GENIUS: {}
+      GS111: {}
+      Genapsys Sequencer: {}
+      GenoCare 1600: {}
+      GenoLab M: {}
+      GridION: {}
+      Illumina Genome Analyzer: {}
+      Illumina Genome Analyzer II: {}
+      Illumina Genome Analyzer IIx: {}
+      Illumina HiScanSQ: {}
+      Illumina HiSeq 1000: {}
+      Illumina HiSeq 1500: {}
+      Illumina HiSeq 2000: {}
+      Illumina HiSeq 2500: {}
+      Illumina HiSeq 3000: {}
+      Illumina HiSeq 4000: {}
+      Illumina HiSeq X: {}
+      Illumina HiSeq X Five: {}
+      Illumina HiSeq X Ten: {}
+      Illumina MiSeq: {}
+      Illumina MiniSeq: {}
+      Illumina NextSeq 500: {}
+      Illumina NextSeq 550: {}
+      Illumina NovaSeq 6000: {}
+      Illumina NovaSeq X: {}
+      Illumina NovaSeq X Plus: {}
+      Illumina iSeq 100: {}
+      Ion GeneStudio S5: {}
+      Ion GeneStudio S5 Plus: {}
+      Ion GeneStudio S5 Prime: {}
+      Ion Torrent Genexus: {}
+      Ion Torrent PGM: {}
+      Ion Torrent Proton: {}
+      Ion Torrent S5: {}
+      Ion Torrent S5 XL: {}
+      MGISEQ-2000RS: {}
+      MinION: {}
+      NextSeq 1000: {}
+      NextSeq 2000: {}
+      Onso: {}
+      PacBio RS: {}
+      PacBio RS II: {}
+      PromethION: {}
+      Revio: {}
+      Sentosa SQ301: {}
+      Sequel: {}
+      Sequel II: {}
+      Sequel IIe: {}
+      Tapestri: {}
+      UG 100: {}
   Lib_layout:
     permissible_values:
       Other: {}
@@ -4157,33 +4286,49 @@ enums:
       Blade: {}
       Blood: {}
       Bodywall: {}
+      Bone marrow hematopoietic niches: {}
       Bract: {}
       Brain: {}
       Bud: {}
       Cap: {}
       Cephalothorax: {}
+      Cortex development in roots: {}
       DNA Extract: {}
+      Developing brain: {}
+      Developing embryo: {}
+      Developing seed coat: {}
       Egg: {}
       Eggshell: {}
+      Embryonic stem cells: {}
       Endocrine Tissue: {}
       Endosperm: {}
       Eye: {}
       Fat Body: {}
+      Fetal heart: {}
+      Fetal kidney: {}
+      Fetal liver: {}
+      Fetal lung: {}
       Fin: {}
+      Floral meristem: {}
       Flower: {}
+      Gastrulation-stage embryo: {}
       Gill Animal: {}
       Gill Fungi: {}
       Gonad: {}
+      Gut: {}
       Hair: {}
       Head: {}
       Heart: {}
       Hepatopancreas: {}
       Holdfast Fungi: {}
+      Hypocotyl: {}
       Inflorescence: {}
       Intestine: {}
       Kidney: {}
       Leaf: {}
+      Leaf primordia: {}
       Leg: {}
+      Limb bud: {}
       Liver: {}
       Lung: {}
       Mid Body: {}
@@ -4193,25 +4338,37 @@ enums:
       Muscle: {}
       Mycelium: {}
       Mycorrhiza: {}
+      Neonatal retina: {}
+      Neural crest cells: {}
+      Nodules: {}
       Not Applicable: {}
       Not Collected: {}
       Not Provided: {}
+      Olfactory epithelium: {}
       Other Fungal Tissue: {}
       Other Plant Tissue: {}
       Other Reproductive Animal Tissue: {}
       Other Somatic Animal Tissue: {}
       Ovary Animal: {}
       Oviduct: {}
+      Ovule primordium: {}
       Pancreas: {}
       Petiole: {}
+      Placental trophoblast cells: {}
+      Pollen mother cells: {}
       Posterior Body: {}
+      Postnatal thymus: {}
+      'Rhizome meristem ': {}
       Root: {}
+      Root apical meristem: {}
       Scales: {}
       Scat: {}
       Seed: {}
       Seedling: {}
       Shoot: {}
+      Shoot apical meristem: {}
       Skin: {}
+      Somitic mesoderm: {}
       Sperm Seminal Fluid: {}
       Spleen: {}
       Spore: {}
@@ -4225,7 +4382,9 @@ enums:
       Thallus Fungi: {}
       Thallus Plant: {}
       Thorax: {}
+      Trichome precursor cells: {}
       Unicellular Organisms In Culture: {}
+      Vascular cambium: {}
       Whole Organism: {}
       Whole Plant: {}
   Preservation_approach:

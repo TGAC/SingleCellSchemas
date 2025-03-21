@@ -51,7 +51,7 @@
           <LABEL>Workflow</LABEL>
           <NAME>workflow</NAME>
           <DESCRIPTION>The workflow or protocol followed during the study.</DESCRIPTION>
-          <EXAMPLE>spatial_transcriptomics</EXAMPLE>
+          <EXAMPLE>Laser microdissection</EXAMPLE>
           <NAMESPACE>ei:workflow</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
@@ -90,25 +90,7 @@
           <DESCRIPTION>The sorting or visualisation technology used.</DESCRIPTION>
           <EXAMPLE>Vizgen</EXAMPLE>
           <NAMESPACE>ei:technology</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_CHOICE_FIELD>
-              <TEXT_VALUE>
-                <VALUE>10X</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>10X_3'</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>Mas_seq</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>Smartseq</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>Vizgen</VALUE>
-              </TEXT_VALUE>
-            </TEXT_CHOICE_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -263,20 +245,6 @@
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Organism</LABEL>
-          <NAME>organism</NAME>
-          <DESCRIPTION>The full scientific name of the species studied.</DESCRIPTION>
-          <EXAMPLE>Arenicola marina</EXAMPLE>
-          <NAMESPACE>ei:organism</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>optional</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
           <LABEL>Scientific Name</LABEL>
           <NAME>scientific_name</NAME>
           <DESCRIPTION>The full scientific name of the species studied.</DESCRIPTION>
@@ -328,6 +296,9 @@
                 <VALUE>Bodywall</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Bone marrow hematopoietic niches</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Bract</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
@@ -343,13 +314,28 @@
                 <VALUE>Cephalothorax</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Cortex development in roots</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>DNA Extract</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Developing brain</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Developing embryo</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Developing seed coat</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Egg</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Eggshell</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Embryonic stem cells</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Endocrine Tissue</VALUE>
@@ -364,10 +350,28 @@
                 <VALUE>Fat Body</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Fetal heart</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Fetal kidney</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Fetal liver</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Fetal lung</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Fin</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Floral meristem</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Flower</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Gastrulation-stage embryo</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Gill Animal</VALUE>
@@ -377,6 +381,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Gonad</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Gut</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Hair</VALUE>
@@ -394,6 +401,9 @@
                 <VALUE>Holdfast Fungi</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Hypocotyl</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Inflorescence</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
@@ -406,7 +416,13 @@
                 <VALUE>Leaf</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Leaf primordia</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Leg</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Limb bud</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Liver</VALUE>
@@ -436,6 +452,15 @@
                 <VALUE>Mycorrhiza</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Neonatal retina</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Neural crest cells</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Nodules</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Not Applicable</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
@@ -443,6 +468,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Not Provided</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Olfactory epithelium</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Other Fungal Tissue</VALUE>
@@ -463,16 +491,34 @@
                 <VALUE>Oviduct</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Ovule primordium</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Pancreas</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Petiole</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Placental trophoblast cells</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Pollen mother cells</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Posterior Body</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Postnatal thymus</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Rhizome meristem </VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Root</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Root apical meristem</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Scales</VALUE>
@@ -490,7 +536,13 @@
                 <VALUE>Shoot</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Shoot apical meristem</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Skin</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Somitic mesoderm</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Sperm Seminal Fluid</VALUE>
@@ -532,7 +584,13 @@
                 <VALUE>Thorax</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Trichome precursor cells</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Unicellular Organisms In Culture</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Vascular cambium</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Whole Organism</VALUE>
@@ -569,6 +627,9 @@
                 <VALUE>Bodywall</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Bone marrow hematopoietic niches</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Bract</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
@@ -584,13 +645,28 @@
                 <VALUE>Cephalothorax</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Cortex development in roots</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>DNA Extract</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Developing brain</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Developing embryo</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Developing seed coat</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Egg</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Eggshell</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Embryonic stem cells</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Endocrine Tissue</VALUE>
@@ -605,10 +681,28 @@
                 <VALUE>Fat Body</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Fetal heart</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Fetal kidney</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Fetal liver</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Fetal lung</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Fin</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Floral meristem</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Flower</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Gastrulation-stage embryo</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Gill Animal</VALUE>
@@ -618,6 +712,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Gonad</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Gut</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Hair</VALUE>
@@ -635,6 +732,9 @@
                 <VALUE>Holdfast Fungi</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Hypocotyl</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Inflorescence</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
@@ -647,7 +747,13 @@
                 <VALUE>Leaf</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Leaf primordia</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Leg</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Limb bud</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Liver</VALUE>
@@ -677,6 +783,15 @@
                 <VALUE>Mycorrhiza</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Neonatal retina</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Neural crest cells</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Nodules</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Not Applicable</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
@@ -684,6 +799,9 @@
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Not Provided</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Olfactory epithelium</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Other Fungal Tissue</VALUE>
@@ -704,16 +822,34 @@
                 <VALUE>Oviduct</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Ovule primordium</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Pancreas</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Petiole</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Placental trophoblast cells</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Pollen mother cells</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Posterior Body</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Postnatal thymus</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Rhizome meristem </VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Root</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Root apical meristem</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Scales</VALUE>
@@ -731,7 +867,13 @@
                 <VALUE>Shoot</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Shoot apical meristem</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Skin</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Somitic mesoderm</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Sperm Seminal Fluid</VALUE>
@@ -773,7 +915,13 @@
                 <VALUE>Thorax</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
+                <VALUE>Trichome precursor cells</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
                 <VALUE>Unicellular Organisms In Culture</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Vascular cambium</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
                 <VALUE>Whole Organism</VALUE>
@@ -1247,9 +1395,9 @@
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Suspension Volume Μl</LABEL>
+          <LABEL>Suspension Volume (µL)</LABEL>
           <NAME>suspension_volume_µl</NAME>
-          <DESCRIPTION>The volume of the cell suspension in microlitres.</DESCRIPTION>
+          <DESCRIPTION>The volume of the cell suspension in microlitres (µL).</DESCRIPTION>
           <EXAMPLE>100</EXAMPLE>
           <NAMESPACE>ei:suspension_volume_µl</NAMESPACE>
           <FIELD_TYPE/>
@@ -1257,9 +1405,9 @@
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Suspension Concentration Cells Per Μl</LABEL>
+          <LABEL>Suspension Concentration Cells Per µL</LABEL>
           <NAME>suspension_concentration_cells_per_µl</NAME>
-          <DESCRIPTION>The concentration of cells in the suspension.</DESCRIPTION>
+          <DESCRIPTION>The concentration of cells in the suspension in microlitres (µL).</DESCRIPTION>
           <EXAMPLE>1000</EXAMPLE>
           <NAMESPACE>ei:suspension_concentration_cells_per_µl</NAMESPACE>
           <FIELD_TYPE/>
@@ -1669,6 +1817,16 @@
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
+        <FIELD>
+          <LABEL>Design description</LABEL>
+          <NAME>design_description</NAME>
+          <DESCRIPTION>The design of the library including details of how it was constructed.</DESCRIPTION>
+          <EXAMPLE/>
+          <NAMESPACE>ei:design_description</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
       </FIELD_GROUP>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>sequencing</NAME>
@@ -1718,7 +1876,259 @@
           <DESCRIPTION>This refers to the machine or platform used for sequencing, with variations in throughput, read lengths, error rates, and application suitability.</DESCRIPTION>
           <EXAMPLE>Illumina NovaSeq 6000</EXAMPLE>
           <NAMESPACE>ei:sequencing_instrument_model</NAMESPACE>
-          <FIELD_TYPE/>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>454 GS</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>454 GS 20</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>454 GS FLX</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>454 GS FLX Titanium</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>454 GS FLX+</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>454 GS Junior</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB 310 Genetic Analyzer</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB 3130 Genetic Analyzer</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB 3130xL Genetic Analyzer</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB 3500 Genetic Analyzer</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB 3500xL Genetic Analyzer</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB 3730 Genetic Analyzer</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB 3730xL Genetic Analyzer</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB 5500 Genetic Analyzer</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB 5500xl Genetic Analyzer</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB 5500xl-W Genetic Analysis System</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB SOLiD 3 Plus System</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB SOLiD 4 System</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB SOLiD 4hq System</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB SOLiD PI System</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB SOLiD System</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB SOLiD System 2.0</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>AB SOLiD System 3.0</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>BGISEQ-50</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>BGISEQ-500</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Complete Genomics</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>DNBSEQ-G400</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>DNBSEQ-G400 FAST</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>DNBSEQ-G50</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>DNBSEQ-T10x4RS</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>DNBSEQ-T7</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Element AVITI</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>FASTASeq 300</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>GENIUS</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>GS111</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Genapsys Sequencer</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>GenoCare 1600</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>GenoLab M</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>GridION</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina Genome Analyzer</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina Genome Analyzer II</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina Genome Analyzer IIx</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina HiScanSQ</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina HiSeq 1000</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina HiSeq 1500</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina HiSeq 2000</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina HiSeq 2500</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina HiSeq 3000</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina HiSeq 4000</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina HiSeq X</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina HiSeq X Five</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina HiSeq X Ten</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina MiSeq</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina MiniSeq</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina NextSeq 500</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina NextSeq 550</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina NovaSeq 6000</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina NovaSeq X</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina NovaSeq X Plus</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Illumina iSeq 100</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Ion GeneStudio S5</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Ion GeneStudio S5 Plus</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Ion GeneStudio S5 Prime</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Ion Torrent Genexus</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Ion Torrent PGM</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Ion Torrent Proton</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Ion Torrent S5</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Ion Torrent S5 XL</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>MGISEQ-2000RS</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>MinION</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>NextSeq 1000</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>NextSeq 2000</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Onso</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>PacBio RS</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>PacBio RS II</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>PromethION</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Revio</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Sentosa SQ301</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Sequel</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Sequel II</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Sequel IIe</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Tapestri</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>UG 100</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -2361,11 +2771,7 @@ from the cell was included in the sequencing analysis. For example, cells might 
           <DESCRIPTION>The name or accession of the file that contains read 1.</DESCRIPTION>
           <EXAMPLE>file1_r1.fastq.gz</EXAMPLE>
           <NAMESPACE>ei:read_1_file</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -2375,12 +2781,8 @@ from the cell was included in the sequencing analysis. For example, cells might 
           <DESCRIPTION>The name or accession of the file that contains read 2.</DESCRIPTION>
           <EXAMPLE>file2_r2.fastq.gz</EXAMPLE>
           <NAMESPACE>ei:read_2_file</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
@@ -2389,12 +2791,8 @@ from the cell was included in the sequencing analysis. For example, cells might 
           <DESCRIPTION>The name or accession of the file that contains index 1.</DESCRIPTION>
           <EXAMPLE>file1_i1.fastq.gz</EXAMPLE>
           <NAMESPACE>ei:index_1_file</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
@@ -2403,32 +2801,48 @@ from the cell was included in the sequencing analysis. For example, cells might 
           <DESCRIPTION>The name or accession of the file that contains index 2.</DESCRIPTION>
           <EXAMPLE>file2_i2.fastq.gz</EXAMPLE>
           <NAMESPACE>ei:index_2_file</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
-          <LABEL>Read Checksum</LABEL>
-          <NAME>read_checksum</NAME>
-          <DESCRIPTION>Result of a hash function calculated on the content of both the read 1 file and the read 2 file to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).</DESCRIPTION>
-          <EXAMPLE>d41d8cd98f00b204e9800998ecf8427e,5a105e8b9d40e1329780d62ea2265d8a77a1a45e</EXAMPLE>
-          <NAMESPACE>ei:read_checksum</NAMESPACE>
           <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Index Checksum</LABEL>
-          <NAME>index_checksum</NAME>
-          <DESCRIPTION>Result of a hash function calculated on the content of both the index 1 file and the index 2 file to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).</DESCRIPTION>
-          <EXAMPLE>d3486ae9136e7856bc42212385ea797094475802,b7e23ec29af22b0b4e41da31e868d57226121c84</EXAMPLE>
-          <NAMESPACE>ei:index_checksum</NAMESPACE>
+          <LABEL>Read 1 Checksum</LABEL>
+          <NAME>read_1_checksum</NAME>
+          <DESCRIPTION>Result of a hash function calculated on the content of the read 1 file  to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).</DESCRIPTION>
+          <EXAMPLE>d41d8cd98f00b204e9800998ecf8427e</EXAMPLE>
+          <NAMESPACE>ei:read_1_checksum</NAMESPACE>
           <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Read 2 Checksum</LABEL>
+          <NAME>read_2_checksum</NAME>
+          <DESCRIPTION>Result of a hash function calculated on the content of the read 2 file  to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).</DESCRIPTION>
+          <EXAMPLE>d41d8cd98f00b204e9800998ecf8427e</EXAMPLE>
+          <NAMESPACE>ei:read_2_checksum</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Index 1 Checksum</LABEL>
+          <NAME>index_1_checksum</NAME>
+          <DESCRIPTION>Result of a hash function calculated on the content of  the index 1 file  to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).</DESCRIPTION>
+          <EXAMPLE>d41d8cd98f00b204e9800998ecf8427e</EXAMPLE>
+          <NAMESPACE>ei:index_1_checksum</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Index 2 Checksum</LABEL>
+          <NAME>index_2_checksum</NAME>
+          <DESCRIPTION>Result of a hash function calculated on the content of  the index 2 file  to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).</DESCRIPTION>
+          <EXAMPLE>d41d8cd98f00b204e9800998ecf8427e</EXAMPLE>
+          <NAMESPACE>ei:index_2_checksum</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
@@ -2438,11 +2852,7 @@ from the cell was included in the sequencing analysis. For example, cells might 
 dataset.</DESCRIPTION>
           <EXAMPLE>barcodes.tsv</EXAMPLE>
           <NAMESPACE>ei:white_list_barcode_file</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -2452,11 +2862,7 @@ dataset.</DESCRIPTION>
           <DESCRIPTION>A filename or file name is a name used to uniquely identify a data file related to the study.</DESCRIPTION>
           <EXAMPLE>file001</EXAMPLE>
           <NAMESPACE>ei:file_name</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
@@ -2476,11 +2882,7 @@ dataset.</DESCRIPTION>
           <DESCRIPTION>The name or accession of the file which quantifies the level of gene, transcript, or protein expression in a given biological sample or condition.</DESCRIPTION>
           <EXAMPLE>filename1.txt</EXAMPLE>
           <NAMESPACE>ei:expression_data_file</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
+          <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
