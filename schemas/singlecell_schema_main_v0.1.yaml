@@ -69,7 +69,7 @@ classes:
         range: string
         multivalued: false
         inlined: false
-      bibliographicCitation:
+      d:
         identifier: false
         required: true
         description: A citation for the study resource, following a standard format.
@@ -77,7 +77,7 @@ classes:
         - value: Doe J.
         - value: et al. (2024). Single Cell Transcriptomic Analysis of Human Liver
             Cells. Journal of Cellular Biology.
-        slot_uri: dcterms:bibliographicCitation
+        slot_uri: dcterms:d
         domain: Study
         range: string
         multivalued: false
@@ -2297,7 +2297,7 @@ classes:
           preparation protocol used during the sequencing.
         examples:
         - value: libPrep123
-        slot_uri: ei:library_prep_id
+        slot_uri: faang:library_prep_id
         domain: Library Preparation
         range: string
         multivalued: false
@@ -2659,18 +2659,6 @@ classes:
         slot_uri: mixs:samp_vol_we_dna_ext
         domain: Library Preparation
         range: string
-        multivalued: false
-        inlined: false
-      lib_layout:
-        identifier: false
-        required: false
-        description: Specify whether to expect single, paired, or other configuration
-          of reads
-        examples:
-        - value: Paired
-        slot_uri: mixs:lib_layout
-        domain: Library Preparation
-        range: enum
         multivalued: false
         inlined: false
       lib_vector:
@@ -3565,26 +3553,26 @@ classes:
       index_1_file:
         identifier: false
         required: false
-        description: The name or accession of the file that contains index 1.
+        description: The name of the file that contains index 1.
         examples:
         - value: file1_i1.fastq.gz
         slot_uri: ei:index_1_file
         domain: File
-        range: file
+        range: string
         multivalued: false
         inlined: false
       index_2_file:
         identifier: false
         required: false
-        description: The name or accession of the file that contains index 2.
+        description: The name of the file that contains index 2.
         examples:
         - value: file2_i2.fastq.gz
         slot_uri: ei:index_2_file
         domain: File
-        range: file
+        range: string
         multivalued: false
         inlined: false
-      read_1_checksum:
+      read_1_file_checksum:
         identifier: false
         required: false
         description: Result of a hash function calculated on the content of the read
@@ -3592,12 +3580,12 @@ classes:
           SHA-1. The checksums should be separated by a comma (,).
         examples:
         - value: d41d8cd98f00b204e9800998ecf8427e
-        slot_uri: ei:read_1_checksum
+        slot_uri: ei:read_1_file_checksum
         domain: File
         range: string
         multivalued: false
         inlined: false
-      read_2_checksum:
+      read_2_file_checksum:
         identifier: false
         required: false
         description: Result of a hash function calculated on the content of the read
@@ -3605,12 +3593,12 @@ classes:
           SHA-1. The checksums should be separated by a comma (,).
         examples:
         - value: d41d8cd98f00b204e9800998ecf8427e
-        slot_uri: ei:read_2_checksum
+        slot_uri: ei:read_2_file_checksum
         domain: File
         range: string
         multivalued: false
         inlined: false
-      index_1_checksum:
+      index_1_file_checksum:
         identifier: false
         required: false
         description: Result of a hash function calculated on the content of  the index
@@ -3618,12 +3606,12 @@ classes:
           SHA-1. The checksums should be separated by a comma (,).
         examples:
         - value: d41d8cd98f00b204e9800998ecf8427e
-        slot_uri: ei:index_1_checksum
+        slot_uri: ei:index_1_file_checksum
         domain: File
         range: string
         multivalued: false
         inlined: false
-      index_2_checksum:
+      index_2_file_checksum:
         identifier: false
         required: false
         description: Result of a hash function calculated on the content of  the index
@@ -3631,7 +3619,7 @@ classes:
           SHA-1. The checksums should be separated by a comma (,).
         examples:
         - value: d41d8cd98f00b204e9800998ecf8427e
-        slot_uri: ei:index_2_checksum
+        slot_uri: ei:index_2_file_checksum
         domain: File
         range: string
         multivalued: false

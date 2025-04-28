@@ -1123,7 +1123,7 @@
           <NAME>library_prep_id</NAME>
           <DESCRIPTION>A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.</DESCRIPTION>
           <EXAMPLE>libPrep123</EXAMPLE>
-          <NAMESPACE>ei:library_prep_id</NAMESPACE>
+          <NAMESPACE>faang:library_prep_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
               <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
@@ -2041,7 +2041,7 @@
         <FIELD>
           <LABEL>Index 1 File</LABEL>
           <NAME>index_1_file</NAME>
-          <DESCRIPTION>The name or accession of the file that contains index 1.</DESCRIPTION>
+          <DESCRIPTION>The name of the file that contains index 1.</DESCRIPTION>
           <EXAMPLE>file1_i1.fastq.gz</EXAMPLE>
           <NAMESPACE>ei:index_1_file</NAMESPACE>
           <FIELD_TYPE/>
@@ -2051,7 +2051,7 @@
         <FIELD>
           <LABEL>Index 2 File</LABEL>
           <NAME>index_2_file</NAME>
-          <DESCRIPTION>The name or accession of the file that contains index 2.</DESCRIPTION>
+          <DESCRIPTION>The name of the file that contains index 2.</DESCRIPTION>
           <EXAMPLE>file2_i2.fastq.gz</EXAMPLE>
           <NAMESPACE>ei:index_2_file</NAMESPACE>
           <FIELD_TYPE/>
@@ -2060,40 +2060,40 @@
         </FIELD>
         <FIELD>
           <LABEL>Read 1 Checksum</LABEL>
-          <NAME>read_1_checksum</NAME>
+          <NAME>read_1_file_checksum</NAME>
           <DESCRIPTION>Result of a hash function calculated on the content of the read 1 file  to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).</DESCRIPTION>
           <EXAMPLE>d41d8cd98f00b204e9800998ecf8427e</EXAMPLE>
-          <NAMESPACE>ei:read_1_checksum</NAMESPACE>
+          <NAMESPACE>ei:read_1_file_checksum</NAMESPACE>
           <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
           <LABEL>Read 2 Checksum</LABEL>
-          <NAME>read_2_checksum</NAME>
+          <NAME>read_2_file_checksum</NAME>
           <DESCRIPTION>Result of a hash function calculated on the content of the read 2 file  to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).</DESCRIPTION>
           <EXAMPLE>d41d8cd98f00b204e9800998ecf8427e</EXAMPLE>
-          <NAMESPACE>ei:read_2_checksum</NAMESPACE>
+          <NAMESPACE>ei:read_2_file_checksum</NAMESPACE>
           <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
           <LABEL>Index 1 Checksum</LABEL>
-          <NAME>index_1_checksum</NAME>
+          <NAME>index_1_file_checksum</NAME>
           <DESCRIPTION>Result of a hash function calculated on the content of  the index 1 file  to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).</DESCRIPTION>
           <EXAMPLE>d41d8cd98f00b204e9800998ecf8427e</EXAMPLE>
-          <NAMESPACE>ei:index_1_checksum</NAMESPACE>
+          <NAMESPACE>ei:index_1_file_checksum</NAMESPACE>
           <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
           <LABEL>Index 2 Checksum</LABEL>
-          <NAME>index_2_checksum</NAME>
+          <NAME>index_2_file_checksum</NAME>
           <DESCRIPTION>Result of a hash function calculated on the content of  the index 2 file  to verify file integrity. Commonly used algorithms include MD5 and SHA-1. The checksums should be separated by a comma (,).</DESCRIPTION>
           <EXAMPLE>d41d8cd98f00b204e9800998ecf8427e</EXAMPLE>
-          <NAMESPACE>ei:index_2_checksum</NAMESPACE>
+          <NAMESPACE>ei:index_2_file_checksum</NAMESPACE>
           <FIELD_TYPE/>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
