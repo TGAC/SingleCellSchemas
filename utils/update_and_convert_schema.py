@@ -208,7 +208,7 @@ def generate_base_schema_json():
             combined_json_data.extend(json_data)
         else:
             print(
-                f"No valid json_data for schema: {technology_name}, namespace: {namespace_prefix}, skipping."
+                f"No valid json_data for schema: {element['technology_name']}, namespace: {element['standard_name']}, skipping."
             )
 
     # Write JSON to a temporary file
