@@ -1,0 +1,1322 @@
+<?xml version='1.0' encoding='utf-8'?>
+<CHECKLIST_SET>
+    <CHECKLIST accession="COPO_DWC" checklistType="Sample">
+        <IDENTIFIERS>
+            <PRIMARY_ID>COPO_DWC</PRIMARY_ID>
+        </IDENTIFIERS>
+        <DESCRIPTOR>
+            <LABEL>DWC sample checklist</LABEL>
+            <NAME>DWC sample checklist</NAME>
+            <DESCRIPTION>Minimum information required for Darwin Core (DwC) samples</DESCRIPTION>
+            <AUTHORITY>COPO</AUTHORITY>
+            <FIELD_GROUP restrictionType="Any number or none of the fields">
+                <NAME>sample collection</NAME>
+                <FIELD>
+                    <LABEL>Study ID</LABEL>
+                    <NAME>study_id</NAME>
+                    <DESCRIPTION>A unique alphanumeric identifier for the  study if referring to Example: A7F9B3X2</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>mandatory</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Sample ID</LABEL>
+                    <NAME>sample_id</NAME>
+                    <DESCRIPTION>A unique alphanumeric reference or identifier for the sample. Example: sample123</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>mandatory</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Scientific Name</LABEL>
+                    <NAME>scientificName</NAME>
+                    <SYNONYM>organism</SYNONYM>
+                    <DESCRIPTION>The full scientific name of the species studied. Example: Arenicola marina</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Organism</LABEL>
+                    <NAME>organism</NAME>
+                    <DESCRIPTION>The full scientific name of the species studied. Example: Arenicola marina</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Tissue</LABEL>
+                    <NAME>tissue</NAME>
+                    <DESCRIPTION>The type of tissue sampled for the study. Example: Leaf</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_CHOICE_FIELD>
+                            <TEXT_VALUE>
+                                <VALUE>Abdomen</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Anterior Body</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Blade</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Blood</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Bodywall</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Bone marrow hematopoietic niches</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Bract</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Brain</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Bud</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Cap</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Cephalothorax</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Cortex development in roots</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Developing brain</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Developing embryo</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Developing seed coat</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>DNA Extract</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Egg</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Eggshell</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Embryonic stem cells</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Endocrine Tissue</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Endosperm</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Eye</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Fat Body</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Fetal heart</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Fetal kidney</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Fetal liver</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Fetal lung</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Fin</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Floral meristem</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Flower</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Gastrulation-stage embryo</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Gill Animal</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Gill Fungi</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Gonad</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Gut</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Hair</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Head</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Heart</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Hepatopancreas</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Holdfast Fungi</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Hypocotyl</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Inflorescence</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Intestine</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Kidney</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Leaf</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Leaf primordia</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Leg</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Limb bud</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Liver</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Lung</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Mid Body</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Modular Colony</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Mollusc Foot</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Multicellular Organisms In Culture</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Muscle</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Mycelium</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Mycorrhiza</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Neonatal retina</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Neural crest cells</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Nodules</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Olfactory epithelium</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Ovary Animal</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Oviduct</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Ovule primordium</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Pancreas</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Petiole</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Placental trophoblast cells</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Pollen mother cells</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Posterior Body</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Postnatal thymus</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Rhizome meristem</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Root</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Root apical meristem</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Scales</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Scat</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Seed</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Seedling</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Shoot</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Shoot apical meristem</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Skin</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Somitic mesoderm</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Sperm Seminal Fluid</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Spleen</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Spore</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Spore Bearing Structure</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Stem</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Stipe</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Stomach</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Tentacle</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Terminal Body</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Testis</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Thallus Fungi</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Thallus Plant</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Thorax</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Trichome precursor cells</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Unicellular Organisms In Culture</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Vascular cambium</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Whole Organism</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Whole Plant</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Other Fungal Tissue</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Other Plant Tissue</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Other Reproductive Animal Tissue</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Other Somatic Animal Tissue</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Not Applicable</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Not Collected</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Not Provided</VALUE>
+                            </TEXT_VALUE>
+                        </TEXT_CHOICE_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Preparations</LABEL>
+                    <NAME>preparations</NAME>
+                    <DESCRIPTION>A brief description of how the sample was preserved. Example: Fresh</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_CHOICE_FIELD>
+                            <TEXT_VALUE>
+                                <VALUE>Air dried</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Dry ice</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Ethanol/Dry ice slurry</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Lyophilised</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>RNALater</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Snap frozen</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Other</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Not Applicable</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Not Collected</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Not Provided</VALUE>
+                            </TEXT_VALUE>
+                        </TEXT_CHOICE_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Event Date</LABEL>
+                    <NAME>eventDate</NAME>
+                    <SYNONYM>collection date</SYNONYM>
+                    <DESCRIPTION>The date when the sample was collected with year, month and day specified in the format, YYYY-MM-DD. Example: 2024-09-20 00:00:00</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Decimal Latitude</LABEL>
+                    <NAME>decimalLatitude</NAME>
+                    <SYNONYM>lat_lon</SYNONYM>
+                    <DESCRIPTION>The geographic latitude where the specimen or sample was taken in decimal degrees, between -90 and 90. Locations should be specified to a minimum of 3 decimal places and a maximum of 8 decimal places. Example: 52.2053</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^-?([1-8]?\d(\.\d+)?|90(\.0+)?)$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Decimal Longitude</LABEL>
+                    <NAME>decimalLongitude</NAME>
+                    <SYNONYM>lat_lon</SYNONYM>
+                    <DESCRIPTION>The longitude of the sample collection site, in decimal degrees. Example: 0.1218</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^-?(180(\.0+)?|((1[0-7]\d)|(\d{1,2}))(\.\d+)?)$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Medium</LABEL>
+                    <NAME>medium</NAME>
+                    <DESCRIPTION>The material or physical carrier of the resource. Example: Tissue culture</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Cultivar</LABEL>
+                    <NAME>cultivar</NAME>
+                    <SYNONYM>cultivar</SYNONYM>
+                    <DESCRIPTION>A plant variety that has been selectively bred and maintained through cultivation to have specific desirable traits, such as yield, resistance to disease, or appearance. Example: cv. Paragon</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[A-Za-z. ]*[a-z]+$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Material Source ID</LABEL>
+                    <NAME>materialSourceID</NAME>
+                    <DESCRIPTION>The code used to identify the biological germplasm, strain, cell line or other source material. Useful for reordering material. Example: JIC GRU WM0013</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[a-zA-Z0-9]+(?: [a-zA-Z0-9]+)*$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Accession Number</LABEL>
+                    <NAME>accession_number</NAME>
+                    <DESCRIPTION>A unique alphanumeric reference or identifier assigned to the sample in the study related to NCBI Taxonomy. Example: accession123</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[A-Za-z]*[a-z]+(?:[0-9]+)*$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Class</LABEL>
+                    <NAME>class</NAME>
+                    <DESCRIPTION>The full scientific name of the class in which the dwc:Taxon is classified. Example: Hepaticopsida</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Collection Code</LABEL>
+                    <NAME>collectionCode</NAME>
+                    <DESCRIPTION>The name, acronym, code, or initialism identifying the collection or data set from which the record was derived. Example: Hildebrandt</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Collection ID</LABEL>
+                    <NAME>collectionID</NAME>
+                    <DESCRIPTION>An identifier for the collection or dataset from which the record was derived. Example: https://www.gbif.org/grscicoll/collection/fbd3ed74-5a21-4e01-b86a-33d36f032d9c</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)+(?: \| https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)*)*$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Continent</LABEL>
+                    <NAME>continent</NAME>
+                    <DESCRIPTION>The name of the continent in which the dcterms:Location occurs. Example: Europe</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Country Code</LABEL>
+                    <NAME>countryCode</NAME>
+                    <DESCRIPTION>The standard code for the country in which the dcterms:Location occurs. Example: AR</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>County</LABEL>
+                    <NAME>county</NAME>
+                    <DESCRIPTION>The full, unabbreviated name of the next smaller administrative region than stateProvince (county, shire, department, etc.) in which the dcterms:Location occurs. Example: Los Lagos</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Cultivar Epithet</LABEL>
+                    <NAME>cultivarEpithet</NAME>
+                    <DESCRIPTION>Part of the name of a cultivar, cultivar group or grex that follows the dwc:scientificName. Example: King Edward</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Dataset ID</LABEL>
+                    <NAME>datasetID</NAME>
+                    <DESCRIPTION>An identifier for the set of data. May be a global unique identifier or an identifier specific to a collection or institution. Example: b15d4952-7d20-46f1-8a3e-556a512b04c5</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Dataset Name</LABEL>
+                    <NAME>datasetName</NAME>
+                    <DESCRIPTION>The name identifying the data set from which the record was derived. Example: Grinnell Resurvey Mammals</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Date Identified</LABEL>
+                    <NAME>dateIdentified</NAME>
+                    <DESCRIPTION>The date on which the subject was determined as representing the dwc:Taxon. Example: 1963-03-08T14:07</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^((\d{4})(-\d{2}(-\d{2}(T\d{2}:\d{2}(:\d{2})?(Z|[+-]\d{2}:?\d{2})?)?)?)?(/(\d{4}|(\d{2}(-\d{2}(T\d{2}:\d{2}(:\d{2})?(Z|[+-]\d{2}:?\d{2})?)?)?)?))?)$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Disposition</LABEL>
+                    <NAME>disposition</NAME>
+                    <DESCRIPTION>The current state of a specimen with respect to the collection identified in dwc:collectionCode or dwc:collectionID. Example: Used up</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_CHOICE_FIELD>
+                            <TEXT_VALUE>
+                                <VALUE>Deaccessioned</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Destroyed</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>In collection</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Missing</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>On loan</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Used up</VALUE>
+                            </TEXT_VALUE>
+                        </TEXT_CHOICE_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Infraspecific Epithet</LABEL>
+                    <NAME>infraspecificEpithet</NAME>
+                    <DESCRIPTION>The name of the lowest or terminal infraspecific epithet of the dwc:scientificName, excluding any rank designation. Example: concolor</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Institution ID</LABEL>
+                    <NAME>institutionID</NAME>
+                    <DESCRIPTION>An identifier for the institution having custody of the object(s) or information referred to in the record. Example: https: //ror.org/015hz7p22</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)+(?: \| https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)*)*$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Island</LABEL>
+                    <NAME>island</NAME>
+                    <DESCRIPTION>The name of the island on or near which the dcterms:Location occurs. Example: Zanzibar</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Island Group</LABEL>
+                    <NAME>islandGroup</NAME>
+                    <DESCRIPTION>The name of the island group in which the dcterms:Location occurs. Example: Alexander Archipelago</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Kingdom</LABEL>
+                    <NAME>kingdom</NAME>
+                    <DESCRIPTION>The full scientific name of the kingdom in which the dwc:Taxon is classified. Example: Animalia</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Language</LABEL>
+                    <NAME>language</NAME>
+                    <DESCRIPTION>A language of the resource. Example: en</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^[A-Za-z\s]+[a-z]+$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Locality</LABEL>
+                    <NAME>locality</NAME>
+                    <SYNONYM>geographic location (region and locality)</SYNONYM>
+                    <DESCRIPTION>The specific description of the place. Example: Queets Rainforest, Olympic National Park</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Location According To</LABEL>
+                    <NAME>locationAccordingTo</NAME>
+                    <DESCRIPTION>Information about the source of this dcterms:Location information. Could be a publication (gazetteer), institution, or team of individuals. Example: Getty Thesaurus of Geographic Names</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Location ID</LABEL>
+                    <NAME>locationID</NAME>
+                    <DESCRIPTION>An identifier for the set of dcterms:Location information. May be a global unique identifier or an identifier specific to the data set. Example: https://opencontext.org/subjects/768A875F-E205-4D0B-DE55-BAB7598D0FD1</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)+(?: \| https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)*)*$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Location Remarks</LABEL>
+                    <NAME>locationRemarks</NAME>
+                    <DESCRIPTION>Comments or notes about the dcterms:Location. Example: under water since 2005</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Material Entity Remarks</LABEL>
+                    <NAME>materialEntityRemarks</NAME>
+                    <DESCRIPTION>Comments or notes about the dwc:MaterialEntity instance. Example: found in association with charred remains</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Maximum Depth In Metres</LABEL>
+                    <NAME>maximumDepthInMeters</NAME>
+                    <DESCRIPTION>The greater depth of a range of depth below the local surface, in metres. Example: 200</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^-?\d+(\.\d+)?$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Maximum Distance Above Surface In Metres</LABEL>
+                    <NAME>maximumDistanceAboveSurfaceInMeters</NAME>
+                    <DESCRIPTION>The greater distance in a range of distance from a reference surface in the vertical direction, in meters. Use positive values for locations above the surface, negative values for locations below. If depth measures are given, the reference surface is the location given by the depth, otherwise the reference surface is the location given by the elevation. Example: -1.5</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^-?\d+(\.\d+)?$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Maximum Elevation In Metres</LABEL>
+                    <NAME>maximumElevationInMeters</NAME>
+                    <DESCRIPTION>The upper limit of the range of elevation (altitude, usually above sea level), in metres. Example: 1236</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^-?\d+(\.\d+)?$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Minimum Depth In Metres</LABEL>
+                    <NAME>minimumDepthInMeters</NAME>
+                    <DESCRIPTION>The lesser depth of a range of depth below the local surface, in metres. Example: 100</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^-?\d+(\.\d+)?$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Minimum Distance Above Surface In Metres</LABEL>
+                    <NAME>minimumDistanceAboveSurfaceInMeters</NAME>
+                    <DESCRIPTION>The lesser distance in a range of distance from a reference surface in the vertical direction, in meters. Use positive values for locations above the surface, negative values for locations below. If depth measures are given, the reference surface is the location given by the depth, otherwise the reference surface is the location given by the elevation. Example: 4.2</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^-?\d+(\.\d+)?$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Minimum Elevation In Metres</LABEL>
+                    <NAME>minimumElevationInMeters</NAME>
+                    <DESCRIPTION>The lower limit of the range of elevation (altitude, usually above sea level), in metres Example: -100</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^-?\d+(\.\d+)?$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Organism ID</LABEL>
+                    <NAME>organismID</NAME>
+                    <DESCRIPTION>An identifier for the dwc:Organism instance (as opposed to a particular digital record of the dwc:Organism). May be a globally unique identifier or an identifier specific to the data set. Example: organism123</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Organism Quantity</LABEL>
+                    <NAME>organismQuantity</NAME>
+                    <DESCRIPTION>A number or enumeration value for the quantity of dwc:Organisms. Example: 27</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Organism Quantity Type</LABEL>
+                    <NAME>organismQuantityType</NAME>
+                    <DESCRIPTION>The type of quantification system used for the quantity of organisms. Example: 12.5</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Organism Remarks</LABEL>
+                    <NAME>organismRemarks</NAME>
+                    <DESCRIPTION>Comments or notes about the dwc:Organism instance. Example: One of a litter of six</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Phylum</LABEL>
+                    <DESCRIPTION>The full scientific name of the phylum or division in which the dwc:Taxon is classified. Example: Chordata</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Recorded By</LABEL>
+                    <NAME>recordedBy</NAME>
+                    <SYNONYM>collected_by</SYNONYM>
+                    <DESCRIPTION>A person, group, or organization responsible for recording the original dwc:Occurrence. Example: José E. Crespo</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Recorded By ID</LABEL>
+                    <NAME>recordedByID</NAME>
+                    <DESCRIPTION>A list (concatenated and separated) of the globally unique identifier for the person, people, groups, or organizations responsible for recording the original dwc:Occurrence. Example: https://orcid.org/0000-0002-1825-0097 | https://orcid.org/0000-0002-1825-0098</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)+(?: \| https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)*)*$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Reproductive Condition</LABEL>
+                    <NAME>reproductiveCondition</NAME>
+                    <DESCRIPTION>The reproductive condition of the biological individual(s) represented in the dwc:Occurrence. Example: Fruit-bearing</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_CHOICE_FIELD>
+                            <TEXT_VALUE>
+                                <VALUE>Fruit-bearing</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>In bloom</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Non-reproductive</VALUE>
+                            </TEXT_VALUE>
+                            <TEXT_VALUE>
+                                <VALUE>Pregnant</VALUE>
+                            </TEXT_VALUE>
+                        </TEXT_CHOICE_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Sample Size Unit</LABEL>
+                    <NAME>sampleSizeUnit</NAME>
+                    <DESCRIPTION>The unit of measurement of the size (time duration, length, area, or volume) of a sample in a sampling dwc:Event. Example: minute</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Sample Size Value</LABEL>
+                    <NAME>sampleSizeValue</NAME>
+                    <DESCRIPTION>A numeric value for a measurement of the size (time duration, length, area, or volume) of a sample in a sampling dwc:Event. Example: 5</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <REGEX_VALUE>^-?\d+(\.\d+)?$</REGEX_VALUE>
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Sampling Effort</LABEL>
+                    <NAME>samplingEffort</NAME>
+                    <DESCRIPTION>The amount of effort expended during a dwc:Event. Example: 40 trap-nights</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Sampling Protocol</LABEL>
+                    <NAME>samplingProtocol</NAME>
+                    <DESCRIPTION>The methods or protocols used during a dwc:Event, denoted by an IRI. Example: UV light trap</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Specific Epithet</LABEL>
+                    <NAME>specificEpithet</NAME>
+                    <DESCRIPTION>The name of the first or species epithet of the dwc:scientificName. Example: concolor</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Subfamily</LABEL>
+                    <NAME>subfamily</NAME>
+                    <DESCRIPTION>The full scientific name of the subfamily in which the dwc:Taxon is classified. Example: Periptyctinae</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Subgenus</LABEL>
+                    <NAME>subgenus</NAME>
+                    <DESCRIPTION>The full scientific name of the subgenus in which the dwc:Taxon is classified. Values should include the genus to avoid homonym confusion. Example: Strobus</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Taxon Concept ID</LABEL>
+                    <NAME>taxonConceptID</NAME>
+                    <DESCRIPTION>An identifier for the taxonomic concept to which the record refers - not for the nomenclatural details of a dwc:Taxon. Example: 8fa58e08-08de-4ac1-b69c-1235340b7001</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Taxon Remarks</LABEL>
+                    <NAME>taxonRemarks</NAME>
+                    <DESCRIPTION>Comments or notes about the taxon or name. Example: this name is a misspelling in common use</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Taxonomic Status</LABEL>
+                    <NAME>taxonomicStatus</NAME>
+                    <DESCRIPTION>The status of the use of the dwc:scientificName as a label for a taxon. Requires taxonomic opinion to define the scope of a dwc:Taxon. Rules of priority then are used to define the taxonomic status of the nomenclature contained in that scope, combined with the experts opinion. It must be linked to a specific taxonomic reference that defines the concept. Example: misapplied</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Type</LABEL>
+                    <NAME>type</NAME>
+                    <DESCRIPTION>The nature or genre of the resource. Example: StillImage</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Verbatim Coordinate System</LABEL>
+                    <NAME>verbatimCoordinateSystem</NAME>
+                    <DESCRIPTION>The spatial coordinate system for the dwc:verbatimLatitude and dwc:verbatimLongitude or the dwc:verbatimCoordinates of the dcterms:Location. Example: decimal degrees</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Verbatim Coordinates</LABEL>
+                    <NAME>verbatimCoordinates</NAME>
+                    <DESCRIPTION>The verbatim original spatial coordinates of the dcterms:Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in dwc:verbatimSRS and the coordinate system should be stored in dwc:verbatimCoordinateSystem. Example: 41 05 54S 121 05 34W</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Verbatim Depth</LABEL>
+                    <NAME>verbatimDepth</NAME>
+                    <DESCRIPTION>The original description of the depth below the local surface. Example: 100-200</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Verbatim Elevation</LABEL>
+                    <NAME>verbatimElevation</NAME>
+                    <DESCRIPTION>The original description of the elevation (altitude, usually above sea level) of the Location. Example: 100-200</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Verbatim Event Date</LABEL>
+                    <NAME>verbatimEventDate</NAME>
+                    <DESCRIPTION>The verbatim original representation of the date and time information for a dwc:Event. Example: spring 1910</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Verbatim Identification</LABEL>
+                    <NAME>verbatimIdentification</NAME>
+                    <DESCRIPTION>A string representing the taxonomic identification as it appeared in the original record. Example: Peromyscus sp.</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Verbatim Label</LABEL>
+                    <NAME>verbatimLabel</NAME>
+                    <DESCRIPTION>The content of this term should include no embellishments, prefixes, headers or other additions made to the text. Abbreviations must not be expanded and supposed misspellings must not be corrected. Lines or breakpoints between blocks of text that could be verified by seeing the original labels or images of them may be used. Examples of material entities include preserved specimens, fossil specimens, and material samples. Best practice is to use UTF-8 for all characters. Best practice is to add comment ‚ÄúverbatimLabel derived from human transcription‚Äù in dwc:occurrenceRemarks. Example: Monotoma longicollis 4 ♂ Det TC McElrath 2018</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Verbatim Latitude</LABEL>
+                    <NAME>verbatimLatitude</NAME>
+                    <DESCRIPTION>The verbatim original latitude of the dcterms:Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in dwc:verbatimSRS and the coordinate system should be stored in dwc:verbatimCoordinateSystem. Example: 41 05 54.03S</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Verbatim Locationality</LABEL>
+                    <NAME>verbatimLocality</NAME>
+                    <DESCRIPTION>The original textual description of the place. Example: 25 km NNE Bariloche por R. Nac. 237</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Verbatim Longitude</LABEL>
+                    <NAME>verbatimLongitude</NAME>
+                    <DESCRIPTION>The verbatim original longitude of the dcterms:Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in dwc:verbatimSRS and the coordinate system should be stored in dwc:verbatimCoordinateSystem. Example: 121d 10' 34" W</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Verbatim SRS</LABEL>
+                    <NAME>verbatimSRS</NAME>
+                    <DESCRIPTION>The ellipsoid, geodetic datum, or spatial reference system (SRS) upon which coordinates given in dwc:verbatimLatitude and dwc:verbatimLongitude, or dwc:verbatimCoordinates are based. Example: WGS84</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Verbatim Taxon Rank</LABEL>
+                    <NAME>verbatimTaxonRank</NAME>
+                    <DESCRIPTION>The taxonomic rank of the most specific name in the dwc:scientificName as it appears in the original record. Example: prole</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Vernacular Name</LABEL>
+                    <NAME>vernacularName</NAME>
+                    <DESCRIPTION>A common or vernacular name. Example: Andean Condor</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Vertical Datum</LABEL>
+                    <NAME>verticalDatum</NAME>
+                    <DESCRIPTION>The vertical datum used as the reference upon which the values in the elevation terms are based. Example: EGM84</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Vitality</LABEL>
+                    <NAME>vitality</NAME>
+                    <DESCRIPTION>An indication of whether a dwc:Organism was alive or dead at the time of collection or observation. Example: alive</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Water Body</LABEL>
+                    <NAME>waterBody</NAME>
+                    <DESCRIPTION>The name of the water body in which the dcterms:Location occurs. Example: Indian Ocean</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+                <FIELD>
+                    <LABEL>Material Sample ID</LABEL>
+                    <NAME>materialSampleID</NAME>
+                    <SYNONYM>sample</SYNONYM>
+                    <DESCRIPTION>An identifier for the dwc:MaterialSample (as opposed to a particular digital record of the dwc:MaterialSample). In the absence of a persistent global unique identifier, construct one from a combination of identifiers in the record that will most closely make the dwc:materialSampleID globally unique. Example: 06809dc5-f143-459a-be1a-6f03e63fc083</DESCRIPTION>
+                    <FIELD_TYPE>
+                        <TEXT_FIELD>
+                            <TEXT_FIELD />
+                        </TEXT_FIELD>
+                    </FIELD_TYPE>
+                    <MANDATORY>optional</MANDATORY>
+                    <MULTIPLICITY>single</MULTIPLICITY>
+                </FIELD>
+            </FIELD_GROUP>
+        </DESCRIPTOR>
+    </CHECKLIST>
+</CHECKLIST_SET>
