@@ -571,9 +571,7 @@
                     <NAME>countryCode</NAME>
                     <DESCRIPTION>The standard code for the country in which the dcterms:Location occurs. Example: AR</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <ONTOLOGY>http://purl.obolibrary.org/obo/GAZ:0000448</ONTOLOGY>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
