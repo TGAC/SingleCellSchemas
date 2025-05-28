@@ -3093,10 +3093,10 @@ from the cell was included in the sequencing analysis. For example, cells might 
         </FIELD>
         <FIELD>
           <LABEL>Library Preparation ID</LABEL>
-          <NAME>lib_prep_id</NAME>
+          <NAME>library_prep_id</NAME>
           <DESCRIPTION>A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.</DESCRIPTION>
           <EXAMPLE>libPrep123</EXAMPLE>
-          <NAMESPACE>ei:lib_prep_id</NAMESPACE>
+          <NAMESPACE>ei:library_prep_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
               <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
