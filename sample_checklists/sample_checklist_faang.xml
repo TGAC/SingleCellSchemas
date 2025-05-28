@@ -3,6 +3,7 @@
 <CHECKLIST accession="COPO_FAANG" checklistType="Sample">
     <IDENTIFIERS>
         <PRIMARY_ID>COPO_FAANG</PRIMARY_ID>
+        <ENA_CHECKLIST_ID>ERC000011</ENA_CHECKLIST_ID>
     </IDENTIFIERS>
     <DESCRIPTOR>
         <LABEL>FAANG sample checklist</LABEL>
@@ -12,20 +13,8 @@
         <FIELD_GROUP restrictionType="Any number or none of the fields">
             <NAME>sample collection</NAME>
             <FIELD>
-                <LABEL>Study ID</LABEL>
-                <NAME>study_id</NAME>
-                <DESCRIPTION>A unique alphanumeric identifier for the  study if referring to. Example: A7F9B3X2</DESCRIPTION>
-                <FIELD_TYPE>
-                    <TEXT_FIELD>
-                        <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
-                    </TEXT_FIELD>
-                </FIELD_TYPE>
-                <MANDATORY>mandatory</MANDATORY>
-                <MULTIPLICITY>single</MULTIPLICITY>
-            </FIELD>
-            <FIELD>
-                <LABEL>Sample ID</LABEL>
-                <NAME>sample_id</NAME>
+                <LABEL>Sample</LABEL>
+                <NAME>sample</NAME>
                 <DESCRIPTION>A unique alphanumeric reference or identifier for the sample. Example: sample123</DESCRIPTION>
                  <FIELD_TYPE>
                     <TEXT_FIELD>
@@ -41,7 +30,7 @@
                 <DESCRIPTION>NCBI taxon ID of organism. Example: 9606</DESCRIPTION>
                 <FIELD_TYPE>
                     <TEXT_FIELD>
-                        <ONTOLOGY>https://www.ebi.ac.uk/ols/ontologies/NCBITaxon/terms?iri=http://purl.obolibrary.org/obo/NCBITaxon_1</ONTOLOGY>
+                        <TAXON_ID_FIELD/>
                     </TEXT_FIELD>
                 </FIELD_TYPE>
                 <MANDATORY>mandatory</MANDATORY>
@@ -1023,7 +1012,7 @@
                 <NAME>developmental_stage</NAME>
                 <DESCRIPTION>If the sample was obtained from an organism in a specific developmental stage, it is specified with this qualifier. The ontology for Developmental stage, UBERON, is preferred to EFO. Example: juvenile stage</DESCRIPTION>
                 <FIELD_TYPE>
-                    <ONTOLOGY>http://purl.obolibrary.org/obo/UBERON_0000105</ONTOLOGY>
+                    <ONTOLOGY>UBERON:0000105</ONTOLOGY>
                 </FIELD_TYPE>
                 <MANDATORY>mandatory</MANDATORY>
                 <MULTIPLICITY>single</MULTIPLICITY>
@@ -1033,7 +1022,7 @@
                 <NAME>organism part</NAME>
                 <DESCRIPTION>The part of organism's anatomy or substance arising from an organism from which the biomaterial was derived, excludes cells. UBERON is the ontology preferred to BTO. Example: neuronal cell body</DESCRIPTION>
                 <FIELD_TYPE>
-                   <ONTOLOGY>http://purl.obolibrary.org/obo/UBERON_0001062</ONTOLOGY>
+                   <ONTOLOGY>UBERON:0001062</ONTOLOGY>
                 </FIELD_TYPE>
                 <MANDATORY>mandatory</MANDATORY>
                 <MULTIPLICITY>single</MULTIPLICITY>

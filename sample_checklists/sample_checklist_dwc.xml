@@ -3,6 +3,7 @@
     <CHECKLIST accession="COPO_DWC" checklistType="Sample">
         <IDENTIFIERS>
             <PRIMARY_ID>COPO_DWC</PRIMARY_ID>
+            <ENA_CHECKLIST_ID>ERC000011</ENA_CHECKLIST_ID>
         </IDENTIFIERS>
         <DESCRIPTOR>
             <LABEL>DWC sample checklist</LABEL>
@@ -12,20 +13,8 @@
             <FIELD_GROUP restrictionType="Any number or none of the fields">
                 <NAME>sample collection</NAME>
                 <FIELD>
-                    <LABEL>Study ID</LABEL>
-                    <NAME>study_id</NAME>
-                    <DESCRIPTION>A unique alphanumeric identifier for the  study if referring to Example: A7F9B3X2</DESCRIPTION>
-                    <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
-                        </TEXT_FIELD>
-                    </FIELD_TYPE>
-                    <MANDATORY>mandatory</MANDATORY>
-                    <MULTIPLICITY>single</MULTIPLICITY>
-                </FIELD>
-                <FIELD>
-                    <LABEL>Sample ID</LABEL>
-                    <NAME>sample_id</NAME>
+                    <LABEL>Sample</LABEL>
+                    <NAME>sample</NAME>
                     <DESCRIPTION>A unique alphanumeric reference or identifier for the sample. Example: sample123</DESCRIPTION>
                     <FIELD_TYPE>
                         <TEXT_FIELD>
@@ -41,11 +30,9 @@
                     <SYNONYM>organism</SYNONYM>
                     <DESCRIPTION>The full scientific name of the species studied. Example: Arenicola marina</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
-                        </TEXT_FIELD>
+                        <SCIENTIFIC_NAME_FIELD/>
                     </FIELD_TYPE>
-                    <MANDATORY>optional</MANDATORY>
+                    <MANDATORY>mandatory</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
                 </FIELD>
                 <FIELD>
@@ -571,7 +558,7 @@
                     <NAME>countryCode</NAME>
                     <DESCRIPTION>The standard code for the country in which the dcterms:Location occurs. Example: AR</DESCRIPTION>
                     <FIELD_TYPE>
-                        <ONTOLOGY>http://purl.obolibrary.org/obo/GAZ:0000448</ONTOLOGY>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -605,9 +592,7 @@
                     <NAME>datasetID</NAME>
                     <DESCRIPTION>An identifier for the set of data. May be a global unique identifier or an identifier specific to a collection or institution. Example: b15d4952-7d20-46f1-8a3e-556a512b04c5</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -690,8 +675,8 @@
                     <MULTIPLICITY>single</MULTIPLICITY>
                 </FIELD>
                 <FIELD>
-                    <LABEL>Island</LABEL>
-                    <NAME>island</NAME>
+                    <LABEL>Island or Country</LABEL>
+                    <NAME>country</NAME>
                     <SYNONYM>geographic location (country and/or sea)</SYNONYM>
                     <DESCRIPTION>The name of the island on or near which the dcterms:Location occurs. Example: Zanzibar</DESCRIPTION>
                     <FIELD_TYPE>
@@ -1563,7 +1548,7 @@
                             </TEXT_VALUE>
                         </TEXT_CHOICE_FIELD>
                     </FIELD_TYPE>
-                    <MANDATORY>optional</MANDATORY>
+                    <MANDATORY>mandatory</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
                 </FIELD>
                 <FIELD>
@@ -1608,10 +1593,8 @@
                     <SYNONYM>geographic location (region and locality)</SYNONYM>
                     <DESCRIPTION>The specific description of the place. Example: Queets Rainforest, Olympic National Park</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
-                    </FIELD_TYPE>
+                        <TEXT_FIELD/>
+                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
                 </FIELD>
@@ -1620,9 +1603,7 @@
                     <NAME>locationAccordingTo</NAME>
                     <DESCRIPTION>Information about the source of this dcterms:Location information. Could be a publication (gazetteer), institution, or team of individuals. Example: Getty Thesaurus of Geographic Names</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1644,9 +1625,7 @@
                     <NAME>locationRemarks</NAME>
                     <DESCRIPTION>Comments or notes about the dcterms:Location. Example: under water since 2005</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1656,9 +1635,7 @@
                     <NAME>materialEntityRemarks</NAME>
                     <DESCRIPTION>Comments or notes about the dwc:MaterialEntity instance. Example: found in association with charred remains</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1740,9 +1717,7 @@
                     <NAME>organismID</NAME>
                     <DESCRIPTION>An identifier for the dwc:Organism instance (as opposed to a particular digital record of the dwc:Organism). May be a globally unique identifier or an identifier specific to the data set. Example: organism123</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1752,9 +1727,7 @@
                     <NAME>organismQuantity</NAME>
                     <DESCRIPTION>A number or enumeration value for the quantity of dwc:Organisms. Example: 27</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1763,11 +1736,9 @@
                     <LABEL>Organism Quantity Type</LABEL>
                     <NAME>organismQuantityType</NAME>
                     <DESCRIPTION>The type of quantification system used for the quantity of organisms. Example: 12.5</DESCRIPTION>
-                    <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
-                    </FIELD_TYPE>
+                <FIELD_TYPE>
+                    <TEXT_FIELD/>
+                </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
                 </FIELD>
@@ -1776,20 +1747,17 @@
                     <NAME>organismRemarks</NAME>
                     <DESCRIPTION>Comments or notes about the dwc:Organism instance. Example: One of a litter of six</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
                 </FIELD>
                 <FIELD>
                     <LABEL>Phylum</LABEL>
+                    <NAME>phylum</NAME>
                     <DESCRIPTION>The full scientific name of the phylum or division in which the dwc:Taxon is classified. Example: Chordata</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1800,9 +1768,7 @@
                     <SYNONYM>collected_by</SYNONYM>
                     <DESCRIPTION>A person, group, or organization responsible for recording the original dwc:Occurrence. Example: José E. Crespo</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1847,9 +1813,7 @@
                     <NAME>sampleSizeUnit</NAME>
                     <DESCRIPTION>The unit of measurement of the size (time duration, length, area, or volume) of a sample in a sampling dwc:Event. Example: minute</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1871,9 +1835,7 @@
                     <NAME>samplingEffort</NAME>
                     <DESCRIPTION>The amount of effort expended during a dwc:Event. Example: 40 trap-nights</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1883,9 +1845,7 @@
                     <NAME>samplingProtocol</NAME>
                     <DESCRIPTION>The methods or protocols used during a dwc:Event, denoted by an IRI. Example: UV light trap</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1895,9 +1855,7 @@
                     <NAME>specificEpithet</NAME>
                     <DESCRIPTION>The name of the first or species epithet of the dwc:scientificName. Example: concolor</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1907,9 +1865,7 @@
                     <NAME>subfamily</NAME>
                     <DESCRIPTION>The full scientific name of the subfamily in which the dwc:Taxon is classified. Example: Periptyctinae</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1919,9 +1875,7 @@
                     <NAME>subgenus</NAME>
                     <DESCRIPTION>The full scientific name of the subgenus in which the dwc:Taxon is classified. Values should include the genus to avoid homonym confusion. Example: Strobus</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1931,9 +1885,7 @@
                     <NAME>taxonConceptID</NAME>
                     <DESCRIPTION>An identifier for the taxonomic concept to which the record refers - not for the nomenclatural details of a dwc:Taxon. Example: 8fa58e08-08de-4ac1-b69c-1235340b7001</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1943,9 +1895,7 @@
                     <NAME>taxonRemarks</NAME>
                     <DESCRIPTION>Comments or notes about the taxon or name. Example: this name is a misspelling in common use</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1955,9 +1905,7 @@
                     <NAME>taxonomicStatus</NAME>
                     <DESCRIPTION>The status of the use of the dwc:scientificName as a label for a taxon. Requires taxonomic opinion to define the scope of a dwc:Taxon. Rules of priority then are used to define the taxonomic status of the nomenclature contained in that scope, combined with the experts opinion. It must be linked to a specific taxonomic reference that defines the concept. Example: misapplied</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1967,9 +1915,7 @@
                     <NAME>type</NAME>
                     <DESCRIPTION>The nature or genre of the resource. Example: StillImage</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1979,9 +1925,7 @@
                     <NAME>verbatimCoordinateSystem</NAME>
                     <DESCRIPTION>The spatial coordinate system for the dwc:verbatimLatitude and dwc:verbatimLongitude or the dwc:verbatimCoordinates of the dcterms:Location. Example: decimal degrees</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -1991,9 +1935,7 @@
                     <NAME>verbatimCoordinates</NAME>
                     <DESCRIPTION>The verbatim original spatial coordinates of the dcterms:Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in dwc:verbatimSRS and the coordinate system should be stored in dwc:verbatimCoordinateSystem. Example: 41 05 54S 121 05 34W</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -2003,9 +1945,7 @@
                     <NAME>verbatimDepth</NAME>
                     <DESCRIPTION>The original description of the depth below the local surface. Example: 100-200</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -2015,9 +1955,7 @@
                     <NAME>verbatimElevation</NAME>
                     <DESCRIPTION>The original description of the elevation (altitude, usually above sea level) of the Location. Example: 100-200</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -2027,9 +1965,7 @@
                     <NAME>verbatimEventDate</NAME>
                     <DESCRIPTION>The verbatim original representation of the date and time information for a dwc:Event. Example: spring 1910</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -2039,9 +1975,7 @@
                     <NAME>verbatimIdentification</NAME>
                     <DESCRIPTION>A string representing the taxonomic identification as it appeared in the original record. Example: Peromyscus sp.</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -2051,9 +1985,7 @@
                     <NAME>verbatimLabel</NAME>
                     <DESCRIPTION>The content of this term should include no embellishments, prefixes, headers or other additions made to the text. Abbreviations must not be expanded and supposed misspellings must not be corrected. Lines or breakpoints between blocks of text that could be verified by seeing the original labels or images of them may be used. Examples of material entities include preserved specimens, fossil specimens, and material samples. Best practice is to use UTF-8 for all characters. Best practice is to add comment ‚ÄúverbatimLabel derived from human transcription‚Äù in dwc:occurrenceRemarks. Example: Monotoma longicollis 4 ♂ Det TC McElrath 2018</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -2063,9 +1995,7 @@
                     <NAME>verbatimLatitude</NAME>
                     <DESCRIPTION>The verbatim original latitude of the dcterms:Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in dwc:verbatimSRS and the coordinate system should be stored in dwc:verbatimCoordinateSystem. Example: 41 05 54.03S</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -2075,9 +2005,7 @@
                     <NAME>verbatimLocality</NAME>
                     <DESCRIPTION>The original textual description of the place. Example: 25 km NNE Bariloche por R. Nac. 237</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -2087,9 +2015,7 @@
                     <NAME>verbatimLongitude</NAME>
                     <DESCRIPTION>The verbatim original longitude of the dcterms:Location. The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these coordinates should be stored in dwc:verbatimSRS and the coordinate system should be stored in dwc:verbatimCoordinateSystem. Example: 121d 10' 34" W</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -2099,9 +2025,7 @@
                     <NAME>verbatimSRS</NAME>
                     <DESCRIPTION>The ellipsoid, geodetic datum, or spatial reference system (SRS) upon which coordinates given in dwc:verbatimLatitude and dwc:verbatimLongitude, or dwc:verbatimCoordinates are based. Example: WGS84</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -2111,9 +2035,7 @@
                     <NAME>verbatimTaxonRank</NAME>
                     <DESCRIPTION>The taxonomic rank of the most specific name in the dwc:scientificName as it appears in the original record. Example: prole</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -2123,9 +2045,7 @@
                     <NAME>vernacularName</NAME>
                     <DESCRIPTION>A common or vernacular name. Example: Andean Condor</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -2135,9 +2055,7 @@
                     <NAME>verticalDatum</NAME>
                     <DESCRIPTION>The vertical datum used as the reference upon which the values in the elevation terms are based. Example: EGM84</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -2147,9 +2065,7 @@
                     <NAME>vitality</NAME>
                     <DESCRIPTION>An indication of whether a dwc:Organism was alive or dead at the time of collection or observation. Example: alive</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -2159,9 +2075,7 @@
                     <NAME>waterBody</NAME>
                     <DESCRIPTION>The name of the water body in which the dcterms:Location occurs. Example: Indian Ocean</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
@@ -2172,9 +2086,7 @@
                     <SYNONYM>sample</SYNONYM>
                     <DESCRIPTION>An identifier for the dwc:MaterialSample (as opposed to a particular digital record of the dwc:MaterialSample). In the absence of a persistent global unique identifier, construct one from a combination of identifiers in the record that will most closely make the dwc:materialSampleID globally unique. Example: 06809dc5-f143-459a-be1a-6f03e63fc083</DESCRIPTION>
                     <FIELD_TYPE>
-                        <TEXT_FIELD>
-                            <TEXT_FIELD />
-                        </TEXT_FIELD>
+                        <TEXT_FIELD/>
                     </FIELD_TYPE>
                     <MANDATORY>optional</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
