@@ -28,8 +28,16 @@ $(document).ready(function () {
     $('.dropdown-menu-info-icon').popover('hide');
   });
 
+  $(document).on('click', '.info-modal-toc-link', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
   $(document).on('click', '#infoModalLink', function (event) {
-    event.preventDefault(); // Prevent the default link behavior
+    event.preventDefault(); // Prevent the default link behaviour
 
     // Close any open popovers before showing the modal
     $('[data-bs-toggle="popover"]').each(function () {
@@ -41,6 +49,42 @@ $(document).ready(function () {
 
     // Open the info modal
     $('#infoIconID').click();
+  });
+
+  $(document).on('click', '#sampleInfoLink', function (event) {
+    event.preventDefault(); // Prevent the default link behaviour
+
+    // Close any open accordion items before showing the modal
+    $('.accordion-collapse').each(function () {
+      const collapse = bootstrap.Collapse.getInstance(this); // Get collapse instance
+      if (collapse) {
+        collapse.hide(); // Close the accordion item
+      }
+    });
+
+    // Open the info modal
+    $('#infoIconID').click();
+
+    // Wait for modal to be visible (DOM updates after ~200ms)
+    setTimeout(function () {
+      const modal = document.getElementById('infoModal');
+      const isVisible = modal && modal.classList.contains('show');
+
+      if (isVisible) {
+        const target = document.getElementById('sampleMetadataInfo');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+          // Add highlight class
+          target.classList.add('highlight-flash');
+
+          // Remove the class after animation completes
+          setTimeout(() => {
+            target.classList.remove('highlight-flash');
+          }, 2000);
+        }
+      }
+    }, 300); // Adjust if modal animates slowly (e.g., 300–500ms)
   });
 
   $('#download-manifest-btn').on('click', function (e) {
@@ -369,7 +413,7 @@ function attachSearchFunctionality(searchModal, modalContainer) {
     components.forEach((component) => {
       const componentId = `component-${component.group_name}`;
       const componentLabel = component.group_label;
-      
+
       component.fields.forEach((field) => {
         const termLabel = field.label.toLowerCase();
         const termName = field.name.toLowerCase();
@@ -574,9 +618,21 @@ function updateContentBasedOnSelection() {
         <div class="accordion-header">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" 
             data-bs-target="#component-${component.group_name}" 
-            aria-expanded="true" 
-            aria-controls="component-${component.group_name}">
-            ${component.group_label}
+            aria-expanded="true"
+            aria-controls="component-${component.group_name}">${
+        component.group_label
+      }
+            <!-- Show info note only if group_label is "Sample" -->
+            ${
+              component.group_label === 'Sample'
+                ? `
+              <div class="info-note text-muted">
+                <i class="fa fa-info-circle sample-info-icon"></i>Why is only partial metadata shown? 
+                <a id="sampleInfoLink" href="#">Learn more</a>.
+              </div>
+            `
+                : ''
+            }
           </button>
         </div>
         <div id="component-${component.group_name}" 

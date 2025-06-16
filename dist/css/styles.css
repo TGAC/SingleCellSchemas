@@ -37,6 +37,11 @@ body {
   margin-bottom: 50px;
 }
 
+.ml-10 {
+  margin-left: 10px
+}
+
+/* Accordion */
 .accordion {
   margin-top: 30px;
 }
@@ -55,6 +60,17 @@ body {
   padding: 10px 15px;
   font-family: 'Source Code Pro', 'SF Mono', 'Monaco, Inconsolata', 'Fira Mono',
     'Droid Sans Mono', monospace, monospace;
+}
+
+.info-note {
+  color: #6c757d;
+  font-size: 0.6em;
+  margin-top: 0.25rem !important;
+  margin-left: 6.8rem !important;
+}
+
+.sample-info-icon {
+  margin-right: 0.5rem;
 }
 
 /* Nav bar */
@@ -356,10 +372,24 @@ body {
 }
 
 /* Info modal */
+#infoModal .modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 1055;
+}
+#infoModal .modal-body {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+#infoModal .modal-body .info-modal-toc-link {
+  margin-left: 20px;
+}
 
-/* #infoAccordion .accordion-item {
-  width: 40rem;
-} */
+#introduction,
+#sampleMetadataInfo {
+  text-decoration: underline;
+}
+
 #infoModalLink {
   cursor: pointer;
   color: #0d6efd;
@@ -384,6 +414,19 @@ body {
   font-size: 14px;
   z-index: 10;
   white-space: nowrap;
+}
+
+@keyframes highlightFlash {
+  0% {
+    background-color: yellow;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.highlight-flash {
+  animation: highlightFlash 2s ease-out;
 }
 
 #singleCellInfoModalListID li,

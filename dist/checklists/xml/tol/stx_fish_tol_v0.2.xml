@@ -1,0 +1,609 @@
+<?xml version="1.0" ?>
+<CHECKLIST_SET>
+  <CHECKLIST accession="STXFISH1" checklistType="single_cell">
+    <IDENTIFIERS>
+      <PRIMARY_ID>STXFISH1</PRIMARY_ID>
+    </IDENTIFIERS>
+    <DESCRIPTOR>
+      <LABEL>Spatial Transcriptomics Fluorescence In Situ Hybridisation (ST-FISH)</LABEL>
+      <NAME>stx_fish</NAME>
+      <DESCRIPTION>Spatial transcriptomics via Fluorescence In Situ Hybridisation (FISH), with metadata based on the Tree of Life (ToL) initiative’s goals to explore the origins and diversity of life through advanced genomic technologies.</DESCRIPTION>
+      <AUTHORITY>COPO</AUTHORITY>
+      <FIELD_GROUP restrictionType="Any number or none of the fields">
+        <NAME>study</NAME>
+        <LABEL>Study</LABEL>
+        <DESCRIPTION>Fields under component 'Study'</DESCRIPTION>
+        <FIELD>
+          <LABEL>Study ID</LABEL>
+          <NAME>study_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this study</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:study_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Title</LABEL>
+          <NAME>title</NAME>
+          <DESCRIPTION>A name given to the study or project. Project title should be fewer than 30 words, such as a title of a grant proposal or a publication.</DESCRIPTION>
+          <EXAMPLE>Study of single cells in the human body</EXAMPLE>
+          <NAMESPACE>dcterms:title</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Workflow</LABEL>
+          <NAME>workflow</NAME>
+          <DESCRIPTION>The workflow or protocol followed during the study.</DESCRIPTION>
+          <EXAMPLE>Laser microdissection</EXAMPLE>
+          <NAMESPACE>ei:workflow</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>Laser microdissection</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Laser microdissection, Culturing</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Laser microdissection, Culturing, Sequencing</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Laser microdissection, Sequencing</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Microfluidics, Facs, Culturing</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Microfluidics, Facs, Culturing, Sequencing</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Microfluidics, Facs, Sequencing</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Spatial Transcriptomics</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Licence</LABEL>
+          <NAME>licence</NAME>
+          <DESCRIPTION>Specifies the terms under which the data associated with the study can be used, shared, or reused. It informs users how they may legally reference, distribute, or build upon the study. Common licenses include Creative Commons (e.g., CC BY 4.0), which require attribution to the original authors when the data is cited or reused.</DESCRIPTION>
+          <EXAMPLE>MIT License</EXAMPLE>
+          <NAMESPACE>ei:licence</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>Apache License 2.0</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Creative Commons Attribution 4.0 International</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Creative Commons Attribution Share Alike 4.0 International</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Creative Commons Zero v1.0 Universal</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>GNU General Public License v3.0 or later</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>MIT License</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+      </FIELD_GROUP>
+      <FIELD_GROUP restrictionType="Any number or none of the fields">
+        <NAME>person</NAME>
+        <LABEL>Person</LABEL>
+        <DESCRIPTION>Fields under component 'Person'</DESCRIPTION>
+        <FIELD>
+          <LABEL>Study ID</LABEL>
+          <NAME>study_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this study</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:study_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Orcid ID</LABEL>
+          <NAME>orcid_id</NAME>
+          <DESCRIPTION>A 16-digit number that uniquely identify researchers.</DESCRIPTION>
+          <EXAMPLE>0000-1234-5678-9012</EXAMPLE>
+          <NAMESPACE>ei:orcid_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d{4}-\d{4}-\d{4}-\d{4}$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>First Name</LABEL>
+          <NAME>givenName</NAME>
+          <DESCRIPTION>A first name (or given name) is the personal name given to an individual conducting the study.</DESCRIPTION>
+          <EXAMPLE>Jane</EXAMPLE>
+          <NAMESPACE>schema.org:givenName</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]+(?:[-\s][A-Za-z]+)*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Last Name</LABEL>
+          <NAME>familyName</NAME>
+          <DESCRIPTION>A last name (or surname) is the family name passed down from one generation to the next for the individual conducting the study.</DESCRIPTION>
+          <EXAMPLE>Doe</EXAMPLE>
+          <NAMESPACE>schema.org:familyName</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]+(-[A-Za-z]+)*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Email Address</LABEL>
+          <NAME>email</NAME>
+          <DESCRIPTION>A unique identifier used to send and receive electronic messages (emails) over the internet.</DESCRIPTION>
+          <EXAMPLE>jane.doe@example.com</EXAMPLE>
+          <NAMESPACE>schema.org:email</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^(?!.*\.{2,})(?!.*-{2,})[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Affiliation or Institution</LABEL>
+          <NAME>affiliation</NAME>
+          <DESCRIPTION>An organisation or institution that this person is associated with.</DESCRIPTION>
+          <EXAMPLE>University of Liverpool</EXAMPLE>
+          <NAMESPACE>schema.org:affiliation</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Funder</LABEL>
+          <NAME>funder</NAME>
+          <DESCRIPTION>A person or organization that supports (sponsors) something through some kind of financial contribution.</DESCRIPTION>
+          <EXAMPLE>BBSRC</EXAMPLE>
+          <NAMESPACE>schema.org:funder</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Grant Award</LABEL>
+          <NAME>funding</NAME>
+          <DESCRIPTION>A grant that directly or indirectly provides funding or sponsorship for the person to conduct the study.</DESCRIPTION>
+          <EXAMPLE>GRAK3489</EXAMPLE>
+          <NAMESPACE>schema.org:funding</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z0-9]+(?: [A-Za-z0-9]+)*$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+      </FIELD_GROUP>
+      <FIELD_GROUP restrictionType="Any number or none of the fields">
+        <NAME>sample</NAME>
+        <LABEL>Sample</LABEL>
+        <DESCRIPTION>Fields under component 'Sample'</DESCRIPTION>
+        <FIELD>
+          <LABEL>Study ID</LABEL>
+          <NAME>study_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for the  study if referring to</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:study_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Sample ID</LABEL>
+          <NAME>sample_id</NAME>
+          <DESCRIPTION>A unique alphanumeric reference or identifier for the sample. This field must provide a consistent, unambiguous way to identify the sample within and across datasets. It can be a name, code, or accession-like format, as long as it remains unique.</DESCRIPTION>
+          <EXAMPLE>sample123</EXAMPLE>
+          <NAMESPACE>ei:sample_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Scientific Name or Organism</LABEL>
+          <NAME>scientific_name</NAME>
+          <DESCRIPTION>The formal Latin name used to identify the organism from which the sample was derived (e.g. Homo sapiens or Arabidopsis thaliana). This name must accurately correspond to the Taxon ID provided to ensure correct taxonomic classification.</DESCRIPTION>
+          <EXAMPLE>Salvelinus alpinus</EXAMPLE>
+          <NAMESPACE>ei:scientific_name</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Taxon ID</LABEL>
+          <NAME>taxon_id</NAME>
+          <DESCRIPTION>A unique identifier (usually from a recognized taxonomy database like NCBI Taxonomy) that corresponds to the organism’s scientific name. It must be accurately matched to the provided scientificName to maintain consistency and traceability in biological records.</DESCRIPTION>
+          <EXAMPLE>8036</EXAMPLE>
+          <NAMESPACE>ei:taxon_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Biosample Accession</LABEL>
+          <NAME>biosampleAccession</NAME>
+          <DESCRIPTION>A unique identifier assigned to a biological sample after it has been submitted to a public database, such as the NCBI BioSample or ENA. It serves as a permanent reference to that specific sample, allowing researchers to retrieve metadata and link it across studies or datasets.</DESCRIPTION>
+          <EXAMPLE>SAMEA12907823</EXAMPLE>
+          <NAMESPACE>ei:biosampleAccession</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+      </FIELD_GROUP>
+      <FIELD_GROUP restrictionType="Any number or none of the fields">
+        <NAME>dissociation</NAME>
+        <LABEL>Dissociation</LABEL>
+        <DESCRIPTION>Fields under component 'Dissociation'</DESCRIPTION>
+        <FIELD>
+          <LABEL>Cell Type</LABEL>
+          <NAME>cell_type</NAME>
+          <DESCRIPTION>Provide a cell type from the CL ontology.</DESCRIPTION>
+          <EXAMPLE>blastocyst</EXAMPLE>
+          <NAMESPACE>ei:cell_type</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z\s]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+      </FIELD_GROUP>
+      <FIELD_GROUP restrictionType="Any number or none of the fields">
+        <NAME>imaging_protocol</NAME>
+        <LABEL>Imaging Protocol</LABEL>
+        <DESCRIPTION>Fields under component 'Imaging Protocol'</DESCRIPTION>
+        <FIELD>
+          <LABEL>Study ID</LABEL>
+          <NAME>study_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this study</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:study_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Imaging Protocol ID</LABEL>
+          <NAME>imaging_protocol_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for the imaging protocol.</DESCRIPTION>
+          <EXAMPLE>img123</EXAMPLE>
+          <NAMESPACE>ei:imaging_protocol_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Platform</LABEL>
+          <NAME>platform</NAME>
+          <DESCRIPTION>The platform used to isolate the cells.</DESCRIPTION>
+          <EXAMPLE>Illumina NovaSeq</EXAMPLE>
+          <NAMESPACE>ei:platform</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Instrument</LABEL>
+          <NAME>instrument</NAME>
+          <DESCRIPTION>The instrument used to isolate the cells.</DESCRIPTION>
+          <EXAMPLE>Illumina NovaSeq 6000</EXAMPLE>
+          <NAMESPACE>ei:instrument</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Target Probe Code</LABEL>
+          <NAME>target_probe_code</NAME>
+          <DESCRIPTION>The type of probes used to detect and quantify specific RNA molecules in their native spatial context within a tissue or cell.</DESCRIPTION>
+          <EXAMPLE>Oligo-dT</EXAMPLE>
+          <NAMESPACE>ei:target_probe_code</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Section Thickness (µm)</LABEL>
+          <NAME>section_thickness_µm</NAME>
+          <DESCRIPTION>The thickness of the tissue section in micrometres.</DESCRIPTION>
+          <EXAMPLE>10</EXAMPLE>
+          <NAMESPACE>ei:section_thickness_µm</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+(\.\d+)?$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Section Thickness Measurement Method</LABEL>
+          <NAME>section_thickness_measurement_method</NAME>
+          <DESCRIPTION>The method used to measure tissue section thickness.</DESCRIPTION>
+          <EXAMPLE>Microtome</EXAMPLE>
+          <NAMESPACE>ei:section_thickness_measurement_method</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Section Thickness Temperature</LABEL>
+          <NAME>section_thickness_temperature</NAME>
+          <DESCRIPTION>The temperature at which the section was made in degree celsius.</DESCRIPTION>
+          <EXAMPLE>22</EXAMPLE>
+          <NAMESPACE>ei:section_thickness_temperature</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^-?\d+(\.\d+)?$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Is Pathological</LABEL>
+          <NAME>is_pathological</NAME>
+          <DESCRIPTION>A quality inhering in a bearer by virtue of the bearer's being abnormal and having a destructive effect on living tissue.</DESCRIPTION>
+          <EXAMPLE>No</EXAMPLE>
+          <NAMESPACE>ei:is_pathological</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>No</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Yes</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Photobleaching Duration In Hours</LABEL>
+          <NAME>photobleaching_duration_in_hours</NAME>
+          <DESCRIPTION>The duration of photobleaching in hours</DESCRIPTION>
+          <EXAMPLE>2</EXAMPLE>
+          <NAMESPACE>ei:photobleaching_duration_in_hours</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Clearing with ProteinaseK</LABEL>
+          <NAME>clearing_with_proteinasek</NAME>
+          <DESCRIPTION>The duration of clearing at 47°C with Proteinase K.</DESCRIPTION>
+          <EXAMPLE>24 hrs</EXAMPLE>
+          <NAMESPACE>ei:clearing_with_proteinasek</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+(\.\d+)?\s*(hrs?|days?|mins?|seconds?)$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Clearing without ProteinaseK</LABEL>
+          <NAME>clearing_without_proteinasek</NAME>
+          <DESCRIPTION>The duration of tissue clearing at 37°C without Proteinase K.</DESCRIPTION>
+          <EXAMPLE>4.5 days</EXAMPLE>
+          <NAMESPACE>ei:clearing_without_proteinasek</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+(\.\d+)?\s*(hrs?|days?|mins?|seconds?)$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Instrument User Guide</LABEL>
+          <NAME>instrument_user_guide</NAME>
+          <DESCRIPTION>The user guide for the instrument used.</DESCRIPTION>
+          <EXAMPLE>User Guide</EXAMPLE>
+          <NAMESPACE>ei:instrument_user_guide</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Instrument User Guide Revision</LABEL>
+          <NAME>instrument_user_guide_revision</NAME>
+          <DESCRIPTION>The revision of the instrument user guide.</DESCRIPTION>
+          <EXAMPLE>1.2</EXAMPLE>
+          <NAMESPACE>ei:instrument_user_guide_revision</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+(\.\d+)?$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Sample Preparation Guide</LABEL>
+          <NAME>sample_preparation_guide</NAME>
+          <DESCRIPTION>The guide used for sample preparation.</DESCRIPTION>
+          <EXAMPLE>preparation_guide_v1.0.pdf</EXAMPLE>
+          <NAMESPACE>ei:sample_preparation_guide</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[A-Za-z0-9._-]*[a-z]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Sample Preparation Guide Revision</LABEL>
+          <NAME>sample_preparation_guide_revision</NAME>
+          <DESCRIPTION>The revision of the sample preparation guide.</DESCRIPTION>
+          <EXAMPLE>1.0</EXAMPLE>
+          <NAMESPACE>ei:sample_preparation_guide_revision</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+(\.\d+)?$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Deviations From Official Protocol</LABEL>
+          <NAME>deviations_from_official_protocol</NAME>
+          <DESCRIPTION>Any deviations from the official protocol. Separate individual deviations with '|'.</DESCRIPTION>
+          <EXAMPLE>Temperature exceeded 25°C during storage | Sample handling delayed by 2 hours</EXAMPLE>
+          <NAMESPACE>ei:deviations_from_official_protocol</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+      </FIELD_GROUP>
+      <FIELD_GROUP restrictionType="Any number or none of the fields">
+        <NAME>file</NAME>
+        <LABEL>File</LABEL>
+        <DESCRIPTION>Fields under component 'File'</DESCRIPTION>
+        <FIELD>
+          <LABEL>Study ID</LABEL>
+          <NAME>study_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this study</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:study_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Imaging Protocol ID</LABEL>
+          <NAME>imaging_protocol_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for the imaging protocol.</DESCRIPTION>
+          <EXAMPLE>img123</EXAMPLE>
+          <NAMESPACE>ei:imaging_protocol_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>File ID</LABEL>
+          <NAME>file_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this file</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:file_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>File Name</LABEL>
+          <NAME>file_name</NAME>
+          <DESCRIPTION>A filename or file name is a name used to uniquely identify a data file related to the study.</DESCRIPTION>
+          <EXAMPLE>file001</EXAMPLE>
+          <NAMESPACE>ei:file_name</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>File Type</LABEL>
+          <NAME>file_type</NAME>
+          <DESCRIPTION>A file type is a name given to a specific kind of file. Common file types are fastq, gtf, fasta, bam, archive etc.</DESCRIPTION>
+          <EXAMPLE>fastq</EXAMPLE>
+          <NAMESPACE>ei:file_type</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+      </FIELD_GROUP>
+    </DESCRIPTOR>
+  </CHECKLIST>
+</CHECKLIST_SET>

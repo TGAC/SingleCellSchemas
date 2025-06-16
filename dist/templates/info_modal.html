@@ -7,35 +7,87 @@
         <button type="button" class="btn-close rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <div class="mb-3">
+          <h6 class="fw-bold">Quick Navigation</h6>
+          <ul class="list-unstyled">
+            <li><a href="#introduction" class="info-modal-toc-link">Introduction</a></li>
+            <li><a href="#sampleMetadataInfo" class="info-modal-toc-link">Why is only partial Sample metadata shown?</a></li>
+            <li><a href="#headingSingleCellRNASeq" class="info-modal-toc-link">Single-cell RNA Sequencing overview</a></li>
+            <li><a href="#headingSpatialTranscriptomics" class="info-modal-toc-link">Spatial Transcriptomics overview</a></li>
+          </ul>
+        </div>
+        <hr>
         <!-- Introduction -->
-        <p>The <b>Single-cell Schema</b> website supports two main research areas:</p>
-        <ul>
-          <li>Single-Cell Ribonucleic Acid Sequencing (Single-cell RNA Sequencing)</li> 
-          <li>Spatial Transcriptomics with a focus on Sequencing and Fluorescence In Situ Hybridisation (FISH)</li>
-        </ul>
-        <!-- Steps to using the website -->
-        <p>Follow these steps to navigate the site effectively:</p>
-        <ol>
-          <li>
-            Select a <b class="text-hover" data-bs-toggle="tooltip" 
-            title="Standards define the required structure and data format for single-cell schemas.">standard</b> 
-            and a <b class="text-hover" data-bs-toggle="tooltip" 
-            title="Technologies define the methods used for data collection and processing.">technology</b>  
-            from the dropdown menus on the left of the web page.
-          </li>
-          <li>
-            If data is available for your selection, the contents in the centre of the web page will automatically 
-            update to reflect the matching data.
-          </li>
-          <li>
-            If no data is available, a modal will notify you.
-          </li>
-          <li>
-            You can download a <b class="text-hover" data-bs-toggle="tooltip" 
-            title="A manifest is a spreadsheet that lists the required and optional metadata fields for the selection.">blank manifest</b> 
-            related to your selection if data is available for it.  
-          </li>
-        </ol>
+        <div>
+          <h4 id="introduction"> Introduction</h4>
+          <p>The <b>Single-cell Schemas</b> website is developed by the Collaborative OPen Omics (COPO) project team based 
+            in Norwich, United Kingdom, to support two main research areas:</p>
+          <ul>
+            <li>Single-cell Ribonucleic Acid Sequencing (Single-cell RNA Sequencing)</li> 
+            <li>Spatial Transcriptomics with a focus on:
+              <ul>
+                <li>Sequencing</li>
+                <li>Fluorescence In Situ Hybridisation (FISH)</li>
+              </ul>
+            </li>
+          </ul>
+          <!-- Steps to using the website -->
+          <p>Follow these steps to navigate the site effectively:</p>
+          <ol>
+            <li>
+              Select a <b class="text-hover" data-bs-toggle="tooltip" 
+              title="Standards define the required structure and data format for single-cell schemas.">standard</b> 
+              and a <b class="text-hover" data-bs-toggle="tooltip" 
+              title="Technologies define the methods used for data collection and processing.">technology</b>  
+              from the dropdown menus on the left of the web page.
+            </li>
+            <li>
+              If data is available for your selection, the contents in the centre of the web page will automatically 
+              update to reflect the matching data.
+            </li>
+            <li>
+              If no data is available, a modal will notify you.
+            </li>
+            <li>
+              You can download a <b class="text-hover" data-bs-toggle="tooltip" 
+              title="A manifest is a spreadsheet that lists the required and optional metadata fields for the selection.">blank manifest</b> 
+              related to your selection if data is available for it.  
+            </li>
+          </ol>
+        </div>
+        <hr>
+        <!-- Sample metadata additional info -->
+        <div>
+          <h4 id="sampleMetadataInfo">
+            Why is only partial Sample metadata shown?<i class="ml-10 fa fa-info-circle text-primary me-2"></i>
+          </h4>
+          <p>
+            The <strong>Sample</strong> worksheet in each Single-cell manifest contains only a minimal set of 
+            metadata fields. Similarly, the Sample accordion on this Single-cell website displays only the 
+            <strong>recommended</strong> fields based on the chosen standard and technology. This is designed to 
+            help users focus on the essential information needed for their single-cell experiments.
+          </p>
+          <p>
+            However, many other sample-related metadata fields may be required, depending on the sample type  
+            to submit. If you are uploading data via COPO, we recommend that you first complete and upload 
+            the relevant sample manifest. This ensures that all necessary fields — such as 
+            <em>biosampleAccession</em>, <em>scientific name</em>, <em>organism</em> and <em>taxon ID</em> - 
+            are associated with a valid, previously submitted sample.
+          </p>
+          <p>
+            For a full list of available sample manifests, please visit the
+            <a href="https://copo-project.org/manifests/index" target="_blank">Manifests page</a> on the Collaborative
+            OPen Omics (COPO) website. For more information on Single-cell submissions, please refer to the
+            <a href="https://copo-docs.readthedocs.io/en/latest/submissions/single-cell-submissions.html" target="_blank">
+              Single-cell submissions guide
+            </a>.
+          </p>
+          <p>Please note that the blank manifests available on the Manifests page do not contain any pre-filled sample 
+            metadata. If you have already submitted samples through COPO and received BioSample accessions, log in to COPO 
+            and navigate to the Single-cell component. From there, you can download a blank manifest with pre-filled sample metadata 
+            specific to your submission.
+          </p>
+        </div>
         <hr>
         <p>
           Navigate through the sections below to understand how the website integrates different combinations of 
@@ -44,18 +96,18 @@
 
         <!-- Collapsible sections -->
         <div class="accordion" id="infoAccordion">
-          <!-- Single-Cell RNA Sequencing Accordion Item -->
+          <!-- Single-cell RNA Sequencing Accordion Item -->
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingSingleCellRNASeq">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseSingleCellRNASeq" aria-expanded="false" aria-controls="collapseSingleCellRNASeq">
-                Single-Cell Ribonucleic Acid (RNA) Sequencing
+                Single-cell Ribonucleic Acid (RNA) Sequencing
               </button>
             </h2>
             <div id="collapseSingleCellRNASeq" class="accordion-collapse collapse" aria-labelledby="headingSingleCellRNASeq"
               data-bs-parent="#infoAccordion">
               <div class="accordion-body">
-                <p>Single-Cell Ribonucleic Acid Sequencing (scRNA-seq) is a technique that allows researchers to profile gene expression at 
+                <p>Single-cell Ribonucleic Acid Sequencing (scRNA-seq) is a technique that allows researchers to profile gene expression at 
                   the single-cell level. Below are the key combinations of standards and technologies used in this field:
                 </p>
                 <ul id="singleCellInfoModalListID"></ul>
@@ -82,6 +134,11 @@
             </div>
           </div>
         </div>
+        <!-- End of Collapsible sections -->
+        <hr>
+        <p class="mt-3 text-muted text-left">
+          Still have questions? <a href="mailto:ei.copo@earlham.ac.uk">Contact us</a> for help.
+        </p>
       </div>
     </div>
   </div>
