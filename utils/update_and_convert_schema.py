@@ -9,16 +9,10 @@ Usage:
 
 import json
 import os
-import pandas as pd
 import tempfile
 import urllib.parse
 import utils.helpers as helpers
 import yaml
-
-from openpyxl import load_workbook
-from openpyxl.styles import Protection
-from openpyxl.worksheet.protection import SheetProtection
-from openpyxl.utils import get_column_letter
 
 
 def generate_base_schema_yaml():
@@ -241,6 +235,9 @@ if __name__ == "__main__":
     if is_schema_file_valid:
         # Get checklists from the schema file
         helpers.get_checklists_from_xlsx_file()
+
+        # Delete existing matching schema files
+        helpers.remove_existing_schema_files()
 
         generate_base_schema_json()
         print("\n_______\n")

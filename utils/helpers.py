@@ -1,19 +1,14 @@
-import gspread
+import glob
 import json
 import os
-import numpy as np
 import pandas as pd
 import re
-import sass
 import shutil
-import sys
 import uuid
-import xlwings as xw
 
 from collections import namedtuple
 from datetime import datetime
 from openpyxl.utils import get_column_letter
-from oauth2client.service_account import ServiceAccountCredentials
 from pathlib import Path
 
 # Helpers: Variables
@@ -182,6 +177,32 @@ def apply_data_validation(
 def autofit_all_sheets(writer):
     for sheet in writer.sheets.values():
         sheet.autofit()
+
+
+def remove_existing_schema_files():
+    # Make sure the path ends with a separator
+    target_dir = os.path.abspath(SCHEMA_DIR_PATH)
+
+    # Match any schema-like files ending in .json or .yaml/.yml
+    json_files = glob.glob(os.path.join(target_dir, "*.json"))
+    yaml_files = glob.glob(os.path.join(target_dir, "*.yaml")) + glob.glob(
+        os.path.join(target_dir, "*.yml")
+    )
+
+    # Define what qualifies as a schema file (adjust as needed)
+    matching_json = [
+        f for f in json_files if "schema" in f.lower() and "singlecell" in f.lower()
+    ]
+    matching_yaml = [
+        f for f in yaml_files if "schema" in f.lower() and "singlecell" in f.lower()
+    ]
+
+    for f in matching_json + matching_yaml:
+        try:
+            os.remove(f)
+            print(f'Deleted existing file: {f}')
+        except Exception as e:
+            print(f'Could not delete {f}: {e}')
 
 
 def is_camel_case(text):
@@ -364,14 +385,14 @@ def format_and_protect_worksheet(element):
     # Write column description on row 2 and example in row 3
     for col, column_name in enumerate(column_names):
         # Write description in row 2 (index 1 in 0-based index)
-        worksheet.write(
-            1, col, col_desc_eg[column_name]["description"], desc_eg_format
-        )  # Row 2
+        # Row 2
+        worksheet.write(1, col, col_desc_eg[column_name]["description"], desc_eg_format)
 
         # Write example in row 3 (index 2 in 0-based index)
+        # Row 3
         worksheet.write(
             2, col, f'e.g. {col_desc_eg[column_name]["example"]}', desc_eg_format
-        )  # Row 3
+        )
 
     # Merge and write instruction in row 4
     merge_row(worksheet, 4, last_column_letter, merge_format)
@@ -621,7 +642,7 @@ def get_checklists_from_xlsx_file():
         # Update the global dictionary
         CHECKLISTS_DICT.update(checklists)
     except FileNotFoundError:
-        raise FileNotFoundError(f"The file '{file_path}' does not exist.")
+        raise FileNotFoundError(f"The file '{SCHEMA_FILE_PATH}' does not exist.")
     except Exception as e:
         raise RuntimeError(f"An error occurred while processing the file: {e}")
 
