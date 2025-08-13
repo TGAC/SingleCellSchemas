@@ -1,15 +1,121 @@
-/*Custom CSS */
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
+/* Consistent box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+html {
   padding: 0;
-  background-color: #f8f9fa;
+  margin: 0;
+  overflow-x: hidden; /* Prevent unwanted horizontal scroll */
+  display: block;
+}
+
+body {
+  /* Prevent scroll past footer */
+  overflow-y: auto;
+  background-color: #c61f16 !important;
+}
+
+.body-container {
+  background-color: white;
+}
+
+/* Footer */
+#footerDiv {
+  height: 98px;
+  margin-top: auto;
+  color: white;
+  position: static;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  margin-top: 0;
+  padding: 20px;
+  flex-shrink: 0;
+  background-color: #c61f16 !important;
+}
+
+#footerDiv .nav-link:hover {
+  cursor: pointer;
+  color: #0d6efd !important;
+  background-color: white;
+  font-weight: bold;
+}
+
+/* Nav bar */
+#navbarID {
+  background-color: #850001 !important;
+  overflow-x: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  overflow: visible;
+  z-index: 999;
+}
+
+#navbarID .container-fluid {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+#navbarID ul {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adds space between icons */
+}
+
+#navbarID ul li {
+  padding: 0.5rem !important;
+}
+
+#navbarID ul li i {
+  cursor: pointer;
+  color: white !important;
+  font-size: 1.2rem;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 40px; /* This is equivalent to the height of the navbar */
+  margin-bottom: 0;
+}
+
+.page-container {
+  background-color: #c61f16 !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Hide elements */
+.hide-div {
+  display: none !important;
+}
+
+.custom-fixed-top {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  z-index: 1030;
 }
 
 .header-div {
-  background-color: #1b1c1d;
-  padding-bottom: 20px;
-  padding-top: 70px;
+  background-color: #c61f16; /* 1b1c1d */
+  text-align: center !important;
+  color: white;
+  width: 100%; /* Full viewport width */
+  margin: 0;
+  overflow: hidden; /* prevent scrolling */
+  max-height: 100vh; /* ensures it never exceeds viewport */
+}
+
+.header-div h1,
+.header-div p {
+  margin: 0;
 }
 
 .header-icon {
@@ -38,7 +144,7 @@ body {
 }
 
 .ml-10 {
-  margin-left: 10px
+  margin-left: 10px;
 }
 
 /* Accordion */
@@ -69,29 +175,13 @@ body {
   margin-left: 6.8rem !important;
 }
 
+#sampleInfoLink {
+  color: #0d6efd;
+}
+
 .sample-info-icon {
   margin-right: 0.5rem;
-}
-
-/* Nav bar */
-#navbarID {
-  background-color: #1b1c1d !important;
-}
-
-#navbarID ul {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Adds space between icons */
-}
-
-#navbarID ul li {
-  padding: 0.5rem !important;
-}
-
-#navbarID ul li i {
-  cursor: pointer;
-  color: white !important;
-  font-size: 1.2rem;
+  color: black; /* #0d6efd */
 }
 
 #searchIconID:hover,
@@ -136,9 +226,18 @@ body {
 }
 
 /* Buttons, icons and links*/
+#download-manifest-btn {
+  border-color: #850001 !important;
+  text-decoration: none;
+  background-color: #c61f16;
+  color: white;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+
 #download-manifest-btn:hover {
-  background-color: #e3e3e3;
-  color: black;
+  background-color: #a81a13;
+  color: white;
 }
 .dropdown-menu-info-icon {
   position: relative;
@@ -291,7 +390,7 @@ body {
 #searchModal .modal-header,
 #emailModal .modal-header,
 #infoModal .modal-header {
-  background-color: #0d6efd;
+  background-color: #c61f16; /* #0d6efd */
 }
 
 #warningModal .modal-title,
@@ -320,10 +419,10 @@ body {
   padding-top: 15px;
 }
 
-.content {
+/* .content {
   margin-left: 250px;
   padding-bottom: 100px;
-}
+} */
 
 #searchInput {
   pointer-events: all;
@@ -453,9 +552,9 @@ body {
 }
 
 @media (max-width: 768px) {
-  .content {
+  /* .content {
     margin-left: 200px;
-  }
+  } */
 
   .search-box {
     width: 100%;

@@ -1,6 +1,6 @@
 # SingleCellSchema
 
-The **SingleCellSchema** repository houses developments related to Earlham Institute's (EI’s) CELLGEN ISP metadata mapping and schemas, designed to describe a variety of Single Cell Genomics and Spatial Transcriptomics experiment types, such as those from 10X Genomics and Vizgen.
+The **SingleCellSchema** repository houses developments related to Earlham Institute's (EI’s) CELLGEN ISP metadata mapping and schemas, designed to describe a variety of Single Cell Genomics and Spatial Transcriptomics experiment types, such as those from 10X Genomics and Vizgen. It is developed by the Collaborative OPen Omics (COPO) team based at the Earlham Institute.
 
 Visit the SingleCellSchema website at https://singlecellschemas.org.
 
@@ -19,14 +19,14 @@ The `update_and_convert_schema.py` script is responsible for updating the XLSX b
 The main script, `convert.py`, is used to convert the XLSX schema into XLSX, XML, html and JSON files according to the namespace prefix. It is found in the project root directory.
 
 > **Important note**:
-Please do not directly modify the base YAML and JSON files in the `schemas` directory. To make changes, update the `data` worksheet in `base_sc_schemas.xlsx` spreadsheet located in the `schemas` directory.
+Please do not directly modify the base YAML and JSON files in the `schemas` directory. To make changes, update the `data` worksheet in `singlecell_schema_main_vxx.xlsx` spreadsheet located in the `schemas` directory.
 
 After making changes to the base XLSX file, run the `update_and_convert_schema.py` script in the `utils` directory to regenerate and update the YAML and JSON files. To run the update script, execute in the terminal - `python3 utils/update_and_convert_schema.py`.
 
 **Abbreviations**:
 
-- SC RNASEQ: Single Cell RNA-Sequencing
-- STX: Spatial Transcriptomics
+- SC RNASEQ: Single-Cell RNA-Sequencing
+- STX or ST: Spatial Transcriptomics
 
 <br />
 
@@ -80,3 +80,22 @@ Please follow the instructions below to convert the XLSX schema into an xlsx, xm
    - Run the tests (which also runs the converter whilst verifying the output)
 
      `python -m unittest`
+---
+
+## Related repositories
+
+- [SingleCellSchemas](https://github.com/TGAC/SingleCellSchemas) – _This repository (included for reference)_
+- [COPO-production](https://github.com/TGAC/COPO-production)
+- [COPO-schemas](https://github.com/TGAC/COPO-schemas)
+- [COPO-documentation](https://github.com/TGAC/COPO-documentation)
+
+
+## Additional resources
+
+- [Single-cell website](https://singlecellschemas.org/) - _The official website for this SingleCellSchema repository_
+
+- [Single-cell submission documentation](https://copo-docs.readthedocs.io/en/latest/submissions/single-cell-submissions.html)
+
+- [COPO's FAIRsharing resource](https://doi.org/10.25504/FAIRsharing.91a79b)
+
+- [To report issues](https://github.com/TGAC/SingleCellSchemas/issues)

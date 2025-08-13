@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="version" content="v0.3"/>
+    <meta name="versionp" content="v0.3"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="../../../images/favicon.ico" type="image/x-icon">
     <title>Single-cell Schemas</title>
@@ -13,1846 +13,1898 @@
     <link href="../../../css/bootstrap.5.3.3.min.css" rel="stylesheet">
   </head>
   <body>
-    <!-- Top navigation bar icons -->
-    <nav id="navbarID" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <!-- Search icon -->
-            <li class="nav-item" title="Search web page">
-              <i id="searchIconID" class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-            </li>
-            <!-- Info icon -->
-            <li class="nav-item" title="View information about the website">
-              <i id="infoIconID" class="fas fa-info-circle" aria-hidden="true"></i>
-            </li>
-            <!-- Documentation icon -->
-            <li class="nav-item" title="View documentation">
-              <a class="nav-link" 
-                href="https://copo-docs.readthedocs.io/en/latest/submissions/single-cell-submissions.html" 
-                target="_blank" aria-label="Documentation" title="View documentation">
-                <i id="docIconID" class="fa fa-book-open" aria-hidden="true"></i>
-              </a>
-            </li>
-            <!-- Email icon -->
-            <li class="nav-item p-2" title="Contact us">
-              <i id="emailIconID" class="fas fa-envelope" aria-hidden="true"></i>
-            </li>
-            <!-- GitHub link -->
-            <li class="nav-item" title="View GitHub repository">
-              <a class="github-link nav-link" 
-                href="https://github.com/TGAC/SingleCellSchemas" target="_blank" 
-                title="View GitHub repository">
-                <i id="githubIconID" class="fa-brands fa-github" aria-hidden="true"></i>
-              </a>
-            </li>
-          </ul>
+    <div class="page-container">
+      <main class="main-content">
+        <!-- Top navigation bar icons -->
+        <nav id="navbarID" class="navbar navbar-expand-lg custom-fixed-top">
+          <div class="container-fluid">
+            <div id="navbarSupportedContent" class="collapse navbar-collapse justify-content-end">
+              <ul class="navbar-nav d-flex align-items-center pe-3">
+                <!-- Search icon -->
+                <li class="nav-item" title="Search web page">
+                  <i id="searchIconID" class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                </li>
+                <!-- Info icon -->
+                <li class="nav-item" title="View information about the website">
+                  <i id="infoIconID" class="fas fa-info-circle" aria-hidden="true"></i>
+                </li>
+                <!-- Documentation icon -->
+                <li class="nav-item" title="View documentation">
+                  <a class="nav-link" 
+                    href="https://copo-docs.readthedocs.io/en/latest/submissions/single-cell-submissions.html" 
+                    target="_blank" aria-label="Documentation" title="View documentation">
+                    <i id="docIconID" class="fa fa-book-open" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <!-- Email icon -->
+                <li class="nav-item" title="Contact us">
+                  <i id="emailIconID" class="fas fa-envelope" aria-hidden="true"></i>
+                </li>
+                <!-- GitHub link -->
+                <li class="nav-item" title="View GitHub repository">
+                  <a class="github-link nav-link" 
+                    href="https://github.com/TGAC/SingleCellSchemas" target="_blank" 
+                    title="View GitHub repository">
+                    <i id="githubIconID" class="fa-brands fa-github" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Header content -->
+        <div class="header-div">
+          <h1>Single-cell Schemas</h1>
         </div>
-      </div>
-    </nav>
-    <!-- Header content -->
-    <div class="header-div container-fluid text-center text-white">
-      <h1 class="ui header">Single-cell Schemas</h1>
-    </div>
-    <!-- Body content -->
-    <div class="row">
-      <div class="col-3">
-        <div class="container mt-4">
-          <form>
-            <!-- Standard dropdown menu -->
-            <div class="mb-3 dropdown-menu-div">
-              <label for="std_dropdown" class="form-label text-bold">Standard:
-                <i class="fa fa-info-circle dropdown-menu-info-icon"
-                  title="Choose a standard from the dropdown menu"
-                  data-bs-toggle="popover"
-                  data-bs-trigger="click"
-                  data-bs-placement="top"
-                  data-bs-content="Please refer to the <span id='infoModalLink'>About modal</span> for more information.">
-                </i>
-              </label>
-              <select class="form-select" id="std_dropdown" data-bs-placement="right" 
-                data-bs-trigger="hover" data-bs-toggle="tooltip" title="">
-                
-                  <option value="dwc">Darwin Core (DwC)</option>
-                
-                  <option value="mixs">Minimum Information about any (x) Sequence (MIxS)</option>
-                
-                  <option value="tol">Tree of Life (ToL)</option>
-                
-                  <option value="faang">Functional Annotation of Animal Genomes (FAANG)</option>
-                
-              </select>
+
+        <!-- Body content -->
+        <div class="row body-container">
+                <div class="col-3">
+                  <div class="container mt-4 ms-3">
+                    <form>
+                      <!-- Standard dropdown menu -->
+                      <div class="mb-3 dropdown-menu-div">
+                        <label for="std_dropdown" class="form-label text-bold">Standard:
+                          <i class="fa fa-info-circle dropdown-menu-info-icon"
+                            title="Choose a standard from the dropdown menu"
+                            data-bs-toggle="popover"
+                            data-bs-trigger="click"
+                            data-bs-placement="top"
+                            data-bs-content="Please refer to the <span id='infoModalLink'>About modal</span> for more information.">
+                          </i>
+                        </label>
+                        <select class="form-select" id="std_dropdown" data-bs-placement="right" 
+                          data-bs-trigger="hover" data-bs-toggle="tooltip" title="">
+                          
+                            <option value="dwc">Darwin Core (DwC)</option>
+                          
+                            <option value="mixs">Minimum Information about any (x) Sequence (MIxS)</option>
+                          
+                            <option value="tol">Tree of Life (ToL)</option>
+                          
+                            <option value="faang">Functional Annotation of Animal Genomes (FAANG)</option>
+                          
+                        </select>
+                      </div>
+
+                      <!-- Technology dropdown menu -->
+                      <div class="mb-3 dropdown-menu-div">
+                        <label for="tech_dropdown" class="form-label text-bold">Technology:
+                          <i class="fa fa-info-circle dropdown-menu-info-icon"
+                            title="Choose a technology from the dropdown menu"
+                            data-bs-toggle="popover"
+                            data-bs-trigger="click"
+                            data-bs-placement="top"
+                            data-bs-content="Please refer to the <span id='infoModalLink'>About modal</span> for more information.">
+                          </i>
+                        </label>
+                        <select class="form-select" id="tech_dropdown" data-bs-placement="right" 
+                          data-bs-trigger="hover" data-bs-toggle="tooltip" title="">
+                          
+                            <option value="sc_rnaseq">Single-cell Ribonucleic Acid Sequencing (scRNA-Seq)</option>
+                          
+                            <option value="stx_seq">Spatial Transcriptomics Sequencing (ST-Seq)</option>
+                          
+                            <option value="stx_fish">Spatial Transcriptomics Fluorescence In Situ Hybridisation (ST-FISH)</option>
+                          
+                        </select>
+                      </div>
+                      <!-- Buttons -->
+                      <div class="d-flex justify-content-between">
+                        <!-- Download manifest button -->
+                        <button id="download-manifest-btn" class="btn btn-sm" 
+                            type="button" title="Download blank manifest">
+                          <i class="fa fa-download"></i>
+                          <span class="action-label" style="padding-left: 3px;">Download manifest</span> 
+                        </button>
+                        <!-- Submit button -->
+                        <!-- <button id="sub_btn" class="btn btn-primary" type="submit">
+                          Submit
+                        </button> -->
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="accordion" id="fieldsAccordion">
+                    <!-- Content here -->
+                    
+                    <div class="accordion-item">
+                      <div class="accordion-header">
+                        <button
+                          class="accordion-button"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#component-study"
+                          aria-expanded="true"
+                          aria-controls="component-study"
+                        >
+                          Study
+                        </button>
+                      </div>
+                      <div
+                        id="component-study"
+                        class="accordion-collapse collapse"
+                        data-bs-parent="#fieldsAccordion">
+                        <div class="accordion-body">
+                          
+                          <div id="term-study_id" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Study ID
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>study_id</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A unique alphanumeric identifier for this study</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>A7F9B3X2</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[a-zA-Z0-9]+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:study_id 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-title" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Title
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>title</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A name given to the study or project. Project title should be fewer than 30 words, such as a title of a grant proposal or a publication.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>Study of single cells in the human body</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Reference</td>
+                                  <td>
+                                    <a href="http://purl.org/dc/terms/title" target="_blank">
+                                      http://purl.org/dc/terms/title
+                                    </a>
+                                  </td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                    
+                                    <a href="http://purl.org/dc/terms/title" target="_blank">
+                                      dcterms:title
+                                    </a>
+                                    
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-workflow" class="card">
+                            
+                            <h5 class="card-header">Workflow</h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>workflow</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>The workflow or protocol followed during the study.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>Laser microdissection</td>
+                                </tr>
+                                   
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:workflow 
+                                  </td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Allowed Values</td>
+                                  <td>
+                                    
+                                    <span class="badge bg-dark">Laser microdissection</span>
+                                    
+                                    <span class="badge bg-dark">Laser microdissection, Culturing</span>
+                                    
+                                    <span class="badge bg-dark">Laser microdissection, Culturing, Sequencing</span>
+                                    
+                                    <span class="badge bg-dark">Laser microdissection, Sequencing</span>
+                                    
+                                    <span class="badge bg-dark">Microfluidics, Facs, Culturing</span>
+                                    
+                                    <span class="badge bg-dark">Microfluidics, Facs, Culturing, Sequencing</span>
+                                    
+                                    <span class="badge bg-dark">Microfluidics, Facs, Sequencing</span>
+                                    
+                                    <span class="badge bg-dark">Spatial Transcriptomics</span>
+                                    
+                                  </td>
+                                </tr>
+                                
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-licence" class="card">
+                            
+                            <h5 class="card-header">Licence</h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>licence</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>Specifies the terms under which the data associated with the study can be used, shared, or reused. It informs users how they may legally reference, distribute, or build upon the study. Common licenses include Creative Commons (e.g., CC BY 4.0), which require attribution to the original authors when the data is cited or reused.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>MIT License</td>
+                                </tr>
+                                   
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:licence 
+                                  </td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Allowed Values</td>
+                                  <td>
+                                    
+                                    <span class="badge bg-dark">Apache-2.0</span>
+                                    
+                                    <span class="badge bg-dark">CC-BY-4.0</span>
+                                    
+                                    <span class="badge bg-dark">CC-BY-SA-4.0</span>
+                                    
+                                    <span class="badge bg-dark">CC0-1.0</span>
+                                    
+                                    <span class="badge bg-dark">GPL-3.0-or-later</span>
+                                    
+                                    <span class="badge bg-dark">MIT</span>
+                                    
+                                  </td>
+                                </tr>
+                                
+                              </table>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                      <div class="accordion-header">
+                        <button
+                          class="accordion-button"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#component-person"
+                          aria-expanded="true"
+                          aria-controls="component-person"
+                        >
+                          Person
+                        </button>
+                      </div>
+                      <div
+                        id="component-person"
+                        class="accordion-collapse collapse"
+                        data-bs-parent="#fieldsAccordion">
+                        <div class="accordion-body">
+                          
+                          <div id="term-study_id" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Study ID
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>study_id</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A unique alphanumeric identifier for this study</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>A7F9B3X2</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[a-zA-Z0-9]+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:study_id 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-orcid_id" class="card">
+                            
+                            <h5 class="card-header">Orcid ID</h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>orcid_id</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A 16-digit number that uniquely identify researchers.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>0000-1234-5678-9012</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^\d{4}-\d{4}-\d{4}-\d{4}$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:orcid_id 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-givenName" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              First Name
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>givenName</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A first name (or given name) is the personal name given to an individual conducting the study.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>Jane</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Reference</td>
+                                  <td>
+                                    <a href="https://schema.org/givenName" target="_blank">
+                                      https://schema.org/givenName
+                                    </a>
+                                  </td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[A-Za-z]+(?:[-\s][A-Za-z]+)*[a-z]+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                    
+                                    <a href="https://schema.org/givenName" target="_blank">
+                                      schema.org:givenName
+                                    </a>
+                                    
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-familyName" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Last Name
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>familyName</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A last name (or surname) is the family name passed down from one generation to the next for the individual conducting the study.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>Doe</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Reference</td>
+                                  <td>
+                                    <a href="https://schema.org/familyName" target="_blank">
+                                      https://schema.org/familyName
+                                    </a>
+                                  </td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[A-Za-z]+(-[A-Za-z]+)*[a-z]+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                    
+                                    <a href="https://schema.org/familyName" target="_blank">
+                                      schema.org:familyName
+                                    </a>
+                                    
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-email" class="card">
+                            
+                            <h5 class="card-header">Email Address</h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>email</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A unique identifier used to send and receive electronic messages (emails) over the internet.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>jane.doe@example.com</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Reference</td>
+                                  <td>
+                                    <a href="https://schema.org/email" target="_blank">
+                                      https://schema.org/email
+                                    </a>
+                                  </td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^(?!.*\.{2,})(?!.*-{2,})[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                    
+                                    <a href="https://schema.org/email" target="_blank">
+                                      schema.org:email
+                                    </a>
+                                    
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-affiliation" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Affiliation or Institution
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>affiliation</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>An organisation or institution that this person is associated with.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>University of Liverpool</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Reference</td>
+                                  <td>
+                                    <a href="https://schema.org/affiliation" target="_blank">
+                                      https://schema.org/affiliation
+                                    </a>
+                                  </td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                    
+                                    <a href="https://schema.org/affiliation" target="_blank">
+                                      schema.org:affiliation
+                                    </a>
+                                    
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-funder" class="card">
+                            
+                            <h5 class="card-header">Funder</h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>funder</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A person or organization that supports (sponsors) something through some kind of financial contribution.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>BBSRC</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Reference</td>
+                                  <td>
+                                    <a href="https://schema.org/funder" target="_blank">
+                                      https://schema.org/funder
+                                    </a>
+                                  </td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                    
+                                    <a href="https://schema.org/funder" target="_blank">
+                                      schema.org:funder
+                                    </a>
+                                    
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-funding" class="card">
+                            
+                            <h5 class="card-header">Grant Award</h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>funding</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A grant that directly or indirectly provides funding or sponsorship for the person to conduct the study.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>GRAK3489</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Reference</td>
+                                  <td>
+                                    <a href="https://schema.org/funding" target="_blank">
+                                      https://schema.org/funding
+                                    </a>
+                                  </td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[A-Za-z0-9]+(?: [A-Za-z0-9]+)*$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                    
+                                    <a href="https://schema.org/funding" target="_blank">
+                                      schema.org:funding
+                                    </a>
+                                    
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                      <div class="accordion-header">
+                        <button
+                          class="accordion-button"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#component-sample"
+                          aria-expanded="true"
+                          aria-controls="component-sample"
+                        >
+                          Sample
+                        </button>
+                      </div>
+                      <div
+                        id="component-sample"
+                        class="accordion-collapse collapse"
+                        data-bs-parent="#fieldsAccordion">
+                        <div class="accordion-body">
+                          
+                          <div id="term-study_id" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Study ID
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>study_id</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A unique alphanumeric identifier for the  study if referring to</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>A7F9B3X2</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[a-zA-Z0-9]+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:study_id 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-sample_id" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Sample ID
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>sample_id</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A unique alphanumeric reference or identifier for the sample. This field must provide a consistent, unambiguous way to identify the sample within and across datasets. It can be a name, code, or accession-like format, as long as it remains unique.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>sample123</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[a-zA-Z0-9]+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:sample_id 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-scientific_name" class="card">
+                            
+                            <h5 class="card-header">Scientific Name or Organism</h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>scientific_name</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>The formal Latin name used to identify the organism from which the sample was derived (e.g. Homo sapiens or Arabidopsis thaliana). This name must accurately correspond to the Taxon ID provided to ensure correct taxonomic classification.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>Salvelinus alpinus</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Reference</td>
+                                  <td>
+                                    <a href="http://rs.tdwg.org/dwc/terms/scientificName" target="_blank">
+                                      http://rs.tdwg.org/dwc/terms/scientificName
+                                    </a>
+                                  </td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                    
+                                    <a href="http://rs.tdwg.org/dwc/terms/scientificName" target="_blank">
+                                      ei:scientific_name
+                                    </a>
+                                    
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-taxon_id" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Taxon ID
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>taxon_id</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A unique identifier (usually from a recognized taxonomy database like NCBI Taxonomy) that corresponds to the organism’s scientific name. It must be accurately matched to the provided scientificName to maintain consistency and traceability in biological records.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>8036</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Reference</td>
+                                  <td>
+                                    <a href="http://rs.tdwg.org/dwc/terms/taxonID" target="_blank">
+                                      http://rs.tdwg.org/dwc/terms/taxonID
+                                    </a>
+                                  </td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[0-9]+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                    
+                                    <a href="http://rs.tdwg.org/dwc/terms/taxonID" target="_blank">
+                                      ei:taxon_id
+                                    </a>
+                                    
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-biosampleAccession" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Biosample Accession
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>biosampleAccession</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A unique identifier assigned to a biological sample after it has been submitted to a public database, such as the NCBI BioSample or ENA. It serves as a permanent reference to that specific sample, allowing researchers to retrieve metadata and link it across studies or datasets.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>SAMEA12907823</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Reference</td>
+                                  <td>
+                                    <a href="http://purl.obolibrary.org/obo/T4FS_0000316" target="_blank">
+                                      http://purl.obolibrary.org/obo/T4FS_0000316
+                                    </a>
+                                  </td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                    
+                                    <a href="http://purl.obolibrary.org/obo/T4FS_0000316" target="_blank">
+                                      ei:biosampleAccession
+                                    </a>
+                                    
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                      <div class="accordion-header">
+                        <button
+                          class="accordion-button"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#component-imaging_protocol"
+                          aria-expanded="true"
+                          aria-controls="component-imaging_protocol"
+                        >
+                          Imaging Protocol
+                        </button>
+                      </div>
+                      <div
+                        id="component-imaging_protocol"
+                        class="accordion-collapse collapse"
+                        data-bs-parent="#fieldsAccordion">
+                        <div class="accordion-body">
+                          
+                          <div id="term-study_id" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Study ID
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>study_id</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A unique alphanumeric identifier for this study</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>A7F9B3X2</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[a-zA-Z0-9]+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:study_id 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-imaging_protocol_id" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Imaging Protocol ID
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>imaging_protocol_id</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A unique alphanumeric identifier for the imaging protocol.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>img123</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[a-zA-Z0-9]+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:imaging_protocol_id 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-platform" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Platform
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>platform</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>The platform used to isolate the cells.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>Illumina NovaSeq</td>
+                                </tr>
+                                   
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:platform 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-instrument" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Instrument
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>instrument</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>The instrument used to isolate the cells.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>Illumina NovaSeq 6000</td>
+                                </tr>
+                                   
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:instrument 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-target_probe_code" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Target Probe Code
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>target_probe_code</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>The type of probes used to detect and quantify specific RNA molecules in their native spatial context within a tissue or cell.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>Oligo-dT</td>
+                                </tr>
+                                   
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:target_probe_code 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-section_thickness_µm" class="card">
+                            
+                            <h5 class="card-header">Section Thickness (µm)</h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>section_thickness_µm</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>The thickness of the tissue section in micrometres.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>10</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^\d+(\.\d+)?$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:section_thickness_µm 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-section_thickness_measurement_method" class="card">
+                            
+                            <h5 class="card-header">Section Thickness Measurement Method</h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>section_thickness_measurement_method</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>The method used to measure tissue section thickness.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>Microtome</td>
+                                </tr>
+                                   
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:section_thickness_measurement_method 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-section_thickness_temperature" class="card">
+                            
+                            <h5 class="card-header">Section Thickness Temperature</h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>section_thickness_temperature</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>The temperature at which the section was made in degree celsius.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>22</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^-?\d+(\.\d+)?$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:section_thickness_temperature 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-is_pathological" class="card">
+                            
+                            <h5 class="card-header">Is Pathological</h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>is_pathological</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A quality inhering in a bearer by virtue of the bearer's being abnormal and having a destructive effect on living tissue.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>No</td>
+                                </tr>
+                                   
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:is_pathological 
+                                  </td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Allowed Values</td>
+                                  <td>
+                                    
+                                    <span class="badge bg-dark">No</span>
+                                    
+                                    <span class="badge bg-dark">Yes</span>
+                                    
+                                  </td>
+                                </tr>
+                                
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-photobleaching_duration_in_hours" class="card">
+                            
+                            <h5 class="card-header">Photobleaching Duration In Hours</h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>photobleaching_duration_in_hours</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>The duration of photobleaching in hours</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>2</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^\d+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:photobleaching_duration_in_hours 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-clearing_with_proteinasek" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Clearing with ProteinaseK
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>clearing_with_proteinasek</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>The duration of clearing at 47°C with Proteinase K.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>24 hrs</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^\d+(\.\d+)?\s*(hrs?|days?|mins?|seconds?)$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:clearing_with_proteinasek 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-clearing_without_proteinasek" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Clearing without ProteinaseK
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>clearing_without_proteinasek</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>The duration of tissue clearing at 37°C without Proteinase K.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>4.5 days</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^\d+(\.\d+)?\s*(hrs?|days?|mins?|seconds?)$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:clearing_without_proteinasek 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-instrument_user_guide" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Instrument User Guide
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>instrument_user_guide</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>The user guide for the instrument used.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>User Guide</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:instrument_user_guide 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-instrument_user_guide_revision" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Instrument User Guide Revision
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>instrument_user_guide_revision</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>The revision of the instrument user guide.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>1.2</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^\d+(\.\d+)?$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:instrument_user_guide_revision 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-sample_preparation_guide" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Sample Preparation Guide
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>sample_preparation_guide</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>The guide used for sample preparation.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>preparation_guide_v1.0.pdf</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[A-Za-z0-9._-]*[a-z]+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:sample_preparation_guide 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-sample_preparation_guide_revision" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Sample Preparation Guide Revision
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>sample_preparation_guide_revision</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>The revision of the sample preparation guide.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>1.0</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^\d+(\.\d+)?$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:sample_preparation_guide_revision 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-deviations_from_official_protocol" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Deviations From Official Protocol
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>deviations_from_official_protocol</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>Any deviations from the official protocol. Separate individual deviations with '|'.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>Temperature exceeded 25°C during storage | Sample handling delayed by 2 hours</td>
+                                </tr>
+                                   
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:deviations_from_official_protocol 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                      <div class="accordion-header">
+                        <button
+                          class="accordion-button"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#component-file"
+                          aria-expanded="true"
+                          aria-controls="component-file"
+                        >
+                          File
+                        </button>
+                      </div>
+                      <div
+                        id="component-file"
+                        class="accordion-collapse collapse"
+                        data-bs-parent="#fieldsAccordion">
+                        <div class="accordion-body">
+                          
+                          <div id="term-study_id" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Study ID
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>study_id</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A unique alphanumeric identifier for this study</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>A7F9B3X2</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[a-zA-Z0-9]+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:study_id 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-imaging_protocol_id" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              Imaging Protocol ID
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>imaging_protocol_id</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A unique alphanumeric identifier for the imaging protocol.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>img123</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[a-zA-Z0-9]+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:imaging_protocol_id 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-file_id" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              File ID
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>file_id</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A unique alphanumeric identifier for this file</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>A7F9B3X2</td>
+                                </tr>
+                                  
+                                <tr>
+                                  <td>Regex</td>
+                                  <td>^[a-zA-Z0-9]+$</td>
+                                </tr>
+                                 
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:file_id 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-file_name" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              File Name
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>file_name</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A filename or file name is a name used to uniquely identify a data file related to the study.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>file001</td>
+                                </tr>
+                                   
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:file_name 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <div id="term-file_type" class="card">
+                            
+                            <h5 class="card-header d-flex align-items-start">
+                              File Type
+                              <span class="badge bg-dark ms-auto">Required</span>
+                            </h5>
+                            
+                            <div class="card-body">
+                              <table class="table">
+                                <tr>
+                                  <td>Name</td>
+                                  <td>file_type</td>
+                                </tr>
+                                <tr>
+                                  <td>Description</td>
+                                  <td>A file type is a name given to a specific kind of file. Common file types are fastq, gtf, fasta, bam, archive etc.</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td>Example</td>
+                                  <td>fastq</td>
+                                </tr>
+                                   
+                                <tr>
+                                  <td>Namespace</td>
+                                  <td>
+                                     ei:file_type 
+                                  </td>
+                                </tr>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+                <div class="col-3"></div>
+          
+          
+        </div>
+
+      </main>
+      <!-- Footer -->
+      <footer id="footerDiv" class="py-4">
+        <div class="container-fluid px-0">
+          <div class="row align-items-center justify-content-between mx-3">
+            
+            <!-- Logo and Institute Name -->
+            <div class="col-md-3 d-flex align-items-center mb-3 mb-md-0 ms-5">
+              <a href="https://www.earlham.ac.uk/">
+                <img src="../../images/ei_logo_white.png" alt="Earlham Institute logo" height="50" class="me-3">
+              </a>
+              <a href="https://copo-project.org/">
+              <img src="../../images/copo_logo_white.png" alt="Collaborative OPen Omics logo" height="50" class="me-3">
+              </a>
             </div>
 
-            <!-- Technology dropdown menu -->
-            <div class="mb-3 dropdown-menu-div">
-              <label for="tech_dropdown" class="form-label text-bold">Technology:
-                <i class="fa fa-info-circle dropdown-menu-info-icon"
-                  title="Choose a technology from the dropdown menu"
-                  data-bs-toggle="popover"
-                  data-bs-trigger="click"
-                  data-bs-placement="top"
-                  data-bs-content="Please refer to the <span id='infoModalLink'>About modal</span> for more information.">
-                </i>
-              </label>
-              <select class="form-select" id="tech_dropdown" data-bs-placement="right" 
-                data-bs-trigger="hover" data-bs-toggle="tooltip" title="">
-                
-                  <option value="sc_rnaseq">Single-cell Ribonucleic Acid Sequencing (scRNA-Seq)</option>
-                
-                  <option value="stx_seq">Spatial Transcriptomics Sequencing (ST-Seq)</option>
-                
-                  <option value="stx_fish">Spatial Transcriptomics Fluorescence In Situ Hybridisation (ST-FISH)</option>
-                
-              </select>
+            <!-- Navigation Links -->
+            <div class="col-md-4 d-flex justify-content-center justify-content-start mb-3 mb-md-0 me-4">
+              <ul class="nav justify-content-center">
+                <li class="nav-item">
+                  <a id="footerAboutID"  href="#" class="nav-link px-2 text-white">About</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://copo-docs.readthedocs.io/en/latest/submissions/single-cell-submissions.html" class="nav-link px-2 text-white">Documentation</a>
+                </li>
+                <li class="nav-item">
+                  <a id="footerContactID" href="#" class="nav-link px-2 text-white">Contact</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://github.com/TGAC/SingleCellSchemas" class="nav-link px-2 text-white">GitHub repository</a>
+                </li>
+              </ul>
             </div>
-             <!-- Buttons -->
-            <div class="d-flex justify-content-between">
-              <!-- Download manifest button -->
-              <button id="download-manifest-btn" class="btn btn-outline-primary btn-sm" 
-                  type="button" title="Download blank manifest">
-                <i class="fa fa-download"></i>
-                <span class="action-label" style="padding-left: 3px;">Download manifest</span> 
-              </button>
-              <!-- Submit button -->
-              <!-- <button id="sub_btn" class="btn btn-primary" type="submit">
-                Submit
-              </button> -->
-            </div>
-          </form>
-        </div>
-      </div>
+            
+            <div class="col-md-2"></div>
 
-      <div class="col-6">
-        <div class="accordion" id="fieldsAccordion">
-          <!-- Content here -->
-          
-          <div class="accordion-item">
-            <div class="accordion-header">
-              <button
-                class="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#component-study"
-                aria-expanded="true"
-                aria-controls="component-study"
-              >
-                Study
-              </button>
-            </div>
-            <div
-              id="component-study"
-              class="accordion-collapse collapse"
-              data-bs-parent="#fieldsAccordion">
-              <div class="accordion-body">
-                
-                <div id="term-study_id" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Study ID
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>study_id</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A unique alphanumeric identifier for this study</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>A7F9B3X2</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[a-zA-Z0-9]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:study_id 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-title" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Title
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>title</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A name given to the study or project. Project title should be fewer than 30 words, such as a title of a grant proposal or a publication.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Study of single cells in the human body</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Reference</td>
-                        <td>
-                          <a href="http://purl.org/dc/terms/title" target="_blank">
-                            http://purl.org/dc/terms/title
-                          </a>
-                        </td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                          <a href="http://purl.org/dc/terms/title" target="_blank">
-                            dcterms:title
-                          </a>
-                          
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-workflow" class="card">
-                  
-                  <h5 class="card-header">Workflow</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>workflow</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The workflow or protocol followed during the study.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Laser microdissection</td>
-                      </tr>
-                         
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:workflow 
-                        </td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Allowed Values</td>
-                        <td>
-                          
-                          <span class="badge bg-dark">Laser microdissection</span>
-                          
-                          <span class="badge bg-dark">Laser microdissection, Culturing</span>
-                          
-                          <span class="badge bg-dark">Laser microdissection, Culturing, Sequencing</span>
-                          
-                          <span class="badge bg-dark">Laser microdissection, Sequencing</span>
-                          
-                          <span class="badge bg-dark">Microfluidics, Facs, Culturing</span>
-                          
-                          <span class="badge bg-dark">Microfluidics, Facs, Culturing, Sequencing</span>
-                          
-                          <span class="badge bg-dark">Microfluidics, Facs, Sequencing</span>
-                          
-                          <span class="badge bg-dark">Spatial Transcriptomics</span>
-                          
-                        </td>
-                      </tr>
-                      
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-licence" class="card">
-                  
-                  <h5 class="card-header">Licence</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>licence</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>Specifies the terms under which the data associated with the study can be used, shared, or reused. It informs users how they may legally reference, distribute, or build upon the study. Common licenses include Creative Commons (e.g., CC BY 4.0), which require attribution to the original authors when the data is cited or reused.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>MIT License</td>
-                      </tr>
-                         
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:licence 
-                        </td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Allowed Values</td>
-                        <td>
-                          
-                          <span class="badge bg-dark">Apache-2.0</span>
-                          
-                          <span class="badge bg-dark">CC-BY-4.0</span>
-                          
-                          <span class="badge bg-dark">CC-BY-SA-4.0</span>
-                          
-                          <span class="badge bg-dark">CC0-1.0</span>
-                          
-                          <span class="badge bg-dark">GPL-3.0-or-later</span>
-                          
-                          <span class="badge bg-dark">MIT</span>
-                          
-                        </td>
-                      </tr>
-                      
-                    </table>
-                  </div>
-                </div>
-                
-              </div>
+            <!-- Copyright info -->
+            <div class="col-md-2 d-flex me-5">
+              <small>© 2025. Developed by<br>
+                COPO at Earlham Institute.</small>
             </div>
           </div>
-          
-          <div class="accordion-item">
-            <div class="accordion-header">
-              <button
-                class="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#component-person"
-                aria-expanded="true"
-                aria-controls="component-person"
-              >
-                Person
-              </button>
-            </div>
-            <div
-              id="component-person"
-              class="accordion-collapse collapse"
-              data-bs-parent="#fieldsAccordion">
-              <div class="accordion-body">
-                
-                <div id="term-study_id" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Study ID
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>study_id</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A unique alphanumeric identifier for this study</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>A7F9B3X2</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[a-zA-Z0-9]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:study_id 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-orcid_id" class="card">
-                  
-                  <h5 class="card-header">Orcid ID</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>orcid_id</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A 16-digit number that uniquely identify researchers.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>0000-1234-5678-9012</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^\d{4}-\d{4}-\d{4}-\d{4}$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:orcid_id 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-givenName" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    First Name
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>givenName</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A first name (or given name) is the personal name given to an individual conducting the study.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Jane</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Reference</td>
-                        <td>
-                          <a href="https://schema.org/givenName" target="_blank">
-                            https://schema.org/givenName
-                          </a>
-                        </td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]+(?:[-\s][A-Za-z]+)*[a-z]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                          <a href="https://schema.org/givenName" target="_blank">
-                            schema.org:givenName
-                          </a>
-                          
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-familyName" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Last Name
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>familyName</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A last name (or surname) is the family name passed down from one generation to the next for the individual conducting the study.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Doe</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Reference</td>
-                        <td>
-                          <a href="https://schema.org/familyName" target="_blank">
-                            https://schema.org/familyName
-                          </a>
-                        </td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]+(-[A-Za-z]+)*[a-z]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                          <a href="https://schema.org/familyName" target="_blank">
-                            schema.org:familyName
-                          </a>
-                          
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-email" class="card">
-                  
-                  <h5 class="card-header">Email Address</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>email</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A unique identifier used to send and receive electronic messages (emails) over the internet.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>jane.doe@example.com</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Reference</td>
-                        <td>
-                          <a href="https://schema.org/email" target="_blank">
-                            https://schema.org/email
-                          </a>
-                        </td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^(?!.*\.{2,})(?!.*-{2,})[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                          <a href="https://schema.org/email" target="_blank">
-                            schema.org:email
-                          </a>
-                          
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-affiliation" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Affiliation or Institution
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>affiliation</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>An organisation or institution that this person is associated with.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>University of Liverpool</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Reference</td>
-                        <td>
-                          <a href="https://schema.org/affiliation" target="_blank">
-                            https://schema.org/affiliation
-                          </a>
-                        </td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                          <a href="https://schema.org/affiliation" target="_blank">
-                            schema.org:affiliation
-                          </a>
-                          
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-funder" class="card">
-                  
-                  <h5 class="card-header">Funder</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>funder</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A person or organization that supports (sponsors) something through some kind of financial contribution.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>BBSRC</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Reference</td>
-                        <td>
-                          <a href="https://schema.org/funder" target="_blank">
-                            https://schema.org/funder
-                          </a>
-                        </td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                          <a href="https://schema.org/funder" target="_blank">
-                            schema.org:funder
-                          </a>
-                          
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-funding" class="card">
-                  
-                  <h5 class="card-header">Grant Award</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>funding</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A grant that directly or indirectly provides funding or sponsorship for the person to conduct the study.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>GRAK3489</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Reference</td>
-                        <td>
-                          <a href="https://schema.org/funding" target="_blank">
-                            https://schema.org/funding
-                          </a>
-                        </td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z0-9]+(?: [A-Za-z0-9]+)*$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                          <a href="https://schema.org/funding" target="_blank">
-                            schema.org:funding
-                          </a>
-                          
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-          
-          <div class="accordion-item">
-            <div class="accordion-header">
-              <button
-                class="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#component-sample"
-                aria-expanded="true"
-                aria-controls="component-sample"
-              >
-                Sample
-              </button>
-            </div>
-            <div
-              id="component-sample"
-              class="accordion-collapse collapse"
-              data-bs-parent="#fieldsAccordion">
-              <div class="accordion-body">
-                
-                <div id="term-study_id" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Study ID
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>study_id</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A unique alphanumeric identifier for the  study if referring to</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>A7F9B3X2</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[a-zA-Z0-9]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:study_id 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-sample_id" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Sample ID
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>sample_id</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A unique alphanumeric reference or identifier for the sample. This field must provide a consistent, unambiguous way to identify the sample within and across datasets. It can be a name, code, or accession-like format, as long as it remains unique.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>sample123</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[a-zA-Z0-9]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:sample_id 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-scientific_name" class="card">
-                  
-                  <h5 class="card-header">Scientific Name or Organism</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>scientific_name</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The formal Latin name used to identify the organism from which the sample was derived (e.g. Homo sapiens or Arabidopsis thaliana). This name must accurately correspond to the Taxon ID provided to ensure correct taxonomic classification.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Salvelinus alpinus</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Reference</td>
-                        <td>
-                          <a href="http://rs.tdwg.org/dwc/terms/scientificName" target="_blank">
-                            http://rs.tdwg.org/dwc/terms/scientificName
-                          </a>
-                        </td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                          <a href="http://rs.tdwg.org/dwc/terms/scientificName" target="_blank">
-                            ei:scientific_name
-                          </a>
-                          
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-taxon_id" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Taxon ID
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>taxon_id</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A unique identifier (usually from a recognized taxonomy database like NCBI Taxonomy) that corresponds to the organism’s scientific name. It must be accurately matched to the provided scientificName to maintain consistency and traceability in biological records.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>8036</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Reference</td>
-                        <td>
-                          <a href="http://rs.tdwg.org/dwc/terms/taxonID" target="_blank">
-                            http://rs.tdwg.org/dwc/terms/taxonID
-                          </a>
-                        </td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[0-9]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                          <a href="http://rs.tdwg.org/dwc/terms/taxonID" target="_blank">
-                            ei:taxon_id
-                          </a>
-                          
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-biosampleAccession" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Biosample Accession
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>biosampleAccession</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A unique identifier assigned to a biological sample after it has been submitted to a public database, such as the NCBI BioSample or ENA. It serves as a permanent reference to that specific sample, allowing researchers to retrieve metadata and link it across studies or datasets.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>SAMEA12907823</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Reference</td>
-                        <td>
-                          <a href="http://purl.obolibrary.org/obo/T4FS_0000316" target="_blank">
-                            http://purl.obolibrary.org/obo/T4FS_0000316
-                          </a>
-                        </td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                          
-                          <a href="http://purl.obolibrary.org/obo/T4FS_0000316" target="_blank">
-                            ei:biosampleAccession
-                          </a>
-                          
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-          
-          <div class="accordion-item">
-            <div class="accordion-header">
-              <button
-                class="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#component-imaging_protocol"
-                aria-expanded="true"
-                aria-controls="component-imaging_protocol"
-              >
-                Imaging Protocol
-              </button>
-            </div>
-            <div
-              id="component-imaging_protocol"
-              class="accordion-collapse collapse"
-              data-bs-parent="#fieldsAccordion">
-              <div class="accordion-body">
-                
-                <div id="term-study_id" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Study ID
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>study_id</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A unique alphanumeric identifier for this study</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>A7F9B3X2</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[a-zA-Z0-9]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:study_id 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-imaging_protocol_id" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Imaging Protocol ID
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>imaging_protocol_id</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A unique alphanumeric identifier for the imaging protocol.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>img123</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[a-zA-Z0-9]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:imaging_protocol_id 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-platform" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Platform
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>platform</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The platform used to isolate the cells.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Illumina NovaSeq</td>
-                      </tr>
-                         
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:platform 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-instrument" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Instrument
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>instrument</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The instrument used to isolate the cells.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Illumina NovaSeq 6000</td>
-                      </tr>
-                         
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:instrument 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-target_probe_code" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Target Probe Code
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>target_probe_code</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The type of probes used to detect and quantify specific RNA molecules in their native spatial context within a tissue or cell.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Oligo-dT</td>
-                      </tr>
-                         
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:target_probe_code 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-section_thickness_µm" class="card">
-                  
-                  <h5 class="card-header">Section Thickness (µm)</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>section_thickness_µm</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The thickness of the tissue section in micrometres.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>10</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^\d+(\.\d+)?$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:section_thickness_µm 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-section_thickness_measurement_method" class="card">
-                  
-                  <h5 class="card-header">Section Thickness Measurement Method</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>section_thickness_measurement_method</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The method used to measure tissue section thickness.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Microtome</td>
-                      </tr>
-                         
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:section_thickness_measurement_method 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-section_thickness_temperature" class="card">
-                  
-                  <h5 class="card-header">Section Thickness Temperature</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>section_thickness_temperature</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The temperature at which the section was made in degree celsius.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>22</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^-?\d+(\.\d+)?$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:section_thickness_temperature 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-is_pathological" class="card">
-                  
-                  <h5 class="card-header">Is Pathological</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>is_pathological</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A quality inhering in a bearer by virtue of the bearer's being abnormal and having a destructive effect on living tissue.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>No</td>
-                      </tr>
-                         
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:is_pathological 
-                        </td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Allowed Values</td>
-                        <td>
-                          
-                          <span class="badge bg-dark">No</span>
-                          
-                          <span class="badge bg-dark">Yes</span>
-                          
-                        </td>
-                      </tr>
-                      
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-photobleaching_duration_in_hours" class="card">
-                  
-                  <h5 class="card-header">Photobleaching Duration In Hours</h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>photobleaching_duration_in_hours</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The duration of photobleaching in hours</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>2</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^\d+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:photobleaching_duration_in_hours 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-clearing_with_proteinasek" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Clearing with ProteinaseK
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>clearing_with_proteinasek</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The duration of clearing at 47°C with Proteinase K.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>24 hrs</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^\d+(\.\d+)?\s*(hrs?|days?|mins?|seconds?)$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:clearing_with_proteinasek 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-clearing_without_proteinasek" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Clearing without ProteinaseK
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>clearing_without_proteinasek</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The duration of tissue clearing at 37°C without Proteinase K.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>4.5 days</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^\d+(\.\d+)?\s*(hrs?|days?|mins?|seconds?)$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:clearing_without_proteinasek 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-instrument_user_guide" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Instrument User Guide
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>instrument_user_guide</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The user guide for the instrument used.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>User Guide</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:instrument_user_guide 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-instrument_user_guide_revision" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Instrument User Guide Revision
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>instrument_user_guide_revision</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The revision of the instrument user guide.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>1.2</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^\d+(\.\d+)?$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:instrument_user_guide_revision 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-sample_preparation_guide" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Sample Preparation Guide
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>sample_preparation_guide</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The guide used for sample preparation.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>preparation_guide_v1.0.pdf</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[A-Za-z0-9._-]*[a-z]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:sample_preparation_guide 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-sample_preparation_guide_revision" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Sample Preparation Guide Revision
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>sample_preparation_guide_revision</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>The revision of the sample preparation guide.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>1.0</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^\d+(\.\d+)?$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:sample_preparation_guide_revision 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-deviations_from_official_protocol" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Deviations From Official Protocol
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>deviations_from_official_protocol</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>Any deviations from the official protocol. Separate individual deviations with '|'.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>Temperature exceeded 25°C during storage | Sample handling delayed by 2 hours</td>
-                      </tr>
-                         
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:deviations_from_official_protocol 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-          
-          <div class="accordion-item">
-            <div class="accordion-header">
-              <button
-                class="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#component-file"
-                aria-expanded="true"
-                aria-controls="component-file"
-              >
-                File
-              </button>
-            </div>
-            <div
-              id="component-file"
-              class="accordion-collapse collapse"
-              data-bs-parent="#fieldsAccordion">
-              <div class="accordion-body">
-                
-                <div id="term-study_id" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Study ID
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>study_id</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A unique alphanumeric identifier for this study</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>A7F9B3X2</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[a-zA-Z0-9]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:study_id 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-imaging_protocol_id" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    Imaging Protocol ID
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>imaging_protocol_id</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A unique alphanumeric identifier for the imaging protocol.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>img123</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[a-zA-Z0-9]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:imaging_protocol_id 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-file_id" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    File ID
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>file_id</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A unique alphanumeric identifier for this file</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>A7F9B3X2</td>
-                      </tr>
-                        
-                      <tr>
-                        <td>Regex</td>
-                        <td>^[a-zA-Z0-9]+$</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:file_id 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-file_name" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    File Name
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>file_name</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A filename or file name is a name used to uniquely identify a data file related to the study.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>file001</td>
-                      </tr>
-                         
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:file_name 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-                <div id="term-file_type" class="card">
-                  
-                  <h5 class="card-header d-flex align-items-start">
-                    File Type
-                    <span class="badge bg-dark ms-auto">Required</span>
-                  </h5>
-                  
-                  <div class="card-body">
-                    <table class="table">
-                      <tr>
-                        <td>Name</td>
-                        <td>file_type</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>A file type is a name given to a specific kind of file. Common file types are fastq, gtf, fasta, bam, archive etc.</td>
-                      </tr>
-                      
-                      <tr>
-                        <td>Example</td>
-                        <td>fastq</td>
-                      </tr>
-                         
-                      <tr>
-                        <td>Namespace</td>
-                        <td>
-                           ei:file_type 
-                        </td>
-                      </tr>
-                       
-                    </table>
-                  </div>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-          
         </div>
-      </div>
-      <div class="col-3"></div>
-    </div>
+      </footer>
+    </div> <!-- End of page-container -->
 
     <!-- Navigate to top of web page button -->
     <a href="javascript:void(0);" id="navigateToTop" class="navigate-to-top"
-       title="Navigate to top of the web page">
+      title="Navigate to top of the web page">
         <i class="up-arrow"></i><i class="up-arrow"></i>
     </a>
 

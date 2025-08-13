@@ -239,38 +239,45 @@ function populateInfoModalContent() {
 }
 
 function loadInfoModal() {
-  const infoIcon = document.getElementById('infoIconID');
   const modalContainer = document.getElementById('info-modal-container');
 
-  if (!infoIcon) {
-    console.error('Info icon not found!');
-    return;
-  }
+  // Elements that can trigger the contact modal
+  const infoTriggers = [
+    document.getElementById('infoIconID'),
+    document.getElementById('footerAboutID'),
+  ];
 
-  infoIcon.addEventListener('click', function (event) {
-    event.preventDefault();
+  infoTriggers.forEach((trigger, index) => {
+    if (!trigger) {
+      console.warn(`Trigger element ${index + 1} not found!`);
+      return;
+    }
+    // Attach click event to each trigger
+    trigger.addEventListener('click', function (event) {
+      event.preventDefault();
 
-    // Load the modal HTML dynamically
-    fetch(`${relPathTraverse}templates/info_modal.html`)
-      .then((response) => response.text())
-      .then((data) => {
-        modalContainer.innerHTML = data;
-        // Wait for the modal to be added to the DOM
-        requestAnimationFrame(() => {
-          const modalElement = document.getElementById('infoModal');
+      // Load the modal HTML dynamically
+      fetch(`${relPathTraverse}templates/info_modal.html`)
+        .then((response) => response.text())
+        .then((data) => {
+          modalContainer.innerHTML = data;
+          // Wait for the modal to be added to the DOM
+          requestAnimationFrame(() => {
+            const modalElement = document.getElementById('infoModal');
 
-          if (modalElement) {
-            // Inject outputFileData into the modal
-            populateInfoModalContent();
+            if (modalElement) {
+              // Inject outputFileData into the modal
+              populateInfoModalContent();
 
-            const modal = new bootstrap.Modal(modalElement, {});
-            modal.show();
-          } else {
-            console.error('Modal element not found in DOM.');
-          }
-        });
-      })
-      .catch((error) => console.error('Error loading modal:', error));
+              const modal = new bootstrap.Modal(modalElement, {});
+              modal.show();
+            } else {
+              console.error('Modal element not found in DOM.');
+            }
+          });
+        })
+        .catch((error) => console.error('Error loading modal:', error));
+    });
   });
 }
 
@@ -514,36 +521,44 @@ function initialiseUIComponents() {
 }
 
 function loadEmailModal() {
-  const emailIcon = document.getElementById('emailIconID');
-  const modalContainer = document.getElementById('info-modal-container'); // You can rename this container if necessary.
+  const modalContainer = document.getElementById('info-modal-container');
 
-  if (!emailIcon) {
-    console.error('Email icon not found!');
-    return;
-  }
+  // Elements that can trigger the contact modal
+  const emailTriggers = [
+    document.getElementById('emailIconID'),
+    document.getElementById('footerContactID'),
+  ];
 
-  emailIcon.addEventListener('click', function (event) {
-    event.preventDefault();
+  // Attach click event to each trigger if it exists
+  emailTriggers.forEach((trigger, index) => {
+    if (!trigger) {
+      console.warn(`Trigger element ${index + 1} not found!`);
+      return;
+    }
 
-    // Load the email modal HTML dynamically
-    fetch(`${relPathTraverse}templates/email_modal.html`)
-      .then((response) => response.text())
-      .then((data) => {
-        modalContainer.innerHTML = data;
+    trigger.addEventListener('click', function (event) {
+      event.preventDefault();
 
-        // Wait for the modal to be added to the DOM
-        requestAnimationFrame(() => {
-          const modalElement = document.getElementById('emailModal');
+      // Load the email modal HTML dynamically
+      fetch(`${relPathTraverse}templates/email_modal.html`)
+        .then((response) => response.text())
+        .then((data) => {
+          modalContainer.innerHTML = data;
 
-          if (modalElement) {
-            const modal = new bootstrap.Modal(modalElement, {});
-            modal.show();
-          } else {
-            console.error('Modal element not found in DOM.');
-          }
-        });
-      })
-      .catch((error) => console.error('Error loading modal:', error));
+          // Wait for the modal to be added to the DOM
+          requestAnimationFrame(() => {
+            const modalElement = document.getElementById('emailModal');
+
+            if (modalElement) {
+              const modal = new bootstrap.Modal(modalElement, {});
+              modal.show();
+            } else {
+              console.error('Modal element not found in DOM.');
+            }
+          });
+        })
+        .catch((error) => console.error('Error loading modal:', error));
+    });
   });
 }
 
