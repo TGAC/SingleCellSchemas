@@ -46,14 +46,15 @@ body {
 
 /* Nav bar */
 #navbarID {
+  box-sizing: border-box;
   background-color: #850001 !important;
   overflow-x: hidden;
-  position: fixed;
+  position: fixed !important;;
   top: 0;
   left: 0;
   width: 100%;
   height: 40px;
-  overflow: visible;
+  overflow: hidden;
   z-index: 999;
 }
 
@@ -94,13 +95,6 @@ body {
 /* Hide elements */
 .hide-div {
   display: none !important;
-}
-
-.custom-fixed-top {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  z-index: 1030;
 }
 
 .header-div {
