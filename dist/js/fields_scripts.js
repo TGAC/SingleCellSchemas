@@ -5,6 +5,7 @@ $(document).ready(function () {
   loadSelectedValues();
 
   // Load modals
+  handleModals();
   loadInfoModal();
   loadSearchModal();
   loadEmailModal();
@@ -97,7 +98,7 @@ $(document).ready(function () {
       return;
     }
 
-    let standard = $('#std_dropdown').val();
+    let standard = $('#stdDropdown').val();
 
     // Construct the spreadsheet file URL
     let downloadFileName = outputFileName.replace(/\.[^/.]+$/, '.xlsx');
@@ -114,7 +115,7 @@ $(document).ready(function () {
 
   // Change events
   // Attach event handlers to the dropdown menus
-  $('#std_dropdown, #tech_dropdown').on('change', function (e) {
+  $('#stdDropdown, #techDropdown').on('change', function (e) {
     e.preventDefault(); // Prevent the default form submission
     updateUrlWithParams();
 
@@ -190,15 +191,15 @@ function loadSelectedValues() {
   }
 
   // Apply to both dropdowns
-  updateDropdown('#std_dropdown', 'std_dropdown', 'dwc');
-  updateDropdown('#tech_dropdown', 'tech_dropdown', 'sc_rnaseq');
+  updateDropdown('#stdDropdown', 'stdDropdown', 'dwc');
+  updateDropdown('#techDropdown', 'techDropdown', 'sc_rnaseq');
   updateUrlWithParams(); // Update the URL with the selected parameters
   updateContentBasedOnSelection();
 }
 
 function getOutputFileName() {
-  let standard = $('#std_dropdown').val();
-  let technology = $('#tech_dropdown').val();
+  let standard = $('#stdDropdown').val();
+  let technology = $('#techDropdown').val();
 
   for (let file in outputFileData) {
     let [tech, tech_label, std, std_label, version_desc] = outputFileData[file]; // Destructure tuple values
@@ -272,11 +273,11 @@ function loadInfoModal() {
               const modal = new bootstrap.Modal(modalElement, {});
               modal.show();
             } else {
-              console.error('Modal element not found in DOM.');
+              console.error('Info modal element not found in DOM.');
             }
           });
         })
-        .catch((error) => console.error('Error loading modal:', error));
+        .catch((error) => console.error('Error loading info modal:', error));
     });
   });
 }
@@ -341,6 +342,16 @@ function scrollToTerm(termId) {
   }
 }
 
+function handleModals() {
+  // Exclude automatically added 'aria-hidden="true"' in the modal
+  // template for dynamically injected modals
+  document.addEventListener('hide.bs.modal', function (event) {
+    if (document.activeElement) {
+      document.activeElement.blur();
+    }
+  });
+}
+
 // Function to handle accordion expansion and scrolling
 function handleAccordionExpand(termId, targetAccordion) {
   function scrollToTermWrapper() {
@@ -387,8 +398,8 @@ function attachSearchFunctionality(searchModal, modalContainer) {
   }
 
   // Get selected values from dropdowns
-  let selected_standard = $('#std_dropdown').val();
-  let selected_technology = $('#tech_dropdown').val();
+  let selected_standard = $('#stdDropdown').val();
+  let selected_technology = $('#techDropdown').val();
 
   if (!outputFileName) {
     $('#selectedStandard').text(selected_standard);
@@ -553,11 +564,13 @@ function loadEmailModal() {
               const modal = new bootstrap.Modal(modalElement, {});
               modal.show();
             } else {
-              console.error('Modal element not found in DOM.');
+              console.error('Email modal element not found in DOM.');
             }
           });
         })
-        .catch((error) => console.error('Error loading modal:', error));
+        .catch((error) =>
+          console.error('Error loading email modal:', error)
+        );
     });
   });
 }
@@ -583,7 +596,7 @@ function showWarningModal() {
           const modal = new bootstrap.Modal(modalElement);
           modal.show();
         } else {
-          console.error('Modal element not found in DOM.');
+          console.error('Warning modal element not found in DOM.');
         }
       });
     })
@@ -595,11 +608,11 @@ function updateUrlWithParams() {
   let currentParams = new URLSearchParams(window.location.search);
 
   // Get the values from the dropdown menus
-  let standard = $('#std_dropdown').val();
-  let technology = $('#tech_dropdown').val();
+  let standard = $('#stdDropdown').val();
+  let technology = $('#techDropdown').val();
 
-  currentParams.set('std_dropdown', standard);
-  currentParams.set('tech_dropdown', technology);
+  currentParams.set('stdDropdown', standard);
+  currentParams.set('techDropdown', technology);
 
   // Construct the new URL with only the query parameters
   let newUrl = window.location.pathname + '?' + currentParams.toString();
@@ -610,8 +623,8 @@ function updateUrlWithParams() {
 
 // Dynamically load and update content based on selected filters
 function updateContentBasedOnSelection() {
-  let selectedStandard = $('#std_dropdown').val();
-  let selectedTechnology = $('#tech_dropdown').val();
+  let selectedStandard = $('#stdDropdown').val();
+  let selectedTechnology = $('#techDropdown').val();
   let fieldsAccordion = $('#fieldsAccordion');
 
   // Filter components based on standardName and technologyName

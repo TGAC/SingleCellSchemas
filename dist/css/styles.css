@@ -1,3 +1,11 @@
+:root {
+  --footer-h: 98px;
+}
+
+:root {
+  --nav-h: 57.7031px;
+}
+
 /* Consistent box sizing */
 *,
 *::before,
@@ -7,104 +15,55 @@
 
 body,
 html {
-  padding: 0;
+  overscroll-behavior: none; /* Disables scroll chaining and bounce */
+  height: 100%;
   margin: 0;
-  overflow-x: hidden; /* Prevent unwanted horizontal scroll */
-  display: block;
+  /* Allows element inner scrollbar to show;
+  Prevents the horizontal "white space" */
+  /* overflow-x: auto;  */
 }
 
 body {
-  /* Prevent scroll past footer */
-  overflow-y: auto;
-  background-color: #c61f16 !important;
+  /* Enables browser window scrollbar to appear;
+  Prevents the horizontal "white space" */
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.body-container {
+  overflow-x: hidden; /* Hides accidental overflow within the body/row */
+}
+
+/* Prevents table/card from overflowing their column */
+.table,
+.card {
+  max-width: 100%;
 }
 
 .body-container {
   background-color: white;
 }
 
-/* Footer */
-#footerDiv {
-  height: 98px;
-  margin-top: auto;
-  color: white;
-  position: static;
-  box-sizing: border-box;
-  flex-shrink: 0;
-  margin-top: 0;
-  padding: 20px;
-  flex-shrink: 0;
-  background-color: #c61f16 !important;
+.row.body-container,
+.container-fluid,
+.row {
+  margin-left: 0;
+  margin-right: 0;
 }
-
-#footerDiv .nav-link:hover {
-  cursor: pointer;
-  color: #0d6efd !important;
-  background-color: white;
-  font-weight: bold;
-}
-
-/* Nav bar */
-#navbarID {
-  box-sizing: border-box;
-  background-color: #850001 !important;
-  overflow-x: hidden;
-  position: fixed !important;;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 40px;
-  overflow: hidden;
-  z-index: 999;
-}
-
-#navbarID .container-fluid {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-#navbarID ul {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Adds space between icons */
-}
-
-#navbarID ul li {
-  padding: 0.5rem !important;
-}
-
-#navbarID ul li i {
-  cursor: pointer;
-  color: white !important;
-  font-size: 1.2rem;
-}
-
 .main-content {
-  flex: 1;
-  padding-top: 40px; /* This is equivalent to the height of the navbar */
-  margin-bottom: 0;
-}
-
-.page-container {
-  background-color: #c61f16 !important;
+  flex: 1; /* Allows the main content section to expand to push the footer down */
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-}
-
-/* Hide elements */
-.hide-div {
-  display: none !important;
 }
 
 .header-div {
-  background-color: #c61f16; /* 1b1c1d */
+  background-color: #c61f16;
   text-align: center !important;
   color: white;
   width: 100%; /* Full viewport width */
   margin: 0;
-  overflow: hidden; /* prevent scrolling */
-  max-height: 100vh; /* ensures it never exceeds viewport */
+  max-height: 100vh; /* Ensures that header does not exceed viewport */
 }
 
 .header-div h1,
@@ -117,28 +76,77 @@ body {
   font-size: 2rem;
 }
 
-#doc_select_form {
+/* Nav bar */
+#navbarID {
+  background-color: #850001 !important;
+  width: 100%;
+  z-index: 999; /* Keeps navbar above other elements */
+  height: var(--nav-h);
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#navbarID ul {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adds space between icons */
+}
+
+#navbarID ul li {
+  padding: 0 10px; /* Adds horizontal padding */
+}
+
+#navbarID ul li i {
+  cursor: pointer;
+  color: white !important;
+  font-size: 1.2rem;
+}
+
+#navbarID .container-fluid {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Footer */
+#footerDiv {
+  color: white;
+  padding: 20px;
+  height: var(--footer-h);
+  background-color: #c61f16 !important;
+}
+
+#footerDiv .nav-link:hover {
+  cursor: pointer;
+  color: #0d6efd !important;
+  background-color: white;
+  font-weight: bold;
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+}
+
+.footer-row > .footer-nav {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-nav .nav-item a {
+  color: white !important;
+}
+
+#docSelectForm {
   margin-left: 20px;
 }
-#doc_select_form .col {
+#docSelectForm .col {
   width: 250px;
   margin-right: 20px;
 }
 
 .card {
   margin-top: 20px;
-}
-
-.topMargin {
-  margin-top: 100px;
-}
-
-.bottomMargin {
-  margin-bottom: 50px;
-}
-
-.ml-10 {
-  margin-left: 10px;
 }
 
 /* Accordion */
@@ -160,6 +168,45 @@ body {
   padding: 10px 15px;
   font-family: 'Source Code Pro', 'SF Mono', 'Monaco, Inconsolata', 'Fira Mono',
     'Droid Sans Mono', monospace, monospace;
+}
+
+/* Colours */
+.text-white {
+  color: white !important;
+}
+
+/* General CSS*/
+.text-hover:hover + .tooltip-message {
+  display: block;
+}
+
+.text-hover {
+  cursor: pointer;
+  text-decoration: underline dotted;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+/* Hide elements */
+.hide-div {
+  display: none !important;
+}
+
+/* Buttons, icons and links*/
+#download-manifest-btn {
+  border-color: #850001 !important;
+  text-decoration: none;
+  background-color: #c61f16;
+  color: white;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+
+#download-manifest-btn:hover {
+  background-color: #a81a13;
+  color: white;
 }
 
 .info-note {
@@ -201,45 +248,7 @@ body {
   padding-bottom: 5px;
 }
 
-/* Colours */
-.text-white {
-  color: white !important;
-}
-
-.text-hover:hover + .tooltip-message {
-  display: block;
-}
-
-.text-hover {
-  cursor: pointer;
-  text-decoration: underline dotted;
-}
-
-.text-bold {
-  font-weight: bold;
-}
-
-/* Buttons, icons and links*/
-#download-manifest-btn {
-  border-color: #850001 !important;
-  text-decoration: none;
-  background-color: #c61f16;
-  color: white;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out;
-}
-
-#download-manifest-btn:hover {
-  background-color: #a81a13;
-  color: white;
-}
-.dropdown-menu-info-icon {
-  position: relative;
-  bottom: 8px;
-  cursor: pointer;
-}
-
-/* Positions */
+/* Positions and Spacing */
 .fl-right {
   float: right;
 }
@@ -274,6 +283,18 @@ body {
 
 .ml-1 {
   margin-left: 1rem !important;
+}
+
+.top-margin {
+  margin-top: 100px;
+}
+
+.bottom-margin {
+  margin-bottom: 50px;
+}
+
+.ml-10 {
+  margin-left: 10px;
 }
 
 /*Navigate to top button CSS*/
@@ -368,13 +389,19 @@ body {
 }
 
 /* Dropdown menus */
-#tech_dropdown .dropdown-menu {
+.dropdown-menu-info-icon {
+  position: relative;
+  bottom: 8px;
+  cursor: pointer;
+}
+
+#techDropdown .dropdown-menu {
   max-width: 300px; /* Set a maximum width for the dropdown */
   word-wrap: break-word; /* Break long words that can't fit */
   white-space: normal; /* Allow wrapping of text */
 }
 
-#tech_dropdown .dropdown-item {
+#techDropdown .dropdown-item {
   white-space: normal; /* Allow text in the item to wrap */
   word-wrap: break-word; /* Ensure long words break to new lines */
   overflow-wrap: break-word; /* Break word overflow if it's too long */
@@ -412,11 +439,6 @@ body {
   display: none;
   padding-top: 15px;
 }
-
-/* .content {
-  margin-left: 250px;
-  padding-bottom: 100px;
-} */
 
 #searchInput {
   pointer-events: all;
@@ -546,10 +568,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  /* .content {
-    margin-left: 200px;
-  } */
-
   .search-box {
     width: 100%;
   }

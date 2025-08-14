@@ -1,265 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="versionp" content="{{ version }}"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="{{ rel_path_traverse }}images/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="version" content="{{ version }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="COPO project team">
+    <meta name="description" content="SingleCellSchemas contains metadata mappings and schemas for Single-cell genomics and Spatial Transcriptomics experiments, developed by Collaborative OPen Omics (COPO) at the Earlham Institute.">
+
+    <link href="{{ rel_path_traverse }}images/favicon.ico" type="image/x-icon" rel="icon">
     <title>Single-cell Schemas</title>
 
     <!-- CSS -->
-    <link href="{{ rel_path_traverse }}css/styles.css" rel="stylesheet">
-    <link href="{{ rel_path_traverse }}css/fontawesome.6.7.2.all.min.css" rel="stylesheet">
-    <link href="{{ rel_path_traverse }}css/bootstrap.5.3.3.min.css" rel="stylesheet">
+    <link href="{{ rel_path_traverse }}css/styles.css" type="text/css" rel="stylesheet">
+    <link href="{{ rel_path_traverse }}css/fontawesome.6.7.2.all.min.css" type="text/css" rel="stylesheet">
+    <link href="{{ rel_path_traverse }}css/bootstrap.5.3.3.min.css" type="text/css" rel="stylesheet">
   </head>
   <body>
-    <div class="page-container">
-      <main class="main-content">
-        <!-- Top navigation bar icons -->
-        <nav id="navbarID" class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <div id="navbarSupportedContent" class="collapse navbar-collapse justify-content-end">
-              <ul class="navbar-nav d-flex align-items-center pe-3">
-                <!-- Search icon -->
-                <li class="nav-item" title="Search web page">
-                  <i id="searchIconID" class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                </li>
-                <!-- Info icon -->
-                <li class="nav-item" title="View information about the website">
-                  <i id="infoIconID" class="fas fa-info-circle" aria-hidden="true"></i>
-                </li>
-                <!-- Documentation icon -->
-                <li class="nav-item" title="View documentation">
-                  <a class="nav-link" 
-                    href="https://copo-docs.readthedocs.io/en/latest/submissions/single-cell-submissions.html" 
-                    target="_blank" aria-label="Documentation" title="View documentation">
-                    <i id="docIconID" class="fa fa-book-open" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <!-- Email icon -->
-                <li class="nav-item" title="Contact us">
-                  <i id="emailIconID" class="fas fa-envelope" aria-hidden="true"></i>
-                </li>
-                <!-- GitHub link -->
-                <li class="nav-item" title="View GitHub repository">
-                  <a class="github-link nav-link" 
-                    href="https://github.com/TGAC/SingleCellSchemas" target="_blank" 
-                    title="View GitHub repository">
-                    <i id="githubIconID" class="fa-brands fa-github" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+    <!-- Top navigation bar -->
+    <nav id="navbarID" class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <div id="navbarSupportedContent" class="collapse navbar-collapse justify-content-end">
+          <ul class="navbar-nav d-flex align-items-center pe-3">
+            <!-- Search icon -->
+            <li class="nav-item" title="Search web page">
+              <i id="searchIconID" class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </li>
+            <!-- Info icon -->
+            <li class="nav-item" title="View information about the website">
+              <i id="infoIconID" class="fas fa-info-circle" aria-hidden="true"></i>
+            </li>
+            <!-- Documentation icon -->
+            <li class="nav-item" title="View documentation">
+              <a class="nav-link" 
+                href="https://copo-docs.readthedocs.io/en/latest/submissions/single-cell-submissions.html" 
+                target="_blank" aria-label="Documentation" title="View documentation">
+                <i id="docIconID" class="fa fa-book-open" aria-hidden="true"></i>
+              </a>
+            </li>
+            <!-- Email icon -->
+            <li class="nav-item" title="Contact us">
+              <i id="emailIconID" class="fas fa-envelope" aria-hidden="true"></i>
+            </li>
+            <!-- GitHub link -->
+            <li class="nav-item" title="View GitHub repository">
+              <a class="github-link nav-link" 
+                href="https://github.com/TGAC/SingleCellSchemas" target="_blank" 
+                title="View GitHub repository">
+                <i id="githubIconID" class="fa-brands fa-github" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header content -->
+    <div class="header-div">
+      <h1>Single-cell Schemas</h1>
+    </div>
+    <!-- Main content -->
+    <div class="main-content container-fluid">
+      <div class="row body-container">
+        <div class="col-3">
+          <div class="container mt-4 ms-3">
+            <form>
+              <!-- Standard dropdown menu -->
+              <div class="mb-3 dropdown-menu-div">
+                <label for="stdDropdown" class="form-label text-bold">Standard:
+                  <i class="fa fa-info-circle dropdown-menu-info-icon"
+                    title="Choose a standard from the dropdown menu"
+                    data-bs-toggle="popover"
+                    data-bs-trigger="click"
+                    data-bs-placement="top"
+                    data-bs-content="Please refer to the <span id='infoModalLink'>About modal</span> for more information.">
+                  </i>
+                </label>
+                <select class="form-select" id="stdDropdown" data-bs-placement="right" 
+                  data-bs-trigger="hover" data-bs-toggle="tooltip" title="">
+                  {% for key, value in standards.items() %}
+                    <option value="{{ key }}">{{ value }}</option>
+                  {% endfor %}
+                </select>
+              </div>
 
-        <!-- Header content -->
-        <div class="header-div">
-          <h1>Single-cell Schemas</h1>
+              <!-- Technology dropdown menu -->
+              <div class="mb-3 dropdown-menu-div">
+                <label for="techDropdown" class="form-label text-bold">Technology:
+                  <i class="fa fa-info-circle dropdown-menu-info-icon"
+                    title="Choose a technology from the dropdown menu"
+                    data-bs-toggle="popover"
+                    data-bs-trigger="click"
+                    data-bs-placement="top"
+                    data-bs-content="Please refer to the <span id='infoModalLink'>About modal</span> for more information.">
+                  </i>
+                </label>
+                <select class="form-select" id="techDropdown" data-bs-placement="right" 
+                  data-bs-trigger="hover" data-bs-toggle="tooltip" title="">
+                  {% for key, value in technologies.items() %}
+                    <option value="{{ key }}">{{ value }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <!-- Buttons -->
+              <div class="d-flex justify-content-between">
+                <!-- Download manifest button -->
+                <button id="download-manifest-btn" class="btn btn-sm" 
+                    type="button" title="Download blank manifest">
+                  <i class="fa fa-download"></i>
+                  <span class="action-label" style="padding-left: 3px;">Download manifest</span> 
+                </button>
+                <!-- Submit button -->
+                <!-- <button id="sub_btn" class="btn btn-primary" type="submit">
+                  Submit
+                </button> -->
+              </div>
+            </form>
+          </div>
         </div>
 
-        <!-- Body content -->
-        <div class="row body-container">
-                <div class="col-3">
-                  <div class="container mt-4 ms-3">
-                    <form>
-                      <!-- Standard dropdown menu -->
-                      <div class="mb-3 dropdown-menu-div">
-                        <label for="std_dropdown" class="form-label text-bold">Standard:
-                          <i class="fa fa-info-circle dropdown-menu-info-icon"
-                            title="Choose a standard from the dropdown menu"
-                            data-bs-toggle="popover"
-                            data-bs-trigger="click"
-                            data-bs-placement="top"
-                            data-bs-content="Please refer to the <span id='infoModalLink'>About modal</span> for more information.">
-                          </i>
-                        </label>
-                        <select class="form-select" id="std_dropdown" data-bs-placement="right" 
-                          data-bs-trigger="hover" data-bs-toggle="tooltip" title="">
-                          {% for key, value in standards.items() %}
-                            <option value="{{ key }}">{{ value }}</option>
-                          {% endfor %}
-                        </select>
-                      </div>
-
-                      <!-- Technology dropdown menu -->
-                      <div class="mb-3 dropdown-menu-div">
-                        <label for="tech_dropdown" class="form-label text-bold">Technology:
-                          <i class="fa fa-info-circle dropdown-menu-info-icon"
-                            title="Choose a technology from the dropdown menu"
-                            data-bs-toggle="popover"
-                            data-bs-trigger="click"
-                            data-bs-placement="top"
-                            data-bs-content="Please refer to the <span id='infoModalLink'>About modal</span> for more information.">
-                          </i>
-                        </label>
-                        <select class="form-select" id="tech_dropdown" data-bs-placement="right" 
-                          data-bs-trigger="hover" data-bs-toggle="tooltip" title="">
-                          {% for key, value in technologies.items() %}
-                            <option value="{{ key }}">{{ value }}</option>
-                          {% endfor %}
-                        </select>
-                      </div>
-                      <!-- Buttons -->
-                      <div class="d-flex justify-content-between">
-                        <!-- Download manifest button -->
-                        <button id="download-manifest-btn" class="btn btn-sm" 
-                            type="button" title="Download blank manifest">
-                          <i class="fa fa-download"></i>
-                          <span class="action-label" style="padding-left: 3px;">Download manifest</span> 
-                        </button>
-                        <!-- Submit button -->
-                        <!-- <button id="sub_btn" class="btn btn-primary" type="submit">
-                          Submit
-                        </button> -->
-                      </div>
-                    </form>
-                  </div>
-                </div>
-
-                <div class="col-6">
-                  <div class="accordion" id="fieldsAccordion">
-                    <!-- Content here -->
-                    {% for component in components %}
-                    <div class="accordion-item">
-                      <div class="accordion-header">
-                        <button
-                          class="accordion-button"
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#component-{{ component.group_name }}"
-                          aria-expanded="true"
-                          aria-controls="component-{{ component.group_name }}"
-                        >
-                          {{component.group_label}}
-                        </button>
-                      </div>
-                      <div
-                        id="component-{{ component.group_name }}"
-                        class="accordion-collapse collapse"
-                        data-bs-parent="#fieldsAccordion">
-                        <div class="accordion-body">
-                          {% for field in component.fields %}
-                          <div id="term-{{field.name}}" class="card">
-                            {% if field.mandatory == "mandatory" %}
-                            <h5 class="card-header d-flex align-items-start">
-                              {{field.label}}
-                              <span class="badge bg-dark ms-auto">Required</span>
-                            </h5>
-                            {% else %}
-                            <h5 class="card-header">{{field.label}}</h5>
-                            {% endif %}
-                            <div class="card-body">
-                              <table class="table">
-                                <tr>
-                                  <td>Name</td>
-                                  <td>{{ field.name }}</td>
-                                </tr>
-                                <tr>
-                                  <td>Description</td>
-                                  <td>{{ field.description }}</td>
-                                </tr>
-                                {% if field.example %}
-                                <tr>
-                                  <td>Example</td>
-                                  <td>{{ field.example }}</td>
-                                </tr>
-                                {% endif %} {% if field.reference %}
-                                <tr>
-                                  <td>Reference</td>
-                                  <td>
-                                    <a href="{{ field.reference }}" target="_blank">
-                                      {{ field.reference }}
-                                    </a>
-                                  </td>
-                                </tr>
-                                {% endif %} {% if field.regex %}
-                                <tr>
-                                  <td>Regex</td>
-                                  <td>{{ field.regex }}</td>
-                                </tr>
-                                {% endif %} {% if field.namespace %}
-                                <tr>
-                                  <td>Namespace</td>
-                                  <td>
-                                    {% if field.reference %}
-                                    <a href="{{ field.reference }}" target="_blank">
-                                      {{ field.namespace }}
-                                    </a>
-                                    {% else %} {{ field.namespace }} {% endif %}
-                                  </td>
-                                </tr>
-                                {% endif %} {% if field.allowed_values|length > 0 %}
-                                <tr>
-                                  <td>Allowed Values</td>
-                                  <td>
-                                    {% for value in field.allowed_values %}
-                                    <span class="badge bg-dark">{{ value }}</span>
-                                    {% endfor %}
-                                  </td>
-                                </tr>
-                                {% endif %}
-                              </table>
-                            </div>
-                          </div>
-                          {% endfor %}
-                        </div>
-                      </div>
+        <div class="col-6">
+          <div class="accordion" id="fieldsAccordion">
+            <!-- Content here -->
+            {% for component in components %}
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#component-{{ component.group_name }}"
+                  aria-expanded="true"
+                  aria-controls="component-{{ component.group_name }}"
+                >
+                  {{component.group_label}}
+                </button>
+              </div>
+              <div
+                id="component-{{ component.group_name }}"
+                class="accordion-collapse collapse"
+                data-bs-parent="#fieldsAccordion">
+                <div class="accordion-body">
+                  {% for field in component.fields %}
+                  <div id="term-{{field.name}}" class="card">
+                    {% if field.mandatory == "mandatory" %}
+                    <h5 class="card-header d-flex align-items-start">
+                      {{field.label}}
+                      <span class="badge bg-dark ms-auto">Required</span>
+                    </h5>
+                    {% else %}
+                    <h5 class="card-header">{{field.label}}</h5>
+                    {% endif %}
+                    <div class="card-body">
+                      <table class="table">
+                        <tr>
+                          <td>Name</td>
+                          <td>{{ field.name }}</td>
+                        </tr>
+                        <tr>
+                          <td>Description</td>
+                          <td>{{ field.description }}</td>
+                        </tr>
+                        {% if field.example %}
+                        <tr>
+                          <td>Example</td>
+                          <td>{{ field.example }}</td>
+                        </tr>
+                        {% endif %} {% if field.reference %}
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a href="{{ field.reference }}" target="_blank">
+                              {{ field.reference }}
+                            </a>
+                          </td>
+                        </tr>
+                        {% endif %} {% if field.regex %}
+                        <tr>
+                          <td>Regex</td>
+                          <td>{{ field.regex }}</td>
+                        </tr>
+                        {% endif %} {% if field.namespace %}
+                        <tr>
+                          <td>Namespace</td>
+                          <td>
+                            {% if field.reference %}
+                            <a href="{{ field.reference }}" target="_blank">
+                              {{ field.namespace }}
+                            </a>
+                            {% else %} {{ field.namespace }} {% endif %}
+                          </td>
+                        </tr>
+                        {% endif %} {% if field.allowed_values|length > 0 %}
+                        <tr>
+                          <td>Allowed Values</td>
+                          <td>
+                            {% for value in field.allowed_values %}
+                            <span class="badge bg-dark">{{ value }}</span>
+                            {% endfor %}
+                          </td>
+                        </tr>
+                        {% endif %}
+                      </table>
                     </div>
-                    {% endfor %}
                   </div>
+                  {% endfor %}
                 </div>
-                <div class="col-3"></div>
-          
-          
-        </div>
-
-      </main>
-      <!-- Footer -->
-      <footer id="footerDiv" class="py-4">
-        <div class="container-fluid px-0">
-          <div class="row align-items-center justify-content-between mx-3">
-            
-            <!-- Logo and Institute Name -->
-            <div class="col-md-3 d-flex align-items-center mb-3 mb-md-0 ms-5">
-              <a href="https://www.earlham.ac.uk/">
-                <img src="../../images/ei_logo_white.png" alt="Earlham Institute logo" height="50" class="me-3">
-              </a>
-              <a href="https://copo-project.org/">
-              <img src="../../images/copo_logo_white.png" alt="Collaborative OPen Omics logo" height="50" class="me-3">
-              </a>
+              </div>
             </div>
-
-            <!-- Navigation Links -->
-            <div class="col-md-4 d-flex justify-content-center justify-content-start mb-3 mb-md-0 me-4">
-              <ul class="nav justify-content-center">
-                <li class="nav-item">
-                  <a id="footerAboutID"  href="#" class="nav-link px-2 text-white">About</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://copo-docs.readthedocs.io/en/latest/submissions/single-cell-submissions.html" class="nav-link px-2 text-white">Documentation</a>
-                </li>
-                <li class="nav-item">
-                  <a id="footerContactID" href="#" class="nav-link px-2 text-white">Contact</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://github.com/TGAC/SingleCellSchemas" class="nav-link px-2 text-white">GitHub repository</a>
-                </li>
-              </ul>
-            </div>
-            
-            <div class="col-md-2"></div>
-
-            <!-- Copyright info -->
-            <div class="col-md-2 d-flex me-5">
-              <small>© 2025. Developed by<br>
-                COPO at Earlham Institute.</small>
-            </div>
+            {% endfor %}
           </div>
         </div>
-      </footer>
-    </div> <!-- End of page-container -->
+        <div class="col-3"></div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer id="footerDiv" class="py-4">
+      <div class="container-fluid px-0">
+        <div class="row align-items-center footer-row w-100">
+          <!-- Logos-->
+          <div class="col d-flex align-items-center justify-content-start ms-5">
+            <a href="https://www.earlham.ac.uk/">
+              <img src="../../images/ei_logo_white.png" alt="Earlham Institute logo" height="50" class="me-3">
+            </a>
+            <a href="https://copo-project.org/">
+            <img src="../../images/copo_logo_white.png" alt="Collaborative OPen Omics logo" height="50" class="me-3">
+            </a>
+          </div>
 
+          <!-- Navigation links -->
+          <div class="col-auto footer-nav">
+            <ul class="nav justify-content-center">
+              <li class="nav-item">
+                <a id="footerAboutID"  href="#" class="nav-link px-2">About</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://copo-docs.readthedocs.io/en/latest/submissions/single-cell-submissions.html" class="nav-link px-2">Documentation</a>
+              </li>
+              <li class="nav-item">
+                <a id="footerContactID" href="#" class="nav-link px-2">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://github.com/TGAC/SingleCellSchemas" class="nav-link px-2">GitHub repository</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Copyright details -->
+          <div class="col d-flex justify-content-end me-5">
+            <small>© 2025. Developed by<br>
+              COPO at Earlham Institute.</small>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
     <!-- Navigate to top of web page button -->
     <a href="javascript:void(0);" id="navigateToTop" class="navigate-to-top"
       title="Navigate to top of the web page">
