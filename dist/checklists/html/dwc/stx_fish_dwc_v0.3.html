@@ -5,7 +5,7 @@
     <meta name="version" content="v0.3">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="COPO project team">
-    <meta name="description" content="SingleCellSchemas contains metadata mappings and schemas for Single-cell genomics and Spatial Transcriptomics experiments, developed by Collaborative OPen Omics (COPO) at the Earlham Institute.">
+    <meta name="description" content="The Single-cell Schemas website contains terms, descriptions, examples and references of metadata used in Single-cell and Spatial Transcriptomics experiments. It was developed by Collaborative OPen Omics (COPO) team at the Earlham Institute.">
 
     <link href="../../../images/favicon.ico" type="image/x-icon" rel="icon">
     <title>Single-cell Schemas</title>
@@ -19,7 +19,16 @@
     <!-- Top navigation bar -->
     <nav id="navbarID" class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <div id="navbarSupportedContent" class="collapse navbar-collapse justify-content-end">
+        <!-- Website title (left aligned) -->
+        <a href="../../../checklists/html/index.html" target="_self" class="navbar-brand mb-0 h1 header-title">Single-cell Schemas</a>
+        
+        <!-- Navbar toggle button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navIcons">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content (right aligned) -->
+        <div id="navIcons" class="collapse navbar-collapse collapsed-icons justify-content-end">
           <ul class="navbar-nav d-flex align-items-center pe-3">
             <!-- Search icon -->
             <li class="nav-item" title="Search web page">
@@ -53,10 +62,7 @@
         </div>
       </div>
     </nav>
-    <!-- Header content -->
-    <div class="header-div">
-      <h1>Single-cell Schemas</h1>
-    </div>
+
     <!-- Main content -->
     <div class="main-content container-fluid">
       <div class="row body-container">
@@ -75,7 +81,7 @@
                   </i>
                 </label>
                 <select class="form-select" id="stdDropdown" data-bs-placement="right" 
-                  data-bs-trigger="hover" data-bs-toggle="tooltip" title="">
+                  data-bs-trigger="hover" data-bs-toggle="tooltip">
                   
                     <option value="dwc">Darwin Core (DwC)</option>
                   
@@ -126,7 +132,6 @@
             </form>
           </div>
         </div>
-
         <div class="col-6">
           <div class="accordion" id="fieldsAccordion">
             <!-- Content here -->
@@ -172,19 +177,33 @@
                           <td>Example</td>
                           <td>A7F9B3X2</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[a-zA-Z0-9]+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:study_id 
+                            <a href="#" 
+                              target="_self">ei:study_id
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -211,27 +230,28 @@
                           <td>Example</td>
                           <td>Study of single cells in the human body</td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Reference</td>
                           <td>
-                            <a href="http://purl.org/dc/terms/title" target="_blank">
+                            <a class="field-reference" href="http://purl.org/dc/terms/title" 
+                              target="_blank">
                               http://purl.org/dc/terms/title
                             </a>
                           </td>
                         </tr>
-                          
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                            
-                            <a href="http://purl.org/dc/terms/title" target="_blank">
-                              dcterms:title
+                            <a href="http://purl.org/dc/terms/title" 
+                              target="_blank">dcterms:title
                             </a>
-                            
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -255,14 +275,28 @@
                           <td>Example</td>
                           <td>Laser microdissection</td>
                         </tr>
-                           
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:workflow 
+                            <a href="#" 
+                              target="_self">ei:workflow
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Allowed Values</td>
                           <td>
@@ -309,14 +343,28 @@
                           <td>Example</td>
                           <td>MIT License</td>
                         </tr>
-                           
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:licence 
+                            <a href="#" 
+                              target="_self">ei:licence
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Allowed Values</td>
                           <td>
@@ -385,19 +433,33 @@
                           <td>Example</td>
                           <td>A7F9B3X2</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[a-zA-Z0-9]+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:study_id 
+                            <a href="#" 
+                              target="_self">ei:study_id
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -421,19 +483,33 @@
                           <td>Example</td>
                           <td>0000-1234-5678-9012</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^\d{4}-\d{4}-\d{4}-\d{4}$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:orcid_id 
+                            <a href="#" 
+                              target="_self">ei:orcid_id
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -460,32 +536,33 @@
                           <td>Example</td>
                           <td>Jane</td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Reference</td>
                           <td>
-                            <a href="https://schema.org/givenName" target="_blank">
+                            <a class="field-reference" href="https://schema.org/givenName" 
+                              target="_blank">
                               https://schema.org/givenName
                             </a>
                           </td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[A-Za-z]+(?:[-\s][A-Za-z]+)*[a-z]+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                            
-                            <a href="https://schema.org/givenName" target="_blank">
-                              schema.org:givenName
+                            <a href="https://schema.org/givenName" 
+                              target="_blank">schema.org:givenName
                             </a>
-                            
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -512,32 +589,33 @@
                           <td>Example</td>
                           <td>Doe</td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Reference</td>
                           <td>
-                            <a href="https://schema.org/familyName" target="_blank">
+                            <a class="field-reference" href="https://schema.org/familyName" 
+                              target="_blank">
                               https://schema.org/familyName
                             </a>
                           </td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[A-Za-z]+(-[A-Za-z]+)*[a-z]+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                            
-                            <a href="https://schema.org/familyName" target="_blank">
-                              schema.org:familyName
+                            <a href="https://schema.org/familyName" 
+                              target="_blank">schema.org:familyName
                             </a>
-                            
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -561,32 +639,33 @@
                           <td>Example</td>
                           <td>jane.doe@example.com</td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Reference</td>
                           <td>
-                            <a href="https://schema.org/email" target="_blank">
+                            <a class="field-reference" href="https://schema.org/email" 
+                              target="_blank">
                               https://schema.org/email
                             </a>
                           </td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^(?!.*\.{2,})(?!.*-{2,})[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                            
-                            <a href="https://schema.org/email" target="_blank">
-                              schema.org:email
+                            <a href="https://schema.org/email" 
+                              target="_blank">schema.org:email
                             </a>
-                            
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -613,32 +692,33 @@
                           <td>Example</td>
                           <td>University of Liverpool</td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Reference</td>
                           <td>
-                            <a href="https://schema.org/affiliation" target="_blank">
+                            <a class="field-reference" href="https://schema.org/affiliation" 
+                              target="_blank">
                               https://schema.org/affiliation
                             </a>
                           </td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                            
-                            <a href="https://schema.org/affiliation" target="_blank">
-                              schema.org:affiliation
+                            <a href="https://schema.org/affiliation" 
+                              target="_blank">schema.org:affiliation
                             </a>
-                            
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -662,27 +742,28 @@
                           <td>Example</td>
                           <td>BBSRC</td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Reference</td>
                           <td>
-                            <a href="https://schema.org/funder" target="_blank">
+                            <a class="field-reference" href="https://schema.org/funder" 
+                              target="_blank">
                               https://schema.org/funder
                             </a>
                           </td>
                         </tr>
-                          
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                            
-                            <a href="https://schema.org/funder" target="_blank">
-                              schema.org:funder
+                            <a href="https://schema.org/funder" 
+                              target="_blank">schema.org:funder
                             </a>
-                            
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -706,32 +787,33 @@
                           <td>Example</td>
                           <td>GRAK3489</td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Reference</td>
                           <td>
-                            <a href="https://schema.org/funding" target="_blank">
+                            <a class="field-reference" href="https://schema.org/funding" 
+                              target="_blank">
                               https://schema.org/funding
                             </a>
                           </td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[A-Za-z0-9]+(?: [A-Za-z0-9]+)*$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                            
-                            <a href="https://schema.org/funding" target="_blank">
-                              schema.org:funding
+                            <a href="https://schema.org/funding" 
+                              target="_blank">schema.org:funding
                             </a>
-                            
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -781,19 +863,33 @@
                           <td>Example</td>
                           <td>A7F9B3X2</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[a-zA-Z0-9]+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:study_id 
+                            <a href="#" 
+                              target="_self">ei:study_id
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -820,19 +916,33 @@
                           <td>Example</td>
                           <td>sample123</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[a-zA-Z0-9]+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:sample_id 
+                            <a href="#" 
+                              target="_self">ei:sample_id
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -856,32 +966,33 @@
                           <td>Example</td>
                           <td>Salvelinus alpinus</td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Reference</td>
                           <td>
-                            <a href="http://rs.tdwg.org/dwc/terms/scientificName" target="_blank">
+                            <a class="field-reference" href="http://rs.tdwg.org/dwc/terms/scientificName" 
+                              target="_blank">
                               http://rs.tdwg.org/dwc/terms/scientificName
                             </a>
                           </td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                            
-                            <a href="http://rs.tdwg.org/dwc/terms/scientificName" target="_blank">
-                              ei:scientific_name
+                            <a href="http://rs.tdwg.org/dwc/terms/scientificName" 
+                              target="_blank">ei:scientific_name
                             </a>
-                            
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -908,32 +1019,33 @@
                           <td>Example</td>
                           <td>8036</td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Reference</td>
                           <td>
-                            <a href="http://rs.tdwg.org/dwc/terms/taxonID" target="_blank">
+                            <a class="field-reference" href="http://rs.tdwg.org/dwc/terms/taxonID" 
+                              target="_blank">
                               http://rs.tdwg.org/dwc/terms/taxonID
                             </a>
                           </td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[0-9]+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                            
-                            <a href="http://rs.tdwg.org/dwc/terms/taxonID" target="_blank">
-                              ei:taxon_id
+                            <a href="http://rs.tdwg.org/dwc/terms/taxonID" 
+                              target="_blank">ei:taxon_id
                             </a>
-                            
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -960,27 +1072,28 @@
                           <td>Example</td>
                           <td>SAMEA12907823</td>
                         </tr>
-                         
+                        
                         <tr>
                           <td>Reference</td>
                           <td>
-                            <a href="http://purl.obolibrary.org/obo/T4FS_0000316" target="_blank">
+                            <a class="field-reference" href="http://purl.obolibrary.org/obo/T4FS_0000316" 
+                              target="_blank">
                               http://purl.obolibrary.org/obo/T4FS_0000316
                             </a>
                           </td>
                         </tr>
-                          
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                            
-                            <a href="http://purl.obolibrary.org/obo/T4FS_0000316" target="_blank">
-                              ei:biosampleAccession
+                            <a href="http://purl.obolibrary.org/obo/T4FS_0000316" 
+                              target="_blank">ei:biosampleAccession
                             </a>
-                            
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1030,19 +1143,33 @@
                           <td>Example</td>
                           <td>A7F9B3X2</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[a-zA-Z0-9]+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:study_id 
+                            <a href="#" 
+                              target="_self">ei:study_id
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1069,19 +1196,33 @@
                           <td>Example</td>
                           <td>img123</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[a-zA-Z0-9]+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:imaging_protocol_id 
+                            <a href="#" 
+                              target="_self">ei:imaging_protocol_id
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1108,14 +1249,28 @@
                           <td>Example</td>
                           <td>Illumina NovaSeq</td>
                         </tr>
-                           
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:platform 
+                            <a href="#" 
+                              target="_self">ei:platform
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1142,14 +1297,28 @@
                           <td>Example</td>
                           <td>Illumina NovaSeq 6000</td>
                         </tr>
-                           
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:instrument 
+                            <a href="#" 
+                              target="_self">ei:instrument
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1176,14 +1345,28 @@
                           <td>Example</td>
                           <td>Oligo-dT</td>
                         </tr>
-                           
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:target_probe_code 
+                            <a href="#" 
+                              target="_self">ei:target_probe_code
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1207,19 +1390,33 @@
                           <td>Example</td>
                           <td>10</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^\d+(\.\d+)?$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:section_thickness_µm 
+                            <a href="#" 
+                              target="_self">ei:section_thickness_µm
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1243,14 +1440,28 @@
                           <td>Example</td>
                           <td>Microtome</td>
                         </tr>
-                           
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:section_thickness_measurement_method 
+                            <a href="#" 
+                              target="_self">ei:section_thickness_measurement_method
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1274,19 +1485,33 @@
                           <td>Example</td>
                           <td>22</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^-?\d+(\.\d+)?$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:section_thickness_temperature 
+                            <a href="#" 
+                              target="_self">ei:section_thickness_temperature
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1310,14 +1535,28 @@
                           <td>Example</td>
                           <td>No</td>
                         </tr>
-                           
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:is_pathological 
+                            <a href="#" 
+                              target="_self">ei:is_pathological
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Allowed Values</td>
                           <td>
@@ -1352,19 +1591,33 @@
                           <td>Example</td>
                           <td>2</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^\d+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:photobleaching_duration_in_hours 
+                            <a href="#" 
+                              target="_self">ei:photobleaching_duration_in_hours
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1391,19 +1644,33 @@
                           <td>Example</td>
                           <td>24 hrs</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^\d+(\.\d+)?\s*(hrs?|days?|mins?|seconds?)$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:clearing_with_proteinasek 
+                            <a href="#" 
+                              target="_self">ei:clearing_with_proteinasek
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1430,19 +1697,33 @@
                           <td>Example</td>
                           <td>4.5 days</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^\d+(\.\d+)?\s*(hrs?|days?|mins?|seconds?)$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:clearing_without_proteinasek 
+                            <a href="#" 
+                              target="_self">ei:clearing_without_proteinasek
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1469,19 +1750,33 @@
                           <td>Example</td>
                           <td>User Guide</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:instrument_user_guide 
+                            <a href="#" 
+                              target="_self">ei:instrument_user_guide
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1508,19 +1803,33 @@
                           <td>Example</td>
                           <td>1.2</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^\d+(\.\d+)?$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:instrument_user_guide_revision 
+                            <a href="#" 
+                              target="_self">ei:instrument_user_guide_revision
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1547,19 +1856,33 @@
                           <td>Example</td>
                           <td>preparation_guide_v1.0.pdf</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[A-Za-z0-9._-]*[a-z]+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:sample_preparation_guide 
+                            <a href="#" 
+                              target="_self">ei:sample_preparation_guide
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1586,19 +1909,33 @@
                           <td>Example</td>
                           <td>1.0</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^\d+(\.\d+)?$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:sample_preparation_guide_revision 
+                            <a href="#" 
+                              target="_self">ei:sample_preparation_guide_revision
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1625,14 +1962,28 @@
                           <td>Example</td>
                           <td>Temperature exceeded 25°C during storage | Sample handling delayed by 2 hours</td>
                         </tr>
-                           
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:deviations_from_official_protocol 
+                            <a href="#" 
+                              target="_self">ei:deviations_from_official_protocol
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1682,19 +2033,33 @@
                           <td>Example</td>
                           <td>A7F9B3X2</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[a-zA-Z0-9]+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:study_id 
+                            <a href="#" 
+                              target="_self">ei:study_id
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1721,19 +2086,33 @@
                           <td>Example</td>
                           <td>img123</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[a-zA-Z0-9]+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:imaging_protocol_id 
+                            <a href="#" 
+                              target="_self">ei:imaging_protocol_id
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1760,19 +2139,33 @@
                           <td>Example</td>
                           <td>A7F9B3X2</td>
                         </tr>
-                          
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
                         <tr>
                           <td>Regex</td>
                           <td>^[a-zA-Z0-9]+$</td>
                         </tr>
-                         
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:file_id 
+                            <a href="#" 
+                              target="_self">ei:file_id
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1799,14 +2192,28 @@
                           <td>Example</td>
                           <td>file001</td>
                         </tr>
-                           
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:file_name 
+                            <a href="#" 
+                              target="_self">ei:file_name
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>
@@ -1833,14 +2240,28 @@
                           <td>Example</td>
                           <td>fastq</td>
                         </tr>
-                           
+                        
+                        <tr>
+                          <td>Reference</td>
+                          <td>
+                            <a class="field-reference" href="#" 
+                              target="_self">
+                              #
+                            </a>
+                          </td>
+                        </tr>
+                        
+                        
                         <tr>
                           <td>Namespace</td>
                           <td>
-                             ei:file_type 
+                            <a href="#" 
+                              target="_self">ei:file_type
+                            </a>
                           </td>
                         </tr>
-                         
+                        
+                        
                       </table>
                     </div>
                   </div>

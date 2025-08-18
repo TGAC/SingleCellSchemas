@@ -5,7 +5,7 @@
     <meta name="version" content="{{ version }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="COPO project team">
-    <meta name="description" content="SingleCellSchemas contains metadata mappings and schemas for Single-cell genomics and Spatial Transcriptomics experiments, developed by Collaborative OPen Omics (COPO) at the Earlham Institute.">
+    <meta name="description" content="The Single-cell Schemas website contains terms, descriptions, examples and references of metadata used in Single-cell and Spatial Transcriptomics experiments. It was developed by Collaborative OPen Omics (COPO) team at the Earlham Institute.">
 
     <link href="{{ rel_path_traverse }}images/favicon.ico" type="image/x-icon" rel="icon">
     <title>Single-cell Schemas</title>
@@ -19,7 +19,16 @@
     <!-- Top navigation bar -->
     <nav id="navbarID" class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <div id="navbarSupportedContent" class="collapse navbar-collapse justify-content-end">
+        <!-- Website title (left aligned) -->
+        <a href="{{ rel_path_traverse }}checklists/html/index.html" target="_self" class="navbar-brand mb-0 h1 header-title">Single-cell Schemas</a>
+        
+        <!-- Navbar toggle button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navIcons">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content (right aligned) -->
+        <div id="navIcons" class="collapse navbar-collapse collapsed-icons justify-content-end">
           <ul class="navbar-nav d-flex align-items-center pe-3">
             <!-- Search icon -->
             <li class="nav-item" title="Search web page">
@@ -53,10 +62,7 @@
         </div>
       </div>
     </nav>
-    <!-- Header content -->
-    <div class="header-div">
-      <h1>Single-cell Schemas</h1>
-    </div>
+
     <!-- Main content -->
     <div class="main-content container-fluid">
       <div class="row body-container">
@@ -75,7 +81,7 @@
                   </i>
                 </label>
                 <select class="form-select" id="stdDropdown" data-bs-placement="right" 
-                  data-bs-trigger="hover" data-bs-toggle="tooltip" title="">
+                  data-bs-trigger="hover" data-bs-toggle="tooltip">
                   {% for key, value in standards.items() %}
                     <option value="{{ key }}">{{ value }}</option>
                   {% endfor %}
@@ -116,7 +122,6 @@
             </form>
           </div>
         </div>
-
         <div class="col-6">
           <div class="accordion" id="fieldsAccordion">
             <!-- Content here -->
@@ -164,32 +169,33 @@
                           <td>Example</td>
                           <td>{{ field.example }}</td>
                         </tr>
-                        {% endif %} {% if field.reference %}
+                        {% endif %}
                         <tr>
                           <td>Reference</td>
                           <td>
-                            <a href="{{ field.reference }}" target="_blank">
-                              {{ field.reference }}
+                            <a class="field-reference" href="{% if field.reference %}{{ field.reference }}{% else %}#{% endif %}" 
+                              target="{% if field.reference %}_blank{% else %}_self{% endif %}">
+                              {% if field.reference %}{{ field.reference }}{% else %}#{% endif %}
                             </a>
                           </td>
                         </tr>
-                        {% endif %} {% if field.regex %}
+                        {% if field.regex %}
                         <tr>
                           <td>Regex</td>
                           <td>{{ field.regex }}</td>
                         </tr>
-                        {% endif %} {% if field.namespace %}
+                        {% endif %}
+                        {% if field.namespace %}
                         <tr>
                           <td>Namespace</td>
                           <td>
-                            {% if field.reference %}
-                            <a href="{{ field.reference }}" target="_blank">
-                              {{ field.namespace }}
+                            <a href="{% if field.reference %}{{ field.reference }}{% else %}#{% endif %}" 
+                              target="{% if field.reference %}_blank{% else %}_self{% endif %}">{{ field.namespace }}
                             </a>
-                            {% else %} {{ field.namespace }} {% endif %}
                           </td>
                         </tr>
-                        {% endif %} {% if field.allowed_values|length > 0 %}
+                        {% endif %}
+                        {% if field.allowed_values|length > 0 %}
                         <tr>
                           <td>Allowed Values</td>
                           <td>

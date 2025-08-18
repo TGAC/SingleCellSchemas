@@ -3,6 +3,7 @@ $(document).ready(function () {
 
   // Load values from the dropdown menu
   loadSelectedValues();
+  openAccordionFromHash();
 
   // Load modals
   handleModals();
@@ -177,24 +178,55 @@ $(document).ready(function () {
 });
 
 function loadSelectedValues() {
-  let urlParams = new URLSearchParams(window.location.search);
-
   // Set the value of the dropdown menu options
   // if it exists in the URL parameters
   function updateDropdown(selector, paramName, defaultValue) {
+    let urlParams = new URLSearchParams(window.location.search);
     let value = urlParams.get(paramName) || defaultValue;
     let $dropdown = $(selector);
+    let option = `option[value="${value}"]`;
 
-    if (value !== null && $dropdown.find(`option[value="${value}"]`).length) {
+    if (value !== null && $dropdown.find(option).length) {
       $dropdown.val(value);
+      $dropdown.attr('title', $dropdown.find(option).text());
     }
   }
 
-  // Apply to both dropdowns
+  // Set dropdowns based on URL
   updateDropdown('#stdDropdown', 'stdDropdown', 'dwc');
   updateDropdown('#techDropdown', 'techDropdown', 'sc_rnaseq');
-  updateUrlWithParams(); // Update the URL with the selected parameters
+
+  // Update URL and rebuild content
+  updateUrlWithParams();
   updateContentBasedOnSelection();
+
+  // Open accordion if hash exists once new content is rendered
+  const observer = new MutationObserver(() => {
+    if (openAccordionFromHash()) {
+      observer.disconnect();
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  // Handle navigation changes (e.g. back/forward navigation or a pasted URL)
+  window.addEventListener('popstate', () => {
+    // Reload dropdowns and content
+    updateDropdown('#stdDropdown', 'stdDropdown', 'dwc');
+    updateDropdown('#techDropdown', 'techDropdown', 'sc_rnaseq');
+    updateContentBasedOnSelection();
+
+    // Try to open the accordion after new content has loaded
+    const obs = new MutationObserver(() => {
+      if (openAccordionFromHash()) {
+        obs.disconnect();
+      }
+    });
+    obs.observe(document.body, { childList: true, subtree: true });
+  });
+
+  // Re-run when hash changes i.e when a user clicks an internal reference
+  window.addEventListener('hashchange', openAccordionFromHash);
 }
 
 function getOutputFileName() {
@@ -568,9 +600,7 @@ function loadEmailModal() {
             }
           });
         })
-        .catch((error) =>
-          console.error('Error loading email modal:', error)
-        );
+        .catch((error) => console.error('Error loading email modal:', error));
     });
   });
 }
@@ -603,22 +633,87 @@ function showWarningModal() {
     .catch((error) => console.error('Error loading error modal:', error));
 }
 
-function updateUrlWithParams() {
+function openAccordionFromHash() {
+  // Open accordion based on hash
+  const hash = decodeURIComponent(window.location.hash.slice(1));
+  if (!hash) return false;
+
+  function tryOpen() {
+    // Expect a format like "component-xxxx&term-yyyy"
+    const [accordionComponentId, accordionItemId] = hash.split('&');
+    if (!accordionComponentId || !accordionItemId) return false;
+
+    const component = document.getElementById(accordionComponentId);
+    const term = document.getElementById(accordionItemId);
+    if (!component || !term) return false;
+
+    // Open/expand accordion if it is collapsed
+    if (!component.classList.contains('show')) {
+      const button =
+        component.previousElementSibling?.querySelector('.accordion-button');
+      const onShown = () => {
+        term.scrollIntoView({ behavior: 'auto', block: 'start' });
+        component.removeEventListener('shown.bs.collapse', onShown);
+      };
+
+      component.addEventListener('shown.bs.collapse', onShown, { once: true });
+      button.click();
+    } else {
+      // Scroll instantly to the accordion item if accordion
+      // if it is already opened/expanded
+      term.scrollIntoView({ behavior: 'auto', block: 'start' });
+    }
+    return true;
+  }
+
+  // Try to open the accordion immediately
+  if (tryOpen()) return true;
+
+  // Observe the DOM for dynamically loaded content
+  const observer = new MutationObserver(() => {
+    if (tryOpen()) {
+      observer.disconnect();
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+  return false;
+}
+
+function updateUrlWithParams({ method = 'replace', preserveHash = true } = {}) {
+  // Update URL with dropdown values
   // Get current query parameters from the URL
-  let currentParams = new URLSearchParams(window.location.search);
+  // let currentParams = new URLSearchParams(window.location.search);
+
+  // // Get the values from the dropdown menus
+  // let standard = $('#stdDropdown').val();
+  // let technology = $('#techDropdown').val();
+
+  // currentParams.set('stdDropdown', standard);
+  // currentParams.set('techDropdown', technology);
+
+  // // Construct the new URL with only the query parameters
+  // let newUrl = window.location.pathname + '?' + currentParams.toString();
+
+  // // Use history.pushState to update the URL without reloading the page
+  // history.pushState(null, '', newUrl);
+
+  const url = new URL(window.location.href);
 
   // Get the values from the dropdown menus
   let standard = $('#stdDropdown').val();
   let technology = $('#techDropdown').val();
 
-  currentParams.set('stdDropdown', standard);
-  currentParams.set('techDropdown', technology);
+  url.searchParams.set('stdDropdown', standard);
+  url.searchParams.set('techDropdown', technology);
 
-  // Construct the new URL with only the query parameters
-  let newUrl = window.location.pathname + '?' + currentParams.toString();
+  if (!preserveHash) url.hash = '';
 
-  // Use history.pushState to update the URL without reloading the page
-  history.pushState(null, '', newUrl);
+  // Update URL with dropdown values with 'push' method and
+  // 'history.pushState' without reloading the page
+  // or use history.replaceState if replace method is used
+  const fn = method === 'push' ? history.pushState : history.replaceState;
+  fn.call(history, null, '', url.toString());
 }
 
 // Dynamically load and update content based on selected filters
@@ -688,14 +783,6 @@ function updateContentBasedOnSelection() {
                         : ''
                     }
                     ${
-                      field.reference
-                        ? `
-                          <tr><td>Reference</td><td>
-                              <a href="${field.reference}" target="_blank">${field.reference}</a>
-                          </td></tr>`
-                        : ''
-                    }
-                    ${
                       field.regex
                         ? `<tr><td>Regex</td><td>${field.regex}</td></tr>`
                         : ''
@@ -703,12 +790,12 @@ function updateContentBasedOnSelection() {
                     ${
                       field.namespace
                         ? `
-                          <tr><td>Namespace</td><td>
-                              ${
-                                field.reference
-                                  ? `<a href="${field.reference}" target="_blank">${field.namespace}</a>`
-                                  : field.namespace
-                              }
+                          <tr><td>Namespace</td>
+                          <td><a href="${field.reference || '#'}"
+                              title="${field.reference || '#'}"
+                              target="${
+                                field.reference ? '_blank' : '_self'
+                              }">${field.namespace}</a>
                           </td></tr>`
                         : ''
                     }
@@ -739,7 +826,39 @@ function updateContentBasedOnSelection() {
       fieldsAccordion.append(accordionItem);
     });
   }
-  //  Reinitialise UI components
-  initialiseUIComponents();
-  updateUrlWithParams(); // Update the URL with the selected parameters
+
+  initialiseUIComponents(); //  Reinitialise UI components
+  updateUrlWithParams(); // Update the URL with selected parameters
+  addMissingHrefToReferences(); // Add 'href' attribute link to missing references
+  openAccordionFromHash(); // Open accordion based on URL hash
+}
+
+function addMissingHrefToReferences() {
+  // Select all links inside the rows of the accordion table
+  const links = document.querySelectorAll('tr td a');
+
+  links.forEach((link) => {
+    const href = link.getAttribute('href');
+    const target = link.getAttribute('target');
+
+    // If href link exists then, set it as the current page URL + component ID & term ID
+    // for the accordion item
+    if (href === '#' && target === '_self') {
+      // Find the closest accordion-body to get its ID
+      const accordionBody = link.closest('.accordion-body');
+      if (accordionBody) {
+        const accordionItem = link.closest('.card[id]');
+        const component = link.closest('.accordion-collapse[id]');
+        if (accordionItem && component) {
+          const termId = accordionItem.id; // e.g. "term-study_id"
+          const compId = component.id; // e.g. "component-study"
+
+          link.href = `${
+            window.location.href.split('#')[0]
+          }#${compId}&${termId}`;
+          link.title = link.href;
+        }
+      }
+    }
+  });
 }
