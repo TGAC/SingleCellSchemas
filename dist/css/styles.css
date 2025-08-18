@@ -3,7 +3,7 @@
 }
 
 :root {
-  --nav-h: 57.7031px;
+  --nav-h: 98px; /*57.7031px;*/
 }
 
 /* Consistent box sizing */
@@ -57,10 +57,11 @@ body {
 .header-title {
   color: white !important;
   padding: 30px;
-  font-size: 30px !important;
+  font-size: 35px !important;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  font-weight: bold !important;
 }
 
 .header-icon {
@@ -74,7 +75,6 @@ body {
   width: 100%;
   z-index: 999; /* Keeps navbar above other elements */
   height: var(--nav-h);
-  padding: 0;
   box-sizing: border-box;
 }
 
