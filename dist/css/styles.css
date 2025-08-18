@@ -57,6 +57,10 @@ body {
 .header-title {
   color: white !important;
   padding: 30px;
+  font-size: 30px !important;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .header-icon {
