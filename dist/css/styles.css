@@ -151,6 +151,11 @@ body {
   color: white !important;
 }
 
+small > a {
+  color: transparent;
+  text-decoration: none;
+}
+
 #docSelectForm {
   margin-left: 20px;
 }

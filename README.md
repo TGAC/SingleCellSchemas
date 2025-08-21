@@ -1,18 +1,18 @@
-# SingleCellSchema
+# SingleCellSchemas
 
-The **SingleCellSchema** repository houses developments related to Earlham Institute's (EI’s) CELLGEN ISP metadata mapping and schemas, designed to describe a variety of Single Cell Genomics and Spatial Transcriptomics experiment types, such as those from 10X Genomics and Vizgen. It is developed by the Collaborative OPen Omics (COPO) team based at the Earlham Institute.
+The **SingleCellSchemas** repository houses developments related to Earlham Institute's (EI’s) CELLGEN ISP metadata mapping and schemas, designed to describe a variety of Single Cell Genomics and Spatial Transcriptomics experiment types, such as those from 10X Genomics and Vizgen. It is developed by the Collaborative OPen Omics (COPO) team based at the Earlham Institute.
 
-Visit the SingleCellSchema website at https://singlecellschemas.org.
+Visit the SingleCellSchemas website at https://singlecellschemas.org.
 
 ---
 
-The **SingleCellSchema** repository contains the following directories:
+The **SingleCellSchemas** repository contains the following directories:
 
 - `dist`: contains the output files generated from the conversion process.
 
 - `schemas`: contains the xlsx base versions of the schema.
 
-- `utils`: contains Python helper scripts to convert the base XLSX file into formats such as HTML, XML and XLSX.
+- `utils`: contains Python helper scripts to convert the base XLSX file into formats such as HTML, JSON, XML and XLSX.
 
 The `update_and_convert_schema.py` script is responsible for updating the XLSX base schema files located in the `schemas` directory and generating corresponding YAML and JSON files based on the XLSX file. The script is located in the `utils` directory.
 
@@ -50,9 +50,11 @@ Please follow the instructions below to convert the XLSX schema into an xlsx, xm
 
    `pip3 install -r requirements.txt`
 
-5. Different ways to run the `convert.py` script which is found in the project root directory
+5. Run the `convert.py` script
 
-   - Use `launch.xlsx` file to run the script in VSCode by selecting the appropriate configuration
+   The script is located in the project root directory and can be run in several ways:
+
+   - Use the `launch.json` file in the `.vscode` directory in VS Code and select the appropriate configuration
 
      --**OR**--
 
@@ -92,7 +94,7 @@ Please follow the instructions below to convert the XLSX schema into an xlsx, xm
 
 ## Additional resources
 
-- [Single-cell website](https://singlecellschemas.org/) - _The official website for this SingleCellSchema repository_
+- [Single-cell website](https://singlecellschemas.org/) - _The official website for this repository_
 
 - [Single-cell submission documentation](https://copo-docs.readthedocs.io/en/latest/submissions/single-cell-submissions.html)
 

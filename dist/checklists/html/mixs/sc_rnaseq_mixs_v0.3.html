@@ -42,7 +42,7 @@
             <li class="nav-item" title="View documentation">
               <a class="nav-link" 
                 href="https://copo-docs.readthedocs.io/en/latest/submissions/single-cell-submissions.html" 
-                target="_blank" aria-label="Documentation" title="View documentation">
+                target="_blank" rel="noopener noreferrer" aria-label="Documentation" title="View documentation">
                 <i id="docIconID" class="fa fa-book-open" aria-hidden="true"></i>
               </a>
             </li>
@@ -54,7 +54,7 @@
             <li class="nav-item" title="View GitHub repository">
               <a class="github-link nav-link" 
                 href="https://github.com/TGAC/SingleCellSchemas" target="_blank" 
-                title="View GitHub repository">
+                rel="noopener noreferrer" title="View GitHub repository">
                 <i id="githubIconID" class="fa-brands fa-github" aria-hidden="true"></i>
               </a>
             </li>
@@ -9927,11 +9927,11 @@ dataset.</td>
         <div class="row align-items-center footer-row w-100">
           <!-- Logos-->
           <div class="col d-flex align-items-center justify-content-start ms-5">
-            <a href="https://www.earlham.ac.uk/">
+            <a href="https://www.earlham.ac.uk" target="_blank" rel="noopener noreferrer">
               <img src="../../images/ei_logo_white.png" alt="Earlham Institute logo" height="50" class="me-3">
             </a>
-            <a href="https://copo-project.org/">
-            <img src="../../images/copo_logo_white.png" alt="Collaborative OPen Omics logo" height="50" class="me-3">
+            <a href="https://copo-project.org" target="_blank" rel="noopener noreferrer">
+            <img src="../../images/copo_logo_white.png" alt="Collaborative OPen Omics logo" height="70" class="me-3">
             </a>
           </div>
 
@@ -9942,21 +9942,25 @@ dataset.</td>
                 <a id="footerAboutID"  href="#" class="nav-link px-2">About</a>
               </li>
               <li class="nav-item">
-                <a href="https://copo-docs.readthedocs.io/en/latest/submissions/single-cell-submissions.html" class="nav-link px-2">Documentation</a>
+                <a href="https://copo-docs.readthedocs.io/en/latest/submissions/single-cell-submissions.html" target="_blank" class="nav-link px-2" rel="noopener noreferrer">Documentation</a>
               </li>
               <li class="nav-item">
                 <a id="footerContactID" href="#" class="nav-link px-2">Contact</a>
               </li>
               <li class="nav-item">
-                <a href="https://github.com/TGAC/SingleCellSchemas" class="nav-link px-2">GitHub repository</a>
+                <a href="https://github.com/TGAC/SingleCellSchemas" target="_blank" class="nav-link px-2" rel="noopener noreferrer">GitHub repository</a>
               </li>
             </ul>
           </div>
 
-          <!-- Copyright details -->
+          <!-- Licence details -->
           <div class="col d-flex justify-content-end me-5">
-            <small>© 2025. Developed by<br>
-              COPO at Earlham Institute.</small>
+            <small>
+              <a href="https://raw.githubusercontent.com/TGAC/SingleCellSchemas/refs/heads/main/LICENSE" target="_blank" rel="noopener noreferrer">
+                <img src="../../images/licence-mit.svg" alt="MIT Licence badge">
+              </a>&nbsp;2025. Developed by<br>
+              COPO at Earlham Institute.
+            </small>
           </div>
         </div>
       </div>
