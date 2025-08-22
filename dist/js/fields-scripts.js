@@ -265,7 +265,7 @@ function populateInfoModalContent() {
     }
   }
 
-  // Insert data into the modal body (Ensure these IDs exist in info_modal.html)
+  // Insert data into the modal body (Ensure these IDs exist in info-modal.html)
   document.getElementById('singleCellInfoModalListID').innerHTML =
     scInfoModalContent;
   document.getElementById('stxInfoModalListID').innerHTML = stxInfoModalContent;
@@ -290,7 +290,7 @@ function loadInfoModal() {
       event.preventDefault();
 
       // Load the modal HTML dynamically
-      fetch(`${relPathTraverse}templates/info_modal.html`)
+      fetch(`${relPathTraverse}templates/info-modal.html`)
         .then((response) => response.text())
         .then((data) => {
           modalContainer.innerHTML = data;
@@ -326,7 +326,7 @@ function loadSearchModal() {
   searchIcon.addEventListener('click', async function () {
     try {
       const response = await fetch(
-        `${relPathTraverse}templates/search_modal.html`
+        `${relPathTraverse}templates/search-modal.html`
       );
       let modalHTML = await response.text();
       modalContainer.innerHTML = modalHTML;
@@ -583,7 +583,7 @@ function loadEmailModal() {
       event.preventDefault();
 
       // Load the email modal HTML dynamically
-      fetch(`${relPathTraverse}templates/email_modal.html`)
+      fetch(`${relPathTraverse}templates/email-modal.html`)
         .then((response) => response.text())
         .then((data) => {
           modalContainer.innerHTML = data;
@@ -614,7 +614,7 @@ function showWarningModal() {
   }
 
   // Load the modal HTML dynamically
-  fetch(`${relPathTraverse}templates/warning_modal.html`)
+  fetch(`${relPathTraverse}templates/warning-modal.html`)
     .then((response) => response.text())
     .then((data) => {
       modalContainer.innerHTML = data;

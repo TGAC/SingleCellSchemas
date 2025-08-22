@@ -12,8 +12,8 @@
 
     <!-- CSS -->
     <link href="{{ rel_path_traverse }}css/styles.css" type="text/css" rel="stylesheet">
-    <link href="{{ rel_path_traverse }}css/fontawesome.6.7.2.all.min.css" type="text/css" rel="stylesheet">
-    <link href="{{ rel_path_traverse }}css/bootstrap.5.3.3.min.css" type="text/css" rel="stylesheet">
+    <link href="{{ rel_path_traverse }}css/fontawesome-6.7.2.all.min.css" type="text/css" rel="stylesheet">
+    <link href="{{ rel_path_traverse }}css/bootstrap-5.3.3.min.css" type="text/css" rel="stylesheet">
   </head>
   <body>
     <!-- Top navigation bar -->
@@ -67,7 +67,7 @@
     <div class="main-content container-fluid">
       <div class="row body-container">
         <div class="col-3">
-          <div class="container mt-4 ms-3">
+          <div class="container mt-4 ms-3 hero">
             <form>
               <!-- Standard dropdown menu -->
               <div class="mb-3 dropdown-menu-div">
@@ -123,7 +123,7 @@
           </div>
         </div>
         <div class="col-6">
-          <div class="accordion" id="fieldsAccordion">
+          <div class="accordion hero" id="fieldsAccordion">
             <!-- Content here -->
             {% for component in components %}
             <div class="accordion-item">
@@ -225,10 +225,10 @@
           <!-- Logos-->
           <div class="col d-flex align-items-center justify-content-start ms-5">
             <a href="https://www.earlham.ac.uk" target="_blank" rel="noopener noreferrer">
-              <img src="../../images/ei_logo_white.png" alt="Earlham Institute logo" height="50" class="me-3">
+              <img src="../../images/ei-logo-white.png" alt="Earlham Institute logo" height="50" class="me-3">
             </a>
             <a href="https://copo-project.org" target="_blank" rel="noopener noreferrer">
-            <img src="../../images/copo_logo_white.png" alt="Collaborative OPen Omics logo" height="70" class="me-3">
+            <img src="../../images/copo-logo-white.png" alt="Collaborative OPen Omics logo" height="70" class="me-3">
             </a>
           </div>
 
@@ -275,8 +275,8 @@
     <div id="warning-modal-container"></div>
 
     <!-- JS -->
-    <script src="{{ rel_path_traverse }}js/jquery.3.6.0.min.js" type="text/javascript"></script>
-    <script src="{{ rel_path_traverse }}js/bootstrap.5.3.3.bundle.min.js" type="text/javascript"></script>
+    <script src="{{ rel_path_traverse }}js/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="{{ rel_path_traverse }}js/bootstrap-5.3.3.bundle.min.js" type="text/javascript"></script>
 
     <script>
       var outputFileData = {{ output_data | tojson | safe }};
@@ -284,6 +284,6 @@
       var relPathTraverse = {{ rel_path_traverse | tojson | safe }};
     </script>
 
-    <script src="{{ rel_path_traverse }}js/fields_scripts.js" type="text/javascript"></script>
+    <script src="{{ rel_path_traverse }}js/fields-scripts.js" type="text/javascript"></script>
   </body>
 </html>

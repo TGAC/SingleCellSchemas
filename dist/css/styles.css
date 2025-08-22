@@ -3,7 +3,7 @@
 }
 
 :root {
-  --nav-h: 98px; /*57.7031px;*/
+  --nav-h: 98px;
 }
 
 /* Consistent box sizing */
@@ -28,8 +28,9 @@ body {
   flex-direction: column;
 }
 
+/* Hides accidental overflow within the body/row */
 .body-container {
-  overflow-x: hidden; /* Hides accidental overflow within the body/row */
+  overflow-x: hidden;
 }
 
 /* Prevents table/card from overflowing their column */
@@ -38,8 +39,11 @@ body {
   max-width: 100%;
 }
 
-.body-container {
+.hero {
   background-color: white;
+  padding: 10px;
+  border-top-left-radius: var(--bs-accordion-inner-border-radius);
+  border-top-right-radius: var(--bs-accordion-inner-border-radius);
 }
 
 .row.body-container,
@@ -52,6 +56,8 @@ body {
   flex: 1; /* Allows the main content section to expand to push the footer down */
   display: flex;
   flex-direction: column;
+  background: url(../images/background-tile.png);
+  background-color: white;
 }
 
 .header-title {
@@ -397,7 +403,7 @@ small > a {
   animation-timing-function: linear;
 }
 .up-arrow {
-  background-image: url('../images/right_arrow.svg');
+  background-image: url('../images/right-arrow.svg');
   position: absolute;
   width: 12px;
   height: 12px;

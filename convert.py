@@ -356,7 +356,7 @@ def generate_index_html(all_components, allowed_values_dict):
 
         # Jinja2 setup
         environment = Environment(loader=FileSystemLoader("templates/"))
-        fields_template = environment.get_template("fields_template.html")
+        fields_template = environment.get_template("fields-template.html")
 
         standards = {
             value["standard_name"]: value["standard_label"]
@@ -485,7 +485,7 @@ def extract_components_to_html(element, all_components=None, seen_components=Non
 
         # Render HTML using Jinja2 template
         environment = Environment(loader=FileSystemLoader("templates/"))
-        fields_template = environment.get_template("fields_template.html")
+        fields_template = environment.get_template("fields-template.html")
 
         standards = {
             value["standard_name"]: value["standard_label"]
