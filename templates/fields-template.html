@@ -23,12 +23,12 @@
         <a href="{{ rel_path_traverse }}checklists/html/index.html" target="_self" class="navbar-brand mb-0 h1 header-title text-center">Single-cell Schemas</a>
         
         <!-- Navbar toggle button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navIcons">
+        <button id="custom-toggler" class="navbar-toggler ms-auto" type="button">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <!-- Collapsible content (right aligned) -->
-        <div id="navIcons" class="d-flex collapse navbar-collapse collapsed-icons justify-content-end">
+        <div id="navIcons" class="collapsed-icons">
           <ul class="navbar-nav d-flex align-items-center pe-3">
             <!-- Search icon -->
             <li class="nav-item" title="Search web page">
@@ -223,7 +223,7 @@
       <div class="container-fluid px-0">
         <div class="row align-items-center footer-row w-100">
           <!-- Logos-->
-          <div class="col d-flex align-items-center justify-content-start ms-5">
+          <div class="col d-flex align-items-center footer-logos">
             <a href="https://www.earlham.ac.uk" target="_blank" rel="noopener noreferrer">
               <img src="../../images/ei-logo-white.png" alt="Earlham Institute logo" height="50" class="me-3">
             </a>
@@ -251,11 +251,11 @@
           </div>
 
           <!-- Licence details -->
-          <div class="col d-flex justify-content-end me-5">
+          <div class="col d-flex me-5 footer-licence">
             <small>
               <a href="https://raw.githubusercontent.com/TGAC/SingleCellSchemas/refs/heads/main/LICENSE" target="_blank" rel="noopener noreferrer">
                 <img src="../../images/licence-mit.svg" alt="MIT Licence badge">
-              </a>&nbsp;2025. Developed by<br>
+              </a>&nbsp;2025. Developed by <br>
               COPO at Earlham Institute.
             </small>
           </div>

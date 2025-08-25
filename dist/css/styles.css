@@ -3,7 +3,11 @@
 }
 
 :root {
-  --nav-h: 98px;
+  --nav-h: 56px;
+}
+
+[id^='term-'] {
+  scroll-margin-top: 72px;
 }
 
 /* Consistent box sizing */
@@ -42,6 +46,8 @@ body {
 .hero {
   background-color: white;
   padding: 10px;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #cccccc;
   border-top-left-radius: var(--bs-accordion-inner-border-radius);
   border-top-right-radius: var(--bs-accordion-inner-border-radius);
 }
@@ -80,7 +86,7 @@ body {
   background-color: #c61f16 !important; /* #850001 */
   width: 100%;
   z-index: 999; /* Keeps navbar above other elements */
-  height: var(--nav-h);
+  min-height: var(--nav-h);
   box-sizing: border-box;
 }
 
@@ -92,39 +98,75 @@ body {
   padding: 0 5px; /* Adds horizontal padding */
 }
 
-#navbarID ul li i {
-  cursor: pointer;
-  color: white !important;
-  font-size: 1.2rem;
-}
-
 #navbarID .container-fluid {
   height: 100%;
   display: flex;
   align-items: center;
 }
+
 .navbar-toggler {
   background-color: white !important;
 }
 
-#navIcons.show {
-  top: 100%;
-  right: 0;
-  position: absolute;
+#navIcons {
+  display: flex;
+  justify-content: flex-end !important;
+  margin-left: auto;
+  align-items: center;
 }
 
-/* Only show background for collapsed menu */
-.collapsed-icons.collapse.show {
-  background-color: #c61f16;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  min-width: max-content; /* or width: 80px */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  border-color: #000;
+#navIcons .navbar-nav .nav-item,
+#navIcons .navbar-nav .nav-item * {
+  transition: none !important;
 }
 
-.collapsed-icons.collapse.show.nav-item {
+#navIcons .navbar-nav .nav-item {
+  padding: 0 !important;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+#navIcons .navbar-nav .nav-link {
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+#navIcons .navbar-nav .nav-item > i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+#navIcons i {
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #fff !important;
+}
+
+#navIcons .navbar-nav .nav-link:hover,
+#navIcons .navbar-nav .nav-item > i:hover,
+#navIcons .navbar-nav .nav-link:focus-visible,
+#navIcons .navbar-nav .nav-item > i:focus-visible {
+  background: #fff;
+}
+
+#navIcons .navbar-nav .nav-link:hover i,
+#navIcons .navbar-nav .nav-item > i:hover,
+#navIcons .navbar-nav .nav-link:focus-visible i,
+#navIcons .navbar-nav .nav-item > i:focus-visible i {
+  color: #0d6efd !important;
+}
+
+#navIcons .collapse .show .nav-item {
   margin-bottom: 0.5rem;
 }
 
@@ -134,6 +176,15 @@ body {
   padding: 20px;
   height: var(--footer-h);
   background-color: #c61f16 !important;
+}
+
+#footerDiv .nav-link {
+  padding: 0;
+  margin: 0;
+  line-height: 1.5rem;
+  display: inline-block;
+  vertical-align: bottom;
+  transition: none;
 }
 
 #footerDiv .nav-link:hover {
@@ -148,6 +199,11 @@ body {
   align-items: center;
 }
 
+.footer-row > .footer-logos {
+  justify-content: flex-start;
+  margin-left: 3rem;
+}
+
 .footer-row > .footer-nav {
   margin-left: auto;
   margin-right: auto;
@@ -157,9 +213,14 @@ body {
   color: white !important;
 }
 
+.footer-row div a,
 small > a {
   color: transparent;
   text-decoration: none;
+}
+
+.footer-row > .footer-licence {
+  justify-content: flex-end !important;
 }
 
 #docSelectForm {
@@ -177,14 +238,18 @@ small > a {
 /* Accordion */
 .accordion {
   margin-top: 30px;
+  margin-bottom: 20px;
 }
+
 .accordion .accordion-item {
   margin-bottom: 8px;
   background-color: #fff;
 }
+
 .accordion .accordion-header {
   border-radius: 8px 8px 0 0;
 }
+
 .accordion .accordion-header .accordion-button {
   background-color: #e3e3e3;
   color: #000;
@@ -230,7 +295,7 @@ small > a {
   color: white !important;
 }
 
-/* General CSS*/
+/* General CSS */
 .text-hover:hover + .tooltip-message {
   display: block;
 }
@@ -249,7 +314,7 @@ small > a {
   display: none !important;
 }
 
-/* Buttons, icons and links*/
+/* Buttons, icons and links */
 #download-manifest-btn {
   border-color: #850001 !important;
   text-decoration: none;
@@ -273,30 +338,7 @@ small > a {
   color: black; /* #0d6efd */
 }
 
-#searchIconID:hover,
-#infoIconID:hover,
-#emailIconID:hover,
-#docIconID:hover,
-#githubIconID:hover {
-  color: #0d6efd !important;
-}
-
-#searchIconID:hover,
-#infoIconID:hover,
-#emailIconID:hover,
-#docIconID:hover,
-#githubIconID:hover {
-  background-color: white;
-  border-radius: 50%;
-  padding: 5px;
-}
-
-#githubIconID {
-  font-size: 1.3rem;
-  padding-bottom: 5px;
-}
-
-/* Positions and Spacing */
+/* Positions and spacing */
 .fl-right {
   float: right;
 }
@@ -345,7 +387,7 @@ small > a {
   margin-left: 10px;
 }
 
-/*Navigate to top button CSS*/
+/* Navigate to top button CSS */
 .navigate-to-top {
   position: fixed;
   bottom: -40px;
@@ -597,6 +639,126 @@ small > a {
 }
 
 /* Media queries */
+@media (max-width: 1207px) {
+  small > br {
+    display: none;
+  }
+}
+
+@media (max-width: 1172px) {
+  /* Footer */
+  #footerDiv {
+    display: flex;
+    flex-direction: column; /* Stack vertically on small screens */
+    justify-content: center;
+    width: 100%;
+  }
+
+  #footerDiv .container-fluid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-row {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    gap: 5px;
+  }
+
+  /* Logos */
+  .footer-row > .footer-logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center !important;
+    gap: 10px;
+    margin-left: 0;
+  }
+
+  .footer-logos img {
+    height: 30px;
+  }
+
+  /* Navigation links */
+  .footer-logos,
+  .footer-nav {
+    justify-content: center;
+  }
+  .footer-nav {
+    text-align: center;
+  }
+
+  .nav-link {
+    padding-bottom: 0 !important;
+  }
+
+  .footer-nav .nav {
+    flex-wrap: wrap; /* Wrap nav items on small screens */
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* Licence details */
+  small > a > img {
+    height: 15px;
+  }
+
+  small > br {
+    display: none;
+  }
+
+  .footer-row > .footer-licence {
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 995px) {
+  .accordion-button .info-note {
+    padding-left: 3.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    display: block;
+  }
+}
+
+@media (max-width: 992px) {
+  #navIcons {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #c61f16;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    border-color: #000;
+    border: 1px solid #cccccc;
+    min-width: max-content;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  /* Show when toggle button is clicked */
+  #navIcons.show {
+    display: flex;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-box {
+    width: 100%;
+  }
+}
+
 @media only screen and (max-width: 575px) {
   .navigate-to-top {
     width: 40px;
@@ -614,8 +776,8 @@ small > a {
   }
 }
 
-@media (max-width: 768px) {
-  .search-box {
-    width: 100%;
+@media (max-width: 520px) {
+  .footer-nav .nav {
+    gap: 0;
   }
 }

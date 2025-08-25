@@ -114,6 +114,12 @@ $(document).ready(function () {
     document.body.removeChild(link);
   });
 
+  $('#custom-toggler').on('click', function (e) {
+    // Initialise navbar toggler button
+    e.preventDefault();
+    $('#navIcons').toggleClass('show');
+  });
+
   // Change events
   // Attach event handlers to the dropdown menus
   $('#stdDropdown, #techDropdown').on('change', function (e) {
@@ -367,9 +373,11 @@ function loadSearchModal() {
 function scrollToTerm(termId) {
   const termElement = document.getElementById(termId);
   if (termElement) {
-    termElement.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
+    requestAnimationFrame(() => {
+      termElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
     });
   }
 }
@@ -652,21 +660,19 @@ function openAccordionFromHash() {
       const button =
         component.previousElementSibling?.querySelector('.accordion-button');
       const onShown = () => {
-        term.scrollIntoView({ behavior: 'auto', block: 'start' });
+        scrollToTerm(accordionItemId);
         component.removeEventListener('shown.bs.collapse', onShown);
       };
 
       component.addEventListener('shown.bs.collapse', onShown, { once: true });
       button.click();
     } else {
-      // Scroll instantly to the accordion item if accordion
-      // if it is already opened/expanded
-      term.scrollIntoView({ behavior: 'auto', block: 'start' });
+      scrollToTerm(accordionItemId);
     }
     return true;
   }
 
-  // Try to open the accordion immediately
+  // Open the accordion immediately
   if (tryOpen()) return true;
 
   // Observe the DOM for dynamically loaded content
@@ -681,23 +687,6 @@ function openAccordionFromHash() {
 }
 
 function updateUrlWithParams({ method = 'replace', preserveHash = true } = {}) {
-  // Update URL with dropdown values
-  // Get current query parameters from the URL
-  // let currentParams = new URLSearchParams(window.location.search);
-
-  // // Get the values from the dropdown menus
-  // let standard = $('#stdDropdown').val();
-  // let technology = $('#techDropdown').val();
-
-  // currentParams.set('stdDropdown', standard);
-  // currentParams.set('techDropdown', technology);
-
-  // // Construct the new URL with only the query parameters
-  // let newUrl = window.location.pathname + '?' + currentParams.toString();
-
-  // // Use history.pushState to update the URL without reloading the page
-  // history.pushState(null, '', newUrl);
-
   const url = new URL(window.location.href);
 
   // Get the values from the dropdown menus
@@ -833,6 +822,22 @@ function updateContentBasedOnSelection() {
   openAccordionFromHash(); // Open accordion based on URL hash
 }
 
+function findComponentIdByTermId(termId) {
+  for (const component of components) {
+    const componentId = `component-${component.group_name}`;
+
+    // Get only terms that are identifiers
+    const match = component.fields.find(
+      (field) => field.is_identifier === true && `term-${field.name}` === termId
+    );
+
+    if (match) {
+      return componentId;
+    }
+  }
+  return null;
+}
+
 function addMissingHrefToReferences() {
   // Select all links inside the rows of the accordion table
   const links = document.querySelectorAll('tr td a');
@@ -841,7 +846,8 @@ function addMissingHrefToReferences() {
     const href = link.getAttribute('href');
     const target = link.getAttribute('target');
 
-    // If href link exists then, set it as the current page URL + component ID & term ID
+    // If href link exists then, set it as the
+    // current page URL + component ID & term ID
     // for the accordion item
     if (href === '#' && target === '_self') {
       // Find the closest accordion-body to get its ID
@@ -850,8 +856,8 @@ function addMissingHrefToReferences() {
         const accordionItem = link.closest('.card[id]');
         const component = link.closest('.accordion-collapse[id]');
         if (accordionItem && component) {
-          const termId = accordionItem.id; // e.g. "term-study_id"
-          const compId = component.id; // e.g. "component-study"
+          const termId = accordionItem.id; // e.g. 'term-study_id'
+          const compId = findComponentIdByTermId(termId) || component.id; // e.g. 'component-study'
 
           link.href = `${
             window.location.href.split('#')[0]
