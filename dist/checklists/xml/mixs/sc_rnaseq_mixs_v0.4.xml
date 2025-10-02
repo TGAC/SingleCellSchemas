@@ -7,7 +7,7 @@
     <DESCRIPTOR>
       <LABEL>Single-cell Ribonucleic Acid Sequencing (scRNA-Seq)</LABEL>
       <NAME>sc_rnaseq</NAME>
-      <DESCRIPTION>For single cell RNA-seq studies using  FAANG metadata  with the aim to improve understanding of animal genomics and gene functions.</DESCRIPTION>
+      <DESCRIPTION>For single cell RNA-seq studies with a focus on the essential contextual details for the sampling and sequencing of genomic data.</DESCRIPTION>
       <AUTHORITY>COPO</AUTHORITY>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>study</NAME>
@@ -28,6 +28,16 @@
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
+          <LABEL>Project Name</LABEL>
+          <NAME>project_name</NAME>
+          <DESCRIPTION>Official name of the study or project. Project title should be fewer than 30 words, such as a title of a grant proposal or a publication.</DESCRIPTION>
+          <EXAMPLE>Study of single cells in the human body</EXAMPLE>
+          <NAMESPACE>mixs:project_name</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
           <LABEL>Description</LABEL>
           <NAME>description</NAME>
           <DESCRIPTION>A detailed description of the project which includes research goals and experimental approach. Project description should be fewer than 300 words, such as an abstract from a grant application or publication.</DESCRIPTION>
@@ -38,92 +48,133 @@
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Material</LABEL>
-          <NAME>material</NAME>
-          <DESCRIPTION>The type of material being described.</DESCRIPTION>
-          <EXAMPLE>organism</EXAMPLE>
-          <NAMESPACE>faang:material</NAMESPACE>
+          <LABEL>Workflow</LABEL>
+          <NAME>workflow</NAME>
+          <DESCRIPTION>The workflow or protocol followed during the study.</DESCRIPTION>
+          <EXAMPLE>Laser microdissection</EXAMPLE>
+          <NAMESPACE>ei:workflow</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
               <TEXT_VALUE>
-                <VALUE>Cell culture</VALUE>
+                <VALUE>Laser microdissection</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
-                <VALUE>Cell line</VALUE>
+                <VALUE>Laser microdissection, Culturing</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
-                <VALUE>Cell specimen</VALUE>
+                <VALUE>Laser microdissection, Culturing, Sequencing</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
-                <VALUE>Organism</VALUE>
+                <VALUE>Laser microdissection, Sequencing</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
-                <VALUE>Organoid</VALUE>
+                <VALUE>Microfluidics, Facs, Culturing</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
-                <VALUE>Pool of Specimens</VALUE>
+                <VALUE>Microfluidics, Facs, Culturing, Sequencing</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
-                <VALUE>Single cell specimen</VALUE>
+                <VALUE>Microfluidics, Facs, Sequencing</VALUE>
               </TEXT_VALUE>
               <TEXT_VALUE>
-                <VALUE>Specimen from Organism</VALUE>
+                <VALUE>Spatial Transcriptomics</VALUE>
               </TEXT_VALUE>
             </TEXT_CHOICE_FIELD>
           </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Technology</LABEL>
+          <NAME>technology</NAME>
+          <DESCRIPTION>The sorting or visualisation technology used.</DESCRIPTION>
+          <EXAMPLE>Vizgen</EXAMPLE>
+          <NAMESPACE>ei:technology</NAMESPACE>
+          <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Project</LABEL>
-          <NAME>project</NAME>
-          <DESCRIPTION>State that the project is 'FAANG'.</DESCRIPTION>
-          <EXAMPLE>FAANG</EXAMPLE>
-          <NAMESPACE>faang:project</NAMESPACE>
+          <LABEL>Negative Control Type</LABEL>
+          <NAME>neg_cont_type</NAME>
+          <DESCRIPTION>The substance or equipment used as a negative control in an investigation</DESCRIPTION>
+          <EXAMPLE>Phosphate buffer</EXAMPLE>
+          <NAMESPACE>mixs:neg_cont_type</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>DNA-free PCR mix</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Distilled water</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Empty collection device</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Empty collection tube</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Phosphate buffer</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Sterile swab</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Sterile syringe</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Positive Control Type</LABEL>
+          <NAME>pos_cont_type</NAME>
+          <DESCRIPTION>The substance, mixture, product, or apparatus used to verify that a process which is part of an investigation delivers a true positive</DESCRIPTION>
+          <EXAMPLE>substance1</EXAMPLE>
+          <NAMESPACE>mixs:pos_cont_type</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^FAANG$</REGEX_VALUE>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
+          <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Cell Enrichment</LABEL>
-          <NAME>cell_enrichment</NAME>
-          <DESCRIPTION>The method by which specific cell populations are sorted or enriched, e.g. 'fluorescence-activated cell sorting (FACS)'. Please contact FAANG DCC to add more terms.</DESCRIPTION>
-          <EXAMPLE>fluorescence-activated cell sorting (FACS)</EXAMPLE>
-          <NAMESPACE>faang:cell_enrichment</NAMESPACE>
+          <LABEL>Experimental Factor</LABEL>
+          <NAME>experimental_factor</NAME>
+          <DESCRIPTION>Variable aspects of an experiment design that can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI)</DESCRIPTION>
+          <EXAMPLE>EFO:0001779</EXAMPLE>
+          <NAMESPACE>mixs:experimental_factor</NAMESPACE>
           <FIELD_TYPE>
-            <TEXT_CHOICE_FIELD>
-              <TEXT_VALUE>
-                <VALUE>Bead-based sorting</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>Cell culture</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>Centrifugation</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>Fluorescence-activated Cell Sorting (FACS)</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>Magnetic levitation</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>Raman-spectometry sorting, cell culture</VALUE>
-              </TEXT_VALUE>
-            </TEXT_CHOICE_FIELD>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\S+.*\S+ \[[a-zA-Z]{2,}:\d+\]$</REGEX_VALUE>
+            </TEXT_FIELD>
           </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>multiple</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Relevant Electronic Resources</LABEL>
+          <NAME>associated_resource</NAME>
+          <DESCRIPTION>A related resource that is referenced, cited, or otherwise associated to the sequence.</DESCRIPTION>
+          <EXAMPLE>https://arctos.database.museum/media/10520962 | https://arctos.database.museum/media/10520964</EXAMPLE>
+          <NAMESPACE>mixs:associated_resource</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)+(?: \| https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)*)*$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
           <LABEL>Licence</LABEL>
           <NAME>licence</NAME>
           <DESCRIPTION>Specifies the terms under which the data associated with the study can be used, shared, or reused. It informs users how they may legally reference, distribute, or build upon the study. Common licenses include Creative Commons (e.g., CC BY 4.0), which require attribution to the original authors when the data is cited or reused.</DESCRIPTION>
-          <EXAMPLE>MIT License</EXAMPLE>
+          <EXAMPLE>MIT</EXAMPLE>
           <NAMESPACE>ei:licence</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
@@ -301,7 +352,7 @@
           <NAME>scientific_name</NAME>
           <DESCRIPTION>The formal Latin name used to identify the organism from which the sample was derived (e.g. Homo sapiens or Arabidopsis thaliana). This name must accurately correspond to the Taxon ID provided to ensure correct taxonomic classification.</DESCRIPTION>
           <EXAMPLE>Salvelinus alpinus</EXAMPLE>
-          <NAMESPACE>ei:scientific_name</NAMESPACE>
+          <NAMESPACE>ontology:scientific_name</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
               <REGEX_VALUE>^[A-Za-z]+(?: [A-Za-z]+)*[a-z]+$</REGEX_VALUE>
@@ -315,7 +366,7 @@
           <NAME>taxon_id</NAME>
           <DESCRIPTION>A unique identifier (usually from a recognized taxonomy database like NCBI Taxonomy) that corresponds to the organism’s scientific name. It must be accurately matched to the provided scientificName to maintain consistency and traceability in biological records.</DESCRIPTION>
           <EXAMPLE>8036</EXAMPLE>
-          <NAMESPACE>ei:taxon_id</NAMESPACE>
+          <NAMESPACE>ontology:taxon_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
               <REGEX_VALUE>^[0-9]+$</REGEX_VALUE>
@@ -329,7 +380,7 @@
           <NAME>biosampleAccession</NAME>
           <DESCRIPTION>A unique identifier assigned to a biological sample after it has been submitted to a public database, such as the NCBI BioSample or ENA. It serves as a permanent reference to that specific sample, allowing researchers to retrieve metadata and link it across studies or datasets.</DESCRIPTION>
           <EXAMPLE>SAMEA12907823</EXAMPLE>
-          <NAMESPACE>ei:biosampleAccession</NAMESPACE>
+          <NAMESPACE>ontology:biosampleAccession</NAMESPACE>
           <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
@@ -378,6 +429,16 @@
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
+          <LABEL>Dissociation Description</LABEL>
+          <NAME>dissociation_description</NAME>
+          <DESCRIPTION>A free-text description of the process used to separate cells from tissues or cell aggregates.</DESCRIPTION>
+          <EXAMPLE>Tissue was enzymatically dissociated using collagenase for 30 minutes.</EXAMPLE>
+          <NAMESPACE>ei:dissociation_description</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
           <LABEL>Enrichment Markers</LABEL>
           <NAME>enrichment_markers</NAME>
           <DESCRIPTION>Description of the specificity markers used to isolate cell populations, e.g. 'CD45+'. Please contact FAANG DCC to add more terms.</DESCRIPTION>
@@ -391,7 +452,7 @@
           <LABEL>Isolation Kit</LABEL>
           <NAME>isolation_kit</NAME>
           <DESCRIPTION>The kit used to isolate the cells.</DESCRIPTION>
-          <EXAMPLE>BD Rhapsody Single-Cell Analysis System</EXAMPLE>
+          <EXAMPLE>10x Nuclei Isolation Kit</EXAMPLE>
           <NAMESPACE>ei:isolation_kit</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
@@ -434,20 +495,6 @@
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Single cell isolation protocol</LABEL>
-          <NAME>single_cell_isolation_protocol</NAME>
-          <DESCRIPTION>Link to protocol describing how the single cells were separated into a single-cell suspension.</DESCRIPTION>
-          <EXAMPLE>https://api.faang.org/files/protocols/samples/INRAE_SOP_PLUS4PIGS_EMBRYOS_DISSOCIATION_PROTO4_20240710.pdf</EXAMPLE>
-          <NAMESPACE>faang:single_cell_isolation_protocol</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
           <LABEL>Workflowhub Sop Reference</LABEL>
           <NAME>workflow_hub_sop_reference</NAME>
           <DESCRIPTION>Reference to the Standard Operating Procedure (SOP) in workflow hub.</DESCRIPTION>
@@ -477,62 +524,6 @@
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
-        <FIELD>
-          <LABEL>Cell Type</LABEL>
-          <NAME>cell_type</NAME>
-          <DESCRIPTION>Provide a cell type from the CL ontology.</DESCRIPTION>
-          <EXAMPLE>blastocyst</EXAMPLE>
-          <NAMESPACE>faang:cell_type</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z\s]*[a-z]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
-          <LABEL>Tissue Dissociation</LABEL>
-          <NAME>tissue_dissociation</NAME>
-          <DESCRIPTION>The method by which tissues are dissociated into purified or single cells in suspension. Examples are 'proteolysis', 'mesh passage', 'fine needle trituration'. For blood, milk and other fluids, where there is no tissue dissociation use 'fluids'. Please contact FAANG DCC to add more terms.</DESCRIPTION>
-          <EXAMPLE>proteolysis</EXAMPLE>
-          <NAMESPACE>faang:tissue_dissociation</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_CHOICE_FIELD>
-              <TEXT_VALUE>
-                <VALUE>Fine needle trituration</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>Fluids</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>Mechanical dissociation</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>Mesh passage</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>Proteolysis</VALUE>
-              </TEXT_VALUE>
-            </TEXT_CHOICE_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
-          <LABEL>Derived from</LABEL>
-          <NAME>derived_from</NAME>
-          <DESCRIPTION>Sample name or BioSample ID for a specimen record.</DESCRIPTION>
-          <EXAMPLE>SSC_INRAE_GUT_ORGANOID_100I</EXAMPLE>
-          <NAMESPACE>faang:derived_from</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z0-9_]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
       </FIELD_GROUP>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>cell_suspension</NAME>
@@ -544,6 +535,20 @@
           <DESCRIPTION>A unique alphanumeric identifier for this study</DESCRIPTION>
           <EXAMPLE>A7F9B3X2</EXAMPLE>
           <NAMESPACE>ei:study_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Cell Suspension ID</LABEL>
+          <NAME>cell_suspension_id</NAME>
+          <DESCRIPTION>A unique alphanumeric code for the cell suspension for the sample</DESCRIPTION>
+          <EXAMPLE>cellSusp123</EXAMPLE>
+          <NAMESPACE>ei:cell_suspension_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
               <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
@@ -581,20 +586,6 @@
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Cell Suspension ID</LABEL>
-          <NAME>cell_suspension_id</NAME>
-          <DESCRIPTION>A unique alphanumeric code for the cell suspension for the sample</DESCRIPTION>
-          <EXAMPLE>cellSusp123</EXAMPLE>
-          <NAMESPACE>ei:cell_suspension_id</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
           <LABEL>Suspension Type</LABEL>
           <NAME>suspension_type</NAME>
           <DESCRIPTION>The type of suspension used to keep cells in solution during processing.</DESCRIPTION>
@@ -617,20 +608,6 @@
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Purification Protocol</LABEL>
-          <NAME>purification_protocol</NAME>
-          <DESCRIPTION>Link to protocol describing how the cells were purified.</DESCRIPTION>
-          <EXAMPLE/>
-          <NAMESPACE>faang:purification_protocol</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
           <LABEL>Cell Count</LABEL>
           <NAME>cell_count</NAME>
           <DESCRIPTION>An number representing the number of cells in the sequencing library.</DESCRIPTION>
@@ -640,49 +617,6 @@
             <TEXT_FIELD>
               <REGEX_VALUE>^\d+$</REGEX_VALUE>
             </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>optional</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
-          <LABEL>Cell Number</LABEL>
-          <NAME>cell_number</NAME>
-          <DESCRIPTION>An number representing the number of cells in the sequencing library.</DESCRIPTION>
-          <EXAMPLE>10000</EXAMPLE>
-          <NAMESPACE>tol:cell_number</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_CHOICE_FIELD>
-              <TEXT_VALUE>
-                <VALUE>1</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>1000000+</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>100001-500000</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>10001-50000</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>101-10000</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>11-50</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>2-10</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>500001-1000000</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>50001-100000</VALUE>
-              </TEXT_VALUE>
-              <TEXT_VALUE>
-                <VALUE>51-100</VALUE>
-              </TEXT_VALUE>
-            </TEXT_CHOICE_FIELD>
           </FIELD_TYPE>
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
@@ -771,20 +705,6 @@
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
-        <FIELD>
-          <LABEL>Derived from</LABEL>
-          <NAME>derived_from</NAME>
-          <DESCRIPTION>Sample name or BioSample ID for a specimen record.</DESCRIPTION>
-          <EXAMPLE>SAMEA112465628</EXAMPLE>
-          <NAMESPACE>faang:derived_from</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[A-Za-z0-9_]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
       </FIELD_GROUP>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>lib_prep</NAME>
@@ -809,7 +729,7 @@
           <NAME>library_prep_id</NAME>
           <DESCRIPTION>A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.</DESCRIPTION>
           <EXAMPLE>libPrep123</EXAMPLE>
-          <NAMESPACE>faang:library_prep_id</NAMESPACE>
+          <NAMESPACE>ei:library_prep_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
               <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
@@ -847,7 +767,7 @@
           <NAME>library_prep_kit_version</NAME>
           <DESCRIPTION>The version number of the library preparation kit used for sequencing.</DESCRIPTION>
           <EXAMPLE>2</EXAMPLE>
-          <NAMESPACE>ei:library_prep_kit_version</NAMESPACE>
+          <NAMESPACE>ontology:library_prep_kit_version</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
               <REGEX_VALUE>^\d+$</REGEX_VALUE>
@@ -952,7 +872,7 @@
               </TEXT_VALUE>
             </TEXT_CHOICE_FIELD>
           </FIELD_TYPE>
-          <MANDATORY>optional</MANDATORY>
+          <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
@@ -1015,7 +935,7 @@
               </TEXT_VALUE>
             </TEXT_CHOICE_FIELD>
           </FIELD_TYPE>
-          <MANDATORY>optional</MANDATORY>
+          <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
@@ -1155,31 +1075,99 @@
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Pool Creation Date</LABEL>
-          <NAME>pool_creation_date</NAME>
-          <DESCRIPTION>Date at which the pool was created.</DESCRIPTION>
-          <EXAMPLE>YYYY-MM-DD</EXAMPLE>
-          <NAMESPACE>faang:pool_creation_date</NAMESPACE>
+          <LABEL>Nucleic Acid Amplification</LABEL>
+          <NAME>nucl_acid_amp</NAME>
+          <DESCRIPTION>A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the enzymatic amplification (PCR, TMA, NASBA) of specific nucleic acids. The link can be a PMID, DOI or URL.</DESCRIPTION>
+          <EXAMPLE>https://phylogenomics.me/protocols/16s-pcr-protocol/</EXAMPLE>
+          <NAMESPACE>mixs:nucl_acid_amp</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$</REGEX_VALUE>
+              <REGEX_VALUE>^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)$|([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
+          <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
-          <LABEL>Pool Creation Protocol</LABEL>
-          <NAME>pool_creation_protocol</NAME>
-          <DESCRIPTION>A link to the protocol for pool of specimens creation.</DESCRIPTION>
-          <EXAMPLE/>
-          <NAMESPACE>faang:pool_creation_protocol</NAMESPACE>
+          <LABEL>Nucleic Acid Extraction</LABEL>
+          <NAME>nucl_acid_ext</NAME>
+          <DESCRIPTION>A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the material separation to recover the nucleic acid fraction from a sample</DESCRIPTION>
+          <EXAMPLE>https://mobio.com/media/wysiwyg/pdfs/protocols/12888.pdf</EXAMPLE>
+          <NAMESPACE>mixs:nucl_acid_ext</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
-              <REGEX_VALUE>^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$</REGEX_VALUE>
+              <REGEX_VALUE>^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)$|([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$</REGEX_VALUE>
             </TEXT_FIELD>
           </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Amount or Size of Sample Collected</LABEL>
+          <NAME>samp_size</NAME>
+          <DESCRIPTION>The total amount or size (volume (ml), mass (g) or area (m2) ) of sample collected</DESCRIPTION>
+          <EXAMPLE>5 litre</EXAMPLE>
+          <NAMESPACE>mixs:samp_size</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Estimated Size</LABEL>
+          <NAME>estimated_size</NAME>
+          <DESCRIPTION>The estimated size of the genome prior to sequencing in base pairs (bp). Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period</DESCRIPTION>
+          <EXAMPLE>300000</EXAMPLE>
+          <NAMESPACE>mixs:estimated_size</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Sample Volume or Weight for DNA Extraction</LABEL>
+          <NAME>samp_vol_we_dna_ext</NAME>
+          <DESCRIPTION>Volume (ml) or mass (g) of total collected sample processed for DNA extraction.</DESCRIPTION>
+          <EXAMPLE>1500 milliliter</EXAMPLE>
+          <NAMESPACE>mixs:samp_vol_we_dna_ext</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?(?: *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *(milliliter|gram|milligram|square centimeter)$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Library Vector</LABEL>
+          <NAME>lib_vector</NAME>
+          <DESCRIPTION>Cloning vector type(s) used in construction of libraries</DESCRIPTION>
+          <EXAMPLE>Bacteriophage P1</EXAMPLE>
+          <NAMESPACE>mixs:lib_vector</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Adapters</LABEL>
+          <NAME>adapters</NAME>
+          <DESCRIPTION>Adapters provide priming sequences for both amplification and sequencing of the sample-library fragments. Both adapters should be reported; in uppercase letters</DESCRIPTION>
+          <EXAMPLE>AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT</EXAMPLE>
+          <NAMESPACE>mixs:adapters</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Sample Material Processing</LABEL>
+          <NAME>samp_mat_process</NAME>
+          <DESCRIPTION>A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed</DESCRIPTION>
+          <EXAMPLE>filtering of seawater, storing samples in ethanol</EXAMPLE>
+          <NAMESPACE>mixs:samp_mat_process</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
@@ -1196,7 +1184,7 @@
           <LABEL>Library selection</LABEL>
           <NAME>library_selection</NAME>
           <DESCRIPTION>The method used to select for or against, enrich, or screen the material being sequenced.</DESCRIPTION>
-          <EXAMPLE/>
+          <EXAMPLE>RANDOM PCR</EXAMPLE>
           <NAMESPACE>ei:library_selection</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
@@ -1290,7 +1278,7 @@
           <LABEL>Library source</LABEL>
           <NAME>library_source</NAME>
           <DESCRIPTION>The type of source material that is being sequenced.</DESCRIPTION>
-          <EXAMPLE/>
+          <EXAMPLE>GENOMIC</EXAMPLE>
           <NAMESPACE>ei:library_source</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
@@ -1324,7 +1312,7 @@
           <LABEL>Library strategy</LABEL>
           <NAME>library_strategy</NAME>
           <DESCRIPTION>The sequencing technique intended for this library.</DESCRIPTION>
-          <EXAMPLE/>
+          <EXAMPLE>RNA-Seq</EXAMPLE>
           <NAMESPACE>ei:library_strategy</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
@@ -1477,7 +1465,7 @@
           <NAME>sequencing_id</NAME>
           <DESCRIPTION>A unique alphanumeric reference or identifier for the sequencing protocol.</DESCRIPTION>
           <EXAMPLE>seq123</EXAMPLE>
-          <NAMESPACE>ei:sequencing_id</NAMESPACE>
+          <NAMESPACE>ontology:sequencing_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
               <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
@@ -1491,7 +1479,7 @@
           <NAME>sequencing_platform_name</NAME>
           <DESCRIPTION>The name of the sequencing platform used for the experiment.</DESCRIPTION>
           <EXAMPLE>Pacbio</EXAMPLE>
-          <NAMESPACE>ei:sequencing_platform_name</NAMESPACE>
+          <NAMESPACE>ontology:sequencing_platform_name</NAMESPACE>
           <FIELD_TYPE/>
           <MANDATORY>mandatory</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
@@ -1501,7 +1489,7 @@
           <NAME>sequencing_instrument_model</NAME>
           <DESCRIPTION>This refers to the machine or platform used for sequencing, with variations in throughput, read lengths, error rates, and application suitability.</DESCRIPTION>
           <EXAMPLE>Illumina NovaSeq 6000</EXAMPLE>
-          <NAMESPACE>ei:sequencing_instrument_model</NAMESPACE>
+          <NAMESPACE>ontology:sequencing_instrument_model</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
               <TEXT_VALUE>
@@ -1841,7 +1829,7 @@
           <NAME>cell_barcode_read</NAME>
           <DESCRIPTION>The type of read that contains the UMI barcode.</DESCRIPTION>
           <EXAMPLE>index1</EXAMPLE>
-          <NAMESPACE>ei:cell_barcode_read</NAMESPACE>
+          <NAMESPACE>ontology:cell_barcode_read</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
               <TEXT_VALUE>
@@ -1866,7 +1854,7 @@
           <NAME>cell_barcode_offset</NAME>
           <DESCRIPTION>The offset in sequence of the cell identifying barcode.</DESCRIPTION>
           <EXAMPLE>10</EXAMPLE>
-          <NAMESPACE>ei:cell_barcode_offset</NAMESPACE>
+          <NAMESPACE>ontology:cell_barcode_offset</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
               <REGEX_VALUE>^\d+$</REGEX_VALUE>
@@ -1880,7 +1868,7 @@
           <NAME>cell_barcode_size</NAME>
           <DESCRIPTION>The offset in sequence of the cell identifying barcode.</DESCRIPTION>
           <EXAMPLE>0</EXAMPLE>
-          <NAMESPACE>ei:cell_barcode_size</NAMESPACE>
+          <NAMESPACE>ontology:cell_barcode_size</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
               <REGEX_VALUE>^\d+$</REGEX_VALUE>
@@ -1894,7 +1882,7 @@
           <NAME>cdna_read</NAME>
           <DESCRIPTION>The actual nucleotide sequence obtained from Complementary DNA (cDNA) during sequencing.</DESCRIPTION>
           <EXAMPLE>read1</EXAMPLE>
-          <NAMESPACE>ei:cdna_read</NAMESPACE>
+          <NAMESPACE>ontology:cdna_read</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
               <TEXT_VALUE>
@@ -1919,7 +1907,7 @@
           <NAME>cdna_read_offset</NAME>
           <DESCRIPTION>The starting position of the Complementary DNA (cDNA) read within the entire sequence, indicating where the read begins after any barcodes or technical sequences.</DESCRIPTION>
           <EXAMPLE>6</EXAMPLE>
-          <NAMESPACE>ei:cdna_read_offset</NAMESPACE>
+          <NAMESPACE>ontology:cdna_read_offset</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
               <REGEX_VALUE>^\d+$</REGEX_VALUE>
@@ -1933,7 +1921,69 @@
           <NAME>cdna_read_size</NAME>
           <DESCRIPTION>The size of the Complementary DNA (cDNA) read.</DESCRIPTION>
           <EXAMPLE>75</EXAMPLE>
-          <NAMESPACE>ei:cdna_read_size</NAMESPACE>
+          <NAMESPACE>ontology:cdna_read_size</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Library Size</LABEL>
+          <NAME>lib_size</NAME>
+          <DESCRIPTION>Total number of clones in the library prepared for the project</DESCRIPTION>
+          <EXAMPLE>50</EXAMPLE>
+          <NAMESPACE>mixs:lib_size</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Completeness Score</LABEL>
+          <NAME>compl_score</NAME>
+          <DESCRIPTION>Completeness score is typically based on either the fraction of markers found as compared to a database or the percent of a genome found as compared to a closely related reference genome. High Quality Draft: &gt;90%, Medium Quality Draft: &gt;50%, and Low Quality Draft: &lt; 50% should have the indicated completeness scores</DESCRIPTION>
+          <EXAMPLE>med;60%</EXAMPLE>
+          <NAMESPACE>mixs:compl_score</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Library Reads Sequenced</LABEL>
+          <NAME>lib_reads_seq</NAME>
+          <DESCRIPTION>Total number of clones sequenced from the library</DESCRIPTION>
+          <EXAMPLE>20</EXAMPLE>
+          <NAMESPACE>mixs:lib_reads_seq</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Number of Contigs</LABEL>
+          <NAME>number_contig</NAME>
+          <DESCRIPTION>Total number of contigs in the cleaned/submitted assembly that makes up a given genome, SAG, MAG, or UViG</DESCRIPTION>
+          <EXAMPLE>40</EXAMPLE>
+          <NAMESPACE>mixs:number_contig</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Number of Replicons</LABEL>
+          <NAME>num_replicons</NAME>
+          <DESCRIPTION>Reports the number of replicons in a nuclear genome of eukaryotes, in the genome of a bacterium or archaea or the number of segments in a segmented virus. Always applied to the haploid chromosome count of a eukaryote</DESCRIPTION>
+          <EXAMPLE>2</EXAMPLE>
+          <NAMESPACE>mixs:num_replicons</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
               <REGEX_VALUE>^\d+$</REGEX_VALUE>
@@ -1986,7 +2036,7 @@
           <NAME>post_analysis_cell_well_quality</NAME>
           <DESCRIPTION>Performer defined measure of whether the read output
 from the cell was included in the sequencing analysis. For example, cells might be excluded if a threshold percentage of reads did not map to the genome or if pre-sequencing quality measures were not passed.</DESCRIPTION>
-          <EXAMPLE>Passed</EXAMPLE>
+          <EXAMPLE>Pass</EXAMPLE>
           <NAMESPACE>ei:post_analysis_cell_well_quality</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
@@ -2005,7 +2055,7 @@ from the cell was included in the sequencing analysis. For example, cells might 
           <LABEL>Other Derived Cell Attributes</LABEL>
           <NAME>other_derived_cell_attributes</NAME>
           <DESCRIPTION>Any other cell level measurement or annotation as result of the analysis.</DESCRIPTION>
-          <EXAMPLE>cluster</EXAMPLE>
+          <EXAMPLE>Cluster</EXAMPLE>
           <NAMESPACE>ei:other_derived_cell_attributes</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
@@ -2192,6 +2242,126 @@ from the cell was included in the sequencing analysis. For example, cells might 
           <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
+        <FIELD>
+          <LABEL>Assembly Name</LABEL>
+          <NAME>assembly_name</NAME>
+          <DESCRIPTION>Name/version of the assembly provided by the submitter that is used in the genome browsers and in the community</DESCRIPTION>
+          <EXAMPLE>JCVI_ISG_i3_1.0</EXAMPLE>
+          <NAMESPACE>mixs:assembly_name</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Extrachromosomal Elements</LABEL>
+          <NAME>extrachrom_elements</NAME>
+          <DESCRIPTION>Do plasmids exist of significant phenotypic consequence (e.g. ones that determine virulence or antibiotic resistance). Megaplasmids? Other plasmids (borrelia has 15+ plasmids)</DESCRIPTION>
+          <EXAMPLE>5</EXAMPLE>
+          <NAMESPACE>mixs:extrachrom_elements</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^\d+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Assembly Quality</LABEL>
+          <NAME>assembly_qual</NAME>
+          <DESCRIPTION>The assembly quality category is based on sets of criteria outlined for each assembly quality category.</DESCRIPTION>
+          <EXAMPLE>High-quality draft genome</EXAMPLE>
+          <NAMESPACE>mixs:assembly_qual</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_CHOICE_FIELD>
+              <TEXT_VALUE>
+                <VALUE>Finished genome</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Genome fragment(s)</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>High-quality draft genome</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Low-quality draft genome</VALUE>
+              </TEXT_VALUE>
+              <TEXT_VALUE>
+                <VALUE>Medium-quality draft genome</VALUE>
+              </TEXT_VALUE>
+            </TEXT_CHOICE_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Assembly Software</LABEL>
+          <NAME>assembly_software</NAME>
+          <DESCRIPTION>Tool(s) used for assembly, including version number and parameters</DESCRIPTION>
+          <EXAMPLE>metaSPAdes;3.11.0;kmer set 21,33,55,77,99,121, default parameters otherwise</EXAMPLE>
+          <NAMESPACE>mixs:assembly_software</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Annotation</LABEL>
+          <NAME>annot</NAME>
+          <DESCRIPTION>Tool used for annotation, or for cases where annotation was provided by a community jamboree or model organism database rather than by a specific submitter</DESCRIPTION>
+          <EXAMPLE>prokka</EXAMPLE>
+          <NAMESPACE>mixs:annot</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Feature Prediction</LABEL>
+          <NAME>feat_pred</NAME>
+          <DESCRIPTION>Method used to predict UViGs features such as ORFs, integration site, etc</DESCRIPTION>
+          <EXAMPLE>Prodigal;2.6.3;default parameters</EXAMPLE>
+          <NAMESPACE>mixs:feat_pred</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);([^\s-]{1,2}|[^\s-]+.+[^\s-]+);([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Completeness Software</LABEL>
+          <NAME>compl_software</NAME>
+          <DESCRIPTION>Tools used for completion estimate, i.e. checkm, anvi'o, busco</DESCRIPTION>
+          <EXAMPLE>checkm</EXAMPLE>
+          <NAMESPACE>mixs:compl_software</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Similarity Search Method</LABEL>
+          <NAME>sim_search_meth</NAME>
+          <DESCRIPTION>Tool used to compare ORFs with database, along with version and cutoffs used</DESCRIPTION>
+          <EXAMPLE>HMMER3;3.1b2;hmmsearch, cutoff of 50 on score</EXAMPLE>
+          <NAMESPACE>mixs:sim_search_meth</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);([^\s-]{1,2}|[^\s-]+.+[^\s-]+);([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
+          <LABEL>Relevant Standard Operating Procedures</LABEL>
+          <NAME>sop</NAME>
+          <DESCRIPTION>Standard operating procedures used in assembly and/or annotation of genomes, metagenomes or environmental sequences</DESCRIPTION>
+          <EXAMPLE>http://press.igsb.anl.gov/earthmicrobiome/protocols-and-standards/its/</EXAMPLE>
+          <NAMESPACE>mixs:sop</NAMESPACE>
+          <FIELD_TYPE/>
+          <MANDATORY>optional</MANDATORY>
+          <CARDINALITY>multiple</CARDINALITY>
+        </FIELD>
       </FIELD_GROUP>
       <FIELD_GROUP restrictionType="Any number or none of the fields">
         <NAME>downstream_processing</NAME>
@@ -2350,6 +2520,20 @@ from the cell was included in the sequencing analysis. For example, cells might 
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
+          <LABEL>File ID</LABEL>
+          <NAME>file_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for this file</DESCRIPTION>
+          <EXAMPLE>A7F9B3X2</EXAMPLE>
+          <NAMESPACE>ei:file_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
           <LABEL>Library Preparation ID</LABEL>
           <NAME>library_prep_id</NAME>
           <DESCRIPTION>A unique alphanumeric reference or identifier for the library preparation protocol used during the sequencing.</DESCRIPTION>
@@ -2369,20 +2553,6 @@ from the cell was included in the sequencing analysis. For example, cells might 
           <DESCRIPTION>A unique alphanumeric reference or identifier for the sequencing protocol.</DESCRIPTION>
           <EXAMPLE>seq123</EXAMPLE>
           <NAMESPACE>ei:sequencing_id</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
-          <LABEL>File ID</LABEL>
-          <NAME>file_id</NAME>
-          <DESCRIPTION>A unique alphanumeric identifier for this file</DESCRIPTION>
-          <EXAMPLE>A7F9B3X2</EXAMPLE>
-          <NAMESPACE>ei:file_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
               <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
@@ -2428,7 +2598,7 @@ from the cell was included in the sequencing analysis. For example, cells might 
           <EXAMPLE>file2_i2.fastq.gz</EXAMPLE>
           <NAMESPACE>ei:index_2_file</NAMESPACE>
           <FIELD_TYPE/>
-          <MANDATORY>mandatory</MANDATORY>
+          <MANDATORY>optional</MANDATORY>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
@@ -2499,7 +2669,7 @@ dataset.</DESCRIPTION>
           <LABEL>Matrix Type</LABEL>
           <NAME>matrix_type</NAME>
           <DESCRIPTION>Matrix Type</DESCRIPTION>
-          <EXAMPLE>raw_counts, normalised, log1p, scaled, imputed, pseudobulk …</EXAMPLE>
+          <EXAMPLE>raw_counts</EXAMPLE>
           <NAMESPACE>ei:matrix_type</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
@@ -2554,7 +2724,7 @@ dataset.</DESCRIPTION>
           <LABEL>Normalisation Method</LABEL>
           <NAME>normalisation_method</NAME>
           <DESCRIPTION>Any normalisation processing performed</DESCRIPTION>
-          <EXAMPLE/>
+          <EXAMPLE>Log Normalisation</EXAMPLE>
           <NAMESPACE>ei:normalisation_method</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
@@ -2592,7 +2762,7 @@ dataset.</DESCRIPTION>
           <LABEL>Dimensionality Reduction</LABEL>
           <NAME>dimensionality_reduction</NAME>
           <DESCRIPTION>Method used to reduce dimensionality in the expression data</DESCRIPTION>
-          <EXAMPLE/>
+          <EXAMPLE>PCA</EXAMPLE>
           <NAMESPACE>ei:dimensionality_reduction</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
@@ -2657,7 +2827,7 @@ dataset.</DESCRIPTION>
           <LABEL>Clustering Distance Metric</LABEL>
           <NAME>clustering_distance_metric</NAME>
           <DESCRIPTION>Metic used to calculate a points distance to others</DESCRIPTION>
-          <EXAMPLE>Leiden, Louvain, Phenograph, Walktrap, Infomap, Smart Local Moving, Other</EXAMPLE>
+          <EXAMPLE>cosine</EXAMPLE>
           <NAMESPACE>ei:clustering_distance_metric</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
@@ -2748,6 +2918,20 @@ dataset.</DESCRIPTION>
           <CARDINALITY>single</CARDINALITY>
         </FIELD>
         <FIELD>
+          <LABEL>File ID</LABEL>
+          <NAME>expression_data_file_id</NAME>
+          <DESCRIPTION>A unique alphanumeric identifier for the expression data file</DESCRIPTION>
+          <EXAMPLE>AB3X2</EXAMPLE>
+          <NAMESPACE>ei:expression_data_file_id</NAMESPACE>
+          <FIELD_TYPE>
+            <TEXT_FIELD>
+              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
+            </TEXT_FIELD>
+          </FIELD_TYPE>
+          <MANDATORY>mandatory</MANDATORY>
+          <CARDINALITY>single</CARDINALITY>
+        </FIELD>
+        <FIELD>
           <LABEL>Library Preparation ID</LABEL>
           <NAME>library_prep_id</NAME>
           <DESCRIPTION>A unique alphanumeric identifier for library preparation</DESCRIPTION>
@@ -2767,20 +2951,6 @@ dataset.</DESCRIPTION>
           <DESCRIPTION>A unique alphanumeric identifier for the expression data process setting</DESCRIPTION>
           <EXAMPLE>expdataprocess1</EXAMPLE>
           <NAMESPACE>ei:expression_data_setting_id</NAMESPACE>
-          <FIELD_TYPE>
-            <TEXT_FIELD>
-              <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
-            </TEXT_FIELD>
-          </FIELD_TYPE>
-          <MANDATORY>mandatory</MANDATORY>
-          <CARDINALITY>single</CARDINALITY>
-        </FIELD>
-        <FIELD>
-          <LABEL>File ID</LABEL>
-          <NAME>expression_data_file_id</NAME>
-          <DESCRIPTION>A unique alphanumeric identifier for the expression data file</DESCRIPTION>
-          <EXAMPLE>AB3X2</EXAMPLE>
-          <NAMESPACE>ei:expression_data_file_id</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_FIELD>
               <REGEX_VALUE>^[a-zA-Z0-9]+$</REGEX_VALUE>
@@ -2813,7 +2983,7 @@ dataset.</DESCRIPTION>
           <LABEL>File Format</LABEL>
           <NAME>expression_data_file_format</NAME>
           <DESCRIPTION>The format of the expression file, such as h5ad or rds</DESCRIPTION>
-          <EXAMPLE/>
+          <EXAMPLE>csv</EXAMPLE>
           <NAMESPACE>ei:expression_data_file_format</NAMESPACE>
           <FIELD_TYPE>
             <TEXT_CHOICE_FIELD>
